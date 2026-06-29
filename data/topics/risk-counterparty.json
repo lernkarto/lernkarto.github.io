@@ -1,0 +1,11 @@
+{
+  "topic": "Counterparty risk & XVA",
+  "id": "risk-counterparty",
+  "standard": true,
+  "primerTitle": "Counterparty risk & XVA",
+  "primer": "## Counterparty risk & XVA\nThe risk a derivatives counterparty defaults while in-the-money to you. Pairs the **counterparty vocabulary** (CE/PFE/EE/EPE, the XVA stack, margin, clearing) with the **Counterparty & XVA** deck (exposure profiles, CVA/DVA/FVA…, netting, CCPs, SA-CCR).",
+  "deckFiles": [
+    "risk-glossary-counterparty.json",
+    "counterparty-xva.json"
+  ]
+}

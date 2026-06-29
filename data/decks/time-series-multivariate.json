@@ -1,0 +1,160 @@
+{
+  "id": "time-series-multivariate",
+  "name": "Multivariate",
+  "color": "#8888ff",
+  "description": "Several series at once: cross-correlation and lead-lag, vector autoregression (VAR) and impulse responses, Granger causality, cointegration and the error-correction representation, and state-space models with the Kalman filter's predict-update cycle. Distilled from Wikipedia.",
+  "source": "https://en.wikipedia.org/wiki/Time_series",
+  "license": "CC BY-SA 4.0",
+  "attribution": "Adapted from Wikipedia — 'Time series', 'Vector autoregression', 'Granger causality', 'Cross-correlation', 'Cointegration', 'Error correction model', 'State-space representation' and 'Kalman filter' — licensed under CC BY-SA 4.0.",
+  "primerTitle": "Multivariate time series — quick recap",
+  "primer": "## From one series to many\\n\\nA **multivariate** time series tracks several variables jointly so the model can use **cross-dependence** — how one series relates to another, possibly with a lead or lag.\\n\\n## Cross-correlation\\n\\nThe **cross-correlation function (CCF)** measures the correlation between one series and a **lagged** copy of *another*: $\\\\rho_{xy}(k)=\\\\mathrm{corr}(x_t, y_{t-k})$. (Contrast the autocorrelation, which uses lagged copies of the *same* series.) A peak at lag $k$ signals a **lead-lag** relationship — one series tends to move $k$ steps before the other.\\n\\n## Vector autoregression (VAR)\\n\\nA **VAR($p$)** regresses a vector of variables on $p$ lags of **all** the variables (including each other): for two series, today's $x$ and $y$ each depend on past $x$ **and** past $y$. It is the multivariate generalisation of AR and treats all variables as **endogenous** (no a-priori split into cause/effect). Fitted VARs are summarised with **impulse response functions** — the traced-out response of each variable over time to a one-off shock in another.\\n\\n## Granger causality\\n\\n$X$ **Granger-causes** $Y$ if **past values of $X$ help predict $Y$ beyond what $Y$'s own past already explains.** It is a statement about **predictive precedence**, *not* true cause and effect — a common driver or anticipation can produce Granger causality without any mechanism. Tested by checking whether $X$'s lag coefficients are jointly zero in a regression for $Y$.\\n\\n## Spurious regression, cointegration & error correction\\n\\n- Regressing two **independent non-stationary** (e.g. unit-root) series on each other often yields a **high $R^2$ and 'significant' $t$** that are entirely **spurious** — an artefact of shared trending, not a real relationship.\\n- Two $I(1)$ series are **cointegrated** if a **linear combination of them is stationary** $I(0)$: they share a common stochastic trend and don't drift apart in the long run (e.g. two prices tied by arbitrage).\\n- The **Granger representation theorem:** cointegrated variables have an **error-correction model (ECM/VECM)** representation, in which short-run changes include a term that **pulls the system back toward the long-run equilibrium** whenever it strays. The vector form is the **VECM**.\\n\\n## State-space models & the Kalman filter\\n\\n- A **state-space model** has a hidden **state** evolving over time (a *state/transition* equation) that is seen only through noisy **observations** (an *observation/measurement* equation). Many models (ARMA, structural, dynamic-factor) can be cast this way.\\n- The **Kalman filter** is the recursive algorithm that estimates the hidden state online from noisy data. Each step has two phases: **predict** (project the state forward using the transition equation) then **update** (correct that prediction with the new observation, weighted by the **Kalman gain** — more weight to whichever is less noisy). It is the optimal (minimum-mean-square-error) linear estimator for linear-Gaussian models.",
+  "categories": {
+    "core": "Core",
+    "theorems": "Theorems",
+    "use": "Use & limits",
+    "exercise": "Exercises"
+  },
+  "cards": [
+    {
+      "category": "core",
+      "term": "What does the cross-correlation function (CCF) measure?",
+      "summary": "Correlation between one series and a lagged copy of another.",
+      "definition": "The cross-correlation function measures the correlation between one series and a lagged copy of a different series, $\\rho_{xy}(k)=\\mathrm{corr}(x_t, y_{t-k})$, as a function of lag $k$. A peak at some lag reveals a lead-lag relationship; this contrasts with autocorrelation, which lags the same series against itself.",
+      "note": "[1] Cross-correlation (Wikipedia) — https://en.wikipedia.org/wiki/Cross-correlation",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "category": "core",
+      "term": "[Time series] How does cross-correlation differ from autocorrelation?",
+      "sub": "A) cross-correlation relates two different series at various lags; autocorrelation relates a series to lagged copies of itself    B) cross-correlation uses only lag zero    C) autocorrelation needs two series, cross-correlation only one    D) they are different names for the same quantity",
+      "definition": "Correct: A) cross-correlation relates two different series at various lags; autocorrelation relates a series to lagged copies of itself. The CCF detects lead-lag links between distinct variables; the ACF detects serial dependence within one variable.",
+      "note": "[1] Cross-correlation (Wikipedia) — https://en.wikipedia.org/wiki/Cross-correlation",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "category": "core",
+      "term": "What is a vector autoregression (VAR)?",
+      "summary": "Each variable is regressed on past lags of all the variables, including each other.",
+      "definition": "A VAR($p$) is the multivariate generalisation of an autoregression: each variable in a vector is regressed on $p$ lags of every variable in the system (its own past and the others'). All variables are treated as endogenous, with no a-priori cause/effect split.",
+      "note": "[1] Vector autoregression (Wikipedia) — https://en.wikipedia.org/wiki/Vector_autoregression",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "category": "core",
+      "term": "An estimated VAR is commonly summarised with an {{impulse response}} function, which traces how each variable responds over time to a one-off shock in another.",
+      "definition": "Because a VAR's raw coefficients are hard to read, its dynamics are summarised by impulse response functions: each shows the path of one variable's response over subsequent periods to a single unit shock in one of the variables.",
+      "type": "cloze",
+      "note": "[1] Vector autoregression (Wikipedia) — https://en.wikipedia.org/wiki/Vector_autoregression",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "category": "core",
+      "term": "When is series $X$ said to Granger-cause series $Y$?",
+      "summary": "When past values of X improve the prediction of Y beyond Y's own past.",
+      "definition": "$X$ Granger-causes $Y$ if including past values of $X$ improves the forecast of $Y$ relative to using $Y$'s own past alone. It is tested by checking whether the lagged $X$ coefficients are jointly zero in a regression for $Y$.",
+      "note": "[1] Granger causality (Wikipedia) — https://en.wikipedia.org/wiki/Granger_causality",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "category": "use",
+      "term": "[Time series] Granger causality establishes a true cause-and-effect mechanism between two series.",
+      "type": "truefalse",
+      "answer": false,
+      "summary": "False — it is predictive precedence, not genuine causation.",
+      "definition": "False. Granger causality only says one series helps predict another; it is about predictive precedence in the data, not a physical mechanism. A common underlying driver or anticipation can create Granger causality with no true causal link.",
+      "note": "[1] Granger causality (Wikipedia) — https://en.wikipedia.org/wiki/Granger_causality",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "category": "theorems",
+      "term": "[Time series] Two integrated $I(1)$ series are cointegrated when:",
+      "sub": "A) some linear combination of them is stationary, so they share a common trend and don't drift apart long-run    B) both have zero mean    C) their cross-correlation at lag zero is exactly one    D) each is individually stationary",
+      "definition": "Correct: A) some linear combination of them is stationary, so they share a common trend. Although each series is non-stationary, a cointegrating combination is $I(0)$: the series move together over the long run rather than wandering apart (e.g. prices tied by arbitrage).",
+      "note": "[1] Cointegration (Wikipedia) — https://en.wikipedia.org/wiki/Cointegration",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "category": "theorems",
+      "term": "What does the Granger representation theorem say about cointegrated variables?",
+      "summary": "Cointegrated series have an error-correction (ECM/VECM) representation.",
+      "definition": "The Granger representation theorem states that if variables are cointegrated they can be written as an error-correction model: short-run changes include an error-correction term that pulls the system back toward its long-run equilibrium whenever the series stray from it. The vector form is the VECM.",
+      "note": "[1] Error correction model (Wikipedia) — https://en.wikipedia.org/wiki/Error_correction_model",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "category": "use",
+      "term": "[Time series] What is the role of the error-correction term in a VECM?",
+      "sub": "A) it pulls the system back toward the long-run equilibrium when the variables drift apart    B) it removes seasonality from each series    C) it converts the model to the frequency domain    D) it tests whether the residuals are white noise",
+      "definition": "Correct: A) it pulls the system back toward the long-run equilibrium when the variables drift apart. The error-correction term measures the current deviation from the cointegrating equilibrium and feeds a fraction of it back into the next change, restoring the long-run relationship.",
+      "note": "[1] Error correction model (Wikipedia) — https://en.wikipedia.org/wiki/Error_correction_model",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "category": "use",
+      "term": "[Time series] Why can regressing one non-stationary series on an unrelated non-stationary series be misleading?",
+      "sub": "A) it can produce a high $R^2$ and significant t-statistics that are entirely spurious    B) it always yields an $R^2$ of zero    C) it forces both series to become stationary    D) it is mathematically impossible to estimate",
+      "definition": "Correct: A) it can produce a high $R^2$ and significant t-statistics that are entirely spurious. Two independent unit-root series both trend, and that shared trending fakes a strong relationship. Cointegration testing distinguishes a genuine long-run link from a spurious regression.",
+      "note": "[1] Cointegration (Wikipedia) — https://en.wikipedia.org/wiki/Cointegration",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "category": "core",
+      "term": "What is a state-space model?",
+      "summary": "A hidden state evolves over time and is observed only through noisy measurements.",
+      "definition": "A state-space model has two equations: a state (transition) equation describing how an unobserved state vector evolves over time, and an observation (measurement) equation linking that hidden state to the noisy data we actually see. Many models — ARMA, structural, dynamic-factor — can be put in this form.",
+      "note": "[1] State-space representation (Wikipedia) — https://en.wikipedia.org/wiki/State-space_representation",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "category": "theorems",
+      "term": "[Time series] The Kalman filter estimates a hidden state in two recurring phases. What are they?",
+      "sub": "A) predict — project the state forward — then update — correct it with the new observation    B) decompose then recompose    C) difference then integrate    D) train then test",
+      "definition": "Correct: A) predict then update. The Kalman filter alternates a predict step (project the state and its uncertainty forward via the transition equation) and an update step (blend the new measurement into the prediction, weighted by the Kalman gain). It is the optimal linear estimator for linear-Gaussian state-space models.",
+      "note": "[1] Kalman filter (Wikipedia) — https://en.wikipedia.org/wiki/Kalman_filter",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "category": "exercise",
+      "term": "[Time series] Stock A's price tends to move 2 days before stock B's. Where would this show up?",
+      "sub": "A) as a peak in the cross-correlation function at the corresponding 2-day lag    B) as a flat power spectrum    C) as a unit root in stock A only    D) in the seasonal component of stock B",
+      "definition": "Correct: A) as a peak in the cross-correlation function at the corresponding 2-day lag. A lead-lag relationship between two series is exactly what the CCF detects: the correlation is largest at the lag matching the lead time.",
+      "note": "[1] Cross-correlation (Wikipedia) — https://en.wikipedia.org/wiki/Cross-correlation",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "category": "exercise",
+      "term": "[Time series] You have two individually non-stationary interest-rate series and want to test whether they share a genuine long-run relationship rather than a spurious one. What do you test for?",
+      "sub": "A) cointegration — whether a linear combination of them is stationary    B) seasonality with STL    C) the Nyquist frequency    D) whether each is white noise",
+      "definition": "Correct: A) cointegration. If a linear combination of the two $I(1)$ series is stationary, they are cointegrated and the relationship is real (a long-run equilibrium); otherwise a direct regression risks being spurious.",
+      "note": "[1] Cointegration (Wikipedia) — https://en.wikipedia.org/wiki/Cointegration",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "category": "core",
+      "term": "[Time series] Which of the following are tools specifically for multivariate (multi-series) time-series analysis? Select all that apply.",
+      "type": "multi",
+      "choices": [
+        "Vector autoregression (VAR)",
+        "Granger causality test",
+        "Cross-correlation function",
+        "Augmented Dickey-Fuller unit-root test"
+      ],
+      "answers": [
+        0,
+        1,
+        2
+      ],
+      "summary": "VAR, Granger causality and cross-correlation are multivariate; ADF is a single-series unit-root test.",
+      "definition": "VAR models several series jointly, Granger causality and cross-correlation both relate two series, so all three are multivariate tools. The augmented Dickey-Fuller test checks a single series for a unit root, so it is univariate.",
+      "note": "[1] Time series (Wikipedia) — https://en.wikipedia.org/wiki/Time_series",
+      "last_updated": "2026-06-29"
+    }
+  ],
+  "tags": [
+    "time series",
+    "multivariate",
+    "VAR",
+    "cointegration",
+    "kalman filter"
+  ]
+}

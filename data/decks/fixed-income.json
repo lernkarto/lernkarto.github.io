@@ -1,0 +1,154 @@
+{
+  "id": "fixed-income",
+  "name": "Fixed income",
+  "color": "#4dabf7",
+  "description": "Present value and yield, the price–yield relationship, Macaulay vs modified duration, convexity and DV01, the yield curve and bootstrapping the zero curve — the mathematics of bond pricing and rate risk.",
+  "categories": {
+    "core": "Core",
+    "theorems": "Relations",
+    "use": "Use & limits",
+    "exercise": "Exercises"
+  },
+  "primerTitle": "Bond pricing & rate risk",
+  "primer": "**Present value** discounts the time value of money: cash $C$ at time $t$ is worth $C/(1+y)^t$ today under annual compounding, or $Ce^{-yt}$ under **continuous** compounding (the convention in option pricing, e.g. the $Ke^{-rT}$ term in put–call parity). A **bond's price** is the sum of the PVs of its coupons and face value.\\n\\nThe **yield to maturity (YTM)** is the single constant rate $y$ that makes the PV of all the bond's cash flows equal its market price — the bond's internal rate of return if held to maturity with coupons reinvested at $y$. Price and yield move **inversely**, and the curve is **convex** (curved, not straight): a higher discount rate lowers every discounted cash flow.\\n\\n**Macaulay duration** is the PV-weighted average time to the cash flows, $D_{Mac}=\\\\sum_i t_i\\\\,w_i$ with $w_i=\\\\mathrm{PV}(C_i)/P$. A **zero-coupon** bond's Macaulay duration equals its maturity; coupons pull it below maturity, so a **higher coupon shortens duration** (more value arrives early) — zeros have the longest duration, hence the most rate sensitivity, for a given maturity.\\n\\n**Modified duration** turns this into first-order price sensitivity: $D_{mod}=D_{Mac}/(1+y)$, giving $\\\\Delta P/P\\\\approx -D_{mod}\\\\,\\\\Delta y$ (the minus sign encodes the inverse relationship). So modified is slightly *smaller* than Macaulay under discrete compounding, and the two **coincide under continuous compounding**. Macaulay is a time (years); modified is a sensitivity (% per unit yield).\\n\\n**Convexity** is the second-order curvature term: $\\\\Delta P/P\\\\approx -D_{mod}\\\\,\\\\Delta y+\\\\tfrac12 C\\\\,(\\\\Delta y)^2$. Because the true price–yield curve bows *above* the duration tangent line, for a positively convex bond duration alone **overstates the loss** from a rate rise and **understates the gain** from a rate fall — positive convexity benefits the holder, and it matters most for large moves.\\n\\n**DV01** ('dollar value of an 01') is the dollar price change per one **basis point** (0.0001) of yield, $\\\\text{DV01}\\\\approx D_{mod}\\\\times P\\\\times 0.0001$ — the desk's absolute rate-risk measure, complementing duration's percentage view.\\n\\nThe **yield curve** plots yield against maturity: normal (upward-sloping), flat (uncertainty), or **inverted** (long below short — historically a recession signal). **Bootstrapping** extracts the zero-coupon (spot) curve from coupon-bond prices, solving one maturity at a time in order of *increasing* maturity: each bond's longest spot rate is isolated by first discounting its earlier coupons at the shorter spot rates already known, so the curve is built outward from the short end.",
+  "cards": [
+    {
+      "category": "core",
+      "term": "What is the present value of a future cash flow, and how does it price a bond?",
+      "summary": "$C$ at time $t$ is worth $C/(1+y)^t$; a bond price is the PV of all its cash flows.",
+      "definition": "Present value discounts a future cash flow for the time value of money: $C$ received at time $t$ is worth $C/(1+y)^t$ today (annual compounding) or $Ce^{-yt}$ continuously. A bond's price is the sum of the present values of its coupons and face value.",
+      "formula": "$PV=\\dfrac{C}{(1+y)^t}$",
+      "last_updated": "2026-06-29",
+      "stale": true
+    },
+    {
+      "category": "theorems",
+      "term": "[Fixed income] Under continuous compounding, the present value of $C$ at time $t$ discounted at rate $y$ is:",
+      "sub": "A) $Ce^{-yt}$    B) $C/(1+y)^t$    C) $C(1+yt)$    D) $Ce^{yt}$",
+      "definition": "Correct: A) $Ce^{-yt}$. Continuous compounding replaces the discrete factor $(1+y)^{-t}$ with $e^{-yt}$; it is the convention used in option pricing (e.g. the $Ke^{-rT}$ term in put–call parity). Note that under continuous compounding modified and Macaulay duration coincide.",
+      "note": "Same discounting appears in the option-pricing decks ($Ke^{-rT}$).",
+      "last_updated": "2026-06-29",
+      "stale": true
+    },
+    {
+      "category": "core",
+      "term": "Define a bond's yield to maturity (YTM).",
+      "summary": "The single discount rate that makes the PV of the cash flows equal the price.",
+      "definition": "The yield to maturity is the one constant discount rate $y$ that sets the present value of all the bond's future coupons and principal equal to its current market price. It is the bond's internal rate of return if held to maturity with coupons reinvested at $y$.",
+      "last_updated": "2026-06-29",
+      "stale": true
+    },
+    {
+      "category": "core",
+      "term": "[Fixed income] As yields rise, bond prices:",
+      "sub": "A) fall, along a convex curve    B) rise, along a convex curve    C) stay constant    D) fall, along a straight line",
+      "definition": "Correct: A) fall, along a convex curve. Price and yield move inversely: a higher discount rate lowers every discounted cash flow. The relationship is not linear but convex (curved), which is what duration and convexity together approximate.",
+      "last_updated": "2026-06-29",
+      "stale": true
+    },
+    {
+      "category": "core",
+      "term": "What is Macaulay duration?",
+      "summary": "The PV-weighted average time (in years) to receive the bond's cash flows.",
+      "definition": "Macaulay duration is the weighted-average time to the bond's cash flows, $D_{Mac}=\\sum_i t_i\\,w_i$, where each weight $w_i=\\mathrm{PV}(C_i)/\\text{price}$. A zero-coupon bond's Macaulay duration equals its maturity; coupons pull it below maturity.",
+      "formula": "$D_{Mac}=\\sum_i t_i\\,\\dfrac{\\mathrm{PV}(C_i)}{P}$",
+      "last_updated": "2026-06-29",
+      "stale": true
+    },
+    {
+      "category": "core",
+      "term": "Modified duration relates Macaulay duration to price sensitivity: $D_{mod}=D_{Mac}/(1+y)$, and $\\Delta P/P\\approx -D_{mod}\\,\\Delta y$.",
+      "type": "cloze",
+      "definition": "Modified duration $D_{mod}=D_{Mac}/(1+y)$ is the first-order percentage price change per unit change in yield: $\\Delta P/P\\approx -D_{mod}\\,\\Delta y$. The minus sign encodes the inverse price–yield relationship. (Under continuous compounding $D_{mod}=D_{Mac}$.)",
+      "formula": "$\\dfrac{\\Delta P}{P}\\approx -D_{mod}\\,\\Delta y$",
+      "last_updated": "2026-06-29",
+      "stale": true
+    },
+    {
+      "category": "theorems",
+      "term": "[Fixed income] What distinguishes Macaulay from modified duration?",
+      "sub": "A) Macaulay is a weighted-average time (years); modified is a price sensitivity (% per unit yield)    B) they are identical under all conventions    C) Macaulay measures convexity    D) modified is always the larger",
+      "definition": "Correct: A) Macaulay is a weighted-average time (in years); modified is a price sensitivity (% per unit yield). They are linked by $D_{mod}=D_{Mac}/(1+y)$, so modified is slightly smaller under discrete compounding, and equal under continuous compounding.",
+      "last_updated": "2026-06-29",
+      "stale": true
+    },
+    {
+      "category": "core",
+      "term": "What is convexity, and why does it improve the duration approximation?",
+      "summary": "The second-order curvature term: $\\Delta P/P\\approx -D_{mod}\\Delta y+\\tfrac12 C(\\Delta y)^2$.",
+      "definition": "Convexity is the curvature of the price–yield relationship — the second-order term in the price-change expansion $\\Delta P/P\\approx -D_{mod}\\,\\Delta y+\\tfrac12 C\\,(\\Delta y)^2$. Duration alone (a straight line) misestimates large yield moves; the convexity term corrects for the curve.",
+      "formula": "$\\dfrac{\\Delta P}{P}\\approx -D_{mod}\\,\\Delta y+\\tfrac12 C\\,(\\Delta y)^2$",
+      "last_updated": "2026-06-29",
+      "stale": true
+    },
+    {
+      "category": "use",
+      "term": "[Fixed income] For a positively convex bond, using duration alone to predict price changes will:",
+      "sub": "A) overstate the loss from a rate rise and understate the gain from a rate fall    B) be exactly correct    C) understate the loss from a rate rise    D) only matter for tiny yield moves",
+      "definition": "Correct: A) overstate the loss from a rate rise and understate the gain from a rate fall. Because the true curve bows above the duration tangent line, actual prices are always higher than the linear estimate — so positive convexity benefits the holder, and ignoring it makes duration pessimistic on both sides.",
+      "last_updated": "2026-06-29",
+      "stale": true
+    },
+    {
+      "category": "core",
+      "term": "Define DV01.",
+      "summary": "The dollar price change for a 1 basis-point (0.0001) yield move $\\approx D_{mod}\\times P\\times 0.0001$.",
+      "definition": "DV01 ('dollar value of an 01') is the change in a position's price for a one basis-point (0.0001) move in yield, approximately $D_{mod}\\times P\\times 0.0001$. It is the everyday absolute (dollar) rate-risk measure on a trading desk, complementing the percentage view from duration.",
+      "formula": "$\\text{DV01}\\approx D_{mod}\\times P\\times 0.0001$",
+      "last_updated": "2026-06-29",
+      "stale": true
+    },
+    {
+      "category": "use",
+      "term": "What is the yield curve, and what do its shapes signal?",
+      "summary": "Yield vs maturity; usually upward-sloping, sometimes flat or inverted (a recession signal).",
+      "definition": "The yield curve plots yield against maturity for comparable bonds. A normal curve slopes up (longer maturities yield more); a flat curve signals uncertainty; an inverted curve (long yields below short) has historically preceded recessions. Its level, slope and curvature drive portfolio rate risk.",
+      "note": "The bootstrapped spot curve refines this raw par-yield picture.",
+      "last_updated": "2026-06-29",
+      "stale": true
+    },
+    {
+      "category": "theorems",
+      "term": "What does bootstrapping the yield curve produce, and how?",
+      "summary": "The zero-coupon (spot) curve, solved sequentially from observed coupon-bond prices.",
+      "definition": "Bootstrapping extracts the zero-coupon (spot) rates from prices of coupon bonds, one maturity at a time: the shortest instrument gives the first spot rate, which is then used to discount the early coupons of the next bond so its later spot rate can be solved, and so on outward.",
+      "note": "Each new maturity uses only spot rates already determined.",
+      "last_updated": "2026-06-29",
+      "stale": true
+    },
+    {
+      "category": "theorems",
+      "term": "[Fixed income] In bootstrapping, why must the rates be solved in order of increasing maturity?",
+      "sub": "A) discounting a bond's later coupons requires the shorter-maturity spot rates already solved    B) longer bonds are cheaper    C) it minimises the YTM    D) only the last cash flow matters",
+      "definition": "Correct: A) discounting a bond's later coupons requires the shorter-maturity spot rates already solved. Each bond has cash flows at several dates; to isolate its longest-maturity spot rate you must first discount all earlier coupons at known shorter spot rates — so the curve is built outward from the short end.",
+      "last_updated": "2026-06-29",
+      "stale": true
+    },
+    {
+      "category": "use",
+      "term": "[Fixed income] All else equal, a higher coupon rate makes a bond's duration:",
+      "sub": "A) shorter, because more value arrives earlier    B) longer    C) unchanged    D) equal to maturity",
+      "definition": "Correct: A) shorter, because more value arrives earlier. Larger coupons shift cash-flow weight toward earlier dates, lowering the PV-weighted average time. That is why zero-coupon bonds (all value at maturity) have the longest duration for a given maturity — and the greatest rate sensitivity.",
+      "last_updated": "2026-06-29",
+      "stale": true
+    },
+    {
+      "category": "exercise",
+      "term": "[Exercise] A bond has price $\\$1{,}000$ and modified duration $7$. Estimate the price change if yields rise by 50 bps, and give its DV01.",
+      "summary": "$\\Delta P\\approx -7\\times0.005\\times1000=-\\$35$; DV01 $\\approx7\\times1000\\times0.0001=\\$0.70$.",
+      "definition": "Using $\\Delta P/P\\approx -D_{mod}\\,\\Delta y$: $\\Delta P\\approx -7\\times0.0050\\times1000=-\\$35$ (a 3.5% fall). DV01 $\\approx D_{mod}\\times P\\times0.0001=7\\times1000\\times0.0001=\\$0.70$ per basis point. (Convexity would soften the loss slightly.)",
+      "note": "Uses the modified-duration and DV01 formulas from the primer.",
+      "last_updated": "2026-06-29",
+      "stale": true
+    },
+    {
+      "category": "exercise",
+      "term": "[Exercise] A 1-year zero-coupon bond paying $\\$100$ trades at $\\$96.15$. What is its yield (annual compounding), and what is its Macaulay duration?",
+      "summary": "Yield $=100/96.15-1\\approx4.0\\%$; Macaulay duration $=1$ year.",
+      "definition": "From $P=100/(1+y)$: $1+y=100/96.15=1.040$, so $y\\approx4.0\\%$. A zero-coupon bond has a single cash flow at maturity, so its Macaulay duration equals its maturity, $1$ year (and modified duration $=1/1.04\\approx0.96$).",
+      "note": "Uses PV discounting and the zero-coupon duration fact.",
+      "last_updated": "2026-06-29",
+      "stale": true
+    }
+  ]
+}

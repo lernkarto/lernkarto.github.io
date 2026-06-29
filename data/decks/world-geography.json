@@ -1,0 +1,157 @@
+{
+  "id": "world-geography",
+  "name": "World geography",
+  "color": "#4dabf7",
+  "description": "The big facts: continents and oceans, plus the largest, longest, highest and deepest features on Earth.",
+  "primerTitle": "The lay of the land",
+  "primer": "**Continents — there are seven:** Asia, Africa, North America, South America, Antarctica, Europe, and Oceania (Australia). **Asia** is the largest by both area and population. **Antarctica** is a true continent but has *no permanent population* — only temporary research-station staff.\n\n**Oceans — there are five:** Pacific, Atlantic, Indian, Southern, and Arctic. The **Pacific** is the *largest and deepest* (the Atlantic is second). The **Indian Ocean** lies between Africa, Asia, and Australia. The deepest known point on Earth is the **Mariana Trench (Challenger Deep)**, in the Pacific, at roughly 11,000 m below sea level.\n\n**Superlatives (the records):**\n- *Largest country by area* — **Russia**, spanning Europe and Asia.\n- *Largest island* — **Greenland** (Australia counts as a continent, not an island).\n- *Highest mountain above sea level* — **Mount Everest** (~8,849 m), in the **Himalayas** (Asia), the highest range on Earth.\n- *Largest desert* — **Antarctica** (a cold polar desert); the largest **hot** desert is the **Sahara**, in North **Africa**.\n\n**Rivers — two different 'biggest' records:**\n- *Longest* — the **Nile** (~6,650 km, in Africa). The **Amazon** is its close rival for length.\n- *Most water discharged (by volume)* — the **Amazon**, by far. It flows mostly through Brazil, in **South America**, to the Atlantic.\n\n**Key distinction:** 'longest' (length) and 'largest by discharge' (volume of water) are *separate* questions — the Nile leads on length, the Amazon on flow.",
+  "categories": {
+    "structure": "Continents & oceans",
+    "records": "Superlatives",
+    "features": "Rivers & mountains"
+  },
+  "cards": [
+    {
+      "term": "How many continents are there?",
+      "definition": "Seven: Asia, Africa, North America, South America, Antarctica, Europe and Oceania (Australia).",
+      "summary": "Seven continents.",
+      "category": "structure",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "What is the largest continent by area?",
+      "definition": "Asia — by far the largest continent in both area and population.",
+      "summary": "Asia.",
+      "category": "structure",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "How many oceans are there, and which is the largest?",
+      "definition": "Five oceans (Pacific, Atlantic, Indian, Southern, Arctic). The Pacific is the largest and deepest.",
+      "summary": "Five oceans; the Pacific is largest.",
+      "category": "structure",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "type": "truefalse",
+      "answer": false,
+      "term": "The Atlantic is the largest ocean on Earth.",
+      "summary": "False — the Pacific is the largest ocean.",
+      "definition": "The Pacific Ocean is the largest and deepest ocean; the Atlantic is the second largest.",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "type": "truefalse",
+      "answer": true,
+      "term": "Antarctica is a continent with no permanent population.",
+      "summary": "True.",
+      "definition": "Antarctica is one of the seven continents and has only temporary research-station residents, no permanent population.",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "What is the longest river in the world?",
+      "definition": "The Nile (in Africa) is generally cited as the longest river, at about 6,650 km; the Amazon is a close rival and carries far more water.",
+      "summary": "The Nile (Amazon is the rival by length, the leader by volume).",
+      "category": "records",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "Which river discharges the most water?",
+      "definition": "The Amazon in South America — by volume of water discharged it is the largest river in the world, dwarfing every other.",
+      "summary": "The Amazon.",
+      "category": "features",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "What is the highest mountain above sea level?",
+      "definition": "Mount Everest, in the Himalayas, at about 8,849 m above sea level.",
+      "summary": "Mount Everest (~8,849 m).",
+      "category": "records",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "What is the largest desert in the world?",
+      "definition": "The Antarctic Polar Desert is the largest desert by area; the Sahara is the largest hot desert.",
+      "summary": "Antarctica (hot-desert record: the Sahara).",
+      "category": "records",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "What is the largest country by area?",
+      "definition": "Russia — the largest country in the world by land area, spanning Europe and Asia.",
+      "summary": "Russia.",
+      "category": "records",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "What is the deepest point in the ocean?",
+      "definition": "The Mariana Trench (Challenger Deep) in the Pacific, at roughly 11,000 m below sea level — the deepest known point on Earth.",
+      "summary": "The Mariana Trench, in the Pacific.",
+      "category": "records",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "What is the largest island in the world?",
+      "definition": "Greenland is the largest island (Australia is treated as a continent, not an island).",
+      "summary": "Greenland.",
+      "category": "records",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "Which mountain range contains Mount Everest?",
+      "definition": "The Himalayas, in Asia — the highest mountain range on Earth.",
+      "summary": "The Himalayas.",
+      "category": "features",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "On which continent is the Sahara Desert?",
+      "definition": "Africa — the Sahara is the largest hot desert, spanning much of North Africa.",
+      "summary": "Africa.",
+      "category": "features",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "Through which continent does the Amazon River mainly flow?",
+      "definition": "South America — the Amazon flows mostly through Brazil to the Atlantic.",
+      "summary": "South America.",
+      "category": "features",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "Which ocean lies between Africa and Australia?",
+      "definition": "The Indian Ocean — the third-largest ocean, bounded by Africa, Asia and Australia.",
+      "summary": "The Indian Ocean.",
+      "category": "structure",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "Which is the largest hot desert?",
+      "sub": "A) The Gobi    B) The Sahara    C) The Kalahari    D) The Arabian",
+      "definition": "Correct: B) The Sahara. It is the largest hot desert, covering much of North Africa; Antarctica is the largest desert overall but is cold.",
+      "category": "records",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "Which river carries the most water to the sea?",
+      "sub": "A) The Nile    B) The Yangtze    C) The Amazon    D) The Mississippi",
+      "definition": "Correct: C) The Amazon. By discharge volume it is the world's largest river; the Nile rivals it for length but not flow.",
+      "category": "features",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "Which is the largest ocean on Earth?",
+      "sub": "A) The Atlantic    B) The Indian    C) The Southern    D) The Pacific",
+      "definition": "Correct: D) The Pacific. It is the largest and deepest ocean, containing the Mariana Trench.",
+      "category": "structure",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "Which is the largest country by area?",
+      "sub": "A) Canada    B) China    C) Russia    D) The USA",
+      "definition": "Correct: C) Russia. It is the world's largest country by land area, spanning Europe and Asia.",
+      "category": "records",
+      "last_updated": "2026-06-29"
+    }
+  ]
+}

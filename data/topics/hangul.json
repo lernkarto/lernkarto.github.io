@@ -1,0 +1,11 @@
+{
+  "topic": "Korean Hangul",
+  "id": "hangul",
+  "standard": true,
+  "description": "The 24 basic Hangul letters (jamo) — 14 consonants and 10 vowels that combine into syllable blocks. Each item is tested both ways, tracked separately.",
+  "primerTitle": "Hangul chart — quick recap",
+  "primer": "## How this set works\nHangul's 24 basic letters (*jamo*): 14 consonants + 10 vowels. It's a **featural alphabet** — letters are grouped into square **syllable blocks** (e.g. ㅎ+ㅏ+ㄴ → 한). Each card is studied **both ways** and tracked separately — you only master it once you know it in both directions.\n\n## Consonants (14)\n- ㄱ **g/k** · ㄴ **n** · ㄷ **d/t** · ㄹ **r/l** · ㅁ **m** · ㅂ **b/p** · ㅅ **s** · ㅇ silent / **ng** · ㅈ **j** · ㅊ **ch** · ㅋ **k** · ㅌ **t** · ㅍ **p** · ㅎ **h**\n- Aspirated pairs build on the plain ones: ㄱ→ㅋ, ㄷ→ㅌ, ㅂ→ㅍ, ㅈ→ㅊ.\n\n## Vowels (10)\n- ㅏ **a** · ㅑ **ya** · ㅓ **eo** · ㅕ **yeo** · ㅗ **o** · ㅛ **yo** · ㅜ **u** · ㅠ **yu** · ㅡ **eu** · ㅣ **i**\n- The 'y' vowels just add a stroke to the plain vowel: ㅏ→ㅑ, ㅓ→ㅕ, ㅗ→ㅛ, ㅜ→ㅠ.\n\n## Watch out\n- ㅇ is **silent** at the start of a syllable (a vowel placeholder) and **'ng'** at the end.\n- ㄹ is **r** between vowels, **l** at a syllable's end.\n\nEvery card's answer is in this chart — know it both ways and you'll pass the deck.",
+  "deckFiles": [
+    "hangul.json"
+  ]
+}

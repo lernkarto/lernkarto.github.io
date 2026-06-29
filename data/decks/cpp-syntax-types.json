@@ -1,0 +1,169 @@
+{
+  "id": "cpp-syntax-types",
+  "primerTitle": "C++ syntax, types & variables — quick recap",
+  "primer": "## Program structure\nC++ is **statically + strongly typed and compiled** to native machine code: every variable's type is fixed at compile time, conversions are checked, and source is compiled ahead of time (not interpreted). Execution begins at **`main`** — `int main()` or `int main(int argc, char** argv)`; `return 0` signals success, and falling off the end of `main` implicitly returns `0`.\n\n`#include <iostream>` is a **preprocessor** directive that pastes a header's contents in before compilation, exposing `std::cout`/`std::cin`. Angle brackets `<...>` search system paths; quotes `\"...\"` search your project first. A **namespace** groups names to avoid clashes; the standard library lives in `std` (`std::cout` = `cout` from `std`). `using namespace std;` imports it all (avoid in headers).\n\n## Types & values\n**Integers:** `int`, `short`, `long`, `long long` (each with `unsigned`), plus `char` and `bool`. **Floating-point:** `float`, `double`, `long double`. Sizes are implementation-defined (`int` usually 32-bit, `double` 64-bit; `sizeof(char)==1` by definition). `sizeof(T)` is a compile-time constant byte size.\n\n**Initialise with braces** (uniform init): `int x{42};` — braces forbid narrowing (`int x{3.14};` is an error). `int x = 42;` (copy) and `int x(42);` (direct) also work. `int n{};` zero-initialises. Reading an **uninitialised** local is undefined behaviour (not a guaranteed 0).\n\n`const` makes a value read-only after init (run-time-immutable). `constexpr` is stronger: computable at **compile time**, usable where the language demands a constant (array sizes, template args). `auto` deduces the type from the initialiser (`auto i = 0;` is `int`) — still one fixed static type.\n\nA **reference** `int& r = x;` is an alias for an existing object: bound once, never rebound, never null.\n\n`'a'` is a single `char`; `\"a\"` is a 2-element char array (letter + trailing `'\\0'`). Use `std::string` for real text.\n\n## I/O & arithmetic\n`std::cout << x;` — `<<` inserts into the output stream; `std::cin >> x;` — `>>` extracts. Calls chain left-to-right. Prefer `'\\n'` over `std::endl` (which also **flushes** the buffer — slow in loops). Integer `/` truncates toward zero and `%` gives the remainder; arithmetic stays integer unless an operand is floating-point (use `2.0`).",
+  "name": "C++ — Syntax, types & variables",
+  "color": "#00599c",
+  "description": "The starting point of C++: program structure, fundamental types, variables, const, references, type deduction with auto, and basic I/O with streams. Quick recall and concept cards for absolute beginners moving into C++.",
+  "categories": {
+    "core": {
+      "label": "Core",
+      "color": "#66aaff"
+    },
+    "types": {
+      "label": "Types & values",
+      "color": "#9bff66"
+    },
+    "use": {
+      "label": "Use & pitfalls",
+      "color": "#ff9f55"
+    }
+  },
+  "cards": [
+    {
+      "term": "What runs first in every C++ program?",
+      "definition": "The `main` function. Execution begins at `int main()` (or `int main(int argc, char** argv)`); returning `0` signals success. Reaching the end of `main` without a `return` implicitly returns `0`.",
+      "summary": "`int main()` is the entry point; return 0 = success.",
+      "category": "core",
+      "last_updated": "2026-06-29",
+      "stale": true
+    },
+    {
+      "term": "What does `#include <iostream>` do?",
+      "definition": "It is a preprocessor directive that pastes the contents of the `<iostream>` standard header into your file before compilation, giving you access to `std::cout`, `std::cin` and the stream machinery. Angle brackets search system include paths; quotes (`\"...\"`) search your project first.",
+      "summary": "Preprocessor pulls in a header so its declarations are visible.",
+      "category": "core",
+      "last_updated": "2026-06-29",
+      "stale": true
+    },
+    {
+      "type": "truefalse",
+      "category": "core",
+      "answer": true,
+      "term": "C++ is a statically and strongly typed, compiled language.",
+      "summary": "True — types are checked at compile time and code is compiled to machine code.",
+      "definition": "True. Every variable has a type fixed at compile time (static typing), conversions are checked (strong typing), and the source is compiled ahead of time to native machine code rather than interpreted.",
+      "last_updated": "2026-06-29",
+      "stale": true
+    },
+    {
+      "term": "Name the integer and floating-point fundamental types.",
+      "definition": "Integers: `int`, `short`, `long`, `long long` (each with an `unsigned` variant), plus `char` and `bool`. Floating-point: `float` (single precision), `double` (double precision) and `long double`. Exact sizes are implementation-defined, but `int` is typically 32-bit and `double` 64-bit.",
+      "summary": "int/short/long/long long, char, bool; float/double/long double.",
+      "category": "types",
+      "last_updated": "2026-06-29",
+      "stale": true
+    },
+    {
+      "term": "How do you declare and initialise a variable in modern C++?",
+      "definition": "Prefer brace (uniform) initialisation: `int x{42};`. You can also write `int x = 42;` or `int x(42);`. Braces additionally forbid narrowing conversions (e.g. `int x{3.14};` is an error), which catches silent data loss.",
+      "summary": "`int x{42};` — braces forbid narrowing.",
+      "note": "Copy form `int x = 42;` and direct form `int x(42);` also work.",
+      "category": "types",
+      "last_updated": "2026-06-29",
+      "stale": true
+    },
+    {
+      "type": "cloze",
+      "category": "types",
+      "term": "The keyword {{const}} makes a variable read-only after initialisation, so the compiler rejects any attempt to modify it.",
+      "summary": "const = a value that cannot change after it is set.",
+      "definition": "`const int n = 10;` declares a constant; assigning to `n` later is a compile error. Marking things `const` documents intent and lets the compiler catch accidental mutation.",
+      "last_updated": "2026-06-29",
+      "stale": true
+    },
+    {
+      "term": "Difference between `const` and `constexpr`?",
+      "sub": "A) `const` means run-time-immutable; `constexpr` means computable at compile time    B) they are exact synonyms    C) `constexpr` allows modification later, `const` does not    D) `const` only applies to pointers",
+      "definition": "Correct: A) `const` means run-time-immutable; `constexpr` means computable at compile time. A `const` value just cannot be reassigned, but may be set from a run-time value. A `constexpr` value must be a compile-time constant, so it can be used where the language demands one (array sizes, template arguments).",
+      "category": "types",
+      "last_updated": "2026-06-29",
+      "stale": true
+    },
+    {
+      "term": "What is a reference in C++?",
+      "definition": "A reference (`int& r = x;`) is an alias for an existing object — another name for the same storage. It must be initialised when declared, can never be rebound to a different object, and reading or writing through `r` reads or writes `x`. References cannot be null.",
+      "summary": "An alias for an existing object; bound once, never null.",
+      "category": "core",
+      "last_updated": "2026-06-29",
+      "stale": true
+    },
+    {
+      "term": "What does `auto` do?",
+      "definition": "`auto` asks the compiler to deduce a variable's type from its initialiser: `auto i = 0;` is `int`, `auto d = 3.14;` is `double`. It reduces verbose type names (especially iterators) and prevents accidental type mismatches. The variable still has a single, fixed static type — `auto` is deduction, not dynamic typing.",
+      "summary": "Compiler deduces the type from the initialiser.",
+      "category": "types",
+      "last_updated": "2026-06-29",
+      "stale": true
+    },
+    {
+      "type": "truefalse",
+      "category": "use",
+      "answer": false,
+      "term": "Reading a local variable before assigning it a value gives a guaranteed 0.",
+      "summary": "False — uninitialised locals hold indeterminate values; using them is undefined behaviour.",
+      "definition": "False. A local variable of fundamental type that is not initialised holds an indeterminate value, and reading it is undefined behaviour. Always initialise — e.g. `int n{};` zero-initialises it.",
+      "last_updated": "2026-06-29",
+      "stale": true
+    },
+    {
+      "term": "What does `std::cout << x;` do, and what is `<<`?",
+      "definition": "`std::cout` is the standard output stream; `<<` is the (overloaded) stream-insertion operator that writes `x` to it. Calls chain left to right: `std::cout << \"x = \" << x << '\\n';`. Use `std::cin >> x;` with the extraction operator `>>` to read input.",
+      "summary": "`<<` inserts into the output stream; `>>` extracts from input.",
+      "category": "core",
+      "last_updated": "2026-06-29",
+      "stale": true
+    },
+    {
+      "term": "Why prefer `'\\n'` over `std::endl`?",
+      "definition": "Both end a line, but `std::endl` also flushes the output buffer every time, which is slow in loops. `'\\n'` just writes a newline and lets the stream flush when convenient. Reach for `std::endl` only when you genuinely need an immediate flush.",
+      "summary": "`std::endl` flushes (slow); `'\\n'` just writes a newline.",
+      "category": "use",
+      "last_updated": "2026-06-29",
+      "stale": true
+    },
+    {
+      "term": "What is the `std::` prefix and what is a namespace?",
+      "definition": "A namespace groups names to avoid clashes; the standard library lives in `std`. `std::cout` means 'the `cout` from namespace `std`'. `using namespace std;` imports all of it (convenient but pollutes the global scope — avoid in headers).",
+      "summary": "Namespaces scope names; the standard library lives in `std`.",
+      "category": "core",
+      "last_updated": "2026-06-29",
+      "stale": true
+    },
+    {
+      "type": "cloze",
+      "category": "types",
+      "term": "The operator {{sizeof}} yields the size in bytes of a type or object, e.g. `sizeof(double)` is typically 8.",
+      "summary": "sizeof reports the byte size of a type/object at compile time.",
+      "definition": "`sizeof(T)` is a compile-time constant giving the number of bytes an object of type `T` occupies. `sizeof(char)` is 1 by definition; other sizes are implementation-defined.",
+      "last_updated": "2026-06-29",
+      "stale": true
+    },
+    {
+      "term": "What is the difference between `'a'` and `\"a\"`?",
+      "sub": "A) `'a'` is a single `char`; `\"a\"` is a 2-element char array (the letter plus a null terminator)    B) they are identical    C) `'a'` is a string, `\"a\"` is a char    D) `\"a\"` is a single char, `'a'` is an int only",
+      "definition": "Correct: A) `'a'` is a single `char`; `\"a\"` is a 2-element char array (the letter plus a null terminator). Single quotes make a character literal; double quotes make a C-string literal that includes a trailing `'\\0'`. Use `std::string` for real text handling.",
+      "category": "types",
+      "last_updated": "2026-06-29",
+      "stale": true
+    },
+    {
+      "term": "Exercise: what does this print?\n`int a{5}; int b{2}; std::cout << a / b << ' ' << a % b;`",
+      "sub": "Work it out from integer-division and modulo rules.",
+      "definition": "It prints `2 1`. With two `int` operands, `/` is integer division (truncates toward zero), so `5 / 2` is `2`, and `%` is the remainder, so `5 % 2` is `1`. To get `2.5` you would need a floating-point operand, e.g. `a / 2.0`.",
+      "summary": "`2 1` — integer division truncates; `%` gives the remainder.",
+      "category": "use",
+      "last_updated": "2026-06-29",
+      "stale": true
+    },
+    {
+      "term": "Exercise: spot the bug. `double avg = (3 + 4) / 2;` — why is `avg` 3, not 3.5?",
+      "sub": "Think about the types of the operands before the assignment.",
+      "definition": "`3`, `4` and `2` are all `int`, so `(3 + 4) / 2` is computed entirely in integer arithmetic: `7 / 2` truncates to `3`, and only then is `3` converted to `double`. Force floating-point with `(3 + 4) / 2.0`, which gives `3.5`.",
+      "summary": "All-int arithmetic truncates before the result is widened; use 2.0.",
+      "category": "use",
+      "last_updated": "2026-06-29",
+      "stale": true
+    }
+  ]
+}

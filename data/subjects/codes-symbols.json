@@ -1,0 +1,9 @@
+{
+  "name": "Codes & symbols",
+  "primerTitle": "Codes & symbols — what this subject covers",
+  "description": "Encoding systems: Morse and Braille.",
+  "primer": "## Codes & symbols\nSystems that encode letters as something else.\n- **Codes (Morse & Braille)** — the dot/dash and raised-dot mappings for the alphabet and digits, drilled both directions.\n\nThe through-line: a reversible mapping between letters and a physical signal — learn it both ways.",
+  "topics": [
+    "Codes (Morse & Braille)"
+  ]
+}

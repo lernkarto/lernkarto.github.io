@@ -1,0 +1,172 @@
+{
+  "id": "chess-basics",
+  "name": "Chess basics",
+  "color": "#0bda51",
+  "description": "Chess fundamentals — relative piece values, opening ideas, key tactical and rules terms (fork, pin, en passant, castling), and basic checkmate patterns. Flip cards plus a few multiple-choice checks.",
+  "primerTitle": "Chess glossary",
+  "primer": "The fundamentals tested by these cards.\n\n**Piece values** (a rough guide for trades, in pawns)\n- pawn = **1**, knight = **3**, bishop = **3**, rook = **5**, queen = **9**; the king has no trade value but losing it ends the game.\n- Knight and bishop are the **minor pieces** (~3 each): bishops favour open positions with long diagonals, knights favour closed positions and reach squares bishops can't; the **bishop pair** is worth slightly more.\n- Trading a **rook (5) for a minor piece (3)** is *losing the exchange* — about a two-pawn loss, avoided without compensation.\n\n**Openings**\n- **Three principles** — control the centre (e4/d4), develop knights and bishops early, castle early; don't move one piece repeatedly or bring the queen out too soon.\n- **Italian Game** — 1.e4 e5 2.Nf3 Nc6 3.Bc4; bishop aims at f7.\n- **Ruy López (Spanish)** — 1.e4 e5 2.Nf3 Nc6 3.Bb5; pressures the c6-knight defending e5.\n- **Sicilian Defence** — 1.e4 c5; Black declines symmetry for sharp, unbalanced counterplay.\n- **Queen's Gambit** — 1.d4 d5 2.c4; offers the c-pawn to seize the centre (not a true sacrifice — usually regained).\n\n**Tactics & terms**\n- **Fork** — one piece attacks two or more targets at once; only one can be saved (knights are famous forkers).\n- **Pin** — a piece can't move without exposing a more valuable one behind it (*absolute* pin = against the king, legally stuck; *relative* = against a valuable piece).\n- **Skewer** — a pin reversed: the valuable piece is in front; when it moves, the lesser piece behind is captured.\n- **Discovered attack** — moving one piece unveils an attack from another behind it (a *discovered check* hits the king).\n- **Zwischenzug** — an 'in-between move': a more forcing move inserted before the expected reply.\n- **Zugzwang** — every legal move worsens your position, but you must move.\n\n**Special rules**\n- **En passant** — if a pawn advances two squares and lands beside an enemy pawn, that pawn may capture it 'in passing' as if it had moved one square — only on the very next move.\n- **Castling** — king moves two squares toward a rook, which jumps to the king's other side. Requires: neither piece has moved, no pieces between, the king is not in check, and the king doesn't pass through or land on an attacked square.\n- **Pawn promotion** — a pawn reaching the far rank becomes a queen, rook, bishop or knight (almost always a queen).\n\n**Checkmate patterns**\n- **Back-rank mate** — a rook/queen checks along the back rank while the king is trapped behind its own pawns (make *luft*, an escape hole, to prevent it).\n- **Scholar's mate** — a four-move mate on f7 with queen + bishop (e.g. …3.Qh5 4.Qxf7#); easily stopped once known.",
+  "categories": {
+    "values": "Piece values",
+    "openings": "Openings",
+    "tactics": "Tactics & terms",
+    "rules": "Special rules",
+    "mate": "Checkmate patterns",
+    "quiz": "Quick check"
+  },
+  "cards": [
+    {
+      "term": "Standard relative piece values",
+      "definition": "A rough guide for trades: pawn = 1, knight = 3, bishop = 3, rook = 5, queen = 9. The king has no trade value (it cannot be captured) but is decisive — losing it ends the game.",
+      "summary": "P1, N3, B3, R5, Q9; king priceless.",
+      "category": "values",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "Why are bishop and knight both worth about 3?",
+      "definition": "They are the 'minor pieces', each roughly three pawns. Bishops are stronger in open positions with long diagonals; knights shine in closed positions and can reach squares bishops cannot. Two bishops together ('the bishop pair') are often valued slightly higher.",
+      "summary": "Both ~3 pawns; bishop likes open, knight likes closed.",
+      "category": "values",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "Is it usually worth trading a rook for a bishop or knight?",
+      "definition": "No — that is 'losing the exchange'. A rook (5) for a minor piece (3) is roughly a two-pawn loss of material, so you generally avoid it unless you gain compensation (activity, a winning attack, or pawn structure).",
+      "summary": "Rook (5) for minor (3) = losing the exchange.",
+      "category": "values",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "Three opening principles",
+      "definition": "1) Control the centre (push central pawns like e4/d4). 2) Develop your knights and bishops early toward active squares. 3) Castle early to safeguard the king and connect the rooks. Avoid moving the same piece repeatedly or bringing the queen out too soon.",
+      "summary": "Control centre, develop pieces, castle early.",
+      "category": "openings",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "Italian Game — the idea",
+      "definition": "Begins 1.e4 e5 2.Nf3 Nc6 3.Bc4. White develops naturally, aims the bishop at f7 (Black's weak point) and fights for the centre. A classical, principled opening good for learning development.",
+      "summary": "1.e4 e5 2.Nf3 Nc6 3.Bc4 — bishop eyes f7.",
+      "category": "openings",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "Ruy López (Spanish) — the idea",
+      "definition": "Begins 1.e4 e5 2.Nf3 Nc6 3.Bb5. White pins or pressures the c6-knight that defends the e5-pawn, applying long-term positional pressure. One of the oldest and most respected openings.",
+      "summary": "1.e4 e5 2.Nf3 Nc6 3.Bb5 — pressure on c6 knight.",
+      "category": "openings",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "Sicilian Defence — the idea",
+      "definition": "Black answers 1.e4 with 1...c5, declining symmetry to fight for the centre on Black's own terms and create unbalanced, double-edged positions. The most popular and combative reply to 1.e4.",
+      "summary": "1.e4 c5 — asymmetrical, sharp counterplay.",
+      "category": "openings",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "Queen's Gambit — the idea",
+      "definition": "Begins 1.d4 d5 2.c4. White offers the c-pawn to deflect Black's d5-pawn and dominate the centre. It is not a true sacrifice: White usually regains the pawn. A solid, classical d4 opening.",
+      "summary": "1.d4 d5 2.c4 — offer c-pawn to seize the centre.",
+      "category": "openings",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "Fork",
+      "definition": "A single piece attacks two or more enemy pieces at once, so the opponent can save only one. Knights are famous forkers; a knight forking the king and queen wins the queen.",
+      "summary": "One piece attacks two targets at once.",
+      "category": "tactics",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "Pin",
+      "definition": "A piece is attacked along a line (rank, file or diagonal) and cannot move without exposing a more valuable piece behind it. An 'absolute pin' is against the king (the pinned piece is legally stuck); a 'relative pin' is against a valuable piece.",
+      "summary": "A piece can't move without exposing a bigger one behind.",
+      "category": "tactics",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "Skewer",
+      "definition": "Like a pin reversed: a valuable piece is attacked along a line and, when it moves, a less valuable piece behind it is captured. Example: a rook checks a king, and behind the king sits a queen that is then taken.",
+      "summary": "Attack the big piece in front; win the one behind.",
+      "category": "tactics",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "Discovered attack",
+      "definition": "Moving one piece unveils an attack from another piece behind it. A 'discovered check' (the unveiled attack hits the king) is especially strong, since the moving piece can grab material with impunity.",
+      "summary": "Move one piece to unleash another's attack.",
+      "category": "tactics",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "Zwischenzug",
+      "definition": "An 'in-between move': instead of making the expected reply (e.g. recapturing), you insert a more forcing move first — often a check or a bigger threat — gaining an advantage before returning to the expected sequence.",
+      "summary": "An unexpected forcing 'in-between' move.",
+      "category": "tactics",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "Zugzwang",
+      "definition": "A situation where any move a player makes worsens their position, but passing is not allowed. It is decisive in many endgames, forcing the opponent to give ground or lose material.",
+      "summary": "Every legal move hurts you, but you must move.",
+      "category": "tactics",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "En passant",
+      "definition": "A special pawn capture: if a pawn advances two squares from its start and lands beside an enemy pawn, that enemy pawn may capture it 'in passing' as if it had moved only one square — but only on the very next move.",
+      "summary": "Capture a two-square-advancing pawn as if it moved one — next move only.",
+      "category": "rules",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "Castling — the rules and conditions",
+      "definition": "A single move shifting king and rook: the king moves two squares toward a rook, which jumps to the king's other side. Conditions: neither piece has moved before, no pieces between them, the king is not in check, and it does not pass through or land on an attacked square.",
+      "summary": "King + rook move together; needs unmoved pieces, clear path, no check across.",
+      "category": "rules",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "Pawn promotion",
+      "definition": "When a pawn reaches the far end of the board (8th rank for White, 1st for Black), it must be exchanged for a queen, rook, bishop or knight of its colour. Almost always a queen ('queening'), as it is the strongest.",
+      "summary": "Pawn reaches the far rank → becomes a queen (usually).",
+      "category": "rules",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "Back-rank mate",
+      "definition": "A checkmate where a rook or queen delivers check along the opponent's back rank while the enemy king is trapped behind its own unmoved pawns, with no escape square. A reason to make 'luft' (a pawn escape hole) for the king.",
+      "summary": "Mate on the back rank; king boxed in by its own pawns.",
+      "category": "mate",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "Scholar's mate",
+      "definition": "A fast four-move checkmate targeting f7: e.g. 1.e4 e5 2.Bc4 ... 3.Qh5 ... 4.Qxf7#, with the queen supported by the bishop. Easily prevented once known, but a classic beginner trap.",
+      "summary": "Four-move mate on f7 (queen + bishop).",
+      "category": "mate",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "Which of these is the standard relative value of a rook?",
+      "sub": "A) 9 points    B) 3 points    C) 5 points    D) 1 point",
+      "definition": "Correct: C) 5 points. A rook is worth about 5 pawns. The queen is about 9, the minor pieces (bishop and knight) about 3 each, and a pawn is 1.",
+      "category": "quiz",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "A knight attacks the enemy king and queen at the same time. What is this tactic called?",
+      "sub": "A) A pin    B) A fork    C) A skewer    D) A zwischenzug",
+      "definition": "Correct: B) A fork. One piece attacks two targets at once, and only one can be saved — here the king must move, losing the queen. A pin freezes a piece against a bigger one, a skewer wins the piece behind, and a zwischenzug is an in-between move.",
+      "category": "quiz",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "Which statement about castling is correct?",
+      "sub": "A) You may castle to escape out of check    B) You may castle even after the king has moved    C) The king may pass through an attacked square    D) You cannot castle if the king is currently in check",
+      "definition": "Correct: D) You cannot castle if the king is currently in check. Castling also requires that neither the king nor that rook has moved, that the path is clear, and that the king does not pass through or land on an attacked square.",
+      "category": "quiz",
+      "last_updated": "2026-06-29"
+    }
+  ]
+}

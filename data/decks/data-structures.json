@@ -1,0 +1,168 @@
+{
+  "id": "data-structures",
+  "name": "Data structures",
+  "color": "#00ff88",
+  "description": "Core data structures — arrays, linked lists, stacks, queues, hash maps, trees, heaps, graphs — with their defining properties and typical operation complexities. A mix of flip cards (properties) and multiple-choice cards (discriminating between close structures).",
+  "primerTitle": "Structures & their trade-offs",
+  "primer": "A **data structure** organises data so certain operations are cheap; the choice is always a *trade-off* between access pattern, ordering, and the cost of each operation.\n\n## Linear structures\n\n- **Array (contiguous list)** — fixed-size contiguous memory. Index access is $O(1)$ (address computed directly); middle insert/delete is $O(n)$ because later elements must shift.\n- **Dynamic array** (Python `list`, C++ `vector`) — grows by reallocating to a bigger buffer. Append is $O(1)$ *amortised* (occasional $O(n)$ resizes average out); index stays $O(1)$.\n- **Singly linked list** — nodes each hold a value + pointer to the next. No random access, so search is $O(n)$; insert/delete at a *known node* is $O(1)$ (just relink) — its advantage over arrays.\n- **Doubly linked list** — nodes point both ways, enabling $O(1)$ delete at a known node and bidirectional traversal, at the cost of an extra back-pointer.\n- **Stack** — **LIFO** (last-in, first-out). `push`/`pop` at the top, both $O(1)$. Call stacks, undo, DFS.\n- **Queue** — **FIFO** (first-in, first-out). `enqueue` at back, `dequeue` at front, both $O(1)$. Scheduling, BFS.\n- **Deque** (double-ended queue) — $O(1)$ insert/remove at *both* ends; generalises stack and queue. Backed by a doubly linked list or ring buffer.\n\n## Maps, sets & graphs\n\n- **Hash map (hash table)** — hashes each key to a bucket. Insert/lookup/delete are $O(1)$ *average* (good hash, low load factor), $O(n)$ *worst* (many keys collide and chain into one bucket). **Order is not preserved** — iteration order is unspecified; an order-preserving variant needs a separate linked list of entries.\n- **Set (hash set)** — distinct elements, no values, backed by a hash table; $O(1)$ average membership/insert/delete. De-duplication, \"have I seen this?\".\n- **Graph** — vertices joined by edges (directed/undirected, possibly weighted). **Adjacency list**: $O(V+E)$ space, good for *sparse* graphs. **Adjacency matrix**: $O(V^2)$ space but $O(1)$ edge-existence check — preferable for *dense* graphs or frequent \"is there an edge u-v?\" lookups.\n\n## Trees & heaps\n\n- **Binary search tree (BST)** — left subtree < node < right subtree. Search/insert/delete are $O(\\log n)$ if balanced, but degrade to $O(n)$ if the tree becomes a chain (skewed).\n- **Self-balancing BST** (red-black, AVL) — performs *rotations* on insert/delete to keep height $O(\\log n)$, guaranteeing $O(\\log n)$ ops even in the worst case.\n- **Binary heap** — a *complete* binary tree with the heap property (each parent ≤ children for a min-heap, ≥ for max-heap). Insert and extract-root are $O(\\log n)$; peek root is $O(1)$. Backed by an array. **It is the structure underlying a priority queue** — serve the highest/lowest-priority element first.\n- **Trie (prefix tree)** — keyed by sequences (usually strings); each edge is one character, shared prefixes share a path. Lookup/insert of a key of length $m$ is $O(m)$, independent of how many keys are stored.",
+  "categories": {
+    "linear": {
+      "label": "Linear structures",
+      "color": "#66aaff"
+    },
+    "trees": {
+      "label": "Trees & heaps",
+      "color": "#9bff66"
+    },
+    "maps": {
+      "label": "Maps & graphs",
+      "color": "#ff9f55"
+    }
+  },
+  "cards": [
+    {
+      "term": "Array (contiguous list)",
+      "definition": "A fixed-size block of contiguous memory holding elements of the same type. Access by index is $O(1)$ because the address is computed directly. Inserting or deleting in the middle is $O(n)$ since later elements must shift.",
+      "summary": "Contiguous; $O(1)$ index, $O(n)$ middle insert.",
+      "category": "linear",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "Dynamic array (e.g. Python list, C++ vector)",
+      "definition": "An array that grows by reallocating to a larger buffer when full. Append is $O(1)$ amortised — occasional $O(n)$ resizes average out. Random access stays $O(1)$.",
+      "summary": "$O(1)$ amortised append, $O(1)$ index.",
+      "category": "linear",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "Singly linked list",
+      "definition": "Nodes each holding a value and a pointer to the next node. No random access, so search is $O(n)$. Insertion or deletion at a known node is $O(1)$ — just relink pointers — which is its advantage over arrays.",
+      "summary": "$O(n)$ search, $O(1)$ insert at a node.",
+      "category": "linear",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "Stack",
+      "definition": "A LIFO (last-in, first-out) collection. The two operations are push (add to top) and pop (remove from top), both $O(1)$. Used for call stacks, undo, and depth-first traversal.",
+      "summary": "LIFO; $O(1)$ push/pop.",
+      "category": "linear",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "Queue",
+      "definition": "A FIFO (first-in, first-out) collection. Enqueue adds to the back, dequeue removes from the front, both $O(1)$. Used for scheduling and breadth-first traversal.",
+      "summary": "FIFO; $O(1)$ enqueue/dequeue.",
+      "category": "linear",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "type": "truefalse",
+      "category": "linear",
+      "answer": true,
+      "term": "A stack removes the most recently added element first.",
+      "summary": "True — a stack is LIFO.",
+      "definition": "True. A stack is last-in, first-out: pop returns whatever was pushed most recently. A queue, by contrast, is first-in, first-out.",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "Which structure is best for a first-in, first-out workload?",
+      "sub": "A) a stack    B) a queue    C) a binary search tree    D) a max-heap",
+      "definition": "Correct: B) a queue. A queue serves elements in arrival order (FIFO) with $O(1)$ enqueue and dequeue. A stack is LIFO; a BST and a heap order by key, not arrival.",
+      "category": "linear",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "Why does a hash map give $O(1)$ average lookup but $O(n)$ worst case?",
+      "sub": "A) it sorts keys, so lookups binary-search    B) a good hash spreads keys evenly, but heavy collisions chain into one bucket    C) it stores keys contiguously, so resizes dominate    D) it keeps a balanced tree of keys behind the scenes",
+      "definition": "Correct: B) a good hash spreads keys evenly, but heavy collisions chain into one bucket. With a good hash and low load factor, each bucket holds few keys, giving $O(1)$ access. If many keys collide, one bucket degrades to a linear list, so worst case is $O(n)$.",
+      "category": "maps",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "Hash map (hash table)",
+      "definition": "Maps keys to values by hashing each key to a bucket. Average insert, lookup and delete are $O(1)$; worst case $O(n)$ under heavy collisions. Order is not preserved.",
+      "summary": "$O(1)$ average ops; unordered.",
+      "category": "maps",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "Binary search tree (BST)",
+      "definition": "A tree where each node's left subtree holds smaller keys and the right subtree larger keys. Search, insert and delete are $O(\\log n)$ if balanced, but degrade to $O(n)$ if the tree becomes a chain.",
+      "summary": "$O(\\log n)$ if balanced, $O(n)$ if skewed.",
+      "category": "trees",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "Self-balancing BST (red-black, AVL)",
+      "definition": "A BST that performs rotations on insert/delete to keep its height $O(\\log n)$. This guarantees $O(\\log n)$ search, insert and delete even in the worst case, unlike a plain BST.",
+      "summary": "Rotations keep height $O(\\log n)$ worst case.",
+      "category": "trees",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "Binary heap",
+      "definition": "A complete binary tree satisfying the heap property: each parent is smaller (min-heap) or larger (max-heap) than its children. Insert and extract-root are $O(\\log n)$; peeking the root is $O(1)$. Backed by an array.",
+      "summary": "$O(\\log n)$ push/pop, $O(1)$ peek root.",
+      "category": "trees",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "What data structure underlies a priority queue?",
+      "sub": "A) a binary heap    B) a hash map    C) a doubly linked list    D) a balanced BST keyed by insertion time",
+      "definition": "Correct: A) a binary heap. A priority queue serves the highest- (or lowest-) priority element first; a binary heap gives $O(\\log n)$ insert and $O(\\log n)$ extract of the min/max with $O(1)$ peek, which fits exactly.",
+      "category": "trees",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "Trie (prefix tree)",
+      "definition": "A tree keyed by sequences (usually strings), where each edge is one character and shared prefixes share a path. Lookup or insert of a key of length $m$ is $O(m)$, independent of how many keys are stored.",
+      "summary": "$O(m)$ per key of length $m$; shares prefixes.",
+      "category": "trees",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "Graph",
+      "definition": "A set of vertices connected by edges, directed or undirected, possibly weighted. Stored as an adjacency list (space $O(V+E)$, good for sparse graphs) or an adjacency matrix (space $O(V^2)$, $O(1)$ edge lookup).",
+      "summary": "Vertices + edges; list or matrix storage.",
+      "category": "maps",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "When is an adjacency matrix preferable to an adjacency list?",
+      "sub": "A) for sparse graphs, to save memory    B) for dense graphs or frequent edge-existence checks    C) when the graph has no cycles    D) when vertices must be visited in sorted order",
+      "definition": "Correct: B) for dense graphs or frequent edge-existence checks. A matrix gives $O(1)$ \"is there an edge u-v?\" but costs $O(V^2)$ space, which is wasteful for sparse graphs — there an adjacency list ($O(V+E)$) is better.",
+      "category": "maps",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "Deque (double-ended queue)",
+      "definition": "A queue supporting $O(1)$ insertion and removal at both ends. Generalises both stack and queue; typically backed by a doubly linked list or a ring buffer.",
+      "summary": "$O(1)$ push/pop at both ends.",
+      "category": "linear",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "Doubly linked list",
+      "definition": "Each node points to both its predecessor and successor, allowing $O(1)$ deletion of a known node and bidirectional traversal. Costs extra memory for the back-pointer versus a singly linked list.",
+      "summary": "Two-way pointers; $O(1)$ delete at a node.",
+      "category": "linear",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "type": "truefalse",
+      "category": "maps",
+      "answer": false,
+      "term": "A hash map preserves the insertion order of its keys by definition.",
+      "summary": "False — hashing scatters keys; order is not guaranteed.",
+      "definition": "False. A plain hash map stores keys by their hash, so iteration order is unspecified. Order-preserving behaviour requires a special variant (e.g. an insertion-ordered map) that maintains a separate linked list of entries.",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "Set (hash set)",
+      "definition": "A collection of distinct elements with no values attached, backed by a hash table. Membership test, insert and delete are $O(1)$ on average. Useful for de-duplication and fast \"have I seen this?\" checks.",
+      "summary": "Distinct elements; $O(1)$ average membership.",
+      "category": "maps",
+      "last_updated": "2026-06-29"
+    }
+  ]
+}

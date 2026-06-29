@@ -1,0 +1,162 @@
+{
+  "id": "si-units",
+  "name": "SI units & physical constants",
+  "color": "#f783ac",
+  "description": "The seven SI base units and what they measure, the most-used derived units, and the major physical constants with their values.",
+  "primerTitle": "SI units & constants at a glance",
+  "primer": "The **International System of Units (SI)** is built from **seven base units**, with everything else derived from them.\n\n### The seven base units\n\n| Unit | Symbol | Measures |\n|---|---|---|\n| metre | m | length |\n| kilogram | kg | mass |\n| second | s | time |\n| ampere | A | electric current |\n| kelvin | K | thermodynamic temperature |\n| mole | mol | amount of substance |\n| candela | cd | luminous intensity |\n\nA handy mnemonic for the quantities: *length, mass, time, current, temperature, amount, luminous intensity.*\n\n### Common derived units\n\nDerived units are combinations of base units, often given their own name:\n\n- **Newton (N)** — force, $kg\\\\cdot m\\\\cdot s^{-2}$\n- **Pascal (Pa)** — pressure, $N/m^{2}$ (force per area)\n- **Joule (J)** — energy, $N\\\\cdot m$\n- **Watt (W)** — power, $J/s$\n- **Volt (V)** — electric potential, $J/C$ (or $W/A$)\n- **Hertz (Hz)** — frequency, $s^{-1}$\n\nKey contrast: base units (m, kg, s, A, K, mol, cd) are the primitives; named units like N, J, Pa, W, V, Hz are **derived**.\n\n### Major physical constants\n\n- **Speed of light** $c \\\\approx 3.00\\\\times10^{8}$ m/s\n- **Standard gravity** $g \\\\approx 9.81$ m/s²\n- **Avogadro constant** $N_A \\\\approx 6.02\\\\times10^{23}$ mol⁻¹\n- **Planck constant** $h \\\\approx 6.63\\\\times10^{-34}$ J·s\n- **Elementary charge** $e \\\\approx 1.60\\\\times10^{-19}$ C",
+  "categories": {
+    "base": "SI base units",
+    "derived": "Derived units",
+    "constant": "Physical constants"
+  },
+  "cards": [
+    {
+      "term": "Metre (m)",
+      "definition": "The SI base unit of length.",
+      "summary": "Length.",
+      "category": "base",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "Kilogram (kg)",
+      "definition": "The SI base unit of mass.",
+      "summary": "Mass.",
+      "category": "base",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "Second (s)",
+      "definition": "The SI base unit of time.",
+      "summary": "Time.",
+      "category": "base",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "Ampere (A)",
+      "definition": "The SI base unit of electric current.",
+      "summary": "Electric current.",
+      "category": "base",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "Kelvin (K)",
+      "definition": "The SI base unit of thermodynamic temperature.",
+      "summary": "Temperature.",
+      "category": "base",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "Mole (mol)",
+      "definition": "The SI base unit of amount of substance.",
+      "summary": "Amount of substance.",
+      "category": "base",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "Candela (cd)",
+      "definition": "The SI base unit of luminous intensity.",
+      "summary": "Luminous intensity.",
+      "category": "base",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "Which SI base unit measures electric current?",
+      "sub": "A) volt    B) ampere    C) coulomb    D) ohm",
+      "definition": "Correct: B) ampere. The ampere (A) is the base unit of current; the volt, coulomb and ohm are all derived units built from the base units.",
+      "category": "base",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "Which of these is an SI base unit, not a derived unit?",
+      "sub": "A) newton    B) joule    C) mole    D) pascal",
+      "definition": "Correct: C) mole. The mole (amount of substance) is a base unit; the newton, joule and pascal are all derived from base units.",
+      "category": "base",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "Newton (N)",
+      "definition": "The derived unit of force, equal to $kg\\\\cdot m\\\\cdot s^{-2}$.",
+      "summary": "Force.",
+      "category": "derived",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "Pascal (Pa)",
+      "definition": "The derived unit of pressure, equal to $N/m^{2}$.",
+      "summary": "Pressure.",
+      "category": "derived",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "Joule (J)",
+      "definition": "The derived unit of energy, equal to $N\\\\cdot m$.",
+      "summary": "Energy.",
+      "category": "derived",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "Watt (W)",
+      "definition": "The derived unit of power, equal to $J/s$.",
+      "summary": "Power.",
+      "category": "derived",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "Volt (V)",
+      "definition": "The derived unit of electric potential, equal to $J/C$ (or $W/A$).",
+      "summary": "Electric potential.",
+      "category": "derived",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "Hertz (Hz)",
+      "definition": "The derived unit of frequency, equal to $s^{-1}$.",
+      "summary": "Frequency.",
+      "category": "derived",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "The pascal, the SI unit of pressure, is equivalent to which combination?",
+      "sub": "A) N·m    B) N/m²    C) J/s    D) kg·m/s²",
+      "definition": "Correct: B) N/m². Pressure is force per unit area, so the pascal is one newton per square metre. N·m is the joule, J/s is the watt, and kg·m/s² is the newton itself.",
+      "category": "derived",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "Speed of light, $c$",
+      "definition": "The speed of light in vacuum, $c \\\\approx 3.00\\\\times10^{8}\\\\ m/s$.",
+      "summary": "$\\\\approx 3.00\\\\times10^{8}$ m/s.",
+      "category": "constant",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "Standard gravity, $g$",
+      "definition": "Standard acceleration due to gravity at Earth's surface, $g \\\\approx 9.81\\\\ m/s^{2}$.",
+      "summary": "$\\\\approx 9.81$ m/s².",
+      "category": "constant",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "Avogadro constant, $N_A$",
+      "definition": "The number of particles per mole, $N_A \\\\approx 6.02\\\\times10^{23}\\\\ mol^{-1}$.",
+      "summary": "$\\\\approx 6.02\\\\times10^{23}$ mol⁻¹.",
+      "category": "constant",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "Planck constant, $h$",
+      "definition": "The quantum of action, $h \\\\approx 6.63\\\\times10^{-34}\\\\ J\\\\cdot s$.",
+      "summary": "$\\\\approx 6.63\\\\times10^{-34}$ J·s.",
+      "category": "constant",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "Elementary charge, $e$",
+      "definition": "The electric charge of a proton, $e \\\\approx 1.60\\\\times10^{-19}\\\\ C$.",
+      "summary": "$\\\\approx 1.60\\\\times10^{-19}$ C.",
+      "category": "constant",
+      "last_updated": "2026-06-29"
+    }
+  ]
+}

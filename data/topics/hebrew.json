@@ -1,0 +1,11 @@
+{
+  "topic": "Hebrew alphabet",
+  "id": "hebrew",
+  "standard": true,
+  "description": "The 22 letters of the Hebrew abjad — consonants written right-to-left, with five final forms. Each item is tested both ways, tracked separately.",
+  "primerTitle": "Hebrew chart — quick recap",
+  "primer": "## How this set works\nThe 22 letters of the Hebrew *alef-bet*. It's an **abjad**: letters are consonants, and vowels are added as small points (niqqud) — usually omitted in everyday text. It's written **right-to-left**. Each card is studied **both ways** and tracked separately — you only master it once you know it in both directions.\n\n## The letters\n- א alef (silent) · ב bet **b/v** · ג gimel **g** · ד dalet **d** · ה he **h** · ו vav **v** · ז zayin **z** · ח chet **kh** · ט tet **t** · י yod **y** · כ kaf **k/kh** · ל lamed **l** · מ mem **m** · נ nun **n** · ס samekh **s** · ע ayin (guttural) · פ pe **p/f** · צ tsadi **ts** · ק qof **k** · ר resh **r** · ש shin **sh/s** · ת tav **t**\n\n## Final forms (word-end)\nFive letters take a special shape at the end of a word: **כ→ך** (kaf), **מ→ם** (mem), **נ→ן** (nun), **פ→ף** (pe), **צ→ץ** (tsadi).\n\n## Watch out\n- א alef and ע ayin carry/anchor vowels rather than a consonant sound of their own.\n- ב/כ/פ soften to v / kh / f without a dot (dagesh).\n\nEvery card's answer is in this chart — know it both ways and you'll pass the deck.",
+  "deckFiles": [
+    "hebrew.json"
+  ]
+}

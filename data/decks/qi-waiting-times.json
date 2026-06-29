@@ -1,0 +1,156 @@
+{
+  "id": "qi-waiting-times",
+  "name": "Waiting times & arrivals",
+  "color": "#1098ad",
+  "description": "When you sample a schedule at a random instant: offset timetables (the ice-cream/subway puzzle), exponential memorylessness, the waiting-time and inspection paradoxes, co",
+  "tags": [
+    "aptitude",
+    "interview",
+    "quant",
+    "waiting-times"
+  ],
+  "primerTitle": "Waiting times & arrival processes — method",
+  "primer": "## Sampling a schedule at a random instant\n- **Regular gaps:** you land uniformly in a gap → expected wait = half the gap (10-min trains → 5).\n- **Offset timetables:** taking the first train sends you where the *next-to-arrive window* is largest; staggered 9:1 phase → 90/10 even at equal frequency. P(board A)=A's window / cycle.\n- **Exponential is memoryless:** time already waited tells you nothing; expected remaining wait = the full mean.\n- **Waiting-time paradox:** for a Poisson process the wait from a random instant equals the full mean (10, not 5).\n- **Inspection paradox (length-biased sampling):** the gap *containing* your arrival is longer on average — 2× the mean for Poisson (20); for mixed gaps weight by length (5 & 15 → 6.25).\n- **Competing Poisson:** next event is A with prob $\\dfrac{r_A}{r_A+r_B}$ (1/5 vs 1/15 → 3/4). **Superposition:** independent streams add rates (two 10-min lines → mean wait 5).\n- **Elevator paradox:** most cars sit on the many floors below you, so near the top the first to arrive is usually heading down.",
+  "cards": [
+    {
+      "term": "John takes the first subway train that arrives and rides it to one of two ice-cream shops, one at the end of each of two lines. Both lines run a train every 10 minutes, and the two shops are the same travel time away. Yet John ends up at one particular shop about 90% of the time. What is the explanation?",
+      "choices": [
+        "Offset arrivals: one line's wait window is 9 minutes, the other's only 1",
+        "The two shops are actually at different distances",
+        "The trains on the favoured line are simply faster",
+        "The favoured line's trains run far more frequently overall",
+        "It is pure coincidence with no underlying cause"
+      ],
+      "answer": 0,
+      "type": "mcq",
+      "definition": "Even with equal headways, the two lines' arrival times are offset within the 10-minute cycle: the wait from your random arrival to one line's next train covers 9 of every 10 minutes and to the other only 1, so you board the first far more often. The shops' distance, train speed, and frequency are all equal by assumption - it is the timetable geometry, not coincidence.",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "Two bus routes each run exactly every 12 minutes. Bus A always arrives 3 minutes after bus B (and so 9 minutes before the next B). You arrive at a uniformly random time and board the first bus to come. What is the probability you board bus A?",
+      "choices": [
+        "1/4",
+        "1/2",
+        "1/8",
+        "3/4",
+        "1/3"
+      ],
+      "answer": 0,
+      "type": "mcq",
+      "definition": "Correct: 1/4. Within each 12-minute cycle, A is the next bus only during the 3 minutes after B departs; for the other 9 minutes B is next. So P(board A) = 3/12 = 1/4.",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "A train arrives exactly every 10 minutes, perfectly on schedule. You show up at a random time, uninformed of the timetable. What is your expected waiting time for the next train?",
+      "choices": [
+        "7.5 minutes",
+        "5 minutes",
+        "10 minutes",
+        "0 minutes",
+        "2.5 minutes"
+      ],
+      "answer": 1,
+      "type": "mcq",
+      "definition": "Correct: 5 minutes. Your arrival lands uniformly within a 10-minute gap, so on average you wait for half of it: 5 minutes.",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "Buses arrive as a Poisson process averaging one every 10 minutes (the gaps between buses are exponentially distributed). You arrive at the stop and learn that the previous bus left 10 minutes ago. What is your expected additional wait for the next bus?",
+      "choices": [
+        "10 minutes",
+        "20 minutes",
+        "0 minutes",
+        "2.5 minutes",
+        "5 minutes"
+      ],
+      "answer": 0,
+      "type": "mcq",
+      "definition": "Correct: 10 minutes. The exponential distribution is memoryless: how long you have already waited tells you nothing about the future. The expected remaining wait is the full mean gap, 10 minutes - not less.",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "Buses arrive as a Poisson process with an average gap of 10 minutes. You arrive at a random moment knowing nothing about past buses. What is your expected wait for the next bus?",
+      "choices": [
+        "2.5 minutes",
+        "10 minutes",
+        "5 minutes",
+        "15 minutes",
+        "20 minutes"
+      ],
+      "answer": 1,
+      "type": "mcq",
+      "definition": "Correct: 10 minutes. By memorylessness the wait from any random instant is a full exponential with mean 10 minutes - NOT 5. With perfectly regular buses it would be 5; randomness in the gaps doubles your expected wait. This is the waiting-time paradox.",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "Buses arrive as a Poisson process with an average gap of 10 minutes. Consider the particular inter-arrival gap that happens to contain your random arrival instant. What is the expected length of THAT gap?",
+      "choices": [
+        "20 minutes",
+        "15 minutes",
+        "40 minutes",
+        "10 minutes",
+        "5 minutes"
+      ],
+      "answer": 0,
+      "type": "mcq",
+      "definition": "Correct: 20 minutes. You are more likely to land in a long gap than a short one (length-biased sampling), so the gap containing your arrival averages twice the ordinary mean: 20 minutes. This is the inspection paradox.",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "Trains on line A arrive as a Poisson process averaging one every 5 minutes; line B averages one every 15 minutes; the two are independent. You arrive at a random time. What is the probability that the NEXT train (from either line) is a line-A train?",
+      "choices": [
+        "3/4",
+        "3/5",
+        "2/3",
+        "1/2",
+        "1/4"
+      ],
+      "answer": 0,
+      "type": "mcq",
+      "definition": "Correct: 3/4. For competing Poisson processes the next event belongs to A with probability rate_A/(rate_A + rate_B) = (1/5)/(1/5 + 1/15) = 3/4. Faster line, proportionally more likely.",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "You will board either of two independent train lines, each arriving as a Poisson process averaging one train every 10 minutes. What is your expected wait for the first train from either line?",
+      "choices": [
+        "20 minutes",
+        "2.5 minutes",
+        "5 minutes",
+        "10 minutes",
+        "7.5 minutes"
+      ],
+      "answer": 2,
+      "type": "mcq",
+      "definition": "Correct: 5 minutes. Two independent Poisson streams superpose into one Poisson stream whose rate is the sum, here 1 per 5 minutes, so the expected wait is 5 minutes (the minimum of two exponentials).",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "A bus line's gaps between buses are 5 minutes and 15 minutes, occurring equally often, so the average gap is 10 minutes. You arrive at a random time. What is your expected wait for the next bus?",
+      "choices": [
+        "7.5 minutes",
+        "10 minutes",
+        "5 minutes",
+        "3.75 minutes",
+        "6.25 minutes"
+      ],
+      "answer": 4,
+      "type": "mcq",
+      "definition": "Correct: 6.25 minutes. You land in a 15-minute gap 3 times as often as a 5-minute one (weighted by length: 15/20 vs 5/20). Expected wait = (1/4)(2.5) + (3/4)(7.5) = 6.25 minutes - more than half the nominal gap.",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "An observer whose office is near the TOP of a tall building notices that the first elevator to stop at their floor is almost always heading DOWN. What is the explanation?",
+      "choices": [
+        "Elevators spend most time on floors below, so one usually reaches you near the top of its run, then descends",
+        "The elevators are mechanically biased toward descending",
+        "It is a coincidence with no real underlying cause",
+        "Down-bound elevators travel faster than up-bound ones near the top floors",
+        "Gravity makes downward trips start noticeably sooner"
+      ],
+      "answer": 0,
+      "type": "mcq",
+      "definition": "From a high floor, an elevator spends most of its time on the many floors below you, so when one finally reaches you it is typically near the top of its upward run and about to head down - the first car to arrive is usually going down. It is the same sampling effect as the subway puzzle, not a mechanical bias, a speed difference, gravity, or coincidence.",
+      "last_updated": "2026-06-29"
+    }
+  ]
+}

@@ -1,0 +1,148 @@
+{
+  "id": "cpp-modern-17-20-23",
+  "primerTitle": "Modern C++ (C++17 / C++20 / C++23) — quick recap",
+  "primer": "## C++17\n**Structured bindings** unpack a tuple/pair/struct into named variables: `auto [it, inserted] = m.insert(...);`, `auto [x, y] = point;`, `for (auto& [key, val] : m)` — replacing `std::get<0>` / `.first` / `.second`. **`std::optional<T>`** represents a value that may or may not be present, without sentinels or pointers — `if (result)` to check, `*result` to read — replacing error-prone conventions like returning `-1` or a nullable pointer. **`std::variant`** is a type-safe tagged union holding exactly one of a fixed set of types (`variant<int, std::string>`), queried with `std::holds_alternative`/`std::get` or `std::visit`; safer than a raw `union` because it tracks the active type. **`if constexpr`** is compile-time branching in templates — only the taken branch is instantiated, so the other may be invalid for that type (replacing tag dispatch / SFINAE). **`std::filesystem`** standardised a portable API for paths and files (`path`, directory iteration, `exists`, `create_directory`, `file_size`).\n\n## C++20\n**Concepts** are named, checkable constraints on template parameters (`template <std::integral T>`, `requires` clauses); they make requirements explicit and give **clearer errors** than SFINAE/`enable_if` — a failed concept names the unmet requirement instead of a deep instantiation backtrace. **Ranges** redesign algorithms around whole ranges and composable, lazy **views**: `auto r = v | std::views::filter(even) | std::views::transform(square);` — pipelines compose without intermediate containers. The **spaceship operator `<=>`** is a single three-way comparison; `auto operator<=>(const T&) const = default;` lets the compiler generate all six relational operators (`<`, `<=`, `>`, `>=`, `==`, `!=`) at once. **Coroutines** are suspendable/resumable functions (`co_await`, `co_yield`, `co_return`) for writing async or lazy/generator code in sequential style. **Modules** replace textual `#include`: `import std;` is imported, not pasted — faster builds, no macro leakage, real encapsulation. **`consteval`** marks an 'immediate function' that *must* run at compile time on every call (stronger than `constexpr`, which only *may*).\n\n## C++23\nIncremental polish: **`std::expected<T,E>`** (a value-or-error return type that carries an error value `E` on failure, not just 'empty' like `optional`), **`std::print`/`std::println`** (formatted printing on C++20's `std::format`), multidimensional `operator[]`, **`std::mdspan`**, **deducing `this`**, and **`import std;`** standard-library module support. The theme is ergonomics.\n\n## Exercise mapping\nOld patterns → modern replacements: returning `-1` for 'not found' → **`std::optional`** (C++17); hand-writing `operator<`/`operator==` → defaulted **`<=>`** (C++20); `std::get<0>(t)`, `std::get<1>(t)` → **structured bindings** (C++17).",
+  "name": "C++ — Modern: C++17, C++20 & C++23",
+  "color": "#00599c",
+  "description": "What the later standards introduced and why they improve on older code: C++17 (structured bindings, optional/variant, if constexpr, filesystem), C++20 (concepts, ranges, coroutines, modules, the spaceship operator) and C++23 highlights.",
+  "categories": {
+    "cpp17": {
+      "label": "C++17",
+      "color": "#66aaff"
+    },
+    "cpp20": {
+      "label": "C++20",
+      "color": "#9bff66"
+    },
+    "cpp23": {
+      "label": "C++23",
+      "color": "#ff9f55"
+    }
+  },
+  "cards": [
+    {
+      "term": "What are structured bindings (C++17)?",
+      "definition": "Syntax to unpack a tuple, pair or struct into named variables: `auto [it, inserted] = m.insert(...);` or `auto [x, y] = point;`. It replaces clumsy `std::get<0>` / `.first` / `.second` access and reads far more clearly, especially with `map` iteration `for (auto& [key, val] : m)`.",
+      "summary": "`auto [a, b] = pair;` — destructure into named variables.",
+      "category": "cpp17",
+      "last_updated": "2026-06-29",
+      "stale": true
+    },
+    {
+      "term": "What problem does `std::optional` (C++17) solve?",
+      "sub": "A) it represents a value that may or may not be present, without sentinels or pointers    B) it makes values immutable    C) it is a faster vector    D) it replaces references",
+      "definition": "Correct: A) it represents a value that may or may not be present, without sentinels or pointers. `std::optional<int> find(...)` clearly says 'maybe an int', checked with `if (result)` and read via `*result`. It replaces error-prone conventions like returning `-1`, a magic value, or a nullable pointer.",
+      "category": "cpp17",
+      "last_updated": "2026-06-29",
+      "stale": true
+    },
+    {
+      "term": "What is `std::variant` (C++17)?",
+      "definition": "A type-safe tagged union: a value that holds exactly one of a fixed set of types, e.g. `std::variant<int, std::string>`. You query it with `std::holds_alternative`/`std::get` or visit it with `std::visit`. Safer than a raw `union` because it tracks which type is active.",
+      "summary": "Type-safe union holding one of several types; track the active one.",
+      "category": "cpp17",
+      "last_updated": "2026-06-29",
+      "stale": true
+    },
+    {
+      "term": "What does `if constexpr` (C++17) enable?",
+      "definition": "Compile-time branching inside templates: only the taken branch is instantiated, so the other may contain code invalid for that type. It replaced tag dispatch and SFINAE tricks for choosing behaviour by type, e.g. `if constexpr (std::is_integral_v<T>) ... else ...`.",
+      "summary": "Compile-time if; only the taken branch is compiled.",
+      "category": "cpp17",
+      "last_updated": "2026-06-29",
+      "stale": true
+    },
+    {
+      "term": "What did `std::filesystem` (C++17) standardise?",
+      "definition": "A portable API for paths and files: `std::filesystem::path`, directory iteration, `exists`, `create_directory`, `file_size`, etc. Before, file-system work meant platform-specific calls or third-party libraries; now it is in the standard library.",
+      "summary": "Portable standard API for paths and the file system.",
+      "category": "cpp17",
+      "last_updated": "2026-06-29",
+      "stale": true
+    },
+    {
+      "term": "What are concepts (C++20)?",
+      "definition": "Named, checkable constraints on template parameters: `template <std::integral T>` or `requires` clauses. They make template requirements explicit, give clear error messages when a type doesn't satisfy them, and replace verbose SFINAE/`enable_if` machinery.",
+      "summary": "Named constraints on template parameters; clearer errors than SFINAE.",
+      "category": "cpp20",
+      "last_updated": "2026-06-29",
+      "stale": true
+    },
+    {
+      "term": "What are ranges (C++20)?",
+      "definition": "A redesign of algorithms around ranges and composable, lazy 'views': `auto r = v | std::views::filter(even) | std::views::transform(square);`. You pass a whole range (not a begin/end pair), and view pipelines compose without intermediate containers. More readable and less error-prone than raw iterator pairs.",
+      "summary": "Composable, lazy view pipelines over whole ranges (the | syntax).",
+      "category": "cpp20",
+      "last_updated": "2026-06-29",
+      "stale": true
+    },
+    {
+      "term": "What is the spaceship operator `<=>` (C++20)?",
+      "sub": "A) a single three-way comparison the compiler can use to generate all six relational operators    B) a pointer operator    C) a new arithmetic operator    D) a way to launch threads",
+      "definition": "Correct: A) a single three-way comparison the compiler can use to generate all six relational operators. Declaring `auto operator<=>(const T&) const = default;` gives you `<`, `<=`, `>`, `>=`, `==`, `!=` at once, instead of hand-writing each — far less boilerplate and fewer inconsistencies.",
+      "category": "cpp20",
+      "last_updated": "2026-06-29",
+      "stale": true
+    },
+    {
+      "term": "What are coroutines (C++20)?",
+      "definition": "Functions that can suspend and resume, using `co_await`, `co_yield` and `co_return`. They let you write asynchronous or lazy/generator code in a sequential style instead of callback chains or hand-rolled state machines — the compiler transforms the function into a resumable state machine.",
+      "summary": "Suspendable/resumable functions (co_await/co_yield) for async & generators.",
+      "category": "cpp20",
+      "last_updated": "2026-06-29",
+      "stale": true
+    },
+    {
+      "term": "What problem do modules (C++20) address?",
+      "definition": "They replace the textual `#include` model. A module is imported (`import std;`) rather than textually pasted, which avoids re-parsing headers repeatedly, removes macro leakage across boundaries, and can dramatically cut build times. They give real encapsulation of what a component exports.",
+      "summary": "import instead of #include — faster builds, no macro leakage.",
+      "category": "cpp20",
+      "last_updated": "2026-06-29",
+      "stale": true
+    },
+    {
+      "type": "truefalse",
+      "category": "cpp20",
+      "answer": true,
+      "term": "Concepts give clearer compile errors than the old SFINAE / enable_if approach.",
+      "summary": "True — a failed concept names the unmet requirement instead of a wall of template noise.",
+      "definition": "True. When a type fails a concept, the compiler reports which named requirement was not met, rather than the deep, cryptic instantiation backtraces that SFINAE produced. That readability is a main reason concepts were added.",
+      "last_updated": "2026-06-29",
+      "stale": true
+    },
+    {
+      "type": "cloze",
+      "category": "cpp20",
+      "term": "In C++20 you can mark a function {{consteval}} to require it run at compile time on every call — an 'immediate function', stronger than constexpr.",
+      "summary": "consteval = must be evaluated at compile time (immediate function).",
+      "definition": "Where `constexpr` *may* run at compile time, `consteval` *must*: every call is evaluated during compilation or it is an error. Useful for compile-time-only factories and checks.",
+      "last_updated": "2026-06-29",
+      "stale": true
+    },
+    {
+      "term": "Name a few C++23 highlights.",
+      "definition": "C++23 was an incremental polish: `std::expected<T,E>` (a value-or-error return type), `std::print`/`std::println` (formatted printing built on C++20's `std::format`), multidimensional `operator[]`, `std::mdspan`, deducing `this`, and `import std;` standard-library module support. The theme is ergonomics and rounding out C++20.",
+      "summary": "std::expected, std::print, mdspan, deducing this, import std.",
+      "category": "cpp23",
+      "last_updated": "2026-06-29",
+      "stale": true
+    },
+    {
+      "term": "What does `std::expected<T,E>` (C++23) improve over `std::optional`?",
+      "sub": "A) it carries an error value on failure, not just 'empty'    B) it is faster    C) it can hold many values    D) it replaces exceptions entirely",
+      "definition": "Correct: A) it carries an error value on failure, not just 'empty'. `std::optional` only tells you a value is missing; `std::expected<T,E>` holds either the result `T` or an explanatory error `E`, giving a lightweight, exception-free way to return success-or-reason-for-failure.",
+      "category": "cpp23",
+      "last_updated": "2026-06-29",
+      "stale": true
+    },
+    {
+      "term": "Exercise: which standard's feature replaces each old pattern? (a) returning -1 to mean 'not found'; (b) hand-writing operator< and operator== separately; (c) `std::get<0>(t)`, `std::get<1>(t)`.",
+      "sub": "Map each pattern to its modern replacement and standard.",
+      "definition": "(a) `std::optional<T>` (C++17) makes 'no value' explicit instead of a magic -1. (b) The defaulted spaceship `operator<=>` (C++20) generates all comparisons at once. (c) Structured bindings `auto [a, b] = t;` (C++17) unpack a tuple into named variables. Each modern feature removes a sentinel, boilerplate, or unclear index.",
+      "summary": "(a) optional/C++17; (b) <=>/C++20; (c) structured bindings/C++17.",
+      "category": "cpp23",
+      "last_updated": "2026-06-29",
+      "stale": true
+    }
+  ]
+}

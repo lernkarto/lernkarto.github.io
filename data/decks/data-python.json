@@ -1,0 +1,202 @@
+{
+  "id": "data-python",
+  "name": "Python for data (pandas)",
+  "color": "#66aaff",
+  "description": "Python for statistics & risk data work: types, pandas DataFrames, joins, groupby, missing data, NumPy, scikit-learn, statsmodels — concepts then a which-function recall quiz.",
+  "tags": [
+    "interview",
+    "data",
+    "python",
+    "fluency"
+  ],
+  "primerTitle": "Python for data — recap",
+  "primer": "## Python\n**Dynamically typed**: no type declarations — a name is bound to a value and can later point to a different type. Core scalars: `int`, `float`, `str`, `bool` (`True`/`False`); `None` is the 'no value' object; `type(x)` reports the class. Collections: a **list** `[1,2,3]` is ordered + mutable (`xs.append(4)`, `xs[0]`); a **tuple** `(0,1)` is ordered but immutable (safe as a fixed record or dict key); a **dict** `{'pd':0.02}` maps unique keys to values for fast lookup (`d['pd']`). Rule of thumb: dict for lookups, tuple for fixed records, list for things that change.\n\n**pandas**: a `DataFrame` is a 2-D labelled table (indexed rows, named columns); build it from a dict of `column -> list` (`pd.DataFrame({'grade':['A','B'],'default':[0,1]})`; `df.shape` is `(2,2)`, `df['grade']` is a Series) or `pd.read_csv('loans.csv', parse_dates=['origination'])` (args: `sep`, `dtype`, `parse_dates`, `na_values`). Select with **`.loc[rows, cols]`** (label-based; rows can be a boolean mask `df['x']>0`), or `.iloc` for integer position. **`groupby`** does split-apply-combine: `df.groupby('grade')['default'].mean()` — the mean of a 0/1 flag is the proportion of 1s, i.e. the rate per group. Join with **`pd.merge(loans, bureau, on='customer_id', how='left')`** (`how`: default `'inner'`, or `'left'`/`'right'`/`'outer'`; left keeps all left rows, `NaN` where no match). Missing values are `NaN`: detect with `isna()` (`.sum()` counts per column), drop with `dropna()`, fill with `fillna(...)` — compute the impute statistic (e.g. median) on **training data only** to avoid leakage. **NumPy** arrays store one type contiguously, so whole-array math is vectorised in compiled C (much faster than Python loops); ops are elementwise (`r.mean()`). A function: `def ann(m): return (1+m)**12 - 1`; a **list comprehension** `[v*v for v in range(5)]` builds a list in one line. **scikit-learn** estimators share one API: construct, `.fit(X, y)`, then `.predict(X)` (labels) or `.predict_proba(X)` (an `(n,2)` array; `[:,1]` is P(class 1)). **statsmodels** gives full inference (coeffs, SEs, t-stats, p-values, R²) via `.summary()`, but does **not** add an intercept — wrap X in `sm.add_constant(X)`.\n\n---\nThe last cards are quick **which-function** recall checks (multiple choice).",
+  "cards": [
+    {
+      "term": "Python: is it statically or dynamically typed, and what are the core scalar types?",
+      "definition": "Python is dynamically typed: you never declare a type — a variable is just a name bound to a value, and the same name can later point to a different type. The core scalar types are int (whole numbers), float (decimals), str (text) and bool (True/False); None is the special 'no value' object. In the snippet x holds an int, rate a float, name a str and ok a bool. Expected result: type(x) returns <class 'int'>, type(rate) returns <class 'float'>.",
+      "formula": "x = 5; rate = 0.03; name = 'loan'; ok = True",
+      "note": "[1] NumPy docs — https://numpy.org/doc/stable/",
+      "last_updated": "2026-06-29",
+      "stale": true
+    },
+    {
+      "term": "Python: how do list, tuple and dict differ, and when do you pick each?",
+      "definition": "A list is an ordered, mutable sequence — you can append, remove and reorder items. A tuple is also ordered but immutable: once created it can't change, which makes it safe as a fixed record or a dict key. A dict maps unique keys to values for fast lookup by key. In the snippet, xs could grow with xs.append(4); pt is a fixed (x, y) pair; d stores risk parameters. Expected result: d['pd'] returns 0.02, and xs[0] returns 1. Rule of thumb: dict for lookups, tuple for fixed records, list for things that change.",
+      "formula": "xs = [1, 2, 3]; pt = (0, 1); d = {'pd': 0.02, 'lgd': 0.4}",
+      "note": "[1] NumPy docs — https://numpy.org/doc/stable/",
+      "last_updated": "2026-06-29",
+      "stale": true
+    },
+    {
+      "term": "Python: what is a pandas DataFrame, and how do you build one?",
+      "definition": "A DataFrame is pandas' 2-D labelled table — rows carry an index (0, 1, 2…) and columns have names — and it's the workhorse for tabular risk data. Build one from a dict of column_name -> list (each key becomes a column) or read it from a file. The snippet creates a 2-row, 2-column table with a 'grade' column ['A','B'] and a 'default' column [0,1]. Expected result: df.shape returns (2, 2), and df['grade'] returns that column as a Series.",
+      "formula": "import pandas as pd; df = pd.DataFrame({'grade': ['A','B'], 'default': [0, 1]})",
+      "note": "[1] pandas docs — https://pandas.pydata.org/docs/",
+      "last_updated": "2026-06-29",
+      "stale": true
+    },
+    {
+      "term": "Python: how do you load a CSV file into a DataFrame?",
+      "definition": "pd.read_csv reads a delimited text file and returns it as a DataFrame, inferring each column's type as it goes. Key arguments: sep (the delimiter), dtype (force types), parse_dates (convert date columns to real datetimes) and na_values (extra missing-value markers). The snippet loads loans.csv and turns the 'origination' column into datetime objects rather than strings, so you can do date arithmetic on it. Expected result: a DataFrame — inspect it with df.head() and df.dtypes (origination shows datetime64).",
+      "formula": "df = pd.read_csv('loans.csv', parse_dates=['origination'])",
+      "note": "[1] pandas docs — https://pandas.pydata.org/docs/",
+      "last_updated": "2026-06-29",
+      "stale": true
+    },
+    {
+      "term": "Python: how do you select rows by a condition and pick specific columns?",
+      "definition": "Use .loc[rows, columns] for label-based selection. The row part here is a boolean mask: df['x'] > 0 evaluates to a True/False Series with one entry per row, and .loc keeps only the rows where it is True. The column part ['id', 'default'] picks just those two columns. Expected result: a new DataFrame holding the 'id' and 'default' values for every row whose x is positive — all other rows and columns are dropped. (Use .iloc instead when selecting by integer position rather than label.)",
+      "formula": "df.loc[df['x'] > 0, ['id', 'default']]",
+      "note": "[1] pandas docs — https://pandas.pydata.org/docs/",
+      "last_updated": "2026-06-29",
+      "stale": true
+    },
+    {
+      "term": "Python: what does groupby do, and how do you get a rate per group?",
+      "definition": "groupby follows a split-apply-combine pattern: it splits rows into groups by a key, applies an aggregation to each group, then combines the answers into one result. Because the mean of a 0/1 indicator is just the proportion of 1s, averaging a default flag per grade gives the default rate per grade. The snippet groups by 'grade' and takes the mean of 'default'. Expected result: a Series indexed by grade with one rate each, e.g. A -> 0.01, B -> 0.05.",
+      "formula": "df.groupby('grade')['default'].mean()",
+      "note": "[1] pandas — groupby — https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.groupby.html",
+      "last_updated": "2026-06-29",
+      "stale": true
+    },
+    {
+      "term": "Python: how do you join two DataFrames, and what is the default join type?",
+      "definition": "pd.merge joins two DataFrames on one or more key columns, just like a SQL join. on= names the shared key; how= picks the join type — 'inner' (default: keep only matching keys), 'left', 'right' or 'outer'. The snippet does a left join: it keeps every row of loans and attaches the matching bureau columns where customer_id matches. Expected result: a wider DataFrame with the same rows as loans — loans with no bureau match still appear, with NaN in the added bureau columns.",
+      "formula": "pd.merge(loans, bureau, on='customer_id', how='left')",
+      "note": "[1] pandas docs — https://pandas.pydata.org/docs/",
+      "last_updated": "2026-06-29",
+      "stale": true
+    },
+    {
+      "term": "Python: how do you detect, drop and impute missing values without leakage?",
+      "definition": "Missing values appear as NaN. Detect them with isna() (a True/False mask); chaining .sum() counts the NaNs per column. Drop them with dropna(), or fill them with fillna(). The snippet first prints how many values are missing in each column, then imputes income by replacing every NaN with the column median. Expected result: df.isna().sum() shows a count per column, and income has no NaNs afterward. Key point: compute that median on the training set only and reuse it on test/new data — otherwise information leaks from test into training and inflates your scores.",
+      "formula": "df.isna().sum(); df['income'] = df['income'].fillna(df['income'].median())",
+      "note": "[1] pandas docs — https://pandas.pydata.org/docs/",
+      "last_updated": "2026-06-29",
+      "stale": true
+    },
+    {
+      "term": "Python: why are NumPy arrays faster than Python loops for math?",
+      "definition": "A NumPy array (ndarray) stores elements of one type in a contiguous block of memory, so whole-array math is vectorised: it runs in compiled C instead of a Python-level loop, which is dramatically faster and lighter on memory for numeric work. Operations apply elementwise, so r * 100 scales every element at once with no explicit loop. The snippet builds a 3-element array of returns and averages it. Expected result: r.mean() returns a single float, here about 0.00667.",
+      "formula": "import numpy as np; r = np.array([0.01, -0.02, 0.03]); r.mean()",
+      "note": "[1] NumPy docs — https://numpy.org/doc/stable/",
+      "last_updated": "2026-06-29",
+      "stale": true
+    },
+    {
+      "term": "Python: how do you define a function and write a list comprehension?",
+      "definition": "def declares a named function: parameters go in, a value comes out via return. A list comprehension, [expr for item in iterable], builds a list in one readable line — the idiomatic alternative to a for-loop that appends. In the snippet, ann(m) annualises a monthly rate, and the comprehension squares the numbers 0 to 4. Expected result: ann(0.01) returns about 0.1268 (≈12.7%), and sq becomes [0, 1, 4, 9, 16].",
+      "formula": "def ann(m): return (1 + m) ** 12 - 1\nsq = [v * v for v in range(5)]",
+      "note": "[1] NumPy docs — https://numpy.org/doc/stable/",
+      "last_updated": "2026-06-29",
+      "stale": true
+    },
+    {
+      "term": "Python: what is the scikit-learn estimator API for training and scoring?",
+      "definition": "Every scikit-learn estimator shares one API: create it, call .fit(X, y) to learn parameters from features X and target y, then .predict(X) for class labels or .predict_proba(X) for class probabilities. This uniformity lets you swap one model for another without rewriting the surrounding code. The snippet trains a logistic regression, then takes column 1 of predict_proba. Expected result: predict_proba returns an (n, 2) array of [P(class 0), P(class 1)], and [:, 1] keeps the second column — the probability of default for each row.",
+      "formula": "from sklearn.linear_model import LogisticRegression\nm = LogisticRegression().fit(X, y); p = m.predict_proba(X)[:, 1]",
+      "note": "[1] scikit-learn — linear models — https://scikit-learn.org/stable/modules/linear_model.html",
+      "last_updated": "2026-06-29",
+      "stale": true
+    },
+    {
+      "term": "Python: how do you fit an OLS regression with statsmodels, and what's the gotcha?",
+      "definition": "statsmodels is built for econometrics: instead of just predictions it returns full inference — coefficients, standard errors, t-statistics, p-values and R-squared. You build the model, call .fit(), and .summary() prints the regression table. The gotcha: unlike scikit-learn, statsmodels does NOT add an intercept for you, so you must wrap X in sm.add_constant(X) — forget it and you force the line through the origin. Expected result: m.summary() prints a table whose 'const' row is the intercept and whose x rows give each slope with its p-value.",
+      "formula": "import statsmodels.api as sm\nm = sm.OLS(y, sm.add_constant(X)).fit(); print(m.summary())",
+      "note": "[1] statsmodels — https://www.statsmodels.org/stable/",
+      "last_updated": "2026-06-29",
+      "stale": true
+    },
+    {
+      "term": "In Python's pandas, to combine two DataFrames on a shared key column (like a SQL join or a VLOOKUP), the idiomatic function is:",
+      "choices": [
+        "df1.append(df2, keys='key')",
+        "df1.join(df2, how='inner')",
+        "df1.concat(df2, axis='keys')",
+        "df1.lookup(df2, keys='key')",
+        "pd.merge(df1, df2, on='key')"
+      ],
+      "answer": 4,
+      "type": "mcq",
+      "definition": "pd.merge(df1, df2, on='key') joins on COLUMNS with how='left'/'inner'/'outer' (default inner), the SQL-style join. df.join exists but defaults to joining on the INDEX, not a column key, and takes no on= positional like that; append/concat just STACK rows rather than match keys; df1.lookup is not a join method.",
+      "last_updated": "2026-06-29",
+      "stale": true
+    },
+    {
+      "term": "In pandas, to run a SQL query against a database connection and return a DataFrame, you use:",
+      "choices": [
+        "pd.read_csv(query, connection)",
+        "pd.read_sql(query, connection)",
+        "pd.from_sql(query, connection)",
+        "pd.to_sql(query, connection=db)",
+        "pd.query(query, connection=db)"
+      ],
+      "answer": 1,
+      "type": "mcq",
+      "definition": "pd.read_sql(query, connection) executes the SQL through a DBAPI/SQLAlchemy connection and returns a DataFrame. to_sql does the REVERSE — it writes a DataFrame out to a table. read_csv reads delimited files, not databases; pd.from_sql and pd.query are not real pandas functions.",
+      "last_updated": "2026-06-29",
+      "stale": true
+    },
+    {
+      "term": "In pandas, the idiomatic way to keep only rows where column 'age' exceeds 30 is:",
+      "choices": [
+        "df[df['age'] > 30]",
+        "df.where('age' > 30)",
+        "df.loc('age', 30)",
+        "df.filter(df['age'] > 30)",
+        "df.select(df['age'] > 30)"
+      ],
+      "answer": 0,
+      "type": "mcq",
+      "definition": "df[df['age'] > 30] is boolean indexing — the mask keeps only rows where the condition is True (df.query('age > 30') is the equivalent string form). df.where keeps the shape and blanks out non-matches with NaN rather than dropping rows, and it takes a Series, not 'age' > 30. df.filter selects by LABEL (column/index names), not by a row condition; df.loc takes labels or a boolean mask, not a (col, value) call; df.select isn't a pandas method.",
+      "last_updated": "2026-06-29",
+      "stale": true
+    },
+    {
+      "term": "In pandas, to compute the total of 'sales' for each 'region', you would write:",
+      "choices": [
+        "df.sum('sales', groupby='region')",
+        "df.groupby('region')['sales'].sum()",
+        "df.agg('sum', groupby='regions')",
+        "df.pivot('region', 'sales').total()",
+        "df['sales'].sum(groupby='region')"
+      ],
+      "answer": 1,
+      "type": "mcq",
+      "definition": "df.groupby('region')['sales'].sum() splits rows by the key, then sums 'sales' within each group. The others aren't valid: df.sum and Series.sum take an axis, not a groupby= grouping key; df.agg needs an aggregation func and likewise has no groupby= argument; df.pivot needs index/columns/values and has no .total() — it doesn't aggregate.",
+      "last_updated": "2026-06-29",
+      "stale": true
+    },
+    {
+      "term": "In pandas, to translate the values of a column using a Python dictionary (a value lookup), you use:",
+      "choices": [
+        "df['code'].replace(lookup_dict)",
+        "df['code'].map(lookup_dict)",
+        "df['code'].lookup(lookup_dict)",
+        "df['code'].translate(lookup_dict)",
+        "df['code'].recode(lookup_dict)"
+      ],
+      "answer": 1,
+      "type": "mcq",
+      "definition": "Series.map(lookup_dict) applies an element-wise mapping from a dict, swapping each value for its dict entry (unmatched values become NaN). Series.replace does substitute values from a dict but leaves unmatched values untouched and isn't the idiomatic value-lookup translate. .lookup is deprecated and does something different; .translate and .recode aren't pandas Series methods.",
+      "last_updated": "2026-06-29",
+      "stale": true
+    },
+    {
+      "term": "To test whether each value of a vector/column belongs to a given set of allowed values, the operator is %in% in R and the method is:",
+      "choices": [
+        ".match() in pandas",
+        ".isin() in pandas",
+        ".contains() in pandas",
+        ".member() in pandas",
+        ".in_set() in pandas"
+      ],
+      "answer": 1,
+      "type": "mcq",
+      "definition": "pandas .isin([...]) returns a boolean mask for set membership, mirroring R's %in%. Don't confuse it with .str.contains, which does SUBSTRING matching on text — a different test. Series.match isn't a membership method (and pandas uses .str.match for regex on text); .member and .in_set aren't pandas methods.",
+      "last_updated": "2026-06-29",
+      "stale": true
+    }
+  ]
+}

@@ -1,0 +1,295 @@
+{
+  "id": "econ-ts-advanced",
+  "name": "Time series — advanced (cointegration, GARCH)",
+  "color": "#12b886",
+  "description": "20 interview-screen MCQs — time series — advanced (cointegration, garch). Each card explains the answer.",
+  "tags": [
+    "interview",
+    "econometrics",
+    "mcq"
+  ],
+  "primerTitle": "Time series — advanced",
+  "primer": "## Time series — advanced\n**Cointegration**: non-stationary series whose linear combination is I(0) share a long-run equilibrium — the basis for pairs trading; model with an **error-correction model** (negative loading = convergence). Regressing unrelated trending series gives a **spurious regression** (high R², autocorrelated residuals). **VARs** treat all variables as endogenous; impulse responses trace shocks; **Granger causality** is predictive, not structural. Volatility clustering (uncorrelated returns, correlated squared returns) calls for **ARCH/GARCH**: σ²ₜ = ω + α·ε²ₜ₋₁ + β·σ²ₜ₋₁, with α+β<1 for stationarity and persistence near 1.",
+  "cards": [
+    {
+      "term": "Two non-stationary I(1) series are cointegrated if:",
+      "choices": [
+        "A linear combination of them is stationary",
+        "Their first differences still have a unit root",
+        "They are contemporaneously uncorrelated",
+        "They happen to share the same sample mean",
+        "Each series is already stationary in levels"
+      ],
+      "answer": 0,
+      "type": "mcq",
+      "definition": "Cointegration means some linear combination a*X - b*Y is stationary (I(0)) even though X and Y are individually I(1) - a stable long-run equilibrium they revert to. Differencing both discards that long-run link; being uncorrelated or sharing a mean is neither necessary nor sufficient; and if each were already stationary there would be no integration to cointegrate.",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "Regressing one independent random walk on another typically produces:",
+      "choices": [
+        "A valid cointegrating relationship between them",
+        "A reliably low R-squared in large samples",
+        "Stationary, well-behaved regression residuals",
+        "A spurious regression with a high but meaningless R-squared",
+        "An unbiased estimate of a causal effect"
+      ],
+      "answer": 3,
+      "type": "mcq",
+      "definition": "Two independent random walks drift together by chance, producing a high R-squared and significant t-stats but strongly autocorrelated residuals - the textbook spurious regression. There is no cointegrating relationship (no stationary combination), residuals are non-stationary rather than well-behaved, the R-squared is misleadingly high not low, and nothing causal is identified.",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "An Error Correction Model (ECM) is used when variables are:",
+      "choices": [
+        "All of them are individually white noise",
+        "Stationary, so OLS in levels already works",
+        "Completely unrelated with no common trend",
+        "Cointegrated, linking short-run moves to a long-run equilibrium",
+        "Integrated of different orders"
+      ],
+      "answer": 3,
+      "type": "mcq",
+      "definition": "An ECM applies to cointegrated I(1) variables: it regresses the change in Y on lagged changes plus an error-correction term that pulls the system back toward its long-run equilibrium. White-noise or already-stationary series need no correction; truly unrelated series, or ones integrated to different orders, share no equilibrium to correct toward.",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "In a valid Error Correction Model, the coefficient on the error-correction term is expected to be:",
+      "choices": [
+        "Greater than one in absolute value",
+        "Positive and greater than one",
+        "Equal to the regression R-squared",
+        "Exactly zero in equilibrium",
+        "Negative, between -1 and 0, for convergence"
+      ],
+      "answer": 4,
+      "type": "mcq",
+      "definition": "The error-correction coefficient must be negative (typically between -1 and 0): a positive deviation from equilibrium this period is partly reversed next period, pulling the system back. A positive or greater-than-one loading would push it away (explosive); zero would mean no error correction at all, contradicting the model.",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "The Engle-Granger cointegration test has a null hypothesis of:",
+      "choices": [
+        "Normality of residuals",
+        "No cointegration",
+        "Stationarity of each series",
+        "Cointegration exists",
+        "No autocorrelation"
+      ],
+      "answer": 1,
+      "type": "mcq",
+      "definition": "The Engle-Granger test has a null of NO cointegration: you run the cointegrating regression, then apply a unit-root (ADF-type) test to its residuals, and rejecting the unit root null means the residual is stationary, supporting cointegration. So the working null is that the residual has a unit root and the series do not cointegrate. Normality of residuals and no autocorrelation are assumptions of other diagnostics, not what this test targets. Stationarity of each series is false by construction - the inputs are I(1). Cointegration exists is the alternative, not the null; you only conclude it by rejecting the null.",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "The Johansen test is preferred over Engle-Granger when:",
+      "choices": [
+        "You only need a single heteroskedasticity test",
+        "All the series are already stationary",
+        "The data are purely cross-sectional, not time series",
+        "There may be several cointegrating vectors among many variables",
+        "There are exactly two series to compare"
+      ],
+      "answer": 3,
+      "type": "mcq",
+      "definition": "Johansen handles a system of several variables and can detect more than one cointegrating vector, estimating them jointly in a VECM. Engle-Granger is a two-step residual test limited to a single relationship. The other options misstate its purpose: it is not a heteroskedasticity test, it needs non-stationary time series, and it is not restricted to two series.",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "X is said to 'Granger-cause' Y if:",
+      "choices": [
+        "X is the true physical cause of Y",
+        "X has a unit root",
+        "X and Y are cointegrated",
+        "Past values of X help predict Y beyond Y's own past",
+        "X and Y are contemporaneously correlated"
+      ],
+      "answer": 3,
+      "type": "mcq",
+      "definition": "X Granger-causes Y if past values of X improve the forecast of Y beyond what Y's own past already provides - it is a purely predictive, in-sample concept. It is explicitly NOT genuine physical causation: an omitted common driver can make X 'Granger-cause' Y spuriously. A unit root in X concerns the series' integration order, not its predictive content for Y. Cointegration is a long-run equilibrium relationship, distinct from short-run predictability. Contemporaneous correlation is same-period comovement; Granger causality is specifically about lagged predictive power, so simultaneity does not establish it.",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "A Vector Autoregression (VAR) model treats:",
+      "choices": [
+        "Each variable as purely cross-sectional data",
+        "Only stationary variables, always kept in levels",
+        "A single time series in isolation",
+        "One variable as dependent and the rest as fixed regressors",
+        "All variables as endogenous, each on lags of itself and the others"
+      ],
+      "answer": 4,
+      "type": "mcq",
+      "definition": "A VAR treats every variable as endogenous, regressing each on lags of itself and of all the others, so it captures their joint dynamics without imposing a direction a priori. Treating variables as cross-sectional, a single series, or one-dependent-rest-fixed all impose structure a VAR avoids; it also admits non-stationary forms such as a VECM.",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "Volatility clustering - large changes followed by large changes - is the motivation for:",
+      "choices": [
+        "Ordinary AR models of the mean",
+        "A linear probability model",
+        "Fixed-effects panel models",
+        "ARCH/GARCH models of conditional variance",
+        "Cointegration tests"
+      ],
+      "answer": 3,
+      "type": "mcq",
+      "definition": "Volatility clustering - large changes tending to follow large changes, calm following calm - motivates ARCH/GARCH, which model the conditional variance as time-varying: sigma^2_t = omega + alpha*e^2_{t-1} + beta*sigma^2_{t-1}, so today's variance rises after recent large shocks. Ordinary AR models describe the conditional mean and assume constant variance, so they cannot reproduce clustering. A linear probability model is for binary outcomes, and fixed-effects panel models address cross-unit heterogeneity - neither targets time-varying volatility. Cointegration concerns long-run relationships among levels of series, not the dynamics of variance.",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "In a GARCH(1,1) model, the conditional variance depends on:",
+      "choices": [
+        "The current level of the underlying series",
+        "A deterministic time trend plus the series level",
+        "Only a single constant term, nothing else",
+        "Only the previous period's squared return",
+        "A constant plus the last squared shock and last conditional variance"
+      ],
+      "answer": 4,
+      "type": "mcq",
+      "definition": "GARCH(1,1) sets sigma^2_t = omega + alpha*e^2_{t-1} + beta*sigma^2_{t-1}: today's conditional variance is a constant plus the most recent squared shock (ARCH term) and the most recent conditional variance (GARCH term). It depends on neither the series level nor a time trend, and using only the constant or only the squared return drops the persistence GARCH exists to capture.",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "In GARCH(1,1), the sum alpha + beta measures:",
+      "choices": [
+        "The persistence of volatility (below 1 for covariance stationarity)",
+        "The leverage (asymmetry) effect in volatility",
+        "The unconditional mean of the return series",
+        "The R-squared of the variance equation",
+        "The volatility forecast horizon in days"
+      ],
+      "answer": 0,
+      "type": "mcq",
+      "definition": "In GARCH(1,1), alpha+beta is the persistence of volatility shocks: values near 1 mean shocks decay slowly (volatility clusters for long stretches), and alpha+beta < 1 is required for covariance stationarity, with unconditional variance omega/(1-alpha-beta). It is not the leverage effect, the mean of returns, an R-squared, or a forecast horizon.",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "ARCH and GARCH models are estimated by:",
+      "choices": [
+        "The Johansen procedure",
+        "Maximum likelihood",
+        "Two-stage least squares",
+        "Differencing",
+        "Ordinary least squares directly"
+      ],
+      "answer": 1,
+      "type": "mcq",
+      "definition": "ARCH and GARCH are estimated by maximum likelihood: the conditional variance enters the likelihood nonlinearly (each period's density depends on a recursively computed sigma^2_t), so the log-likelihood is maximized numerically, usually assuming conditionally normal or t-distributed errors. Ordinary least squares cannot be applied directly because the variance, not just the mean, is parameterized and time-varying. The Johansen procedure tests cointegration rank - a completely different problem. Two-stage least squares addresses endogeneity/instrumental variables, not conditional heteroskedasticity. Differencing removes unit roots from the mean; it does nothing to estimate a variance equation.",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "The 'leverage effect' captured by EGARCH or GJR-GARCH refers to:",
+      "choices": [
+        "Positive shocks raising volatility more than negative ones",
+        "Volatility staying essentially constant over time",
+        "A unit root in the conditional variance",
+        "Negative shocks raising future volatility more than equal-sized positive ones",
+        "Financial leverage in the regulatory balance-sheet sense"
+      ],
+      "answer": 3,
+      "type": "mcq",
+      "definition": "The leverage effect is the asymmetry that bad news (negative returns) raises future volatility more than good news of the same size - captured by EGARCH/GJR-GARCH. It is the opposite of the positive-shock option, contradicts constant volatility, is not a unit root in variance, and is unrelated to balance-sheet leverage despite the name.",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "Long-horizon GARCH volatility forecasts tend to:",
+      "choices": [
+        "Drop to zero",
+        "Stay equal to yesterday's volatility forever",
+        "Converge toward the unconditional (long-run) variance",
+        "Equal the squared mean return",
+        "Diverge to infinity"
+      ],
+      "answer": 2,
+      "type": "mcq",
+      "definition": "Because GARCH volatility is mean-reverting, multi-step forecasts converge toward the unconditional (long-run) variance omega/(1 - alpha - beta) as the horizon grows - the conditional forecast decays geometrically at rate (alpha+beta) from today's level toward that anchor. Dropping to zero or diverging to infinity would require non-stationary or degenerate parameters, not a standard stationary GARCH. Staying equal to yesterday's volatility forever describes a random walk in variance (IGARCH/EWMA, where alpha+beta=1), not the mean-reverting case. Equaling the squared mean return confuses the variance with the level of returns - they are unrelated quantities.",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "Realized volatility is computed from:",
+      "choices": [
+        "Monthly average returns",
+        "A single daily squared return only",
+        "Option-implied prices exclusively",
+        "The VIX index reading alone",
+        "Summed squared high-frequency intraday returns"
+      ],
+      "answer": 4,
+      "type": "mcq",
+      "definition": "Realized volatility aggregates many high-frequency intraday returns (e.g. the sum of squared 5-minute returns) into a far less noisy estimate of a day's variance than one daily return gives. It is not a monthly average, a single daily squared return, an option-implied measure, or the VIX.",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "The RiskMetrics EWMA volatility model is a special restricted case of GARCH in which:",
+      "choices": [
+        "Only the single most recent return matters at all",
+        "Volatility is an exponentially weighted average of past squared returns",
+        "There is no persistence in volatility whatsoever",
+        "All past squared returns receive exactly equal weight",
+        "The conditional mean is modelled instead of the variance"
+      ],
+      "answer": 1,
+      "type": "mcq",
+      "definition": "RiskMetrics EWMA is GARCH(1,1) with omega=0 and alpha+beta=1: sigma^2_t = (1-lambda)*r^2_{t-1} + lambda*sigma^2_{t-1}, so volatility is an exponentially weighted average of past squared returns with a decay like lambda=0.94 giving recent data more weight. It is not driven by only the last return, has full persistence (not none), does not weight all observations equally, and models variance not the mean.",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "An impulse response function in a VAR shows:",
+      "choices": [
+        "The long-run unconditional means of the variables",
+        "How variables respond over time to a one-time shock to one variable",
+        "The unit-root test statistic for the whole system",
+        "The seasonal pattern within each individual series",
+        "The estimated long-run cointegrating vector"
+      ],
+      "answer": 1,
+      "type": "mcq",
+      "definition": "An impulse response function traces how each variable in a VAR reacts over subsequent periods to a one-time unit shock in one variable, showing how shocks propagate through the system. It is not a mean, a unit-root statistic, a seasonal pattern, or the cointegrating vector.",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "If returns are serially uncorrelated but their squares are strongly autocorrelated, this indicates:",
+      "choices": [
+        "Perfect market efficiency with constant return variance",
+        "A deterministic trend in the conditional mean",
+        "Volatility clustering (conditional heteroskedasticity), fit by GARCH",
+        "A predictable and forecastable mean return",
+        "A unit root in the level of the returns"
+      ],
+      "answer": 2,
+      "type": "mcq",
+      "definition": "Returns that are serially uncorrelated yet have strongly autocorrelated SQUARES show volatility clustering - calm and turbulent periods bunch together - i.e. conditional heteroskedasticity, the signature GARCH models capture. It is not market efficiency with constant variance, a deterministic or predictable mean, or a unit root in returns.",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "A structural break in a time series (e.g., a regime change) can cause unit-root tests to:",
+      "choices": [
+        "Make the ADF test exact and bias-free",
+        "Help the test detect cointegration",
+        "Remove seasonality from the series",
+        "Falsely fail to reject a unit root, losing power",
+        "Always reject the unit-root null"
+      ],
+      "answer": 3,
+      "type": "mcq",
+      "definition": "An unmodeled structural break biases standard ADF tests toward NOT rejecting the unit-root null - they lose power and wrongly call a broken-but-stationary series non-stationary; break-aware tests (e.g. Zivot-Andrews) fix this. The break does not make ADF exact, help detect cointegration, remove seasonality, or force rejection.",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "Cointegration between two asset prices is the statistical foundation of:",
+      "choices": [
+        "Passive buy-and-hold index investing",
+        "Calendar and seasonal return anomalies",
+        "Pairs trading on the mean-reverting spread",
+        "Naive random-walk price forecasting",
+        "Pure price-momentum trading strategies"
+      ],
+      "answer": 2,
+      "type": "mcq",
+      "definition": "If two prices are cointegrated their spread is stationary and mean-reverting, so pairs trading / statistical arbitrage shorts the rich leg and buys the cheap leg expecting the spread to close. Buy-and-hold, calendar anomalies, random-walk forecasting, and momentum do not rely on a stationary spread.",
+      "last_updated": "2026-06-29"
+    }
+  ]
+}

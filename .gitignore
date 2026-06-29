@@ -1,0 +1,34 @@
+# OS / editor cruft
+.DS_Store
+Thumbs.db
+*.swp
+.idea/
+.vscode/
+
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+
+# Node (only used to vendor KaTeX; not needed at runtime)
+node_modules/
+
+# scratch
+tmp/
+*.tmp
+
+# private/ overlay removed; guard kept in case it reappears locally
+/private/
+
+# generated offline build — not committed (regenerate via tools/build-standalone.py)
+dist/lernkarto-offline.html
+
+# Phase A: generated content index (regenerate via tools/build-catalog.py)
+catalog.json
+
+# Claude Code IDE artifacts — also covered by ~/.gitignore_global
+.claude/
+CLAUDE.md
+CLAUDE.local.md
+.claude.json

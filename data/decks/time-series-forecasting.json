@@ -1,0 +1,159 @@
+{
+  "id": "time-series-forecasting",
+  "name": "Forecasting",
+  "color": "#8888ff",
+  "description": "Predicting future values: benchmark methods (naive, seasonal naive, drift, moving average), exponential smoothing and Holt-Winters, train/test splits, accuracy metrics (MAE/RMSE/MAPE) and rolling-origin backtesting. Distilled from Wikipedia.",
+  "source": "https://en.wikipedia.org/wiki/Time_series",
+  "license": "CC BY-SA 4.0",
+  "attribution": "Adapted from Wikipedia — 'Time series', 'Forecasting', 'Exponential smoothing', 'Moving average' and 'Mean absolute percentage error' — licensed under CC BY-SA 4.0.",
+  "primerTitle": "Forecasting — quick recap",
+  "primer": "## What forecasting is\\n\\n**Time-series forecasting** uses a model fitted to past values to predict future ones. The forecast made at time $t$ for $h$ steps ahead is $\\\\hat{Y}_{t+h}$; $h$ is the **horizon**.\\n\\n## Benchmark methods (always compare against these)\\n\\n- **Naive (random-walk) forecast:** $\\\\hat{Y}_{t+h}=Y_t$ — tomorrow equals today's last value. Optimal for a pure random walk.\\n- **Seasonal naive:** $\\\\hat{Y}_{t+h}=Y_{t+h-m}$ — repeat the value from the same season one period ($m$) ago.\\n- **Drift:** naive plus the average historical change — draws a line through the first and last point.\\n- **Mean (average) method:** forecast is the mean of all past observations.\\n- **Moving average:** forecast is the average of the last $k$ observations; it smooths noise but **lags** the data and cannot capture trend or seasonality on its own.\\n\\n## Exponential smoothing\\n\\nWeights past observations with **exponentially decaying** weights — recent points count more.\\n\\n- **Simple exponential smoothing (SES):** $\\\\hat{Y}_{t+1}=\\\\alpha Y_t+(1-\\\\alpha)\\\\hat{Y}_t$, smoothing parameter $0\\\\le\\\\alpha\\\\le1$. Large $\\\\alpha$ = reactive (weights recent data); small $\\\\alpha$ = smooth. **No trend, no seasonality** — flat forecasts.\\n- **Holt's linear (double) method:** adds a **trend** term so forecasts slope.\\n- **Holt-Winters (triple):** adds a **seasonal** term too — handles level + trend + seasonality, in additive or multiplicative seasonal form.\\n\\n## Evaluating forecasts\\n\\nThe **forecast error** is $e_t=Y_t-\\\\hat{Y}_t$ (actual minus forecast). Split data into a **training set** (fit) and a held-out **test set** (evaluate); accuracy on the **test set** (out-of-sample) is what matters — in-sample fit can be inflated by overfitting.\\n\\nScale-dependent accuracy measures:\\n- **MAE** (mean absolute error): $\\\\frac{1}{n}\\\\sum|e_t|$ — average size of error, robust, same units as the data.\\n- **RMSE** (root mean squared error): $\\\\sqrt{\\\\frac{1}{n}\\\\sum e_t^2}$ — penalises **large** errors more (squares them); same units as the data.\\n\\nPercentage measure:\\n- **MAPE** (mean absolute percentage error): $\\\\frac{100\\\\%}{n}\\\\sum\\\\left|\\\\frac{e_t}{Y_t}\\\\right|$ — unit-free, comparable across series, but **undefined/blows up when $Y_t$ is zero or near zero** and penalises over- and under-forecasts asymmetrically.\\n\\n## Backtesting / rolling-origin\\n\\nBecause data are ordered, you cannot shuffle for cross-validation. Use **rolling-origin** (a.k.a. walk-forward / time-series cross-validation): fit on data up to a point, forecast the next step(s), roll the origin forward, repeat — always training on the **past** and testing on the **future**, never the reverse. This respects the arrow of time and gives an honest out-of-sample estimate.",
+  "categories": {
+    "core": "Core",
+    "methods": "Methods",
+    "metrics": "Accuracy",
+    "exercise": "Exercises"
+  },
+  "cards": [
+    {
+      "category": "core",
+      "term": "What is time-series forecasting?",
+      "summary": "Using a model fitted to past values to predict future ones.",
+      "definition": "Forecasting is the use of a model to predict future values of a series based on previously observed values. A forecast made at time $t$ for $h$ periods ahead is written $\\hat{Y}_{t+h}$, where $h$ is the forecast horizon.",
+      "note": "[1] Forecasting (Wikipedia) — https://en.wikipedia.org/wiki/Forecasting",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "category": "methods",
+      "term": "What is the naive (random-walk) forecast?",
+      "summary": "Predict the last observed value: $\\hat{Y}_{t+h}=Y_t$.",
+      "definition": "The naive method sets every future forecast equal to the most recent observation, $\\hat{Y}_{t+h}=Y_t$. It is the natural benchmark and is the optimal forecast for a pure random walk — any useful model should beat it.",
+      "note": "[1] Forecasting (Wikipedia) — https://en.wikipedia.org/wiki/Forecasting",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "category": "methods",
+      "term": "[Time series] The seasonal naive method forecasts a value by:",
+      "sub": "A) repeating the observation from the same season one period ago, $\\hat{Y}_{t+h}=Y_{t+h-m}$    B) taking the mean of all past observations    C) fitting a straight line through the data    D) averaging the last $m$ observations",
+      "definition": "Correct: A) repeating the observation from the same season one period ago, $\\hat{Y}_{t+h}=Y_{t+h-m}$. With seasonal period $m$, the seasonal naive forecast simply reuses the value from the corresponding season of the previous cycle — a strong benchmark for seasonal data.",
+      "note": "[1] Forecasting (Wikipedia) — https://en.wikipedia.org/wiki/Forecasting",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "category": "methods",
+      "term": "[Time series] Why is a simple moving-average forecast unable, on its own, to track a trending series well?",
+      "sub": "A) it averages past values, so its forecast lags behind and is pulled toward older, lower (or higher) levels    B) it gives all weight to the most recent point    C) it assumes the series is seasonal    D) it requires the series to be stationary first",
+      "definition": "Correct: A) it averages past values, so its forecast lags behind and is pulled toward older levels. A moving average smooths noise but, by mixing in older observations, systematically lags a trend and cannot extrapolate it — methods with explicit trend terms are needed.",
+      "note": "[1] Moving average (Wikipedia) — https://en.wikipedia.org/wiki/Moving_average",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "category": "methods",
+      "term": "Simple exponential smoothing forecasts with $\\hat{Y}_{t+1}=\\alpha Y_t+(1-\\alpha)\\hat{Y}_t$, where the smoothing parameter $\\alpha$ controls how much weight is put on the {{most recent}} observation.",
+      "definition": "In simple exponential smoothing (SES) the next forecast is a weighted average of the latest observation and the previous forecast, with $0\\le\\alpha\\le1$. A large $\\alpha$ makes it reactive (weights recent data heavily); a small $\\alpha$ makes it smooth. Past weights decay exponentially.",
+      "type": "cloze",
+      "note": "[1] Exponential smoothing (Wikipedia) — https://en.wikipedia.org/wiki/Exponential_smoothing",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "category": "methods",
+      "term": "[Time series] What does Holt-Winters (triple exponential smoothing) add over simple exponential smoothing?",
+      "sub": "A) explicit trend and seasonal components, so it handles level, trend and seasonality together    B) a unit-root test    C) a frequency-domain transform    D) a guarantee of stationary residuals",
+      "definition": "Correct: A) explicit trend and seasonal components. Simple exponential smoothing models only the level (flat forecasts). Holt's method adds a trend term; Holt-Winters adds a seasonal term too (additive or multiplicative), capturing level + trend + seasonality.",
+      "note": "[1] Exponential smoothing (Wikipedia) — https://en.wikipedia.org/wiki/Exponential_smoothing",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "category": "methods",
+      "term": "[Time series] In exponential smoothing, a smoothing parameter $\\alpha$ close to 1 makes the forecast:",
+      "sub": "A) react quickly to recent changes, weighting the latest observations heavily    B) ignore recent observations and stay very smooth    C) equivalent to a long simple moving average    D) identical to the seasonal naive method",
+      "definition": "Correct: A) react quickly to recent changes. With $\\alpha$ near 1 almost all weight goes on the most recent observation, so the forecast tracks recent movements; with $\\alpha$ near 0 the forecast changes slowly and is heavily smoothed.",
+      "note": "[1] Exponential smoothing (Wikipedia) — https://en.wikipedia.org/wiki/Exponential_smoothing",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "category": "metrics",
+      "term": "What is the forecast error, and why split data into train and test sets?",
+      "summary": "Error is actual minus forecast; the test set gives an honest out-of-sample check.",
+      "definition": "The forecast error is $e_t = Y_t - \\hat{Y}_t$ (actual minus forecast). The model is fitted on a training set and evaluated on a held-out test set; out-of-sample (test) accuracy is what matters, because in-sample fit can be inflated by overfitting.",
+      "note": "[1] Forecasting (Wikipedia) — https://en.wikipedia.org/wiki/Forecasting",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "category": "metrics",
+      "term": "[Time series] How do RMSE and MAE differ in how they treat forecast errors?",
+      "sub": "A) RMSE squares the errors, so it penalises large errors more heavily than MAE    B) MAE squares the errors, so it penalises large errors more    C) they are mathematically identical    D) RMSE is unit-free while MAE is not",
+      "definition": "Correct: A) RMSE squares the errors, so it penalises large errors more heavily than MAE. MAE averages absolute errors (robust, linear penalty); RMSE takes the root-mean-square (quadratic penalty), so outsized misses dominate it. Both are in the units of the data.",
+      "note": "[1] Forecasting (Wikipedia) — https://en.wikipedia.org/wiki/Forecasting",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "category": "metrics",
+      "term": "[Time series] A key limitation of MAPE (mean absolute percentage error) is that it:",
+      "sub": "A) is undefined or explodes when actual values are zero or near zero    B) can only be computed in-sample    C) has different units for every series    D) ignores the sign of large errors only",
+      "definition": "Correct: A) is undefined or explodes when actual values are zero or near zero, because it divides each error by $Y_t$. MAPE is unit-free and comparable across series, but the division makes it unusable near zero and it penalises over- and under-forecasts asymmetrically.",
+      "note": "[1] Mean absolute percentage error (Wikipedia) — https://en.wikipedia.org/wiki/Mean_absolute_percentage_error",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "category": "metrics",
+      "term": "[Time series] MAPE is unit-free, which makes it useful for comparing forecast accuracy across series measured in different units.",
+      "type": "truefalse",
+      "answer": true,
+      "summary": "True — being a percentage, MAPE compares across series; but it fails near zero values.",
+      "definition": "True. Because MAPE expresses error as a percentage of the actual value it has no units, so accuracy can be compared across series of different scales. Its catch is that it is undefined when actual values are zero or near zero.",
+      "note": "[1] Mean absolute percentage error (Wikipedia) — https://en.wikipedia.org/wiki/Mean_absolute_percentage_error",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "category": "metrics",
+      "term": "What is rolling-origin (walk-forward) backtesting, and why is it used for time series?",
+      "summary": "Repeatedly train on the past, forecast the future, then roll the origin forward.",
+      "definition": "Rolling-origin evaluation (time-series cross-validation) fits the model on data up to an origin, forecasts the next step(s), then moves the origin forward and repeats. Ordinary shuffled cross-validation would leak future information into training; rolling-origin always trains on the past and tests on the future, respecting temporal order.",
+      "note": "[1] Forecasting (Wikipedia) — https://en.wikipedia.org/wiki/Forecasting",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "category": "exercise",
+      "term": "[Time series] Forecasts and actuals over three periods give errors $e=\\{2,\\,-2,\\,4\\}$. What is the MAE?",
+      "sub": "A) 2.67    B) 1.33    C) 4    D) 8",
+      "definition": "Correct: A) 2.67. MAE is the mean of the absolute errors: $(|2|+|-2|+|4|)/3 = (2+2+4)/3 = 8/3 \\approx 2.67$.",
+      "note": "[1] Forecasting (Wikipedia) — https://en.wikipedia.org/wiki/Forecasting",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "category": "exercise",
+      "term": "[Time series] Using simple exponential smoothing with $\\alpha=0.5$, last observation $Y_t=120$ and previous forecast $\\hat{Y}_t=100$, what is the next-period forecast $\\hat{Y}_{t+1}$?",
+      "sub": "A) 110    B) 120    C) 100    D) 220",
+      "definition": "Correct: A) 110. $\\hat{Y}_{t+1}=\\alpha Y_t+(1-\\alpha)\\hat{Y}_t = 0.5\\times120 + 0.5\\times100 = 60+50 = 110$.",
+      "note": "[1] Exponential smoothing (Wikipedia) — https://en.wikipedia.org/wiki/Exponential_smoothing",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "category": "core",
+      "term": "[Time series] Which of the following are benchmark forecasting methods to compare a model against? Select all that apply.",
+      "type": "multi",
+      "choices": [
+        "Naive (last value) forecast",
+        "Seasonal naive forecast",
+        "Mean (average of all past values) method",
+        "Augmented Dickey-Fuller test"
+      ],
+      "answers": [
+        0,
+        1,
+        2
+      ],
+      "summary": "Naive, seasonal naive and the mean method are benchmarks; ADF is a unit-root test, not a forecast.",
+      "definition": "The naive, seasonal naive, drift and mean methods are simple benchmarks any real model should beat. The augmented Dickey-Fuller test checks for a unit root (stationarity), not a forecasting method.",
+      "note": "[1] Forecasting (Wikipedia) — https://en.wikipedia.org/wiki/Forecasting",
+      "last_updated": "2026-06-29"
+    }
+  ],
+  "tags": [
+    "time series",
+    "forecasting",
+    "exponential smoothing",
+    "accuracy"
+  ]
+}

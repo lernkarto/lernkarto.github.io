@@ -1,0 +1,139 @@
+{
+  "id": "portfolio-investment",
+  "name": "Portfolio & investment risk",
+  "color": "#7fd4ff",
+  "description": "Diversification, factor models and risk-adjusted performance.",
+  "primerTitle": "Portfolio & investment risk",
+  "primer": "**Modern portfolio theory (MPT)** — Markowitz: diversification lets you reduce risk for a given expected return by combining imperfectly correlated assets, so **risk is a portfolio property**, not a sum of individual risks. Mean and variance are sufficient statistics only under normal returns or quadratic utility. The **efficient frontier** is the set of portfolios with the highest expected return at each risk level; adding a risk-free asset turns it into a straight line (the **capital market line**, return vs total volatility). **Mean–variance optimisation** picks weights to maximise return for a target variance, $\\\\min_{\\\\mathbf w}\\\\mathbf w^\\\\top\\\\Sigma\\\\mathbf w$ s.t. $\\\\mathbf w^\\\\top\\\\boldsymbol\\\\mu=\\\\mu^*,\\\\ \\\\mathbf w^\\\\top\\\\mathbf 1=1$ — powerful but *error-maximising* in practice (tiny input changes swing weights wildly), so the empirical frontier is unstable.\\n\\n**Risk decomposition**: total risk splits into **systematic** (market-wide, undiversifiable — earns a premium) and **idiosyncratic** (asset-specific — vanishes in a large portfolio), $\\\\sigma_i^2=\\\\beta_i^2\\\\sigma_m^2+\\\\sigma_{\\\\varepsilon,i}^2$. Only the undiversifiable part is priced. **CAPM** is the equilibrium statement of this: $E[r_i]=r_f+\\\\beta_i(E[r_m]-r_f)$ — expected return is $r_f$ plus beta times the market risk premium, and only systematic risk is rewarded. The **security market line (SML)** plots this $E[r]$ against **beta** (intercept $r_f$, slope the market risk premium); assets above it are underpriced, below overpriced — distinct from the capital market line (return vs total volatility).\\n\\n**Beyond one factor**: **multi-factor models** (Fama–French) explain returns with several systematic factors — market, size (SMB), value (HML), later profitability and momentum — so much 'alpha' is really exposure to priced factors. **APT** derives expected returns from sensitivities to multiple factors under no-arbitrage, without CAPM's market-portfolio requirement; it is agnostic about which factors matter (identified empirically).\\n\\n**Risk-adjusted performance**:\\n- **Sharpe ratio** $S=\\\\frac{E[r_p]-r_f}{\\\\sigma_p}$ — excess return per unit of **total** risk; treats upside and downside volatility identically.\\n- **Sortino ratio** $\\\\frac{E[r_p]-r_f}{\\\\sigma_{\\\\text{down}}}$ — a Sharpe variant dividing by **downside deviation only**, so upside volatility is *not* penalised; better for skewed returns.\\n- **Treynor ratio** $T=\\\\frac{E[r_p]-r_f}{\\\\beta_p}$ — excess return per unit of **systematic** risk (beta); apt for well-diversified portfolios.\\n- **Information ratio** $\\\\mathrm{IR}=\\\\frac{E[r_p-r_b]}{\\\\sigma(r_p-r_b)}$ — active return over benchmark per unit of tracking error: skill per unit of active risk.\\n- **Jensen's alpha** $\\\\alpha=r_p-[r_f+\\\\beta_p(r_m-r_f)]$ — return above the CAPM prediction; positive alpha implies skill or an unpriced factor exposure.\\n\\n**Downside & allocation measures**: **maximum drawdown (MDD)** $=\\\\max_t\\\\frac{\\\\text{peak}_{\\\\le t}-V_t}{\\\\text{peak}_{\\\\le t}}$ is the largest peak-to-trough decline — path-dependent, closer to real pain than volatility. **Semivariance** $E[\\\\min(r-\\\\tau,0)^2]$ measures dispersion of returns *below* a threshold only, underpinning downside measures like Sortino. **Risk parity** equalises each asset's *contribution* to total risk rather than capital — overweighting low-volatility assets (bonds) and often using leverage to reach target returns.",
+  "cards": [
+    {
+      "term": "Modern portfolio theory",
+      "sub": "MPT",
+      "definition": "Markowitz's framework showing that diversification lets investors reduce risk for a given expected return by combining imperfectly correlated assets. Risk is a portfolio property, not a sum of individual risks — the intellectual root of risk management.",
+      "note": "Mean and variance are sufficient statistics only under normal returns or quadratic utility.",
+      "last_updated": "2026-06-29",
+      "stale": true
+    },
+    {
+      "term": "Efficient frontier",
+      "definition": "The set of portfolios offering the highest expected return for each level of risk; rational mean–variance investors hold only portfolios on it. Adding a risk-free asset turns the frontier into a straight line, the capital market line.",
+      "note": "Estimation error makes the empirical frontier notoriously unstable.",
+      "last_updated": "2026-06-29",
+      "stale": true
+    },
+    {
+      "term": "Mean–variance optimisation",
+      "definition": "Selecting portfolio weights to maximise expected return for a target variance (or vice versa), given estimated means and a covariance matrix. Powerful in theory but error-maximising in practice — small input changes swing the weights wildly.",
+      "formula": "$\\min_{\\mathbf{w}}\\;\\mathbf{w}^\\top\\Sigma\\,\\mathbf{w}\\;\\text{ s.t. }\\;\\mathbf{w}^\\top\\boldsymbol{\\mu}=\\mu^\\*,\\;\\mathbf{w}^\\top\\mathbf{1}=1$",
+      "last_updated": "2026-06-29",
+      "stale": true
+    },
+    {
+      "term": "Capital Asset Pricing Model",
+      "sub": "CAPM",
+      "definition": "An equilibrium model in which an asset's expected return is the risk-free rate plus beta times the market risk premium — only systematic risk is rewarded. The benchmark against which 'alpha' is defined.",
+      "formula": "$E[r_i]=r_f+\\beta_i\\big(E[r_m]-r_f\\big)$",
+      "last_updated": "2026-06-29",
+      "stale": true
+    },
+    {
+      "term": "Systematic (market) risk cannot be diversified away and so earns a risk premium, while idiosyncratic risk vanishes in a large portfolio.",
+      "definition": "True. Systematic (market) risk is common to all assets and cannot be diversified away, so it earns a premium; idiosyncratic risk is asset-specific and vanishes in a large portfolio. Only the undiversifiable part should be priced.",
+      "formula": "$\\sigma_i^2=\\beta_i^2\\sigma_m^2+\\sigma_{\\varepsilon,i}^2$",
+      "type": "truefalse",
+      "answer": true,
+      "summary": "True — only undiversifiable systematic risk is priced; asset-specific risk diversifies away.",
+      "last_updated": "2026-06-29",
+      "stale": true
+    },
+    {
+      "term": "Security market line",
+      "sub": "SML",
+      "definition": "The CAPM relationship plotting expected return against beta, with intercept at the risk-free rate and slope equal to the market risk premium. Assets above the line are underpriced; below, overpriced.",
+      "note": "Distinct from the capital market line, which plots return against total volatility.",
+      "last_updated": "2026-06-29",
+      "stale": true
+    },
+    {
+      "term": "The {{Sharpe ratio}} measures excess return per unit of total risk (volatility).",
+      "definition": "Excess return per unit of total risk — the most common risk-adjusted performance measure. It rewards return and penalises volatility, but treats upside and downside volatility identically.",
+      "formula": "$S=\\dfrac{E[r_p]-r_f}{\\sigma_p}$",
+      "type": "cloze",
+      "last_updated": "2026-06-29",
+      "stale": true
+    },
+    {
+      "term": "The Sortino ratio penalises total volatility, treating upside and downside swings identically.",
+      "definition": "False. The Sortino ratio is a Sharpe variant dividing excess return by downside deviation only, so upside volatility isn't penalised. More appropriate when returns are skewed or investors care asymmetrically about losses.",
+      "formula": "$\\mathrm{Sortino}=\\dfrac{E[r_p]-r_f}{\\sigma_{\\text{down}}}$",
+      "type": "truefalse",
+      "answer": false,
+      "summary": "False — the Sortino ratio divides excess return by downside deviation only, so upside volatility is not penalised.",
+      "last_updated": "2026-06-29",
+      "stale": true
+    },
+    {
+      "term": "Information ratio",
+      "sub": "IR",
+      "definition": "Active return over the benchmark divided by tracking error — the efficiency of an active manager's bets. It measures skill per unit of active risk taken.",
+      "formula": "$\\mathrm{IR}=\\dfrac{E[r_p-r_b]}{\\sigma(r_p-r_b)}$",
+      "last_updated": "2026-06-29",
+      "stale": true
+    },
+    {
+      "term": "The {{Treynor ratio}} measures excess return per unit of systematic risk (beta) rather than total risk.",
+      "definition": "Excess return per unit of systematic risk (beta) rather than total risk. Appropriate for a well-diversified portfolio where idiosyncratic risk is already negligible.",
+      "formula": "$T=\\dfrac{E[r_p]-r_f}{\\beta_p}$",
+      "type": "cloze",
+      "last_updated": "2026-06-29",
+      "stale": true
+    },
+    {
+      "term": "Jensen's alpha",
+      "definition": "The return a portfolio earns above its CAPM-predicted return — the manager's value-add after adjusting for market exposure. Positive alpha implies skill or an unpriced factor exposure.",
+      "formula": "$\\alpha=r_p-\\big[r_f+\\beta_p(r_m-r_f)\\big]$",
+      "last_updated": "2026-06-29",
+      "stale": true
+    },
+    {
+      "term": "Multi-factor model",
+      "sub": "Fama–French",
+      "definition": "An extension of CAPM explaining returns with several systematic factors — market, size, value, and later profitability and momentum. Much 'alpha' turns out to be exposure to these priced factors.",
+      "formula": "$E[r_i]-r_f=\\beta_m\\mathrm{MKT}+\\beta_s\\mathrm{SMB}+\\beta_h\\mathrm{HML}+\\dots$",
+      "last_updated": "2026-06-29",
+      "stale": true
+    },
+    {
+      "term": "Arbitrage Pricing Theory",
+      "sub": "APT",
+      "definition": "A model deriving expected returns from sensitivities to multiple risk factors under a no-arbitrage assumption, without CAPM's restrictive market-portfolio requirement. It justifies factor investing more generally than CAPM.",
+      "note": "Agnostic about which factors matter — they are identified empirically.",
+      "last_updated": "2026-06-29",
+      "stale": true
+    },
+    {
+      "term": "{{Maximum drawdown}} is the largest peak-to-trough decline in portfolio value over a period.",
+      "sub": "MDD",
+      "definition": "The largest peak-to-trough decline in portfolio value over a period, capturing the worst loss an investor would have endured. A path-dependent risk measure that resonates with real pain tolerance better than volatility.",
+      "formula": "$\\mathrm{MDD}=\\max_{t}\\dfrac{\\text{peak}_{\\le t}-V_t}{\\text{peak}_{\\le t}}$",
+      "type": "cloze",
+      "last_updated": "2026-06-29",
+      "stale": true
+    },
+    {
+      "term": "Risk parity",
+      "definition": "An allocation approach equalising each asset's contribution to total portfolio risk, rather than equalising capital. It typically overweights low-volatility assets (bonds) and often uses leverage to reach target returns.",
+      "formula": "target: $w_i\\,\\dfrac{\\partial\\sigma_p}{\\partial w_i}$ equal across $i$",
+      "last_updated": "2026-06-29",
+      "stale": true
+    },
+    {
+      "term": "Semivariance",
+      "sub": "downside risk",
+      "definition": "Variance computed only from returns below a threshold (often the mean or a target), measuring downside dispersion alone. It underlies downside-focused measures like the Sortino ratio for asymmetric return distributions.",
+      "formula": "$\\text{semivar}=E\\big[\\min(r-\\tau,\\,0)^2\\big]$",
+      "last_updated": "2026-06-29",
+      "stale": true
+    }
+  ]
+}

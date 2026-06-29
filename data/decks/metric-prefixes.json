@@ -1,0 +1,115 @@
+{
+  "id": "metric-prefixes",
+  "name": "Metric (SI) prefixes",
+  "color": "#f783ac",
+  "dual": true,
+  "description": "The SI decimal prefixes, tested both ways: symbol → name & power of ten, and back. Tracked separately in each direction.",
+  "primerTitle": "The SI decimal prefixes",
+  "primer": "**Metric prefixes** scale a unit by powers of ten. Each prefix has a **symbol**, a **name**, and a **power of $10$**. This deck tests both directions: symbol → name & power, and name/power → symbol.\n\n### Multiples (≥ 1)\n\n| Symbol | Name | Power |\n|---|---|---|\n| E | exa | $10^{18}$ |\n| P | peta | $10^{15}$ |\n| T | tera | $10^{12}$ |\n| G | giga | $10^{9}$ |\n| M | mega | $10^{6}$ |\n| k | kilo | $10^{3}$ |\n| h | hecto | $10^{2}$ |\n| da | deca | $10^{1}$ |\n\n### Submultiples (< 1)\n\n| Symbol | Name | Power |\n|---|---|---|\n| d | deci | $10^{-1}$ |\n| c | centi | $10^{-2}$ |\n| m | milli | $10^{-3}$ |\n| μ | micro | $10^{-6}$ |\n| n | nano | $10^{-9}$ |\n| p | pico | $10^{-12}$ |\n| f | femto | $10^{-15}$ |\n| a | atto | $10^{-18}$ |\n\n### Watch the case and look-alikes\n\n- **k** (kilo) is lowercase — uppercase **K** is the kelvin.\n- **m** (milli) is lowercase — the metre uses the same letter as a unit.\n- **M** (mega) is uppercase.\n- **da** (deca) is the only **two-letter** prefix symbol.\n- **μ** (micro) is the Greek letter *mu*; often typed as 'u' on keyboards.\n\nThe big prefixes above mega step by $10^{3}$ each (k, M, G, T, P, E); the small ones below milli mirror them (m, μ, n, p, f, a).",
+  "categories": {
+    "big": "Multiples (≥ 1)",
+    "small": "Submultiples (< 1)"
+  },
+  "cards": [
+    {
+      "term": "T",
+      "definition": "tera — 10^12",
+      "category": "big",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "G",
+      "definition": "giga — 10^9",
+      "category": "big",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "M",
+      "definition": "mega — 10^6",
+      "category": "big",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "k",
+      "definition": "kilo — 10^3",
+      "category": "big",
+      "note": "Lowercase k — uppercase K is the kelvin.",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "h",
+      "definition": "hecto — 10^2",
+      "category": "big",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "da",
+      "definition": "deca — 10^1",
+      "category": "big",
+      "note": "The only two-letter prefix symbol.",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "d",
+      "definition": "deci — 10^-1",
+      "category": "small",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "c",
+      "definition": "centi — 10^-2",
+      "category": "small",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "m",
+      "definition": "milli — 10^-3",
+      "category": "small",
+      "note": "Lowercase m — the metre uses the same letter as a unit.",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "μ",
+      "definition": "micro — 10^-6",
+      "category": "small",
+      "note": "Greek mu; sometimes written 'u' on keyboards.",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "n",
+      "definition": "nano — 10^-9",
+      "category": "small",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "p",
+      "definition": "pico — 10^-12",
+      "category": "small",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "f",
+      "definition": "femto — 10^-15",
+      "category": "small",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "a",
+      "definition": "atto — 10^-18",
+      "category": "small",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "P",
+      "definition": "peta — 10^15",
+      "category": "big",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "E",
+      "definition": "exa — 10^18",
+      "category": "big",
+      "last_updated": "2026-06-29"
+    }
+  ]
+}

@@ -1,0 +1,240 @@
+{
+  "id": "aptitude-counting",
+  "name": "Counting & combinatorics",
+  "color": "#74c0fc",
+  "description": "Combinations, permutations with repeats, stars-and-bars, derangements, complementary counting, lattice paths.",
+  "tags": [
+    "aptitude",
+    "interview",
+    "combinatorics",
+    "counting"
+  ],
+  "primerTitle": "Counting — method",
+  "primer": "Counting problems reduce to a handful of canonical patterns. \\textbf{1. Combinations} — unordered choices of $k$ from $n$: $\\binom{n}{k}=\\dfrac{n!}{k!\\,(n-k)!}$. Handshakes among $n$ people are $\\binom{n}{2}$; committees are products/sums of $\\binom{}{}$ terms. \\textbf{2. Permutations with repeats} — orderings of a multiset of length $n$ with repeated symbols of multiplicities $m_1,m_2,\\dots$: $\\dfrac{n!}{\\prod_i m_i!}$ (e.g. BANANA $=\\dfrac{6!}{3!\\,2!}$). \\textbf{3. Stars and bars} — non-negative integer solutions of $x_1+\\dots+x_k=n$: place $n$ stars and $k-1$ bars, giving $\\binom{n+k-1}{\\,k-1\\,}$. \\textbf{4. Complementary counting} — when \"at least one\" is awkward, count the total and subtract the bad cases: $\\text{good}=\\text{total}-\\text{bad}$ (subsets with an even number $=2^8-2^4$; committees with a woman $=\\binom{11}{4}-\\binom{6}{4}$). \\textbf{5. Derangements} — permutations fixing no element: $!n=n!\\sum_{i=0}^{n}\\dfrac{(-1)^i}{i!}$, so $!4=9$. \\textbf{6. Lattice paths} — monotone paths with $R$ rights and $U$ ups: $\\binom{R+U}{R}$. \\textbf{7. Unordered pairings} — split $2m$ people into $m$ unordered pairs: $\\dfrac{(2m)!}{2^m\\,m!}$. \\textbf{8. Road-equation system} — favourable routes between three villages count the direct road plus the two-leg detour: $AB=a+bc,\\ BC=b+ac,\\ CA=c+ab$; solve the given equalities under the strict bound over small non-negative integers. \\textbf{9. Shifted-Fibonacci tilings} — binary strings of length $n$ with no two consecutive 1s satisfy $g(n)=g(n-1)+g(n-2)$ with $g(1)=2,\\ g(2)=3$, so $g(n)=F_{n+2}$.",
+  "cards": [
+    {
+      "term": "Three villages A, B, C are joined by direct roads (parallel roads allowed). A route is 'favourable' if it is direct or passes through the third village via two roads. There are 10 favourable routes A to B, 14 from B to C, and fewer than 12 from C to A. How many direct roads in total?",
+      "choices": [
+        "8",
+        "10",
+        "12",
+        "11",
+        "9"
+      ],
+      "answer": 4,
+      "type": "mcq",
+      "definition": "Correct: 9. Let a, b, c be the number of direct roads on AB, BC, CA. A favourable A-B route is either one of the a direct roads or a detour A-C-B using one of the c CA-roads and one of the b BC-roads, giving a + b*c. Likewise BC = b + a*c and CA = c + a*b. So a + b*c = 10, b + a*c = 14, and c + a*b < 12. Searching small non-negative integers, the unique solution is a=4, b=2, c=3: check 4 + 2*3 = 10, 2 + 4*3 = 14, and 3 + 4*2 = 11 < 12. Total roads a + b + c = 4 + 2 + 3 = 9. Verified by brute-force search over all small non-negative triples (unique).",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "Three villages A, B, C are joined by direct roads (parallel roads allowed). A route is 'favourable' if it is direct or passes through the third village via two roads. There are 13 favourable routes A to B, 11 from B to C, and fewer than 18 from C to A. How many direct roads in total?",
+      "choices": [
+        "9",
+        "10",
+        "11",
+        "12",
+        "8"
+      ],
+      "answer": 1,
+      "type": "mcq",
+      "definition": "Correct: 10. With a, b, c the direct-road counts on AB, BC, CA, the favourable counts are AB = a + b*c, BC = b + a*c, CA = c + a*b. Imposing a + b*c = 13, b + a*c = 11, and c + a*b < 18, the unique non-negative solution is a=3, b=5, c=2: check 3 + 5*2 = 13, 5 + 3*2 = 11, and 2 + 3*5 = 17 < 18. Total roads a + b + c = 3 + 5 + 2 = 10. Verified by exhaustive small-integer search (solution unique).",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "On a grid you start at the bottom-left corner of a 4-by-3 block of cells and walk to the top-right corner, moving only one step right or one step up. How many different shortest paths are there?",
+      "choices": [
+        "21",
+        "20",
+        "36",
+        "56",
+        "35"
+      ],
+      "answer": 4,
+      "type": "mcq",
+      "definition": "Correct: 35. Lattice-path counting. Crossing a 4-by-3 block of cells needs exactly 4 steps right and 3 steps up, in any order. A shortest path is therefore a sequence of 7 moves of which 4 are R; choosing which positions are the rights fixes the whole path. The count is C(7,4) = 7!/(4!3!) = 35 (equivalently C(7,3) = 35). Verified with math.comb(7,4) = 35.",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "On a grid you start at the bottom-left corner of a 5-by-5 block of cells and walk to the top-right corner, moving only one step right or one step up. How many different shortest paths are there?",
+      "choices": [
+        "210",
+        "300",
+        "120",
+        "253",
+        "252"
+      ],
+      "answer": 4,
+      "type": "mcq",
+      "definition": "Correct: 252. Lattice-path counting. A 5-by-5 block requires 5 rights and 5 ups, total 10 moves; pick which 5 of the 10 are rights. The count is C(10,5) = 10!/(5!5!) = 252. Verified with math.comb(10,5) = 252.",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "At a meeting of 8 people, every pair of people shakes hands exactly once. How many handshakes occur in total?",
+      "choices": [
+        "28",
+        "29",
+        "16",
+        "64",
+        "56"
+      ],
+      "answer": 0,
+      "type": "mcq",
+      "definition": "Correct: 28. Each handshake is an unordered pair of distinct people, so the total is C(8,2) = 8*7/2 = 28. (Equivalently each of 8 people shakes 7 others, 8*7 = 56 ordered, halved for double counting.) Verified with math.comb(8,2) = 28.",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "At a meeting of 12 people, every pair of people shakes hands exactly once. How many handshakes occur in total?",
+      "choices": [
+        "66",
+        "72",
+        "144",
+        "132",
+        "67"
+      ],
+      "answer": 0,
+      "type": "mcq",
+      "definition": "Correct: 66. The number of handshakes is the number of unordered pairs, C(12,2) = 12*11/2 = 66. Verified with math.comb(12,2) = 66.",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "A committee of 4 is chosen from 6 men and 5 women. How many committees contain at least 1 woman?",
+      "choices": [
+        "315",
+        "210",
+        "330",
+        "165",
+        "300"
+      ],
+      "answer": 0,
+      "type": "mcq",
+      "definition": "Correct: 315. Complementary counting. Total committees of 4 from the 11 people: C(11,4) = 330. The 'bad' committees (no woman) are chosen entirely from the 6 men: C(6,4) = 15. At least one woman = 330 - 15 = 315. Verified with math.comb(11,4) - math.comb(6,4) = 330 - 15 = 315.",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "How many binary strings of length 8 contain no two consecutive 1s?",
+      "choices": [
+        "89",
+        "64",
+        "34",
+        "55",
+        "56"
+      ],
+      "answer": 3,
+      "type": "mcq",
+      "definition": "Correct: 55. Let g(n) count length-n binary strings with no two adjacent 1s. A valid string either ends in 0 (preceded by any valid length n-1 string) or ends in 1, which forces a 0 before it (preceded by any valid length n-2 string): g(n) = g(n-1) + g(n-2), a shifted Fibonacci recurrence. With g(1)=2 and g(2)=3 the sequence is 2,3,5,8,13,21,34,55, so g(8) = 55 (this is F_10). Verified by brute force over all 256 strings of length 8.",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "How many binary strings of length 10 contain no two consecutive 1s?",
+      "choices": [
+        "89",
+        "144",
+        "145",
+        "233",
+        "120"
+      ],
+      "answer": 1,
+      "type": "mcq",
+      "definition": "Correct: 144. Same recurrence g(n) = g(n-1) + g(n-2) with g(1)=2, g(2)=3: 2,3,5,8,13,21,34,55,89,144. So g(10) = 144 (= F_12). Verified by brute force over all 1024 strings of length 10.",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "How many non-negative integer solutions are there to x_1 + x_2 + x_3 = 10?",
+      "choices": [
+        "66",
+        "55",
+        "45",
+        "67",
+        "78"
+      ],
+      "answer": 0,
+      "type": "mcq",
+      "definition": "Correct: 66. Stars and bars: distribute 10 identical units (stars) among 3 variables by placing 3-1 = 2 dividers (bars) among them. The number of arrangements of 10 stars and 2 bars is C(10 + 3 - 1, 3 - 1) = C(12,2) = 66. Verified with math.comb(12,2) = 66.",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "How many non-negative integer solutions are there to x_1 + x_2 + x_3 + x_4 = 8?",
+      "choices": [
+        "166",
+        "165",
+        "126",
+        "210",
+        "120"
+      ],
+      "answer": 1,
+      "type": "mcq",
+      "definition": "Correct: 165. Stars and bars with n=8 units across k=4 variables: C(n + k - 1, k - 1) = C(8 + 4 - 1, 4 - 1) = C(11,3) = 165. Verified with math.comb(11,3) = 165.",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "How many distinct arrangements are there of the letters of the word BANANA?",
+      "choices": [
+        "720",
+        "30",
+        "120",
+        "60",
+        "90"
+      ],
+      "answer": 3,
+      "type": "mcq",
+      "definition": "Correct: 60. Permutations of a multiset. BANANA has 6 letters with A repeated 3 times and N repeated 2 times (B once). Arrangements = 6! / (3! * 2! * 1!) = 720 / (6 * 2) = 60. Verified: 720 / 12 = 60.",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "How many subsets of {1, 2, 3, ..., 8} contain at least one even number?",
+      "choices": [
+        "224",
+        "128",
+        "16",
+        "240",
+        "256"
+      ],
+      "answer": 3,
+      "type": "mcq",
+      "definition": "Correct: 240. Complementary counting. The set has 8 elements, so 2^8 = 256 subsets in total. The 'bad' subsets contain no even number, i.e. are drawn only from the 4 odd elements {1,3,5,7}: 2^4 = 16 of them (including the empty set). At least one even = 256 - 16 = 240. Verified: 2**8 - 2**4 = 256 - 16 = 240.",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "Four people each write their name on a card; the cards are shuffled and one is handed back to each person at random. In how many ways does nobody receive their own card?",
+      "choices": [
+        "24",
+        "6",
+        "8",
+        "12",
+        "9"
+      ],
+      "answer": 4,
+      "type": "mcq",
+      "definition": "Correct: 9. This counts derangements of 4 items (permutations with no fixed point): !4 = 4!(1 - 1/1! + 1/2! - 1/3! + 1/4!) = 24(1 - 1 + 0.5 - 0.1667 + 0.04167) = 9. Verified by enumerating all 24 permutations of 4 elements; exactly 9 have p[i] != i for every i.",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "In how many ways can 6 distinct people be split into 3 unordered pairs?",
+      "choices": [
+        "30",
+        "20",
+        "45",
+        "15",
+        "90"
+      ],
+      "answer": 3,
+      "type": "mcq",
+      "definition": "Correct: 15. Line the 6 people up in 6! orders and read them off as (1,2)(3,4)(5,6). Each pairing is overcounted by 2^3 (swapping the two members within each of the 3 pairs) and by 3! (reordering the 3 pairs, since they are unordered): 6! / (2^3 * 3!) = 720 / (8 * 6) = 720 / 48 = 15. Verified: 720 / 48 = 15.",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "How many three-digit numbers (100 to 999) have all three digits different from one another?",
+      "choices": [
+        "600",
+        "504",
+        "720",
+        "648",
+        "729"
+      ],
+      "answer": 3,
+      "type": "mcq",
+      "definition": "Correct: 648. Fill the digits left to right by the multiplication principle. The hundreds digit cannot be 0, giving 9 choices (1-9). The tens digit can be any digit except the one used, including 0: 10 - 1 = 9 choices. The units digit must differ from both: 8 choices. Total = 9 * 9 * 8 = 648. Verified: 9*9*8 = 648.",
+      "last_updated": "2026-06-29"
+    }
+  ]
+}

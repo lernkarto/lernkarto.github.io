@@ -1,0 +1,11 @@
+{
+  "topic": "Credit risk",
+  "id": "risk-credit",
+  "standard": true,
+  "primerTitle": "Credit risk",
+  "primer": "## Credit risk\nLoss from borrowers defaulting. Pairs the **credit vocabulary** (PD/LGD/EAD, the EL identity, RWA, IRB, IFRS 9, NPL/GACS) with the **Credit risk** deck (rating, expected vs unexpected loss, Merton, provisioning).",
+  "deckFiles": [
+    "risk-glossary-credit.json",
+    "credit-risk.json"
+  ]
+}

@@ -1,0 +1,165 @@
+{
+  "id": "frm-process",
+  "name": "FRM — the process",
+  "color": "#ff6b6b",
+  "description": "The risk-management cycle: identify, measure, prioritise, mitigate (avoid/reduce/transfer/retain), monitor — plus appetite, limits and the mitigation toolkit.",
+  "tags": [
+    "risk",
+    "financial risk management",
+    "process",
+    "hedging",
+    "derivatives"
+  ],
+  "primerTitle": "The FRM process & toolkit",
+  "primer": "Financial risk management runs as a **continuous cycle**, applied to every exposure:\n\n1. **Identify** — find the sources of risk across the firm's activities (which factors can move revenue, costs, cash flow, asset and liability values).\n2. **Assess / measure** — quantify each exposure (size, likelihood, and severity) using the appropriate metric — VaR, the Greeks, duration/DV01, scenario loss.\n3. **Prioritise** — rank exposures by their impact so attention and resources go to the few that matter most; small risks may simply be accepted.\n4. **Mitigate / treat** — apply one of the four responses (below) to bring residual risk inside appetite.\n5. **Monitor & review** — track exposures against **limits**, re-measure as markets move, and feed breaches back to step 1. Because risk changes continuously, the loop never stops; banks re-hedge to keep sensitivities inside limits *periodically if not daily*.\n\n**The four risk responses (avoid · reduce · transfer · retain).**\n- **Avoid** — don't take the exposure at all (decline the business, exit the position). Removes the risk but also any return.\n- **Reduce** — cut the likelihood or severity (tighten underwriting, lower position size, diversify, add controls).\n- **Transfer** — shift the risk to a third party who is paid to bear it: **hedging** with derivatives, **insurance/reinsurance**, or selling/securitising the exposure. The risk is still borne — just by someone else.\n- **Retain (accept)** — knowingly keep the residual risk and hold **capital** against it; *risk capital is the last line of defence* for losses that controls and transfers don't catch.\n\n**Risk appetite & limits.** The board sets the firm's **risk appetite** — how much risk it is willing to bear — which is cascaded into concrete **limits** per desk, book and risk factor. For a trading book this means **limit values for each of the Greeks (and other sensitivities) that traders must not exceed**, plus a **VaR limit**; traders then hedge, offset or reduce to stay inside. A loss exceeding the VaR threshold is a **VaR breach**. Limits turn the abstract appetite into day-to-day discipline and define when monitoring must trigger action.\n\n**Three ways to lower exposure — and how they differ.**\n- **Diversification** spreads exposure across imperfectly correlated assets, sectors, regions or counterparties so independent losses partly cancel; it tames especially market and inflation risk *for free* but only while correlations stay below 1, and it cannot remove undiversifiable (systematic) risk.\n- **Hedging** takes an *offsetting position* — usually a derivative — whose value moves opposite to the exposure, actively cancelling a chosen risk factor; residual **basis risk** remains when hedge and exposure don't move in lockstep.\n- **Insurance** pays a **premium** to transfer a defined loss to an insurer; it is transfer for a price, suited to low-frequency / high-severity and operational-type risks that can't be hedged in a market.\n\n**The instruments (high level).** Risk is hedged with **derivatives** — contracts whose value derives from an underlying:\n- **Forwards / futures** lock a future price (e.g. currency forwards for FX, index futures to hedge equity-market risk).\n- **Swaps** exchange one cash-flow stream for another (e.g. **interest-rate swaps** to convert floating to fixed; **credit default swaps** to transfer default risk).\n- **Options** give the *right but not the obligation* to transact at a strike — buying **puts** insures a portfolio's downside while keeping its upside, for the cost of the premium.\nThese let a firm shape its exposure precisely: futures/forwards/swaps give symmetric, low-cost offsets; options give asymmetric, premium-priced protection.",
+  "source": "https://en.wikipedia.org/wiki/Financial_risk_management",
+  "license": "CC BY-SA 4.0",
+  "attribution": "Adapted from Wikipedia — 'Financial risk management' — licensed under CC BY-SA 4.0.",
+  "categories": {
+    "core": "Core",
+    "theorems": "Links",
+    "use": "Use & limits",
+    "exercise": "Exercises"
+  },
+  "cards": [
+    {
+      "category": "core",
+      "term": "The financial-risk-management process (the cycle)",
+      "definition": "A continuous loop applied to every exposure: identify the sources of risk, assess/measure them, prioritise by impact, mitigate (avoid, reduce, transfer or retain), then monitor against limits and re-measure. Because risk changes constantly the loop never stops — breaches feed straight back to identification.",
+      "note": "It is a cycle, not a one-off project: monitoring continuously re-opens identification.",
+      "last_updated": "2026-06-29",
+      "stale": true
+    },
+    {
+      "category": "core",
+      "term": "Put the core FRM steps in order: assess/measure, identify, mitigate, monitor, prioritise.",
+      "sub": "A) identify → assess → prioritise → mitigate → monitor    B) assess → identify → mitigate → prioritise → monitor    C) monitor → identify → assess → mitigate → prioritise    D) identify → mitigate → assess → monitor → prioritise",
+      "definition": "Correct: A) identify → assess → prioritise → mitigate → monitor. You must find a risk before you can measure it, rank it by impact before treating it, and only then monitor against limits — with monitoring feeding back into identification.",
+      "type": "mcq",
+      "last_updated": "2026-06-29",
+      "stale": true
+    },
+    {
+      "category": "core",
+      "term": "The four standard responses to a risk are avoid, reduce, {{transfer}} and retain.",
+      "definition": "Avoid means not taking the exposure at all; reduce cuts its likelihood or severity; the third shifts the risk to a third party paid to bear it (hedging, insurance, sale); retain knowingly keeps the residual risk and holds capital against it.",
+      "type": "cloze",
+      "last_updated": "2026-06-29",
+      "stale": true
+    },
+    {
+      "category": "core",
+      "term": "Buying insurance and hedging with a derivative are both examples of which risk response?",
+      "sub": "A) Avoid    B) Reduce    C) Transfer    D) Retain",
+      "definition": "Correct: C) Transfer. Both shift the risk to a third party paid to bear it — an insurer for a premium, or a counterparty via a derivative. Avoid means not taking the exposure, reduce means cutting its likelihood or severity, and retain means keeping it and holding capital.",
+      "type": "mcq",
+      "last_updated": "2026-06-29",
+      "stale": true
+    },
+    {
+      "category": "core",
+      "term": "Retaining a risk means the firm has decided that risk no longer requires any capital.",
+      "definition": "False. Retain (accept) means knowingly keeping the residual risk — and holding capital against it. Risk capital is the last line of defence for losses that avoidance, reduction and transfer do not catch, so retained risk is exactly the risk capital must cover.",
+      "type": "truefalse",
+      "answer": false,
+      "summary": "False — retained risk is precisely what capital is held against; capital is the last line of defence for losses not avoided, reduced or transferred.",
+      "last_updated": "2026-06-29",
+      "stale": true
+    },
+    {
+      "category": "core",
+      "term": "Risk appetite and limits",
+      "definition": "The board sets the firm's risk appetite — the amount of risk it is willing to bear — which is cascaded into concrete limits per desk, book and risk factor. On a trading book this means limit values for each Greek and sensitivity that traders must not exceed, plus a VaR limit; traders hedge, offset or reduce to stay inside.",
+      "note": "Limits turn abstract appetite into daily discipline and define when monitoring must trigger action.",
+      "last_updated": "2026-06-29",
+      "stale": true
+    },
+    {
+      "category": "core",
+      "term": "A loss that exceeds the VaR threshold over the horizon is termed a VaR {{breach}}.",
+      "definition": "VaR limits are part of how appetite is enforced on a trading book: a loss bigger than the VaR figure is the exception the monitoring step counts and investigates. A run of them signals the model or limits need attention.",
+      "type": "cloze",
+      "last_updated": "2026-06-29",
+      "stale": true
+    },
+    {
+      "category": "theorems",
+      "term": "Diversification vs hedging vs insurance",
+      "definition": "Diversification spreads exposure across imperfectly correlated assets so independent losses partly cancel — free, but only while correlations stay below 1 and only for diversifiable risk. Hedging takes an offsetting (usually derivative) position that cancels a chosen factor, leaving basis risk. Insurance pays a premium to transfer a defined loss to an insurer.",
+      "note": "Diversification = spread; hedging = offset; insurance = pay to transfer.",
+      "last_updated": "2026-06-29",
+      "stale": true
+    },
+    {
+      "category": "theorems",
+      "term": "Which technique lowers exposure by combining imperfectly correlated positions so their independent losses partly cancel?",
+      "sub": "A) Hedging    B) Diversification    C) Insurance    D) Retention",
+      "definition": "Correct: B) Diversification. It spreads exposure across assets, sectors or regions whose returns are not perfectly correlated, so losses partly offset. Hedging takes a deliberate offsetting position, insurance transfers a loss for a premium, and retention simply keeps the risk.",
+      "type": "mcq",
+      "last_updated": "2026-06-29",
+      "stale": true
+    },
+    {
+      "category": "theorems",
+      "term": "A derivative whose value derives from an underlying, used to hedge",
+      "definition": "Forwards and futures lock a future transaction price (currency forwards for FX, index futures for equity-market risk); swaps exchange one cash-flow stream for another (interest-rate swaps convert floating to fixed; credit default swaps transfer default risk); options grant the right but not the obligation to transact, so a bought put insures downside while keeping upside for the premium paid.",
+      "note": "Futures/forwards/swaps give symmetric low-cost offsets; options give asymmetric premium-priced protection.",
+      "last_updated": "2026-06-29",
+      "stale": true
+    },
+    {
+      "category": "theorems",
+      "term": "An interest-rate {{swap}} lets a firm convert a floating-rate liability into a fixed-rate one without re-issuing the debt.",
+      "definition": "It exchanges one cash-flow stream for another — here, paying fixed and receiving floating offsets the floating coupons on the debt, leaving a net fixed cost. This is a transfer-type mitigation using a derivative, achieving the hedge without touching the underlying loan.",
+      "type": "cloze",
+      "last_updated": "2026-06-29",
+      "stale": true
+    },
+    {
+      "category": "use",
+      "term": "Diversification can fully remove a portfolio's market risk if it is spread widely enough.",
+      "definition": "False. Diversification removes only diversifiable (idiosyncratic) risk and works only while correlations stay below 1; the undiversifiable systematic component of market risk remains, and in a crisis correlations rise toward 1 so the benefit shrinks exactly when it is needed. Removing the remaining factor risk requires hedging.",
+      "type": "truefalse",
+      "answer": false,
+      "summary": "False — diversification removes only diversifiable risk and decays as correlations rise to 1; systematic market risk remains and needs hedging.",
+      "last_updated": "2026-06-29",
+      "stale": true
+    },
+    {
+      "category": "use",
+      "term": "When is buying a put option (insurance-style protection) preferable to selling futures as a hedge?",
+      "definition": "When the firm wants to cap the downside but keep the upside. Selling futures (a symmetric hedge) offsets losses but also gives up gains; buying a put pays a premium to floor the loss while leaving the upside intact. The premium is the cost of that asymmetry — appropriate when the upside is valuable and the firm will pay to keep it.",
+      "note": "Symmetric offset (futures/swaps) is cheap but two-sided; option protection costs a premium but is one-sided.",
+      "last_updated": "2026-06-29",
+      "stale": true
+    },
+    {
+      "category": "use",
+      "term": "A hedge leaves no residual risk as long as the right derivative is used.",
+      "definition": "False. A hedge takes an offsetting position, but when the hedge instrument and the underlying exposure do not move in perfect lockstep, basis risk remains. So even a well-chosen derivative leaves residual risk that must be monitored and, if needed, capitalised.",
+      "type": "truefalse",
+      "answer": false,
+      "summary": "False — imperfect co-movement leaves basis risk; hedges reduce but rarely fully remove exposure.",
+      "last_updated": "2026-06-29",
+      "stale": true
+    },
+    {
+      "category": "exercise",
+      "term": "[Exercise] A bank's equity desk holds positions whose net delta has drifted above the desk's delta limit. Walk through what the monitoring step requires and which response applies.",
+      "summary": "Monitoring flags the limit breach; the trader must reduce or transfer — typically hedge by selling index futures (or trimming the position) to bring delta back inside the limit.",
+      "definition": "The monitor step compares the desk's measured sensitivity (delta) against the limit cascaded from risk appetite. A breach must trigger action: the trader hedges, offsets or reduces — e.g. sells index futures to cut net delta, or trims the underlying positions — until delta is back inside the limit. This is the reduce/transfer response, applied periodically (if not daily) as markets move.",
+      "note": "Uses the appetite → limits → monitor → mitigate chain and the Greek-limit mechanism from the primer.",
+      "last_updated": "2026-06-29",
+      "stale": true
+    },
+    {
+      "category": "exercise",
+      "term": "[Exercise] A firm faces a rare but catastrophic flood risk to a single warehouse that no traded instrument hedges. Of avoid / reduce / transfer / retain, which responses fit, and what concrete form does each take?",
+      "summary": "Avoid: don't site stock there. Reduce: flood defences/controls. Transfer: buy insurance (no market to hedge in). Retain: accept and hold capital. Insurance is the natural transfer here.",
+      "definition": "Because no market exists to hedge the flood, transfer takes the form of insurance — paying a premium to move a defined low-frequency, high-severity loss to an insurer. Avoid means not storing stock there at all; reduce means physical defences and controls that cut likelihood or severity; retain means accepting the residual and holding capital against it. The firm typically combines reduce + transfer + retain.",
+      "note": "Applies the four responses and the insurance-vs-hedging distinction to an unhedgeable operational risk.",
+      "last_updated": "2026-06-29",
+      "stale": true
+    }
+  ]
+}

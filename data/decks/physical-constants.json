@@ -1,0 +1,189 @@
+{
+  "id": "physical-constants",
+  "name": "Physical constants (SI · cgs · natural)",
+  "color": "#f783ac",
+  "description": "Fundamental constants with their values across unit systems — SI, Gaussian-cgs, and natural units — plus why some are set to 1 and why dimensionless constants don't change.",
+  "tags": [
+    "physics",
+    "constants",
+    "units"
+  ],
+  "primerTitle": "Constants across unit systems",
+  "primer": "Fundamental constants take **different numerical values in different unit systems** — except dimensionless ones, which are pure numbers.\n\n### Unit systems\n\n- **SI** — base mechanical units metre, kilogram, second (m, kg, s); energy in joules (J).\n- **Gaussian-cgs** — centimetre, gram, second (cm, g, s); energy in **ergs** ($1\\\\ \\\\text{J}=10^{7}\\\\ \\\\text{erg}$). It folds $4\\\\pi\\\\varepsilon_0$ away, so charge is in **esu (statcoulombs)**.\n- **Natural units** (particle physics) — set $c=\\\\hbar=1$ (often $k_B=1$ too). Lengths, times, masses and energies then share dimensions, quoted in powers of energy (eV); masses become **eV/$c^2$** (or just eV).\n- A **dimensionless constant** (e.g. $\\\\alpha$) is a pure number — *the same in every system*.\n\n### Mechanics & quantum\n\n- **Speed of light** $c = 2.998\\\\times10^{8}$ m/s $= 2.998\\\\times10^{10}$ cm/s; $c=1$ (natural).\n- **Planck constant** $h = 6.626\\\\times10^{-34}$ J·s $= 6.626\\\\times10^{-27}$ erg·s; sets the quantum of action ($E=h\\\\nu$).\n- **Reduced Planck** $\\\\hbar = h/2\\\\pi = 1.055\\\\times10^{-34}$ J·s; $\\\\hbar=1$ (natural); $\\\\hbar c\\\\approx 197.3$ MeV·fm.\n- **Gravitational constant** $G = 6.674\\\\times10^{-11}\\\\ \\\\text{m}^3\\\\text{kg}^{-1}\\\\text{s}^{-2}$ ($=6.674\\\\times10^{-8}$ cgs); least precisely known.\n\n### Thermodynamics\n\n- **Boltzmann** $k_B = 1.381\\\\times10^{-23}$ J/K ($=1.381\\\\times10^{-16}$ erg/K); $k_B=1$ (natural).\n- **Avogadro** $N_A = 6.022\\\\times10^{23}$ mol⁻¹ (a count, so unit-independent).\n- **Molar gas constant** $R = N_A k_B = 8.314\\\\ \\\\text{J·mol}^{-1}\\\\text{K}^{-1}$ ($pV=nRT$).\n- **Stefan–Boltzmann** $\\\\sigma = 5.670\\\\times10^{-8}\\\\ \\\\text{W·m}^{-2}\\\\text{K}^{-4}$; blackbody $j^\\\\star=\\\\sigma T^4$.\n\n### Electromagnetism\n\n- **Elementary charge** $e = 1.602\\\\times10^{-19}$ C (SI) $= 4.803\\\\times10^{-10}$ esu (Gaussian).\n- **Vacuum permittivity** $\\\\varepsilon_0 = 8.854\\\\times10^{-12}$ F/m; appears as $1/4\\\\pi\\\\varepsilon_0$ in Coulomb's law; absorbed in Gaussian cgs.\n- **Vacuum permeability** $\\\\mu_0 \\\\approx 1.257\\\\times10^{-6}\\\\ \\\\text{N·A}^{-2}$ ($\\\\approx 4\\\\pi\\\\times10^{-7}$); $c=1/\\\\sqrt{\\\\mu_0\\\\varepsilon_0}$.\n- **Fine-structure constant** $\\\\alpha = e^2/(4\\\\pi\\\\varepsilon_0\\\\hbar c)\\\\approx 1/137 \\\\approx 7.297\\\\times10^{-3}$; **dimensionless**, sets EM strength.\n\n### Atomic & particle\n\n- **Electron mass** $m_e = 9.109\\\\times10^{-31}$ kg $= 9.109\\\\times10^{-28}$ g; $m_e c^2 = 0.511$ MeV.\n- **Proton mass** $m_p = 1.673\\\\times10^{-27}$ kg $\\\\approx 938.3$ MeV/$c^2$ ($\\\\approx 1836\\\\,m_e$).\n- **Atomic mass unit** $1\\\\ \\\\text{u} = 1.661\\\\times10^{-27}$ kg $\\\\approx 931.5$ MeV/$c^2$ ($=1/12$ of a $^{12}$C atom).\n- **Bohr radius** $a_0 = 5.292\\\\times10^{-11}$ m $= 0.529$ Å; atomic length scale.\n- **Electron-volt** $1\\\\ \\\\text{eV} = 1.602\\\\times10^{-19}$ J — natural energy unit at atomic/particle scales.",
+  "categories": {
+    "concept": "Unit systems",
+    "mechanics": "Mechanics & quantum",
+    "thermo": "Thermodynamics",
+    "em": "Electromagnetism",
+    "atomic": "Atomic & particle"
+  },
+  "cards": [
+    {
+      "category": "concept",
+      "term": "What are 'natural units' (particle physics), and which constants become 1?",
+      "summary": "Set $c=\\hbar=1$ (often $k_B=1$ too) so equations lose those factors.",
+      "definition": "A system where $c=\\hbar=1$ (and usually $k_B=1$, sometimes $\\varepsilon_0=1$). Lengths, times, masses and energies then share dimensions; quantities are quoted in powers of energy (eV). It strips $c$ and $\\hbar$ out of formulas.",
+      "note": "Restore SI by reinserting factors of $c$ and $\\hbar$ on dimensional grounds.",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "category": "concept",
+      "term": "[Units] A dimensionless constant like the fine-structure constant α has the same numerical value in SI, cgs and natural units.",
+      "type": "truefalse",
+      "answer": true,
+      "summary": "True — pure numbers are unit-system independent.",
+      "definition": "True. $\\alpha \\approx 1/137$ is a pure number (a ratio of quantities with the same dimensions), so no choice of units changes it. Only dimensional constants get different numbers in different systems.",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "category": "concept",
+      "term": "SI vs cgs: the base mechanical units are metre/kilogram/second versus {{centimetre/gram/second}}.",
+      "definition": "SI uses m, kg, s; (Gaussian) cgs uses cm, g, s. Energy is the joule (SI) vs the erg (cgs), with $1\\ \\text{J}=10^{7}\\ \\text{erg}$. Electromagnetism differs more: Gaussian-cgs folds $4\\pi\\varepsilon_0$ away, so charge is in esu (statcoulombs).",
+      "type": "cloze",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "category": "mechanics",
+      "term": "Speed of light $c$ — value in SI, cgs, and natural units?",
+      "summary": "$2.998\\times10^8$ m/s · $2.998\\times10^{10}$ cm/s · $1$ (natural).",
+      "definition": "SI: $c = 299{,}792{,}458 \\approx 2.998\\times10^{8}\\ \\text{m/s}$ (exact, it defines the metre). cgs: $2.998\\times10^{10}\\ \\text{cm/s}$. Natural units: $c = 1$ (dimensionless).",
+      "formula": "$c = 2.998\\times10^{8}\\ \\mathrm{m/s}$",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "category": "mechanics",
+      "term": "Planck constant $h$ — SI and cgs value?",
+      "summary": "$6.626\\times10^{-34}$ J·s · $6.626\\times10^{-27}$ erg·s.",
+      "definition": "SI: $h = 6.626\\times10^{-34}\\ \\text{J·s}$ (exact, it defines the kilogram). cgs: $6.626\\times10^{-27}\\ \\text{erg·s}$. It sets the quantum scale of action.",
+      "formula": "$E = h\\nu$",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "category": "mechanics",
+      "term": "Reduced Planck constant $\\hbar$ — value, and in natural units?",
+      "summary": "$\\hbar=h/2\\pi=1.055\\times10^{-34}$ J·s; natural: $\\hbar=1$.",
+      "definition": "$\\hbar = h/2\\pi = 1.055\\times10^{-34}\\ \\text{J·s} = 1.055\\times10^{-27}\\ \\text{erg·s}$. In natural units $\\hbar=1$. A handy form: $\\hbar c \\approx 197.3\\ \\text{MeV·fm}$.",
+      "formula": "$\\hbar = h/2\\pi$",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "category": "mechanics",
+      "term": "Gravitational constant $G$ — SI and cgs value?",
+      "summary": "$6.674\\times10^{-11}$ m³·kg⁻¹·s⁻² · $6.674\\times10^{-8}$ cm³·g⁻¹·s⁻².",
+      "definition": "SI: $G = 6.674\\times10^{-11}\\ \\text{m}^3\\,\\text{kg}^{-1}\\,\\text{s}^{-2}$. cgs: $6.674\\times10^{-8}\\ \\text{cm}^3\\,\\text{g}^{-1}\\,\\text{s}^{-2}$. The least precisely known fundamental constant.",
+      "formula": "$F = G\\,m_1 m_2 / r^2$",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "category": "thermo",
+      "term": "Boltzmann constant $k_B$ — value, and in natural units?",
+      "summary": "$1.381\\times10^{-23}$ J/K · $1.381\\times10^{-16}$ erg/K; natural: $k_B=1$.",
+      "definition": "SI: $k_B = 1.381\\times10^{-23}\\ \\text{J/K}$ (exact, it defines the kelvin). cgs: $1.381\\times10^{-16}\\ \\text{erg/K}$. With $k_B=1$ (natural), temperature is measured in energy units.",
+      "formula": "$\\langle E\\rangle \\sim k_B T$",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "category": "thermo",
+      "term": "[Constants] Avogadro's number $N_A$ is:",
+      "sub": "A) $6.022\\times10^{23}\\ \\text{mol}^{-1}$    B) $6.022\\times10^{-23}\\ \\text{mol}^{-1}$    C) $1.381\\times10^{23}\\ \\text{mol}^{-1}$    D) $8.314\\ \\text{mol}^{-1}$",
+      "definition": "Correct: A) $6.022\\times10^{23}\\ \\text{mol}^{-1}$. It's a count per mole (exact, defining the mole), so it isn't unit-system dependent the way dimensional constants are.",
+      "note": "$R = N_A k_B$.",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "category": "thermo",
+      "term": "Molar gas constant $R$ — value and relation?",
+      "summary": "$R = N_A k_B = 8.314\\ \\text{J·mol}^{-1}\\text{K}^{-1}$.",
+      "definition": "$R = N_A k_B = 8.314\\ \\text{J·mol}^{-1}\\,\\text{K}^{-1}$ (≈ $1.987\\ \\text{cal·mol}^{-1}\\text{K}^{-1}$). It's just Boltzmann's constant per mole instead of per particle.",
+      "formula": "$pV = nRT$",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "category": "thermo",
+      "term": "Stefan–Boltzmann constant $\\sigma$ — value and use?",
+      "summary": "$5.670\\times10^{-8}\\ \\text{W·m}^{-2}\\text{K}^{-4}$; blackbody power.",
+      "definition": "$\\sigma = 5.670\\times10^{-8}\\ \\text{W·m}^{-2}\\,\\text{K}^{-4}$. A blackbody radiates $j^\\star=\\sigma T^4$. Derivable from $k_B$, $\\hbar$, $c$.",
+      "formula": "$j^\\star = \\sigma T^4$",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "category": "em",
+      "term": "Elementary charge $e$ — SI value, and the Gaussian-cgs form?",
+      "summary": "$1.602\\times10^{-19}$ C (SI) · $4.803\\times10^{-10}$ esu (Gaussian).",
+      "definition": "SI: $e = 1.602\\times10^{-19}\\ \\text{C}$ (exact, defining the ampere). Gaussian-cgs: $e = 4.803\\times10^{-10}\\ \\text{esu (statC)}$ — a different unit because cgs builds charge from mechanical units, with no separate ampere.",
+      "note": "This SI↔cgs charge mismatch is why electromagnetism formulas look different in the two systems.",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "category": "em",
+      "term": "Vacuum permittivity $\\varepsilon_0$ — SI value, and what happens to it in Gaussian cgs?",
+      "summary": "$8.854\\times10^{-12}$ F/m (SI); absorbed (effectively $1/4\\pi$) in Gaussian cgs.",
+      "definition": "SI: $\\varepsilon_0 = 8.854\\times10^{-12}\\ \\text{F/m}$, appearing as $1/4\\pi\\varepsilon_0$ in Coulomb's law. Gaussian-cgs has no $\\varepsilon_0$: Coulomb's law is just $q_1q_2/r^2$, so the constant is effectively absorbed into the definition of charge.",
+      "formula": "$F=\\dfrac{1}{4\\pi\\varepsilon_0}\\dfrac{q_1q_2}{r^2}$",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "category": "em",
+      "term": "Vacuum permeability $\\mu_0$ — value and link to $c$?",
+      "summary": "$\\approx 1.257\\times10^{-6}\\ \\text{N·A}^{-2}$ ($\\approx 4\\pi\\times10^{-7}$); $c=1/\\sqrt{\\mu_0\\varepsilon_0}$.",
+      "definition": "$\\mu_0 \\approx 1.257\\times10^{-6}\\ \\text{N·A}^{-2}$ (historically exactly $4\\pi\\times10^{-7}$). With $\\varepsilon_0$ it fixes the speed of light: $c = 1/\\sqrt{\\mu_0\\varepsilon_0}$.",
+      "formula": "$c = 1/\\sqrt{\\mu_0\\varepsilon_0}$",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "category": "em",
+      "term": "Fine-structure constant $\\alpha$ — value and why it's special?",
+      "summary": "$\\alpha \\approx 1/137 \\approx 7.297\\times10^{-3}$; dimensionless, so unit-independent.",
+      "definition": "$\\alpha = \\dfrac{e^2}{4\\pi\\varepsilon_0\\hbar c} \\approx \\dfrac{1}{137.036} \\approx 7.297\\times10^{-3}$. It's dimensionless — the same in every unit system — and sets the strength of the electromagnetic interaction.",
+      "formula": "$\\alpha = e^2/(4\\pi\\varepsilon_0\\hbar c)$",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "category": "atomic",
+      "term": "Electron mass $m_e$ — SI, cgs, and natural (energy) value?",
+      "summary": "$9.109\\times10^{-31}$ kg · $9.109\\times10^{-28}$ g · $0.511$ MeV/$c^2$.",
+      "definition": "SI: $m_e = 9.109\\times10^{-31}\\ \\text{kg}$. cgs: $9.109\\times10^{-28}\\ \\text{g}$. In natural/particle units, masses are given as energy: $m_e c^2 = 0.511\\ \\text{MeV}$, so $m_e = 0.511\\ \\text{MeV}/c^2$.",
+      "formula": "$m_e c^2 = 0.511\\ \\mathrm{MeV}$",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "category": "atomic",
+      "term": "Proton mass $m_p$ — value in kg and in MeV/$c^2$?",
+      "summary": "$1.673\\times10^{-27}$ kg ≈ $938.3$ MeV/$c^2$ (≈ 1836 $m_e$).",
+      "definition": "$m_p = 1.673\\times10^{-27}\\ \\text{kg}$, i.e. $m_p c^2 = 938.3\\ \\text{MeV}$. It is about 1836 times the electron mass.",
+      "formula": "$m_p \\approx 1836\\,m_e$",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "category": "atomic",
+      "term": "Atomic mass unit $u$ — value in kg and MeV/$c^2$?",
+      "summary": "$1.661\\times10^{-27}$ kg ≈ $931.5$ MeV/$c^2$.",
+      "definition": "$1\\ \\text{u} = 1.661\\times10^{-27}\\ \\text{kg}$, defined as $1/12$ the mass of a $^{12}\\text{C}$ atom; equivalently $931.494\\ \\text{MeV}/c^2$. Equals $1\\ \\text{g/mol} \\div N_A$.",
+      "formula": "$1\\ \\mathrm{u} = 931.5\\ \\mathrm{MeV}/c^2$",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "category": "atomic",
+      "term": "Bohr radius $a_0$ — value in SI and ångström?",
+      "summary": "$5.292\\times10^{-11}$ m $= 0.529$ Å.",
+      "definition": "$a_0 = 5.292\\times10^{-11}\\ \\text{m} = 0.529\\ \\text{Å}$ — the most probable electron–proton distance in hydrogen's ground state, the natural length scale of atoms.",
+      "formula": "$a_0 = 4\\pi\\varepsilon_0\\hbar^2/(m_e e^2)$",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "category": "atomic",
+      "term": "The electron-volt as an energy: $1\\ \\text{eV} = $ {{1.602×10⁻¹⁹}} joules.",
+      "definition": "$1\\ \\text{eV} = 1.602\\times10^{-19}\\ \\text{J}$ — the energy gained by one elementary charge across one volt. It's the natural energy unit at atomic/particle scales (keV, MeV, GeV).",
+      "type": "cloze",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "category": "atomic",
+      "term": "[Constants] In natural units a mass is most naturally expressed in:",
+      "sub": "A) eV/$c^2$ (or just eV, with $c=1$)    B) coulombs    C) kelvin    D) seconds",
+      "definition": "Correct: A) eV/$c^2$ (or just eV, with $c=1$). Because $c=\\hbar=1$, mass, energy and momentum share units, so particle masses are quoted as energies — e.g. the electron at $0.511\\ \\text{MeV}$.",
+      "note": "938 MeV for the proton, 125 GeV for the Higgs, etc.",
+      "last_updated": "2026-06-29"
+    }
+  ]
+}

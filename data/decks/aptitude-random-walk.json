@@ -1,0 +1,157 @@
+{
+  "id": "aptitude-random-walk",
+  "name": "Random walks & Markov chains",
+  "color": "#6ea8fe",
+  "description": "Return/target probabilities for uniform random walks on small graphs.",
+  "tags": [
+    "aptitude",
+    "interview",
+    "random walk",
+    "markov",
+    "probability"
+  ],
+  "primerTitle": "Random walks on graphs — method",
+  "primer": "**Random walks on small graphs.** A walk picks a uniformly random incident edge each step. Two workhorse techniques cover these problems.\n\n**1. Return-probability recurrence on complete graphs $K_{d+1}$.** Every vertex has degree $d$ and all non-start vertices are symmetric. Let $a_n$ be the probability of sitting on the start after $n$ steps. From the start you must leave; from any other vertex exactly one of the $d$ edges returns, so $a_n=\\frac{1}{d}\\bigl(1-a_{n-1}\\bigr)$ with $a_0=1$. The closed form is $a_n=\\frac{1}{d+1}+\\frac{d}{d+1}\\bigl(-\\frac{1}{d}\\bigr)^{n}$. Triangle is $K_3$ ($d=2$), tetrahedron is $K_4$ ($d=3$), and $K_5$ has $d=4$.\n\n**2. State-class / transition approach for cycles and the cube.** Group vertices into symmetry classes (start, neighbour, opposite, ...) and push the probability vector forward one step at a time. On the $4$-cycle $C_4$ the distribution oscillates: odd steps sit entirely on the neighbours, even steps split $\\frac{1}{2}$ start / $\\frac{1}{2}$ opposite.\n\n**3. Bipartite parity.** Cycles of even length and the cube are bipartite, so a return is only possible after an even number of steps.\n\n**4. Counting walks for a fixed target (Hamming distance).** On the cube, label vertices by $3$-bit strings; each step flips one coordinate. To land at a vertex at Hamming distance $k$ in exactly $k$ steps, count the orderings of the required flips ($k!$) over the $3^{k}$ equally likely length-$k$ walks. The opposite corner ($k=3$) gives $\\frac{3!}{3^3}=\\frac{6}{27}=\\frac{2}{9}$.",
+  "cards": [
+    {
+      "term": "Let A, B, C, D be the vertices of a regular tetrahedron. A spider starts at vertex A and on each turn walks along one of the three edges meeting its current vertex, chosen uniformly at random. What is the probability that the spider is back at vertex A after exactly 3 turns?",
+      "choices": [
+        "2/9",
+        "7/27",
+        "1/4",
+        "1/3",
+        "2/27"
+      ],
+      "answer": 0,
+      "type": "mcq",
+      "definition": "Correct: 2/9. Model the walk by $a_n$, the probability of standing on $A$ after $n$ turns. The tetrahedron is the complete graph $K_4$, so every vertex has degree $d=3$. From $A$ the spider must leave (it cannot stay), and from any of the three non-$A$ vertices exactly one of the three edges leads back to $A$, giving return probability $1/3$. Hence $a_n=\\\\frac{1}{3}\\\\bigl(1-a_{n-1}\\\\bigr)$ with $a_0=1$. Then $a_1=\\\\frac{1}{3}(1-1)=0$, $a_2=\\\\frac{1}{3}(1-0)=\\\\frac{1}{3}$, and $a_3=\\\\frac{1}{3}\\\\bigl(1-\\\\frac{1}{3}\\\\bigr)=\\\\frac{1}{3}\\\\cdot\\\\frac{2}{3}=\\\\frac{2}{9}$.",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "Let A, B, C, D be the vertices of a regular tetrahedron. A spider starts at vertex A and on each turn walks along one of the three edges meeting its current vertex, chosen uniformly at random. What is the probability that the spider is back at vertex A after exactly 4 turns?",
+      "choices": [
+        "7/27",
+        "2/9",
+        "8/27",
+        "20/81",
+        "61/243"
+      ],
+      "answer": 0,
+      "type": "mcq",
+      "definition": "Correct: 7/27. Same complete-graph $K_4$ recurrence $a_n=\\\\frac{1}{3}(1-a_{n-1})$, $a_0=1$, where $a_n$ is the probability of being at the start $A$ after $n$ turns (degree $d=3$, return probability $1/3$ from any other vertex). Iterating: $a_1=0$, $a_2=\\\\frac{1}{3}$, $a_3=\\\\frac{2}{9}$, and $a_4=\\\\frac{1}{3}\\\\bigl(1-\\\\frac{2}{9}\\\\bigr)=\\\\frac{1}{3}\\\\cdot\\\\frac{7}{9}=\\\\frac{7}{27}$.",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "Let A, B, C, D be the vertices of a regular tetrahedron. A spider starts at vertex A and on each turn walks along one of the three edges meeting its current vertex, chosen uniformly at random. What is the probability that the spider is back at vertex A after exactly 6 turns?",
+      "choices": [
+        "1/4",
+        "61/243",
+        "20/81",
+        "20/243",
+        "7/27"
+      ],
+      "answer": 1,
+      "type": "mcq",
+      "definition": "Correct: 61/243. Continue the $K_4$ recurrence $a_n=\\\\frac{1}{3}(1-a_{n-1})$, $a_0=1$. We have $a_3=\\\\frac{2}{9}$, $a_4=\\\\frac{7}{27}$, then $a_5=\\\\frac{1}{3}\\\\bigl(1-\\\\frac{7}{27}\\\\bigr)=\\\\frac{1}{3}\\\\cdot\\\\frac{20}{27}=\\\\frac{20}{81}$, and $a_6=\\\\frac{1}{3}\\\\bigl(1-\\\\frac{20}{81}\\\\bigr)=\\\\frac{1}{3}\\\\cdot\\\\frac{61}{81}=\\\\frac{61}{243}$. (Equivalently the closed form $a_n=\\\\frac{1}{4}+\\\\frac{3}{4}\\\\bigl(-\\\\frac{1}{3}\\\\bigr)^{n}$ gives $a_6=\\\\frac{1}{4}+\\\\frac{3}{4}\\\\cdot\\\\frac{1}{729}=\\\\frac{61}{243}$.)",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "An ant sits on one corner of an equilateral triangle. Each minute it moves to one of the two adjacent corners, chosen with equal probability. What is the probability it is back at its starting corner after exactly 4 minutes?",
+      "choices": [
+        "3/8",
+        "5/8",
+        "1/3",
+        "1/4",
+        "1/2"
+      ],
+      "answer": 0,
+      "type": "mcq",
+      "definition": "Correct: 3/8. The triangle is $K_3$: every vertex has degree $d=2$, and from either of the two non-start vertices exactly one of the two edges returns to the start, so the return probability is $1/2$. With $a_n$ the probability of being at the start after $n$ minutes, $a_n=\\\\frac{1}{2}(1-a_{n-1})$, $a_0=1$. Then $a_1=0$, $a_2=\\\\frac{1}{2}$, $a_3=\\\\frac{1}{2}\\\\cdot\\\\frac{1}{2}=\\\\frac{1}{4}$, and $a_4=\\\\frac{1}{2}\\\\bigl(1-\\\\frac{1}{4}\\\\bigr)=\\\\frac{1}{2}\\\\cdot\\\\frac{3}{4}=\\\\frac{3}{8}$.",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "An ant sits on one corner of an equilateral triangle. Each minute it moves to one of the two adjacent corners, chosen with equal probability. What is the probability it is back at its starting corner after exactly 5 minutes?",
+      "choices": [
+        "3/8",
+        "5/16",
+        "1/4",
+        "1/2",
+        "11/32"
+      ],
+      "answer": 1,
+      "type": "mcq",
+      "definition": "Correct: 5/16. Same triangle ($K_3$) recurrence $a_n=\\\\frac{1}{2}(1-a_{n-1})$, $a_0=1$ (degree $d=2$, return probability $1/2$). From $a_4=\\\\frac{3}{8}$ we get $a_5=\\\\frac{1}{2}\\\\bigl(1-\\\\frac{3}{8}\\\\bigr)=\\\\frac{1}{2}\\\\cdot\\\\frac{5}{8}=\\\\frac{5}{16}$. (Closed form $a_n=\\\\frac{1}{3}+\\\\frac{2}{3}\\\\bigl(-\\\\frac{1}{2}\\\\bigr)^{n}$ confirms $a_5=\\\\frac{1}{3}-\\\\frac{2}{3}\\\\cdot\\\\frac{1}{32}=\\\\frac{5}{16}$.)",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "A token starts at a corner of a square and each step moves to one of the two neighbouring corners with equal probability. What is the probability it returns to the starting corner after exactly 4 steps?",
+      "choices": [
+        "1/2",
+        "5/16",
+        "1",
+        "3/8",
+        "1/4"
+      ],
+      "answer": 0,
+      "type": "mcq",
+      "definition": "Correct: 1/2. The square is the $4$-cycle $C_4$, which is bipartite, so the token can only be at the start after an even number of steps. Track the position distribution; by symmetry label vertices by distance from the start: $S$ (start), $N$ (the two neighbours combined), $O$ (opposite). Start: $P(S)=1$. After $1$ step: $P(N)=1$. After $2$ steps: from each neighbour, probability $1/2$ goes to $S$ and $1/2$ to $O$, giving $P(S)=\\\\frac{1}{2},\\\\,P(O)=\\\\frac{1}{2}$. After $3$ steps everything is on the neighbours again: $P(N)=1$. After $4$ steps the same split repeats: $P(S)=\\\\frac{1}{2}$. So the return probability after $4$ steps is $\\\\frac{1}{2}$.",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "A token starts at a corner of a square and each step moves to one of the two neighbouring corners with equal probability. What is the probability it returns to the starting corner after exactly 6 steps?",
+      "choices": [
+        "1/2",
+        "1",
+        "5/16",
+        "3/8",
+        "11/32"
+      ],
+      "answer": 0,
+      "type": "mcq",
+      "definition": "Correct: 1/2. On the $4$-cycle the walk settles into a $2$-step cycle of distributions: after any even number of steps $P(\\\\text{start})=\\\\frac{1}{2}$ and $P(\\\\text{opposite})=\\\\frac{1}{2}$, while after any odd number the token is on a neighbour with probability $1$. Concretely, after $4$ steps $P(S)=\\\\frac{1}{2}$; step $5$ sends all mass to the neighbours; step $6$ splits it again as $\\\\frac{1}{2}$ to $S$ and $\\\\frac{1}{2}$ to the opposite corner. Hence the probability of being back at the start after $6$ steps is $\\\\frac{1}{2}$.",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "A bug walks on the edges of a cube, starting at one vertex. Each step it chooses one of the three edges at its current vertex uniformly at random. What is the probability it is back at the starting vertex after exactly 2 steps?",
+      "choices": [
+        "2/3",
+        "2/9",
+        "1/3",
+        "1/9",
+        "1/2"
+      ],
+      "answer": 2,
+      "type": "mcq",
+      "definition": "Correct: 1/3. On the cube each vertex has degree $3$. After the first step the bug is at one of the $3$ neighbours (each with probability $1/3$). From that neighbour, exactly one of its $3$ incident edges leads back to the start, so the chance of returning on the second step is $1/3$ regardless of which neighbour it is on. Therefore $P(\\\\text{back after }2\\\\text{ steps})=\\\\sum_{\\\\text{3 neighbours}}\\\\frac{1}{3}\\\\cdot\\\\frac{1}{3}=3\\\\cdot\\\\frac{1}{9}=\\\\frac{1}{3}$. Equivalently, of the $9$ equally likely length-$2$ edge sequences, the $3$ that retrace the first edge return, giving $3/9=\\\\frac{1}{3}$.",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "A bug walks on the edges of a cube starting at a corner, each step picking one of the 3 incident edges uniformly at random. What is the probability that after exactly 3 steps it is at the vertex diagonally opposite (the farthest corner) from where it started?",
+      "choices": [
+        "1/3",
+        "1/6",
+        "1/9",
+        "4/9",
+        "2/9"
+      ],
+      "answer": 4,
+      "type": "mcq",
+      "definition": "Correct: 2/9. Coordinatize the cube by $3$-bit strings; each step flips one coordinate (changes the Hamming distance by $\\\\pm 1$). The opposite corner is at Hamming distance $3$, so reaching it in exactly $3$ steps requires flipping each of the three coordinates exactly once, in some order. There are $3!=6$ such ordered sequences. The total number of equally likely length-$3$ walks is $3^3=27$. Hence the probability is $\\\\frac{6}{27}=\\\\frac{2}{9}$.",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "Five cities are pairwise connected by direct roads (every city joins every other). A traveller starts in city 1 and each day drives to a different city chosen uniformly at random among the four others. What is the probability of being back in city 1 after exactly 3 days?",
+      "choices": [
+        "3/16",
+        "1/16",
+        "5/16",
+        "1/8",
+        "1/4"
+      ],
+      "answer": 0,
+      "type": "mcq",
+      "definition": "Correct: 3/16. Five pairwise-connected cities form the complete graph $K_5$: every vertex has degree $d=4$, and from any city exactly one of the four roads leads back to city $1$, so the return probability from elsewhere is $1/4$. With $a_n$ the probability of being in city $1$ after $n$ days, $a_n=\\\\frac{1}{4}(1-a_{n-1})$, $a_0=1$. Then $a_1=0$, $a_2=\\\\frac{1}{4}$, and $a_3=\\\\frac{1}{4}\\\\bigl(1-\\\\frac{1}{4}\\\\bigr)=\\\\frac{1}{4}\\\\cdot\\\\frac{3}{4}=\\\\frac{3}{16}$.",
+      "last_updated": "2026-06-29"
+    }
+  ]
+}

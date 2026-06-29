@@ -1,0 +1,205 @@
+{
+  "id": "risk-glossary-oprisk",
+  "name": "Risk glossary — Operational, model & stress",
+  "color": "#9b8e8e",
+  "description": "25 operational, model & stress terms, each thoroughly explained.",
+  "tags": [
+    "risk",
+    "glossary",
+    "reference",
+    "oprisk"
+  ],
+  "primerTitle": "Operational, model & stress vocabulary",
+  "primer": "## Operational, model & stress — vocabulary\nThe operational, model-risk and stress-testing vocabulary. Each card gives a full definition; this deck is the terms the matching concept deck assumes.\n\n**Terms:** Operational risk (Basel definition) · Seven operational-risk event types · Standardised Measurement Approach · Business Indicator · Business Indicator Component · Internal Loss Multiplier · Risk & Control Self-Assessment · Key Risk Indicators · Internal vs external loss data · Scenario analysis · Model risk · Model validation · Benchmarking (model) · SR 11-7 · Conduct risk · Reputational risk · Cyber / IT risk · Outsourcing / third-party risk · Impact tolerance · Stress testing · Sensitivity vs scenario analysis · Reverse stress test · Supervisory stress tests · TRIM · Margin of Conservatism",
+  "cards": [
+    {
+      "term": "Operational risk (Basel definition)",
+      "definition": "The risk of loss resulting from inadequate or failed internal processes, people and systems, or from external events. The Basel definition explicitly $includes$ legal risk (litigation, fines, settlements arising from operations) but $excludes$ strategic risk (bad business bets) and reputational risk (damage to standing). It is the residual non-financial category present wherever a transaction is processed, not confined to any one book.",
+      "note": "Includes legal risk; excludes strategic and reputational risk.",
+      "last_updated": "2026-06-29",
+      "stale": true
+    },
+    {
+      "term": "Seven operational-risk event types",
+      "sub": "Basel Level-1 categories",
+      "definition": "Basel's standard taxonomy for classifying operational losses: (1) internal fraud; (2) external fraud; (3) employment practices & workplace safety; (4) clients, products & business practices; (5) damage to physical assets; (6) business disruption & system failures; (7) execution, delivery & process management. Standardising the event types is what lets a firm pool and compare internal data with external data and scenarios on a common basis.",
+      "note": "Largest aggregate losses historically sit in 'clients, products & business practices' (conduct/mis-selling).",
+      "last_updated": "2026-06-29",
+      "stale": true
+    },
+    {
+      "term": "Standardised Measurement Approach",
+      "sub": "SMA",
+      "definition": "Basel's post-2023 single method for operational-risk capital (ORC), replacing both the earlier standardised approaches and banks' bespoke Advanced Measurement Approach (AMA) models. It multiplies a size proxy by a loss-history multiplier: $\\\\mathrm{ORC}=\\\\mathrm{BIC}\\\\times\\\\mathrm{ILM}$. The aim was comparability and simplicity after AMA models proved too divergent and hard to validate across banks.",
+      "note": "Supervisors may set the ILM to 1, making capital purely size-driven (national discretion).",
+      "last_updated": "2026-06-29",
+      "stale": true
+    },
+    {
+      "term": "Business Indicator",
+      "sub": "BI",
+      "definition": "The financial-statement-based size proxy underlying the SMA, built from three blocks: an interest, leases & dividend component; a services component (fees and other operating income/expense); and a financial component (trading and banking-book P&L). It captures a bank's operational exposure through the scale of its activities, independent of any internal loss model.",
+      "note": "Designed to be hard to game — it aggregates gross income and cost items rather than a single revenue line.",
+      "last_updated": "2026-06-29",
+      "stale": true
+    },
+    {
+      "term": "Business Indicator Component",
+      "sub": "BIC",
+      "definition": "The Business Indicator (BI) after applying $progressive$ regulatory marginal coefficients across size buckets — the larger the bank, the higher the marginal rate on the upper bucket. The BIC sets the baseline operational-risk capital before any adjustment for the bank's own loss experience.",
+      "note": "Progressive coefficients (e.g. 12% / 15% / 18% on rising BI buckets) make capital rise more than proportionally with size.",
+      "last_updated": "2026-06-29",
+      "stale": true
+    },
+    {
+      "term": "Internal Loss Multiplier",
+      "sub": "ILM",
+      "definition": "The SMA scalar that tilts capital up or down according to whether a bank's historical losses are high or low relative to its size, comparing a loss component (LC, a multiple of average annual losses) against the BIC. A clean loss history pulls the ILM below 1 and reduces capital; a loss-heavy history pushes it above 1.",
+      "note": "$\\\\mathrm{ILM}=\\\\ln\\\\!\\\\big(e^{1}-1+(\\\\mathrm{LC}/\\\\mathrm{BIC})^{0.8}\\\\big)$; ILM $=1$ exactly when $\\\\mathrm{LC}=\\\\mathrm{BIC}$.",
+      "last_updated": "2026-06-29",
+      "stale": true
+    },
+    {
+      "term": "Risk & Control Self-Assessment",
+      "sub": "RCSA",
+      "definition": "A structured, bottom-up process in which each business unit identifies its operational risks, rates them on $inherent$ (pre-control) and $residual$ (post-control) severity and likelihood, and assesses the effectiveness of the controls in between. It is the cornerstone of qualitative operational-risk management, producing a forward-looking risk profile that loss data alone cannot.",
+      "note": "Self-assessment bias is the perennial weakness — independent challenge keeps it honest.",
+      "last_updated": "2026-06-29",
+      "stale": true
+    },
+    {
+      "term": "Key Risk Indicators",
+      "sub": "KRI",
+      "definition": "Quantitative metrics tracked over time to give early warning that an operational risk is rising — e.g. staff turnover, failed-trade rates, system downtime, complaint volumes, or open audit findings. Each is paired with thresholds (amber/red) that trigger escalation, turning the static RCSA picture into a live monitoring signal.",
+      "note": "A good KRI is leading (predicts loss) rather than lagging (counts losses already incurred).",
+      "last_updated": "2026-06-29",
+      "stale": true
+    },
+    {
+      "term": "Internal vs external loss data",
+      "sub": "ILD / ELD",
+      "definition": "Internal loss data (ILD) is a firm's own historical record of operational losses above a collection threshold, anchoring measurement in actual experience but thin and backward-looking in the tail. External loss data (ELD), sourced from consortia (e.g. ORX) or public databases, supplies the rare large events the firm has not yet suffered, at the cost of reporting bias toward big public losses and a need to scale for size and relevance.",
+      "note": "ILD + ELD + scenario analysis + RCSA are the four classic operational-risk inputs.",
+      "last_updated": "2026-06-29",
+      "stale": true
+    },
+    {
+      "term": "Scenario analysis",
+      "sub": "operational risk",
+      "definition": "Structured expert assessment of plausible severe operational events — estimating their frequency and severity — to capture tail risks that historical data is too sparse to reveal. It injects forward-looking judgement where loss data is silent, but is prone to anchoring and optimism bias and so demands disciplined facilitation and challenge.",
+      "note": "The only one of the four inputs that can populate the extreme tail before it happens.",
+      "last_updated": "2026-06-29",
+      "stale": true
+    },
+    {
+      "term": "Model risk",
+      "definition": "The risk of adverse consequences from decisions based on models that are either fundamentally $wrong$ — flawed theory, assumptions, data, or implementation — or correct but $misused$, applied outside their valid domain or misinterpreted. It is pervasive wherever pricing, valuation, risk measurement and capital depend on quantitative models, and it crystallised visibly in the 2008 crisis through mispriced structured products.",
+      "note": "Two distinct failure modes: a bad model, and a good model used badly.",
+      "last_updated": "2026-06-29",
+      "stale": true
+    },
+    {
+      "term": "Model validation",
+      "definition": "Independent, second-line assessment of a model's conceptual soundness, input data, implementation and ongoing performance, performed before approval and periodically thereafter. Its essence is $effective\\\\ challenge$ — validators with the standing, independence and skill to disagree with the developers and force changes, not merely sign off.",
+      "note": "Independence of validation from development is the control that gives it credibility.",
+      "last_updated": "2026-06-29",
+      "stale": true
+    },
+    {
+      "term": "Benchmarking (model)",
+      "definition": "Comparing a model's outputs against an alternative challenger model, an industry standard, or market consensus to detect bias or error. Unlike validation, which judges a model on its own merits, benchmarking is a relative check — especially valuable where direct backtesting is impossible, such as long-horizon credit models with few realised outcomes.",
+      "note": "Validation asks 'is this model right?'; benchmarking asks 'does it agree with others?'.",
+      "last_updated": "2026-06-29",
+      "stale": true
+    },
+    {
+      "term": "SR 11-7",
+      "sub": "US model-risk guidance",
+      "definition": "The 2011 US Federal Reserve / OCC supervisory guidance on model risk management, the de facto global standard. It frames model risk as a category to be managed across the lifecycle — a model inventory with ownership and tiering, development standards, independent validation with effective challenge, and ongoing monitoring — and explicitly treats model use (not just model error) as a source of risk.",
+      "note": "Defines a 'model' broadly: any quantitative method that turns inputs into estimates for a business decision.",
+      "last_updated": "2026-06-29",
+      "stale": true
+    },
+    {
+      "term": "Conduct risk",
+      "definition": "The risk that a firm's behaviour — mis-selling, market abuse, unfair treatment of customers, conflicts of interest — harms clients or the integrity of markets, drawing fines, redress and remediation. Its root causes are culture and incentives rather than process failure, and post-2008 conduct costs have rivalled credit losses for some banks.",
+      "note": "Sits within operational risk (event type 4) but is often managed as its own discipline.",
+      "last_updated": "2026-06-29",
+      "stale": true
+    },
+    {
+      "term": "Reputational risk",
+      "definition": "The risk that damage to a firm's standing with customers, counterparties, investors or regulators reduces revenue or raises funding costs. It is usually a $second-order$ consequence of another risk crystallising (a conduct scandal, a cyber breach, a failed model), which is why Basel excludes it from operational risk and why it is hard to capitalise directly — it is managed through the events that trigger it.",
+      "note": "Can become existential even when the first-order loss was modest.",
+      "last_updated": "2026-06-29",
+      "stale": true
+    },
+    {
+      "term": "Cyber / IT risk",
+      "definition": "The risk of loss from attacks on, or failures of, information systems — data breaches, ransomware, denial-of-service, software defects — threatening the confidentiality, integrity and availability (the 'CIA triad') of data and services. A fast-growing operational risk with systemic potential, because banks share infrastructure and a few critical cloud and data providers concentrate the exposure.",
+      "note": "Increasingly governed by dedicated regimes (EU DORA) rather than generic op-risk rules.",
+      "last_updated": "2026-06-29",
+      "stale": true
+    },
+    {
+      "term": "Outsourcing / third-party risk",
+      "definition": "The risk that a vendor or service provider fails, is breached, or underperforms, disrupting the firm's own operations and obligations. The governing principle is that outsourcing the $activity$ does not outsource the $accountability$ — the firm remains responsible to its customers and supervisors — and sector-wide concentration in a handful of critical cloud, payment and data providers raises systemic concern.",
+      "note": "Supervisors require registers of critical outsourcing and exit/continuity plans.",
+      "last_updated": "2026-06-29",
+      "stale": true
+    },
+    {
+      "term": "Impact tolerance",
+      "sub": "operational resilience",
+      "definition": "The maximum tolerable level of disruption to a critical business service that a firm is willing to accept — expressed as a metric such as maximum downtime, number of customers affected, or volume of transactions lost. It reframes resilience from 'prevent every incident' to 'survive the inevitable ones': the firm must be able to remain within its impact tolerances through severe but plausible disruption.",
+      "note": "The operational-resilience analogue of risk appetite — a hard ceiling, set per critical service.",
+      "last_updated": "2026-06-29",
+      "stale": true
+    },
+    {
+      "term": "Stress testing",
+      "definition": "Assessing how a portfolio or balance sheet performs under severe but plausible shocks, complementing statistical measures such as VaR that rely on normal-times data. It probes the tail $directly$ rather than extrapolating it from a fitted distribution, exposing vulnerabilities, concentrations and non-linearities that everyday risk metrics miss.",
+      "note": "Answers 'what if this happens?', where VaR answers 'how often is a loss this big?'.",
+      "last_updated": "2026-06-29",
+      "stale": true
+    },
+    {
+      "term": "Sensitivity vs scenario analysis",
+      "definition": "A sensitivity analysis shocks $one$ risk factor at a time to measure the portfolio's response, $\\\\Delta V\\\\approx\\\\frac{\\\\partial V}{\\\\partial x_k}\\\\Delta x_k$ — the simplest stress test, but it ignores correlations. A scenario analysis shocks $many$ factors together along an internally consistent path (rates, growth, unemployment, asset prices moving coherently), capturing the joint moves and feedback that drive real losses.",
+      "note": "Sensitivity isolates one driver; a scenario respects how drivers move together.",
+      "last_updated": "2026-06-29",
+      "stale": true
+    },
+    {
+      "term": "Reverse stress test",
+      "definition": "A test that starts from a defined $failure outcome$ — insolvency, illiquidity, breach of a minimum requirement, an unviable business model — and works $backwards$ to identify the scenarios and risk-factor combinations that would produce it. It complements forward stress tests, which fix a shock and read off the loss: by fixing the loss and searching for causes, it surfaces hidden vulnerabilities and concentrations that plausibility-anchored forward tests never explore.",
+      "note": "Asks 'what would break us?' instead of 'how bad is this particular shock?'.",
+      "last_updated": "2026-06-29",
+      "stale": true
+    },
+    {
+      "term": "Supervisory stress tests",
+      "sub": "CCAR / DFAST / EBA",
+      "definition": "Regulator-run exercises that impose common macroeconomic scenarios (typically baseline, adverse and severely adverse) across many banks to judge capital adequacy and inform buffer-setting, with results often disclosed publicly. They serve as both a solvency check and a market-discipline tool — a failed result can constrain dividends and buybacks.",
+      "note": "US: CCAR (qualitative + capital plan) and DFAST (Dodd-Frank quantitative) run by the Fed; EU: EBA-coordinated with the ECB; UK: Bank of England ACS.",
+      "last_updated": "2026-06-29",
+      "stale": true
+    },
+    {
+      "term": "TRIM",
+      "sub": "Targeted Review of Internal Models",
+      "definition": "A major ECB project (2016–2021) that reviewed around 200 internal models across significant euro-area institutions to confirm their regulatory compliance and reduce unwarranted variability in risk-weighted assets. It standardised supervisory expectations across banks and directly seeded the ECB Guide to Internal Models.",
+      "note": "The landmark exercise that professionalised internal-model review in the SSM.",
+      "last_updated": "2026-06-29",
+      "stale": true
+    },
+    {
+      "term": "Margin of Conservatism",
+      "sub": "MoC",
+      "definition": "An explicit add-on to risk-parameter estimates (PD/LGD/EAD) that compensates for identified deficiencies, ensuring estimates are not understated. It is bucketed by source: category $A$ for data and methodology limitations, $B$ for estimation/statistical error, and $C$ for a general margin of caution. The MoC quantifies uncertainty transparently rather than hiding it inside the point estimate.",
+      "note": "A direct analogue to a systematic-uncertainty budget — make the unknowns explicit and additive.",
+      "last_updated": "2026-06-29",
+      "stale": true
+    }
+  ]
+}

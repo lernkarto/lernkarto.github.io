@@ -1,0 +1,170 @@
+{
+  "id": "aptitude-logic-chains",
+  "name": "Conditional logic chains",
+  "color": "#e599f7",
+  "description": "'Customer A buys apples; everyone who buys apples buys pears; ...' Deduce what must be true via modus ponens, the contrapositive, and disjunctive syllogism. Wro",
+  "tags": [
+    "aptitude",
+    "interview",
+    "logic",
+    "deduction"
+  ],
+  "primerTitle": "Conditional logic — method",
+  "primer": "## Conditional & categorical logic\nDeduce only what is forced. Valid moves:\n- **Modus ponens / chaining:** from A→B, B→C and A, conclude C.\n- **Contrapositive:** A→B ≡ ¬B→¬A (the only valid 'negative' move).\n- **Disjunctive syllogism:** from 'X or Y' (not both) and ¬X, conclude Y.\n\nThe wrong answers are the three classic fallacies:\n- **Converse** (affirming the consequent): A→B and B ⇏ A.\n- **Inverse** (denying the antecedent): A→B and ¬A ⇏ ¬B.\n- **Undistributed middle:** 'all P are M' + 'some M are S' ⇏ 'some P are S'.\n\nIf nothing is forced either way, the answer is *cannot be determined*.",
+  "cards": [
+    {
+      "term": "All of the following statements are true:\n  - Everyone who buys apples also buys pears.\n  - Everyone who buys pears also buys grapes.\n  - Customer A buys apples.\nWhich one of the following MUST be true?",
+      "choices": [
+        "Customer A does not buy grapes.",
+        "Customer A buys none of the three items.",
+        "Customer A buys apples but not pears.",
+        "Customer A buys grapes.",
+        "Anyone who buys grapes must also buy apples."
+      ],
+      "answer": 3,
+      "type": "mcq",
+      "definition": "Correct: Customer A buys grapes. Chain by modus ponens: apples → pears → grapes, and A buys apples, so A buys grapes. 'Grapes → apples' is the converse (affirming the consequent) and doesn't follow.",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "Both of the following statements are true:\n  - Every customer who buys milk also buys bread.\n  - Customer B does not buy bread.\nWhich one of the following MUST be true?",
+      "choices": [
+        "Customer B buys bread.",
+        "Customer B buys milk.",
+        "Anyone who does not buy milk also does not buy bread.",
+        "Customer B does not buy milk.",
+        "Customer B buys both milk and bread."
+      ],
+      "answer": 3,
+      "type": "mcq",
+      "definition": "Correct: Customer B does not buy milk. Use the contrapositive of milk → bread, i.e. ¬bread → ¬milk. B avoids bread, so B avoids milk. 'No milk → no bread' is the inverse (denying the antecedent) and is invalid.",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "Both of the following statements are true:\n  - Everyone who buys tea also buys honey.\n  - Customer C buys honey.\nWhich one of the following MUST be true?",
+      "choices": [
+        "Customer C does not buy honey.",
+        "Everyone who buys honey also buys tea.",
+        "It cannot be determined whether Customer C buys tea.",
+        "Customer C does not buy tea.",
+        "Customer C buys tea."
+      ],
+      "answer": 2,
+      "type": "mcq",
+      "definition": "Correct: It cannot be determined whether C buys tea. The rule is tea → honey, not honey → tea, so buying honey says nothing about tea — concluding 'C buys tea' is affirming the consequent, and you can't conclude she doesn't either.",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "Both of the following statements are true:\n  - No one who buys coffee buys cocoa.\n  - Customer D buys coffee.\nWhich one of the following MUST be true?",
+      "choices": [
+        "Customer D does not buy coffee.",
+        "Anyone who does not buy cocoa must buy coffee.",
+        "Customer D does not buy cocoa.",
+        "Customer D buys both coffee and cocoa.",
+        "Customer D buys cocoa."
+      ],
+      "answer": 2,
+      "type": "mcq",
+      "definition": "Correct: Customer D does not buy cocoa. 'No coffee-buyer buys cocoa' = coffee → ¬cocoa. D buys coffee, so D avoids cocoa. The converse 'avoids cocoa → buys coffee' doesn't follow (one can avoid both).",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "All of the following statements are true:\n  - Everyone who buys salmon also buys lemon.\n  - No one who buys lemon buys cream.\n  - Customer E buys salmon.\nWhich one of the following MUST be true?",
+      "choices": [
+        "Customer E does not buy lemon.",
+        "Customer E buys both lemon and cream.",
+        "Customer E does not buy cream.",
+        "Anyone who buys cream also buys salmon.",
+        "Customer E buys cream."
+      ],
+      "answer": 2,
+      "type": "mcq",
+      "definition": "Correct: Customer E does not buy cream. Chain: salmon → lemon → ¬cream, and E buys salmon, so E avoids cream. 'Buys cream → buys salmon' reverses the direction and isn't entailed.",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "All of the following statements are true:\n  - Everyone who buys roses also buys tulips.\n  - Customer F buys roses.\n  - Customer G buys tulips.\nWhich one of the following MUST be true?",
+      "choices": [
+        "Customer G buys neither roses nor tulips.",
+        "Customer F buys roses but not tulips.",
+        "Customer G does not buy tulips.",
+        "Customer F buys tulips.",
+        "Customer G buys roses."
+      ],
+      "answer": 3,
+      "type": "mcq",
+      "definition": "Correct: Customer F buys tulips. F buys roses and roses → tulips, so F buys tulips. G buys tulips, but tulips → roses is the converse, so whether G buys roses is undetermined — the trap.",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "All of the following statements are true:\n  - Every customer buys juice or water (at least one of the two).\n  - No customer buys both juice and water.\n  - Customer H does not buy juice.\nWhich one of the following MUST be true?",
+      "choices": [
+        "Customer H buys water only if she also buys juice.",
+        "Customer H buys neither juice nor water.",
+        "Customer H buys both juice and water.",
+        "Customer H buys juice.",
+        "Customer H buys water."
+      ],
+      "answer": 4,
+      "type": "mcq",
+      "definition": "Correct: Customer H buys water. 'Juice or water' with 'not both' = exactly one. H rules out juice, so by disjunctive syllogism H buys water.",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "All of the following statements are true:\n  - Everyone who buys figs also buys dates.\n  - Everyone who buys dates also buys nuts.\n  - Customer J does not buy nuts.\nWhich one of the following MUST be FALSE?",
+      "choices": [
+        "Customer J buys eggs.",
+        "Customer J does not buy dates.",
+        "Customer J buys neither figs nor nuts.",
+        "Customer J buys figs.",
+        "Customer J does not buy figs."
+      ],
+      "answer": 3,
+      "type": "mcq",
+      "definition": "Correct (MUST be FALSE): Customer J buys figs. Contrapositive of figs → dates → nuts gives ¬nuts → ¬dates → ¬figs. J buys no nuts, so J cannot buy figs — that statement is necessarily false. (Eggs are unconstrained; the negative statements are forced true.)",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "All of the following statements are true:\n  - Anyone who buys a newspaper buys a coffee.\n  - Anyone who buys a coffee buys a muffin.\n  - No one who buys a muffin buys a donut.\n  - Customer K buys a newspaper.\nWhich one of the following MUST be true?",
+      "choices": [
+        "Customer K does not buy a coffee.",
+        "Customer K buys a donut.",
+        "Customer K does not buy a donut.",
+        "Anyone who buys a donut buys a newspaper.",
+        "Customer K buys both a muffin and a donut."
+      ],
+      "answer": 2,
+      "type": "mcq",
+      "definition": "Correct: Customer K does not buy a donut. Chain: newspaper → coffee → muffin → ¬donut, and K buys a newspaper, so K avoids a donut. 'Buys a donut → buys a newspaper' is an invalid converse.",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "All of the following statements are true:\n  - Everyone who buys wine also buys cheese.\n  - No one who buys cheese buys soda.\n  - Customer L buys soda.\nWhich one of the following COULD be true (is consistent with the statements)?",
+      "choices": [
+        "Customer L buys both soda and cheese.",
+        "Customer L buys bread.",
+        "Customer L buys cheese.",
+        "Customer L buys both wine and cheese.",
+        "Customer L buys wine."
+      ],
+      "answer": 1,
+      "type": "mcq",
+      "definition": "Correct: Customer L buys bread. L buys soda; cheese → ¬soda gives soda → ¬cheese, so L has no cheese; wine → cheese then forces no wine. Wine and cheese are impossible, so among the options only the unconstrained 'buys bread' could be true.",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "Both of the following statements are true:\n  - Every customer who buys organic produce also buys local produce.\n  - Some customers who buy local produce also buy imported produce.\nWhich one of the following MUST be true?",
+      "choices": [
+        "Every customer who buys organic produce also buys imported produce.",
+        "Some customer who buys organic produce also buys imported produce.",
+        "No customer who buys organic produce buys imported produce.",
+        "Every customer who buys imported produce buys organic produce.",
+        "It cannot be validly concluded that any organic-produce buyer buys imported produce."
+      ],
+      "answer": 4,
+      "type": "mcq",
+      "definition": "Correct: It cannot be validly concluded that any organic buyer buys imported. Undistributed middle: organic ⊆ local, and some local buy imported, but those needn't be the organic ones. Counter-model: customer 1 = organic+local (no imported); customer 2 = local+imported (not organic) — both premises hold, yet no organic buyer buys imported.",
+      "last_updated": "2026-06-29"
+    }
+  ]
+}

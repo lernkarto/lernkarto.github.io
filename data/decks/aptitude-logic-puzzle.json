@@ -1,0 +1,199 @@
+{
+  "id": "aptitude-logic-puzzle",
+  "name": "Logic puzzles & brain-teasers",
+  "color": "#ff8787",
+  "description": "Word-logic puzzles (ages, coins, weighings, knights & knaves, Hanoi, clocks) plus classic brain-teasers where the fast guess is wrong.",
+  "tags": [
+    "aptitude",
+    "interview",
+    "logic",
+    "puzzles",
+    "brainteaser"
+  ],
+  "primerTitle": "Logic puzzles — method",
+  "primer": "Translate every puzzle into equations or an exhaustive case analysis, then solve mechanically rather than guessing. Word problems (ages, chickens-and-rabbits, pipes filling a tank) become linear systems: name a variable per unknown, write one equation per stated fact, solve. For rate problems, add rates not times — if A fills in $a$ hours and B in $b$ hours, combined rate is $1/a + 1/b$ and time is the reciprocal. Knights always tell the truth and knaves always lie: test each of the few possible type-assignments and keep the one where every speaker's statement matches their type (true if knight, false if knave). Balance-scale problems with one odd coin use ternary search — each weighing has three outcomes (left heavy / right heavy / equal), so $n$ coins need $\\lceil \\log_3 n \\rceil$ weighings. Tower of Hanoi with $n$ disks needs a minimum of $2^n - 1$ moves. Clock hands coincide 11 times every 12 hours, because the minute hand laps the hour hand at a relative rate that gains one full lap roughly every 65 minutes.",
+  "cards": [
+    {
+      "term": "A family has several children of different ages (some may be adults). Each daughter is exactly one year older than one of her brothers. Except for one, every son is exactly twice as old as one of his sisters. Together all the children are 16 times as old as the youngest child. What is the sum of the ages of all the children? (Use only the integer part of each age.)",
+      "choices": [
+        "16",
+        "48",
+        "64",
+        "32",
+        "80"
+      ],
+      "answer": 3,
+      "type": "mcq",
+      "definition": "Correct: 32. Build the chain of relationships starting from the youngest, who must be the one 'exception' son (call his age x). Each daughter is one year older than a brother, and every other son is twice some sister. The forced chain is: son x, daughter x+1, son 2(x+1)=2x+2, daughter 2x+3, son 2(2x+3)=4x+6. The total constraint is sum = 16·(youngest) = 16x. So x + (x+1) + (2x+2) + (2x+3) + (4x+6) = 10x + 12 = 16x, giving 6x = 12, x = 2. The ages are 2, 3, 6, 7, 14 — all distinct, youngest is 2 — and they sum to 32 = 16·2. A brute-force search over x confirms x=2 is the only consistent solution.",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "The product of the ages of three children is 36 and the sum of their ages is 13. There is a single oldest child (no tie for oldest). How old is the oldest child?",
+      "choices": [
+        "6",
+        "4",
+        "12",
+        "9",
+        "18"
+      ],
+      "answer": 3,
+      "type": "mcq",
+      "definition": "Correct: 9. List all unordered triples of positive integers whose product is 36, then keep those summing to 13. The factorizations of 36 into three factors give sums: (1,1,36)=38, (1,2,18)=21, (1,3,12)=16, (1,4,9)=14, (1,6,6)=13, (2,2,9)=13, (2,3,6)=11, (3,3,4)=10. Exactly two triples sum to 13: (1,6,6) and (2,2,9). The clue 'a single oldest child, no tie' eliminates (1,6,6), where the two oldest tie at 6. That leaves (2,2,9), so the oldest child is 9. (This is the classic 'ages riddle' where the sum being ambiguous is itself the decisive hint.)",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "A farmer has chickens and rabbits. Altogether the animals have 35 heads and 94 legs. How many rabbits are there?",
+      "choices": [
+        "23",
+        "11",
+        "24",
+        "13",
+        "12"
+      ],
+      "answer": 4,
+      "type": "mcq",
+      "definition": "Correct: 12. Let c = chickens (2 legs each) and r = rabbits (4 legs each). Heads: c + r = 35. Legs: 2c + 4r = 94. From the first equation c = 35 − r; substitute: 2(35 − r) + 4r = 94 → 70 − 2r + 4r = 94 → 2r = 24 → r = 12, and c = 23. Check: 23 + 12 = 35 heads, 2·23 + 4·12 = 46 + 48 = 94 legs. So there are 12 rabbits. (Quick mental version: if all 35 were chickens you'd have 70 legs; the 24 extra legs come from rabbits having 2 more each, so 24/2 = 12 rabbits.)",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "You have 9 coins that look identical, but one is slightly heavier. Using a balance scale (which tells you which side is heavier or if they are equal), what is the minimum number of weighings that always identifies the heavy coin?",
+      "choices": [
+        "2",
+        "9",
+        "4",
+        "1",
+        "3"
+      ],
+      "answer": 0,
+      "type": "mcq",
+      "definition": "Correct: 2. Each weighing has three possible outcomes (left pan heavier, right pan heavier, or balanced), so one weighing can distinguish among at most 3 cases and k weighings among at most 3^k. Identifying 1 heavy coin out of 9 needs k with 3^k ≥ 9, i.e. k = ⌈log₃ 9⌉ = 2. A concrete procedure: split into three groups of 3. Weighing 1 — put one group of 3 on each pan: if a side dips, the heavy coin is in that group of 3; if balanced, it is in the unweighed group of 3. Weighing 2 — from the identified group of 3, put one coin on each pan: if a side dips that is the heavy coin, if balanced it is the third coin. Two weighings always suffice, and one cannot (3¹ = 3 < 9).",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "On an island, knights always tell the truth and knaves always lie. You meet A and B. A says, 'B is a knave.' B says, 'A and I are the same type.' What is B?",
+      "choices": [
+        "Both are knaves",
+        "Both are knights",
+        "Knave",
+        "Cannot be determined",
+        "Knight"
+      ],
+      "answer": 2,
+      "type": "mcq",
+      "definition": "Correct: Knave. Test all four type-assignments and keep the one internally consistent (each speaker's statement must be true if they are a knight, false if a knave). Suppose B is a knight: then B's statement 'A and I are the same type' is true, making A a knight too; but then A's statement 'B is a knave' would be true coming from a knight, while B is actually a knight — contradiction. So B is not a knight, i.e. B is a knave. Confirm with A: A's claim 'B is a knave' is then true, so A is a knight. Check B's lie: 'A and I are the same type' is false (A=knight, B=knave differ), which is exactly what a knave should utter — consistent. The unique solution is A = knight, B = knave.",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "What number continues the sequence: 2, 6, 12, 20, 30, ___ ?",
+      "choices": [
+        "36",
+        "42",
+        "38",
+        "44",
+        "40"
+      ],
+      "answer": 1,
+      "type": "mcq",
+      "definition": "Correct: 42. The terms are the 'pronic' numbers n·(n+1): 1·2 = 2, 2·3 = 6, 3·4 = 12, 4·5 = 20, 5·6 = 30, so the next is 6·7 = 42. Equivalently, look at first differences: 6−2 = 4, 12−6 = 6, 20−12 = 8, 30−20 = 10 — they increase by 2 each step, so the next difference is 12 and 30 + 12 = 42. Both the closed form and the difference pattern give 42.",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "Pipe A fills a tank in 4 hours and pipe B fills the same tank in 6 hours. If both run together, how many hours does it take to fill the tank?",
+      "choices": [
+        "5/12",
+        "10/3",
+        "5",
+        "12/5",
+        "2"
+      ],
+      "answer": 3,
+      "type": "mcq",
+      "definition": "Correct: 12/5. Work in rates (tank per hour), which add when pipes run together. Pipe A's rate is 1/4 tank/hour, pipe B's is 1/6 tank/hour. Combined rate = 1/4 + 1/6 = 3/12 + 2/12 = 5/12 tank/hour. Time to fill one tank is the reciprocal of the rate: 1 ÷ (5/12) = 12/5 hours = 2.4 hours. A common trap is to pick 5/12, which is the rate, not the time — the question asks for time, so invert it.",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "In the Tower of Hanoi puzzle with 5 disks, what is the minimum number of single-disk moves needed to transfer the whole stack from one peg to another?",
+      "choices": [
+        "31",
+        "25",
+        "16",
+        "30",
+        "32"
+      ],
+      "answer": 0,
+      "type": "mcq",
+      "definition": "Correct: 31. Let M(n) be the minimum moves for n disks. To move n disks you must move the top n−1 onto a spare peg (M(n−1) moves), move the largest disk to the destination (1 move), then move the n−1 disks on top of it (another M(n−1) moves): M(n) = 2·M(n−1) + 1, with M(1) = 1. Unrolling gives the closed form M(n) = 2ⁿ − 1. For n = 5: M(5) = 2⁵ − 1 = 32 − 1 = 31. (Sanity check via recursion: M(1)=1, M(2)=3, M(3)=7, M(4)=15, M(5)=31.) This bound is provably optimal — no shorter sequence exists.",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "Over a 12-hour period (for example from 12:00 noon to 12:00 midnight), how many times do the hour hand and the minute hand of an analog clock point in exactly the same direction (overlap)?",
+      "choices": [
+        "10",
+        "24",
+        "22",
+        "12",
+        "11"
+      ],
+      "answer": 4,
+      "type": "mcq",
+      "definition": "Correct: 11. The minute hand sweeps 360°/hour; the hour hand sweeps 360°/12 = 30°/hour. Their relative angular speed is 360 − 30 = 330°/hour. An overlap happens each time the minute hand gains a full 360° on the hour hand, i.e. once every 360/330 = 12/11 hours ≈ 65 minutes 27 seconds. Over a 12-hour span the minute hand gains 330·12 = 3960° = 11 full laps on the hour hand, so the hands coincide exactly 11 times. The intuition trap is to say 12 (once per hour), but because the hour hand also moves, there is no separate overlap around 11:00 — the next coincidence after ~10:54 is at exactly 12:00, merging two would-be overlaps into one, leaving 11.",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "A snail climbs a 10-metre well. Each day it climbs 3 metres, but each night it slips back 2 metres. On which day does it first reach the top?",
+      "choices": [
+        "7",
+        "9",
+        "8",
+        "10",
+        "11"
+      ],
+      "answer": 2,
+      "type": "mcq",
+      "definition": "Correct: 8. The tempting answer is 10: net progress is +1 m per day (climb 3, slip 2), so it looks like 10 days to cover 10 m. That reasoning over-counts because on the final day the snail climbs out during daylight and never slips that night. Track the position at the END of each full day: after day 1 it is at 1 m, after day 2 at 2 m, ... after day 7 at 7 m. On the morning of day 8 it climbs 3 m: 7 + 3 = 10 m, reaching the top before the night slip ever happens. So the answer is day 8, not day 10 (and not 7, which is where it stands at the close of the previous day). The rule of thumb: the well height minus the daily climb (10 − 3 = 7) must be covered at the net rate (+1/day = 7 days), then one more day to make the final climb — 7 + 1 = day 8.",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "If 5 machines make 5 widgets in 5 minutes, how long does it take 100 machines to make 100 widgets?",
+      "choices": [
+        "10 minutes",
+        "100 minutes",
+        "5 minutes",
+        "1 minute",
+        "20 minutes"
+      ],
+      "answer": 2,
+      "type": "mcq",
+      "definition": "Correct: 5 minutes. The trap answer is 100 minutes — the brain pattern-matches '5,5,5 → 100,100,100' and scales the time too. But the machines work in parallel, not in sequence. Find the per-machine rate: 5 machines make 5 widgets in 5 minutes, so each machine makes 1 widget in 5 minutes. That rate is independent of how many machines you have. With 100 machines each making its own widget simultaneously, 100 widgets are done in the same 5 minutes. The invariant is widgets per machine per minute (here 1/5), which never changes; scaling both the machine count and the widget count by the same factor (×20) leaves the time fixed. Only if a single machine had to make all 100 widgets would the time grow.",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "A bat and a ball cost 1.10 in total. The bat costs 1.00 more than the ball. How much does the ball cost?",
+      "choices": [
+        "0.10",
+        "0.15",
+        "1.00",
+        "0.05",
+        "0.01"
+      ],
+      "answer": 3,
+      "type": "mcq",
+      "definition": "Correct: 0.05. The famous wrong answer is 0.10: people subtract 1.00 from 1.10 and call the ball 0.10. Check it — if the ball is 0.10 and the bat is 1.00 more, the bat is 1.10, and the total would be 1.20, not 1.10. That fails. Set it up algebraically: let the ball cost x, so the bat costs x + 1.00. Then x + (x + 1.00) = 1.10, giving 2x + 1.00 = 1.10, so 2x = 0.10 and x = 0.05. Verify: ball 0.05, bat 1.05 (which is 1.00 more), total 1.10. The lesson: the '1.00 more' is a gap between the two prices, not the bat's price, so you cannot just subtract it from the total — the difference gets split across both items.",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "Standing in a line, Maria is 7th from the front and 14th from the back. How many people are in the line?",
+      "choices": [
+        "20",
+        "19",
+        "21",
+        "18",
+        "22"
+      ],
+      "answer": 0,
+      "type": "mcq",
+      "definition": "Correct: 20. The naive answer is 21: just add 7 + 14. That double-counts Maria, because she is included both when you count 7 from the front and when you count 14 from the back. Counting from the front, positions 1–6 are the people ahead of her, and position 7 is Maria. Counting from the back, positions 1–13 are the people behind her, and position 14 is Maria again. So the total is (6 ahead) + (Maria herself, once) + (13 behind) = 20. The clean formula: total = position-from-front + position-from-back − 1 = 7 + 14 − 1 = 20. The − 1 removes the one person (Maria) who was counted from both ends.",
+      "last_updated": "2026-06-29"
+    }
+  ]
+}

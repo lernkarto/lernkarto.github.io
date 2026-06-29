@@ -1,0 +1,250 @@
+{
+  "id": "cyrillic",
+  "name": "Cyrillic alphabet (Russian)",
+  "color": "#ff9f43",
+  "dual": true,
+  "lang": "ru",
+  "description": "The 33 letters of the Russian Cyrillic alphabet, grouped by how they relate to the Latin alphabet. Each letter is tested both ways (symbol→sound and sound→symbol), tracked separately.",
+  "categories": {
+    "familiar": "Same as Latin",
+    "false": "False friends",
+    "new": "New shapes"
+  },
+  "primerTitle": "Cyrillic (Russian) alphabet — quick recap",
+  "primer": "The Russian Cyrillic alphabet has **33 letters**, each with an **uppercase** and **lowercase** form. A useful way in is by relation to Latin: some letters *look and sound* the same, some are **false friends** (look Latin but sound different), and some are entirely new shapes. Two letters (Ъ, Ь) carry **no sound** of their own — they modify the preceding consonant.\n\n**Same as Latin (look + sound match):**\n- **А а** — a (as in 'car')\n- **К к** — k\n- **М м** — m\n- **О о** — o (as in 'or')\n- **Т т** — t\n\n**False friends (look Latin, sound different):**\n- **В в** — v (not 'b')\n- **Е е** — ye (as in 'yes')\n- **Н н** — n (not 'h')\n- **Р р** — r, rolled (not 'p')\n- **С с** — s (not 'c')\n- **У у** — u (as in 'boot'; not 'y')\n- **Х х** — kh (Scottish 'loch'; not 'x')\n\n**New shapes:**\n- **Б б** — b\n- **Г г** — g (hard, 'go')\n- **Д д** — d\n- **Ё ё** — yo (as in 'yonder'); always stressed\n- **Ж ж** — zh (like 's' in 'measure')\n- **З з** — z\n- **И и** — i (ee, as in 'meet')\n- **Й й** — y (short, as in 'boy'); a glide\n- **Л л** — l\n- **П п** — p (like Greek π)\n- **Ф ф** — f\n- **Ц ц** — ts (as in 'cats')\n- **Ч ч** — ch (as in 'church')\n- **Ш ш** — sh (as in 'shop')\n- **Щ щ** — shch (long, soft 'sh')\n- **Ъ ъ** — hard sign — *no sound*; keeps the consonant hard before a vowel\n- **Ы ы** — y — a tense, back 'i' (like 'i' in 'ill'); no English equivalent\n- **Ь ь** — soft sign — *no sound*; softens (palatalises) the preceding consonant\n- **Э э** — e (as in 'end'); the 'hard' e without the 'y' glide of Е\n- **Ю ю** — yu (as in 'universe')\n- **Я я** — ya (as in 'yard')\n\n**Special cases:** the *iotated* vowels Е, Ё, Ю, Я carry a 'y' glide; Э is the plain 'e' counterpart of Е; Ъ and Ь are silent modifiers; the dots on Ё are often dropped in print.",
+  "cards": [
+    {
+      "term": "А а",
+      "definition": "a (as in 'car')",
+      "category": "familiar",
+      "audio": "https://upload.wikimedia.org/wikipedia/commons/5/52/Ru-%D0%B0.ogg",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "К к",
+      "definition": "k",
+      "category": "familiar",
+      "audio": "https://upload.wikimedia.org/wikipedia/commons/c/c8/Ru-%D0%BA.ogg",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "М м",
+      "definition": "m",
+      "category": "familiar",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "О о",
+      "definition": "o (as in 'or')",
+      "category": "familiar",
+      "audio": "https://upload.wikimedia.org/wikipedia/commons/8/81/Ru-%D0%BE.ogg",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "Т т",
+      "definition": "t",
+      "category": "familiar",
+      "note": "Lowercase cursive can look like Latin 'm' — careful.",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "В в",
+      "definition": "v",
+      "category": "false",
+      "note": "False friend — looks like Latin B, but it's 'v'.",
+      "audio": "https://upload.wikimedia.org/wikipedia/commons/5/57/Ru-%D0%B2.ogg",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "Е е",
+      "definition": "ye (as in 'yes')",
+      "category": "false",
+      "note": "Looks like Latin E but carries a 'y' glide → 'ye'.",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "Н н",
+      "definition": "n",
+      "category": "false",
+      "note": "False friend — looks like Latin H, but it's 'n'.",
+      "audio": "https://upload.wikimedia.org/wikipedia/commons/f/ff/Ru-%D0%BD.ogg",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "Р р",
+      "definition": "r (rolled)",
+      "category": "false",
+      "note": "False friend — looks like Latin P, but it's a rolled 'r'.",
+      "audio": "https://upload.wikimedia.org/wikipedia/commons/6/6b/Ru-%D1%80.ogg",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "С с",
+      "definition": "s",
+      "category": "false",
+      "note": "False friend — looks like Latin C, but it's always 's'.",
+      "audio": "https://upload.wikimedia.org/wikipedia/commons/0/0f/Ru-%D1%81.ogg",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "У у",
+      "definition": "u (as in 'boot')",
+      "category": "false",
+      "note": "False friend — looks like Latin y, but it's 'u'.",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "Х х",
+      "definition": "kh (as in Scottish 'loch')",
+      "category": "false",
+      "note": "False friend — looks like Latin x, but it's a guttural 'kh'.",
+      "audio": "https://upload.wikimedia.org/wikipedia/commons/8/86/Ru-%D1%85.ogg",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "Б б",
+      "definition": "b",
+      "category": "new",
+      "audio": "https://upload.wikimedia.org/wikipedia/commons/9/9e/Ru-%D0%B1.ogg",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "Г г",
+      "definition": "g (hard, as in 'go')",
+      "category": "new",
+      "audio": "https://upload.wikimedia.org/wikipedia/commons/a/a9/Ru-%D0%B3.ogg",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "Д д",
+      "definition": "d",
+      "category": "new",
+      "audio": "https://upload.wikimedia.org/wikipedia/commons/b/b1/Ru-%D0%B4.ogg",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "Ё ё",
+      "definition": "yo (as in 'yonder')",
+      "category": "new",
+      "note": "Always stressed; the dots are often dropped in print.",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "Ж ж",
+      "definition": "zh (like 's' in 'measure')",
+      "category": "new",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "З з",
+      "definition": "z",
+      "category": "new",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "И и",
+      "definition": "i (ee, as in 'meet')",
+      "category": "new",
+      "audio": "https://upload.wikimedia.org/wikipedia/commons/6/63/Ru-%D0%B8.ogg",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "Й й",
+      "definition": "y (short, as in 'boy')",
+      "category": "new",
+      "note": "The 'short i' — a glide, not a full vowel.",
+      "audio": "https://upload.wikimedia.org/wikipedia/commons/6/69/Ru-%D0%B9.ogg",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "Л л",
+      "definition": "l",
+      "category": "new",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "П п",
+      "definition": "p",
+      "category": "new",
+      "note": "Like a Greek π.",
+      "audio": "https://upload.wikimedia.org/wikipedia/commons/c/cd/Ru-%D0%BF.ogg",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "Ф ф",
+      "definition": "f",
+      "category": "new",
+      "audio": "https://upload.wikimedia.org/wikipedia/commons/0/0b/Ru-%D1%84.ogg",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "Ц ц",
+      "definition": "ts (as in 'cats')",
+      "category": "new",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "Ч ч",
+      "definition": "ch (as in 'church')",
+      "category": "new",
+      "audio": "https://upload.wikimedia.org/wikipedia/commons/1/15/Ru-%D1%87.ogg",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "Ш ш",
+      "definition": "sh (as in 'shop')",
+      "category": "new",
+      "audio": "https://upload.wikimedia.org/wikipedia/commons/c/c7/Ru-%D1%88.ogg",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "Щ щ",
+      "definition": "shch (long, soft 'sh')",
+      "category": "new",
+      "audio": "https://upload.wikimedia.org/wikipedia/commons/3/35/Ru-%D1%89.ogg",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "Ъ ъ",
+      "definition": "hard sign (no sound)",
+      "category": "new",
+      "note": "Marks a hard consonant before a vowel; no sound of its own.",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "Ы ы",
+      "definition": "y (back vowel, like 'i' in 'ill')",
+      "category": "new",
+      "note": "No English equivalent — a tense, back 'i'.",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "Ь ь",
+      "definition": "soft sign (no sound)",
+      "category": "new",
+      "note": "Softens (palatalises) the preceding consonant; no sound of its own.",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "Э э",
+      "definition": "e (as in 'end')",
+      "category": "new",
+      "note": "The 'hard' e, without the 'y' glide of Е.",
+      "audio": "https://upload.wikimedia.org/wikipedia/commons/5/5d/Ru-%D1%8D.ogg",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "Ю ю",
+      "definition": "yu (as in 'universe')",
+      "category": "new",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "Я я",
+      "definition": "ya (as in 'yard')",
+      "category": "new",
+      "audio": "https://upload.wikimedia.org/wikipedia/commons/e/e2/Ru-%D1%8F.ogg",
+      "last_updated": "2026-06-29"
+    }
+  ]
+}

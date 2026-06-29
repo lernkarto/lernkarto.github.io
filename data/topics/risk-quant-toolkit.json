@@ -1,0 +1,13 @@
+{
+  "topic": "Quantitative toolkit",
+  "id": "risk-quant-toolkit",
+  "standard": true,
+  "primerTitle": "Quantitative toolkit",
+  "primer": "## Quantitative toolkit\nThe quant grounding the risk measures rely on: the **Quantitative methods** deck (distributions, MLE, Monte-Carlo, EVT, GARCH), **Hypothesis testing** (visual two-bell framework: α/β tradeoff, power — used in VaR backtesting and model validation), **Derivatives pricing**, and **Portfolio & investment** — the maths and instruments behind VaR, XVA and capital.",
+  "deckFiles": [
+    "quant-methods.json",
+    "hypothesis-testing.json",
+    "derivatives-pricing.json",
+    "portfolio-investment.json"
+  ]
+}

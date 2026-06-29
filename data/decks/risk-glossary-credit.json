@@ -1,0 +1,155 @@
+{
+  "id": "risk-glossary-credit",
+  "name": "Risk glossary — Credit risk",
+  "color": "#ffcc55",
+  "description": "19 credit risk terms, each thoroughly explained.",
+  "tags": [
+    "risk",
+    "glossary",
+    "reference",
+    "credit"
+  ],
+  "primerTitle": "Credit risk vocabulary",
+  "primer": "## Credit risk — vocabulary\nThe credit-risk vocabulary — PD/LGD/EAD and the loss identity, RWA, the IRB approaches, IFRS 9, NPL/GACS. Each card gives a full definition; this deck is the terms the matching concept deck assumes.\n\n**Terms:** Probability of Default (PD) · Loss Given Default (LGD) · Exposure at Default (EAD) · Credit Conversion Factor (CCF) · Expected Loss identity (EL = PD × LGD × EAD) · Standardised approach (credit risk) · Internal Ratings-Based approach (IRB) · Asymptotic Single-Risk-Factor model (ASRF) · Merton model / distance-to-default · Point-in-time vs through-the-cycle ratings (PIT vs TTC) · Obligor rating vs facility rating · IFRS 9 Expected Credit Loss (ECL) · Provisions vs capital · Non-Performing Loan (NPL) · GACS (Garanzia Cartolarizzazione Sofferenze) · Concentration risk & the Herfindahl index (HHI) · Credit migration · Recovery rate · Credit Default Swap (CDS)",
+  "cards": [
+    {
+      "term": "Probability of Default (PD)",
+      "definition": "The likelihood that an obligor fails to meet its obligations over a stated horizon, conventionally one year. It is estimated from internal rating models, agency ratings, financial ratios or market-implied signals (CDS, equity via Merton), and calibrated to a default definition (Basel: 90+ days past due or 'unlikely to pay'). PD is the first factor in expected loss, $EL = PD\\times LGD\\times EAD$, and can be measured through-the-cycle (stable, for capital) or point-in-time (current conditions, for pricing and IFRS 9).",
+      "note": "A softer default definition mechanically lowers measured PD.",
+      "last_updated": "2026-06-29",
+      "stale": true
+    },
+    {
+      "term": "Loss Given Default (LGD)",
+      "definition": "The fraction of exposure actually lost if default occurs, after recoveries from collateral, guarantees and the workout process; it is the complement of the recovery rate, $LGD = 1 - \\text{recovery rate}$. It is estimated from historical workout data (discounting recovered cash flows) or from market prices of defaulted debt, and depends heavily on seniority, collateral and the economic cycle. For regulatory capital a downturn (stressed) LGD is used, because recoveries shrink in recessions exactly when defaults cluster. LGD is the severity factor in $EL = PD\\times LGD\\times EAD$.",
+      "note": "Downturn LGD captures the correlation between high default rates and low recoveries.",
+      "last_updated": "2026-06-29",
+      "stale": true
+    },
+    {
+      "term": "Exposure at Default (EAD)",
+      "definition": "The expected amount owed by the obligor at the moment of default, the size factor in $EL = PD\\times LGD\\times EAD$. For a term loan it is broadly the outstanding balance, but for a revolving facility it must anticipate further drawdowns: $EAD = \\text{drawn} + CCF\\times\\text{undrawn}$, where the credit conversion factor estimates how much of the committed-but-unused line a distressed borrower will draw. It is estimated from historical drawdown behaviour around default and, like LGD, is taken at a downturn level for capital.",
+      "note": "Distressed borrowers draw down lines, so the undrawn portion is far from harmless.",
+      "last_updated": "2026-06-29",
+      "stale": true
+    },
+    {
+      "term": "Credit Conversion Factor (CCF)",
+      "definition": "The fraction of an off-balance-sheet or undrawn commitment assumed to be drawn by the time of default, converting contingent exposure into a loan-equivalent amount inside EAD. It is estimated empirically from how much of a line borrowers draw as they approach default, and is well above zero because distressed obligors tap available liquidity. In the standardised and foundation-IRB approaches CCFs are prescribed by regulators (e.g. for guarantees, letters of credit, undrawn lines); under advanced IRB banks may estimate their own.",
+      "note": "An easily understated driver of EAD for revolving and contingent exposures.",
+      "last_updated": "2026-06-29",
+      "stale": true
+    },
+    {
+      "term": "Expected Loss identity (EL = PD × LGD × EAD)",
+      "definition": "The core decomposition of credit risk: the average loss anticipated on an exposure equals the probability it defaults, times the fraction lost if it does, times the amount outstanding at that point. $EL = PD\\times LGD\\times EAD$ assumes the three factors are independent — a simplification, since downturn LGD and EAD rise with PD in stress. Expected loss is what provisions are meant to cover; the variability around it (unexpected loss) is what capital covers.",
+      "note": "It is an average, not a worst case — the tail beyond EL is the job of capital.",
+      "last_updated": "2026-06-29",
+      "stale": true
+    },
+    {
+      "term": "Standardised approach (credit risk)",
+      "definition": "The simpler Basel method for credit RWA, in which risk weights are set by regulation according to exposure class and, where permitted, external credit ratings (e.g. corporates, sovereigns, banks) or fixed weights (e.g. retail, residential mortgages). The bank does not estimate its own PD or LGD; it applies the supervisor's table and prescribed CCFs and credit-risk-mitigation rules. It is less risk-sensitive than IRB but more comparable across banks, and Basel III adds an output floor tying IRB results to a fraction of standardised RWA.",
+      "note": "More robust and comparable, but blunter than internal models.",
+      "last_updated": "2026-06-29",
+      "stale": true
+    },
+    {
+      "term": "Internal Ratings-Based approach (IRB)",
+      "sub": "foundation vs advanced",
+      "definition": "The Basel framework letting approved banks use their own estimates of risk parameters to compute credit RWA via the regulatory (ASRF-based) formula. Under Foundation IRB the bank estimates only PD, while LGD, EAD/CCF and maturity are set by the supervisor; under Advanced IRB the bank also estimates its own LGD, EAD and maturity. AIRB is more risk-sensitive and can lower RWA, which is why it requires extensive model validation, data history and supervisory approval, and is constrained by Basel III input and output floors.",
+      "note": "FIRB: own PD only. AIRB: own PD, LGD, EAD and maturity.",
+      "last_updated": "2026-06-29",
+      "stale": true
+    },
+    {
+      "term": "Asymptotic Single-Risk-Factor model (ASRF)",
+      "sub": "Vasicek / Gordy",
+      "definition": "The portfolio model underpinning the Basel IRB capital formula. It assumes a single systematic factor drives all obligors and that the portfolio is infinitely granular (no single-name concentration), which makes the required capital portfolio-invariant — each loan's contribution depends only on its own PD, LGD, EAD and the asset correlation, not on the rest of the book. Conditioning on a severe (99.9%) draw of the common factor gives the stressed conditional PD, $PD(M) = N\\!\\left(\\frac{N^{-1}(PD) + \\sqrt{\\rho}\\,N^{-1}(0.999)}{\\sqrt{1-\\rho}}\\right)$, and capital covers the resulting loss minus EL.",
+      "note": "Portfolio invariance is the feature that makes a simple per-loan formula possible — and the reason concentration risk is left to Pillar 2.",
+      "last_updated": "2026-06-29",
+      "stale": true
+    },
+    {
+      "term": "Merton model / distance-to-default",
+      "sub": "structural model",
+      "definition": "A structural credit model in which a firm's equity is a call option on its assets struck at the face value of its debt, so the firm defaults if asset value falls below debt at the horizon. The distance to default is the number of asset-value standard deviations between current assets and the default point, $DD = \\frac{\\ln(V/D) + (\\mu - \\tfrac12\\sigma^2)T}{\\sigma\\sqrt{T}}$, and it maps to a probability of default through the normal CDF, $PD = N(-DD)$. It links credit risk to leverage and equity volatility and underlies the Moody's/KMV expected-default-frequency framework.",
+      "note": "Structural models explain why default happens; reduced-form models just fit when it is priced to happen.",
+      "last_updated": "2026-06-29",
+      "stale": true
+    },
+    {
+      "term": "Point-in-time vs through-the-cycle ratings (PIT vs TTC)",
+      "definition": "Two philosophies for measuring PD. A point-in-time PD reflects current economic conditions and rises and falls with the cycle — appropriate for pricing and IFRS 9 expected credit loss. A through-the-cycle PD deliberately averages over the cycle for stability, so it is largely insensitive to short-term conditions — appropriate for regulatory capital, to avoid procyclical capital swings. The same obligor can hold a stable TTC rating while its PIT default risk moves sharply, and conflating the two understates risk in booms or whipsaws capital in downturns.",
+      "note": "Agency ratings are broadly TTC; market-implied (CDS/equity) measures are PIT.",
+      "last_updated": "2026-06-29",
+      "stale": true
+    },
+    {
+      "term": "Obligor rating vs facility rating",
+      "definition": "Two distinct dimensions of an internal rating system. The obligor (borrower) rating captures the probability of default — the chance the entity defaults on any obligation — and so maps to PD. The facility rating captures loss severity given default — collateral, seniority, guarantees, structure — and so maps to LGD. Because PD is an attribute of the borrower while LGD is an attribute of the specific exposure, two facilities to the same obligor share one PD but can carry very different LGDs (e.g. senior secured vs subordinated unsecured).",
+      "note": "One borrower, one PD; many facilities, many LGDs.",
+      "last_updated": "2026-06-29",
+      "stale": true
+    },
+    {
+      "term": "IFRS 9 Expected Credit Loss (ECL)",
+      "sub": "stages 1–3",
+      "definition": "The IFRS 9 impairment model requiring banks to provision for forward-looking, probability-weighted expected credit losses rather than only incurred losses, discounted to present value: $ECL = \\sum_s p_s\\,(PD_s\\times LGD_s\\times EAD_s)$ across macroeconomic scenarios. Exposures are staged: Stage 1 (performing) carries 12-month ECL; Stage 2 (significant increase in credit risk since origination) jumps to lifetime ECL; Stage 3 (credit-impaired) carries lifetime ECL with interest computed on the net carrying amount. The Stage 1→2 trigger is judgmental and causes a step change in provisions.",
+      "note": "Lifetime vs 12-month ECL at the SICR boundary is where the provisioning cliff sits.",
+      "last_updated": "2026-06-29",
+      "stale": true
+    },
+    {
+      "term": "Provisions vs capital",
+      "definition": "The two layers absorbing credit loss, and a frequently confused distinction. Loan loss provisions are a reserve booked against expected loss; they reduce reported profit and equity in anticipation of defaults, and their adequacy is tracked by the coverage ratio (provisions / NPLs). Regulatory capital sits behind provisions to absorb unexpected loss — the variability above the expected average — up to a high confidence level. So provisions pre-fund the loss you expect on average, while capital is the cushion for a bad year; the Basel IRB formula explicitly subtracts EL so capital is not double-counted against provisions.",
+      "note": "Provisions absorb expected loss; capital absorbs unexpected loss — distinct buffers.",
+      "last_updated": "2026-06-29",
+      "stale": true
+    },
+    {
+      "term": "Non-Performing Loan (NPL)",
+      "definition": "A loan in or near default, typically 90+ days past due or judged unlikely to be repaid in full even if not yet past due. NPLs (and the broader non-performing exposure category) must be provisioned and weigh on a bank's profitability and capital; the headline NPL ratio, $\\text{NPL ratio} = \\text{non-performing loans}/\\text{total loans}$, is a key gauge of asset quality and a focus of supervisory pressure. Resolution routes include workout, write-off, sale to specialist investors, or securitisation.",
+      "note": "High NPL stocks (e.g. post-2008 in parts of Europe) tie up capital and depress lending.",
+      "last_updated": "2026-06-29",
+      "stale": true
+    },
+    {
+      "term": "GACS (Garanzia Cartolarizzazione Sofferenze)",
+      "sub": "Italian NPL securitisation guarantee",
+      "definition": "An Italian state guarantee scheme (introduced 2016) designed to help banks offload bad loans (sofferenze) by securitising them. The Treasury, against a market-priced fee, guarantees the most senior tranche of an NPL securitisation, but only once that tranche has obtained an investment-grade rating from an eligible agency. By making the senior notes safer and more liquid, GACS narrowed the bid-ask gap between banks' book values and investors' prices, accelerating the run-down of Italy's large NPL stock.",
+      "note": "The guarantee attaches only to the senior tranche, and only above an investment-grade rating threshold.",
+      "last_updated": "2026-06-29",
+      "stale": true
+    },
+    {
+      "term": "Concentration risk & the Herfindahl index (HHI)",
+      "definition": "The extra portfolio risk from large exposures to a single obligor or to correlated groups, sectors or regions — risk that the granular ASRF model behind IRB assumes away, so it must be added back under Pillar 2. Single-name concentration is commonly measured by the Herfindahl-Hirschman index, $HHI = \\sum_i w_i^2$, the sum of squared exposure shares: it is near zero for a perfectly diversified book and rises toward one as exposure concentrates, and its inverse $1/HHI$ gives an effective number of equal-sized names.",
+      "note": "ASRF/IRB ignores concentration by construction; large-exposure limits and Pillar 2 add-ons compensate.",
+      "last_updated": "2026-06-29",
+      "stale": true
+    },
+    {
+      "term": "Credit migration",
+      "sub": "transition matrix",
+      "definition": "The movement of an obligor between rating grades over time, including the absorbing default state, captured by a transition (migration) matrix whose entries are $P_{ij} = \\Pr(\\text{grade } j \\text{ at } t{+}1 \\mid \\text{grade } i \\text{ at } t)$. Migration matters beyond outright default because rating downgrades reprice and revalue exposures (mark-to-market or spread widening) and can force sales by ratings-constrained investors. Transition matrices, estimated from historical rating changes, drive credit VaR models such as CreditMetrics and the term structure of multi-year PDs.",
+      "note": "Migration captures value loss from downgrades, not just the binary default event.",
+      "last_updated": "2026-06-29",
+      "stale": true
+    },
+    {
+      "term": "Recovery rate",
+      "definition": "The proportion of a defaulted exposure ultimately recovered through workout, restructuring or asset/collateral sale, expressed as a fraction of EAD; it is the complement of LGD, $\\text{recovery rate} = 1 - LGD$. It is estimated from historical workouts (with recovered cash flows discounted back to default) or proxied by post-default debt market prices, and depends strongly on seniority and collateral (senior secured recovers far more than subordinated unsecured) and on the cycle (recoveries fall in recessions).",
+      "note": "Seniority is decisive — the same firm's senior and junior debt recover very differently.",
+      "last_updated": "2026-06-29",
+      "stale": true
+    },
+    {
+      "term": "Credit Default Swap (CDS)",
+      "definition": "A bilateral contract in which the protection buyer pays a periodic premium (the CDS spread) and the protection seller compensates for loss on a reference entity's debt if a defined credit event (default, failure to pay, restructuring) occurs. It functions as insurance against default or as a way to take or hedge credit risk synthetically without holding the bond. At inception the premium leg equals the protection leg, so the fair spread is a clean market read on $PD\\times LGD$; the gap between a CDS spread and the cash bond's spread is the CDS-bond basis.",
+      "note": "A spike in CDS spreads is a real-time market signal of deteriorating credit.",
+      "last_updated": "2026-06-29",
+      "stale": true
+    }
+  ]
+}

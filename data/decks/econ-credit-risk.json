@@ -1,0 +1,240 @@
+{
+  "id": "econ-credit-risk",
+  "name": "Credit & other risk",
+  "color": "#f06595",
+  "description": "15 interview-screen MCQs — credit & other risk. Each card explains the answer.",
+  "tags": [
+    "interview",
+    "risk",
+    "mcq"
+  ],
+  "primerTitle": "Credit & other risk",
+  "primer": "## Credit & other risk\n**Expected loss = PD × LGD × EAD**, where LGD = 1 − recovery; EL is provisioned while **capital** buffers *unexpected* loss (the volatility around EL). **Counterparty** risk depends on default probability and exposure-at-default; **wrong-way risk** is adverse correlation between the two; **CVA** prices expected counterparty-default loss on derivatives. Operational risk = failed processes/people/systems/external events; model risk = a wrong/misused model. Basel pillars: 1 capital, 2 supervisory review, 3 market discipline (disclosure).",
+  "cards": [
+    {
+      "term": "In credit risk, expected loss is computed as:",
+      "choices": [
+        "LGD x EAD (loss severity times the exposure)",
+        "PD x LGD x EAD (default, severity, exposure)",
+        "PD x LGD / EAD (default loss scaled by exposure)",
+        "PD + LGD + EAD (the three factors added up)",
+        "PD x EAD (default probability times exposure)"
+      ],
+      "answer": 1,
+      "type": "mcq",
+      "definition": "Expected loss is the product of all three factors, EL = PD x LGD x EAD: the probability of default, the fraction of exposure lost if default occurs, and the exposure outstanding at default. Multiplying them gives the mean loss per period, which banks provision for. Using loss-given-default times exposure alone omits the chance the default ever happens, overstating EL. Dividing by exposure or summing the three terms is dimensionally meaningless, mixing a probability, a fraction, and a money amount. PD times exposure alone ignores that recovery cushions the loss, again overstating it.",
+      "last_updated": "2026-06-29",
+      "stale": true
+    },
+    {
+      "term": "Loss given default (LGD) is related to the recovery rate by:",
+      "choices": [
+        "LGD = recovery rate squared (compounded recovery)",
+        "LGD = recovery rate (the fraction recovered is lost)",
+        "LGD = 1 - recovery rate (the fraction not recovered)",
+        "LGD = 1 + recovery rate (exposure plus recovery)",
+        "LGD = PD x recovery rate (default-weighted recovery)"
+      ],
+      "answer": 2,
+      "type": "mcq",
+      "definition": "LGD = 1 - recovery rate, because whatever you do not recover on a defaulted exposure is what you lose; recover 40% and you lose 60%. Setting LGD equal to the recovery rate inverts the relationship, calling the recovered fraction a loss. One plus the recovery rate exceeds 1, impossible for a loss fraction bounded in [0,1]. Squaring the recovery rate has no economic meaning and would not sum to 100% with recovery. Multiplying PD by recovery mixes a default probability into a quantity that should be a pure loss severity, independent of how often default occurs.",
+      "last_updated": "2026-06-29",
+      "stale": true
+    },
+    {
+      "term": "For a loan with PD = 2%, LGD = 60%, and EAD = 1,000,000 EUR, the expected loss is:",
+      "choices": [
+        "120,000 EUR",
+        "6,000 EUR",
+        "600,000 EUR",
+        "12,000 EUR",
+        "20,000 EUR"
+      ],
+      "answer": 3,
+      "type": "mcq",
+      "definition": "EL = PD x LGD x EAD = 0.02 x 0.60 x 1,000,000 = 12,000 EUR. The other figures come from dropping or misplacing a factor: 120,000 uses ten times the PD or misplaces a decimal; 6,000 halves the correct LGD or doubles the PD wrongly; 600,000 is LGD x EAD with no PD at all; 20,000 is PD x EAD ignoring the 60% LGD, treating the whole exposure as lost on default. Only multiplying all three factors gives the correct mean loss.",
+      "last_updated": "2026-06-29",
+      "stale": true
+    },
+    {
+      "term": "Unexpected loss in credit risk, against which capital is held, refers to:",
+      "choices": [
+        "The fraction of a defaulted exposure that is recovered",
+        "The variability of losses around their expected level",
+        "The expected loss already covered by provisions",
+        "The borrower's probability of defaulting over the horizon",
+        "The exposure outstanding at the moment of default"
+      ],
+      "answer": 1,
+      "type": "mcq",
+      "definition": "Capital is held against unexpected loss, the variability of losses around their expected level, because a bank can plan and provision for the average but must buffer the swings above it. Expected loss itself is covered by provisions and pricing, not capital, so naming it confuses the two layers of defence. The recovery rate, the probability of default, and the exposure at default are inputs that feed the expected loss; none is the dispersion measure that capital is sized to absorb. The key intuition: provisions cover the mean, capital covers the volatility of the tail.",
+      "last_updated": "2026-06-29",
+      "stale": true
+    },
+    {
+      "term": "Counterparty credit risk in a derivatives transaction is the risk that:",
+      "choices": [
+        "The other party defaults before settling its side",
+        "The pricing model is misspecified or miscalibrated",
+        "Market volatility rises and inflates the margin calls",
+        "The underlying asset becomes hard to sell quickly",
+        "Interest rates rise and move the position's value"
+      ],
+      "answer": 0,
+      "type": "mcq",
+      "definition": "Counterparty credit risk is the risk that the other party to a derivatives trade defaults before settling its obligations, leaving you with a replacement cost. It depends jointly on the counterparty's default probability and the exposure at the time of default. A misspecified or miscalibrated model is model risk, not counterparty risk. Rising volatility and rising interest rates are market risks that move the position's value but are not about the counterparty failing. An asset becoming hard to sell is liquidity risk, concerning the ability to trade out rather than a counterparty's default.",
+      "last_updated": "2026-06-29",
+      "stale": true
+    },
+    {
+      "term": "'Wrong-way risk' occurs when:",
+      "choices": [
+        "Exposure and the default probability move independently",
+        "Exposure falls as the counterparty's default risk climbs",
+        "The recovery rate stays near 100% in the event of default",
+        "Exposure rises just as the counterparty's default risk does",
+        "The position is fully collateralised against any default"
+      ],
+      "answer": 3,
+      "type": "mcq",
+      "definition": "Wrong-way risk is adverse correlation: exposure to a counterparty rises just as that counterparty's default probability rises, so you owe the most exactly when they are least able to pay, amplifying losses precisely when defaults are most likely. Exposure and default moving independently is the benign neutral case, not wrong-way risk. Exposure falling as default risk rises is right-way risk, the favourable opposite. A recovery rate near 100% means almost no loss given default, and a fully collateralised position is largely protected, so neither describes the dangerous correlation that defines wrong-way risk.",
+      "last_updated": "2026-06-29",
+      "stale": true
+    },
+    {
+      "term": "Operational risk is the risk of loss from:",
+      "choices": [
+        "Markets too illiquid to trade without moving the price",
+        "Failed processes, people, systems, or external events",
+        "Adverse moves in market prices, rates, or volatility",
+        "A counterparty defaulting on the obligations it owes",
+        "Shifts in the level or slope of the yield curve"
+      ],
+      "answer": 1,
+      "type": "mcq",
+      "definition": "Operational risk is loss from failed internal processes, people, systems, or external events, the Basel definition covering fraud, system outages, legal and compliance failures, and human error. Markets too illiquid to trade describe liquidity risk. Adverse moves in prices, rates, or volatility are market risk. A counterparty defaulting is credit/counterparty risk. Shifts in interest rates are a market-risk factor. Operational risk is deliberately the residual category for losses not arising from taking market or credit positions.",
+      "last_updated": "2026-06-29",
+      "stale": true
+    },
+    {
+      "term": "Model risk is the risk that:",
+      "choices": [
+        "A model is wrong or misused, giving flawed values",
+        "Markets turn volatile and swing the position's value",
+        "A trading counterparty defaults on the amount it owes",
+        "An asset cannot be sold without a deep price discount",
+        "Interest rates rise and reprice the whole portfolio"
+      ],
+      "answer": 0,
+      "type": "mcq",
+      "definition": "Model risk is the risk that a model is wrong or misused, producing flawed valuations or decisions; it stems from incorrect assumptions, calibration errors, or applying a model outside its valid domain. Markets turning volatile is market risk, not a flaw in the model itself. A counterparty defaulting is counterparty credit risk. An asset that cannot be sold without a deep discount is liquidity risk. Rising interest rates are a market-risk factor. The distinguishing feature is that the loss originates inside the analytics, not in the external market or a trading partner.",
+      "last_updated": "2026-06-29",
+      "stale": true
+    },
+    {
+      "term": "The Basel framework's three pillars are minimum capital requirements, supervisory review, and:",
+      "choices": [
+        "Market discipline via disclosure",
+        "Fiscal policy set by the national treasury",
+        "Central-bank management of the exchange rate",
+        "Government-backed deposit-insurance schemes",
+        "Monetary policy steering short-term rates"
+      ],
+      "answer": 0,
+      "type": "mcq",
+      "definition": "The third Basel pillar is market discipline through disclosure: Pillar 1 sets minimum capital requirements, Pillar 2 is supervisory review, and Pillar 3 forces public disclosure so markets can assess and discipline a bank's risk-taking. Fiscal policy, monetary policy, and exchange-rate management are macroeconomic government tools, outside the Basel bank-capital framework. Deposit insurance is a separate safety-net mechanism, not one of the three pillars. Only transparency and disclosure complete the trio designed to keep banks adequately capitalised and accountable.",
+      "last_updated": "2026-06-29",
+      "stale": true
+    },
+    {
+      "term": "Under Basel's Fundamental Review of the Trading Book (FRTB), the regulatory market-risk measure shifted from:",
+      "choices": [
+        "99% VaR to 97.5% Expected Shortfall",
+        "97.5% Expected Shortfall to bond duration",
+        "99% VaR to portfolio standard deviation",
+        "Bond duration to 99% Value-at-Risk",
+        "97.5% Expected Shortfall to 99% VaR"
+      ],
+      "answer": 0,
+      "type": "mcq",
+      "definition": "FRTB shifted the regulatory market-risk measure from 99% Value-at-Risk to 97.5% Expected Shortfall, because ES averages losses beyond the threshold and so captures tail severity that VaR, a single quantile, ignores. The two ES-to-something options run the change backwards or replace ES with a cruder metric, contradicting the move toward better tail capture. Duration measures interest-rate sensitivity, not portfolio loss, so duration-to-VaR and VaR-to-standard-deviation describe transitions that never occurred. The crisis exposed VaR's blindness to how bad losses get once the threshold is breached, motivating the switch to ES.",
+      "last_updated": "2026-06-29",
+      "stale": true
+    },
+    {
+      "term": "A bank's capital adequacy ratio relates:",
+      "choices": [
+        "Regulatory capital to risk-weighted assets",
+        "Dividends paid to net earnings (payout)",
+        "Equity to total assets, unadjusted for risk",
+        "Net profit to total revenue (margin)",
+        "Customer deposits to outstanding loans"
+      ],
+      "answer": 0,
+      "type": "mcq",
+      "definition": "The capital adequacy ratio relates regulatory capital to risk-weighted assets, so riskier assets receive higher weights and require proportionally more capital. Measuring equity to total assets unadjusted for risk is a plain leverage ratio that ignores how risky those assets are, which is exactly what risk-weighting corrects. Dividends to earnings is a payout ratio, profit to revenue is a margin, and deposits to loans is a funding ratio; none measure solvency against risk. The ratio answers whether a bank holds enough loss-absorbing capital relative to the risk it carries.",
+      "last_updated": "2026-06-29",
+      "stale": true
+    },
+    {
+      "term": "Credit Value Adjustment (CVA) is:",
+      "choices": [
+        "A hedge offsetting interest-rate moves on the trade",
+        "A derivative's value cut for counterparty default risk",
+        "An adjustment to the volatility input in option pricing",
+        "An accounting adjustment for the taxes owed on the trade",
+        "A premium compensating for the asset's poor liquidity"
+      ],
+      "answer": 1,
+      "type": "mcq",
+      "definition": "Credit Value Adjustment is the reduction in a derivative's value for the counterparty's default risk: it prices the expected loss from the counterparty defaulting over the life of the trade, roughly the discounted expected exposure times PD times LGD. An interest-rate hedge offsets rate moves, not default. A volatility adjustment concerns option-pricing inputs, and a liquidity premium compensates for trading difficulty, neither about counterparty default. A tax adjustment is an accounting item unrelated to credit. CVA is specifically the credit-risk haircut on what a defaultable counterparty owes you.",
+      "last_updated": "2026-06-29",
+      "stale": true
+    },
+    {
+      "term": "Concentration risk in a credit portfolio arises from:",
+      "choices": [
+        "Holding many small loans that are mutually uncorrelated",
+        "Large exposures to one borrower, sector, or region",
+        "Measuring the portfolio loss with expected shortfall",
+        "Holding loans that all have short remaining maturities",
+        "Lending only where recovery rates are reliably high"
+      ],
+      "answer": 1,
+      "type": "mcq",
+      "definition": "Concentration risk arises from large exposures to a single borrower, sector, or region, which reduces diversification and leaves the portfolio vulnerable to correlated defaults hitting at once. Holding many small, uncorrelated loans is the opposite: it diversifies risk away. Measuring loss with expected shortfall is a measurement choice, not a source of concentration. Short maturities reduce the exposure window and high recovery rates reduce loss severity; both lower risk rather than concentrate it. The danger is putting too many eggs in one basket so a single shock can dominate the loss distribution.",
+      "last_updated": "2026-06-29",
+      "stale": true
+    },
+    {
+      "term": "A credit rating downgrade of a bond issuer typically:",
+      "choices": [
+        "Shortens the bond's effective duration measure",
+        "Widens the bond's credit spread, lowering its price",
+        "Raises the bond's price as its yield falls",
+        "Removes the bond's default risk altogether",
+        "Leaves the bond's credit spread entirely unchanged"
+      ],
+      "answer": 1,
+      "type": "mcq",
+      "definition": "A downgrade signals higher perceived default risk, so investors demand a higher yield, which widens the bond's credit spread and pushes its price down (yields and prices move inversely). Claiming the price rises ignores this inverse relationship. A downgrade does not remove default risk; it reflects increased risk. Saying the spread is unchanged contradicts the very meaning of a downgrade. Shortening duration confuses a credit-quality change with a maturity or cash-flow change; duration is a sensitivity measure unaffected by the rating per se.",
+      "last_updated": "2026-06-29",
+      "stale": true
+    },
+    {
+      "term": "Diversification reduces credit portfolio risk most when defaults across borrowers are:",
+      "choices": [
+        "Driven entirely by a single market factor",
+        "Perfectly positively correlated with one another",
+        "Bound to occur together in the same downturn",
+        "Severe, each losing the full exposure on default",
+        "Weakly correlated across the borrowers"
+      ],
+      "answer": 4,
+      "type": "mcq",
+      "definition": "Diversification cuts portfolio risk most when defaults are weakly correlated, because losses are then unlikely to strike together and the portfolio loss distribution is smoothed. Perfectly positively correlated defaults, or defaults bound to occur together in the same downturn, behave like one giant exposure with no diversification benefit. Defaults driven entirely by a single market factor leave systematic risk fully intact. Each default losing the full exposure raises loss severity but says nothing about correlation, which is the lever diversification works on. Low correlation is what lets idiosyncratic defaults offset each other.",
+      "last_updated": "2026-06-29",
+      "stale": true
+    }
+  ]
+}

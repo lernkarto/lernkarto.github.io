@@ -1,0 +1,142 @@
+{
+  "id": "qi-spatial",
+  "name": "Spatial & geometric counting",
+  "color": "#ffd43b",
+  "description": "Enumeration in geometry: painted-cube face counts, rectangles and squares in grids, polygon diagonals, and the circle-division 'almost powers of two' trap.",
+  "tags": [
+    "aptitude",
+    "interview",
+    "quant",
+    "spatial"
+  ],
+  "primerTitle": "Spatial counting — method",
+  "primer": "## Geometric enumeration\n- **Painted n³ cube:** corners 8 (3 faces); edges 12·(n−2) (2 faces); face-interiors 6·(n−2)² (1 face); core (n−2)³ (0 faces).\n- **Rectangles in an a×b grid:** C(a+1,2)·C(b+1,2). **Squares:** Σ (n−k+1)² = Σ k².\n- **Diagonals** of an n-gon: n(n−3)/2.\n- **Chords of n points on a circle** (general position) divide the disc into C(n,4)+C(n,2)+1 regions — for n=6 that's 31, not 32 (the doubling 1,2,4,8,16 breaks here).",
+  "cards": [
+    {
+      "term": "A 4x4x4 cube is painted on all six outer faces, then cut into 64 unit cubes. How many of the small cubes have paint on exactly TWO faces?",
+      "choices": [
+        "8",
+        "36",
+        "24",
+        "48",
+        "12"
+      ],
+      "answer": 2,
+      "type": "mcq",
+      "definition": "Correct: 24. Two-painted-face cubes lie along the edges but not at corners: 12 edges x (4 - 2) = 12 x 2 = 24.",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "A 5x5x5 cube is painted on all six outer faces, then cut into 125 unit cubes. How many of the small cubes have NO paint at all?",
+      "choices": [
+        "9",
+        "64",
+        "27",
+        "8",
+        "1"
+      ],
+      "answer": 2,
+      "type": "mcq",
+      "definition": "Correct: 27. The unpainted cubes form the inner (5-2)x(5-2)x(5-2) = 3x3x3 block: 27.",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "A 10x10x10 cube is painted on all outer faces and cut into 1000 unit cubes. How many small cubes have paint on exactly ONE face?",
+      "choices": [
+        "488",
+        "512",
+        "600",
+        "96",
+        "384"
+      ],
+      "answer": 4,
+      "type": "mcq",
+      "definition": "Correct: 384. One-painted-face cubes form the interior of each face: 6 faces x (10 - 2)^2 = 6 x 64 = 384.",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "Consider a 4x4 grid of unit squares (a 4-by-4 chessboard-like grid). How many rectangles of any size are there, using the grid lines as edges?",
+      "choices": [
+        "25",
+        "16",
+        "36",
+        "225",
+        "100"
+      ],
+      "answer": 4,
+      "type": "mcq",
+      "definition": "Correct: 100. A rectangle is fixed by choosing 2 of the 5 vertical lines and 2 of the 5 horizontal lines: C(5,2) x C(5,2) = 10 x 10 = 100.",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "In a 4x4 grid of unit squares, how many SQUARES of any size are there (1x1 up to 4x4)?",
+      "choices": [
+        "36",
+        "30",
+        "20",
+        "100",
+        "16"
+      ],
+      "answer": 1,
+      "type": "mcq",
+      "definition": "Correct: 30. Sum over sizes: 4^2 + 3^2 + 2^2 + 1^2 = 16 + 9 + 4 + 1 = 30.",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "How many squares of all sizes (1x1 through 8x8) are there on a standard 8x8 chessboard?",
+      "choices": [
+        "1296",
+        "204",
+        "64",
+        "65",
+        "100"
+      ],
+      "answer": 1,
+      "type": "mcq",
+      "definition": "Correct: 204. Sum of squares 1^2 + 2^2 + ... + 8^2 = 204.",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "How many diagonals does a regular 12-sided polygon (dodecagon) have? (A diagonal joins two non-adjacent vertices.)",
+      "choices": [
+        "54",
+        "12",
+        "24",
+        "66",
+        "108"
+      ],
+      "answer": 0,
+      "type": "mcq",
+      "definition": "Correct: 54. n(n-3)/2 = 12 x 9 / 2 = 54.",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "Place 6 points on a circle and draw every chord connecting them, with no three chords meeting at a single interior point. Into how many regions is the disc divided?",
+      "choices": [
+        "31",
+        "30",
+        "57",
+        "16",
+        "32"
+      ],
+      "answer": 0,
+      "type": "mcq",
+      "definition": "Correct: 31. The count is C(n,4) + C(n,2) + 1 = 15 + 15 + 1 = 31. For 1-5 points it goes 1, 2, 4, 8, 16, so everyone guesses 32 - but the doubling breaks exactly here.",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "A 3x3x3 cube is built from 27 unit cubes. How many of the unit cubes are completely interior - touching none of the outer surface?",
+      "choices": [
+        "0",
+        "8",
+        "1",
+        "9",
+        "27"
+      ],
+      "answer": 2,
+      "type": "mcq",
+      "definition": "Correct: 1. Only the single central cube is fully surrounded; it is the (3-2)^3 = 1 interior cube.",
+      "last_updated": "2026-06-29"
+    }
+  ]
+}

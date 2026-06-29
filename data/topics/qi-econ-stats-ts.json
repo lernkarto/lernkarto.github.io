@@ -1,0 +1,16 @@
+{
+  "topic": "Econometrics, statistics & time series",
+  "id": "qi-econ-stats-ts",
+  "standard": true,
+  "primerTitle": "Econometrics, statistics & time series — how to use it",
+  "primer": "## Econometrics, statistics & time series\nInterview-screen MCQs on the inferential core of a quant/risk role, **one deck per area**, each card explained.\n- **OLS regression** — BLUE, partial effects, R²/adjusted R², t- vs F-tests, log specifications.\n- **Regression diagnostics** — heteroskedasticity, autocorrelation, endogeneity, IV/2SLS, robust & HAC errors.\n- **Statistics & inference** — Type I/II errors, power, p-values, CIs, CLT/LLN, unbiased vs consistent, the bootstrap.\n- **Hypothesis testing** — visual two-bell framework: H₀ vs H₁, α/β tradeoff, power, p-value geometry — interactive slider deck.\n- **Panel data & causal inference** — logit/probit, fixed vs random effects, DiD, RDD, IV.\n- **Time series — fundamentals** — stationarity, white noise, random walks, ADF/KPSS, ARIMA orders via ACF/PACF.\n- **Time series — advanced** — cointegration & ECM, spurious regression, VAR, ARCH/GARCH.\n\nBest drilled in exam mode for fast, accurate recall.",
+  "deckFiles": [
+    "econ-ols.json",
+    "econ-diagnostics.json",
+    "econ-inference.json",
+    "hypothesis-testing.json",
+    "econ-panel-causal.json",
+    "econ-ts-fundamentals.json",
+    "econ-ts-advanced.json"
+  ]
+}

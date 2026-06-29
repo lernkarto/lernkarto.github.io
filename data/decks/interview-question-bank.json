@@ -1,0 +1,1458 @@
+{
+  "id": "interview-question-bank",
+  "name": "Interview question bank",
+  "color": "#ff6f9c",
+  "description": "150 multiple-choice + 10 open-ended questions for quant/data/risk screenings and interviews — stats, econometrics, risk, regulation, modelling, Python/R/SAS. Flip for an explained answer and sources.",
+  "categories": {
+    "mcq": {
+      "label": "Multiple choice",
+      "color": "#8ab4ff"
+    },
+    "open": {
+      "label": "Open ended",
+      "color": "#ffd166"
+    }
+  },
+  "cards": [
+    {
+      "term": "[Statistics] A study reports $p=0.03$ at $\\alpha=0.05$. The p-value is:",
+      "sub": "A) the magnitude of the underlying effect size in the population    B) the probability that the null hypothesis $H_0$ is actually true    C) the probability that the alternative hypothesis $H_1$ is actually true    D) the probability, if $H_0$ were true, of data this extreme or more",
+      "definition": "Correct: D) the probability, if $H_0$ were true, of data this extreme or more. A p-value is $P(\\text{data}\\,|\\,H_0)$, not $P(H_0\\,|\\,\\text{data})$; equating them is the prosecutor's fallacy.  (see [1])",
+      "note": "[1] p-value (Wikipedia) — https://en.wikipedia.org/wiki/P-value",
+      "category": "mcq",
+      "last_updated": "2026-06-29",
+      "stale": true
+    },
+    {
+      "term": "[Statistics] A Type I error is:",
+      "sub": "A) failing to reject a null hypothesis that is in fact false    B) a correct rejection of a genuinely false null hypothesis    C) accepting a true alternative when the null is in fact false    D) rejecting a true null hypothesis",
+      "definition": "Correct: D) rejecting a true null hypothesis. Type I = false positive (rate $\\alpha$); Type II = false negative (rate $\\beta$); power $=1-\\beta$.  (see [1])",
+      "note": "[1] p-value (Wikipedia) — https://en.wikipedia.org/wiki/P-value",
+      "category": "mcq",
+      "last_updated": "2026-06-29",
+      "stale": true
+    },
+    {
+      "term": "[Statistics] Statistical power is:",
+      "sub": "A) the probability of rejecting $H_0$ when it is false ($1-\\beta$)    B) the probability of a Type I error    C) the chosen significance threshold below which the p-value rejects    D) the complement of the significance level",
+      "definition": "Correct: A) the probability of rejecting $H_0$ when it is false ($1-\\beta$). Power rises with effect size, sample size and $\\alpha$, and falls with noise.  (see [1])",
+      "note": "[1] p-value (Wikipedia) — https://en.wikipedia.org/wiki/P-value",
+      "category": "mcq",
+      "last_updated": "2026-06-29",
+      "stale": true
+    },
+    {
+      "term": "[Statistics] The Central Limit Theorem says that, for finite variance,",
+      "sub": "A) the raw observations themselves become approximately normal as $n$ grows    B) the sample mean's distribution tends to normal as $n\\to\\infty$    C) it requires the underlying population to be normally distributed    D) it needs the population to be effectively infinite in size",
+      "definition": "Correct: B) the sample mean's distribution tends to normal as $n\\to\\infty$. It is the distribution of the standardised mean that converges, regardless of the parent shape.  (see [1])",
+      "note": "[1] Central limit theorem (Wikipedia) — https://en.wikipedia.org/wiki/Central_limit_theorem",
+      "category": "mcq",
+      "last_updated": "2026-06-29",
+      "stale": true
+    },
+    {
+      "term": "[Statistics] An unbiased estimator satisfies:",
+      "sub": "A) $\\hat\\theta$ maximises the likelihood of the observed sample    B) $E[\\hat\\theta]=\\theta$    C) $\\hat\\theta\\to\\theta$ in probability as the sample size grows    D) $\\mathrm{Var}(\\hat\\theta)=0$",
+      "definition": "Correct: B) $E[\\hat\\theta]=\\theta$. Unbiasedness is about the expectation; it is distinct from consistency (a large-sample property).  (see [1])",
+      "note": "[1] Maximum likelihood (Wikipedia) — https://en.wikipedia.org/wiki/Maximum_likelihood_estimation",
+      "category": "mcq",
+      "last_updated": "2026-06-29",
+      "stale": true
+    },
+    {
+      "term": "[Statistics] Which is NOT implied by an estimator being consistent?",
+      "sub": "A) it is fundamentally an asymptotic, large-sample property of the estimator    B) the estimator converges in probability to the true parameter $\\theta$    C) it is unbiased in every finite sample    D) its sampling distribution concentrates around $\\theta$ as $n$ becomes large",
+      "definition": "Correct: C) it is unbiased in every finite sample. Consistency does not require finite-sample unbiasedness; a biased estimator whose bias vanishes can still be consistent.  (see [1])",
+      "note": "[1] Maximum likelihood (Wikipedia) — https://en.wikipedia.org/wiki/Maximum_likelihood_estimation",
+      "category": "mcq",
+      "last_updated": "2026-06-29",
+      "stale": true
+    },
+    {
+      "term": "[Statistics] Maximum likelihood estimators are, under regularity conditions,",
+      "sub": "A) always minimum-variance even in small finite samples    B) always exactly unbiased regardless of the sample size    C) consistent and asymptotically efficient    D) valid only when the underlying data are normally distributed",
+      "definition": "Correct: C) consistent and asymptotically efficient. MLEs attain the Cramér-Rao bound asymptotically; finite-sample bias can exist (e.g. variance MLE).  (see [1])",
+      "note": "[1] Maximum likelihood (Wikipedia) — https://en.wikipedia.org/wiki/Maximum_likelihood_estimation",
+      "category": "mcq",
+      "last_updated": "2026-06-29",
+      "stale": true
+    },
+    {
+      "term": "[Statistics] As model complexity increases, the typical bias-variance behaviour is:",
+      "sub": "A) bias tends to increase while variance simultaneously decreases    B) bias decreases, variance increases    C) both the bias and the variance decrease together as complexity grows    D) both the bias and the variance increase together as complexity grows",
+      "definition": "Correct: B) bias decreases, variance increases. Test error is U-shaped: under-fitting is high-bias, over-fitting is high-variance.  (see [1])",
+      "note": "[1] Bias-variance tradeoff (Wikipedia) — https://en.wikipedia.org/wiki/Bias%E2%80%93variance_tradeoff",
+      "category": "mcq",
+      "last_updated": "2026-06-29",
+      "stale": true
+    },
+    {
+      "term": "[Statistics] For a standard normal, $z$ with $P(Z\\le z)=0.975$ is about:",
+      "sub": "A) 1.96    B) 1.28    C) 2.33    D) 1.645",
+      "definition": "Correct: A) 1.96. 1.645 is the 95th percentile; 2.33 the 99th (one-sided); 1.96 the 97.5th, the basis of a two-sided 95% CI.  (see [1])",
+      "note": "[1] Central limit theorem (Wikipedia) — https://en.wikipedia.org/wiki/Central_limit_theorem",
+      "category": "mcq",
+      "last_updated": "2026-06-29",
+      "stale": true
+    },
+    {
+      "term": "[Statistics] The one-sided 99% normal quantile is about:",
+      "sub": "A) 1.645    B) 3.09    C) 2.33    D) 1.96",
+      "definition": "Correct: C) 2.33. $z_{0.99}\\approx2.326$; the two-sided 99% value is $\\approx2.576$.  (see [1])",
+      "note": "[1] Central limit theorem (Wikipedia) — https://en.wikipedia.org/wiki/Central_limit_theorem",
+      "category": "mcq",
+      "last_updated": "2026-06-29",
+      "stale": true
+    },
+    {
+      "term": "[Statistics] A 95% confidence interval means:",
+      "sub": "A) 95% of the observed data points lie inside the interval    B) there is a 95% probability that the true parameter lies in this interval    C) the resulting point estimate is accurate to within 95%    D) over many samples, 95% of such intervals contain the true parameter",
+      "definition": "Correct: D) over many samples, 95% of such intervals contain the true parameter. In frequentist terms the parameter is fixed; the interval is random. The coverage is a long-run property.  (see [1])",
+      "note": "[1] Ordinary least squares (Wikipedia) — https://en.wikipedia.org/wiki/Ordinary_least_squares",
+      "category": "mcq",
+      "last_updated": "2026-06-29",
+      "stale": true
+    },
+    {
+      "term": "[Statistics] Zero Pearson correlation between $X$ and $Y$ implies:",
+      "sub": "A) a causal relationship between $X$ and $Y$ is absent by definition    B) $X$ and $Y$ are effectively identical variables    C) $X$ and $Y$ are statistically independent of one another    D) no linear association, but not necessarily independence",
+      "definition": "Correct: D) no linear association, but not necessarily independence. Correlation captures only linear dependence; e.g. $Y=X^2$ with symmetric $X$ has zero correlation yet strong dependence.  (see [1])",
+      "note": "[1] Ordinary least squares (Wikipedia) — https://en.wikipedia.org/wiki/Ordinary_least_squares",
+      "category": "mcq",
+      "last_updated": "2026-06-29",
+      "stale": true
+    },
+    {
+      "term": "[Statistics] If $X$ and $Y$ are independent, then $\\mathrm{Cov}(X,Y)$ is:",
+      "sub": "A) undefined whenever the variables are independent    B) 1    C) 0    D) $\\mathrm{Var}(X)$",
+      "definition": "Correct: C) 0. Independence implies zero covariance; the converse does not hold in general.  (see [1])",
+      "note": "[1] Ordinary least squares (Wikipedia) — https://en.wikipedia.org/wiki/Ordinary_least_squares",
+      "category": "mcq",
+      "last_updated": "2026-06-29",
+      "stale": true
+    },
+    {
+      "term": "[Statistics] $\\mathrm{Var}(X+Y)$ equals:",
+      "sub": "A) $\\mathrm{Var}(X)-\\mathrm{Var}(Y)$    B) $\\mathrm{Var}(X)+\\mathrm{Var}(Y)+2\\,\\mathrm{Cov}(X,Y)$    C) $\\mathrm{Var}(X)\\,\\mathrm{Var}(Y)$    D) $\\mathrm{Var}(X)+\\mathrm{Var}(Y)$ in all cases",
+      "definition": "Correct: B) $\\mathrm{Var}(X)+\\mathrm{Var}(Y)+2\\,\\mathrm{Cov}(X,Y)$. The cross term vanishes only when $X,Y$ are uncorrelated.  (see [1])",
+      "note": "[1] Ordinary least squares (Wikipedia) — https://en.wikipedia.org/wiki/Ordinary_least_squares",
+      "category": "mcq",
+      "last_updated": "2026-06-29",
+      "stale": true
+    },
+    {
+      "term": "[Statistics] Bayes' theorem states $P(A\\,|\\,B)=$",
+      "sub": "A) $\\dfrac{P(A)\\,P(B)}{P(A\\cap B)}$    B) $\\dfrac{P(B\\,|\\,A)\\,P(A)}{P(B)}$    C) $P(A)+P(B)-P(A\\cap B)$    D) $\\dfrac{P(A\\cap B)}{P(A)}$",
+      "definition": "Correct: B) $\\dfrac{P(B\\,|\\,A)\\,P(A)}{P(B)}$. Posterior $\\propto$ likelihood $\\times$ prior; the denominator $P(B)$ normalises.  (see [1])",
+      "note": "[1] Maximum likelihood (Wikipedia) — https://en.wikipedia.org/wiki/Maximum_likelihood_estimation",
+      "category": "mcq",
+      "last_updated": "2026-06-29",
+      "stale": true
+    },
+    {
+      "term": "[Statistics] The standard error of the sample mean is:",
+      "sub": "A) $\\sigma^2/n$    B) $\\sigma$    C) $\\sigma/n$    D) $\\sigma/\\sqrt{n}$",
+      "definition": "Correct: D) $\\sigma/\\sqrt{n}$. It shrinks with $\\sqrt{n}$ — quadrupling the sample halves the SE.  (see [1])",
+      "note": "[1] Central limit theorem (Wikipedia) — https://en.wikipedia.org/wiki/Central_limit_theorem",
+      "category": "mcq",
+      "last_updated": "2026-06-29",
+      "stale": true
+    },
+    {
+      "term": "[Statistics] Which measure of central tendency is most robust to outliers?",
+      "sub": "A) the median    B) the arithmetic mean of all observations    C) the geometric mean of the observations    D) the mode of the binned-frequency distribution",
+      "definition": "Correct: A) the median. The median has a 50% breakdown point; one extreme value can move the mean arbitrarily.  (see [1])",
+      "note": "[1] Ordinary least squares (Wikipedia) — https://en.wikipedia.org/wiki/Ordinary_least_squares",
+      "category": "mcq",
+      "last_updated": "2026-06-29",
+      "stale": true
+    },
+    {
+      "term": "[Statistics] The mean squared error of an estimator decomposes as:",
+      "sub": "A) bias plus variance, added on the same scale    B) the product of the bias and the variance    C) $\\text{bias}^2+\\text{variance}$    D) the variance minus the squared bias term",
+      "definition": "Correct: C) $\\text{bias}^2+\\text{variance}$. $\\text{MSE}=E[(\\hat\\theta-\\theta)^2]=\\mathrm{Var}(\\hat\\theta)+\\text{Bias}(\\hat\\theta)^2$.  (see [1])",
+      "note": "[1] Bias-variance tradeoff (Wikipedia) — https://en.wikipedia.org/wiki/Bias%E2%80%93variance_tradeoff",
+      "category": "mcq",
+      "last_updated": "2026-06-29",
+      "stale": true
+    },
+    {
+      "term": "[Statistics] Under iid sampling, the Law of Large Numbers guarantees:",
+      "sub": "A) each individual sample value equals the population mean    B) the variance of the underlying data converges to zero    C) the data themselves become normally distributed    D) the sample mean converges to $E[X]$ as $n\\to\\infty$",
+      "definition": "Correct: D) the sample mean converges to $E[X]$ as $n\\to\\infty$. The LLN is about convergence of the average; the CLT describes the fluctuations around it.  (see [1])",
+      "note": "[1] Central limit theorem (Wikipedia) — https://en.wikipedia.org/wiki/Central_limit_theorem",
+      "category": "mcq",
+      "last_updated": "2026-06-29",
+      "stale": true
+    },
+    {
+      "term": "[Statistics] A right (positively) skewed distribution typically has:",
+      "sub": "A) no well-defined mean, since the tail is too heavy    B) mean greater than median    C) a mean that is strictly less than the median    D) a mean exactly equal to the median",
+      "definition": "Correct: B) mean greater than median. A long right tail pulls the mean above the median; income distributions are a classic example.  (see [1])",
+      "note": "[1] Ordinary least squares (Wikipedia) — https://en.wikipedia.org/wiki/Ordinary_least_squares",
+      "category": "mcq",
+      "last_updated": "2026-06-29",
+      "stale": true
+    },
+    {
+      "term": "[Statistics] The Bonferroni correction is used to:",
+      "sub": "A) control the family-wise error rate across multiple tests    B) estimate the variance of the test statistic    C) increase the statistical power of each test    D) correct the regression standard errors for heteroskedasticity",
+      "definition": "Correct: A) control the family-wise error rate across multiple tests. Testing $m$ hypotheses at $\\alpha/m$ caps the chance of any false positive at $\\alpha$ (conservative).  (see [1])",
+      "note": "[1] p-value (Wikipedia) — https://en.wikipedia.org/wiki/P-value",
+      "category": "mcq",
+      "last_updated": "2026-06-29",
+      "stale": true
+    },
+    {
+      "term": "[Statistics] The bootstrap estimates a statistic's sampling distribution by:",
+      "sub": "A) resampling the data with replacement many times    B) iteratively removing outliers until the statistic stabilises    C) progressively increasing the original sample size    D) assuming the data follow a normal distribution",
+      "definition": "Correct: A) resampling the data with replacement many times. It is distribution-free and useful when analytic standard errors are intractable.  (see [1])",
+      "note": "[1] Ordinary least squares (Wikipedia) — https://en.wikipedia.org/wiki/Ordinary_least_squares",
+      "category": "mcq",
+      "last_updated": "2026-06-29",
+      "stale": true
+    },
+    {
+      "term": "[Statistics] A chi-square test of independence assesses:",
+      "sub": "A) the normality of the regression residuals    B) association between two categorical variables    C) the autocorrelation of a time-series sequence    D) the equality of two population means",
+      "definition": "Correct: B) association between two categorical variables. It compares observed vs expected cell counts in a contingency table.  (see [1])",
+      "note": "[1] p-value (Wikipedia) — https://en.wikipedia.org/wiki/P-value",
+      "category": "mcq",
+      "last_updated": "2026-06-29",
+      "stale": true
+    },
+    {
+      "term": "[Statistics] Compared with the normal, the Student-$t$ distribution has:",
+      "sub": "A) no finite variance for any number of degrees of freedom    B) systematically lighter tails than the normal    C) tails identical to those of the normal distribution    D) heavier tails, approaching normal as df increase",
+      "definition": "Correct: D) heavier tails, approaching normal as df increase. Heavier tails account for estimating $\\sigma$; for small samples this widens confidence intervals.  (see [1])",
+      "note": "[1] Central limit theorem (Wikipedia) — https://en.wikipedia.org/wiki/Central_limit_theorem",
+      "category": "mcq",
+      "last_updated": "2026-06-29",
+      "stale": true
+    },
+    {
+      "term": "[Statistics] A Poisson distribution models:",
+      "sub": "A) counts of rare independent events, with mean = variance = $\\lambda$    B) proportions constrained to the unit interval $[0,1]$    C) continuous, symmetric, real-valued measurements    D) the continuous waiting time between successive independent events",
+      "definition": "Correct: A) counts of rare independent events, with mean = variance = $\\lambda$. Equality of mean and variance is its signature; over-dispersion motivates negative-binomial models.  (see [1])",
+      "note": "[1] Maximum likelihood (Wikipedia) — https://en.wikipedia.org/wiki/Maximum_likelihood_estimation",
+      "category": "mcq",
+      "last_updated": "2026-06-29",
+      "stale": true
+    },
+    {
+      "term": "[Statistics] MAP estimation differs from MLE in that it:",
+      "sub": "A) ignores the likelihood and uses only the prior    B) incorporates a prior distribution    C) requires no observed data whatsoever    D) is always exactly unbiased in finite samples",
+      "definition": "Correct: B) incorporates a prior distribution. MAP maximises posterior $\\propto$ likelihood $\\times$ prior; with a flat prior it reduces to MLE.  (see [1])",
+      "note": "[1] Maximum likelihood (Wikipedia) — https://en.wikipedia.org/wiki/Maximum_likelihood_estimation",
+      "category": "mcq",
+      "last_updated": "2026-06-29",
+      "stale": true
+    },
+    {
+      "term": "[Statistics] A valid covariance matrix must be:",
+      "sub": "A) strictly diagonal with zero off-diagonal entries    B) symmetric and positive semi-definite    C) of full rank in every conceivable situation    D) orthogonal, with columns of unit length",
+      "definition": "Correct: B) symmetric and positive semi-definite. PSD guarantees non-negative variance for every linear combination; near-singularity signals collinearity.  (see [1])",
+      "note": "[1] Multicollinearity (Wikipedia) — https://en.wikipedia.org/wiki/Multicollinearity",
+      "category": "mcq",
+      "last_updated": "2026-06-29",
+      "stale": true
+    },
+    {
+      "term": "[Statistics] The z-score (standardisation) of $x$ is:",
+      "sub": "A) $x-\\mu/\\sigma$    B) $x/\\sigma$    C) $(x-\\mu)$    D) $(x-\\mu)/\\sigma$",
+      "definition": "Correct: D) $(x-\\mu)/\\sigma$. It re-expresses values in standard-deviation units, enabling comparison across scales.  (see [1])",
+      "note": "[1] Central limit theorem (Wikipedia) — https://en.wikipedia.org/wiki/Central_limit_theorem",
+      "category": "mcq",
+      "last_updated": "2026-06-29",
+      "stale": true
+    },
+    {
+      "term": "[Statistics] Heteroskedasticity-free, normally distributed errors are an assumption mainly needed for:",
+      "sub": "A) exact finite-sample inference in OLS    B) unbiasedness of the OLS coefficient estimates    C) computing the OLS point estimates themselves    D) consistency of the OLS estimator as $n$ grows",
+      "definition": "Correct: A) exact finite-sample inference in OLS. OLS point estimates need neither normality nor homoskedasticity; those affect the validity of standard errors and exact tests.  (see [1])",
+      "note": "[1] Ordinary least squares (Wikipedia) — https://en.wikipedia.org/wiki/Ordinary_least_squares",
+      "category": "mcq",
+      "last_updated": "2026-06-29",
+      "stale": true
+    },
+    {
+      "term": "[Statistics] Jensen's inequality implies, for a convex function $f$,",
+      "sub": "A) the function $f$ must be exactly linear everywhere    B) $E[f(X)]\\ge f(E[X])$    C) $E[f(X)]\\le f(E[X])$    D) $E[f(X)]=f(E[X])$",
+      "definition": "Correct: B) $E[f(X)]\\ge f(E[X])$. Convexity means the expectation of the transform exceeds the transform of the expectation — relevant to pricing and risk.  (see [1])",
+      "note": "[1] Ordinary least squares (Wikipedia) — https://en.wikipedia.org/wiki/Ordinary_least_squares",
+      "category": "mcq",
+      "last_updated": "2026-06-29",
+      "stale": true
+    },
+    {
+      "term": "[Econometrics] Under heteroskedastic errors, OLS coefficients are:",
+      "sub": "A) inconsistent    B) systematically biased away from the true population coefficients    C) still fully efficient and best linear unbiased (BLUE)    D) unbiased and consistent, but the usual standard errors are invalid",
+      "definition": "Correct: D) unbiased and consistent, but the usual standard errors are invalid. Use heteroskedasticity-robust (White/Huber) standard errors; the betas themselves are unaffected.  (see [1] [2])",
+      "note": "[1] Heteroscedasticity (Wikipedia) — https://en.wikipedia.org/wiki/Heteroscedasticity · [2] Ordinary least squares (Wikipedia) — https://en.wikipedia.org/wiki/Ordinary_least_squares",
+      "category": "mcq",
+      "last_updated": "2026-06-29",
+      "stale": true
+    },
+    {
+      "term": "[Econometrics] Severe multicollinearity primarily:",
+      "sub": "A) inflates the variance of coefficient estimates    B) most reliably detected by the Durbin-Watson statistic    C) introduces systematic bias into the coefficient estimates    D) lowers the overall $R^2$ of the fitted model",
+      "definition": "Correct: A) inflates the variance of coefficient estimates. Estimates become unstable and imprecise; the Variance Inflation Factor (VIF) diagnoses it.  (see [1])",
+      "note": "[1] Multicollinearity (Wikipedia) — https://en.wikipedia.org/wiki/Multicollinearity",
+      "category": "mcq",
+      "last_updated": "2026-06-29",
+      "stale": true
+    },
+    {
+      "term": "[Econometrics] Endogeneity (regressor correlated with the error) is addressed by:",
+      "sub": "A) simply adding more control variables to the regression    B) collecting a substantially larger sample of data    C) instrumental variables / two-stage least squares    D) applying a log transformation to the dependent variable $y$",
+      "definition": "Correct: C) instrumental variables / two-stage least squares. A valid instrument is relevant (correlated with the regressor) and exogenous (uncorrelated with the error).  (see [1])",
+      "note": "[1] Instrumental variables (Wikipedia) — https://en.wikipedia.org/wiki/Instrumental_variables_estimation",
+      "category": "mcq",
+      "last_updated": "2026-06-29",
+      "stale": true
+    },
+    {
+      "term": "[Econometrics] The Durbin-Watson statistic tests for:",
+      "sub": "A) first-order autocorrelation of residuals    B) multicollinearity among the explanatory variables    C) non-normality of the regression residuals    D) heteroskedasticity in the error variance",
+      "definition": "Correct: A) first-order autocorrelation of residuals. Values near 2 indicate no first-order autocorrelation; near 0 positive, near 4 negative.  (see [1])",
+      "note": "[1] Ordinary least squares (Wikipedia) — https://en.wikipedia.org/wiki/Ordinary_least_squares",
+      "category": "mcq",
+      "last_updated": "2026-06-29",
+      "stale": true
+    },
+    {
+      "term": "[Econometrics] The Gauss-Markov theorem states that, under its assumptions, OLS is:",
+      "sub": "A) the best linear unbiased estimator (BLUE)    B) biased but the most efficient estimator available    C) unbiased only when the errors are normally distributed    D) identical to the maximum likelihood estimator",
+      "definition": "Correct: A) the best linear unbiased estimator (BLUE). Minimum variance among linear unbiased estimators — no normality assumption required.  (see [1])",
+      "note": "[1] Ordinary least squares (Wikipedia) — https://en.wikipedia.org/wiki/Ordinary_least_squares",
+      "category": "mcq",
+      "last_updated": "2026-06-29",
+      "stale": true
+    },
+    {
+      "term": "[Econometrics] Omitted-variable bias arises when the omitted variable is:",
+      "sub": "A) purely random measurement noise unrelated to any of the regressors    B) completely uncorrelated with every other variable    C) correlated with both an included regressor and the outcome    D) measured perfectly with no error whatsoever",
+      "definition": "Correct: C) correlated with both an included regressor and the outcome. The included coefficient absorbs the omitted effect, biasing it in the direction of the product of correlations.  (see [1])",
+      "note": "[1] Ordinary least squares (Wikipedia) — https://en.wikipedia.org/wiki/Ordinary_least_squares",
+      "category": "mcq",
+      "last_updated": "2026-06-29",
+      "stale": true
+    },
+    {
+      "term": "[Econometrics] $R^2$ measures:",
+      "sub": "A) the correlation among the regression residuals    B) the fraction of variance in $y$ explained by the model    C) the slope coefficient of the fitted regression line    D) the model’s average prediction error measured on out-of-sample data",
+      "definition": "Correct: B) the fraction of variance in $y$ explained by the model. It never decreases when regressors are added — hence adjusted $R^2$ for model comparison.  (see [1])",
+      "note": "[1] Ordinary least squares (Wikipedia) — https://en.wikipedia.org/wiki/Ordinary_least_squares",
+      "category": "mcq",
+      "last_updated": "2026-06-29",
+      "stale": true
+    },
+    {
+      "term": "[Econometrics] Adjusted $R^2$ differs from $R^2$ by:",
+      "sub": "A) completely ignoring the residual sum of squares    B) being strictly bounded below by zero in all cases    C) penalising the number of regressors    D) always being larger than the ordinary $R^2$",
+      "definition": "Correct: C) penalising the number of regressors. It can fall when an added regressor does not improve fit enough to justify the lost degree of freedom.  (see [1])",
+      "note": "[1] Ordinary least squares (Wikipedia) — https://en.wikipedia.org/wiki/Ordinary_least_squares",
+      "category": "mcq",
+      "last_updated": "2026-06-29",
+      "stale": true
+    },
+    {
+      "term": "[Econometrics] With autocorrelated errors, appropriate inference uses:",
+      "sub": "A) ordinary OLS standard errors with no correction    B) first-differencing the series in every situation    C) dropping the intercept term from the regression    D) Newey-West (HAC) standard errors",
+      "definition": "Correct: D) Newey-West (HAC) standard errors. HAC errors are robust to heteroskedasticity and autocorrelation; the coefficients stay consistent.  (see [1])",
+      "note": "[1] Ordinary least squares (Wikipedia) — https://en.wikipedia.org/wiki/Ordinary_least_squares",
+      "category": "mcq",
+      "last_updated": "2026-06-29",
+      "stale": true
+    },
+    {
+      "term": "[Econometrics] A (weakly) stationary time series has:",
+      "sub": "A) a variance that increases steadily over time without bound    B) a unit root in its autoregressive representation    C) a deterministic trend in its conditional mean    D) constant mean, variance and autocovariances over time",
+      "definition": "Correct: D) constant mean, variance and autocovariances over time. Most classical time-series inference assumes stationarity; non-stationary series are often differenced.  (see [1])",
+      "note": "[1] Stationary process (Wikipedia) — https://en.wikipedia.org/wiki/Stationary_process",
+      "category": "mcq",
+      "last_updated": "2026-06-29",
+      "stale": true
+    },
+    {
+      "term": "[Econometrics] The Augmented Dickey-Fuller test checks for:",
+      "sub": "A) the presence of structural breaks in the series    B) heteroskedasticity in the conditional variance    C) a unit root (non-stationarity)    D) cointegration between two series directly",
+      "definition": "Correct: C) a unit root (non-stationarity). Rejecting the null of a unit root supports stationarity; failure to reject suggests differencing.  (see [1])",
+      "note": "[1] Stationary process (Wikipedia) — https://en.wikipedia.org/wiki/Stationary_process",
+      "category": "mcq",
+      "last_updated": "2026-06-29",
+      "stale": true
+    },
+    {
+      "term": "[Econometrics] Two I(1) series are cointegrated if:",
+      "sub": "A) both of the individual series are already stationary on their own    B) the two series are completely uncorrelated    C) a linear combination of them is I(0) (stationary)    D) the two series happen to share the same mean",
+      "definition": "Correct: C) a linear combination of them is I(0) (stationary). Cointegration implies a long-run equilibrium; an error-correction model captures the dynamics.  (see [1])",
+      "note": "[1] Cointegration (Wikipedia) — https://en.wikipedia.org/wiki/Cointegration",
+      "category": "mcq",
+      "last_updated": "2026-06-29",
+      "stale": true
+    },
+    {
+      "term": "[Econometrics] ARIMA(p,d,q) combines:",
+      "sub": "A) GARCH conditional-volatility terms combined with first differencing    B) autoregressive, differencing and moving-average terms    C) only autoregressive terms with no other components    D) fixed-effect and random-effect panel terms",
+      "definition": "Correct: B) autoregressive, differencing and moving-average terms. $d$ differencing induces stationarity; $p$ and $q$ set the AR and MA orders.  (see [1])",
+      "note": "[1] ARIMA (Wikipedia) — https://en.wikipedia.org/wiki/Autoregressive_integrated_moving_average",
+      "category": "mcq",
+      "last_updated": "2026-06-29",
+      "stale": true
+    },
+    {
+      "term": "[Econometrics] Choosing between fixed- and random-effects panel models uses:",
+      "sub": "A) the Hausman test    B) the Durbin-Watson test for serial correlation    C) the F-test comparing the two models’ $R^2$    D) the Jarque-Bera test for residual normality",
+      "definition": "Correct: A) the Hausman test. It checks whether the individual effects are correlated with regressors; if so, fixed effects are consistent.  (see [1])",
+      "note": "[1] Ordinary least squares (Wikipedia) — https://en.wikipedia.org/wiki/Ordinary_least_squares",
+      "category": "mcq",
+      "last_updated": "2026-06-29",
+      "stale": true
+    },
+    {
+      "term": "[Econometrics] Logit and probit models differ in:",
+      "sub": "A) whether they require panel rather than cross-sectional data    B) being a linear versus a fundamentally nonlinear model    C) whether they can accommodate binary outcome variables    D) the link function (logistic vs normal CDF)",
+      "definition": "Correct: D) the link function (logistic vs normal CDF). Coefficients differ by a scale factor; marginal effects and fit are usually very similar.  (see [1])",
+      "note": "[1] Logistic regression (Wikipedia) — https://en.wikipedia.org/wiki/Logistic_regression",
+      "category": "mcq",
+      "last_updated": "2026-06-29",
+      "stale": true
+    },
+    {
+      "term": "[Econometrics] In a logistic regression, a coefficient equals:",
+      "sub": "A) the change in log-odds per unit of the regressor    B) the change in the predicted probability per unit of the regressor    C) the marginal effect evaluated at the mean of the regressors    D) the odds ratio for a one-unit change",
+      "definition": "Correct: A) the change in log-odds per unit of the regressor. Exponentiating gives the odds ratio; the probability marginal effect depends on the covariate values.  (see [1])",
+      "note": "[1] Logistic regression (Wikipedia) — https://en.wikipedia.org/wiki/Logistic_regression",
+      "category": "mcq",
+      "last_updated": "2026-06-29",
+      "stale": true
+    },
+    {
+      "term": "[Econometrics] White's test and Breusch-Pagan test detect:",
+      "sub": "A) omitted explanatory variables in the model    B) multicollinearity among the regressors    C) serial correlation in the residuals    D) heteroskedasticity",
+      "definition": "Correct: D) heteroskedasticity. Both regress squared residuals on regressors; a significant fit indicates non-constant error variance.  (see [1])",
+      "note": "[1] Heteroscedasticity (Wikipedia) — https://en.wikipedia.org/wiki/Heteroscedasticity",
+      "category": "mcq",
+      "last_updated": "2026-06-29",
+      "stale": true
+    },
+    {
+      "term": "[Econometrics] The Breusch-Godfrey test detects:",
+      "sub": "A) non-normality of the regression residuals    B) endogeneity of one or more of the regressors in the model    C) heteroskedasticity in the error variance    D) higher-order serial correlation in residuals",
+      "definition": "Correct: D) higher-order serial correlation in residuals. Unlike Durbin-Watson it handles lagged dependent variables and higher orders.  (see [1])",
+      "note": "[1] Ordinary least squares (Wikipedia) — https://en.wikipedia.org/wiki/Ordinary_least_squares",
+      "category": "mcq",
+      "last_updated": "2026-06-29",
+      "stale": true
+    },
+    {
+      "term": "[Econometrics] A valid instrument must be:",
+      "sub": "A) always a lag of the dependent variable itself    B) perfectly measured with no error whatsoever    C) relevant and exogenous    D) strongly correlated with the structural error term",
+      "definition": "Correct: C) relevant and exogenous. Weak instruments (low relevance) bias 2SLS toward OLS and inflate variance.  (see [1])",
+      "note": "[1] Instrumental variables (Wikipedia) — https://en.wikipedia.org/wiki/Instrumental_variables_estimation",
+      "category": "mcq",
+      "last_updated": "2026-06-29",
+      "stale": true
+    },
+    {
+      "term": "[Econometrics] Regressing two independent random walks on each other tends to give:",
+      "sub": "A) a perfect coefficient of determination, $R^2=1$    B) a spurious significant relationship    C) heteroskedastic but otherwise unbiased estimates    D) coefficients that are correctly estimated as zero",
+      "definition": "Correct: B) a spurious significant relationship. Non-stationary trending series produce high $R^2$ and significant $t$-stats by chance — test for cointegration first.  (see [1])",
+      "note": "[1] Cointegration (Wikipedia) — https://en.wikipedia.org/wiki/Cointegration",
+      "category": "mcq",
+      "last_updated": "2026-06-29",
+      "stale": true
+    },
+    {
+      "term": "[Econometrics] The 'dummy variable trap' is:",
+      "sub": "A) interacting two dummy variables together in one term    B) perfect collinearity from including all category dummies plus an intercept    C) including too few category dummies in the model    D) accidentally omitting the dependent variable from the regression entirely",
+      "definition": "Correct: B) perfect collinearity from including all category dummies plus an intercept. Drop one category (the reference) or the intercept to break the exact linear dependence.  (see [1])",
+      "note": "[1] Multicollinearity (Wikipedia) — https://en.wikipedia.org/wiki/Multicollinearity",
+      "category": "mcq",
+      "last_updated": "2026-06-29",
+      "stale": true
+    },
+    {
+      "term": "[Econometrics] Estimating a logit model requires:",
+      "sub": "A) first-differencing the data repeatedly before estimation    B) a closed-form ordinary least squares solution    C) iterative numerical maximisation of the likelihood    D) no optimisation step of any kind",
+      "definition": "Correct: C) iterative numerical maximisation of the likelihood. There is no closed form; Newton-Raphson / IRLS is standard.  (see [1] [2])",
+      "note": "[1] Logistic regression (Wikipedia) — https://en.wikipedia.org/wiki/Logistic_regression · [2] Maximum likelihood (Wikipedia) — https://en.wikipedia.org/wiki/Maximum_likelihood_estimation",
+      "category": "mcq",
+      "last_updated": "2026-06-29",
+      "stale": true
+    },
+    {
+      "term": "[Econometrics] A key advantage of panel data is:",
+      "sub": "A) guaranteeing the stationarity of every series    B) completely eliminating every possible source of endogeneity    C) removing the need for instrumental variables    D) controlling for unobserved time-invariant heterogeneity",
+      "definition": "Correct: D) controlling for unobserved time-invariant heterogeneity. Fixed effects difference out anything constant within a unit, even if unobserved.  (see [1])",
+      "note": "[1] Ordinary least squares (Wikipedia) — https://en.wikipedia.org/wiki/Ordinary_least_squares",
+      "category": "mcq",
+      "last_updated": "2026-06-29",
+      "stale": true
+    },
+    {
+      "term": "[Econometrics] GARCH models are used to capture:",
+      "sub": "A) time-varying volatility clustering    B) unit roots in the level of the series    C) only the conditional mean equation of the process    D) cointegration between non-stationary series",
+      "definition": "Correct: A) time-varying volatility clustering. Conditional variance depends on past shocks and variances — central to market-risk modelling.  (see [1])",
+      "note": "[1] Value at risk (Wikipedia) — https://en.wikipedia.org/wiki/Value_at_risk",
+      "category": "mcq",
+      "last_updated": "2026-06-29",
+      "stale": true
+    },
+    {
+      "term": "[Econometrics] Multistep-ahead forecast uncertainty generally:",
+      "sub": "A) exactly zero for any stationary series    B) constant regardless of the forecast horizon    C) grows with the forecast horizon    D) shrinks steadily as the horizon lengthens",
+      "definition": "Correct: C) grows with the forecast horizon. Error variance accumulates; for stationary series it converges to the unconditional variance.  (see [1])",
+      "note": "[1] ARIMA (Wikipedia) — https://en.wikipedia.org/wiki/Autoregressive_integrated_moving_average",
+      "category": "mcq",
+      "last_updated": "2026-06-29",
+      "stale": true
+    },
+    {
+      "term": "[Risk] Value at Risk fails which coherence property that Expected Shortfall satisfies?",
+      "sub": "A) positive homogeneity under scaling of the position    B) subadditivity    C) translation invariance when adding a riskless amount    D) monotonicity with respect to dominating positions",
+      "definition": "Correct: B) subadditivity. VaR can penalise diversification (the VaR of a portfolio may exceed the sum of parts); ES is subadditive and coherent.  (see [1] [2])",
+      "note": "[1] Value at risk (Wikipedia) — https://en.wikipedia.org/wiki/Value_at_risk · [2] Expected shortfall (Wikipedia) — https://en.wikipedia.org/wiki/Expected_shortfall",
+      "category": "mcq",
+      "last_updated": "2026-06-29",
+      "stale": true
+    },
+    {
+      "term": "[Risk] Expected Shortfall is preferred to VaR because it:",
+      "sub": "A) is coherent and averages losses beyond the VaR threshold    B) is guaranteed to be numerically smaller than VaR in all cases    C) requires no assumption about the loss distribution    D) is substantially easier to backtest than VaR",
+      "definition": "Correct: A) is coherent and averages losses beyond the VaR threshold. $\\mathrm{ES}_\\alpha=\\tfrac{1}{1-\\alpha}\\int_\\alpha^1 \\mathrm{VaR}_u\\,du$ captures tail depth VaR ignores.  (see [1])",
+      "note": "[1] Expected shortfall (Wikipedia) — https://en.wikipedia.org/wiki/Expected_shortfall",
+      "category": "mcq",
+      "last_updated": "2026-06-29",
+      "stale": true
+    },
+    {
+      "term": "[Risk] A 1-day 99% VaR of €1m means:",
+      "sub": "A) the average daily loss on the portfolio is €1m    B) the worst loss that could ever conceivably occur is exactly €1m    C) on about 1% of days the loss is expected to exceed €1m    D) the portfolio losses can never exceed €1m at all",
+      "definition": "Correct: C) on about 1% of days the loss is expected to exceed €1m. VaR is a quantile, not a maximum; it is silent about how large the breach is.  (see [1])",
+      "note": "[1] Value at risk (Wikipedia) — https://en.wikipedia.org/wiki/Value_at_risk",
+      "category": "mcq",
+      "last_updated": "2026-06-29",
+      "stale": true
+    },
+    {
+      "term": "[Risk] FRTB replaced the regulatory market-risk measure with:",
+      "sub": "A) 99% Value at Risk over a one-day horizon    B) a stressed-period standard deviation of returns    C) the maximum historical drawdown of the portfolio    D) 97.5% Expected Shortfall",
+      "definition": "Correct: D) 97.5% Expected Shortfall. ES at 97.5% with liquidity horizons replaced 99% VaR to better capture tail risk.  (see [1] [2])",
+      "note": "[1] FRTB (Wikipedia) — https://en.wikipedia.org/wiki/Fundamental_Review_of_the_Trading_Book · [2] Expected shortfall (Wikipedia) — https://en.wikipedia.org/wiki/Expected_shortfall",
+      "category": "mcq",
+      "last_updated": "2026-06-29",
+      "stale": true
+    },
+    {
+      "term": "[Risk] Historical-simulation VaR:",
+      "sub": "A) uses only the single most recent trading day of historical returns    B) reprices the portfolio using empirical past return scenarios    C) requires generating Monte Carlo simulation paths first    D) assumes that returns follow a normal distribution",
+      "definition": "Correct: B) reprices the portfolio using empirical past return scenarios, with no distributional assumption. Simple and assumption-light, but bounded by the historical window and slow to react to regime change.  (see [1])",
+      "note": "[1] Value at risk (Wikipedia) — https://en.wikipedia.org/wiki/Value_at_risk",
+      "category": "mcq",
+      "last_updated": "2026-06-29",
+      "stale": true
+    },
+    {
+      "term": "[Risk] Parametric (variance-covariance) VaR assumes:",
+      "sub": "A) zero correlation between any pair of assets    B) returns are (jointly) normal    C) that asset returns are uniformly distributed    D) fat-tailed return distributions by construction",
+      "definition": "Correct: B) returns are (jointly) normal. Closed-form and fast, but understates tail risk when returns are leptokurtic.  (see [1])",
+      "note": "[1] Value at risk (Wikipedia) — https://en.wikipedia.org/wiki/Value_at_risk",
+      "category": "mcq",
+      "last_updated": "2026-06-29",
+      "stale": true
+    },
+    {
+      "term": "[Risk] Monte Carlo VaR:",
+      "sub": "A) simulates many scenarios from a chosen model and re-prices the portfolio    B) is a single closed-form analytical formula    C) ignores the correlations between the portfolio assets entirely    D) uses only realised historical return scenarios",
+      "definition": "Correct: A) simulates many scenarios from a chosen model and re-prices the portfolio. Flexible for nonlinear instruments but computationally heavy and model-dependent.  (see [1])",
+      "note": "[1] Value at risk (Wikipedia) — https://en.wikipedia.org/wiki/Value_at_risk",
+      "category": "mcq",
+      "last_updated": "2026-06-29",
+      "stale": true
+    },
+    {
+      "term": "[Risk] Scaling 1-day VaR to 10-day by $\\sqrt{10}$ assumes:",
+      "sub": "A) that portfolio losses are strictly bounded above    B) that portfolio returns are positively autocorrelated over time    C) that volatility itself follows a stochastic process    D) returns are iid (independent, identically distributed)",
+      "definition": "Correct: D) returns are iid (independent, identically distributed). The square-root-of-time rule breaks under autocorrelation or volatility clustering.  (see [1])",
+      "note": "[1] Value at risk (Wikipedia) — https://en.wikipedia.org/wiki/Value_at_risk",
+      "category": "mcq",
+      "last_updated": "2026-06-29",
+      "stale": true
+    },
+    {
+      "term": "[Risk] Kupiec's POF backtest checks whether:",
+      "sub": "A) the portfolio is adequately diversified across its constituent assets    B) the mean of the daily loss distribution is zero    C) the number of VaR exceptions matches the chosen confidence level    D) the portfolio returns are normally distributed",
+      "definition": "Correct: C) the number of VaR exceptions matches the chosen confidence level. Too many or too few breaches both signal a mis-calibrated model; regulators also use a traffic-light test.  (see [1])",
+      "note": "[1] Value at risk (Wikipedia) — https://en.wikipedia.org/wiki/Value_at_risk",
+      "category": "mcq",
+      "last_updated": "2026-06-29",
+      "stale": true
+    },
+    {
+      "term": "[Risk] Stressed VaR is:",
+      "sub": "A) VaR calibrated to a period of significant financial stress    B) the simple average of the most recent daily VaR estimates    C) ordinary VaR multiplied by a fixed regulatory factor    D) VaR computed assuming all correlations are zero",
+      "definition": "Correct: A) VaR calibrated to a period of significant financial stress. Introduced in Basel 2.5 so capital does not collapse in calm periods.  (see [1])",
+      "note": "[1] BIS — Basel Framework — https://www.bis.org/basel_framework/",
+      "category": "mcq",
+      "last_updated": "2026-06-29",
+      "stale": true
+    },
+    {
+      "term": "[Risk] An option's delta is:",
+      "sub": "A) the sensitivity of value to changes in volatility    B) the second derivative of value with respect to the underlying price    C) the sensitivity of value to the passage of time    D) the first derivative of value with respect to the underlying price",
+      "definition": "Correct: D) the first derivative of value with respect to the underlying price. Delta-hedging neutralises first-order price risk; gamma measures how delta itself moves.  (see [1])",
+      "note": "[1] Investopedia — https://www.investopedia.com/",
+      "category": "mcq",
+      "last_updated": "2026-06-29",
+      "stale": true
+    },
+    {
+      "term": "[Risk] Vega measures sensitivity to:",
+      "sub": "A) changes in the prevailing interest rates    B) volatility    C) the time decay of the option’s value    D) changes in the price of the underlying asset",
+      "definition": "Correct: B) volatility. Long options are long vega; it is largest for at-the-money options.  (see [1])",
+      "note": "[1] Investopedia — https://www.investopedia.com/",
+      "category": "mcq",
+      "last_updated": "2026-06-29",
+      "stale": true
+    },
+    {
+      "term": "[Risk] Gamma is:",
+      "sub": "A) the sensitivity of value to changes in prevailing interest rates    B) the first derivative of value with respect to price    C) the second derivative of value with respect to the underlying price    D) the sensitivity of value to changes in volatility",
+      "definition": "Correct: C) the second derivative of value with respect to the underlying price. High gamma means delta changes rapidly, making a hedge expensive to maintain.  (see [1])",
+      "note": "[1] Investopedia — https://www.investopedia.com/",
+      "category": "mcq",
+      "last_updated": "2026-06-29",
+      "stale": true
+    },
+    {
+      "term": "[Risk] Bond (modified) duration approximates:",
+      "sub": "A) the time to maturity of the bond exactly    B) the first-order percentage price change for a small yield move    C) the coupon rate paid by the bond directly    D) the second-order percentage price change for a small yield move",
+      "definition": "Correct: B) the first-order percentage price change for a small yield move. $\\Delta P/P\\approx -D\\,\\Delta y$; convexity is the second-order correction.  (see [1])",
+      "note": "[1] Investopedia — https://www.investopedia.com/",
+      "category": "mcq",
+      "last_updated": "2026-06-29",
+      "stale": true
+    },
+    {
+      "term": "[Risk] Convexity in fixed income:",
+      "sub": "A) identical to modified duration in magnitude    B) always negative for standard option-free bonds    C) a first-order measure that ignores the effect of large yield moves    D) is the second-order sensitivity of price to yield, improving the duration estimate",
+      "definition": "Correct: D) is the second-order sensitivity of price to yield, improving the duration estimate. Positive convexity benefits the holder: prices rise more than duration predicts when yields fall.  (see [1])",
+      "note": "[1] Investopedia — https://www.investopedia.com/",
+      "category": "mcq",
+      "last_updated": "2026-06-29",
+      "stale": true
+    },
+    {
+      "term": "[Risk] Expected loss on a credit exposure is:",
+      "sub": "A) $\\mathrm{PD}\\times\\mathrm{EAD}$    B) $\\mathrm{PD}\\times\\mathrm{LGD}\\times\\mathrm{EAD}$    C) $\\mathrm{LGD}\\times\\mathrm{EAD}$    D) $\\mathrm{PD}+\\mathrm{LGD}+\\mathrm{EAD}$",
+      "definition": "Correct: B) $\\mathrm{PD}\\times\\mathrm{LGD}\\times\\mathrm{EAD}$. Probability of default × loss-given-default × exposure-at-default; EL is provisioned, unexpected loss is capitalised.  (see [1])",
+      "note": "[1] Expected loss (Wikipedia) — https://en.wikipedia.org/wiki/Expected_loss",
+      "category": "mcq",
+      "last_updated": "2026-06-29",
+      "stale": true
+    },
+    {
+      "term": "[Risk] Loss given default equals:",
+      "sub": "A) 1 minus the recovery rate    B) the total exposure at the moment of default    C) the recovery rate on the defaulted exposure itself    D) the probability that the obligor defaults",
+      "definition": "Correct: A) 1 minus the recovery rate. LGD depends on collateral, seniority and workout costs; downturn LGD is used for capital.  (see [1])",
+      "note": "[1] Expected loss (Wikipedia) — https://en.wikipedia.org/wiki/Expected_loss",
+      "category": "mcq",
+      "last_updated": "2026-06-29",
+      "stale": true
+    },
+    {
+      "term": "[Risk] Regulatory capital is meant to absorb:",
+      "sub": "A) all conceivable losses with complete certainty    B) unexpected loss, while provisions cover expected loss    C) only operational fines and regulatory penalties    D) only the expected loss, with provisions held entirely separately",
+      "definition": "Correct: B) unexpected loss, while provisions cover expected loss. Capital is the buffer for losses beyond the expected level, to a high confidence (e.g. 99.9% IRB).  (see [1] [2])",
+      "note": "[1] BIS — Basel Framework — https://www.bis.org/basel_framework/ · [2] Expected loss (Wikipedia) — https://en.wikipedia.org/wiki/Expected_loss",
+      "category": "mcq",
+      "last_updated": "2026-06-29",
+      "stale": true
+    },
+    {
+      "term": "[Risk] A credit rating transition matrix describes:",
+      "sub": "A) only the pairwise default correlation between distinct obligors    B) probabilities of migrating between rating grades over a horizon    C) the term structure of the risk-free yield curve    D) expected recovery rates broken down by industry sector",
+      "definition": "Correct: B) probabilities of migrating between rating grades over a horizon. Its rows sum to one; the last column is typically the default state.  (see [1])",
+      "note": "[1] Investopedia — https://www.investopedia.com/",
+      "category": "mcq",
+      "last_updated": "2026-06-29",
+      "stale": true
+    },
+    {
+      "term": "[Risk] In the Merton structural model, a firm's equity is modelled as:",
+      "sub": "A) a default-free riskless bond on the firm’s assets    B) a put option written on the firm’s assets    C) a forward contract written on the firm’s underlying assets    D) a call option on the firm's assets struck at the debt face value",
+      "definition": "Correct: D) a call option on the firm's assets struck at the debt face value. Default occurs when asset value falls below debt at maturity; it links credit risk to volatility.  (see [1])",
+      "note": "[1] Merton model (Wikipedia) — https://en.wikipedia.org/wiki/Merton_model",
+      "category": "mcq",
+      "last_updated": "2026-06-29",
+      "stale": true
+    },
+    {
+      "term": "[Risk] The discriminatory power of a credit scorecard is usually measured by:",
+      "sub": "A) the F-statistic from the fitted regression    B) AUC / Gini (or KS)    C) the coefficient of determination, $R^2$    D) the root mean squared error of the scores",
+      "definition": "Correct: B) AUC / Gini (or KS). Gini $=2\\times\\mathrm{AUC}-1$; these rank-based metrics suit the rare-default setting.  (see [1])",
+      "note": "[1] ROC / AUC (Wikipedia) — https://en.wikipedia.org/wiki/Receiver_operating_characteristic",
+      "category": "mcq",
+      "last_updated": "2026-06-29",
+      "stale": true
+    },
+    {
+      "term": "[Risk] A point-in-time (PIT) PD differs from through-the-cycle (TTC) in that PIT:",
+      "sub": "A) always systematically higher than the through-the-cycle measure    B) computed while ignoring the specific obligor    C) an average of default rates taken over the cycle    D) reflects current economic conditions, so it is more cyclical",
+      "definition": "Correct: D) reflects current economic conditions, so it is more cyclical. IFRS 9 leans PIT; IRB capital leans TTC. Mixing philosophies between estimation and use is a classic flaw.  (see [1])",
+      "note": "[1] ECB — internal models — https://www.bankingsupervision.europa.eu/activities/internal_models/html/index.en.html",
+      "category": "mcq",
+      "last_updated": "2026-06-29",
+      "stale": true
+    },
+    {
+      "term": "[Risk] Single-name/sector concentration risk is commonly measured with:",
+      "sub": "A) the Liquidity Coverage Ratio (LCR)    B) the Herfindahl-Hirschman Index (HHI)    C) the portfolio Sharpe ratio across positions    D) the Gini coefficient of the income distribution",
+      "definition": "Correct: B) the Herfindahl-Hirschman Index (HHI). Higher HHI means a less granular, more concentrated portfolio, attracting Pillar 2 attention.  (see [1])",
+      "note": "[1] Investopedia — https://www.investopedia.com/",
+      "category": "mcq",
+      "last_updated": "2026-06-29",
+      "stale": true
+    },
+    {
+      "term": "[Risk] Credit Valuation Adjustment (CVA) is:",
+      "sub": "A) a dedicated liquidity buffer held against stressed cash outflows    B) the expected loss from a counterparty's possible default on derivatives    C) a regulatory capital ratio for the trading book    D) the adjustment for the bank’s own default risk",
+      "definition": "Correct: B) the expected loss from a counterparty's possible default on derivatives. It marks derivative values down for counterparty credit risk; CVA volatility is separately capitalised.  (see [1])",
+      "note": "[1] CVA (Wikipedia) — https://en.wikipedia.org/wiki/Credit_valuation_adjustment",
+      "category": "mcq",
+      "last_updated": "2026-06-29",
+      "stale": true
+    },
+    {
+      "term": "[Risk] Wrong-way risk occurs when:",
+      "sub": "A) collateral posted fully offsets the current exposure    B) exposure to a counterparty rises as its credit quality deteriorates    C) the trade has been perfectly hedged against all risk    D) the exposure falls as the counterparty’s credit quality worsens",
+      "definition": "Correct: B) exposure to a counterparty rises as its credit quality deteriorates. Exposure and default probability are adversely correlated — e.g. buying protection from a correlated seller.  (see [1])",
+      "note": "[1] CVA (Wikipedia) — https://en.wikipedia.org/wiki/Credit_valuation_adjustment",
+      "category": "mcq",
+      "last_updated": "2026-06-29",
+      "stale": true
+    },
+    {
+      "term": "[Risk] The Liquidity Coverage Ratio requires:",
+      "sub": "A) total assets to be held above total liabilities    B) stable available funding to be held over a full one-year horizon    C) HQLA to cover 30 days of stressed net cash outflows ($\\ge 100\\%$)    D) eligible capital to be held above risk-weighted assets",
+      "definition": "Correct: C) HQLA to cover 30 days of stressed net cash outflows ($\\ge 100\\%$). It ensures survival of a month-long liquidity shock; the NSFR is the one-year structural complement.  (see [1])",
+      "note": "[1] BIS — Basel Framework — https://www.bis.org/basel_framework/",
+      "category": "mcq",
+      "last_updated": "2026-06-29",
+      "stale": true
+    },
+    {
+      "term": "[Risk] The Net Stable Funding Ratio requires:",
+      "sub": "A) available stable funding to cover required stable funding over one year ($\\ge 100\\%$)    B) HQLA to cover 30 days of stressed net cash outflows    C) Tier 1 capital to be held above the total leverage exposure measure    D) total deposits to be held above total outstanding loans",
+      "definition": "Correct: A) available stable funding to cover required stable funding over one year ($\\ge 100\\%$). It curbs reliance on short-term wholesale funding for long-term assets.  (see [1])",
+      "note": "[1] BIS — Basel Framework — https://www.bis.org/basel_framework/",
+      "category": "mcq",
+      "last_updated": "2026-06-29",
+      "stale": true
+    },
+    {
+      "term": "[Risk] A liquidity gap analysis examines:",
+      "sub": "A) the bank’s overall regulatory capital ratio across exposures    B) the realised default rate on the loan book    C) maturity mismatches between assets and liabilities across time buckets    D) the modified duration of the bank’s equity",
+      "definition": "Correct: C) maturity mismatches between assets and liabilities across time buckets. Cumulative gaps flag funding needs; it underpins ALM and contingency funding plans.  (see [1])",
+      "note": "[1] Investopedia — https://www.investopedia.com/",
+      "category": "mcq",
+      "last_updated": "2026-06-29",
+      "stale": true
+    },
+    {
+      "term": "[Risk] Close-out netting agreements:",
+      "sub": "A) remove the need to post any collateral against the trades    B) reduce counterparty exposure to a single net amount on default    C) increase gross counterparty exposure on default    D) eliminate the portfolio’s market risk entirely",
+      "definition": "Correct: B) reduce counterparty exposure to a single net amount on default. Netting plus collateral/margining are the main mitigants of counterparty credit risk.  (see [1])",
+      "note": "[1] Investopedia — https://www.investopedia.com/",
+      "category": "mcq",
+      "last_updated": "2026-06-29",
+      "stale": true
+    },
+    {
+      "term": "[Risk] Potential Future Exposure (PFE) is:",
+      "sub": "A) a high quantile of the exposure distribution at a future date    B) the current mark-to-market value of the outstanding position    C) the expected exposure averaged over the horizon    D) the gross notional amount of the contract",
+      "definition": "Correct: A) a high quantile of the exposure distribution at a future date. Unlike expected exposure (used for CVA), PFE is a tail measure used for limits.  (see [1])",
+      "note": "[1] Investopedia — https://www.investopedia.com/",
+      "category": "mcq",
+      "last_updated": "2026-06-29",
+      "stale": true
+    },
+    {
+      "term": "[Risk] Operational risk is the risk of loss from:",
+      "sub": "A) adverse moves in market prices, rates and other market factors    B) inadequate or failed internal processes, people and systems, or external events    C) the default of a trading counterparty    D) a mismatch in interest-rate repricing",
+      "definition": "Correct: B) inadequate or failed internal processes, people and systems, or external events. It explicitly includes legal risk but excludes strategic and reputational risk.  (see [1])",
+      "note": "[1] BIS — Basel Framework — https://www.bis.org/basel_framework/",
+      "category": "mcq",
+      "last_updated": "2026-06-29",
+      "stale": true
+    },
+    {
+      "term": "[Risk] Under Basel III, operational-risk capital uses:",
+      "sub": "A) the Advanced Measurement Approach using internal operational models    B) a flat 8% charge applied to gross income    C) the Standardised Measurement Approach    D) internal Value-at-Risk models for operational losses",
+      "definition": "Correct: C) the Standardised Measurement Approach (replacing the AMA). The SMA combines a Business Indicator with an internal-loss multiplier; bespoke AMA models were removed.  (see [1])",
+      "note": "[1] BIS — Basel Framework — https://www.bis.org/basel_framework/",
+      "category": "mcq",
+      "last_updated": "2026-06-29",
+      "stale": true
+    },
+    {
+      "term": "[Risk] A Key Risk Indicator (KRI) is:",
+      "sub": "A) a regulatory capital ratio reported periodically to supervisors    B) a forward-looking metric signalling changes in a risk exposure    C) a realised, backward-looking loss figure only    D) a finding raised by the internal audit function",
+      "definition": "Correct: B) a forward-looking metric signalling changes in a risk exposure. KRIs feed early-warning and risk-appetite monitoring.  (see [1])",
+      "note": "[1] Investopedia — https://www.investopedia.com/",
+      "category": "mcq",
+      "last_updated": "2026-06-29",
+      "stale": true
+    },
+    {
+      "term": "[Risk] Risk appetite is:",
+      "sub": "A) the Value-at-Risk limit set on the trading book    B) the regulatory minimum capital the bank must hold    C) the amount and type of risk an institution is willing to accept to meet objectives    D) the maximum conceivable loss the institution could ever suffer",
+      "definition": "Correct: C) the amount and type of risk an institution is willing to accept to meet objectives. It cascades into limits and KRIs; the risk-appetite framework is a board-level document.  (see [1])",
+      "note": "[1] Investopedia — https://www.investopedia.com/",
+      "category": "mcq",
+      "last_updated": "2026-06-29",
+      "stale": true
+    },
+    {
+      "term": "[Risk] Component VaR is useful because it:",
+      "sub": "A) ignores the correlations between the individual portfolio positions    B) decomposes total VaR into additive contributions that sum to the portfolio VaR    C) is systematically larger than the total portfolio VaR    D) is always exactly equal to the marginal VaR",
+      "definition": "Correct: B) decomposes total VaR into additive contributions that sum to the portfolio VaR. It identifies which positions drive risk, guiding hedging and limit setting.  (see [1])",
+      "note": "[1] Value at risk (Wikipedia) — https://en.wikipedia.org/wiki/Value_at_risk",
+      "category": "mcq",
+      "last_updated": "2026-06-29",
+      "stale": true
+    },
+    {
+      "term": "[Regulation] Basel's three pillars are:",
+      "sub": "A) the credit risk parameters: probability of default, LGD and EAD    B) the capital tiers CET1, AT1 and Tier 2    C) minimum capital, supervisory review, and market discipline    D) the three risk types: credit, market and operational",
+      "definition": "Correct: C) minimum capital, supervisory review, and market discipline. Pillar 1 sets formulaic minimums, Pillar 2 is supervisory (ICAAP/SREP), Pillar 3 mandates disclosure.  (see [1])",
+      "note": "[1] BIS — Basel Framework — https://www.bis.org/basel_framework/",
+      "category": "mcq",
+      "last_updated": "2026-06-29",
+      "stale": true
+    },
+    {
+      "term": "[Regulation] The minimum CET1 ratio (before buffers) is:",
+      "sub": "A) 8% of risk-weighted assets    B) 4.5% of RWA    C) 3% of the total leverage exposure measure    D) 6% of risk-weighted assets",
+      "definition": "Correct: B) 4.5% of RWA. Tier 1 minimum is 6%, total capital 8%; buffers stack on top of these.  (see [1])",
+      "note": "[1] BIS — Basel Framework — https://www.bis.org/basel_framework/",
+      "category": "mcq",
+      "last_updated": "2026-06-29",
+      "stale": true
+    },
+    {
+      "term": "[Regulation] The minimum total capital ratio is:",
+      "sub": "A) 3% of the total leverage exposure measure    B) 8% of RWA    C) 10.5% of risk-weighted assets including buffers    D) 4.5% of risk-weighted assets",
+      "definition": "Correct: B) 8% of RWA. 8% is the Pillar 1 floor; the conservation buffer lifts the effective requirement to ~10.5%.  (see [1])",
+      "note": "[1] BIS — Basel Framework — https://www.bis.org/basel_framework/",
+      "category": "mcq",
+      "last_updated": "2026-06-29",
+      "stale": true
+    },
+    {
+      "term": "[Regulation] The Basel III leverage ratio minimum is:",
+      "sub": "A) 4.5% of risk-weighted assets    B) 8% of risk-weighted assets    C) 10% of the Tier 1 capital base    D) 3% (Tier 1 / exposure measure)",
+      "definition": "Correct: D) 3% (Tier 1 / exposure measure). A non-risk-weighted backstop against model error and RWA gaming.  (see [1])",
+      "note": "[1] BIS — Basel Framework — https://www.bis.org/basel_framework/",
+      "category": "mcq",
+      "last_updated": "2026-06-29",
+      "stale": true
+    },
+    {
+      "term": "[Regulation] The Basel III output floor caps model-based RWA at no less than:",
+      "sub": "A) 100% of the fully standardised RWA figure    B) 8% of the total leverage exposure measure    C) 72.5% of the standardised RWA    D) 50% of the fully standardised RWA figure",
+      "definition": "Correct: C) 72.5% of the standardised RWA. It limits how much internal models can reduce capital versus the standardised approach.  (see [1])",
+      "note": "[1] BIS — Basel Framework — https://www.bis.org/basel_framework/",
+      "category": "mcq",
+      "last_updated": "2026-06-29",
+      "stale": true
+    },
+    {
+      "term": "[Regulation] Risk-weighted assets are:",
+      "sub": "A) identical to the total leverage exposure measure    B) equal to the exposure at default (EAD) directly    C) total balance-sheet assets minus eligible capital    D) exposures scaled by risk weights",
+      "definition": "Correct: D) exposures scaled by risk weights. Capital ratios use RWA as the denominator; density = RWA/total assets gauges average riskiness.  (see [1])",
+      "note": "[1] BIS — Basel Framework — https://www.bis.org/basel_framework/",
+      "category": "mcq",
+      "last_updated": "2026-06-29",
+      "stale": true
+    },
+    {
+      "term": "[Regulation] Foundation IRB versus Advanced IRB:",
+      "sub": "A) they are effectively identical approaches with no real difference    B) F-IRB uses own PD only; A-IRB uses own PD, LGD and EAD    C) A-IRB relies on regulator-supplied PD estimates    D) F-IRB uses the bank’s own LGD estimates only",
+      "definition": "Correct: B) F-IRB uses own PD only; A-IRB uses own PD, LGD and EAD. Greater model reliance under A-IRB; input and output floors now constrain both.  (see [1] [2])",
+      "note": "[1] BIS — Basel Framework — https://www.bis.org/basel_framework/ · [2] ECB — internal models — https://www.bankingsupervision.europa.eu/activities/internal_models/html/index.en.html",
+      "category": "mcq",
+      "last_updated": "2026-06-29",
+      "stale": true
+    },
+    {
+      "term": "[Regulation] The standardised approach to credit risk uses:",
+      "sub": "A) internal Value-at-Risk models applied to the credit exposures    B) no risk weights, applying capital to raw exposures    C) the bank’s own internally estimated PD and LGD    D) regulator-set risk weights",
+      "definition": "Correct: D) regulator-set risk weights (often keyed to external ratings). Simpler and more comparable than IRB, at the cost of risk sensitivity.  (see [1])",
+      "note": "[1] BIS — Basel Framework — https://www.bis.org/basel_framework/",
+      "category": "mcq",
+      "last_updated": "2026-06-29",
+      "stale": true
+    },
+    {
+      "term": "[Regulation] Under IFRS 9, a Stage 2 exposure is provisioned at:",
+      "sub": "A) a full write-off of the exposure’s carrying value    B) lifetime expected credit loss    C) 12-month expected credit loss only, as in Stage 1    D) zero provision, since no significant deterioration occurred",
+      "definition": "Correct: B) lifetime expected credit loss. Stage 1 books 12-month ECL; a significant increase in credit risk moves it to lifetime ECL.  (see [1])",
+      "note": "[1] IFRS 9 — https://www.ifrs.org/issued-standards/list-of-standards/ifrs-9-financial-instruments/",
+      "category": "mcq",
+      "last_updated": "2026-06-29",
+      "stale": true
+    },
+    {
+      "term": "[Regulation] IFRS 9 differs from the old IAS 39 by using:",
+      "sub": "A) no provisioning for credit losses at all    B) a single fixed provision rate across all exposures    C) forward-looking expected credit loss rather than incurred loss    D) fair-value measurement applied to every single loan on the book",
+      "definition": "Correct: C) forward-looking expected credit loss rather than incurred loss. ECL front-loads loss recognition and is sensitive to macro scenarios.  (see [1])",
+      "note": "[1] IFRS 9 — https://www.ifrs.org/issued-standards/list-of-standards/ifrs-9-financial-instruments/",
+      "category": "mcq",
+      "last_updated": "2026-06-29",
+      "stale": true
+    },
+    {
+      "term": "[Regulation] The SREP produces:",
+      "sub": "A) the Pillar 2 Requirement (binding) and Pillar 2 Guidance (non-binding)    B) the binding minimum leverage ratio requirement for the bank    C) the Basel III output floor on model-based RWA    D) the Liquidity Coverage Ratio requirement (LCR)",
+      "definition": "Correct: A) the Pillar 2 Requirement (binding) and Pillar 2 Guidance (non-binding). P2R sits above Pillar 1 minimums; breaching P2G triggers supervisory dialogue, not automatic sanction.  (see [1])",
+      "note": "[1] ECB Banking Supervision — https://www.bankingsupervision.europa.eu/",
+      "category": "mcq",
+      "last_updated": "2026-06-29",
+      "stale": true
+    },
+    {
+      "term": "[Regulation] A bank is a 'significant institution' under the SSM if, among other criteria, its assets exceed:",
+      "sub": "A) €1 trillion    B) €100 billion    C) €5 billion    D) €30 billion",
+      "definition": "Correct: D) €30 billion. Also if >20% of national GDP or among the three largest in a member state; SIs are supervised directly by the ECB.  (see [1])",
+      "note": "[1] ECB Banking Supervision — https://www.bankingsupervision.europa.eu/",
+      "category": "mcq",
+      "last_updated": "2026-06-29",
+      "stale": true
+    },
+    {
+      "term": "[Regulation] The ICAAP is:",
+      "sub": "A) a binding minimum liquidity coverage rule    B) the supervisor’s own EU-wide stress test    C) the bank's internal assessment of the capital it needs for all material risks    D) a standardised public disclosure template under Pillar 3",
+      "definition": "Correct: C) the bank's internal assessment of the capital it needs for all material risks. Supervisors evaluate and challenge it within the SREP.  (see [1])",
+      "note": "[1] ECB Banking Supervision — https://www.bankingsupervision.europa.eu/",
+      "category": "mcq",
+      "last_updated": "2026-06-29",
+      "stale": true
+    },
+    {
+      "term": "[Regulation] The EBA EU-wide stress test:",
+      "sub": "A) replaces the bank’s internal ICAAP process    B) sets the binding Liquidity Coverage Ratio (LCR)    C) assesses bank resilience under a common adverse macro scenario    D) computes the Credit Valuation Adjustment (CVA) for the bank",
+      "definition": "Correct: C) assesses bank resilience under a common adverse macro scenario. Results feed P2G and supervisory dialogue; it is constrained-bottom-up using banks' own models.  (see [1])",
+      "note": "[1] EBA — https://www.eba.europa.eu/",
+      "category": "mcq",
+      "last_updated": "2026-06-29",
+      "stale": true
+    },
+    {
+      "term": "[Regulation] A G-SIB surcharge is:",
+      "sub": "A) an exemption from the binding leverage ratio    B) a regulatory tax levied on distributed dividends    C) extra CET1 scaled by a bank's systemic importance    D) a dedicated liquidity add-on imposed on systemically important banks",
+      "definition": "Correct: C) extra CET1 scaled by a bank's systemic importance. Buckets reflect size, interconnectedness, complexity, cross-jurisdictional activity and substitutability.  (see [1])",
+      "note": "[1] BIS — Basel Framework — https://www.bis.org/basel_framework/",
+      "category": "mcq",
+      "last_updated": "2026-06-29",
+      "stale": true
+    },
+    {
+      "term": "[Regulation] The countercyclical capital buffer is:",
+      "sub": "A) a variable CET1 buffer raised in credit booms and released in downturns    B) a fixed 2.5% buffer held at every point throughout the cycle    C) a binding liquidity ratio applied across the cycle    D) a hard floor placed under the leverage ratio",
+      "definition": "Correct: A) a variable CET1 buffer raised in credit booms and released in downturns. A macroprudential tool set by national authorities on domestic exposures.  (see [1])",
+      "note": "[1] BIS — Basel Framework — https://www.bis.org/basel_framework/",
+      "category": "mcq",
+      "last_updated": "2026-06-29",
+      "stale": true
+    },
+    {
+      "term": "[Regulation] The capital conservation buffer is:",
+      "sub": "A) a binding liquidity requirement held against outflows    B) a 3% floor placed under the leverage ratio    C) 2.5% CET1 above minimums, with payout restrictions if breached    D) an 8% minimum total-capital rule applied to risk-weighted assets",
+      "definition": "Correct: C) 2.5% CET1 above minimums, with payout restrictions if breached. Breaching it constrains dividends and bonuses to rebuild capital, without failing the bank.  (see [1])",
+      "note": "[1] BIS — Basel Framework — https://www.bis.org/basel_framework/",
+      "category": "mcq",
+      "last_updated": "2026-06-29",
+      "stale": true
+    },
+    {
+      "term": "[Regulation] TLAC / MREL require systemic banks to hold:",
+      "sub": "A) only highly liquid assets against stressed outflows    B) no subordinated or bail-inable debt whatsoever    C) only CET1 common equity, with no eligible bail-inable debt at all    D) loss-absorbing and recapitalisation capacity (equity plus bail-inable debt)",
+      "definition": "Correct: D) loss-absorbing and recapitalisation capacity (equity plus bail-inable debt). They make bail-in, not taxpayer bailout, the default resolution path.  (see [1])",
+      "note": "[1] EBA — https://www.eba.europa.eu/",
+      "category": "mcq",
+      "last_updated": "2026-06-29",
+      "stale": true
+    },
+    {
+      "term": "[Regulation] The EBA definition of default triggers at:",
+      "sub": "A) any single missed contractual payment    B) 30 days past due on any outstanding exposure    C) only the formal onset of legal bankruptcy or insolvency proceedings    D) 90 days past due on a material exposure, or unlikeliness to pay",
+      "definition": "Correct: D) 90 days past due on a material exposure, or unlikeliness to pay. Harmonised materiality thresholds and a defined cure period reduce cross-bank variability.  (see [1])",
+      "note": "[1] EBA — https://www.eba.europa.eu/",
+      "category": "mcq",
+      "last_updated": "2026-06-29",
+      "stale": true
+    },
+    {
+      "term": "[Regulation] FRTB hardened the trading/banking book boundary to:",
+      "sub": "A) merge the trading and banking books into one    B) curb capital arbitrage between the two books    C) remove market-risk capital from the trading book    D) exempt sovereign-bond holdings from the boundary",
+      "definition": "Correct: B) curb capital arbitrage between the two books. Reclassification is tightly restricted, with capital add-ons for switches.  (see [1])",
+      "note": "[1] FRTB (Wikipedia) — https://en.wikipedia.org/wiki/Fundamental_Review_of_the_Trading_Book",
+      "category": "mcq",
+      "last_updated": "2026-06-29",
+      "stale": true
+    },
+    {
+      "term": "[Modelling] Overfitting is characterised by:",
+      "sub": "A) high error on both the training and the test sets    B) a low test error while training error stays high    C) exactly equal training and test error in every conceivable case    D) low training error but high test/generalisation error",
+      "definition": "Correct: D) low training error but high test/generalisation error. The model memorises noise; remedies include regularisation, more data, and cross-validation.  (see [1])",
+      "note": "[1] Overfitting (Wikipedia) — https://en.wikipedia.org/wiki/Overfitting",
+      "category": "mcq",
+      "last_updated": "2026-06-29",
+      "stale": true
+    },
+    {
+      "term": "[Modelling] k-fold cross-validation:",
+      "sub": "A) rotates the validation fold to estimate out-of-sample performance    B) requires no separate held-out validation data at any stage    C) is applicable only to time-series data    D) trains the model directly on the test set",
+      "definition": "Correct: A) rotates the validation fold to estimate out-of-sample performance. It uses data efficiently and reduces variance of the performance estimate versus a single split.  (see [1] [2])",
+      "note": "[1] Cross-validation (Wikipedia) — https://en.wikipedia.org/wiki/Cross-validation_(statistics) · [2] scikit-learn — cross-validation — https://scikit-learn.org/stable/modules/cross_validation.html",
+      "category": "mcq",
+      "last_updated": "2026-06-29",
+      "stale": true
+    },
+    {
+      "term": "[Modelling] Compared with L2 (Ridge), L1 (Lasso) regularisation:",
+      "sub": "A) can drive some coefficients exactly to zero, performing feature selection    B) reliably generalises better than Ridge in essentially every case    C) is unable to shrink any of the coefficients    D) requires the errors to be Gaussian to work",
+      "definition": "Correct: A) can drive some coefficients exactly to zero, performing feature selection. The L1 penalty's corners induce sparsity; L2 shrinks smoothly without zeroing.  (see [1])",
+      "note": "[1] Lasso (Wikipedia) — https://en.wikipedia.org/wiki/Lasso_(statistics)",
+      "category": "mcq",
+      "last_updated": "2026-06-29",
+      "stale": true
+    },
+    {
+      "term": "[Modelling] For a default classifier on heavily imbalanced data, the most informative single metric is:",
+      "sub": "A) overall classification accuracy across both classes    B) AUC / Gini    C) the root mean squared error of the predictions    D) the coefficient of determination, $R^2$",
+      "definition": "Correct: B) AUC / Gini. Accuracy is misleading when one class dominates; AUC is threshold-independent and rank-based.  (see [1])",
+      "note": "[1] ROC / AUC (Wikipedia) — https://en.wikipedia.org/wiki/Receiver_operating_characteristic",
+      "category": "mcq",
+      "last_updated": "2026-06-29",
+      "stale": true
+    },
+    {
+      "term": "[Modelling] Precision is:",
+      "sub": "A) (TP+TN)/N    B) TP / (TP + FP)    C) TP / (TP + FN)    D) TN / (TN + FP)",
+      "definition": "Correct: B) TP / (TP + FP). Precision answers 'of predicted positives, how many are real?'; recall answers 'of real positives, how many found?'.  (see [1])",
+      "note": "[1] ROC / AUC (Wikipedia) — https://en.wikipedia.org/wiki/Receiver_operating_characteristic",
+      "category": "mcq",
+      "last_updated": "2026-06-29",
+      "stale": true
+    },
+    {
+      "term": "[Modelling] Recall (sensitivity) is:",
+      "sub": "A) TP / (TP + FP)    B) TP / (TP + FN)    C) FP / (FP + TN)    D) TN / (TN + FN)",
+      "definition": "Correct: B) TP / (TP + FN). High recall matters when missing a positive (e.g. a default) is costly.  (see [1])",
+      "note": "[1] ROC / AUC (Wikipedia) — https://en.wikipedia.org/wiki/Receiver_operating_characteristic",
+      "category": "mcq",
+      "last_updated": "2026-06-29",
+      "stale": true
+    },
+    {
+      "term": "[Modelling] An ROC curve plots:",
+      "sub": "A) true-positive rate against false-positive rate across thresholds    B) the training loss against the training epoch during fitting    C) the prediction error against model complexity    D) precision against recall across thresholds",
+      "definition": "Correct: A) true-positive rate against false-positive rate across thresholds. AUC is the area under it; 0.5 is random, 1.0 is perfect ranking.  (see [1])",
+      "note": "[1] ROC / AUC (Wikipedia) — https://en.wikipedia.org/wiki/Receiver_operating_characteristic",
+      "category": "mcq",
+      "last_updated": "2026-06-29",
+      "stale": true
+    },
+    {
+      "term": "[Modelling] A random forest reduces variance by:",
+      "sub": "A) using purely linear decision boundaries    B) averaging many decorrelated trees (bagging + feature subsampling)    C) pruning the ensemble down to a single tree    D) boosting the residuals of the trees sequentially one by one",
+      "definition": "Correct: B) averaging many decorrelated trees (bagging + feature subsampling). Decorrelation via random feature subsets is what distinguishes it from plain bagging.  (see [1])",
+      "note": "[1] scikit-learn — https://scikit-learn.org/stable/",
+      "category": "mcq",
+      "last_updated": "2026-06-29",
+      "stale": true
+    },
+    {
+      "term": "[Modelling] Gradient boosting builds the model by:",
+      "sub": "A) fitting a single very deep decision tree to all the data    B) averaging many independently grown trees    C) training all of the trees fully in parallel    D) adding trees sequentially, each fitting the previous residuals/gradient",
+      "definition": "Correct: D) adding trees sequentially, each fitting the previous residuals/gradient. Powerful but prone to overfit; learning rate and tree depth are key hyperparameters.  (see [1])",
+      "note": "[1] scikit-learn — https://scikit-learn.org/stable/",
+      "category": "mcq",
+      "last_updated": "2026-06-29",
+      "stale": true
+    },
+    {
+      "term": "[Modelling] Feature scaling matters most for:",
+      "sub": "A) purely rule-based, threshold-driven classification models    B) gradient- and distance-based methods (e.g. SVM, k-NN, neural nets)    C) random forests built from many decision trees    D) single decision trees with axis-aligned splits",
+      "definition": "Correct: B) gradient- and distance-based methods (e.g. SVM, k-NN, neural nets). Tree splits are scale-invariant; gradient descent and distances are not.  (see [1])",
+      "note": "[1] scikit-learn — https://scikit-learn.org/stable/",
+      "category": "mcq",
+      "last_updated": "2026-06-29",
+      "stale": true
+    },
+    {
+      "term": "[Modelling] The purpose of regularisation is to:",
+      "sub": "A) reduce variance/overfitting by penalising model complexity    B) guarantee that the resulting estimator is exactly unbiased    C) increase the model’s accuracy on the training set    D) remove the intercept term from the model",
+      "definition": "Correct: A) reduce variance/overfitting by penalising model complexity. It trades a little bias for a large variance reduction — the bias-variance tradeoff in action.  (see [1] [2])",
+      "note": "[1] Lasso (Wikipedia) — https://en.wikipedia.org/wiki/Lasso_(statistics) · [2] Bias-variance tradeoff (Wikipedia) — https://en.wikipedia.org/wiki/Bias%E2%80%93variance_tradeoff",
+      "category": "mcq",
+      "last_updated": "2026-06-29",
+      "stale": true
+    },
+    {
+      "term": "[Modelling] The test set should be used to:",
+      "sub": "A) report final performance, untouched during training and tuning    B) train the model parameters directly on the held-out data    C) select the most predictive features    D) tune the model’s hyperparameters",
+      "definition": "Correct: A) report final performance, untouched during training and tuning. Touching it during development leaks information and inflates the reported score.  (see [1])",
+      "note": "[1] Cross-validation (Wikipedia) — https://en.wikipedia.org/wiki/Cross-validation_(statistics)",
+      "category": "mcq",
+      "last_updated": "2026-06-29",
+      "stale": true
+    },
+    {
+      "term": "[Modelling] A hyperparameter is:",
+      "sub": "A) the value of the loss function evaluated at convergence    B) a coefficient learned directly from the data    C) a setting fixed before training (e.g. regularisation strength, tree depth)    D) the prediction produced by the fitted model",
+      "definition": "Correct: C) a setting fixed before training (e.g. regularisation strength, tree depth). Hyperparameters are chosen by validation/cross-validation, not estimated by the fit.  (see [1])",
+      "note": "[1] scikit-learn — https://scikit-learn.org/stable/",
+      "category": "mcq",
+      "last_updated": "2026-06-29",
+      "stale": true
+    },
+    {
+      "term": "[Modelling] Decision trees choose splits to:",
+      "sub": "A) maximise the correlation between features and target    B) reduce node impurity (Gini or entropy)    C) minimise the total number of leaf nodes    D) maximise the p-value of the chosen split",
+      "definition": "Correct: B) reduce node impurity (Gini or entropy). Greedy impurity reduction; unconstrained trees overfit, hence depth/leaf limits.  (see [1])",
+      "note": "[1] scikit-learn — https://scikit-learn.org/stable/",
+      "category": "mcq",
+      "last_updated": "2026-06-29",
+      "stale": true
+    },
+    {
+      "term": "[Modelling] Logistic regression outputs:",
+      "sub": "A) a hard class label only, with no associated probability    B) a probability via the logistic (sigmoid) function of a linear predictor    C) an unbounded real-valued number on the whole line    D) a non-negative count of events",
+      "definition": "Correct: B) a probability via the logistic (sigmoid) function of a linear predictor. $p=1/(1+e^{-x\\beta})$; a threshold (often 0.5) converts it to a class.  (see [1])",
+      "note": "[1] Logistic regression (Wikipedia) — https://en.wikipedia.org/wiki/Logistic_regression",
+      "category": "mcq",
+      "last_updated": "2026-06-29",
+      "stale": true
+    },
+    {
+      "term": "[Modelling] A standard way to handle class imbalance is:",
+      "sub": "A) removing all regularisation penalties from the model    B) class weighting or resampling (over/under-sampling, SMOTE)    C) discarding the minority class from the data    D) using raw accuracy as the training loss",
+      "definition": "Correct: B) class weighting or resampling (over/under-sampling, SMOTE). Combine with threshold tuning and rank-based metrics like AUC.  (see [1])",
+      "note": "[1] scikit-learn — https://scikit-learn.org/stable/",
+      "category": "mcq",
+      "last_updated": "2026-06-29",
+      "stale": true
+    },
+    {
+      "term": "[Modelling] Data leakage is:",
+      "sub": "A) using information in training that would be unavailable at prediction time    B) applying an excessively high degree of regularisation to the model    C) training on a dataset that is far too small    D) an unnecessarily slow model-training loop",
+      "definition": "Correct: A) using information in training that would be unavailable at prediction time. It inflates validation scores and collapses in production; e.g. including a post-outcome feature.  (see [1])",
+      "note": "[1] scikit-learn — https://scikit-learn.org/stable/",
+      "category": "mcq",
+      "last_updated": "2026-06-29",
+      "stale": true
+    },
+    {
+      "term": "[Modelling] Model calibration concerns whether:",
+      "sub": "A) the area under the ROC curve (AUC) is high    B) the input features have been properly scaled    C) predicted probabilities match observed frequencies    D) the model ranks positive cases above negative ones",
+      "definition": "Correct: C) predicted probabilities match observed frequencies. A model can rank well (high AUC) yet be miscalibrated; calibration is critical for PD/ECL.  (see [1])",
+      "note": "[1] scikit-learn — https://scikit-learn.org/stable/",
+      "category": "mcq",
+      "last_updated": "2026-06-29",
+      "stale": true
+    },
+    {
+      "term": "[Modelling] The Population Stability Index (PSI) monitors:",
+      "sub": "A) shift in the distribution of a score or feature over time    B) the area under the ROC curve (AUC) on the held-out test set    C) the learning rate used during training    D) the total number of model parameters",
+      "definition": "Correct: A) shift in the distribution of a score or feature over time. Rule of thumb: PSI > 0.25 signals a major shift warranting model review.  (see [1])",
+      "note": "[1] Investopedia — https://www.investopedia.com/",
+      "category": "mcq",
+      "last_updated": "2026-06-29",
+      "stale": true
+    },
+    {
+      "term": "[Modelling] In a credit confusion matrix, a false positive is:",
+      "sub": "A) a genuine default that the model correctly caught    B) a sound loan that the model correctly approved    C) an actual default that the model failed to flag    D) flagging a default that does not occur",
+      "definition": "Correct: D) flagging a default that does not occur. False positives cost lost business; false negatives (missed defaults) cost credit losses — the threshold trades them off.  (see [1])",
+      "note": "[1] ROC / AUC (Wikipedia) — https://en.wikipedia.org/wiki/Receiver_operating_characteristic",
+      "category": "mcq",
+      "last_updated": "2026-06-29",
+      "stale": true
+    },
+    {
+      "term": "[Python] In pandas, the default rate per grade from columns 'grade','default' is:",
+      "sub": "A) df.mean('grade')['default']    B) df.pivot('grade').mean()    C) df.groupby('grade')['default'].mean()    D) df.groupby('default')['grade'].sum()",
+      "definition": "Correct: C) df.groupby('grade')['default'].mean(). groupby splits by key, then mean of the 0/1 'default' column gives the rate per grade.  (see [1])",
+      "note": "[1] pandas — groupby — https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.groupby.html",
+      "category": "mcq",
+      "last_updated": "2026-06-29",
+      "stale": true
+    },
+    {
+      "term": "[Python] To load a CSV into a DataFrame you use:",
+      "sub": "A) pd.DataFrame.open('file.csv')    B) pd.csv('file.csv')    C) pd.read_csv('file.csv')    D) pd.load('file.csv')",
+      "definition": "Correct: C) pd.read_csv('file.csv'). Common arguments: sep, dtype, parse_dates, na_values.  (see [1])",
+      "note": "[1] pandas docs — https://pandas.pydata.org/docs/",
+      "category": "mcq",
+      "last_updated": "2026-06-29",
+      "stale": true
+    },
+    {
+      "term": "[Python] NumPy is fast mainly because it:",
+      "sub": "A) stores its underlying data internally as plain Python lists    B) relies on optimised Python for-loops internally    C) vectorises operations over contiguous typed arrays (C loops)    D) avoids allocating any working memory",
+      "definition": "Correct: C) vectorises operations over contiguous typed arrays (C loops). Vectorisation removes per-element Python overhead; prefer it to explicit loops.  (see [1])",
+      "note": "[1] NumPy docs — https://numpy.org/doc/stable/",
+      "category": "mcq",
+      "last_updated": "2026-06-29",
+      "stale": true
+    },
+    {
+      "term": "[Python] An inner join of two DataFrames on 'id' is:",
+      "sub": "A) a.join(b, how='outer')    B) pd.merge(a, b, on='id')    C) pd.merge(a, b)    D) a.concat(b)",
+      "definition": "Correct: B) pd.merge(a, b, on='id'). Default merge is an inner join on shared columns; set how= for left/right/outer.  (see [1])",
+      "note": "[1] pandas docs — https://pandas.pydata.org/docs/",
+      "category": "mcq",
+      "last_updated": "2026-06-29",
+      "stale": true
+    },
+    {
+      "term": "[Python] To drop rows with any missing value:",
+      "sub": "A) df.dropna()    B) df.drop()    C) df.isna()    D) df.fillna()",
+      "definition": "Correct: A) df.dropna(). Use fillna()/imputation when dropping would discard too much data.  (see [1])",
+      "note": "[1] pandas docs — https://pandas.pydata.org/docs/",
+      "category": "mcq",
+      "last_updated": "2026-06-29",
+      "stale": true
+    },
+    {
+      "term": "[Python] To fit an OLS regression with statsmodels:",
+      "sub": "A) sm.OLS(y, X).fit()    B) sm.regress(y ~ X)    C) sm.fit(y, X)    D) X.OLS(y)",
+      "definition": "Correct: A) sm.OLS(y, X).fit(). Add a constant with sm.add_constant(X); .summary() prints inference.  (see [1])",
+      "note": "[1] statsmodels — https://www.statsmodels.org/stable/",
+      "category": "mcq",
+      "last_updated": "2026-06-29",
+      "stale": true
+    },
+    {
+      "term": "[Python] The scikit-learn helper to split data is:",
+      "sub": "A) split(X, y)    B) X.split(0.2)    C) train_test_split(X, y, test_size=0.2)    D) cross_split(X, y)",
+      "definition": "Correct: C) train_test_split(X, y, test_size=0.2). Set random_state for reproducibility and stratify= for imbalanced labels.  (see [1])",
+      "note": "[1] scikit-learn — https://scikit-learn.org/stable/",
+      "category": "mcq",
+      "last_updated": "2026-06-29",
+      "stale": true
+    },
+    {
+      "term": "[Python] A logistic regression in scikit-learn is fit with:",
+      "sub": "A) LogisticRegression().fit(X, y)    B) LinearRegression().fit(X, y)    C) Logit(X, y)    D) glm(y ~ X)",
+      "definition": "Correct: A) LogisticRegression().fit(X, y). LinearRegression is for continuous targets; LogisticRegression for binary classification.  (see [1])",
+      "note": "[1] scikit-learn — linear models — https://scikit-learn.org/stable/modules/linear_model.html",
+      "category": "mcq",
+      "last_updated": "2026-06-29",
+      "stale": true
+    },
+    {
+      "term": "[R] In R, a logistic regression of default on x1,x2 in data d is:",
+      "sub": "A) lm(default ~ x1 + x2, data = d)    B) glm(default ~ x1 + x2, family = gaussian, data = d)    C) logit(default ~ x1 + x2)    D) glm(default ~ x1 + x2, family = binomial, data = d)",
+      "definition": "Correct: D) glm(default ~ x1 + x2, family = binomial, data = d). lm fits a linear model; logistic needs glm with the binomial family (logit link).  (see [1])",
+      "note": "[1] R — glm() — https://stat.ethz.ch/R-manual/R-devel/library/stats/html/glm.html",
+      "category": "mcq",
+      "last_updated": "2026-06-29",
+      "stale": true
+    },
+    {
+      "term": "[R] In R, an ordinary linear regression is:",
+      "sub": "A) ols(y ~ x)    B) lm(y ~ x, data = d)    C) glm(y ~ x, family = binomial)    D) reg(y, x)",
+      "definition": "Correct: B) lm(y ~ x, data = d). summary() gives coefficients, standard errors and $R^2$.  (see [1])",
+      "note": "[1] R — lm() — https://stat.ethz.ch/R-manual/R-devel/library/stats/html/lm.html",
+      "category": "mcq",
+      "last_updated": "2026-06-29",
+      "stale": true
+    },
+    {
+      "term": "[R] To keep rows of data frame d where column x is positive:",
+      "sub": "A) d[x > 0]    B) d.filter(x > 0)    C) where(d, x > 0)    D) subset(d, x > 0)",
+      "definition": "Correct: D) subset(d, x > 0). subset(d, x > 0) returns matching rows; dplyr's filter(d, x > 0) is the tidyverse equivalent; the others are not valid base R.  (see [1])",
+      "note": "[1] The R Project — https://www.r-project.org/",
+      "category": "mcq",
+      "last_updated": "2026-06-29",
+      "stale": true
+    },
+    {
+      "term": "[R] To see coefficients and fit of a model object m:",
+      "sub": "A) print(m$data)    B) model.summary()    C) summary(m)    D) coef()",
+      "definition": "Correct: C) summary(m). coef(m) returns just the coefficients; summary(m) adds inference.  (see [1])",
+      "note": "[1] The R Project — https://www.r-project.org/",
+      "category": "mcq",
+      "last_updated": "2026-06-29",
+      "stale": true
+    },
+    {
+      "term": "[R] To read a CSV in base R:",
+      "sub": "A) read.csv('file.csv')    B) pd.read_csv('file.csv')    C) import('file.csv')    D) load.csv('file.csv')",
+      "definition": "Correct: A) read.csv('file.csv'). readr::read_csv() is the faster tidyverse alternative.  (see [1])",
+      "note": "[1] The R Project — https://www.r-project.org/",
+      "category": "mcq",
+      "last_updated": "2026-06-29",
+      "stale": true
+    },
+    {
+      "term": "[R] To apply a function over columns of a matrix M:",
+      "sub": "A) map(M, mean)    B) apply(M, 1, mean)    C) sapply(M)    D) apply(M, 2, mean)",
+      "definition": "Correct: D) apply(M, 2, mean). MARGIN=2 is columns, 1 is rows; sapply/vapply iterate over list/vector elements.  (see [1])",
+      "note": "[1] The R Project — https://www.r-project.org/",
+      "category": "mcq",
+      "last_updated": "2026-06-29",
+      "stale": true
+    },
+    {
+      "term": "[SAS] The SAS procedure for logistic regression is:",
+      "sub": "A) PROC LOGISTIC    B) PROC GLM    C) PROC MEANS    D) PROC REG",
+      "definition": "Correct: A) PROC LOGISTIC. PROC LOGISTIC models binary/ordinal outcomes; the DATA step prepares the dataset first.  (see [1])",
+      "note": "[1] SAS Documentation — https://documentation.sas.com/",
+      "category": "mcq",
+      "last_updated": "2026-06-29",
+      "stale": true
+    },
+    {
+      "term": "[SAS] Summary statistics (mean, std, n) come from:",
+      "sub": "A) PROC SORT    B) PROC PRINT    C) PROC MEANS    D) PROC FREQ",
+      "definition": "Correct: C) PROC MEANS. PROC FREQ is for counts/crosstabs; PROC MEANS (or SUMMARY) for numeric summaries.  (see [1])",
+      "note": "[1] SAS Documentation — https://documentation.sas.com/",
+      "category": "mcq",
+      "last_updated": "2026-06-29",
+      "stale": true
+    },
+    {
+      "term": "[SAS] Ordinary least-squares linear regression in SAS uses:",
+      "sub": "A) PROC REG    B) PROC FREQ    C) PROC LOGISTIC    D) PROC SQL",
+      "definition": "Correct: A) PROC REG. PROC GLM also fits linear models and handles class variables.  (see [1])",
+      "note": "[1] SAS Documentation — https://documentation.sas.com/",
+      "category": "mcq",
+      "last_updated": "2026-06-29",
+      "stale": true
+    },
+    {
+      "term": "[SAS] Frequency tables and cross-tabulations use:",
+      "sub": "A) PROC FREQ    B) PROC TRANSPOSE    C) PROC REG    D) PROC MEANS",
+      "definition": "Correct: A) PROC FREQ. Add the /CHISQ option for a chi-square test of association.  (see [1])",
+      "note": "[1] SAS Documentation — https://documentation.sas.com/",
+      "category": "mcq",
+      "last_updated": "2026-06-29",
+      "stale": true
+    },
+    {
+      "term": "[SAS] To run SQL queries inside SAS:",
+      "sub": "A) PROC SQL    B) PROC PRINT    C) PROC IMPORT    D) the DATA step only",
+      "definition": "Correct: A) PROC SQL. PROC SQL joins and aggregates tables with standard SQL syntax.  (see [1])",
+      "note": "[1] SAS Documentation — https://documentation.sas.com/",
+      "category": "mcq",
+      "last_updated": "2026-06-29",
+      "stale": true
+    },
+    {
+      "term": "[SAS] Row-by-row data manipulation and new variables happen in:",
+      "sub": "A) PROC MEANS    B) PROC SQL only    C) the DATA step    D) PROC REPORT",
+      "definition": "Correct: C) the DATA step. The DATA step reads, transforms (IF/THEN, arrays) and outputs observations one at a time.  (see [1])",
+      "note": "[1] SAS Documentation — https://documentation.sas.com/",
+      "category": "mcq",
+      "last_updated": "2026-06-29",
+      "stale": true
+    },
+    {
+      "term": "[Model validation] A bank asks you to validate its 5-year-old IRB PD model for retail mortgages. How do you assess whether it is still fit for use, and when do you recalibrate vs redevelop?",
+      "sub": "Open-ended exercise — structure a full answer in ~30 min (written or spoken).",
+      "definition": "This probes structured thinking, not a list of test names. Frame it as one question — is the model still fit for its job? — and break that into a handful you would actually check: does the current portfolio still resemble what the model was built on; does it still separate riskier from safer borrowers; do its predicted rates still line up with what actually happened; is it stable over time and genuinely used as intended? Then give a clear decision rule in plain words: if it still ranks risk correctly but the levels have drifted, re-tune it (recalibrate); if it has stopped discriminating, or the portfolio, market or default definition has changed underneath it, rebuild it. Close by grading findings by severity and proposing a remediation plan. Showing the decomposition and a defensible call matters far more than reciting specific statistics.",
+      "note": "[1] ECB — internal models — https://www.bankingsupervision.europa.eu/activities/internal_models/html/index.en.html · [2] EBA — https://www.eba.europa.eu/",
+      "category": "open",
+      "last_updated": "2026-06-29",
+      "stale": true
+    },
+    {
+      "term": "[Modelling] Walk me through building a machine-learning model to predict loan default, end to end.",
+      "sub": "Open-ended exercise — structure a full answer in ~30 min (written or spoken).",
+      "definition": "They want to see a clean, ordered thought process, not a tool list. Walk it as a story: pin down what you are predicting (what counts as default, over what horizon); gather data and guard against using anything you would not actually have at decision time; explore it, build sensible features, and split by time so you test on the future rather than the past; pick a model with the context in mind — a simple, explainable one when decisions must be justified, a fancier one only if raw accuracy is what is rewarded; judge it not just on accuracy but on whether its probabilities can be trusted; then make it interpretable, document it, have someone independent check it, and monitor it after launch. The point to land: in a regulated setting an explainable, well-behaved model usually beats a slightly more accurate black box — that judgement is what they are really listening for.",
+      "note": "[1] scikit-learn — https://scikit-learn.org/stable/ · [2] ECB — internal models — https://www.bankingsupervision.europa.eu/activities/internal_models/html/index.en.html",
+      "category": "open",
+      "last_updated": "2026-06-29",
+      "stale": true
+    },
+    {
+      "term": "[Stress testing] How would you design a stress test for a retail loan portfolio?",
+      "sub": "Open-ended exercise — structure a full answer in ~30 min (written or spoken).",
+      "definition": "This tests whether you can reason from cause to effect under uncertainty, not whether you know regulatory templates. Start from the question: how bad could losses get if the economy turns? So you would sketch a few plausible futures — a normal path plus harsher ones (unemployment up, house prices down, rates moving) — then reason through how those conditions would push up defaults and losses, project the effect on losses and capital over several years, and check whether the firm would still stand. Mention the inverse angle too: what scenario would actually break us? Finish by being explicit about assumptions and limitations. The aptitude on display is linking macro conditions to portfolio outcomes and thinking in scenarios.",
+      "note": "[1] EBA — https://www.eba.europa.eu/ · [2] ECB Banking Supervision — https://www.bankingsupervision.europa.eu/",
+      "category": "open",
+      "last_updated": "2026-06-29",
+      "stale": true
+    },
+    {
+      "term": "[Communication] Explain the difference between VaR and Expected Shortfall to a non-technical executive.",
+      "sub": "Open-ended exercise — structure a full answer in ~30 min (written or spoken).",
+      "definition": "This is a communication test — they are watching whether you can make a technical idea land for a non-expert, so plain language and checking understanding matter more than precision. Use an everyday analogy, e.g. flood barriers: VaR is the height you build the barrier to — 'on 99 days in 100 we do not expect to lose more than X' — but it says nothing about how bad a rare flood is. Expected Shortfall answers exactly that: 'if one of those rare bad days does happen, the average loss is Y,' and Y is bigger than X. So ES looks into the tail that VaR ignores, which is why regulators lean on it. Keep the numbers concrete, drop the jargon, and confirm they followed with a quick example.",
+      "note": "[1] Value at risk (Wikipedia) — https://en.wikipedia.org/wiki/Value_at_risk · [2] Expected shortfall (Wikipedia) — https://en.wikipedia.org/wiki/Expected_shortfall",
+      "category": "open",
+      "last_updated": "2026-06-29",
+      "stale": true
+    },
+    {
+      "term": "[Risk] How would you backtest a 99% 1-day VaR model?",
+      "sub": "Open-ended exercise — structure a full answer in ~30 min (written or spoken).",
+      "definition": "The reasoning, not the test names, is the point. The idea: if the model is right, the actual loss should blow past the VaR only about 1% of the time, so you compare reality against that. Over a window (say a year of trading days) count the days the loss exceeded VaR; at 99% you would expect only two or three. Then reason about two things: is that count roughly what it should be, and are the breaches scattered rather than bunched together (clustering suggests the model misses changing conditions)? Compare the count against the supervisory thresholds that decide how far the model is trusted. You can name Kupiec's and Christoffersen's tests if you know them, but what is being scored is that you understand what a breach means and what too many — or clustered — breaches imply.",
+      "note": "[1] Value at risk (Wikipedia) — https://en.wikipedia.org/wiki/Value_at_risk · [2] BIS — Basel Framework — https://www.bis.org/basel_framework/",
+      "category": "open",
+      "last_updated": "2026-06-29",
+      "stale": true
+    },
+    {
+      "term": "[Modelling] A model scores AUC 0.85 in development but 0.70 in production. How do you diagnose it?",
+      "sub": "Open-ended exercise — structure a full answer in ~30 min (written or spoken).",
+      "definition": "This is pure diagnostic reasoning — they want hypotheses tested in order, not a single guess. Say the gap means the model performs worse on real, fresh data, then list the usual suspects and how you would check each. Was the development number too optimistic from one lucky split (re-test it properly)? Has the population shifted, so live cases look different from the training data? Did a development feature secretly use information only known after the outcome, flattering the score (leakage)? Or is it operational — a feature missing or arriving late in production, or labels defined differently? Then tie the fix to the cause: re-tune for drift, fix the pipeline for leakage, rebuild if the population genuinely changed. The structured, cause-then-fix reasoning is what earns the marks.",
+      "note": "[1] scikit-learn — https://scikit-learn.org/stable/ · [2] Investopedia — https://www.investopedia.com/",
+      "category": "open",
+      "last_updated": "2026-06-29",
+      "stale": true
+    },
+    {
+      "term": "[Modelling] How do you handle missing data in a risk-modelling dataset?",
+      "sub": "Open-ended exercise — structure a full answer in ~30 min (written or spoken).",
+      "definition": "They are checking judgement, not a recipe. First ask why the data is missing and how much: values missing at random are fairly benign, but a value that is absent for a reason (say only low earners skip the income box) can bias everything, so the cause should drive the fix. Lay out the options and their trade-offs: drop rows if only a tiny fraction is missing; fill with a sensible estimate (a median, or a model-based guess); or flag 'missing' as its own category, which is the right move when the absence itself carries signal. Note the trap an aptitude test loves: compute any fill-in value from the training data only, or you leak information. For regulated models, lean toward transparent, conservative, stable choices and document the impact. Naming the formal missingness mechanisms is a bonus, not the point.",
+      "note": "[1] scikit-learn — https://scikit-learn.org/stable/",
+      "category": "open",
+      "last_updated": "2026-06-29",
+      "stale": true
+    },
+    {
+      "term": "[Soft skills] You are a physicist with no finance experience. Why should we hire you for risk modelling?",
+      "sub": "Open-ended exercise — structure a full answer in ~30 min (written or spoken).",
+      "definition": "This is the aptitude pitch itself, so answer it as one. Make the transfer explicit: the core of risk modelling — statistical modelling, simulation, quantifying uncertainty, wrangling large messy datasets and, above all, independently checking and validating other people's work — is exactly what experimental physics trains you to do. Add the programming and a habit of rigorous, documented analysis. Be honest that finance is the part you will ramp up on, and back it with a concrete example of picking up a new field fast. Close on motivation: you want consequential work with real ownership. They are not testing finance knowledge here — they are testing whether you can frame your own raw ability convincingly.",
+      "note": "[1] ECB — internal models — https://www.bankingsupervision.europa.eu/activities/internal_models/html/index.en.html",
+      "category": "open",
+      "last_updated": "2026-06-29",
+      "stale": true
+    },
+    {
+      "term": "[Programming] Given a table of loans, how would you compute monthly default rates and a simple scorecard?",
+      "sub": "Open-ended exercise — structure a full answer in ~30 min (written or spoken).",
+      "definition": "Even the coding question is really 'can you reason about data,' so lead with the logic and then show you can express it. Default rate: decide what makes a row a default and which month it belongs to, then average that 0/1 flag within each month — one line in any of the languages (for example Python's groupby('month')['default'].mean()). Scorecard: the idea is to turn predictors into a simple, scaled points system — group each variable into bands, keep the ones that actually separate good borrowers from bad, fit a transparent model (logistic regression), and scale its weights into points. Validate it on data from a later period than you trained on, and watch it for drift. Showing you reason from definition to computation — and know why a scorecard is deliberately kept simple — beats reciting every metric.",
+      "note": "[1] pandas — groupby — https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.groupby.html · [2] R — glm() — https://stat.ethz.ch/R-manual/R-devel/library/stats/html/glm.html · [3] SAS Documentation — https://documentation.sas.com/",
+      "category": "open",
+      "last_updated": "2026-06-29",
+      "stale": true
+    },
+    {
+      "term": "[Soft skills] How would you present a critical validation finding to a model owner who disagrees with you?",
+      "sub": "Open-ended exercise — structure a full answer in ~30 min (written or spoken).",
+      "definition": "A behavioural/aptitude question about influence under conflict. Lead with evidence rather than opinion, and quantify how much the issue actually matters so the conversation is about impact, not ego. Separate the person from the problem, acknowledge their real constraints, and offer graded, time-bound fixes instead of a blunt pass/fail. If you still disagree after that, use the governance and escalation process — that is what it exists for. Keep the aim in sight: a sound model, not winning the argument. And show you would hold your ground under pushback by going back to the evidence, not by caving. They are reading your judgement and backbone, not your finance facts.",
+      "note": "[1] ECB — internal models — https://www.bankingsupervision.europa.eu/activities/internal_models/html/index.en.html",
+      "category": "open",
+      "last_updated": "2026-06-29",
+      "stale": true
+    }
+  ]
+}

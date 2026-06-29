@@ -1,0 +1,147 @@
+{
+  "id": "time-series-models",
+  "name": "Models (Box–Jenkins)",
+  "color": "#4dabf7",
+  "description": "The ARIMA family and the Box–Jenkins workflow: AR, MA, ARMA, ARIMA, SARIMA, identification with ACF/PACF, unit-root tests, and order selection. Distilled from Wikipedia.",
+  "source": "https://en.wikipedia.org/wiki/Autoregressive_integrated_moving_average",
+  "license": "CC BY-SA 4.0",
+  "attribution": "Adapted from Wikipedia — 'Autoregressive integrated moving average', 'Box–Jenkins method', 'Autoregressive model', 'Moving-average model', 'Augmented Dickey–Fuller test' and 'KPSS test' — licensed under CC BY-SA 4.0.",
+  "primerTitle": "Box–Jenkins / ARIMA — quick recap",
+  "primer": "## The model family\\n\\n- **AR($p$):** $X_t$ depends linearly on its own past $p$ values plus a white-noise shock: $X_t = c + \\\\phi_1 X_{t-1}+\\\\dots+\\\\phi_p X_{t-p}+\\\\varepsilon_t$. Captures persistence/momentum. **AR(1) is stationary iff $|\\\\phi|<1$** (shocks decay; $\\\\phi=1$ is a random walk/unit root, $|\\\\phi|>1$ explosive).\\n- **MA($q$):** a weighted sum of current and past $q$ **shocks**: $X_t=\\\\mu+\\\\varepsilon_t+\\\\theta_1\\\\varepsilon_{t-1}+\\\\dots+\\\\theta_q\\\\varepsilon_{t-q}$. Finite memory → ACF cuts off after lag $q$.\\n- **ARMA($p,q$):** combines AR and MA for a stationary series; more parsimonious than a high-order pure AR or MA.\\n- **ARIMA($p,d,q$):** AR + I + MA, where **$d$ = number of differences** to reach stationarity. ARIMA on the original = ARMA on the differenced series.\\n- **$I(d)$:** stationary after differencing $d$ times; $I(0)$ already stationary, a random walk is $I(1)$ — this is the ARIMA $d$.\\n- **SARIMA$(p,d,q)(P,D,Q)_s$:** adds seasonal AR/diff/MA terms at the seasonal period $s$.\\n- **Exponential smoothing / Holt–Winters:** forecast as a weighted average with **geometrically decaying** weights; Holt adds a trend, Holt–Winters adds seasonality — a simple robust ARIMA alternative.\\n\\n## Box–Jenkins workflow\\n\\nThree stages, in order: **identification → estimation → diagnostic checking** (iterate if residuals aren't white noise).\\n\\n- **ACF/PACF identification:** pure **MA($q$)** → ACF cuts off at $q$, PACF tails off; pure **AR($p$)** → PACF cuts off at $p$, ACF tails off; mixed ARMA → both tail off. A PACF cutting off after lag 1 ⇒ **AR(1)**.\\n- **Order selection:** **AIC/BIC** reward fit but penalise parameter count (guard against over-fit); BIC's heavier penalty favours smaller models.\\n\\n## Diagnostics\\n\\n- **ADF (augmented Dickey–Fuller):** null = **unit root** (non-stationary); a sufficiently negative statistic rejects → evidence of stationarity.\\n- **KPSS:** **opposite null** — null = (trend-)stationarity vs unit-root alternative. Running both is good practice.\\n- **Ljung–Box:** portmanteau test of whether residual autocorrelations are **jointly zero** (white noise); failing to reject = model captured the structure.",
+  "categories": {
+    "models": "Models",
+    "identification": "Identification",
+    "diagnostics": "Diagnostics"
+  },
+  "cards": [
+    {
+      "category": "models",
+      "term": "What is an autoregressive AR($p$) model?",
+      "summary": "Current value is a linear function of its own past $p$ values plus noise.",
+      "definition": "A model in which $X_t$ depends linearly on its own previous $p$ values plus a white-noise shock: $X_t = c + \\sum_{i=1}^{p}\\phi_i X_{t-i} + \\varepsilon_t$. It captures persistence/momentum in the series.",
+      "formula": "$X_t = c + \\phi_1 X_{t-1} + \\dots + \\phi_p X_{t-p} + \\varepsilon_t$",
+      "note": "[1] Autoregressive model (Wikipedia) — https://en.wikipedia.org/wiki/Autoregressive_model",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "category": "models",
+      "term": "A moving-average MA($q$) model expresses $X_t$ as a linear combination of the current and past $q$ {{shocks}} (error terms).",
+      "definition": "An MA($q$) model writes the value as a weighted sum of current and lagged white-noise shocks: $X_t = \\mu + \\varepsilon_t + \\theta_1\\varepsilon_{t-1} + \\dots + \\theta_q\\varepsilon_{t-q}$. Shocks have only a finite-memory effect, so the ACF cuts off after lag $q$.",
+      "type": "cloze",
+      "formula": "$X_t = \\mu + \\varepsilon_t + \\theta_1\\varepsilon_{t-1} + \\dots + \\theta_q\\varepsilon_{t-q}$",
+      "note": "[1] Moving-average model (Wikipedia) — https://en.wikipedia.org/wiki/Moving-average_model",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "category": "models",
+      "term": "What is an ARMA($p,q$) model?",
+      "summary": "Combines AR($p$) and MA($q$) terms for a stationary series.",
+      "definition": "A model that combines $p$ autoregressive terms and $q$ moving-average terms to describe a stationary series: $X_t = c + \\sum\\phi_i X_{t-i} + \\varepsilon_t + \\sum\\theta_j\\varepsilon_{t-j}$. It is more parsimonious than a pure AR or MA of high order.",
+      "note": "[1] ARMA (Wikipedia) — https://en.wikipedia.org/wiki/Autoregressive%E2%80%93moving-average_model",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "category": "models",
+      "term": "[Time series] In ARIMA($p,d,q$), what does the middle parameter $d$ represent?",
+      "sub": "A) the number of times the series is differenced to make it stationary    B) the number of autoregressive lags    C) the number of moving-average lags    D) the seasonal period",
+      "definition": "Correct: A) the number of times the series is differenced to make it stationary. ARIMA = AR + I + MA: $p$ AR lags, $d$ the integration (differencing) order, $q$ MA lags. ARIMA on the differenced series is ARMA on the original.",
+      "note": "[1] ARIMA (Wikipedia) — https://en.wikipedia.org/wiki/Autoregressive_integrated_moving_average",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "category": "models",
+      "term": "What does a SARIMA (seasonal ARIMA) model add?",
+      "summary": "Seasonal AR/MA/differencing terms at the seasonal period.",
+      "definition": "SARIMA$(p,d,q)(P,D,Q)_s$ adds seasonal autoregressive, differencing and moving-average terms operating at lag $s$ (the seasonal period) on top of the non-seasonal ARIMA terms, capturing repeating seasonal structure.",
+      "note": "[1] ARIMA (Wikipedia) — https://en.wikipedia.org/wiki/Autoregressive_integrated_moving_average",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "category": "identification",
+      "term": "[Time series] What are the three stages of the Box–Jenkins method, in order?",
+      "sub": "A) identification, estimation, diagnostic checking    B) estimation, identification, deployment    C) differencing, forecasting, plotting    D) sampling, scaling, smoothing",
+      "definition": "Correct: A) identification, estimation, diagnostic checking. You identify candidate orders (via stationarity tests and ACF/PACF), estimate the parameters, then check residuals; if they aren't white noise you revise the model and iterate.",
+      "note": "[1] Box–Jenkins method (Wikipedia) — https://en.wikipedia.org/wiki/Box%E2%80%93Jenkins_method",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "category": "identification",
+      "term": "How do the ACF and PACF help identify an ARMA model?",
+      "summary": "ACF tails off / cuts off for MA; PACF for AR.",
+      "definition": "For a pure MA($q$) the ACF cuts off after lag $q$ while the PACF tails off; for a pure AR($p$) the PACF cuts off after lag $p$ while the ACF tails off. A mixed ARMA shows both tailing off, guiding the candidate orders.",
+      "note": "[1] Box–Jenkins method (Wikipedia) — https://en.wikipedia.org/wiki/Box%E2%80%93Jenkins_method",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "category": "identification",
+      "term": "[Time series] A partial autocorrelation (PACF) that cuts off sharply after lag 1 suggests:",
+      "sub": "A) an AR(1) process    B) an MA(1) process    C) pure white noise    D) a deterministic linear trend",
+      "definition": "Correct: A) an AR(1) process. A PACF that is significant at lag 1 and negligible thereafter is the signature of AR(1); an MA(1) instead shows an ACF that cuts off at lag 1 with a tailing PACF.",
+      "note": "[1] Partial autocorrelation function (Wikipedia) — https://en.wikipedia.org/wiki/Partial_autocorrelation_function",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "category": "diagnostics",
+      "term": "The {{augmented Dickey–Fuller}} (ADF) test checks for a unit root; rejecting its null is evidence the series is stationary.",
+      "definition": "The ADF test's null hypothesis is that the series has a unit root (is non-stationary). A sufficiently negative statistic rejects the null, supporting stationarity. It augments the Dickey–Fuller regression with lagged differences to soak up serial correlation.",
+      "type": "cloze",
+      "note": "[1] Augmented Dickey–Fuller test (Wikipedia) — https://en.wikipedia.org/wiki/Augmented_Dickey%E2%80%93Fuller_test",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "category": "diagnostics",
+      "term": "[Time series] The KPSS test has the OPPOSITE null hypothesis to the ADF test.",
+      "type": "truefalse",
+      "answer": true,
+      "summary": "True — KPSS null is stationarity; ADF null is a unit root.",
+      "definition": "True. KPSS tests a null of (trend-)stationarity against a unit-root alternative, whereas ADF tests a null of a unit root. Running both is good practice: agreement is reassuring, disagreement flags an ambiguous or borderline-integrated series.",
+      "note": "[1] KPSS test (Wikipedia) — https://en.wikipedia.org/wiki/KPSS_test",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "category": "models",
+      "term": "What does it mean for a series to be integrated of order $d$, written $I(d)$?",
+      "summary": "It becomes stationary after differencing $d$ times.",
+      "definition": "A series is $I(d)$ if it must be differenced $d$ times to become stationary. $I(0)$ is already stationary; a random walk is $I(1)$. The $d$ in ARIMA is exactly this integration order.",
+      "note": "[1] Order of integration (Wikipedia) — https://en.wikipedia.org/wiki/Order_of_integration",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "category": "diagnostics",
+      "term": "[Time series] When selecting between candidate ARIMA orders, information criteria such as AIC/BIC pick the model that:",
+      "sub": "A) best balances goodness-of-fit against the number of parameters    B) has the most parameters    C) has the highest in-sample $R^2$    D) has the largest residual variance",
+      "definition": "Correct: A) best balances goodness-of-fit against the number of parameters. AIC and BIC reward fit (likelihood) but penalise complexity, guarding against over-fitting; BIC's penalty is heavier, so it tends to choose smaller models.",
+      "note": "[1] Akaike information criterion (Wikipedia) — https://en.wikipedia.org/wiki/Akaike_information_criterion",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "category": "diagnostics",
+      "term": "What does the Ljung–Box test check on a fitted model?",
+      "summary": "Whether residual autocorrelations are jointly zero (white noise).",
+      "definition": "A portmanteau test of whether a group of residual autocorrelations are jointly zero. Failing to reject means residuals look like white noise — a sign the model has captured the structure; rejecting means leftover autocorrelation remains.",
+      "note": "[1] Ljung–Box test (Wikipedia) — https://en.wikipedia.org/wiki/Ljung%E2%80%93Box_test",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "category": "models",
+      "term": "[Time series] An AR(1) process $X_t = \\phi X_{t-1} + \\varepsilon_t$ is stationary when:",
+      "sub": "A) $|\\phi| < 1$    B) $\\phi = 1$    C) $\\phi > 1$    D) $\\phi = 0$ only",
+      "definition": "Correct: A) $|\\phi| < 1$. With $|\\phi|<1$ shocks decay geometrically and the process is stationary; $\\phi=1$ is a random walk (unit root) and $|\\phi|>1$ is explosive.",
+      "note": "[1] Autoregressive model (Wikipedia) — https://en.wikipedia.org/wiki/Autoregressive_model",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "category": "models",
+      "term": "What does exponential smoothing (and Holt–Winters) do?",
+      "summary": "Forecasts with exponentially decaying weights on past data; Holt–Winters adds trend + seasonality.",
+      "definition": "Exponential smoothing forecasts a series as a weighted average of past values with weights decaying geometrically into the past. Holt's method extends it with a trend term, and Holt–Winters adds a seasonal term — a simple, robust alternative to ARIMA.",
+      "note": "[1] Exponential smoothing (Wikipedia) — https://en.wikipedia.org/wiki/Exponential_smoothing",
+      "last_updated": "2026-06-29"
+    }
+  ],
+  "tags": [
+    "time series",
+    "forecasting",
+    "arima"
+  ]
+}

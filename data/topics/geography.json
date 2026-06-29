@@ -1,0 +1,13 @@
+{
+  "topic": "Geography",
+  "id": "geography",
+  "standard": true,
+  "description": "World geography in three decks: the capital of every major country, national flags as emoji (tested both ways), and the big facts — continents, oceans, and the planet's records.",
+  "primerTitle": "World geography — quick recap",
+  "primer": "## How this set works\nThree decks build a working map of the world:\n- **World capitals** — country → its capital city.\n- **Country flags** — flag emoji ↔ country, studied **both ways** and tracked separately.\n- **World geography** — continents, oceans, and Earth's superlatives.\n\nThe capitals and flags decks cover ~40 countries each across all continents — too many to chart here, so learn them from the cards. The records and structure facts the geography deck tests are all listed below.\n\n## Continents & oceans\n- **Seven continents:** Asia, Africa, North America, South America, Antarctica, Europe, Oceania (Australia). **Asia** is the largest by area and population. **Antarctica** has no permanent population.\n- **Five oceans:** Pacific, Atlantic, Indian, Southern, Arctic. The **Pacific** is the largest *and* deepest; the **Atlantic** is second. The **Indian Ocean** sits between Africa, Asia and Australia.\n\n## The records (superlatives)\n- **Longest river:** the **Nile** (~6,650 km) — the **Amazon** is the close rival by length, and the clear leader by water *discharged*.\n- **Highest mountain:** **Mount Everest** (~8,849 m), in the **Himalayas** (Asia).\n- **Deepest ocean point:** the **Mariana Trench** (Challenger Deep), ~11,000 m, in the Pacific.\n- **Largest country (area):** **Russia**, spanning Europe and Asia.\n- **Largest island:** **Greenland** (Australia counts as a continent, not an island).\n- **Largest desert:** **Antarctica** (a cold polar desert); the largest *hot* desert is the **Sahara**, in North Africa.\n\n## Rivers & mountains placed\n- The **Amazon** flows through **South America** (mostly Brazil) to the Atlantic.\n- The **Sahara** is in **Africa**; the **Himalayas** are in **Asia**.\n\nEvery geography-deck card's answer is in this recap; for capitals and flags, work straight from the cards.",
+  "deckFiles": [
+    "world-capitals.json",
+    "country-flags.json",
+    "world-geography.json"
+  ]
+}

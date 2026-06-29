@@ -1,0 +1,11 @@
+{
+  "topic": "Cyrillic (Russian)",
+  "id": "cyrillic",
+  "standard": true,
+  "description": "The Russian Cyrillic alphabet, learned by relating each letter to the Latin alphabet — and watching for the false friends. Each item is tested both ways, tracked separately.",
+  "primerTitle": "Cyrillic chart — quick recap",
+  "primer": "## How this set works\nThe 33 letters of Russian Cyrillic, grouped by how they relate to the Latin alphabet. Each card is studied **both ways** and tracked separately — you only master it once you know it in both directions. The fastest path is to lean on what you already know and then beat the **false friends**.\n\n## Same as Latin (shape & sound)\n- А a · К k · М m · О o · Т t\n\n## False friends (Latin-looking, different sound) — the ones that trip everyone\n- В **v** (not b) · Е **ye** · Н **n** (not h) · Р **r**, rolled (not p) · С **s** (not c) · У **u** (not y) · Х **kh** (not x)\n\n## New shapes\n- Б b · Г g · Д d · Ё yo · Ж zh · З z · И i (ee) · Й y (short) · Л l · П p · Ф f · Ц ts · Ч ch · Ш sh · Щ shch · Э e · Ю yu · Я ya\n\n## The two signs (no sound of their own)\n- Ъ **hard sign** — keeps the preceding consonant hard before a vowel.\n- Ь **soft sign** — softens (palatalises) the preceding consonant.\n- Ы — a back vowel with no English equivalent (a tense 'i').\n\nEvery card's answer is in this chart — know it both ways and you'll pass the deck.",
+  "deckFiles": [
+    "cyrillic.json"
+  ]
+}

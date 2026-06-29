@@ -1,0 +1,156 @@
+{
+  "id": "qi-expected-value",
+  "name": "Expected value & waiting times",
+  "color": "#38d9a9",
+  "description": "Recursion on states and linearity of expectation: waiting times for patterns, coupon collector, gambler's ruin (hitting probability and duration), and optimal stopping.",
+  "tags": [
+    "aptitude",
+    "interview",
+    "quant",
+    "expected-value"
+  ],
+  "primerTitle": "Expected value & waiting — method",
+  "primer": "## Recursion on states + linearity\n- **Geometric:** E[trials] = 1/p (first head → 2).\n- **Pattern waits via states:** E[HH]=6 but E[HT]=4 (a failed HH leaves you mid-pattern; HT doesn't).\n- **Coupon collector:** n·H_n (6 toys → 14.7).\n- **Gambler's ruin (fair):** P(hit N from k)=k/N; expected steps = k(N−k).\n- **Linearity:** E[distinct faces in 6 rolls] = 6(1−(5/6)⁶) ≈ 3.99; E[max of two dice]=161/36.\n- **Optimal stopping:** work backwards, continue only if the current value beats playing on (3-roll die → 14/3).",
+  "cards": [
+    {
+      "term": "You flip a fair coin until it comes up heads for the first time. What is the expected number of flips?",
+      "choices": [
+        "1.5",
+        "4",
+        "3",
+        "2",
+        "1"
+      ],
+      "answer": 3,
+      "type": "mcq",
+      "definition": "Correct: 2. For a geometric distribution with success probability p, the expected number of trials is 1/p; here 1/(1/2) = 2.",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "You flip a fair coin repeatedly until you see two heads in a row (HH). What is the expected number of flips?",
+      "choices": [
+        "2",
+        "3",
+        "8",
+        "4",
+        "6"
+      ],
+      "answer": 4,
+      "type": "mcq",
+      "definition": "Correct: 6. Let E be the answer. From scratch you need a head (expected 2 flips to get one), then either the next is heads (done) or tails (restart). Solving E = 2 + (1/2)(0) + (1/2)E... carefully with states gives E = 6.",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "You flip a fair coin repeatedly until you see heads immediately followed by tails (HT). What is the expected number of flips?",
+      "choices": [
+        "2",
+        "3",
+        "4",
+        "8",
+        "6"
+      ],
+      "answer": 2,
+      "type": "mcq",
+      "definition": "Correct: 4. Once you get your first head you simply wait for a tail, and each flip is a tail with probability 1/2, so 2 (to first head) + 2 (to next tail) = 4. The surprise: HT takes 4 but HH takes 6, because a failed HH attempt can leave you mid-pattern while a failed HT does not.",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "Each cereal box contains exactly one of 6 different toys, each equally likely and independent. What is the expected number of boxes you must buy to collect all 6 toys?",
+      "choices": [
+        "6",
+        "12",
+        "14.7",
+        "21",
+        "36"
+      ],
+      "answer": 2,
+      "type": "mcq",
+      "definition": "Correct: 14.7. Coupon collector: 6 x (1 + 1/2 + 1/3 + 1/4 + 1/5 + 1/6) = 6 x 2.45 = 14.7. The last few toys dominate the wait - the final toy alone takes 6 boxes on average.",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "You start with 3 chips and repeatedly make a fair even-money bet of 1 chip. You stop when you reach 7 chips (win) or 0 chips (broke). What is the probability you reach 7 before going broke?",
+      "choices": [
+        "3/7",
+        "3/10",
+        "4/7",
+        "1/3",
+        "1/2"
+      ],
+      "answer": 0,
+      "type": "mcq",
+      "definition": "Correct: 3/7. In a fair gambler's ruin the probability of reaching the top barrier N starting from k is simply k/N: here 3/7. The odds are proportional to how close you start to the target.",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "You start with 3 chips and make fair even-money 1-chip bets, stopping at 7 chips or at 0. What is the expected number of bets until the game ends?",
+      "choices": [
+        "10",
+        "12",
+        "6",
+        "21",
+        "7"
+      ],
+      "answer": 1,
+      "type": "mcq",
+      "definition": "Correct: 12. For a fair walk with absorbing barriers at 0 and N, the expected number of steps starting from k is k(N - k): here 3 x (7 - 3) = 12.",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "You roll two fair dice and look at the larger of the two numbers (if they tie, that shared value). What is the expected value of this maximum?",
+      "choices": [
+        "7/2",
+        "4",
+        "5",
+        "161/36",
+        "9/2"
+      ],
+      "answer": 3,
+      "type": "mcq",
+      "definition": "Correct: 161/36. Sum the maximum over all 36 equally likely outcomes: total 161, so 161/36 ~ 4.47. The maximum sits well above the single-die average of 3.5, as expected.",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "You roll a fair die 6 times. What is the expected number of DISTINCT faces (values) that appear at least once?",
+      "choices": [
+        "3",
+        "5",
+        "6",
+        "about 3.99",
+        "4.5"
+      ],
+      "answer": 3,
+      "type": "mcq",
+      "definition": "Correct: about 3.99. By linearity of expectation, each face appears with probability 1 - (5/6)^6, so the expected count is 6(1 - (5/6)^6) ~ 3.99. Linearity sidesteps all the messy overlap counting.",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "You flip a fair coin until two consecutive flips come out the same (either HH or TT). What is the expected number of flips?",
+      "choices": [
+        "6",
+        "2",
+        "3",
+        "4",
+        "1.5"
+      ],
+      "answer": 2,
+      "type": "mcq",
+      "definition": "Correct: 3. After the first flip, every subsequent flip matches the one before it with probability 1/2, so the wait for a match is 2 more flips on average: 1 + 2 = 3.",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "You may roll a fair die up to 3 times. After each roll you either keep that value (ending the game) or roll again; after the 3rd roll you must keep whatever you get. Playing to maximise your expected final value, what is that expected value?",
+      "choices": [
+        "14/3",
+        "5",
+        "7/2",
+        "21/5",
+        "17/4"
+      ],
+      "answer": 0,
+      "type": "mcq",
+      "definition": "Correct: 14/3. Work backwards. One roll left: value 7/2. Two left: keep a 4, 5, or 6 (since 7/2 = 3.5), giving 17/4. Three left: keep a 5 or 6 (since 17/4 > 4), giving 14/3 ~ 4.67. Always continue only when your current roll beats the value of playing on.",
+      "last_updated": "2026-06-29"
+    }
+  ]
+}

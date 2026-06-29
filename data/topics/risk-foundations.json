@@ -1,0 +1,11 @@
+{
+  "topic": "Risk foundations",
+  "id": "risk-foundations",
+  "standard": true,
+  "primerTitle": "Risk foundations",
+  "primer": "## Risk foundations\nThe shared language and governance of risk. Pairs the **foundations vocabulary** (risk types, appetite vs capacity, economic vs regulatory capital, EL/UL, VaR/ES, backtesting) with the **Foundations & governance** deck (risk taxonomy, three lines of defence, the loss distribution, capital). Start here — every later domain assumes it.",
+  "deckFiles": [
+    "risk-glossary-foundations.json",
+    "foundations.json"
+  ]
+}

@@ -1,0 +1,14 @@
+{
+  "name": "lernkarto — flashcards",
+  "short_name": "lernkarto",
+  "description": "A self-hostable, offline-capable flashcard engine — LaTeX, multiple choice, cloze, spaced repetition. Bring your own decks.",
+  "start_url": ".",
+  "scope": ".",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#0a0b0a",
+  "theme_color": "#00ff88",
+  "icons": [
+    { "src": "icon.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "any maskable" }
+  ]
+}

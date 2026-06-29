@@ -1,0 +1,13 @@
+{
+  "topic": "Science essentials",
+  "id": "science",
+  "standard": true,
+  "description": "The reference furniture of physical science: common element symbols, the SI base & derived units with the major physical constants, and the metric prefixes. Symbol-based decks are tested both ways.",
+  "primerTitle": "Science chart — quick recap",
+  "primer": "## How this set works\nThree decks of the most-used reference facts in physical science. Two of them (element symbols, metric prefixes) are studied **both ways** — symbol→name and name→symbol — and tracked separately. Everything you need to answer a card is on this chart.\n\n## Element symbols (selected, by region of the table)\n- **Alkali / alkaline-earth:** Li lithium · Be beryllium · Na sodium · Mg magnesium · K potassium · Ca calcium.\n- **Transition metals:** Ti titanium · Cr chromium · Mn manganese · Fe iron · Co cobalt · Ni nickel · Cu copper · Zn zinc · Ag silver · Pt platinum · Au gold · Hg mercury.\n- **Other metals:** Al aluminium · Sn tin · Pb lead · U uranium.\n- **Non-metals & metalloids:** H hydrogen · B boron · C carbon · N nitrogen · O oxygen · Si silicon · P phosphorus · S sulfur.\n- **Halogens:** F fluorine · Cl chlorine · Br bromine · I iodine.\n- **Noble gases:** He helium · Ne neon · Ar argon · Kr krypton · Xe xenon · Rn radon.\n- **Latin-derived symbols to watch:** Na (natrium), K (kalium), Fe (ferrum), Cu (cuprum), Ag (argentum), Sn (stannum), Au (aurum), Hg (hydrargyrum), Pb (plumbum).\n\n## SI base units (7) — and what they measure\n- metre (m) → length · kilogram (kg) → mass · second (s) → time · ampere (A) → electric current · kelvin (K) → temperature · mole (mol) → amount of substance · candela (cd) → luminous intensity.\n\n## Key derived units\n- newton N → force (kg·m/s²) · pascal Pa → pressure (N/m²) · joule J → energy (N·m) · watt W → power (J/s) · volt V → electric potential (J/C) · hertz Hz → frequency (1/s).\n\n## Major physical constants\n- speed of light c ≈ 3.00×10⁸ m/s · standard gravity g ≈ 9.81 m/s² · Avogadro Nₐ ≈ 6.02×10²³ /mol · Planck h ≈ 6.63×10⁻³⁴ J·s · elementary charge e ≈ 1.60×10⁻¹⁹ C.\n\n## Metric (SI) prefixes\n- **Multiples:** da deca 10¹ · h hecto 10² · k kilo 10³ · M mega 10⁶ · G giga 10⁹ · T tera 10¹² · P peta 10¹⁵ · E exa 10¹⁸.\n- **Submultiples:** d deci 10⁻¹ · c centi 10⁻² · m milli 10⁻³ · μ micro 10⁻⁶ · n nano 10⁻⁹ · p pico 10⁻¹² · f femto 10⁻¹⁵ · a atto 10⁻¹⁸.\n\nEvery card's answer is on this chart — for the symbol decks, know it in both directions and you'll pass.",
+  "deckFiles": [
+    "periodic-table.json",
+    "si-units.json",
+    "metric-prefixes.json"
+  ]
+}

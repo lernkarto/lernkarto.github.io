@@ -1,0 +1,9 @@
+{
+  "name": "Computer science",
+  "primerTitle": "Computer science — what this subject covers",
+  "description": "Practical developer reference: complexity, data structures, tooling.",
+  "primer": "## Computer science\nThe everyday reference a working developer reaches for.\n- **Developer reference** — Big-O complexity, core data structures, git, HTTP status codes, and regex.\n\nThe through-line: the vocabulary and cheat-sheet facts that come up daily, drilled to recall.",
+  "topics": [
+    "Developer reference"
+  ]
+}

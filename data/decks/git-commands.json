@@ -1,0 +1,220 @@
+{
+  "id": "git-commands",
+  "name": "Git commands",
+  "color": "#00ff88",
+  "description": "Everyday Git tasks mapped to the command that does them — staging, committing, branching, undoing, inspecting history, and working with remotes. Most cards give a task and ask for the command; a few run in reverse, showing a command and asking what it does.",
+  "primerTitle": "Git command cheat sheet",
+  "primer": "Each task below maps to the command that performs it. Mentally `git ` precedes each entry.\n\n## Staging & commit\n\n- **Stage all changes** (new, modified, deleted) — `git add -A` (or `git add .`).\n- **Commit staged changes with a message** — `git commit -m \"message\"`. One-step stage tracked + commit: `git commit -am \"...\"`.\n- **Amend the last commit** (message or contents) — `git commit --amend`. Folds in newly staged changes; avoid on already-pushed commits.\n\n## Branch & merge\n\n- **Create a branch and switch to it** — `git switch -c <name>` (older: `git checkout -b <name>`).\n- **Switch to an existing branch** — `git switch <name>` (older: `git checkout <name>`).\n- **Merge another branch into the current one** — `git merge <branch>` (creates a merge commit unless fast-forward).\n- **Replay commits on top of another branch (linear history)** — `git rebase <branch>`. Rewrites commit hashes.\n- **Apply one specific commit onto the current branch** — `git cherry-pick <commit>`.\n- **Delete a merged local branch** — `git branch -d <name>` (`-D` force-deletes unmerged).\n\n## Undo & inspect\n\n- **Undo last commit, keep changes staged** — `git reset --soft HEAD~1` (`--mixed`, the default, leaves them unstaged).\n- **Undo last commit, discard changes** — `git reset --hard HEAD~1` (destructive; recoverable only via reflog).\n- **Discard uncommitted changes to a file** — `git restore <file>` (older: `git checkout -- <file>`).\n- **Unstage a file but keep its changes** — `git restore --staged <file>` (older: `git reset HEAD <file>`).\n- **Reverse a commit with a new commit** — `git revert <commit>` (safe way to undo something already pushed).\n- **Compact one-line history** — `git log --oneline` (add `--graph --all` for topology).\n- **Show unstaged changes** — `git diff` (`git diff --staged` compares index vs last commit).\n- **State of working tree and index** — `git status`.\n- **Shelve uncommitted changes** — `git stash`; reapply most recent with `git stash pop` (`git stash apply` keeps it on the stack).\n- **History of where HEAD has pointed** (recover lost commits after a reset) — `git reflog`.\n\n## Remotes\n\n- **Download new commits without merging** — `git fetch` (updates remote-tracking branches like `origin/main`).\n- **Fetch and integrate into the current branch** — `git pull` (fetch + merge, or `--rebase`).\n- **Send local commits to the remote** — `git push` (first push of a new branch: `git push -u origin <name>`).\n- **Copy a remote repo to your machine** — `git clone <url>` (sets up `origin`, checks out the default branch).",
+  "categories": {
+    "basics": {
+      "label": "Staging & commit",
+      "color": "#66aaff"
+    },
+    "branch": {
+      "label": "Branch & merge",
+      "color": "#9bff66"
+    },
+    "undo": {
+      "label": "Undo & inspect",
+      "color": "#ff9f55"
+    },
+    "remote": {
+      "label": "Remotes",
+      "color": "#b794ff"
+    }
+  },
+  "cards": [
+    {
+      "term": "Stage all changes in the working tree",
+      "definition": "git add -A (or git add .). Stages new, modified and deleted files so they are included in the next commit. The -A form also catches deletions across the whole repo.",
+      "summary": "git add -A",
+      "category": "basics",
+      "last_updated": "2026-06-29",
+      "stale": true
+    },
+    {
+      "term": "Record the staged changes as a commit with a message",
+      "definition": "git commit -m \"message\". Creates a commit from whatever is staged. Use git commit -am \"...\" to stage tracked modifications and commit in one step.",
+      "summary": "git commit -m \"message\"",
+      "category": "basics",
+      "last_updated": "2026-06-29",
+      "stale": true
+    },
+    {
+      "term": "Undo the last commit but keep the changes staged",
+      "definition": "git reset --soft HEAD~1. Moves HEAD back one commit; the changes from that commit remain in the index, ready to recommit. Use --mixed (the default) to keep them unstaged instead.",
+      "summary": "git reset --soft HEAD~1",
+      "category": "undo",
+      "last_updated": "2026-06-29",
+      "stale": true
+    },
+    {
+      "term": "Undo the last commit and discard its changes entirely",
+      "definition": "git reset --hard HEAD~1. Moves HEAD back one commit and resets the working tree to match, throwing away the changes. Destructive — the work is lost unless reachable via the reflog.",
+      "summary": "git reset --hard HEAD~1",
+      "category": "undo",
+      "last_updated": "2026-06-29",
+      "stale": true
+    },
+    {
+      "term": "Amend the most recent commit (message or contents)",
+      "definition": "git commit --amend. Replaces the last commit with a new one, folding in any newly staged changes and letting you edit the message. Avoid on commits already pushed and shared.",
+      "summary": "git commit --amend",
+      "category": "basics",
+      "last_updated": "2026-06-29",
+      "stale": true
+    },
+    {
+      "term": "Discard uncommitted changes to a tracked file",
+      "definition": "git restore <file> (or the older git checkout -- <file>). Resets the file in the working tree to its last committed state. The change is lost.",
+      "summary": "git restore <file>",
+      "category": "undo",
+      "last_updated": "2026-06-29",
+      "stale": true
+    },
+    {
+      "term": "Unstage a file but keep its changes",
+      "definition": "git restore --staged <file> (or the older git reset HEAD <file>). Removes the file from the index while leaving the working-tree edits intact.",
+      "summary": "git restore --staged <file>",
+      "category": "undo",
+      "last_updated": "2026-06-29",
+      "stale": true
+    },
+    {
+      "term": "Create a new branch and switch to it",
+      "definition": "git switch -c <name> (or the older git checkout -b <name>). Creates the branch from the current HEAD and checks it out in one command.",
+      "summary": "git switch -c <name>",
+      "category": "branch",
+      "last_updated": "2026-06-29",
+      "stale": true
+    },
+    {
+      "term": "Switch to an existing branch",
+      "definition": "git switch <name> (or the older git checkout <name>). Moves HEAD to the named branch and updates the working tree to match it.",
+      "summary": "git switch <name>",
+      "category": "branch",
+      "last_updated": "2026-06-29",
+      "stale": true
+    },
+    {
+      "term": "Merge another branch into the current one",
+      "definition": "git merge <branch>. Combines the named branch's history into the current branch, creating a merge commit unless a fast-forward is possible.",
+      "summary": "git merge <branch>",
+      "category": "branch",
+      "last_updated": "2026-06-29",
+      "stale": true
+    },
+    {
+      "term": "Replay your commits on top of another branch (linear history)",
+      "definition": "git rebase <branch>. Re-applies the current branch's commits one by one onto the tip of <branch>, producing a linear history without a merge commit. Rewrites commit hashes.",
+      "summary": "git rebase <branch>",
+      "category": "branch",
+      "last_updated": "2026-06-29",
+      "stale": true
+    },
+    {
+      "term": "Delete a local branch that is already merged",
+      "definition": "git branch -d <name>. Deletes the branch; Git refuses if it holds unmerged commits. Use -D (capital) to force-delete regardless.",
+      "summary": "git branch -d <name>",
+      "category": "branch",
+      "last_updated": "2026-06-29",
+      "stale": true
+    },
+    {
+      "term": "Show the commit history compactly, one line each",
+      "definition": "git log --oneline. Prints each commit as an abbreviated hash and subject line. Add --graph --all to visualise branch topology.",
+      "summary": "git log --oneline",
+      "category": "undo",
+      "last_updated": "2026-06-29",
+      "stale": true
+    },
+    {
+      "term": "Show what has changed but is not yet staged",
+      "definition": "git diff. Shows the difference between the working tree and the index. Use git diff --staged to compare the index against the last commit instead.",
+      "summary": "git diff",
+      "category": "undo",
+      "last_updated": "2026-06-29",
+      "stale": true
+    },
+    {
+      "term": "Show the current state of the working tree and index",
+      "definition": "git status. Lists staged, unstaged and untracked files, plus the current branch and its relation to the upstream.",
+      "summary": "git status",
+      "category": "undo",
+      "last_updated": "2026-06-29",
+      "stale": true
+    },
+    {
+      "term": "Temporarily shelve uncommitted changes",
+      "definition": "git stash. Saves the working-tree and index changes onto a stack and reverts to a clean state. Restore them later with git stash pop.",
+      "summary": "git stash",
+      "category": "undo",
+      "last_updated": "2026-06-29",
+      "stale": true
+    },
+    {
+      "term": "Reapply the most recently stashed changes",
+      "definition": "git stash pop. Applies the top stash entry back onto the working tree and removes it from the stash stack. Use git stash apply to keep it on the stack.",
+      "summary": "git stash pop",
+      "category": "undo",
+      "last_updated": "2026-06-29",
+      "stale": true
+    },
+    {
+      "term": "Create a new commit that reverses a given commit",
+      "definition": "git revert <commit>. Records a new commit undoing the named commit's changes, leaving history intact — the safe way to undo something already pushed.",
+      "summary": "git revert <commit>",
+      "category": "undo",
+      "last_updated": "2026-06-29",
+      "stale": true
+    },
+    {
+      "term": "Download new commits from the remote without merging",
+      "definition": "git fetch. Updates your remote-tracking branches (e.g. origin/main) but does not change your local branches or working tree. Merge or rebase afterwards.",
+      "summary": "git fetch",
+      "category": "remote",
+      "last_updated": "2026-06-29",
+      "stale": true
+    },
+    {
+      "term": "Fetch from the remote and integrate into the current branch",
+      "definition": "git pull. Runs git fetch then merges (or, with --rebase, rebases) the upstream changes into your current branch.",
+      "summary": "git pull",
+      "category": "remote",
+      "last_updated": "2026-06-29",
+      "stale": true
+    },
+    {
+      "term": "Send your local commits to the remote",
+      "definition": "git push. Uploads commits on the current branch to its upstream. The first push of a new branch needs git push -u origin <name> to set the upstream.",
+      "summary": "git push",
+      "category": "remote",
+      "last_updated": "2026-06-29",
+      "stale": true
+    },
+    {
+      "term": "Copy a remote repository to your machine",
+      "definition": "git clone <url>. Downloads the full repository, sets up origin as the remote, and checks out the default branch.",
+      "summary": "git clone <url>",
+      "category": "remote",
+      "last_updated": "2026-06-29",
+      "stale": true
+    },
+    {
+      "term": "git cherry-pick <commit>",
+      "definition": "Applies the changes from a single specific commit onto the current branch as a new commit. Useful for pulling one fix from another branch without merging everything.",
+      "summary": "Apply one commit's changes onto the current branch.",
+      "category": "branch",
+      "last_updated": "2026-06-29",
+      "stale": true
+    },
+    {
+      "term": "git reflog",
+      "definition": "Shows the history of where HEAD has pointed — including commits orphaned by resets or rebases. The recovery tool for getting back work that seems lost after a hard reset.",
+      "summary": "Log of HEAD movements; recover lost commits.",
+      "category": "undo",
+      "last_updated": "2026-06-29",
+      "stale": true
+    }
+  ]
+}

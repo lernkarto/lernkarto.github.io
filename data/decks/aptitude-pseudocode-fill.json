@@ -1,0 +1,136 @@
+{
+  "id": "aptitude-pseudocode-fill",
+  "name": "Pseudocode completion",
+  "color": "#da77f2",
+  "description": "Pick the line that makes a function compute its spec — factorial, sums, powers, odd sums, running max, even count, Fibonacci.",
+  "tags": [
+    "aptitude",
+    "interview",
+    "pseudocode",
+    "algorithms"
+  ],
+  "primerTitle": "Completing pseudocode — method",
+  "primer": "## Completing an accumulator loop\nFind the **accumulator** and the **invariant** it should hold after each pass, then pick the update that preserves it.\n\n- **Product accumulator** starts at **1** and multiplies: `m = m*k` builds a factorial ($n! = 1\\\\cdot2\\\\cdots n$); `p = p*b` builds a power ($b^n$, multiply by the *base* $n$ times — not by the counter $k$).\n- **Sum accumulator** starts at **0** and adds: `s = s+k` gives $1+2+\\\\cdots+n$; the $k$-th odd number is $2k+1$ when $k$ runs $0..n-1$ (or $2k-1$ when $k$ runs $1..n$).\n- **Running max:** keep `best`; update when `a[i] > best`.\n- **Counter:** test the property (even ⇔ `a[i] mod 2 = 0`) and add 1.\n- **Two-variable Fibonacci:** `temp=x+y; x=y; y=temp` slides the window forward.\n\nWhen two options look close, **simulate on a tiny input** (n=2 or n=3): only the correct line matches the spec for every input.",
+  "cards": [
+    {
+      "term": "Fill in the blank so that f(n) returns the factorial of n (for non-negative n).",
+      "formula": "function f(n):\n    Set m = 1\n    for k from 1 to n (inclusive), do\n        Set ______\n    end for\n    return m",
+      "choices": [
+        "m = n * k",
+        "m = k * (k-1)",
+        "m = m * n",
+        "m = m * k",
+        "m = n * (n-1)"
+      ],
+      "answer": 3,
+      "type": "mcq",
+      "definition": "Correct: m = m * k. The accumulator m starts at 1 and must end as 1·2·3···n. Multiplying the running product by the loop counter k on every pass gives exactly that. 'm = m*n' multiplies by n each time → nⁿ⁻¹·…, wrong; the k·(k-1) and n·k options aren't even running products of m.",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "Fill in the blank so that f(n) returns 1 + 2 + ... + n (for non-negative n).",
+      "formula": "function f(n):\n    Set s = 0\n    for k from 1 to n (inclusive), do\n        Set ______\n    end for\n    return s",
+      "choices": [
+        "s = s + n",
+        "s = s * k",
+        "s = s + k",
+        "s = k + 1",
+        "s = s + 1"
+      ],
+      "answer": 2,
+      "type": "mcq",
+      "definition": "Correct: s = s + k. A sum accumulator starts at 0 and adds the current term k each pass, yielding 1+2+···+n. 's = s+n' adds n every time → n·n; 's = s+1' just counts to n; 's = s*k' starts from 0 and stays 0.",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "Fill in the blank so that f(b, n) returns b raised to the power n (non-negative integer n).",
+      "formula": "function f(b, n):\n    Set p = 1\n    for k from 1 to n (inclusive), do\n        Set ______\n    end for\n    return p",
+      "choices": [
+        "p = p * b",
+        "p = b * n",
+        "p = b * k",
+        "p = p * n",
+        "p = p * k"
+      ],
+      "answer": 0,
+      "type": "mcq",
+      "definition": "Correct: p = p * b. To get bⁿ you multiply the running product by the base b exactly n times (once per pass). The counter k is irrelevant to the value — 'p = p*k' would build n! , and 'p = p*n' would build nⁿ.",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "Fill in the blank so that f(n) returns the sum of the first n positive odd numbers (1 + 3 + 5 + ...). Note the loop runs k from 0 to n-1.",
+      "formula": "function f(n):\n    Set s = 0\n    for k from 0 to n-1 (inclusive), do\n        Set ______\n    end for\n    return s",
+      "choices": [
+        "s = s + k",
+        "s = s + (2*k + 1)",
+        "s = s + 2*k",
+        "s = s + (2*k - 1)",
+        "s = s + (k + 1)"
+      ],
+      "answer": 1,
+      "type": "mcq",
+      "definition": "Correct: s = s + (2*k + 1). With k = 0,1,...,n-1 the k-th odd number is 2k+1 (k=0→1, k=1→3, ...), so the sum is 1+3+···+(2n-1) = n². The 2k-1 form is right only when k starts at 1; here k starts at 0, so 2k-1 would start at -1.",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "Fill in the blank so that f(a) returns the maximum value of array a (length ≥ 1, 0-indexed).",
+      "formula": "function f(a):\n    Set best = a[0]\n    for i from 1 to length(a)-1 (inclusive), do\n        If ______ : Set best = a[i]\n    end for\n    return best",
+      "choices": [
+        "a[i] < best",
+        "a[i] > best",
+        "a[i] > a[0]",
+        "best > a[i]",
+        "i > best"
+      ],
+      "answer": 1,
+      "type": "mcq",
+      "definition": "Correct: a[i] > best. 'best' tracks the largest value seen so far; replace it whenever the current element exceeds it. 'a[i] > a[0]' only compares to the first element (misses later maxima after a[0]); 'a[i] < best' would compute the minimum.",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "Fill in the blank so that f(a) returns the number of even values in array a (0-indexed).",
+      "formula": "function f(a):\n    Set count = 0\n    for i from 0 to length(a)-1 (inclusive), do\n        If ______ : Set count = count + 1\n    end for\n    return count",
+      "choices": [
+        "a[i] mod 2 = 0",
+        "i mod 2 = 0",
+        "a[i] / 2 = 0",
+        "count mod 2 = 0",
+        "a[i] mod 2 = 1"
+      ],
+      "answer": 0,
+      "type": "mcq",
+      "definition": "Correct: a[i] mod 2 = 0. A number is even exactly when it leaves remainder 0 on division by 2. 'i mod 2 = 0' tests the index, not the value; 'a[i] mod 2 = 1' counts odds; 'a[i]/2 = 0' is true only for 0 (and 1 under integer division).",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "Fill in the blank so that f(n) returns n! using a downward loop (non-negative n).",
+      "formula": "function f(n):\n    Set m = 1\n    Set k = n\n    while k > 1, do\n        Set m = m * k\n        Set ______\n    end while\n    return m",
+      "choices": [
+        "k = m - 1",
+        "k = k - 1",
+        "k = k + 1",
+        "k = n - 1",
+        "k = k * 2"
+      ],
+      "answer": 1,
+      "type": "mcq",
+      "definition": "Correct: k = k - 1. The loop multiplies m by n, n-1, n-2, …, 2 and must make progress toward the k>1 exit, so k must decrease by 1 each pass. 'k = k+1' runs forever; 'k = n-1' freezes k at n-1 (also non-terminating).",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "Fill in the blank so that f(n) returns the n-th Fibonacci number with f(0)=0, f(1)=1.",
+      "formula": "function f(n):\n    Set x = 0\n    Set y = 1\n    for k from 1 to n (inclusive), do\n        Set temp = x + y\n        Set x = y\n        Set ______\n    end for\n    return x",
+      "choices": [
+        "y = x + 1",
+        "y = temp",
+        "y = x",
+        "x = temp",
+        "y = temp + x"
+      ],
+      "answer": 1,
+      "type": "mcq",
+      "definition": "Correct: y = temp. The classic two-variable slide: temp = x+y is the next term, then the window moves forward (x ← old y, y ← temp). Returning x after n passes gives f(n) (n=0 → x=0; n=1 → x=1; n=2 → x=1; …). 'y = x' loses the new term; 'x = temp' double-advances x.",
+      "last_updated": "2026-06-29"
+    }
+  ]
+}

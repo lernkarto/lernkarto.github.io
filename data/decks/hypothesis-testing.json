@@ -1,0 +1,194 @@
+{
+  "id": "hypothesis-testing",
+  "name": "Hypothesis testing: errors and power",
+  "color": "#ff6b6b",
+  "description": "A visual-first treatment of the Neyman–Pearson framework: the two-distribution picture, Type I/II errors, statistical power, and the α-β tradeoff — anchored by an interactive slider that lets you feel the geometry directly.",
+  "source": "https://en.wikipedia.org/wiki/Statistical_hypothesis_testing",
+  "license": "CC BY-SA 4.0",
+  "attribution": "Adapted from Wikipedia — 'Statistical hypothesis testing' — licensed under CC BY-SA 4.0.",
+  "primerTitle": "Hypothesis testing — the two-bell picture",
+  "primer": "## The setup\nIn the Neyman–Pearson framework a test reduces to two overlapping distributions and a line:\n- **H₀ (null):** the no-effect distribution, centred at $\\mu_0$. The red bell.\n- **H₁ (alternative):** the effect distribution, centred at $\\mu_1$. The blue bell.\n- **Threshold (decision boundary):** you reject H₀ if the observed statistic falls to the right of it; fail to reject if it falls to the left.\n\n```graph\n{\"type\":\"normal-hypothesis\",\"params\":{\"threshold\":1.645,\"delta\":2},\"controls\":[]}\n```\n\n## The two errors\n| | H₀ is true | H₁ is true |\n|---|---|---|\n| **Reject H₀** | ❌ Type I error ($\\alpha$) | ✅ Correct (power) |\n| **Fail to reject H₀** | ✅ Correct | ❌ Type II error ($\\beta$) |\n\n- **Type I error rate $\\alpha$** = the shaded red area to the right of the threshold under H₀. You control it by where you place the threshold. Conventionally $\\alpha = 0.05$.\n- **Type II error rate $\\beta$** = the shaded blue area to the left of the threshold under H₁. It is determined by the threshold, the effect size $\\delta = \\mu_1 - \\mu_0$ (in $\\sigma$ units), and $n$.\n- **Power** $= 1 - \\beta$ = the area of H₁ to the *right* of the threshold = probability of correctly detecting the effect.\n\n## The tradeoff\nMoving the threshold right: α falls, β rises (less red area, more blue area). Moving it left: α rises, β falls. You cannot simultaneously minimise both without changing the *distributions* — which means: bigger $n$ (sharper bells, less overlap) or larger true effect $\\delta$.\n\nFor a one-sided z-test at $\\alpha = 5\\%$ the threshold is at $z = 1.645$; at $\\alpha = 1\\%$ it is $z = 2.33$.\n\n**Power formula (one-sided z-test):**\n$$\\text{power} = 1 - \\Phi\\!\\left(z_{1-\\alpha} - \\frac{\\delta}{\\sigma/\\sqrt{n}}\\right) = 1 - \\Phi\\!\\left(z_{1-\\alpha} - \\frac{\\delta\\sqrt{n}}{\\sigma}\\right)$$\n\n## The p-value\nThe **p-value** is the area in the H₀ tail beyond the *observed* statistic — how extreme the observation is under H₀. Reject H₀ when $p < \\alpha$. **It is NOT the probability that H₀ is true.**\n\n```graph\n{\"type\":\"normal-hypothesis\",\"params\":{\"threshold\":1.645,\"delta\":2},\"controls\":[\"threshold\",\"delta\"]}\n```\nDrag threshold to see α and β update live. Drag δ to feel the effect size.",
+  "categories": {
+    "foundation": "Foundation",
+    "tradeoff": "The α–β tradeoff",
+    "power": "Power",
+    "pvalue": "p-value",
+    "exercise": "Exercises"
+  },
+  "cards": [
+    {
+      "category": "foundation",
+      "term": "In the two-bell hypothesis-testing diagram, what does each bell represent, and what is the decision boundary?",
+      "summary": "Red bell = H₀ at μ₀; blue bell = H₁ at μ₁; the vertical line is the threshold — reject H₀ when the statistic falls to its right.",
+      "definition": "The red bell is the **null distribution** H₀ (centred at $\\mu_0$, e.g. \"no effect\"); the blue bell is the **alternative distribution** H₁ (centred at $\\mu_1$). The vertical threshold is the decision boundary: outcomes to its right are deemed too improbable under H₀ and trigger a rejection. The two error areas are the tails that overlap the wrong side of the boundary.",
+      "graph": {
+        "type": "normal-hypothesis",
+        "params": {
+          "threshold": 1.645,
+          "delta": 2
+        },
+        "controls": []
+      },
+      "note": "[1] Statistical hypothesis testing (Wikipedia) — https://en.wikipedia.org/wiki/Statistical_hypothesis_testing",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "category": "foundation",
+      "term": "If the decision threshold is moved further to the right (away from H₀), what happens to α and β?",
+      "type": "mcq",
+      "choices": ["α decreases and β increases", "α increases and β decreases", "Both decrease", "Both increase"],
+      "answer": 0,
+      "definition": "Moving the threshold rightward cuts the red right-tail area of H₀ (lowering α) while expanding the blue left-tail area of H₁ (raising β). Reducing one error rate necessarily inflates the other unless the distributions themselves are sharpened (larger n) or the true effect δ grows.",
+      "note": "[1] Statistical hypothesis testing (Wikipedia) — https://en.wikipedia.org/wiki/Statistical_hypothesis_testing",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "category": "foundation",
+      "term": "The probability of correctly rejecting a false H₀ is called {{power}} (= $1 - \\beta$).",
+      "definition": "**Statistical power** = $1 - \\beta$, where $\\beta$ is the Type II error rate. It is the probability that the test produces a significant result when H₁ is actually true. Power rises with a larger true effect δ, larger n, and higher α (at the cost of more false positives).",
+      "type": "cloze",
+      "note": "[1] Statistical power (Wikipedia) — https://en.wikipedia.org/wiki/Statistical_power",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "category": "tradeoff",
+      "term": "Drag the threshold until only 5% of the H₀ (red) distribution lies to its right. What threshold value gives α = 5% for a one-sided test?",
+      "summary": "z = 1.645 is the one-sided 5% critical value of N(0, 1).",
+      "definition": "At the threshold z = 1.645, exactly 5% of the standard normal H₀ distribution lies to the right — that is α = 5%. Notice that with δ = 2 at this threshold, β ≈ 36% and power ≈ 64%. Moving the threshold right increases this power cost (β rises).",
+      "frontGraph": {
+        "type": "normal-hypothesis",
+        "params": {
+          "threshold": 0,
+          "delta": 2
+        },
+        "controls": [
+          "threshold"
+        ]
+      },
+      "note": "[1] Statistical hypothesis testing (Wikipedia) — https://en.wikipedia.org/wiki/Statistical_hypothesis_testing",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "category": "tradeoff",
+      "term": "With δ = 2 and the threshold at z = 1.645 (α = 5%), drag the threshold rightward to α = 1%. What happens to β?",
+      "summary": "At α = 1% (z ≈ 2.33), β rises to ~63%, so power drops to ~37%.",
+      "definition": "At threshold 1.645: α = 5%, β ≈ 36%, power ≈ 64%. At threshold 2.33 (α = 1%): β ≈ 63%, power ≈ 37%. The gain in α-control is paid for by a large increase in β. The only way to improve both is to narrow the distributions — i.e. to increase the sample size n or find a stronger signal δ.",
+      "frontGraph": {
+        "type": "normal-hypothesis",
+        "params": {
+          "threshold": 1.645,
+          "delta": 2
+        },
+        "controls": [
+          "threshold"
+        ]
+      },
+      "note": "[1] Statistical hypothesis testing (Wikipedia) — https://en.wikipedia.org/wiki/Statistical_hypothesis_testing",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "category": "tradeoff",
+      "term": "Decreasing the significance level α from 5% to 1% makes the test more powerful.",
+      "type": "truefalse",
+      "answer": false,
+      "summary": "False — a stricter α (threshold moved right) increases β, reducing power.",
+      "definition": "False. Decreasing α moves the threshold rightward, which increases β (more of H₁'s left tail falls below the boundary) and therefore *decreases* power = $1 - \\beta$. To gain power without increasing α you need a larger sample size or a larger true effect δ.",
+      "note": "[1] Statistical power (Wikipedia) — https://en.wikipedia.org/wiki/Statistical_power",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "category": "power",
+      "term": "With α = 5% fixed (threshold at z = 1.645), drag the effect size δ from 1 to 3. At what approximate δ does power reach 80%?",
+      "summary": "About δ ≈ 2.5 gives 80% power at α = 5%. At δ = 1 power is only ~26%.",
+      "definition": "For a one-sided z-test at α = 5%, power = $1 - \\Phi(1.645 - \\delta)$. Setting power = 0.80 gives $1.645 - \\delta = -0.84$, so $\\delta \\approx 2.49$ standard deviations of the test statistic. In practice this translates to a sample-size calculation: $n = (\\sigma(z_{1-\\alpha}+z_{1-\\beta})/\\Delta)^2$.",
+      "frontGraph": {
+        "type": "normal-hypothesis",
+        "params": {
+          "threshold": 1.645,
+          "delta": 1
+        },
+        "controls": [
+          "delta"
+        ]
+      },
+      "note": "[1] Statistical power (Wikipedia) — https://en.wikipedia.org/wiki/Statistical_power",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "category": "power",
+      "term": "Which combination of factors produces the highest statistical power?",
+      "type": "mcq",
+      "choices": ["Large n, large true effect δ, moderate α", "Small n, large true effect δ, low α", "Large n, small true effect δ, high α", "Small n, small true effect δ, low α"],
+      "answer": 0,
+      "definition": "Power = $1 - \\Phi(z_{1-\\alpha} - \\delta\\sqrt{n}/\\sigma)$: it rises with δ (bigger signal), with √n (sharper distributions → less overlap), and with α (lower threshold, but at the cost of more false positives).",
+      "note": "[1] Statistical power (Wikipedia) — https://en.wikipedia.org/wiki/Statistical_power",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "category": "power",
+      "term": "Observe the two distributions at δ = 0.5 and at δ = 3. Why is a small δ not intrinsically dangerous — and yet practically difficult?",
+      "summary": "Small δ is not a logical flaw — it just requires larger n to achieve adequate power. When n is fixed, small δ means the distributions overlap heavily and the test has low power.",
+      "definition": "A small true effect (δ close to 0) is a perfectly valid state of the world. The issue is not the size of δ itself but whether your study has enough precision (n) to detect it. With fixed n, small δ means the two bells almost completely overlap: the threshold that controls α cuts deep into H₁, giving low power. Increasing n shrinks both bells by $1/\\sqrt{n}$, reducing the overlap even for the same δ in raw units.",
+      "graph": {
+        "type": "normal-hypothesis",
+        "params": {
+          "threshold": 1.645,
+          "delta": 0.8
+        },
+        "controls": []
+      },
+      "note": "[1] Statistical power (Wikipedia) — https://en.wikipedia.org/wiki/Statistical_power",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "category": "pvalue",
+      "term": "What is the p-value, geometrically, on the hypothesis-testing diagram?",
+      "summary": "The area in the H₀ tail beyond the observed test statistic.",
+      "definition": "The **p-value** is the probability, *assuming H₀ is true*, of observing a test statistic at least as extreme as the one obtained. Geometrically it is the area in the right tail of the **H₀ (red) bell** beyond the observed value — exactly the same shaded area as α, but evaluated at the observed statistic rather than a fixed threshold. Reject H₀ when p < α.",
+      "note": "[1] p-value (Wikipedia) — https://en.wikipedia.org/wiki/P-value",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "category": "pvalue",
+      "term": "A p-value of 0.03 means there is a 97% probability that the alternative hypothesis H₁ is true.",
+      "type": "truefalse",
+      "answer": false,
+      "summary": "False — the p-value is a tail probability under H₀, not the posterior probability of H₁.",
+      "definition": "False. The p-value is $P(\\text{statistic} \\geq \\text{observed} \\mid H_0)$ — a conditional probability about the data given H₀. It says nothing directly about the probability that H₁ is true. Equating $1 - p$ with the probability of H₁ is a well-known misinterpretation (the 'prosecutor's fallacy'). The posterior $P(H_1 \\mid \\text{data})$ requires a prior via Bayes' theorem.",
+      "note": "[1] p-value (Wikipedia) — https://en.wikipedia.org/wiki/P-value",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "category": "pvalue",
+      "term": "The correct interpretation of 'p = 0.04 with α = 0.05' is:",
+      "type": "mcq",
+      "choices": ["The result is statistically significant at the 5% level — we reject H₀", "H₁ is almost certainly true (96% confidence)", "There is a 4% probability that H₀ is true", "The effect is practically significant"],
+      "answer": 0,
+      "definition": "The p-value 0.04 is below the pre-specified α = 0.05, so by the Neyman–Pearson rule we reject H₀. This says nothing about H₁ being certainly true, nor about the practical importance of the effect (that requires knowing δ and its context).",
+      "note": "[1] p-value (Wikipedia) — https://en.wikipedia.org/wiki/P-value",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "category": "exercise",
+      "term": "H₀: $N(0,1)$ vs H₁: $N(2,1)$, one-sided threshold at $z = 1.645$ (α = 5%). What is the approximate β (Type II error rate)?",
+      "summary": "$\\beta = \\Phi(1.645 - 2) = \\Phi(-0.355) \\approx 36\\%$. Power ≈ 64%.",
+      "definition": "$\\beta = P(\\text{statistic} < 1.645 \\mid H_1) = \\Phi(1.645 - 2) = \\Phi(-0.355)$. From the standard normal table, $\\Phi(-0.36) \\approx 0.36$. So β ≈ 36% and power = $1-\\beta \\approx 64\\%$. To reach 80% power at α = 5% we'd need $\\delta \\approx 2.5$.",
+      "note": "Uses $\\beta = \\Phi(z_{1-\\alpha} - \\delta)$ for a one-sided z-test.",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "category": "exercise",
+      "term": "Why can α and β never both be driven to zero simultaneously (for fixed n and δ > 0)?",
+      "summary": "The two distributions overlap; any threshold that eliminates all H₀ right-tail area (α→0) also captures all of H₁ (β→1), and vice versa.",
+      "definition": "Because the two distributions overlap, any single threshold trades off the two tail areas against each other. Pushing the threshold to +∞ gives α → 0 but β → 1 (zero power). Pushing it to −∞ gives β → 0 but α → 1. For a fixed pair of distributions the α-β frontier is determined by the overlap. The only way to improve both simultaneously is to reduce the overlap — by increasing n (so the standard errors shrink and the bells narrow) or by finding a setting where δ is genuinely larger.",
+      "note": "[1] Statistical hypothesis testing (Wikipedia) — https://en.wikipedia.org/wiki/Statistical_hypothesis_testing",
+      "last_updated": "2026-06-29"
+    }
+  ],
+  "tags": [
+    "statistics",
+    "inference",
+    "hypothesis-testing",
+    "normal"
+  ]
+}

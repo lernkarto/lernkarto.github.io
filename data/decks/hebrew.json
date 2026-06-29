@@ -1,0 +1,127 @@
+{
+  "id": "hebrew",
+  "name": "Hebrew alphabet (alef-bet)",
+  "color": "#ff9f43",
+  "dual": true,
+  "lang": "he",
+  "description": "The 22 letters of the Hebrew abjad (consonants; vowels are added as points). Written right-to-left. Five letters take a special final form. Each letter is tested both ways, tracked separately.",
+  "primerTitle": "Hebrew alef-bet — quick recap",
+  "primer": "The Hebrew alphabet (**alef-bet**) is an **abjad** of **22 consonant letters** written **right-to-left**. Vowels are not letters — they are added below/beside consonants as points (*niqqud*), usually omitted in everyday text. **Five letters take a distinct *final* form** (sofit) when they end a word: kaf, mem, nun, pe, tsadi.\n\n**Full mapping — letter → name → sound:**\n\n- **א** — alef — silent / glottal stop (carries a vowel)\n- **ב** — bet — b (or 'v' without the dot)\n- **ג** — gimel — g (hard)\n- **ד** — dalet — d\n- **ה** — he — h\n- **ו** — vav — v (or o / u as a vowel)\n- **ז** — zayin — z\n- **ח** — chet — kh (guttural, as in 'loch')\n- **ט** — tet — t\n- **י** — yod — y\n- **כ** — kaf — k (or 'kh'); **final form ך**\n- **ל** — lamed — l\n- **מ** — mem — m; **final form ם**\n- **נ** — nun — n; **final form ן**\n- **ס** — samekh — s\n- **ע** — ayin — silent / guttural\n- **פ** — pe — p (or 'f'); **final form ף**\n- **צ** — tsadi — ts; **final form ץ**\n- **ק** — qof — k\n- **ר** — resh — r\n- **ש** — shin — sh (or 's')\n- **ת** — tav — t\n\n**Special cases:** the five final forms are **ך ם ן ף ץ** (kaf, mem, nun, pe, tsadi); א (alef) and ע (ayin) are silent carriers; a dot (*dagesh*) hardens some letters (ב b vs v, פ p vs f); ש takes a dot to show shin 'sh' vs sin 's'.",
+  "cards": [
+    {
+      "term": "א",
+      "definition": "alef — silent / glottal stop (carries a vowel)",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "ב",
+      "definition": "bet — b (or 'v' without the dot)",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "ג",
+      "definition": "gimel — g (hard)",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "ד",
+      "definition": "dalet — d",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "ה",
+      "definition": "he — h",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "ו",
+      "definition": "vav — v (or o / u as a vowel)",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "ז",
+      "definition": "zayin — z",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "ח",
+      "definition": "chet — kh (guttural, as in 'loch')",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "ט",
+      "definition": "tet — t",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "י",
+      "definition": "yod — y",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "כ",
+      "definition": "kaf — k (or 'kh'); final form ך",
+      "note": "Takes a final form ך at the end of a word.",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "ל",
+      "definition": "lamed — l",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "מ",
+      "definition": "mem — m; final form ם",
+      "note": "Takes a final form ם at the end of a word.",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "נ",
+      "definition": "nun — n; final form ן",
+      "note": "Takes a final form ן at the end of a word.",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "ס",
+      "definition": "samekh — s",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "ע",
+      "definition": "ayin — silent / guttural",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "פ",
+      "definition": "pe — p (or 'f'); final form ף",
+      "note": "Takes a final form ף at the end of a word.",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "צ",
+      "definition": "tsadi — ts; final form ץ",
+      "note": "Takes a final form ץ at the end of a word.",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "ק",
+      "definition": "qof — k",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "ר",
+      "definition": "resh — r",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "ש",
+      "definition": "shin — sh (or 's')",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "ת",
+      "definition": "tav — t",
+      "last_updated": "2026-06-29"
+    }
+  ]
+}

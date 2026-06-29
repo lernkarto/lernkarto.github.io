@@ -1,0 +1,11 @@
+{
+  "topic": "IPA (phonetics)",
+  "id": "ipa-set",
+  "standard": true,
+  "description": "The International Phonetic Alphabet — one symbol per speech sound, each with a real pronunciation recording. Each item is tested both ways, tracked separately.",
+  "primerTitle": "IPA — quick recap",
+  "primer": "## How this set works\nThe **IPA** gives every distinct speech sound its own symbol, so any language can be written by sound. Each card has a real **🔊 recording** — tap it. A consonant is named by *voicing + place + manner* (e.g. [p] = voiceless bilabial plosive); a vowel by *height + backness + rounding* (e.g. [i] = close front unrounded). Each card is studied **both ways** and tracked separately — you only master it once you know it in both directions.\n\n## Consonants (by manner)\n- **Plosives:** p b · t d · k g · ʔ (glottal stop)\n- **Nasals:** m · n · ŋ\n- **Fricatives:** f v · θ ð · s z · ʃ ʒ · h\n- **Affricates:** tʃ · dʒ\n- **Approximants:** ɹ · j · w · l\n\n## Vowels (front → back)\n- **Close:** i (see) · y (Fr. 'u') · u (boot)\n- **Near-close:** ɪ (sit) · ʊ (put)\n- **Mid:** e · ə (schwa) · o\n- **Open-mid:** ɛ (bed) · ʌ (cup) · ɔ (thought)\n- **Open:** æ (cat) · a · ɑ (father)\n\n## Why it's useful\nDictionaries, language courses and the alphabet decks all lean on IPA to pin down *exactly* how something sounds — independent of spelling. Every card's answer is named/charted here.",
+  "deckFiles": [
+    "ipa.json"
+  ]
+}

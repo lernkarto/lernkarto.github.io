@@ -1,0 +1,105 @@
+{
+  "id": "stress-scenario",
+  "name": "Stress testing & scenarios",
+  "color": "#c0ff3e",
+  "description": "Probing the tail beyond what statistical models capture.",
+  "primerTitle": "Stress testing & scenarios in one page",
+  "primer": "**Stress testing** assesses how a portfolio or balance sheet performs under **severe but plausible** shocks, complementing statistical measures like VaR that rely on normal-times data. It probes the tail *directly* rather than extrapolating it — it answers 'what if', where VaR answers 'how often'.\\n\\n**Building a test.** **Scenario design** constructs *internally consistent* paths for the risk factors driving losses (rates, growth, unemployment, asset prices) — coherence across factors is what separates a scenario from an arbitrary bump (e.g. a 300bp rate spike with unchanged growth and FX is not coherent). A **sensitivity analysis** shocks **one factor at a time**, $\\\\Delta V\\\\approx\\\\sum_k\\\\frac{\\\\partial V}{\\\\partial x_k}\\\\Delta x_k$ (one $k$ at a time) — the simplest stress test; it *ignores* the correlations a coherent scenario captures. **Reverse stress testing** starts from a defined **failure outcome** (insolvency, illiquidity) and works *backwards* to find the scenarios that cause it — surfacing hidden vulnerabilities forward tests miss. **Historical** scenarios replay actual episodes (1987, 2008, COVID-2020) for credibility; **hypothetical** scenarios construct novel shocks for risks without precedent — both are needed. **Severity calibration** sets how extreme a scenario is (supervisory tests span **baseline, adverse, severely adverse**); too mild reassures falsely, too severe loses credibility.\\n\\n**Types of test.** **Supervisory stress tests** are regulator-run exercises imposing common macro scenarios across banks to judge capital adequacy and set buffers, with public results (US: CCAR/DFAST by the Fed; EU: EBA-coordinated; UK: BoE ACS) — both a solvency check and a market-discipline tool. **Liquidity stress testing** projects stressed inflows/outflows to verify the buffer covers the survival horizon (central to the LCR and internal ILAAP): stressed outflows $=\\\\sum_j\\\\text{balance}_j\\\\times\\\\text{runoff}_j$. **Microprudential** tests assess a *single firm*; **macroprudential** tests consider *system-wide* stability, including how firms' *simultaneous* reactions amplify a shock (fire-selling is prudent for one bank, destabilising if all do it).\\n\\n**Dynamics & use.** **Second-round effects (contagion)** are the amplification beyond the initial shock — fire sales, funding withdrawal, counterparty failures and deleveraging that feed back into further losses; these dynamic, system-level effects often dwarf the first-round impact and are the hardest to model. **Capital planning** uses stress results to keep capital above minimums plus buffers through a downturn, linking stress testing to dividend/buyback/issuance decisions (a failed test can block payouts). The **use test** is the supervisory expectation that stress testing genuinely *informs* business and risk decisions (limits, appetite, capital) rather than being a filed-and-forgotten compliance exercise — embedding is what makes a framework credible.",
+  "cards": [
+    {
+      "term": "Stress testing",
+      "definition": "Assessing how a portfolio or balance sheet performs under severe but plausible shocks, complementing statistical measures like VaR that rely on normal-times data. It probes the tail directly rather than extrapolating it, exposing vulnerabilities models miss.",
+      "note": "Answers 'what if', where VaR answers 'how often'.",
+      "last_updated": "2026-06-29",
+      "stale": true
+    },
+    {
+      "term": "Scenario design",
+      "definition": "Constructing internally consistent paths for the risk factors driving losses — rates, growth, unemployment, asset prices — that translate a narrative shock into quantitative inputs. Coherence across factors is what separates a scenario from an arbitrary bump.",
+      "note": "A 300bp rate spike with unchanged growth and FX is not coherent.",
+      "last_updated": "2026-06-29",
+      "stale": true
+    },
+    {
+      "term": "A sensitivity analysis shocks several correlated risk factors together to form a coherent scenario.",
+      "definition": "False. Sensitivity analysis shocks one risk factor at a time to measure the portfolio's response, the simplest form of stress test; it ignores the correlations and feedback that a coherent scenario captures.",
+      "formula": "$\\Delta V \\approx \\sum_k \\dfrac{\\partial V}{\\partial x_k}\\,\\Delta x_k$ (one $k$ at a time)",
+      "type": "truefalse",
+      "answer": false,
+      "summary": "False — that's a scenario analysis; a sensitivity analysis shocks a single factor in isolation.",
+      "last_updated": "2026-06-29",
+      "stale": true
+    },
+    {
+      "term": "{{Reverse stress testing}} starts from a defined failure outcome and works backwards to find the scenarios that would cause it.",
+      "definition": "Starting from a defined failure outcome — insolvency, illiquidity — and working backwards to find the scenarios that would cause it. It surfaces hidden vulnerabilities and concentrations that forward tests, anchored on plausible shocks, overlook.",
+      "note": "Asks 'what would break us?' instead of 'how bad is this shock?'.",
+      "type": "cloze",
+      "last_updated": "2026-06-29",
+      "stale": true
+    },
+    {
+      "term": "Historical vs hypothetical scenarios",
+      "definition": "Historical scenarios replay actual episodes (1987, 2008, COVID-2020) for realism and credibility; hypothetical scenarios construct novel shocks for risks without precedent. Both are needed — the next crisis rarely matches the last.",
+      "note": "Relying only on history is fighting the previous war.",
+      "last_updated": "2026-06-29",
+      "stale": true
+    },
+    {
+      "term": "Severity calibration",
+      "definition": "Setting how extreme a scenario is — supervisory tests typically span baseline, adverse and severely adverse paths. Too mild and the test reassures falsely; too severe and it loses credibility and bite.",
+      "note": "Severity should reflect, not lag, the current build-up of risk.",
+      "last_updated": "2026-06-29",
+      "stale": true
+    },
+    {
+      "term": "Supervisory stress tests",
+      "sub": "CCAR / DFAST / EBA",
+      "definition": "Regulator-run exercises imposing common macro scenarios across banks to judge capital adequacy and inform buffer-setting, with public results. They are both a solvency check and a market-discipline tool.",
+      "note": "US: CCAR/DFAST by the Fed; EU: EBA-coordinated; UK: Bank of England ACS.",
+      "last_updated": "2026-06-29",
+      "stale": true
+    },
+    {
+      "term": "Liquidity stress testing",
+      "definition": "Projecting cash inflows and outflows under stressed conditions to verify the liquidity buffer covers the survival horizon. The liquidity analogue of capital stress testing, central to the LCR's design and to internal ILAAP.",
+      "formula": "stressed outflows $=\\sum_j \\text{balance}_j\\times \\text{runoff}_j$",
+      "last_updated": "2026-06-29",
+      "stale": true
+    },
+    {
+      "term": "Macroprudential stress tests consider system-wide stability, including how firms' simultaneous reactions amplify a shock.",
+      "definition": "True. Microprudential tests assess a single firm's resilience; macroprudential tests consider system-wide stability, including how firms' simultaneous reactions amplify a shock. The 2008 crisis exposed the gap between safe individual banks and an unsafe system.",
+      "note": "A move prudent for one bank (fire-selling) is destabilising if all do it at once.",
+      "type": "truefalse",
+      "answer": true,
+      "summary": "True — macroprudential is system-wide, while microprudential assesses a single firm in isolation.",
+      "last_updated": "2026-06-29",
+      "stale": true
+    },
+    {
+      "term": "The amplification beyond the initial shock — fire sales, funding withdrawal and deleveraging that feed back into further losses — is known as {{second-round effects}}.",
+      "sub": "contagion",
+      "definition": "The amplification beyond the initial shock — fire sales, funding withdrawal, counterparty failures and deleveraging that feed back into further losses. These dynamic, system-level effects often dwarf the first-round impact.",
+      "note": "The hardest part to model, and where systemic crises actually do their damage.",
+      "type": "cloze",
+      "last_updated": "2026-06-29",
+      "stale": true
+    },
+    {
+      "term": "Capital planning",
+      "definition": "Using stress results to ensure a bank can maintain capital above minimums plus buffers through a downturn while meeting commitments, linking stress testing to dividend and issuance decisions. It turns a hypothetical into a management action.",
+      "note": "A failed supervisory stress test can block buybacks and dividends.",
+      "last_updated": "2026-06-29",
+      "stale": true
+    },
+    {
+      "term": "The supervisory expectation that stress testing genuinely informs business and risk decisions rather than being a filed-and-forgotten compliance exercise is called the {{use test}}.",
+      "definition": "The supervisory expectation that stress testing genuinely informs business and risk decisions — limits, appetite, capital — rather than being a compliance exercise filed and forgotten. Embedding is what makes a stress framework credible.",
+      "note": "Regulators probe whether results actually change behaviour.",
+      "type": "cloze",
+      "last_updated": "2026-06-29",
+      "stale": true
+    }
+  ]
+}

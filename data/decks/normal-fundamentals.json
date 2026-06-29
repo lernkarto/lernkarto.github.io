@@ -1,0 +1,194 @@
+{
+  "id": "normal-fundamentals",
+  "name": "Fundamentals",
+  "color": "#f783ac",
+  "description": "The bell itself: the PDF, the two parameters, standard normal and z-scores, symmetry / zero skew / zero excess kurtosis, mean=median=mode, support, the 68–95–99.7 rule and the key z-quantiles.",
+  "source": "https://en.wikipedia.org/wiki/Normal_distribution",
+  "license": "CC BY-SA 4.0",
+  "attribution": "Adapted from Wikipedia — 'Normal distribution' — licensed under CC BY-SA 4.0.",
+  "primerTitle": "Normal — Fundamentals: quick recap",
+  "primer": "## The bell and its parameters\n- **PDF:** $f(x)=\\dfrac{1}{\\sigma\\sqrt{2\\pi}}\\,e^{-(x-\\mu)^2/(2\\sigma^2)}$, written $N(\\mu,\\sigma^2)$. The distribution is fixed by **exactly two parameters** — no other shape parameters:\n  - **mean $\\mu$** — the location, the centre of the symmetric bell;\n  - **variance $\\sigma^2$** (SD $\\sigma$) — the spread.\n- The factor $\\dfrac{1}{\\sigma\\sqrt{2\\pi}}$ is the **normalising constant**: the exponential alone is a bell, and dividing by it scales the total area to 1, as every PDF must.\n\n```graph\n{\"type\":\"normal\",\"params\":{\"mu\":0,\"sigma\":1},\"controls\":[\"mu\",\"sigma\"]}\n```\nDrag μ to shift the centre; drag σ to widen or tighten the bell.\n\n## Standard normal and z-scores\n- **Standard normal** $N(0,1)$: **mean 0, variance 1**, density $\\varphi(z)=e^{-z^2/2}/\\sqrt{2\\pi}$ — the reference curve in z-tables.\n- **z-score** $z=(x-\\mu)/\\sigma$ — the number of SDs $x$ lies from the mean. It maps any $N(\\mu,\\sigma^2)$ onto $N(0,1)$, so one table serves all. Inverted: $x=\\mu+z\\sigma$.\n\n## Shape\n- Symmetric, unimodal bell: **mean = median = mode = $\\mu$**.\n- **Skewness 0** and **excess kurtosis 0** (raw kurtosis 3 — the reference shape; positive excess = 'fat-tailed').\n- **Inflection points** (curvature changes sign) at $\\mu\\pm\\sigma$.\n- **Support** is the whole real line $(-\\infty,\\infty)$ — density positive everywhere, so it always assigns some probability below zero (a poor fit for non-negative quantities).\n\n## Empirical rule & key quantiles\n- **68–95–99.7 rule:** ~68% of mass within $\\pm1\\sigma$, ~95% within $\\pm2\\sigma$, ~99.7% within $\\pm3\\sigma$.\n- **One-sided critical z-values:** 95% → **1.645**, 97.5% → **1.96**, 99% → **2.33**. The 97.5% value 1.96 is the **two-sided 95%** multiplier ($\\pm1.96$ encloses the central 95%, 2.5% per tail); the one-sided 95% value is 1.645.\n\n**Two-sided coverage** — drag to feel the 68/95/99.7 landmarks:\n\n```graph\n{\"type\":\"normal-within\",\"params\":{\"k\":1},\"controls\":[\"k\"]}\n```\n\n**One-sided CDF** — drag to find the quantile for any target probability:\n\n```graph\n{\"type\":\"normal-cdf\",\"params\":{\"k\":0},\"controls\":[\"k\"]}\n```",
+  "categories": {
+    "core": "Core",
+    "shape": "Shape",
+    "empirical": "Empirical",
+    "exercise": "Exercises"
+  },
+  "cards": [
+    {
+      "category": "core",
+      "term": "What two parameters fully define a normal distribution, and what does each control?",
+      "summary": "Mean $\\mu$ (location) and variance $\\sigma^2$ (spread).",
+      "definition": "A normal (Gaussian) distribution $N(\\mu,\\sigma^2)$ is determined entirely by its mean $\\mu$ — the centre of the symmetric bell — and its variance $\\sigma^2$ (equivalently the standard deviation $\\sigma$), which sets the spread. There are no other shape parameters.",
+      "formula": "$f(x)=\\dfrac{1}{\\sigma\\sqrt{2\\pi}}\\,e^{-\\frac{(x-\\mu)^2}{2\\sigma^2}}$",
+      "note": "[1] Normal distribution (Wikipedia) — https://en.wikipedia.org/wiki/Normal_distribution",
+      "graph": {
+        "type": "normal",
+        "params": {
+          "mu": 0,
+          "sigma": 1
+        },
+        "controls": [
+          "mu",
+          "sigma"
+        ]
+      },
+      "last_updated": "2026-06-29"
+    },
+    {
+      "category": "core",
+      "term": "[Normal] In the density $f(x)=\\frac{1}{\\sigma\\sqrt{2\\pi}}e^{-(x-\\mu)^2/(2\\sigma^2)}$, what is the role of the $\\frac{1}{\\sigma\\sqrt{2\\pi}}$ factor?",
+      "sub": "A) it is the normalising constant that makes the density integrate to 1    B) it sets the mean of the distribution    C) it is the skewness correction    D) it is the height of the tails",
+      "definition": "Correct: A) it is the normalising constant that makes the density integrate to 1. The exponential alone is a bell shape; dividing by $\\sigma\\sqrt{2\\pi}$ scales the total area to one, as required of any PDF.",
+      "note": "[1] Normal distribution (Wikipedia) — https://en.wikipedia.org/wiki/Normal_distribution",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "category": "core",
+      "term": "The standard normal distribution is $N(0,1)$ — mean {{0}} and variance 1 — with density $\\varphi(z)=e^{-z^2/2}/\\sqrt{2\\pi}$.",
+      "definition": "The standard normal is the special case $\\mu=0$, $\\sigma^2=1$. Its density $\\varphi(z)=e^{-z^2/2}/\\sqrt{2\\pi}$ is the reference curve all other normals are rescaled from, and the one tabulated in z-tables.",
+      "type": "cloze",
+      "note": "[1] Normal distribution (Wikipedia) — https://en.wikipedia.org/wiki/Normal_distribution",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "category": "core",
+      "term": "[Normal] What is a z-score, and how is it computed?",
+      "sub": "A) $z=(x-\\mu)/\\sigma$ — the number of standard deviations $x$ lies from the mean    B) $z=x-\\mu$ — the raw deviation from the mean    C) $z=x/\\sigma^2$ — the value scaled by variance    D) $z=(x-\\mu)^2$ — the squared deviation",
+      "definition": "Correct: A) $z=(x-\\mu)/\\sigma$ — the number of standard deviations $x$ lies from the mean. Standardising maps any $N(\\mu,\\sigma^2)$ value onto the standard normal $N(0,1)$, so a single table serves every normal.",
+      "note": "[1] Standard score (Wikipedia) — https://en.wikipedia.org/wiki/Standard_score",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "category": "shape",
+      "term": "What is special about the mean, median and mode of a normal distribution?",
+      "summary": "They all coincide at $\\mu$.",
+      "definition": "Because the normal is symmetric and unimodal, its mean, median and mode are all equal to $\\mu$. The single peak sits at the centre and the two halves mirror each other.",
+      "note": "[1] Normal distribution (Wikipedia) — https://en.wikipedia.org/wiki/Normal_distribution",
+      "graph": {
+        "type": "normal",
+        "params": {
+          "mu": 0,
+          "sigma": 1
+        },
+        "controls": []
+      },
+      "last_updated": "2026-06-29"
+    },
+    {
+      "category": "shape",
+      "term": "[Normal] What are the skewness and excess kurtosis of a normal distribution?",
+      "sub": "A) skewness 0 and excess kurtosis 0    B) skewness 1 and excess kurtosis 3    C) skewness 0 and excess kurtosis 3    D) both undefined",
+      "definition": "Correct: A) skewness 0 and excess kurtosis 0. The normal is perfectly symmetric (zero skew) and is the reference for kurtosis — its raw kurtosis is 3, so by definition the excess kurtosis is 0. Distributions with positive excess kurtosis are 'fat-tailed' relative to it.",
+      "note": "[1] Normal distribution (Wikipedia) — https://en.wikipedia.org/wiki/Normal_distribution",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "category": "shape",
+      "term": "[Normal] The support of a normal distribution is the whole real line.",
+      "type": "truefalse",
+      "answer": true,
+      "summary": "True — a normal variable can take any real value in $(-\\infty,\\infty)$.",
+      "definition": "True. The density is strictly positive everywhere, so the support is $(-\\infty,\\infty)$. This is also why the normal is a poor model for quantities that cannot be negative — it always assigns some probability below zero.",
+      "note": "[1] Normal distribution (Wikipedia) — https://en.wikipedia.org/wiki/Normal_distribution",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "category": "shape",
+      "term": "[Normal] The inflection points of the normal density (where its curvature changes sign) sit exactly one standard deviation from the mean, at $\\mu\\pm\\sigma$.",
+      "type": "truefalse",
+      "answer": true,
+      "summary": "True — the bell bends at $\\mu\\pm\\sigma$.",
+      "definition": "True. The second derivative of the density vanishes at $x=\\mu\\pm\\sigma$, so $\\sigma$ is visible on the curve as the distance from the peak to where it switches from concave to convex.",
+      "note": "[1] Normal distribution (Wikipedia) — https://en.wikipedia.org/wiki/Normal_distribution",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "category": "empirical",
+      "term": "Under the 68–95–99.7 rule, about {{95}}% of a normal distribution's mass lies within two standard deviations of the mean.",
+      "definition": "The empirical rule: roughly 68% of the mass lies within $\\pm1\\sigma$, 95% within $\\pm2\\sigma$, and 99.7% within $\\pm3\\sigma$ of the mean — a fast gauge for how extreme an observation is.",
+      "type": "cloze",
+      "note": "[1] 68–95–99.7 rule (Wikipedia) — https://en.wikipedia.org/wiki/68%E2%80%9395%E2%80%9399.7_rule",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "category": "empirical",
+      "term": "[Normal] Roughly what fraction of a normal distribution lies within one standard deviation of the mean?",
+      "sub": "A) about 68%    B) about 50%    C) about 95%    D) about 99.7%",
+      "definition": "Correct: A) about 68%. The 68–95–99.7 rule: $\\pm1\\sigma$ captures ~68%, $\\pm2\\sigma$ ~95%, $\\pm3\\sigma$ ~99.7%. So roughly a third of observations fall more than one SD from the mean.",
+      "note": "[1] 68–95–99.7 rule (Wikipedia) — https://en.wikipedia.org/wiki/68%E2%80%9395%E2%80%9399.7_rule",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "category": "empirical",
+      "term": "[Normal] For one-sided 95% / 97.5% / 99% levels, the standard-normal critical z-values are:",
+      "sub": "A) 1.645 / 1.96 / 2.33    B) 1.96 / 2.33 / 2.58    C) 1.28 / 1.645 / 1.96    D) 2.33 / 2.58 / 3.09",
+      "definition": "Correct: A) 1.645 / 1.96 / 2.33. The one-sided 95% quantile is 1.645, the 97.5% quantile (the two-sided 95% level) is 1.96, and the one-sided 99% quantile is 2.33 — the constants behind most parametric VaR and confidence-interval figures.",
+      "note": "[1] Normal distribution (Wikipedia) — https://en.wikipedia.org/wiki/Normal_distribution",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "category": "empirical",
+      "term": "[Normal] The value 1.96 is the standard-normal quantile used for a {{two}}-sided 95% confidence level (leaving 2.5% in each tail).",
+      "definition": "1.96 is the 97.5th percentile of $N(0,1)$, so $\\pm1.96$ encloses the central 95% — the multiplier for a two-sided 95% confidence interval. A one-sided 95% level instead uses 1.645.",
+      "type": "cloze",
+      "note": "[1] Normal distribution (Wikipedia) — https://en.wikipedia.org/wiki/Normal_distribution",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "category": "empirical",
+      "term": "Drag the slider until 90% of the distribution is covered. What is the corresponding z-value?",
+      "summary": "±1.645σ covers ~90% of the distribution (two-sided).",
+      "definition": "The two-sided 90% interval spans $\\pm1.645\\sigma$. This is also the one-sided 95% quantile: 5% falls in each tail combined, or equivalently $\\Phi(1.645)\\approx0.95$. The same value 1.645 appears in one-sided 95% VaR and confidence intervals.",
+      "note": "[1] Normal distribution (Wikipedia) — https://en.wikipedia.org/wiki/Normal_distribution",
+      "frontGraph": {
+        "type": "normal-within",
+        "params": {
+          "k": 1
+        },
+        "controls": [
+          "k"
+        ]
+      },
+      "last_updated": "2026-06-29"
+    },
+    {
+      "category": "empirical",
+      "term": "Drag the threshold to the right until you reach 97.5% of the area. What z-value marks that point?",
+      "summary": "$z=+1.96$ is the 97.5th percentile of $N(0,1)$ — the two-sided 95% multiplier.",
+      "definition": "$\\Phi(1.96)\\approx0.975$. Because $\\pm1.96\\sigma$ encloses the central 95%, leaving 2.5% in each tail, 1.96 is the standard multiplier for two-sided 95% confidence intervals. The one-sided 95% level (5% in one tail) uses 1.645 instead.",
+      "note": "[1] Normal distribution (Wikipedia) — https://en.wikipedia.org/wiki/Normal_distribution",
+      "frontGraph": {
+        "type": "normal-cdf",
+        "params": {
+          "k": 0
+        },
+        "controls": [
+          "k"
+        ]
+      },
+      "last_updated": "2026-06-29"
+    },
+    {
+      "category": "exercise",
+      "term": "[Exercise] Heights are $N(\\mu=170\\text{ cm},\\ \\sigma=10\\text{ cm})$. What height corresponds to a z-score of $+1.5$, and how unusual is it?",
+      "summary": "185 cm; z = 1.5 means 1.5 SDs above the mean (beyond the ~93rd percentile).",
+      "definition": "Invert the z-score: $x=\\mu+z\\sigma=170+1.5\\times10=185$ cm. A z of 1.5 sits between $1\\sigma$ (~68% rule) and $2\\sigma$ (~95% rule), so it is fairly tall — roughly the 93rd percentile — but not extreme.",
+      "note": "Uses $z=(x-\\mu)/\\sigma$ rearranged, and the 68–95–99.7 rule from the primer.",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "category": "exercise",
+      "term": "[Exercise] Test scores are $N(\\mu=500,\\ \\sigma=100)$. Using the 68–95–99.7 rule, roughly what fraction of scores fall between 300 and 700?",
+      "summary": "About 95% — 300 and 700 are $\\mu\\pm2\\sigma$.",
+      "definition": "300 $=\\mu-2\\sigma$ and 700 $=\\mu+2\\sigma$, so the interval is exactly $\\pm2\\sigma$. By the empirical rule that captures about 95% of the distribution; only ~5% of scores lie outside, ~2.5% in each tail.",
+      "note": "Direct application of the 68–95–99.7 rule with $\\sigma=100$.",
+      "last_updated": "2026-06-29"
+    }
+  ],
+  "tags": [
+    "distributions",
+    "normal",
+    "probability"
+  ]
+}

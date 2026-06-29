@@ -1,0 +1,14 @@
+{
+  "topic": "Risk, markets & asset pricing",
+  "id": "qi-risk-markets",
+  "standard": true,
+  "primerTitle": "Risk, markets & asset pricing — how to use it",
+  "primer": "## Risk, markets & asset pricing\nInterview-screen MCQs on the markets-and-risk side of a quant/risk role, **one deck per area**, each card explained.\n- **Market risk — VaR, ES & Greeks** — VaR vs Expected Shortfall, coherence/subadditivity, VaR methods, backtesting, option Greeks, duration & convexity.\n- **Credit & other risk** — EL = PD×LGD×EAD, expected vs unexpected loss, counterparty/CVA/wrong-way risk, operational & model risk, the Basel pillars.\n- **Portfolio & asset pricing** — CAPM & beta, Sharpe/Treynor/Sortino, the efficient frontier & CML, put–call parity, Black–Scholes intuition.\n- **Applied cases** — scenario questions that test picking the right tool.\n- **Nominal vs real, deflator & Fisher** — the one identity behind GDP growth, real returns and the Fisher equation.\n\nBest drilled in exam mode.",
+  "deckFiles": [
+    "econ-market-risk.json",
+    "econ-credit-risk.json",
+    "econ-portfolio.json",
+    "econ-applied-cases.json",
+    "macro-rates-growth.json"
+  ]
+}

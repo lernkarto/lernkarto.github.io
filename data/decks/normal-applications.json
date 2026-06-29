@@ -1,0 +1,117 @@
+{
+  "id": "normal-applications",
+  "name": "Applications",
+  "color": "#f783ac",
+  "description": "The normal in practice: measurement error and natural phenomena, regression / Gauss–Markov errors, parametric (variance–covariance) VaR with z·σ, QQ-plots and normality tests (Shapiro–Wilk, Jarque–Bera), and the central fat-tail limitation for financial returns.",
+  "source": "https://en.wikipedia.org/wiki/Normal_distribution",
+  "license": "CC BY-SA 4.0",
+  "attribution": "Adapted from Wikipedia — 'Normal distribution', 'Normality test' and 'Kurtosis risk' — licensed under CC BY-SA 4.0.",
+  "primerTitle": "Normal — Applications: quick recap",
+  "primer": "## Where the normal fits\n- A natural default when a quantity is the **sum of many small independent effects** (the CLT): measurement error, many natural phenomena, sample means, large diversified P&L, **regression residuals**, and **parametric (variance–covariance) VaR**. Analytically convenient — closed under linear combinations, pinned by just mean and variance.\n- **Gauss–Markov / classical linear model:** the regression **error term is often taken normal** (on top of zero mean, constant variance). Normal errors give the exact small-sample distributions behind coefficient **t-tests and F-tests**, and are defended by the CLT (errors aggregate many small omitted influences).\n\n## Parametric VaR\n- A one-sided VaR is **$\\approx z\\cdot\\sigma$**, with $z$ the standard-normal quantile for the confidence level (assuming mean ~0 P&L). The z-quantile does all the work.\n- **Key quantiles:** 95% → 1.645, 97.5% → 1.96, **99% → 2.33**. E.g. 99% one-day VaR on $\\sigma=\\$2$M is $2.33\\times\\$2$M $=\\$4.66$M.\n\n## Checking normality\n- **QQ-plot:** ordered sample values vs theoretical normal quantiles. Points on a **straight line** ⇒ normal; systematic curvature flags departures — **bends up at the right end and down at the left** (S-shape at the ends) signal **fat tails / excess kurtosis**, fixed by a fat-tailed model (Student's t, GARCH/EVT).\n- **Formal tests:** **Shapiro–Wilk**; **Jarque–Bera**, built from sample **skewness** and (excess) **kurtosis** — under normality skewness 0 and excess kurtosis 0 (raw kurtosis 3), so large deviations in either drive rejection. (Durbin–Watson and Ljung–Box test autocorrelation; Dickey–Fuller tests a unit root — not normality.)\n\n## Limitations\n- **Fat tails:** real financial returns are **leptokurtic** (fat-tailed) with **volatility clustering**. Gaussian thin tails assign tiny probability to large jumps, so the normal **understates tail risk** → use Student-t, fat-tailed/GARCH models, or empirical/expected-shortfall methods.\n- **Volatility clustering:** variance is **not constant over time** (calm and turbulent periods cluster), violating the fixed-$\\sigma$ assumption; GARCH-type models let variance evolve.\n- **Support is all of $\\mathbb{R}$:** the normal puts probability below zero and is symmetric, so it misfits **strictly-positive or strongly-skewed** quantities (incomes, sizes, prices) — use **lognormal or Pareto** instead.",
+  "categories": {
+    "use": "Use cases",
+    "checking": "Checking normality",
+    "limits": "Limitations",
+    "exercise": "Exercises"
+  },
+  "cards": [
+    {
+      "category": "use",
+      "term": "Where is the normal distribution the natural default in applied work?",
+      "summary": "Measurement error, aggregates/sample means, regression residuals, parametric VaR.",
+      "definition": "Good default when a quantity is the sum of many small independent effects (the CLT): measurement error, many natural phenomena, sample means, large diversified P&L, regression residuals, and parametric (variance–covariance) VaR. It is analytically convenient — closed under linear combinations and pinned by just mean and variance.",
+      "note": "[1] Normal distribution (Wikipedia) — https://en.wikipedia.org/wiki/Normal_distribution",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "category": "use",
+      "term": "[Normal] In a parametric (variance–covariance) VaR, a one-sided VaR is approximated as:",
+      "sub": "A) $z\\cdot\\sigma$, with $z$ the standard-normal quantile for the confidence level    B) $\\sigma^2$ alone    C) the sample mean    D) $z/\\sigma$",
+      "definition": "Correct: A) $z\\cdot\\sigma$, with $z$ the standard-normal quantile for the confidence level. Assuming normal P&L with mean ~0, the loss not exceeded with probability $c$ is about $z_c\\,\\sigma$ — e.g. $2.33\\sigma$ at 99%. The z-quantile does all the work.",
+      "note": "[1] Value at risk (Wikipedia) — https://en.wikipedia.org/wiki/Value_at_risk",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "category": "use",
+      "term": "[Normal] Under the Gauss–Markov / classical linear-model assumptions, the regression error term is often taken to be normally distributed.",
+      "type": "truefalse",
+      "answer": true,
+      "summary": "True — normal errors justify the usual t and F inference on coefficients.",
+      "definition": "True. Assuming the residuals are normal (on top of zero mean and constant variance) gives the exact small-sample distributions used for coefficient t-tests and F-tests; it is also defended by the CLT, since the error aggregates many small omitted influences.",
+      "note": "[1] Gauss–Markov theorem (Wikipedia) — https://en.wikipedia.org/wiki/Gauss%E2%80%93Markov_theorem",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "category": "checking",
+      "term": "What does a QQ-plot (quantile–quantile plot) show, and what indicates normality?",
+      "summary": "Sample quantiles vs theoretical normal quantiles; points on a straight line ⇒ normal.",
+      "definition": "A QQ-plot plots the ordered sample values against the quantiles expected from a normal. If the data are normal the points fall close to a straight line; systematic curvature flags departures — e.g. an upturned/S-shape at the ends signals fat tails.",
+      "note": "[1] Q–Q plot (Wikipedia) — https://en.wikipedia.org/wiki/Q%E2%80%93Q_plot",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "category": "checking",
+      "term": "[Normal] Which of these is a formal statistical test of normality?",
+      "sub": "A) the Shapiro–Wilk test    B) the Durbin–Watson test    C) the Dickey–Fuller test    D) the Ljung–Box test",
+      "definition": "Correct: A) the Shapiro–Wilk test. It is a standard test of whether a sample came from a normal distribution. (Durbin–Watson and Ljung–Box test autocorrelation; Dickey–Fuller tests for a unit root.)",
+      "note": "[1] Normality test (Wikipedia) — https://en.wikipedia.org/wiki/Normality_test",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "category": "checking",
+      "term": "The Jarque–Bera test for normality is built from the sample {{skewness}} and kurtosis, checking whether both match a normal's values of 0 and 3.",
+      "definition": "Jarque–Bera combines sample skewness and (excess) kurtosis into a single statistic; under normality skewness is 0 and excess kurtosis 0, so large deviations in either drive rejection. Shapiro–Wilk is an alternative, and QQ-plots give the visual check.",
+      "type": "cloze",
+      "note": "[1] Jarque–Bera test (Wikipedia) — https://en.wikipedia.org/wiki/Jarque%E2%80%93Bera_test",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "category": "limits",
+      "term": "[Normal] What is the key limitation of assuming normality for financial returns?",
+      "sub": "A) it underweights extreme moves — real returns are leptokurtic (fat-tailed) with volatility clustering    B) it cannot represent a negative mean    C) it requires the data to be integer-valued    D) it has too many parameters to estimate",
+      "definition": "Correct: A) it underweights extreme moves — real returns are leptokurtic (fat-tailed) with volatility clustering. The Gaussian's thin tails assign vanishingly small probability to large jumps, so it systematically understates tail risk; Student-t, fat-tailed or GARCH models, and empirical/expected-shortfall methods are used instead.",
+      "note": "[1] Kurtosis risk (Wikipedia) — https://en.wikipedia.org/wiki/Kurtosis_risk",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "category": "limits",
+      "term": "[Normal] Because its support is the whole real line, the normal is a poor model for strictly-positive or strongly-skewed quantities.",
+      "type": "truefalse",
+      "answer": true,
+      "summary": "True — it puts probability below zero; use lognormal or Pareto instead.",
+      "definition": "True. A normal always assigns some probability to negative values and is symmetric, so it misfits inherently positive, skewed quantities (incomes, sizes, prices). The lognormal or Pareto distribution is usually the better fit there.",
+      "note": "[1] Normal distribution (Wikipedia) — https://en.wikipedia.org/wiki/Normal_distribution",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "category": "limits",
+      "term": "[Normal] 'Volatility clustering' in returns is a problem for the plain normal model because:",
+      "sub": "A) variance is not constant over time — calm and turbulent periods cluster, violating the fixed-$\\sigma$ assumption    B) the mean drifts to infinity    C) returns become integer-valued    D) the distribution becomes perfectly symmetric",
+      "definition": "Correct: A) variance is not constant over time — calm and turbulent periods cluster, violating the fixed-$\\sigma$ assumption. A single Gaussian with constant $\\sigma$ cannot capture time-varying volatility; GARCH-type models let the variance evolve.",
+      "note": "[1] Volatility clustering (Wikipedia) — https://en.wikipedia.org/wiki/Volatility_clustering",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "category": "exercise",
+      "term": "[Exercise] Daily P&L is modelled as $N(\\mu=0,\\ \\sigma=\\$2\\text{M})$. Estimate the 99% one-day VaR, and state the assumption that makes it fragile.",
+      "summary": "≈ \\$4.66M (2.33 × \\$2M); fragile because it assumes Gaussian (thin) tails.",
+      "definition": "Parametric VaR at one-sided 99% uses $z_{0.99}=2.33$: VaR $\\approx 2.33\\times\\$2\\text{M}=\\$4.66\\text{M}$ (the loss not expected to be exceeded on 99% of days). Fragility: it assumes normal tails — if returns are fat-tailed, true 99% (and especially 99.9%) losses are larger, so this understates tail risk. Cross-check with Student-t or historical/expected-shortfall.",
+      "note": "Uses VaR $\\approx z\\cdot\\sigma$ and the fat-tail limitation from the primer.",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "category": "exercise",
+      "term": "[Exercise] A QQ-plot of daily equity returns hugs the line in the middle but bends sharply up at the right end and down at the left end. What does this pattern indicate, and what model fixes it?",
+      "summary": "Fat tails (excess kurtosis) — switch to a fat-tailed model such as Student's t.",
+      "definition": "The bends at both ends mean the empirical extreme quantiles are more extreme than a normal predicts — classic leptokurtosis / fat tails. The body is fine but the tails are too heavy for a Gaussian, so a fat-tailed model (Student's t, or a GARCH/EVT approach) gives a better tail fit and more honest VaR.",
+      "note": "Combines the QQ-plot reading with the fat-tail limitation from the primer.",
+      "last_updated": "2026-06-29"
+    }
+  ],
+  "tags": [
+    "distributions",
+    "normal",
+    "probability",
+    "applications"
+  ]
+}

@@ -1,0 +1,12 @@
+{
+  "topic": "Banking data handling",
+  "id": "data-prog-tools",
+  "standard": true,
+  "primerTitle": "Banking data handling — how to use it",
+  "primer": "## Banking data handling\nThe working data toolchain of a quant/risk role, **one deck per language** — concept-first cards (with worked code) followed by quick which-function recall checks.\n- **Python for data (pandas)** — DataFrames, joins, groupby, missing data, NumPy, scikit-learn, statsmodels.\n- **R for data (base · dplyr · DBI)** — vectors, data.frames, factors, dplyr verbs, lm/glm, the apply family.\n- **SAS for data (DATA step · PROC SQL)** — the DATA step, LIBNAME, PROC IMPORT/MEANS/FREQ/REG/LOGISTIC, PROC SQL, MERGE BY.\n\nLearn the concept, then drill instant recall of the exact function — the same verbs (read, query, join, filter, group, map) in three dialects.",
+  "deckFiles": [
+    "data-python.json",
+    "data-r.json",
+    "data-sas.json"
+  ]
+}

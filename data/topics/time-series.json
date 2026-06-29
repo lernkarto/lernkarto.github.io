@@ -1,0 +1,17 @@
+{
+  "topic": "Time series",
+  "id": "time-series",
+  "standard": true,
+  "description": "Time-series analysis from foundations to advanced — components and stationarity, the Box–Jenkins/ARIMA family, and volatility, cointegration and forecasting. Distilled from Wikipedia (CC BY-SA 4.0) as a test of the article→deck pipeline.",
+  "primerTitle": "Time series — quick recap",
+  "primer": "## What this set covers\nThe knowledge needed to pass the three time-series decks (foundations → models → advanced). Skip it if you already know this — every card's answer is here or one short step from it.\n\n## Foundations\n- A **time series** is observations indexed in time order; nearby points are serially dependent (unlike cross-sectional data).\n- **Components:** trend, seasonality (fixed period), cycle (no fixed period), and an irregular/residual term — split additively or multiplicatively.\n- **(Weak) stationarity:** constant mean and variance, and autocovariance depending only on the lag. Most theory assumes it.\n- **ACF** = correlation with a lagged copy of the series; **white noise** = zero-mean, constant-variance, no autocorrelation.\n- A **random walk** ($X_t=X_{t-1}+\\varepsilon_t$) is non-stationary (unit root); **differencing** removes a trend/unit root. A series is **I(d)** if it's stationary after differencing $d$ times.\n\n## Models (Box–Jenkins / ARIMA)\n- **AR(p)** depends on its own past values; **MA(q)** on past shocks; **ARMA** combines them (stationary series).\n- **ARIMA(p,d,q)** = ARMA on a series differenced $d$ times; **SARIMA** adds seasonal terms at the period $s$.\n- **Box–Jenkins:** identify → estimate → diagnostic-check, iterating. Identify orders from **ACF/PACF**: MA(q) → ACF cuts off at q; AR(p) → PACF cuts off at p.\n- **Unit-root tests:** **ADF** (null = unit root) vs **KPSS** (null = stationarity) — opposite nulls. Stable AR(1) needs $|\\phi|<1$.\n- **Order selection** by AIC/BIC (fit vs parsimony); **Ljung–Box** checks residuals are white noise; **exponential smoothing / Holt–Winters** is the simpler alternative.\n\n## Advanced\n- **ARCH/GARCH** model the time-varying **conditional variance** (volatility clustering); GARCH feeds time-varying VaR ($\\approx z_\\alpha\\,\\sigma_t$).\n- **VAR** = multivariate AR; **cointegration** = non-stationary series sharing a stationary linear combination → modelled by an **error-correction model (VECM)**; ignoring it risks **spurious regression**.\n- **State-space + Kalman filter** estimate a latent state recursively; **spectral analysis** works in the frequency domain.\n- **Forecast evaluation:** RMSE/MAE/MAPE, and **walk-forward (rolling-origin)** backtesting — never random k-fold (it leaks the future).\n\n## The thread\nMake it stationary → identify and fit a parsimonious model → check residuals are white noise → forecast and backtest honestly. Volatility, multivariate and latent-state methods extend the same loop.",
+  "deckFiles": [
+    "time-series-foundations.json",
+    "time-series-decomposition.json",
+    "time-series-forecasting.json",
+    "time-series-models.json",
+    "time-series-spectral.json",
+    "time-series-multivariate.json",
+    "time-series-advanced.json"
+  ]
+}

@@ -1,0 +1,128 @@
+{
+  "id": "qi-market-making",
+  "name": "Market-making & EV",
+  "color": "#ffa94d",
+  "description": "Trader-flavoured expected value: fair value, edge, buying away from fair value, the beauty-contest equilibrium, EV-versus-risk, and spotting arbitrage from odds.",
+  "tags": [
+    "aptitude",
+    "interview",
+    "quant",
+    "market-making"
+  ],
+  "primerTitle": "Market-making & EV — method",
+  "primer": "## Trade on expected value\n- **Fair value** = expected payout (a fair die pays EV 3.5).\n- **Edge:** buy below / sell above fair value; quoting bid–ask, you capture about half the spread per fill.\n- **+EV ≠ should-take if risk-averse**, but risk-neutral maximises EV.\n- **Beauty contest** (2/3 of the average): iterated rationality collapses to 0.\n- **Arbitrage:** if the inverse decimal odds sum < 1, back every outcome for a guaranteed profit.",
+  "cards": [
+    {
+      "term": "A fair six-sided die is rolled and you are paid, in euros, the number that comes up. What is the fair price to pay to play this game once (the break-even price)?",
+      "choices": [
+        "EUR 6.00",
+        "EUR 3.50",
+        "EUR 1.00",
+        "EUR 3.00",
+        "EUR 4.00"
+      ],
+      "answer": 1,
+      "type": "mcq",
+      "definition": "Correct: EUR 3.50. The fair price equals the expected payout: (1+2+3+4+5+6)/6 = 3.5. Pay more and you lose on average; pay less and you have an edge.",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "You pay EUR 10 to roll a fair die once and receive twice the face value in euros. What is your expected profit or loss per play?",
+      "choices": [
+        "A profit of EUR 4",
+        "A profit of EUR 2",
+        "A loss of EUR 5",
+        "A loss of EUR 3",
+        "Break-even"
+      ],
+      "answer": 3,
+      "type": "mcq",
+      "definition": "Correct: A loss of EUR 3. Expected payout is 2 x 3.5 = EUR 7; minus the EUR 10 cost gives an expected loss of EUR 3. Negative expected value means you should not play.",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "A biased coin lands heads 55% of the time. You bet EUR 1 at even money: you gain EUR 1 on heads and lose EUR 1 on tails. What is your expected profit per bet?",
+      "choices": [
+        "EUR 0.05",
+        "EUR 0.10",
+        "EUR 0.55",
+        "EUR 0.00",
+        "-EUR 0.10"
+      ],
+      "answer": 1,
+      "type": "mcq",
+      "definition": "Correct: EUR 0.10. EV = 0.55(+1) + 0.45(-1) = +0.10. A small probability edge at even-money odds turns directly into a positive expected value - the essence of a profitable trading edge.",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "A contract pays EUR 100 if a fair coin lands heads and EUR 0 if tails, so its fair value is EUR 50. As a market maker you quote a bid of EUR 45 and an ask of EUR 55. A customer sells the contract to you at your bid. What is your expected profit on that trade?",
+      "choices": [
+        "-EUR 5",
+        "EUR 50",
+        "EUR 5",
+        "EUR 0",
+        "EUR 10"
+      ],
+      "answer": 2,
+      "type": "mcq",
+      "definition": "Correct: EUR 5. You paid EUR 45 for something worth EUR 50 on average, so your expected edge is EUR 5 - half the EUR 10 spread. Market makers earn by transacting away from fair value.",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "A large group each secretly picks an integer from 0 to 100. The winner is whoever is closest to two-thirds of the average of all the chosen numbers. If everyone reasons perfectly (the game's equilibrium), what number should you pick?",
+      "choices": [
+        "22",
+        "33",
+        "67",
+        "0",
+        "50"
+      ],
+      "answer": 3,
+      "type": "mcq",
+      "definition": "Correct: 0. If everyone picks at most 100, the target is at most ~67, so no rational player exceeds 67; but then the target drops below that, and so on. Iterating this elimination collapses every rational choice to 0, the unique Nash equilibrium.",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "You hold a lottery-style position that pays EUR 100 with probability 1/10 and EUR 0 otherwise. A buyer offers you EUR 8 for it right now. Treating money as risk-neutral (maximise expected value), should you sell?",
+      "choices": [
+        "You should be indifferent",
+        "No - holding is worth EUR 20 on average",
+        "Yes - always take a sure thing",
+        "Yes - EUR 8 beats the expected value",
+        "No - holding is worth EUR 10 on average"
+      ],
+      "answer": 4,
+      "type": "mcq",
+      "definition": "Correct: No - holding is worth EUR 10 on average. The position's expected value is 0.1 x 100 = EUR 10, which exceeds the EUR 8 offer, so a risk-neutral holder keeps it. (A risk-averse holder might still sell - but that requires a utility argument, not expected value.)",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "Two bets cost the same. Bet A pays EUR 1 for certain. Bet B pays EUR 2 with probability 1/2 and EUR 0 otherwise. Which bet has the higher EXPECTED value?",
+      "choices": [
+        "They have equal expected value",
+        "Bet B, by EUR 0.50",
+        "Bet A is higher",
+        "Bet B is higher",
+        "Bet A, by EUR 0.50"
+      ],
+      "answer": 0,
+      "type": "mcq",
+      "definition": "Correct: They have equal expected value. Both have expected value EUR 1 (B: 0.5 x 2 = 1). They differ only in risk, not in expected value - choosing between them needs a risk preference, which expected value alone does not capture.",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "A bookmaker offers decimal odds of 4.0 on each of three mutually exclusive and exhaustive outcomes (a EUR 1 winning stake returns EUR 4 total). If you stake EUR 1 on each outcome, what is your guaranteed result?",
+      "choices": [
+        "Break-even",
+        "It depends on which outcome occurs",
+        "A guaranteed profit of EUR 1",
+        "A guaranteed profit of EUR 4",
+        "No arbitrage is possible"
+      ],
+      "answer": 2,
+      "type": "mcq",
+      "definition": "Correct: A guaranteed profit of EUR 1. Staking EUR 1 on each costs EUR 3, and exactly one outcome returns EUR 4, so you profit EUR 1 no matter what. Because the inverse odds sum 1/4 + 1/4 + 1/4 = 0.75 < 1, the prices are mutually inconsistent and a risk-free arbitrage exists.",
+      "last_updated": "2026-06-29"
+    }
+  ]
+}

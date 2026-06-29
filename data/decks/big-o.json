@@ -1,0 +1,143 @@
+{
+  "id": "big-o",
+  "name": "Big-O complexity",
+  "color": "#00ff88",
+  "description": "Asymptotic complexity classes and the typical time complexity of common operations and algorithms — binary search, quicksort, hash lookup, sorting, graph traversal. Term: an operation or algorithm; definition: its Big-O plus a short note. Quick recall cards for interviews and day-to-day reasoning.",
+  "primerTitle": "How Big-O scales",
+  "primer": "**Big-O** describes how an algorithm's work grows as the input size $n$ grows — it keeps only the dominant term and drops constants, so it captures the *shape* of the scaling, not the exact count.\n\n## The complexity classes (best to worst)\n\nFrom fastest-growing to slowest, for large $n$: $O(1) < O(\\log n) < O(n) < O(n\\log n) < O(n^2) < O(2^n)$.\n\n- **$O(1)$ constant** — work is independent of $n$. Array index, stack push, average hash lookup.\n- **$O(\\log n)$ logarithmic** — each step discards a *constant fraction* of what's left, so the step count grows like the log. Binary search halves the range each step.\n- **$O(n)$ linear** — one pass; you touch each element a constant number of times. A scan to find the max.\n- **$O(n\\log n)$ linearithmic** — the proven *lower bound for comparison-based sorting*. Merge sort, heap sort, average quicksort.\n- **$O(n^2)$ quadratic** — typically a pair of nested loops over the input, or comparing every pair. Bubble/insertion sort.\n- **$O(2^n)$ exponential** — work *doubles* with each added element; intractable beyond small $n$. Enumerating all subsets, brute force.\n\n## Why classes matter\n\nFor large $n$ the class dominates everything: an $O(\\log n)$ algorithm beats $O(n)$, which beats $O(n^2)$, regardless of constant factors. **Average vs worst case** can differ — quicksort is $O(n\\log n)$ average but $O(n^2)$ worst (bad pivot on sorted data); a hash map is $O(1)$ average but $O(n)$ worst (everything collides into one bucket).\n\n## Search & sort\n\n- **Binary search** — $O(\\log n)$, but *requires sorted data*; on unsorted data you fall back to a linear scan.\n- **Linear search** — $O(n)$, works on unsorted data, no preprocessing.\n- **Quicksort** — $O(n\\log n)$ average, $O(n^2)$ worst; in-place and cache-friendly, fast in practice.\n- **Merge sort** — $O(n\\log n)$ in *all* cases but needs $O(n)$ extra space; *stable* (quicksort is not).\n- **Bubble / insertion sort** — $O(n^2)$; insertion is $O(n)$ on nearly-sorted input.\n\n## Structure operations\n\n- **Hash-map lookup/insert** — $O(1)$ average (good hash, low load), $O(n)$ worst (collisions).\n- **Array access by index** — $O(1)$ (contiguous memory, address computed directly); middle insert is $O(n)$ (shifting).\n- **Linked-list search** — $O(n)$ (no random access, follow pointers); insert at a known node is $O(1)$.\n- **Balanced BST** (red-black, AVL) — $O(\\log n)$ search/insert/delete; height kept $\\propto \\log n$.\n- **Binary heap** — $O(\\log n)$ insert / extract-min (sift up/down a tree of height $\\log n$); $O(1)$ peek root.\n- **Graph BFS / DFS** — $O(V+E)$ with an adjacency list: each vertex and edge visited once.",
+  "categories": {
+    "classes": {
+      "label": "Complexity classes",
+      "color": "#66aaff"
+    },
+    "search": {
+      "label": "Search & sort",
+      "color": "#9bff66"
+    },
+    "structures": {
+      "label": "Structure ops",
+      "color": "#ff9f55"
+    }
+  },
+  "cards": [
+    {
+      "term": "Constant time",
+      "definition": "$O(1)$. The work done does not depend on the input size $n$. Example: indexing into an array, pushing onto a stack, or a hash lookup on average.",
+      "summary": "$O(1)$ — independent of input size.",
+      "category": "classes",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "Logarithmic time",
+      "definition": "$O(\\log n)$. Each step discards a constant fraction of the remaining input, so the count of steps grows like the logarithm of $n$. Example: binary search on a sorted array.",
+      "summary": "$O(\\log n)$ — halves the problem each step.",
+      "category": "classes",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "Linear time",
+      "definition": "$O(n)$. Work grows in direct proportion to the input size — you touch each element a constant number of times. Example: a single scan of an array to find the maximum.",
+      "summary": "$O(n)$ — one pass over the data.",
+      "category": "classes",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "Linearithmic time",
+      "definition": "$O(n\\log n)$. The lower bound for comparison-based sorting. Example: merge sort, heap sort, and average-case quicksort.",
+      "summary": "$O(n\\log n)$ — optimal comparison sorting.",
+      "category": "classes",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "Quadratic time",
+      "definition": "$O(n^2)$. Typically arises from a pair of nested loops over the input. Example: bubble sort, insertion sort, or comparing every pair of elements.",
+      "summary": "$O(n^2)$ — nested loops over the input.",
+      "category": "classes",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "Exponential time",
+      "definition": "$O(2^n)$. Work doubles with each extra element; intractable beyond small $n$. Example: naive recursive enumeration of all subsets, or brute-forcing a combination.",
+      "summary": "$O(2^n)$ — doubles per added element.",
+      "category": "classes",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "Binary search",
+      "definition": "$O(\\log n)$. Repeatedly halves a sorted array to locate a target. Requires the data to be sorted first; on unsorted data you would need a linear scan instead.",
+      "summary": "$O(\\log n)$ on a sorted array.",
+      "category": "search",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "Linear search",
+      "definition": "$O(n)$. Scans elements one by one until the target is found or the end is reached. Works on unsorted data and needs no preprocessing.",
+      "summary": "$O(n)$ — scan until found.",
+      "category": "search",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "Quicksort (average case)",
+      "definition": "$O(n\\log n)$ on average, but $O(n^2)$ in the worst case (e.g. an already-sorted array with poor pivot choice). In-place and cache-friendly, which makes it fast in practice.",
+      "summary": "$O(n\\log n)$ average, $O(n^2)$ worst.",
+      "category": "search",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "Merge sort",
+      "definition": "$O(n\\log n)$ in all cases (best, average, worst), but needs $O(n)$ extra space for merging. It is stable, unlike quicksort.",
+      "summary": "$O(n\\log n)$ always; $O(n)$ extra space.",
+      "category": "search",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "Bubble / insertion sort",
+      "definition": "$O(n^2)$ average and worst case. Insertion sort is $O(n)$ on nearly-sorted input, which makes it useful for small or almost-ordered arrays.",
+      "summary": "$O(n^2)$ — simple but slow.",
+      "category": "search",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "Hash-map lookup / insert",
+      "definition": "$O(1)$ on average, assuming a good hash function and a low load factor. Worst case is $O(n)$ if many keys collide into one bucket.",
+      "summary": "$O(1)$ average, $O(n)$ worst.",
+      "category": "structures",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "Array access by index",
+      "definition": "$O(1)$. Elements sit in contiguous memory, so the address is computed directly from the index. Inserting in the middle, however, is $O(n)$ because elements must shift.",
+      "summary": "$O(1)$ random access by index.",
+      "category": "structures",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "Linked-list search",
+      "definition": "$O(n)$. There is no random access — you must follow pointers from the head. Insertion at a known node is $O(1)$, which is the trade-off versus arrays.",
+      "summary": "$O(n)$ traversal, $O(1)$ insert at a node.",
+      "category": "structures",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "Balanced BST search / insert",
+      "definition": "$O(\\log n)$. A self-balancing tree (red-black, AVL) keeps height proportional to $\\log n$, so search, insert and delete stay logarithmic even in the worst case.",
+      "summary": "$O(\\log n)$ — height kept logarithmic.",
+      "category": "structures",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "Heap insert / extract-min",
+      "definition": "$O(\\log n)$. A binary heap sifts an element up or down a tree of height $\\log n$. Peeking at the min/max root is $O(1)$.",
+      "summary": "$O(\\log n)$ push/pop, $O(1)$ peek.",
+      "category": "structures",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "Graph BFS / DFS",
+      "definition": "$O(V + E)$ — vertices plus edges. Each vertex and each edge is visited once when the graph is stored as an adjacency list.",
+      "summary": "$O(V+E)$ with an adjacency list.",
+      "category": "structures",
+      "last_updated": "2026-06-29"
+    }
+  ]
+}

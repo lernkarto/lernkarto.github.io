@@ -1,0 +1,86 @@
+{
+  "id": "qi-cryptarithms",
+  "name": "Cryptarithms / alphametics",
+  "color": "#f06595",
+  "description": "Letters stand for distinct digits with no leading zeros; each puzzle has a unique solution found by carry-reasoning. Verified by exhaustive search.",
+  "tags": [
+    "aptitude",
+    "interview",
+    "quant",
+    "cryptarithms"
+  ],
+  "primerTitle": "Cryptarithms — method",
+  "primer": "## Letters = distinct digits\nEach letter is a different digit; no number starts with 0; the puzzle has a unique solution.\n- The leading digit of a longer sum is almost always **1** (two k-digit numbers carry at most 1).\n- Work **column by column tracking carries** (0 or 1); deduce forced digits, eliminate the rest.\n- Verify uniqueness by exhaustive search.",
+  "cards": [
+    {
+      "term": "Each letter stands for a different digit, and no number starts with 0. Solve:  SEND + MORE = MONEY.  What is the value of MONEY?",
+      "choices": [
+        "10000",
+        "9567",
+        "10657",
+        "10652",
+        "16952"
+      ],
+      "answer": 3,
+      "type": "mcq",
+      "definition": "Correct: 10652. The unique solution is 9567 + 1085 = 10652 (M=1, O=0, S=9, E=5, N=6, D=7, R=8, Y=2). M must be 1 because a 4-digit plus 4-digit sum can carry at most 1 into a fifth digit.",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "Each letter stands for a different digit and no number starts with 0. The puzzle CDB + CCA = ABBC has exactly one solution. What digit does the letter C represent?",
+      "choices": [
+        "9",
+        "8",
+        "3",
+        "6",
+        "2"
+      ],
+      "answer": 1,
+      "type": "mcq",
+      "definition": "Correct: 8. Solving by elimination on the carries gives the unique assignment 897 + 881 = 1778, so C = 8.",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "Each letter stands for a different digit and no number starts with 0. The puzzle DBD + DCE = ACAC has exactly one solution. What digit does the letter C represent?",
+      "choices": [
+        "7",
+        "8",
+        "3",
+        "1",
+        "5"
+      ],
+      "answer": 0,
+      "type": "mcq",
+      "definition": "Correct: 7. Solving by elimination on the carries gives the unique assignment 838 + 879 = 1717, so C = 7.",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "Each letter stands for a different digit and no number starts with 0. The puzzle CBD + CAD = ABCC has exactly one solution. What digit does the letter C represent?",
+      "choices": [
+        "6",
+        "1",
+        "8",
+        "9",
+        "7"
+      ],
+      "answer": 2,
+      "type": "mcq",
+      "definition": "Correct: 8. Solving by elimination on the carries gives the unique assignment 869 + 819 = 1688, so C = 8.",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "Each letter stands for a different digit and no number starts with 0. The puzzle DAC + CBA = ABCD has exactly one solution. What digit does the letter D represent?",
+      "choices": [
+        "3",
+        "7",
+        "2",
+        "9",
+        "1"
+      ],
+      "answer": 3,
+      "type": "mcq",
+      "definition": "Correct: 9. Solving by elimination on the carries gives the unique assignment 918 + 871 = 1789, so D = 9.",
+      "last_updated": "2026-06-29"
+    }
+  ]
+}

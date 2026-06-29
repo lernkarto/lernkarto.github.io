@@ -1,0 +1,10 @@
+{
+  "name": "Science",
+  "primerTitle": "Science — what this subject covers",
+  "description": "Core physical-science reference: constants and essentials.",
+  "primer": "## Science\nFoundational physical-science facts worth knowing cold.\n- **Physical constants** — the fundamental constants with values across SI, Gaussian-cgs and natural units, plus the unit-system ideas ($c=\\hbar=1$, dimensionless invariants).\n- **Science essentials** — SI base units and prefixes, the periodic table, and other reference facts.\n\nThe through-line: precise quantities and the units that carry them.",
+  "topics": [
+    "Science essentials",
+    "Physical constants"
+  ]
+}

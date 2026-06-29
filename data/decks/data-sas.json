@@ -1,0 +1,142 @@
+{
+  "id": "data-sas",
+  "name": "SAS for data (DATA step · PROC SQL)",
+  "color": "#ffb866",
+  "description": "SAS for statistics & risk data work: the DATA step, LIBNAME, PROC IMPORT/MEANS/FREQ/REG/LOGISTIC, PROC SQL, MERGE BY — concepts then a which-function recall quiz.",
+  "tags": [
+    "interview",
+    "data",
+    "sas",
+    "fluency"
+  ],
+  "primerTitle": "SAS for data — recap",
+  "primer": "## SAS\nA program is a sequence of **DATA steps** (create/transform datasets) and **PROC steps** (analyse/report); every statement ends with `;` and each step ends with `run;` (or `quit;` for some procs), which executes it. The **DATA step** is a row-by-row engine: `set` reads input, your logic runs per observation, each row is written out — e.g. `data scored; set loans; pd = 1/(1+exp(-xb)); run;` adds a `pd` column. **`LIBNAME`** assigns a libref to a folder (a permanent library); a **two-level name** `mylib.table` means dataset `table` in library `mylib` (the built-in `work` library is temporary, wiped at session end). **`PROC IMPORT`** brings in external files: `proc import datafile='loans.csv' out=loans dbms=csv replace; run;`. **`PROC MEANS`** (≈ `PROC SUMMARY`) gives numeric summaries (n, mean, std, min, max) — `var` names variables, `class` adds a grouping variable. **`PROC FREQ`** counts categories: `tables var` (one-way), `tables a*b` (cross-tab), `/chisq` for a chi-square test of association. Regression: **`PROC REG`** fits OLS (numeric predictors only; use `PROC GLM` for class variables) via `model y = x1 x2;`; **`PROC LOGISTIC`** fits logistic regression — `model default(event='1') = x1 x2;` where `event=` tells SAS which level is the modelled event (forgetting it can model non-default). **`PROC SQL`** runs standard SQL (select, joins, group by, create table) and ends with `quit;`. Conditional logic and derived variables live in the DATA step: `if score < 500 then band='low'; else band='high';` (assigning to a new name creates the variable). **`MERGE`** joins datasets in a DATA step by a `BY` key, but both inputs must be **sorted** first (`proc sort; by id;`). **Macro variables**: `%let cutoff=500;` defines one and `&cutoff` substitutes its value (generated before the code runs) — the basis of reusable, parameterised code.\n\n---\nThe last cards are quick **which-function** recall checks (multiple choice).",
+  "cards": [
+    {
+      "term": "SAS: how is a SAS program structured?",
+      "definition": "A SAS program is a sequence of two kinds of step: DATA steps, which create or transform datasets, and PROC (procedure) steps, which analyse or report on them. Every statement ends with a semicolon, and each step ends with run; (or quit; for some procs) — that boundary is what actually executes the step. In the snippet a DATA step copies raw into work.clean, then PROC MEANS summarises it. Expected result: SAS first builds work.clean, then prints summary statistics for it.",
+      "formula": "data work.clean; set raw; run;\nproc means data=work.clean; run;",
+      "note": "[1] SAS Documentation — https://documentation.sas.com/",
+      "last_updated": "2026-06-29",
+      "stale": true
+    },
+    {
+      "term": "SAS: what does the DATA step do, row by row?",
+      "definition": "The DATA step is SAS's row-by-row engine. It reads an input dataset with the set statement, runs your logic once for each observation — IF/THEN conditions, new computed variables, arrays — and writes each resulting row to a new output dataset. In the snippet it reads loans, computes pd from a linear predictor using the logistic formula 1/(1+exp(-xb)), and writes to a dataset called scored. Expected result: a new dataset 'scored' identical to loans but with an added pd column holding the predicted probability for each row.",
+      "formula": "data scored; set loans; pd = 1/(1+exp(-xb)); run;",
+      "note": "[1] SAS Documentation — https://documentation.sas.com/",
+      "last_updated": "2026-06-29",
+      "stale": true
+    },
+    {
+      "term": "SAS: what does LIBNAME do, and what is a two-level name?",
+      "definition": "LIBNAME assigns a libref — a short name — to a folder, defining a SAS library where datasets are stored. A two-level name like mylib.table means the 'table' dataset inside library 'mylib', and writing to one saves it on disk; the built-in work library, by contrast, is temporary and wiped when SAS closes. In the snippet mylib points at /data/risk, then a DATA step writes mylib.out. Expected result: the dataset 'out' is saved permanently under /data/risk instead of vanishing at session end.",
+      "formula": "libname mylib '/data/risk'; data mylib.out; set work.in; run;",
+      "note": "[1] SAS Documentation — https://documentation.sas.com/",
+      "last_updated": "2026-06-29",
+      "stale": true
+    },
+    {
+      "term": "SAS: how do you bring an external file (CSV, Excel) into SAS?",
+      "definition": "PROC IMPORT reads an external file and converts it into a SAS dataset, inferring types from the contents. datafile= is the source path, out= names the SAS dataset to create, dbms= states the format (csv, xlsx, ...), and replace overwrites any existing dataset of that name. In the snippet loans.csv is imported. Expected result: a SAS dataset named loans holding the file's rows and columns, ready for later DATA and PROC steps.",
+      "formula": "proc import datafile='loans.csv' out=loans dbms=csv replace; run;",
+      "note": "[1] SAS Documentation — https://documentation.sas.com/",
+      "last_updated": "2026-06-29",
+      "stale": true
+    },
+    {
+      "term": "SAS: how do you get numeric summaries, optionally by group?",
+      "definition": "PROC MEANS (and the near-identical PROC SUMMARY) produces descriptive statistics for numeric variables — by default n, mean, standard deviation, min and max, or whichever you list. The var statement names the variables to summarise; adding a class statement introduces a grouping variable so you get one summary per group. In the snippet default is summarised within each grade. Expected result: a table showing the count, mean and standard deviation of default for every grade.",
+      "formula": "proc means data=loans n mean std; class grade; var default; run;",
+      "note": "[1] SAS Documentation — https://documentation.sas.com/",
+      "last_updated": "2026-06-29",
+      "stale": true
+    },
+    {
+      "term": "SAS: how do you build frequency tables and test for association?",
+      "definition": "PROC FREQ counts categories. tables var gives a one-way frequency table; tables a*b gives a cross-tabulation (a contingency table) of two variables; and the /chisq option runs a chi-square test of whether the two are associated. In the snippet grade is crossed with default and chisq is requested. Expected result: a grade-by-default table of counts plus a chi-square statistic and p-value indicating whether grade and default are related.",
+      "formula": "proc freq data=loans; tables grade*default / chisq; run;",
+      "note": "[1] SAS Documentation — https://documentation.sas.com/",
+      "last_updated": "2026-06-29",
+      "stale": true
+    },
+    {
+      "term": "SAS: how do you fit a linear regression in SAS?",
+      "definition": "PROC REG fits ordinary least-squares linear regression. You give it data= and a model statement of the form response = predictors. One catch: PROC REG only accepts numeric predictors, so when you have categorical class variables you switch to PROC GLM, which handles them. In the snippet y is regressed on x1 and x2. Expected result: output tables of the parameter estimates with their standard errors and p-values, plus overall fit statistics such as R-squared.",
+      "formula": "proc reg data=d; model y = x1 x2; run;",
+      "note": "[1] SAS Documentation — https://documentation.sas.com/",
+      "last_updated": "2026-06-29",
+      "stale": true
+    },
+    {
+      "term": "SAS: how do you fit a logistic regression for a binary target?",
+      "definition": "PROC LOGISTIC fits logistic (and ordinal) regression and is the standard credit-scoring tool in SAS. In the model statement, the target's event= option tells SAS which level counts as the 'event' to model — here default = 1 — so the odds come out the right way round; forgetting it can model the probability of non-default by mistake. In the snippet default(event='1') is modelled on x1 and x2. Expected result: maximum-likelihood coefficient estimates with standard errors, p-values and odds ratios for predicting default.",
+      "formula": "proc logistic data=d; model default(event='1') = x1 x2; run;",
+      "note": "[1] SAS Documentation — https://documentation.sas.com/",
+      "last_updated": "2026-06-29",
+      "stale": true
+    },
+    {
+      "term": "SAS: how do you run SQL inside SAS?",
+      "definition": "PROC SQL lets you write standard SQL — select, joins, group by, table creation — instead of DATA-step logic, and it closes with quit; rather than run;. It is often the most compact way to join and aggregate in one go. In the snippet it creates a table 'r' holding the mean default per grade. Expected result: a new dataset 'r' with one row per grade and a 'rate' column giving that grade's average default.",
+      "formula": "proc sql; create table r as select grade, mean(default) as rate from d group by grade; quit;",
+      "note": "[1] SAS Documentation — https://documentation.sas.com/",
+      "last_updated": "2026-06-29",
+      "stale": true
+    },
+    {
+      "term": "SAS: how do you create a variable with conditional logic?",
+      "definition": "Conditional logic and derived variables live inside the DATA step. IF condition THEN assignment sets a value when the test is true; ELSE handles the remaining rows, and conditions can be nested. Assigning to a name that does not yet exist creates a new variable on the fly. In the snippet a 'band' variable is set to 'low' or 'high' depending on score. Expected result: dataset d2 equals d plus a new band column — 'low' where score < 500 and 'high' otherwise.",
+      "formula": "data d2; set d; if score < 500 then band='low'; else band='high'; run;",
+      "note": "[1] SAS Documentation — https://documentation.sas.com/",
+      "last_updated": "2026-06-29",
+      "stale": true
+    },
+    {
+      "term": "SAS: how do you join two datasets with MERGE?",
+      "definition": "MERGE joins datasets inside a DATA step by matching on a BY key. The catch that trips people up: both inputs must already be sorted by that key, so you run PROC SORT on each first, then MERGE ... BY key in a DATA step. (PROC SQL or a hash object are alternatives that do not require pre-sorting.) In the snippet a and b are sorted by id and then merged. Expected result: a dataset 'both' with the columns of a and b combined on matching id values.",
+      "formula": "proc sort data=a; by id; run;\ndata both; merge a b; by id; run;",
+      "note": "[1] SAS Documentation — https://documentation.sas.com/",
+      "last_updated": "2026-06-29",
+      "stale": true
+    },
+    {
+      "term": "SAS: what are macro variables and how do you use them?",
+      "definition": "The SAS macro language generates program text before the code runs. %let name = value; defines a macro variable, and &name substitutes its value wherever it appears — so changing one line at the top reconfigures the whole program. This is the basis of reusable, parameterised code. In the snippet cutoff is set to 500 and then reused in a comparison. Expected result: &cutoff resolves to 500, so the DATA step flags rows where score > 500.",
+      "formula": "%let cutoff=500; data d; set raw; if score>&cutoff then flag=1; run;",
+      "note": "[1] SAS Documentation — https://documentation.sas.com/",
+      "last_updated": "2026-06-29",
+      "stale": true
+    },
+    {
+      "term": "In SAS, the procedure that lets you write standard SQL (SELECT, JOIN, WHERE) against your datasets is:",
+      "choices": [
+        "PROC FREQ",
+        "PROC SQL",
+        "PROC PRINT",
+        "PROC MEANS",
+        "PROC SORT"
+      ],
+      "answer": 1,
+      "type": "mcq",
+      "definition": "PROC SQL embeds standard SQL (SELECT/JOIN/WHERE/GROUP BY) over SAS datasets. PROC MEANS and FREQ summarise, PROC SORT orders, PROC PRINT just displays — none of them run SQL.",
+      "last_updated": "2026-06-29",
+      "stale": true
+    },
+    {
+      "term": "In a SAS DATA step, to combine two datasets by a key variable (a match-merge), you use:",
+      "choices": [
+        "SET dataset1 dataset2; BY key;",
+        "JOIN dataset1 dataset2; BY key;",
+        "UPDATE dataset1 dataset2; BY key;",
+        "MERGE dataset1 dataset2; BY key;",
+        "APPEND dataset1 dataset2; BY key;"
+      ],
+      "answer": 3,
+      "type": "mcq",
+      "definition": "MERGE with a BY statement match-merges observations by key in the DATA step — and both inputs must be sorted by that key first (PROC SORT). SET stacks (concatenates) datasets rather than matching them; there is no DATA-step JOIN statement (that is PROC SQL); UPDATE applies a transaction dataset to a master rather than joining two equals; and APPEND is a PROC, not a DATA-step statement.",
+      "last_updated": "2026-06-29",
+      "stale": true
+    }
+  ]
+}

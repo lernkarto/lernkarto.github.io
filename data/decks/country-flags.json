@@ -1,0 +1,261 @@
+{
+  "id": "country-flags",
+  "name": "Country flags",
+  "color": "#4dabf7",
+  "dual": true,
+  "description": "National flags as emoji. Each card is tested both ways (flag→country and country→flag), tracked separately.",
+  "primerTitle": "Flags by region",
+  "primer": "Each card pairs a **national flag** with its **country**, tested both ways. The deck covers five regions; here are high-yield anchors and the distinguishing features that prevent mix-ups.\n\n**Europe** — tricolours dominate: France (blue-white-red vertical), Germany (black-red-gold horizontal), Italy (green-white-red vertical), Spain (red-yellow-red with crest). UK → Union Jack; Greece → blue-and-white stripes with corner cross; the Nordics (Sweden, Norway) carry off-centre **Scandinavian crosses**. Catches: **Switzerland** → square red flag with white cross (one of only two square national flags); **Ireland** → green-white-orange, the mirror of Côte d'Ivoire.\n\n**Asia** — Japan → white with a red disc; China → red with five yellow stars; South Korea → white with the red-blue *taegeuk*; India → saffron-white-green with a navy wheel. Catch: **Indonesia** → red over white, the *inverse* of Poland's white over red.\n\n**Africa** — many use the **pan-African colours** (red, green, gold/black): Kenya, Ethiopia, Ghana, South Africa. Egypt → red-white-black with the eagle of Saladin; Morocco → red with a green pentagram; Nigeria → green-white-green.\n\n**Americas** — USA → stars and stripes; Canada → red with the maple leaf; Brazil → green with a yellow rhombus and blue globe; Argentina → light-blue-and-white with the Sun of May. Several Andean flags share red/yellow tones (Colombia, Peru).\n\n**Oceania** — Australia and New Zealand both fly the **Union Jack canton + Southern Cross**; distinguish them by the stars (Australia adds the large Commonwealth Star and uses white stars; NZ's Southern Cross is red with white edges).\n\n**Rule of thumb:** lock onto the distinctive emblem (disc, leaf, cross, star pattern) and the colour order; the classic traps are *inverted* pairs (Poland/Indonesia) and *mirrored* pairs (Ireland/Côte d'Ivoire).",
+  "categories": {
+    "europe": "Europe",
+    "asia": "Asia",
+    "africa": "Africa",
+    "americas": "Americas",
+    "oceania": "Oceania"
+  },
+  "cards": [
+    {
+      "term": "🇫🇷",
+      "definition": "France",
+      "category": "europe",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "🇩🇪",
+      "definition": "Germany",
+      "category": "europe",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "🇪🇸",
+      "definition": "Spain",
+      "category": "europe",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "🇮🇹",
+      "definition": "Italy",
+      "category": "europe",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "🇬🇧",
+      "definition": "United Kingdom",
+      "category": "europe",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "🇵🇹",
+      "definition": "Portugal",
+      "category": "europe",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "🇬🇷",
+      "definition": "Greece",
+      "category": "europe",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "🇷🇺",
+      "definition": "Russia",
+      "category": "europe",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "🇵🇱",
+      "definition": "Poland",
+      "category": "europe",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "🇳🇱",
+      "definition": "Netherlands",
+      "category": "europe",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "🇸🇪",
+      "definition": "Sweden",
+      "category": "europe",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "🇳🇴",
+      "definition": "Norway",
+      "category": "europe",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "🇨🇭",
+      "definition": "Switzerland",
+      "category": "europe",
+      "note": "One of only two square national flags.",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "🇮🇪",
+      "definition": "Ireland",
+      "category": "europe",
+      "note": "Green-white-orange; orange on the fly side (mirror of Côte d'Ivoire).",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "🇨🇳",
+      "definition": "China",
+      "category": "asia",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "🇯🇵",
+      "definition": "Japan",
+      "category": "asia",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "🇮🇳",
+      "definition": "India",
+      "category": "asia",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "🇰🇷",
+      "definition": "South Korea",
+      "category": "asia",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "🇮🇩",
+      "definition": "Indonesia",
+      "category": "asia",
+      "note": "Red over white — the inverse of Poland's white over red.",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "🇹🇭",
+      "definition": "Thailand",
+      "category": "asia",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "🇻🇳",
+      "definition": "Vietnam",
+      "category": "asia",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "🇹🇷",
+      "definition": "Turkey",
+      "category": "asia",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "🇸🇦",
+      "definition": "Saudi Arabia",
+      "category": "asia",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "🇮🇷",
+      "definition": "Iran",
+      "category": "asia",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "🇪🇬",
+      "definition": "Egypt",
+      "category": "africa",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "🇳🇬",
+      "definition": "Nigeria",
+      "category": "africa",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "🇿🇦",
+      "definition": "South Africa",
+      "category": "africa",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "🇰🇪",
+      "definition": "Kenya",
+      "category": "africa",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "🇪🇹",
+      "definition": "Ethiopia",
+      "category": "africa",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "🇲🇦",
+      "definition": "Morocco",
+      "category": "africa",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "🇺🇸",
+      "definition": "United States",
+      "category": "americas",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "🇨🇦",
+      "definition": "Canada",
+      "category": "americas",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "🇲🇽",
+      "definition": "Mexico",
+      "category": "americas",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "🇧🇷",
+      "definition": "Brazil",
+      "category": "americas",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "🇦🇷",
+      "definition": "Argentina",
+      "category": "americas",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "🇨🇱",
+      "definition": "Chile",
+      "category": "americas",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "🇵🇪",
+      "definition": "Peru",
+      "category": "americas",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "🇨🇴",
+      "definition": "Colombia",
+      "category": "americas",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "🇦🇺",
+      "definition": "Australia",
+      "category": "oceania",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "🇳🇿",
+      "definition": "New Zealand",
+      "category": "oceania",
+      "last_updated": "2026-06-29"
+    }
+  ]
+}

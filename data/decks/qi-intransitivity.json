@@ -1,0 +1,114 @@
+{
+  "id": "qi-intransitivity",
+  "name": "Intransitivity & paradoxes",
+  "color": "#ff922b",
+  "description": "Surprising results that defeat intuition: Penney's game and non-transitive (Efron) dice, Simpson's paradox, the two-envelope fallacy, the birthday problem, and the gamble",
+  "tags": [
+    "aptitude",
+    "interview",
+    "quant",
+    "intransitivity"
+  ],
+  "primerTitle": "Intransitivity & probability paradoxes — method",
+  "primer": "## Non-transitive & paradoxical results\n- **Penney's game:** sequence races are non-transitive; choosing *second*, beat XYZ with (not Y),X,Y. THH beats HHH 7/8.\n- **Efron dice:** a cycle A>B>C>D>A each with prob 2/3 — the second chooser wins.\n- **Simpson's paradox:** subgroup winner can lose the aggregate when group sizes differ.\n- **Two-envelope fallacy:** you can't have a uniform prior over all amounts, so 'always switch' is wrong.\n- **Birthday problem:** 23 people → ~50.7% (C(23,2)=253 pairs).\n- **Gambler's fallacy:** independent flips have no memory — always 1/2.",
+  "cards": [
+    {
+      "term": "In a coin-flipping game, two players each choose a sequence of three flips; the coin is flipped repeatedly and whoever's sequence appears first wins. Your opponent chooses HHH. You choose THH. What is the probability that YOUR sequence (THH) appears first?",
+      "choices": [
+        "1/2",
+        "2/3",
+        "1/8",
+        "7/8",
+        "3/4"
+      ],
+      "answer": 3,
+      "type": "mcq",
+      "definition": "Correct: 7/8. Unless the run starts with HHH immediately (probability 1/8), some tail precedes the first run of heads, and that tail makes THH complete before a third H can. So THH beats HHH 7/8 of the time - Penney's game is non-transitive.",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "In the same first-to-appear coin game, your opponent picks the sequence HTH. To maximise your chance of winning, which sequence should you choose?",
+      "choices": [
+        "HTT",
+        "HHH",
+        "THT",
+        "TTT",
+        "HHT"
+      ],
+      "answer": 4,
+      "type": "mcq",
+      "definition": "Correct: HHT. The winning recipe against any sequence XYZ is to choose (not Y), X, Y. For HTH that is H, H, T = HHT, which beats HTH about two-thirds of the time. Crucially, you must choose AFTER your opponent.",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "Two unusual six-sided dice: die A has faces (0,0,4,4,4,4) and die B has faces (3,3,3,3,3,3). Both are rolled and the higher number wins. What is the probability that die A beats die B?",
+      "choices": [
+        "1/3",
+        "4/9",
+        "1/2",
+        "2/3",
+        "5/9"
+      ],
+      "answer": 3,
+      "type": "mcq",
+      "definition": "Correct: 2/3. A beats B exactly when A shows a 4, which happens on 4 of its 6 faces: 2/3. With a matching set (Efron's dice) you get a cycle A>B>C>D>A, each by 2/3 - intransitive, so the second chooser can always pick a winning die.",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "Treatment X has a higher recovery rate than treatment Y among men, AND a higher recovery rate than Y among women. Considering everyone together, is it possible for treatment Y to have the higher OVERALL recovery rate?",
+      "choices": [
+        "Only if rates are rounded",
+        "Only if the groups are equal in size",
+        "Never under any circumstances",
+        "No, X must win overall",
+        "Yes, this can happen"
+      ],
+      "answer": 4,
+      "type": "mcq",
+      "definition": "Correct: Yes, this can happen. Yes - this is Simpson's paradox. If X is mostly given to hard cases and Y to easy ones, the group sizes can reverse the aggregate, so Y wins overall despite losing in every subgroup.",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "Two sealed envelopes contain money, one holding exactly twice the other. You open one and see EUR 100. An argument says the other holds 0.5 x EUR 50 + 0.5 x EUR 200 = EUR 125 on average, so you should always switch. Is this 'always switch' reasoning correct?",
+      "choices": [
+        "No, the reasoning is flawed",
+        "Switching always loses",
+        "Yes, always switch",
+        "Only when you have seen the amount",
+        "Yes, you gain EUR 25 on average"
+      ],
+      "answer": 0,
+      "type": "mcq",
+      "definition": "Correct: No, the reasoning is flawed. The flaw is assuming the other envelope is equally likely to be EUR 50 or EUR 200 regardless of what you saw; you cannot have a uniform prior over all amounts. Done properly, switching gives no systematic gain.",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "In a room of 23 people, what is the approximate probability that at least two of them share a birthday (ignoring leap years, 365 equally likely days)?",
+      "choices": [
+        "About 6%",
+        "About 7%",
+        "About 95%",
+        "About 50%",
+        "About 23%"
+      ],
+      "answer": 3,
+      "type": "mcq",
+      "definition": "Correct: About 50%. The chance that all 23 birthdays differ is (365/365)(364/365)...(343/365) ~ 0.493, so a shared birthday has probability ~ 0.507. There are C(23,2) = 253 pairs, which is why it crosses 50% so soon.",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "A fair coin has just landed heads 10 times in a row. What is the probability that the next flip is also heads?",
+      "choices": [
+        "1/2",
+        "Much more than 1/2",
+        "1/1024",
+        "Much less than 1/2",
+        "Slightly less than 1/2"
+      ],
+      "answer": 0,
+      "type": "mcq",
+      "definition": "Correct: 1/2. Coin flips are independent, so past results do not affect the next flip: it is 1/2. Believing the coin is 'due' for tails is the gambler's fallacy.",
+      "last_updated": "2026-06-29"
+    }
+  ]
+}

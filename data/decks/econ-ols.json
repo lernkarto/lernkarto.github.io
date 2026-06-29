@@ -1,0 +1,365 @@
+{
+  "id": "econ-ols",
+  "name": "OLS regression",
+  "color": "#4dabf7",
+  "description": "25 interview-screen MCQs — ols regression. Each card explains the answer.",
+  "tags": [
+    "interview",
+    "econometrics",
+    "mcq"
+  ],
+  "primerTitle": "OLS regression — the essentials",
+  "primer": "## OLS regression\nUnder the Gauss–Markov assumptions (zero conditional-mean errors, homoskedasticity, no autocorrelation) OLS is **BLUE** — the Best Linear Unbiased Estimator; normality is needed only for exact small-sample t/F inference. Each slope is a **ceteris paribus** partial effect. **R²** = 1 − SSR/SST is the variance explained and never falls when regressors are added — hence adjusted R² for comparison. Test one coefficient with a **t-test** (coef / SE), joint restrictions with an **F-test**. Mind log-log (elasticity), log-linear (semi-elasticity ×100), the dummy-variable trap, and that high R² ≠ causation.",
+  "cards": [
+    {
+      "term": "Under the Gauss-Markov assumptions, the OLS estimator is described as BLUE. What does BLUE stand for?",
+      "choices": [
+        "Best Linear Unbiased Estimator",
+        "Best Linear Unbiased Equation",
+        "Best Logistic Unbiased Estimator",
+        "Bayesian Linear Unbiased Estimator",
+        "Bounded Linear Unbiased Estimator"
+      ],
+      "answer": 0,
+      "type": "mcq",
+      "definition": "BLUE stands for Best Linear Unbiased Estimator: among all estimators linear in Y and unbiased, OLS has the smallest variance, which is what 'best' means. 'Equation' is wrong because BLUE describes an estimator (a rule for computing a coefficient), not an equation. 'Logistic' confuses OLS with logistic regression, a different nonlinear maximum-likelihood method. 'Bayesian' is wrong because Gauss-Markov is a frequentist result with no priors. 'Bounded' is not part of the acronym; the optimality is minimum variance, not boundedness.",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "The Gauss-Markov theorem guarantees OLS is BLUE provided which assumption about the errors holds, among others?",
+      "choices": [
+        "Errors have zero conditional mean and constant variance",
+        "Errors are normally distributed about the mean",
+        "Errors grow proportionally with the regressors",
+        "Errors are first-order autocorrelated over time",
+        "Errors have mean equal to the intercept term"
+      ],
+      "answer": 0,
+      "type": "mcq",
+      "definition": "Gauss-Markov requires errors with zero conditional mean (E[u|X]=0), constant variance (homoskedasticity), and no autocorrelation; together these make OLS BLUE. Normality of the errors is NOT required for BLUE - it is needed only for exact finite-sample t and F inference, so the normality option overstates the requirement. Errors growing with the regressors is heteroskedasticity, a violation of the constant-variance condition, not a requirement. First-order autocorrelation likewise violates Gauss-Markov rather than satisfying it. The error mean is zero, not the intercept; the intercept absorbs the average level of Y.",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "In the regression of Y on X, the OLS slope coefficient is best interpreted as:",
+      "choices": [
+        "The intercept value of Y when X is zero",
+        "The expected change in Y per one-unit rise in X",
+        "The correlation between X and Y in the sample",
+        "The probability that X causes a change in Y",
+        "The share of Y's variance explained by X"
+      ],
+      "answer": 1,
+      "type": "mcq",
+      "definition": "The OLS slope is the expected change in Y for a one-unit increase in X, holding the other regressors fixed - a partial, ceteris paribus effect. The intercept (not the slope) is the value of Y when X is zero. The correlation between X and Y is a unitless measure bounded in [-1,1], whereas a slope carries units of Y per unit of X. A regression measures association, not a probability that X causes Y; causality requires extra identifying assumptions. The share of Y's variance explained is R-squared, not a coefficient.",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "What does the R-squared of a regression measure?",
+      "choices": [
+        "The share of the dependent variable's variance the model explains",
+        "Whether each coefficient is statistically significant at 5%",
+        "The probability that the fitted model is the correct one",
+        "The pairwise correlation between two of the regressors",
+        "The average absolute size of the model's residuals"
+      ],
+      "answer": 0,
+      "type": "mcq",
+      "definition": "R-squared = 1 - SSR/SST is the proportion of total variation in the dependent variable the model explains, with SSR the residual sum of squares and SST the total sum of squares. It says nothing about whether individual coefficients are significant - that is a t-test. It is not a probability that the model is 'correct'; a model can fit well yet be misspecified. It is not the correlation between two regressors, which relates to multicollinearity. And it is not the average residual size; residuals enter only through SSR relative to SST.",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "When you add an additional regressor to an OLS model, R-squared:",
+      "choices": [
+        "Decreases whenever the added variable is irrelevant",
+        "Never decreases, weakly increasing regardless of relevance",
+        "Always decreases as degrees of freedom are spent",
+        "Can rise or fall depending on the new variable",
+        "Stays exactly the same unless the variable is significant"
+      ],
+      "answer": 1,
+      "type": "mcq",
+      "definition": "Adding a regressor never decreases R-squared: OLS can always set the new coefficient near zero, so fit weakly improves regardless of relevance. It therefore does not decrease when the variable is irrelevant - it stays flat or rises, and it does not spend degrees of freedom the way adjusted R-squared does. It does not move up or down depending on the variable, nor stay exactly the same when the variable is insignificant. Because R-squared mechanically rewards more terms, adjusted R-squared, which penalises added regressors, is used for model comparison.",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "Adjusted R-squared differs from R-squared in that it:",
+      "choices": [
+        "Penalises regressors that do not improve fit enough",
+        "Is bounded below at zero and never goes negative",
+        "Drops the number of observations from its formula",
+        "Always exceeds the ordinary R-squared value",
+        "Estimates the model's out-of-sample predictive fit"
+      ],
+      "answer": 0,
+      "type": "mcq",
+      "definition": "Adjusted R-squared penalises regressors that do not improve fit by enough, since it adjusts for degrees of freedom: 1 - (1-R^2)(n-1)/(n-k-1). So it CAN go negative when fit is very poor, contradicting the claim that it is bounded at zero. It explicitly uses the number of observations n, so the option that drops n is false. It is never larger than ordinary R-squared - the penalty makes it less than or equal. And it still measures in-sample fit, not out-of-sample predictive performance.",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "A high R-squared in a regression implies:",
+      "choices": [
+        "Only that the model explains much of the variation",
+        "That the estimated coefficients are unbiased",
+        "That there is no omitted variable bias present",
+        "That the regressors genuinely cause the outcome",
+        "That the model is correctly specified and causal"
+      ],
+      "answer": 0,
+      "type": "mcq",
+      "definition": "A high R-squared means only that the model explains much of the variation in Y - it does not establish causality or correct specification. It does not imply the coefficients are unbiased: omitted-variable bias can coexist with excellent fit. It does not rule out omitted variable bias for the same reason. It does not mean the regressors cause the outcome; high fit can be spurious, as with two trending series. Fit and causal validity are separate questions.",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "To test whether a single regression coefficient is statistically different from zero, you use:",
+      "choices": [
+        "A chi-squared goodness-of-fit test",
+        "A Durbin-Watson autocorrelation test",
+        "A t-test on the coefficient",
+        "An F-test on all coefficients",
+        "A Jarque-Bera normality test"
+      ],
+      "answer": 2,
+      "type": "mcq",
+      "definition": "A single coefficient is tested against zero with a t-test, where t = coefficient / standard error and is compared to a t-distribution. A chi-squared goodness-of-fit test is for distributional or categorical fit, not a slope. The Durbin-Watson test checks for first-order autocorrelation in the residuals. An F-test handles joint hypotheses on several coefficients, not a single one. The Jarque-Bera test checks normality of the residuals via skewness and kurtosis.",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "To test whether several coefficients are jointly equal to zero, you use:",
+      "choices": [
+        "A White heteroskedasticity test",
+        "A Durbin-Watson autocorrelation test",
+        "A series of separate t-tests instead",
+        "A KPSS stationarity test",
+        "An F-test on the restrictions"
+      ],
+      "answer": 4,
+      "type": "mcq",
+      "definition": "Testing whether several coefficients are jointly zero uses an F-test, which compares restricted and unrestricted residual sums of squares. The White test checks heteroskedasticity, not coefficient restrictions. The Durbin-Watson test checks autocorrelation. Running a series of separate t-tests is misleading for joint hypotheses because the estimates are correlated and the overall size of the test is distorted. The KPSS test is a stationarity/unit-root test for time series.",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "In a log-log regression, ln(Y) = a + b*ln(X) + u, the coefficient b is interpreted as:",
+      "choices": [
+        "The elasticity of Y with respect to X",
+        "The unit change in Y per unit change in X",
+        "The simple correlation between X and Y",
+        "The semi-elasticity of Y per unit X",
+        "The percentage-point change in Y level"
+      ],
+      "answer": 0,
+      "type": "mcq",
+      "definition": "In ln(Y) = a + b ln(X) + u, b is the elasticity of Y with respect to X: a 1% rise in X changes Y by about b%, because the derivative of ln(Y) with respect to ln(X) is constant. A unit change in Y per unit change in X describes a level-level slope, not a log-log one. The correlation of X and Y is a different, unitless quantity. The semi-elasticity applies to log-linear (only Y logged), where the unit of X is in levels. A percentage-point change applies to a variable already measured in percent, not to an elasticity.",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "In a log-linear regression, ln(Y) = a + b*X + u, a one-unit increase in X is associated with approximately:",
+      "choices": [
+        "An elasticity of b between X and Y",
+        "A b percentage-point change in Y",
+        "A change in ln(X) of about b units",
+        "A 100*b percent change in Y",
+        "A b-unit change in the level of Y"
+      ],
+      "answer": 3,
+      "type": "mcq",
+      "definition": "In ln(Y) = a + b X + u only Y is logged, so b is a semi-elasticity: a one-unit rise in X changes Y by approximately 100*b percent. A b percentage-point change drops the factor of 100 needed when X is in levels and Y is in logs. An elasticity of b would require X to also be in logs (log-log). A change in ln(X) is irrelevant here since X enters in levels, not logs. A b-unit change in the level of Y would be the level-level interpretation, not this log-linear one.",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "The 'dummy variable trap' refers to:",
+      "choices": [
+        "Adding an interaction term between two dummies",
+        "Using a single dummy for a continuous variable",
+        "Coding a dummy as 1 and 2 instead of 0 and 1",
+        "Omitting too many categories from the model",
+        "Including a dummy for every category plus an intercept"
+      ],
+      "answer": 4,
+      "type": "mcq",
+      "definition": "The dummy variable trap is including a dummy for every category together with an intercept: the dummies sum to a column of ones, replicating the constant and creating perfect multicollinearity, so the model cannot be estimated. The fix is to omit one category as the reference, or drop the intercept. Adding an interaction term is a modelling choice, not the trap. Using a dummy for a continuous variable is a questionable specification, not the trap. Coding a dummy as 1/2 instead of 0/1 only shifts the intercept; it does not break estimation. Omitting too many categories is the opposite problem.",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "Including an interaction term X1*X2 in a regression allows you to capture:",
+      "choices": [
+        "Autocorrelation between successive observations",
+        "Heteroskedasticity in the regression errors",
+        "How one variable's effect depends on another",
+        "A unit root in the regressor X1",
+        "A nonlinear trend over the time index"
+      ],
+      "answer": 2,
+      "type": "mcq",
+      "definition": "An interaction term X1*X2 lets the effect of one variable depend on the level of the other: the marginal effect of X1 becomes b1 + b3*X2, so it varies with X2 and symmetrically. It does not address autocorrelation, which concerns correlation across observations. It does not capture heteroskedasticity, which is non-constant error variance. It has nothing to do with a unit root in X1, a stationarity property. And it does not model a nonlinear time trend, which would require functions of time itself.",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "Perfect multicollinearity among regressors means:",
+      "choices": [
+        "The regressors are completely uncorrelated",
+        "The dependent variable is non-stationary",
+        "One regressor is an exact linear mix of others",
+        "The error terms are strongly autocorrelated",
+        "The model has far too many observations"
+      ],
+      "answer": 2,
+      "type": "mcq",
+      "definition": "Perfect multicollinearity means one regressor is an exact linear combination of others, so the matrix X'X is singular and OLS has no unique solution. It is the opposite of regressors being uncorrelated. It is unrelated to the dependent variable being non-stationary, which is a time-series property. It is not autocorrelation of the errors, a separate Gauss-Markov violation. And it is not about having too many observations; the problem is rank deficiency among columns, not row count.",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "High (but not perfect) multicollinearity primarily causes:",
+      "choices": [
+        "Large standard errors but no bias in estimates",
+        "A unit root in the dependent variable series",
+        "Inconsistent estimates that miss the true value",
+        "Heteroskedastic errors built into the design",
+        "Biased coefficient estimates pulled off target"
+      ],
+      "answer": 0,
+      "type": "mcq",
+      "definition": "High but not perfect multicollinearity inflates standard errors and makes individual coefficients imprecise, yet OLS remains unbiased and consistent - estimates are just noisy. It does not create a unit root, which is a property of a series' dynamics. It does not make estimates inconsistent; consistency holds as long as the regressors are not perfectly collinear. It does not by construction cause heteroskedastic errors. And it does not bias the coefficients - the variance grows but the expected value is still correct.",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "A common diagnostic for multicollinearity is the:",
+      "choices": [
+        "Ljung-Box autocorrelation statistic",
+        "Variance Inflation Factor (VIF)",
+        "Jarque-Bera normality statistic",
+        "Durbin-Watson serial-correlation statistic",
+        "Augmented Dickey-Fuller unit-root test"
+      ],
+      "answer": 1,
+      "type": "mcq",
+      "definition": "The Variance Inflation Factor (VIF) diagnoses multicollinearity: for regressor j, VIF = 1/(1-R_j^2) from regressing X_j on the other regressors, with values above about 10 commonly flagged. The Ljung-Box statistic tests autocorrelation in residuals. The Jarque-Bera statistic tests normality. The Durbin-Watson statistic tests first-order autocorrelation. The Augmented Dickey-Fuller test checks for a unit root in a time series - none of these measure collinearity.",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "Adding an irrelevant regressor (one with a true coefficient of zero) to an OLS model:",
+      "choices": [
+        "Biases the remaining coefficient estimates",
+        "Makes the estimator inconsistent in large samples",
+        "Always lowers the model's R-squared value",
+        "Keeps estimates unbiased but raises their variance",
+        "Introduces a unit root into the regression"
+      ],
+      "answer": 3,
+      "type": "mcq",
+      "definition": "Adding an irrelevant regressor (true coefficient zero) keeps the other estimates unbiased but generally raises their variance, costing efficiency - the price of including a useless control. It does not bias the other coefficients, since an irrelevant variable carries no omitted information. It does not make the estimator inconsistent. It does not always lower R-squared; in fact R-squared weakly rises. And it introduces no unit root, which is unrelated to including extra regressors.",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "The residuals of an OLS regression are:",
+      "choices": [
+        "The estimated regression coefficients themselves",
+        "The standard errors of the coefficients",
+        "The true unobservable population errors",
+        "The gaps between observed and fitted values of Y",
+        "The explained, fitted part of Y"
+      ],
+      "answer": 3,
+      "type": "mcq",
+      "definition": "Residuals are the differences between observed and fitted values, e_i = y_i - yhat_i - the observable counterpart of the unknown errors. They are not the regression coefficients, which are the estimated slopes and intercept. They are not the coefficient standard errors, which measure sampling variability. They are not the true unobservable errors; residuals are our estimates of those errors. And they are not the explained part of Y, which is the fitted value yhat_i itself.",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "The standard error of a regression coefficient measures:",
+      "choices": [
+        "The overall R-squared fit of the whole model",
+        "The unconditional spread of the dependent variable Y",
+        "The standard deviation of the coefficient's sampling distribution",
+        "The systematic bias built into the coefficient",
+        "The correlation among the regressors in the model"
+      ],
+      "answer": 2,
+      "type": "mcq",
+      "definition": "A coefficient's standard error is the estimated standard deviation of its sampling distribution - how much the estimate would vary across repeated samples - and it shrinks roughly with the square root of n. It is not the model's R-squared, not the spread of Y itself, not a bias (SEs concern variance, not bias), and not a measure of regressor collinearity (that is the VIF).",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "In OLS the sum of the residuals (when an intercept is included) equals:",
+      "choices": [
+        "Zero",
+        "The number of regressors",
+        "The R-squared",
+        "One",
+        "The total sum of squares"
+      ],
+      "answer": 0,
+      "type": "mcq",
+      "definition": "When the model includes an intercept, the OLS first-order conditions force the residuals to sum to zero, and to be orthogonal to each regressor. The sum is not the number of regressors, the R-squared, one, or the total sum of squares - those confuse the residual sum with unrelated quantities. This zero-sum property is a direct consequence of the normal equations, not an empirical accident, and it underlies the variance decomposition SST = SSE + SSR.",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "Which statement about the error term and the residual is correct?",
+      "choices": [
+        "The residual is an unobservable quantity",
+        "Both the error and residual are always zero",
+        "The error and residual are identical objects",
+        "The error is computed directly from the data",
+        "The error is unobservable; the residual is its estimate"
+      ],
+      "answer": 4,
+      "type": "mcq",
+      "definition": "The error is unobservable and part of the true population model (Y = X*beta + u); the residual is its observed estimate from the fitted regression (e = y - yhat). So 'the residual is unobservable' is backwards - residuals are computed from data. They are not both always zero; only the residuals sum to zero with an intercept. They are not identical - one is a population quantity, the other a sample estimate. And the error is NOT computed from the data; that statement again swaps error and residual.",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "If you regress Y on X and obtain a slope of 2.0 with a standard error of 0.5, the approximate t-statistic for testing the slope equals zero is:",
+      "choices": [
+        "0.25",
+        "4.0",
+        "10.0",
+        "2.5",
+        "1.5"
+      ],
+      "answer": 1,
+      "type": "mcq",
+      "definition": "The t-statistic is the coefficient divided by its standard error: t = 2.0 / 0.5 = 4.0, which comfortably exceeds the usual critical value near 2, so the slope is significant. 0.25 inverts the ratio (SE/coef). 10.0 and 2.5 do not match any correct combination of these two numbers. 1.5 is unrelated. The rule t = coef/SE is the core mechanic: larger coefficients relative to their noise yield larger t-statistics.",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "The 'ceteris paribus' interpretation of a multiple-regression coefficient requires:",
+      "choices": [
+        "That the other regressors are held constant",
+        "That the estimation sample is large",
+        "That the model's R-squared is high",
+        "That the regression errors are normal",
+        "That X has been randomly assigned"
+      ],
+      "answer": 0,
+      "type": "mcq",
+      "definition": "The ceteris paribus reading of a multiple-regression coefficient requires only that the other regressors are held constant; OLS does this by partialling them out. It does not require a large sample - the interpretation is the same in small samples, precision aside. It does not require a high R-squared, which concerns fit, not interpretation. It does not require normal errors, which matter only for exact inference. And it does not require X to be randomly assigned; random assignment strengthens the CAUSAL claim but is not needed for the partial-effect interpretation.",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "A regression with a very high R-squared but coefficients that are individually insignificant is a classic symptom of:",
+      "choices": [
+        "Measurement error in the outcome Y",
+        "Multicollinearity among the regressors",
+        "A unit root in the dependent series",
+        "Omitted variable bias in the model",
+        "Heteroskedasticity in the errors"
+      ],
+      "answer": 1,
+      "type": "mcq",
+      "definition": "A very high R-squared combined with individually insignificant coefficients is the classic fingerprint of multicollinearity: the regressors jointly explain Y well, but their shared variation inflates standard errors so no single coefficient stands out. Measurement error in Y raises noise and lowers fit, not this pattern. A unit root is a time-series property unrelated to this symptom. Omitted variable bias distorts coefficient values but does not typically produce this high-fit/low-significance signature. Heteroskedasticity affects standard errors but does not generate this simultaneous high R-squared with uniformly insignificant coefficients.",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "In the linear probability model (OLS with a binary dependent variable), a key drawback is:",
+      "choices": [
+        "It requires the variables to be cointegrated",
+        "Predicted probabilities can fall below 0 or above 1",
+        "It cannot be estimated by ordinary least squares",
+        "It always carries a unit root in the outcome",
+        "It cannot include any continuous regressors"
+      ],
+      "answer": 1,
+      "type": "mcq",
+      "definition": "The linear probability model fits a binary outcome by OLS, so its fitted line is unbounded and predicted probabilities can fall below 0 or above 1 - nonsensical values that motivate logit/probit. It does not require cointegration, a time-series concept. It can be estimated by OLS - that is exactly what the LPM is. It has no inherent unit root. And it can include continuous regressors freely; the binary variable is the dependent one, not a constraint on the regressors.",
+      "last_updated": "2026-06-29"
+    }
+  ]
+}

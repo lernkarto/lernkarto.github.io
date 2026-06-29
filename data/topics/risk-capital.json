@@ -1,0 +1,13 @@
+{
+  "topic": "Capital & regulation",
+  "id": "risk-capital",
+  "standard": true,
+  "primerTitle": "Capital & regulation",
+  "primer": "## Capital & regulation\nHow much capital a bank must hold and who enforces it. Pairs the **capital & regulation vocabulary** (CET1/AT1/T2, buffers, SREP, Basel, the authorities) with the **Regulation & capital** and **Regulatory landscape** decks (ratios, buffers, output floor, the EU/Gulf supervisory map), plus **ECB / SSM & internal models** — how the ECB supervises significant banks and how internal models (IRB, IMM, IMA) are reviewed and approved.",
+  "deckFiles": [
+    "risk-glossary-capital.json",
+    "regulation-capital.json",
+    "regulatory-landscape.json",
+    "ecb-ssm-models.json"
+  ]
+}

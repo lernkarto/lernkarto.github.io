@@ -1,0 +1,216 @@
+{
+  "id": "cognitive-biases",
+  "name": "Cognitive biases",
+  "color": "#0bda51",
+  "description": "Systematic errors in human judgement and decision-making — what each bias is, with a quick everyday example. Flip cards plus a few 'which bias is this?' multiple-choice cards.",
+  "primerTitle": "Bias glossary",
+  "primer": "A **cognitive bias** is a systematic (predictable, repeatable) error in judgement — not a random slip. Each card tests one. A compact glossary:\n\n**Memory & belief**\n- **Confirmation bias** — seeking, favouring and recalling evidence that fits what you already believe, while discounting what contradicts it.\n- **Hindsight bias** — once an outcome is known, believing you 'knew it all along' and that it was more predictable than it was.\n- **Recency bias** — over-weighting the most recent events when judging a trend.\n- **Negativity bias** — bad experiences carry more psychological weight than equally strong good ones.\n\n**Social & self**\n- **Dunning–Kruger effect** — low competence leads people to overrate their ability (the same gaps hide the mistakes); experts may underrate themselves.\n- **Fundamental attribution error** — blaming *others'* behaviour on their character, but excusing *your own* with circumstances.\n- **Self-serving bias** — claiming successes as your own doing, blaming failures on outside factors.\n- **Bandwagon effect** — adopting a belief or behaviour because many others have, not because of evidence.\n- **Halo effect** — one positive trait (e.g. attractiveness) colours your whole judgement of someone.\n- **Optimism bias** — overestimating your own chances of good outcomes and underestimating bad ones.\n- **Negativity bias** *(also belief)* — see above.\n- **In-group bias** — favouring members of your own group over outsiders.\n- **Overconfidence effect** — your stated certainty exceeds your actual accuracy.\n\n**Decision & probability**\n- **Anchoring** — over-relying on the first number/value seen, so later estimates stay too close to it.\n- **Availability heuristic** — judging likelihood by how easily examples come to mind, so vivid/recent events feel more frequent.\n- **Sunk cost fallacy** — continuing a losing course because of resources already spent, rather than future value.\n- **Loss aversion** — a loss feels larger than an equal-sized gain, so you work harder to avoid losses.\n- **Framing effect** — reacting differently to identical facts depending on positive vs negative wording (90% survival vs 10% mortality).\n- **Survivorship bias** — drawing conclusions only from cases that passed a selection filter, ignoring the dropouts.\n- **Gambler's fallacy** — believing past *independent* random outcomes make others 'due'. Independent events have no memory; nothing is ever due.\n- **Status quo bias** — preferring things to stay the same, treating change as a loss.\n- **Base rate neglect** — ignoring how common something is overall, over-weighting specific case details (why a positive test for a rare disease is less alarming than it feels).\n- **Planning fallacy** — chronically underestimating how long a task will take, even given past overruns.\n\nFor the 'identify the bias' cards, match the scenario to the definition above; the wrong options are other biases in this list.",
+  "categories": {
+    "memory": "Memory & belief",
+    "social": "Social & self",
+    "decision": "Decision & probability",
+    "quiz": "Identify the bias"
+  },
+  "cards": [
+    {
+      "term": "Confirmation bias",
+      "definition": "The tendency to seek, interpret and remember information that confirms what you already believe, while discounting evidence against it. Example: convinced a stock will rise, you read only bullish analysis and skip the warnings.",
+      "summary": "Favouring evidence that fits your existing belief.",
+      "category": "memory",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "Anchoring",
+      "definition": "Relying too heavily on the first piece of information (the 'anchor') when making estimates, so later judgements stay too close to it. Example: a shop shows '€200, now €120' and €120 feels cheap only because of the €200 anchor.",
+      "summary": "First number seen drags your estimate toward it.",
+      "category": "decision",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "Availability heuristic",
+      "definition": "Judging how likely something is by how easily examples come to mind, so vivid or recent events seem more frequent than they are. Example: after seeing news of a plane crash, you overestimate the risk of flying.",
+      "summary": "Easy-to-recall events feel more probable.",
+      "category": "decision",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "Hindsight bias",
+      "definition": "After an outcome is known, believing you 'knew it all along' and that it was more predictable than it really was. Example: after an election result, insisting the outcome was obvious from the start.",
+      "summary": "Seeing a past event as having been predictable.",
+      "category": "memory",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "Dunning–Kruger effect",
+      "definition": "People with low competence in an area overestimate their ability, because the same gaps prevent them from seeing their mistakes; experts may underrate themselves. Example: a beginner programmer who thinks one tutorial made them an expert.",
+      "summary": "The unskilled overrate themselves; experts underrate themselves.",
+      "category": "social",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "Sunk cost fallacy",
+      "definition": "Continuing a losing course of action because of resources already spent, rather than judging future value. Example: sitting through a bad film 'because I paid for the ticket'.",
+      "summary": "Throwing good money after bad to justify past spending.",
+      "category": "decision",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "Loss aversion",
+      "definition": "Losses feel psychologically larger than equivalent gains, so people work harder to avoid losing than to win. Example: the pain of losing €50 outweighs the pleasure of finding €50.",
+      "summary": "Losses hurt more than equal gains please.",
+      "category": "decision",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "Framing effect",
+      "definition": "Reacting differently to the same facts depending on how they are presented (positively vs negatively). Example: '90% survival rate' sounds far better than '10% mortality rate', though they are identical.",
+      "summary": "The same information feels different depending on wording.",
+      "category": "decision",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "Survivorship bias",
+      "definition": "Drawing conclusions only from cases that 'survived' a selection process, ignoring those that dropped out. Example: studying only successful start-up founders and missing the many with the same habits who failed.",
+      "summary": "Looking only at winners and ignoring the silent losers.",
+      "category": "decision",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "Fundamental attribution error",
+      "definition": "Attributing others' behaviour to their character while excusing your own with circumstances. Example: a colleague is late because they're 'lazy', but you were late because 'traffic was terrible'.",
+      "summary": "Blaming others' character, but your own situation.",
+      "category": "social",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "Self-serving bias",
+      "definition": "Taking credit for successes (internal causes) but blaming failures on outside factors. Example: 'I aced the exam because I'm smart, but failed the other because the questions were unfair.'",
+      "summary": "Successes are mine; failures are someone else's fault.",
+      "category": "social",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "Bandwagon effect",
+      "definition": "Adopting beliefs or behaviours because many others have, regardless of the underlying evidence. Example: buying a product simply because it's trending and 'everyone has one'.",
+      "summary": "Believing or doing something because the crowd does.",
+      "category": "social",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "Halo effect",
+      "definition": "Letting one positive trait colour your overall judgement of a person or thing. Example: assuming an attractive or charismatic candidate is also competent and honest.",
+      "summary": "One good trait makes everything else look good.",
+      "category": "social",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "Gambler's fallacy",
+      "definition": "Believing that past independent random events change future probabilities. Example: after five reds on the roulette wheel, betting on black because it's 'due', though each spin is independent.",
+      "summary": "Thinking past chance outcomes make others 'due'.",
+      "category": "decision",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "Recency bias",
+      "definition": "Giving disproportionate weight to the most recent events when judging trends. Example: an investor expecting last month's market direction to simply continue.",
+      "summary": "Overweighting the latest information.",
+      "category": "memory",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "Optimism bias",
+      "definition": "Overestimating the likelihood of good outcomes and underestimating bad ones for yourself. Example: believing you personally are less likely than average to get ill or have an accident.",
+      "summary": "Expecting good things to happen to you more than to others.",
+      "category": "social",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "Status quo bias",
+      "definition": "Preferring things to stay the same and treating any change as a loss, even when change would help. Example: keeping a worse default phone plan simply to avoid switching.",
+      "summary": "Defaulting to 'keep things as they are'.",
+      "category": "decision",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "Negativity bias",
+      "definition": "Giving negative experiences more psychological weight than equally strong positive ones. Example: dwelling on one critical comment among ten praising ones.",
+      "summary": "Bad impressions stick harder than good ones.",
+      "category": "memory",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "In-group bias",
+      "definition": "Favouring members of your own group over outsiders in trust, judgement and reward. Example: rating ideas from your own team as better simply because they're 'ours'.",
+      "summary": "Favouring 'us' over 'them'.",
+      "category": "social",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "Overconfidence effect",
+      "definition": "Excessive confidence in the accuracy of your own judgements, so your stated certainty exceeds your actual hit rate. Example: being '90% sure' of trivia answers that turn out right only 60% of the time.",
+      "summary": "Certainty that outruns accuracy.",
+      "category": "social",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "Base rate neglect",
+      "definition": "Ignoring the general prevalence of something (the base rate) and over-weighting specific case details. Example: a positive test for a rare disease feels alarming until you account for how few people actually have it.",
+      "summary": "Ignoring how common something is in the first place.",
+      "category": "decision",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "Planning fallacy",
+      "definition": "Underestimating how long a task will take, even when past similar tasks ran over. Example: promising a report 'by Friday' that predictably slips to the following week.",
+      "summary": "Chronically underestimating time to finish.",
+      "category": "decision",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "type": "truefalse",
+      "category": "decision",
+      "answer": false,
+      "term": "The gambler's fallacy correctly assumes that independent random events become 'due' to balance out.",
+      "summary": "False — independent events have no memory.",
+      "definition": "False. The gambler's fallacy is exactly the mistaken belief that past independent outcomes change future probabilities. Each spin or coin toss is independent, so nothing is ever 'due'.",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "type": "truefalse",
+      "category": "decision",
+      "answer": true,
+      "term": "Loss aversion means a loss typically feels larger than a gain of the same size.",
+      "summary": "True — losses loom larger than equivalent gains.",
+      "definition": "True. Loss aversion is the tendency for losses to carry more psychological weight than gains of equal magnitude, which is why people often go to greater lengths to avoid a loss than to secure a comparable gain.",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "Which bias describes seeking out only the evidence that supports what you already believe?",
+      "sub": "A) Confirmation bias    B) Availability heuristic    C) Anchoring bias    D) Status quo bias",
+      "definition": "Correct: A) Confirmation bias. It is the tendency to seek, favour and recall information consistent with existing beliefs. The availability heuristic is about ease of recall, anchoring about over-relying on a first value, and status quo bias about preferring no change.",
+      "category": "quiz",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "A friend is late and you decide they're lazy, but when you're late it's because of traffic. Which bias is this?",
+      "sub": "A) Self-serving bias    B) Fundamental attribution error    C) In-group bias    D) Halo effect",
+      "definition": "Correct: B) Fundamental attribution error. It is attributing others' behaviour to their character while explaining your own by the situation. Self-serving bias is about credit and blame for your own outcomes, in-group bias about favouring your group, and the halo effect about one trait colouring overall judgement.",
+      "category": "quiz",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "An investor refuses to sell a failing project 'because of all the money already poured in'. Which bias is this?",
+      "sub": "A) Loss aversion    B) Optimism bias    C) Sunk cost fallacy    D) Recency bias",
+      "definition": "Correct: C) Sunk cost fallacy. The decision is driven by resources already spent rather than future value. Loss aversion concerns weighting losses over gains, optimism bias over-expecting good outcomes, and recency bias over-weighting the latest events.",
+      "category": "quiz",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "Studying only successful founders and copying their habits, ignoring those who failed with the same habits, exemplifies which bias?",
+      "sub": "A) Bandwagon effect    B) Survivorship bias    C) Hindsight bias    D) Base rate neglect",
+      "definition": "Correct: B) Survivorship bias. Conclusions are drawn only from cases that passed a selection filter, ignoring the dropouts. The bandwagon effect is following the crowd, hindsight bias is seeing the past as predictable, and base rate neglect is ignoring overall prevalence.",
+      "category": "quiz",
+      "last_updated": "2026-06-29"
+    }
+  ]
+}

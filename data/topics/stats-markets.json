@@ -1,0 +1,10 @@
+{
+  "topic": "Mixed question bank",
+  "id": "stats-markets",
+  "standard": true,
+  "primerTitle": "Mixed question bank — how to use it",
+  "primer": "## Mixed question bank\nA large mixed bank to **rehearse out loud** across the whole quant/data/risk screen — probability & statistics, econometrics, risk, regulation, modelling and Python/R/SAS, in one place.\n- **Interview question bank** — 150 multiple-choice + 10 open-ended questions; flip for an explained answer and sources.\n\nUse it for breadth and rehearsal; the focused decks (econometrics, time series, risk & markets, data handling) drill each area in depth.",
+  "deckFiles": [
+    "interview-question-bank.json"
+  ]
+}

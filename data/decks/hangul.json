@@ -1,0 +1,161 @@
+{
+  "id": "hangul",
+  "name": "Korean Hangul (jamo)",
+  "color": "#ff9f43",
+  "dual": true,
+  "lang": "ko",
+  "description": "The 24 basic Hangul letters (jamo): 14 consonants and 10 vowels. They combine into square syllable blocks. Each jamo is tested both ways, tracked separately.",
+  "categories": {
+    "consonant": "Consonants",
+    "vowel": "Vowels"
+  },
+  "primerTitle": "Hangul jamo — quick recap",
+  "primer": "Hangul is the Korean alphabet. Its letters (**jamo**) are not written in a line — they stack into **square syllable blocks** (e.g. consonant + vowel, optionally + final consonant). This deck covers the **24 basic jamo: 14 consonants and 10 vowels**. Consonant *names* follow a pattern (the letter's sound + -ieu(k)/-eut, e.g. giyeok, nieun); aspirated consonants are drawn by adding a stroke to the plain ones.\n\n**Consonants (14):**\n- **ㄱ** — giyeok — g / k\n- **ㄴ** — nieun — n\n- **ㄷ** — digeut — d / t\n- **ㄹ** — rieul — r / l\n- **ㅁ** — mieum — m\n- **ㅂ** — bieup — b / p\n- **ㅅ** — siot — s\n- **ㅇ** — ieung — silent (initial) / 'ng' (final)\n- **ㅈ** — jieut — j\n- **ㅊ** — chieut — ch (aspirated)\n- **ㅋ** — kieuk — k (aspirated)\n- **ㅌ** — tieut — t (aspirated)\n- **ㅍ** — pieup — p (aspirated)\n- **ㅎ** — hieut — h\n\n**Vowels (10):**\n- **ㅏ** — a (as in 'father')\n- **ㅑ** — ya\n- **ㅓ** — eo (as in 'son')\n- **ㅕ** — yeo\n- **ㅗ** — o (as in 'or')\n- **ㅛ** — yo\n- **ㅜ** — u (as in 'boot')\n- **ㅠ** — yu\n- **ㅡ** — eu (unrounded, as in 'brook')\n- **ㅣ** — i (as in 'machine')\n\n**Special cases:** **ㅇ** is a silent placeholder when a syllable *starts* with a vowel, but sounds 'ng' as a *final*; the *y*-vowels (ㅑ ㅕ ㅛ ㅠ) are their plain partners (ㅏ ㅓ ㅗ ㅜ) with an extra stroke; aspirated ㅊ ㅋ ㅌ ㅍ are ㅈ ㄱ ㄷ ㅂ with an added stroke.",
+  "cards": [
+    {
+      "term": "ㄱ",
+      "definition": "giyeok — g / k",
+      "category": "consonant",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "ㄴ",
+      "definition": "nieun — n",
+      "category": "consonant",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "ㄷ",
+      "definition": "digeut — d / t",
+      "category": "consonant",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "ㄹ",
+      "definition": "rieul — r / l",
+      "category": "consonant",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "ㅁ",
+      "definition": "mieum — m",
+      "category": "consonant",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "ㅂ",
+      "definition": "bieup — b / p",
+      "category": "consonant",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "ㅅ",
+      "definition": "siot — s",
+      "category": "consonant",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "ㅇ",
+      "definition": "ieung — silent (initial) / 'ng' (final)",
+      "category": "consonant",
+      "note": "Placeholder when a syllable starts with a vowel; 'ng' at the end.",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "ㅈ",
+      "definition": "jieut — j",
+      "category": "consonant",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "ㅊ",
+      "definition": "chieut — ch (aspirated)",
+      "category": "consonant",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "ㅋ",
+      "definition": "kieuk — k (aspirated)",
+      "category": "consonant",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "ㅌ",
+      "definition": "tieut — t (aspirated)",
+      "category": "consonant",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "ㅍ",
+      "definition": "pieup — p (aspirated)",
+      "category": "consonant",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "ㅎ",
+      "definition": "hieut — h",
+      "category": "consonant",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "ㅏ",
+      "definition": "a (as in 'father')",
+      "category": "vowel",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "ㅑ",
+      "definition": "ya",
+      "category": "vowel",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "ㅓ",
+      "definition": "eo (as in 'son')",
+      "category": "vowel",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "ㅕ",
+      "definition": "yeo",
+      "category": "vowel",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "ㅗ",
+      "definition": "o (as in 'or')",
+      "category": "vowel",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "ㅛ",
+      "definition": "yo",
+      "category": "vowel",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "ㅜ",
+      "definition": "u (as in 'boot')",
+      "category": "vowel",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "ㅠ",
+      "definition": "yu",
+      "category": "vowel",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "ㅡ",
+      "definition": "eu (as in 'brook', unrounded)",
+      "category": "vowel",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "ㅣ",
+      "definition": "i (as in 'machine')",
+      "category": "vowel",
+      "last_updated": "2026-06-29"
+    }
+  ]
+}

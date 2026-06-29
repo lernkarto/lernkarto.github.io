@@ -1,0 +1,12 @@
+{
+  "topic": "Japanese kana",
+  "id": "kana",
+  "standard": true,
+  "description": "Learn the two Japanese syllabaries — hiragana and katakana — where each item is tested both ways (symbol → sound and sound → symbol), tracked separately.",
+  "primerTitle": "Kana chart — quick recap",
+  "primer": "## How this set works\n46 **hiragana** + 46 **katakana** — the *gojūon* ('fifty sounds'). Each card is studied **both ways** and tracked separately — you only master it once you know it in both directions. Pin a direction in ⚙ settings if you'd rather drill one way.\n\n## Hiragana\n- Vowels: あ a · い i · う u · え e · お o\n- K: か ka · き ki · く ku · け ke · こ ko\n- S: さ sa · し shi · す su · せ se · そ so\n- T: た ta · ち chi · つ tsu · て te · と to\n- N: な na · に ni · ぬ nu · ね ne · の no\n- H: は ha · ひ hi · ふ fu · へ he · ほ ho\n- M: ま ma · み mi · む mu · め me · も mo\n- Y: や ya · ゆ yu · よ yo\n- R: ら ra · り ri · る ru · れ re · ろ ro\n- W: わ wa · を wo · ん n\n\n## Katakana (same readings, used for loanwords)\n- Vowels: ア a · イ i · ウ u · エ e · オ o\n- K: カ ka · キ ki · ク ku · ケ ke · コ ko\n- S: サ sa · シ shi · ス su · セ se · ソ so\n- T: タ ta · チ chi · ツ tsu · テ te · ト to\n- N: ナ na · ニ ni · ヌ nu · ネ ne · ノ no\n- H: ハ ha · ヒ hi · フ fu · ヘ he · ホ ho\n- M: マ ma · ミ mi · ム mu · メ me · モ mo\n- Y: ヤ ya · ユ yu · ヨ yo\n- R: ラ ra · リ ri · ル ru · レ re · ロ ro\n- W: ワ wa · ヲ wo · ン n\n\n## Watch out\n- Irregular readings: し/シ **shi**, ち/チ **chi**, つ/ツ **tsu**, ふ/フ **fu**.\n- Look-alikes: シ shi vs ツ tsu; ソ so vs ン n.\n- を / ヲ are object particles, pronounced 'o'; ん / ン never start a word.\n\nEvery card's answer is in this chart — if you know the table both ways, you'll pass the deck.",
+  "deckFiles": [
+    "hiragana.json",
+    "katakana.json"
+  ]
+}

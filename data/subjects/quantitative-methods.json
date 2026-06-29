@@ -1,0 +1,13 @@
+{
+  "name": "Quantitative methods",
+  "primerTitle": "Quantitative methods — what this subject covers",
+  "description": "Probability, distributions, statistics, time series and quantitative finance.",
+  "primer": "## Quantitative methods\nThe mathematical toolkit for modelling uncertainty and data.\n- **Probability distributions** — the common laws (Lognormal, Poisson, Student's t) with uses, limits and exercises.\n- **Normal distribution** — its own topic: fundamentals, theorems (CLT, closure, max-entropy), inference (MLE, CIs, error function) and applications (VaR, QQ-plots, normality tests).\n- **Applied statistics & methods** — estimation, hypothesis testing, regression.\n- **Time series** — foundations, Box–Jenkins models, advanced topics.\n- **Quantitative finance** — pricing, hedging and risk measures built on the above.\n\nThe through-line: a distribution describes randomness; statistics infers its parameters from data; time series adds dependence over time; finance applies it to prices and risk.",
+  "topics": [
+    "Time series",
+    "Normal distribution",
+    "Probability distributions",
+    "Applied statistics & methods",
+    "Quantitative finance"
+  ]
+}

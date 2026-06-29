@@ -1,0 +1,12 @@
+{
+  "topic": "Liquidity & ALM",
+  "id": "risk-liquidity",
+  "standard": true,
+  "primerTitle": "Liquidity & ALM",
+  "primer": "## Liquidity & ALM\nFunding the balance sheet and managing rate risk in the banking book. Pairs the **liquidity & ALM vocabulary** (HQLA, LCR/NSFR, IRRBB, EVE/NII) with the **Liquidity & funding** and **Interest-rate & ALM** decks (ratios, gaps, deposit beta, FTP, immunisation).",
+  "deckFiles": [
+    "risk-glossary-liquidity.json",
+    "liquidity-funding.json",
+    "interest-rate-alm.json"
+  ]
+}

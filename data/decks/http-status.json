@@ -1,0 +1,182 @@
+{
+  "id": "http-status",
+  "name": "HTTP status codes",
+  "color": "#00ff88",
+  "description": "HTTP response status codes grouped by class — 2xx success, 3xx redirection, 4xx client errors, 5xx server errors. Term: the code; definition: its standard name and what it means. Covers the codes you actually meet building and debugging web APIs.",
+  "primerTitle": "HTTP status codes by class",
+  "primer": "Status codes group into **classes** by first digit: **2xx** success, **3xx** redirection, **4xx** client error, **5xx** server error.\n\n## 2xx — success\n\n- **200 OK** — request succeeded; body holds the resource (GET) or action result (POST).\n- **201 Created** — succeeded and a new resource was created (typically POST/PUT); `Location` header points to it.\n- **202 Accepted** — accepted for processing, but processing is *asynchronous* and not yet complete; no guarantee it ultimately succeeds.\n- **204 No Content** — succeeded but no body to return; common for DELETE or state updates with no output.\n\n## 3xx — redirection\n\n- **301 Moved Permanently** — new *permanent* URL in `Location`; clients/search engines should update links; method may change to GET.\n- **302 Found** — resource temporarily at a different URL; keep using the original for future requests.\n- **304 Not Modified** — caching: resource unchanged since the client's version, so no body is sent — use the cache.\n- **307 Temporary Redirect** — like 302, but the method and body *must be preserved* (a POST stays a POST).\n- **308 Permanent Redirect** — like 301 (permanent), but the method and body *must be preserved* (POST not downgraded to GET).\n\n## 4xx — client error\n\n- **400 Bad Request** — server can't process due to a client error (malformed syntax, bad params); don't repeat unchanged.\n- **401 Unauthorized** — authentication required and failed/missing; really means *unauthenticated* — supply valid credentials and retry.\n- **403 Forbidden** — request understood, client may even be authenticated, but access is *denied*; re-authenticating won't help.\n- **404 Not Found** — resource not found; sometimes used to hide existence in place of 403.\n- **405 Method Not Allowed** — resource exists but doesn't support that HTTP method; `Allow` header lists permitted ones.\n- **409 Conflict** — request conflicts with current resource state (stale-version edit, uniqueness violation).\n- **418 I'm a teapot** — April Fools' joke code (RFC 2324, the coffee-pot protocol); a teapot asked to brew coffee.\n- **422 Unprocessable Entity** — syntactically well-formed but *semantically* invalid (valid JSON failing validation); common in REST APIs.\n- **429 Too Many Requests** — rate limited; `Retry-After` header may say how long to wait.\n\n## 5xx — server error\n\n- **500 Internal Server Error** — generic catch-all; the server hit an unexpected condition. Fault is on the *server*.\n- **502 Bad Gateway** — a gateway/proxy got an *invalid response* from the upstream server.\n- **503 Service Unavailable** — server *temporarily* unable to handle the request (overloaded or down for maintenance); often paired with `Retry-After`.\n- **504 Gateway Timeout** — a gateway/proxy got *no response in time* from the upstream (slow/unreachable, not malformed).",
+  "categories": {
+    "success": {
+      "label": "2xx success",
+      "color": "#9bff66"
+    },
+    "redirect": {
+      "label": "3xx redirection",
+      "color": "#66aaff"
+    },
+    "client": {
+      "label": "4xx client error",
+      "color": "#ff9f55"
+    },
+    "server": {
+      "label": "5xx server error",
+      "color": "#ff6b6b"
+    }
+  },
+  "cards": [
+    {
+      "term": "200",
+      "definition": "OK. The request succeeded. For a GET the body holds the requested resource; for a POST it holds the result of the action.",
+      "summary": "OK — request succeeded.",
+      "category": "success",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "201",
+      "definition": "Created. The request succeeded and a new resource was created as a result — typically returned by a POST or PUT. The Location header usually points to the new resource.",
+      "summary": "Created — new resource made.",
+      "category": "success",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "202",
+      "definition": "Accepted. The request was accepted for processing, but processing is not complete — the work happens asynchronously. No guarantee it will ultimately succeed.",
+      "summary": "Accepted — processing async.",
+      "category": "success",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "204",
+      "definition": "No Content. The request succeeded but there is no body to return. Common for DELETE requests or actions that update server state without producing output.",
+      "summary": "No Content — success, empty body.",
+      "category": "success",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "301",
+      "definition": "Moved Permanently. The resource has a new permanent URL, given in the Location header. Clients and search engines should update their links; methods may change to GET.",
+      "summary": "Moved Permanently — new URL for good.",
+      "category": "redirect",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "302",
+      "definition": "Found. The resource resides temporarily under a different URL given in Location. The original URL should keep being used for future requests.",
+      "summary": "Found — temporary redirect.",
+      "category": "redirect",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "304",
+      "definition": "Not Modified. Used for caching: the resource has not changed since the version the client already holds, so no body is sent and the client uses its cache.",
+      "summary": "Not Modified — use your cache.",
+      "category": "redirect",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "307",
+      "definition": "Temporary Redirect. Like 302, but the HTTP method and body must be preserved on the redirected request — a POST stays a POST.",
+      "summary": "Temporary Redirect — keep the method.",
+      "category": "redirect",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "308",
+      "definition": "Permanent Redirect. Like 301 (permanent new URL), but the method and body must be preserved — a POST is not downgraded to GET.",
+      "summary": "Permanent Redirect — keep the method.",
+      "category": "redirect",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "400",
+      "definition": "Bad Request. The server cannot process the request due to a client error — malformed syntax, invalid parameters, or a bad framing. The client should not repeat it unchanged.",
+      "summary": "Bad Request — malformed by the client.",
+      "category": "client",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "401",
+      "definition": "Unauthorized. Authentication is required and has failed or not been provided. Despite the name it means \"unauthenticated\"; supply valid credentials and retry.",
+      "summary": "Unauthorized — authenticate first.",
+      "category": "client",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "403",
+      "definition": "Forbidden. The server understood the request and the client may be authenticated, but access is denied. Re-authenticating will not help.",
+      "summary": "Forbidden — authenticated but not allowed.",
+      "category": "client",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "404",
+      "definition": "Not Found. The server cannot find the requested resource. Often used when the existence of the resource is being hidden, in place of 403.",
+      "summary": "Not Found — no such resource.",
+      "category": "client",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "405",
+      "definition": "Method Not Allowed. The resource exists but does not support the HTTP method used — e.g. a POST to a read-only endpoint. The Allow header lists permitted methods.",
+      "summary": "Method Not Allowed — wrong verb.",
+      "category": "client",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "409",
+      "definition": "Conflict. The request conflicts with the current state of the resource — e.g. an edit based on a stale version, or a duplicate that violates a uniqueness constraint.",
+      "summary": "Conflict — clashes with current state.",
+      "category": "client",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "418",
+      "definition": "I'm a teapot. An April Fools' joke code from RFC 2324 (the Hyper Text Coffee Pot Control Protocol). Returned by a teapot asked to brew coffee; sometimes used playfully by APIs.",
+      "summary": "I'm a teapot — the joke code.",
+      "category": "client",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "422",
+      "definition": "Unprocessable Entity. The request was well-formed syntactically but contains semantic errors — e.g. valid JSON that fails validation rules. Common in REST APIs.",
+      "summary": "Unprocessable Entity — valid syntax, bad data.",
+      "category": "client",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "429",
+      "definition": "Too Many Requests. The client has sent too many requests in a given time (rate limiting). The Retry-After header may say how long to wait before retrying.",
+      "summary": "Too Many Requests — rate limited.",
+      "category": "client",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "500",
+      "definition": "Internal Server Error. A generic catch-all: the server hit an unexpected condition and could not fulfil the request. The fault is on the server, not the client.",
+      "summary": "Internal Server Error — generic server fault.",
+      "category": "server",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "502",
+      "definition": "Bad Gateway. A server acting as a gateway or proxy received an invalid response from the upstream server it relied on.",
+      "summary": "Bad Gateway — bad upstream response.",
+      "category": "server",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "503",
+      "definition": "Service Unavailable. The server is temporarily unable to handle the request — overloaded or down for maintenance. Often paired with a Retry-After header.",
+      "summary": "Service Unavailable — temporarily down.",
+      "category": "server",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "504",
+      "definition": "Gateway Timeout. A gateway or proxy did not get a response from the upstream server in time. The upstream is slow or unreachable, not malformed.",
+      "summary": "Gateway Timeout — upstream too slow.",
+      "category": "server",
+      "last_updated": "2026-06-29"
+    }
+  ]
+}

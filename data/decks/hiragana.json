@@ -1,0 +1,324 @@
+{
+  "id": "hiragana",
+  "name": "Hiragana (gojūon)",
+  "color": "#ff9f43",
+  "dual": true,
+  "lang": "ja",
+  "description": "The 46 basic hiragana. Each kana is tested both ways — recall the reading from the symbol and the symbol from the reading — tracked separately.",
+  "primerTitle": "Reading hiragana",
+  "primer": "**Hiragana** is the basic Japanese phonetic script — one symbol per *syllable* (a sound, not a letter). The 46 basic kana are organised in the **gojūon** (\"fifty sounds\") order: the five vowels first, then each consonant crossed with those vowels. Learn them row by row; the romaji below is what each card asks for.\n\n| | a | i | u | e | o |\n|---|---|---|---|---|---|\n| **–** | あ a | い i | う u | え e | お o |\n| **k** | か ka | き ki | く ku | け ke | こ ko |\n| **s** | さ sa | し **shi** | す su | せ se | そ so |\n| **t** | た ta | ち **chi** | つ **tsu** | て te | と to |\n| **n** | な na | に ni | ぬ nu | ね ne | の no |\n| **h** | は ha | ひ hi | ふ **fu** | へ he | ほ ho |\n| **m** | ま ma | み mi | む mu | め me | も mo |\n| **y** | や ya | | ゆ yu | | よ yo |\n| **r** | ら ra | り ri | る ru | れ re | ろ ro |\n| **w** | わ wa | | | | を **wo** |\n| **n** | ん **n** | | | | |\n\n**Irregular readings** (don't follow the consonant+vowel pattern): し = *shi*, ち = *chi*, つ = *tsu*, ふ = *fu*. These are the ones most often missed.\n\n**Special kana:**\n- **ん** is the only standalone consonant (*n*); it never begins a word.\n- **を** (*wo*, pronounced *o*) is used only as the object particle.\n- **は** is read *wa* when it marks the topic, **へ** is read *e* when it marks direction — but as kana their base readings are *ha* and *he*.\n\nThe **y-row** and **w-row** have gaps (no やぃ, no ゐ/ゑ here), so only the kana shown exist in this deck.",
+  "categories": {
+    "v": "Vowels",
+    "k": "K-row",
+    "s": "S-row",
+    "t": "T-row",
+    "n": "N-row",
+    "h": "H-row",
+    "m": "M-row",
+    "y": "Y-row",
+    "r": "R-row",
+    "w": "W-row + ん"
+  },
+  "cards": [
+    {
+      "term": "あ",
+      "definition": "a (as in 'father')",
+      "category": "v",
+      "audio": "https://upload.wikimedia.org/wikipedia/commons/e/ed/Ja-A.oga",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "い",
+      "definition": "i (as in 'machine')",
+      "category": "v",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "う",
+      "definition": "u (as in 'flute')",
+      "category": "v",
+      "audio": "https://upload.wikimedia.org/wikipedia/commons/4/4c/Ja-U.oga",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "え",
+      "definition": "e (as in 'bet')",
+      "category": "v",
+      "audio": "https://upload.wikimedia.org/wikipedia/commons/8/86/Ja-E.oga",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "お",
+      "definition": "o (as in 'or')",
+      "category": "v",
+      "audio": "https://upload.wikimedia.org/wikipedia/commons/2/21/Ja-O.oga",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "か",
+      "definition": "ka",
+      "category": "k",
+      "audio": "https://upload.wikimedia.org/wikipedia/commons/e/ec/Ja-Ka.oga",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "き",
+      "definition": "ki",
+      "category": "k",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "く",
+      "definition": "ku",
+      "category": "k",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "け",
+      "definition": "ke",
+      "category": "k",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "こ",
+      "definition": "ko",
+      "category": "k",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "さ",
+      "definition": "sa",
+      "category": "s",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "し",
+      "definition": "shi",
+      "category": "s",
+      "note": "Irregular romaji — 'shi', not 'si'.",
+      "audio": "https://upload.wikimedia.org/wikipedia/commons/1/16/Ja-Shi.oga",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "す",
+      "definition": "su",
+      "category": "s",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "せ",
+      "definition": "se",
+      "category": "s",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "そ",
+      "definition": "so",
+      "category": "s",
+      "audio": "https://upload.wikimedia.org/wikipedia/commons/7/73/Ja-So.oga",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "た",
+      "definition": "ta",
+      "category": "t",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "ち",
+      "definition": "chi",
+      "category": "t",
+      "note": "Irregular romaji — 'chi', not 'ti'.",
+      "audio": "https://upload.wikimedia.org/wikipedia/commons/c/cb/Ja-Chi.oga",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "つ",
+      "definition": "tsu",
+      "category": "t",
+      "note": "Irregular romaji — 'tsu', not 'tu'.",
+      "audio": "https://upload.wikimedia.org/wikipedia/commons/c/ca/Ja-Tsu.oga",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "て",
+      "definition": "te",
+      "category": "t",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "と",
+      "definition": "to",
+      "category": "t",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "な",
+      "definition": "na",
+      "category": "n",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "に",
+      "definition": "ni",
+      "category": "n",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "ぬ",
+      "definition": "nu",
+      "category": "n",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "ね",
+      "definition": "ne",
+      "category": "n",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "の",
+      "definition": "no",
+      "category": "n",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "は",
+      "definition": "ha",
+      "category": "h",
+      "note": "Read 'wa' when used as the topic particle.",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "ひ",
+      "definition": "hi",
+      "category": "h",
+      "audio": "https://upload.wikimedia.org/wikipedia/commons/0/04/Ja-Hi.oga",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "ふ",
+      "definition": "fu",
+      "category": "h",
+      "note": "Between 'hu' and 'fu' — romanised 'fu'.",
+      "audio": "https://upload.wikimedia.org/wikipedia/commons/1/14/Ja-Fu.oga",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "へ",
+      "definition": "he",
+      "category": "h",
+      "note": "Read 'e' when used as the direction particle.",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "ほ",
+      "definition": "ho",
+      "category": "h",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "ま",
+      "definition": "ma",
+      "category": "m",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "み",
+      "definition": "mi",
+      "category": "m",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "む",
+      "definition": "mu",
+      "category": "m",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "め",
+      "definition": "me",
+      "category": "m",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "も",
+      "definition": "mo",
+      "category": "m",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "や",
+      "definition": "ya",
+      "category": "y",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "ゆ",
+      "definition": "yu",
+      "category": "y",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "よ",
+      "definition": "yo",
+      "category": "y",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "ら",
+      "definition": "ra",
+      "category": "r",
+      "audio": "https://upload.wikimedia.org/wikipedia/commons/f/f0/Ja-Ra.oga",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "り",
+      "definition": "ri",
+      "category": "r",
+      "audio": "https://upload.wikimedia.org/wikipedia/commons/3/37/Ja-Ri.oga",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "る",
+      "definition": "ru",
+      "category": "r",
+      "audio": "https://upload.wikimedia.org/wikipedia/commons/e/eb/Ja-Ru.oga",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "れ",
+      "definition": "re",
+      "category": "r",
+      "audio": "https://upload.wikimedia.org/wikipedia/commons/1/1d/Ja-Re.oga",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "ろ",
+      "definition": "ro",
+      "category": "r",
+      "audio": "https://upload.wikimedia.org/wikipedia/commons/a/af/Ja-Ro.oga",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "わ",
+      "definition": "wa",
+      "category": "w",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "を",
+      "definition": "wo",
+      "category": "w",
+      "note": "Object particle, pronounced 'o'.",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "ん",
+      "definition": "n",
+      "category": "w",
+      "note": "The only standalone consonant; never starts a word.",
+      "last_updated": "2026-06-29"
+    }
+  ]
+}
