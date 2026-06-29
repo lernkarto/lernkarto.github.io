@@ -1,0 +1,159 @@
+{
+  "id": "cpp-classes",
+  "primerTitle": "C++ classes & object lifetime — quick recap",
+  "primer": "## Classes & access\n`class` and `struct` differ only in **default access**: `class` members are `private` by default, `struct` members `public` — otherwise identical (both have methods, constructors, inheritance). Convention: `struct` for plain data, `class` for types with invariants. **Access specifiers:** `public` = anyone, `private` = the class's own functions and friends only, `protected` = the class and its derived classes. Encapsulation = keep data `private`, expose a `public` interface.\n\nA **`static` data member** is shared by all instances (one copy per class, accessed `ClassName::member`). A member function with trailing **`const`** (`int size() const;`) makes `this` point-to-const, so it cannot mutate the object and can be called on `const` objects. **`this`** is a pointer to the object the function was called on — used to disambiguate (`this->x = x;`) and to return `*this` for chaining.\n\n## Construction & destruction\nA **constructor** has the class's name, no return type, and runs automatically on creation to establish invariants (may be overloaded). A **destructor** `~ClassName()` runs automatically at end of lifetime (scope exit for locals, `delete` for heap) to release resources. The **member-initialiser list** `Ctor(...) : a(x), b(y) {}` initialises members directly (instead of default-construct-then-assign); it is required for `const` members, references, and members lacking a default constructor, and is more efficient. Members initialise in **declaration order**, not the order listed.\n\nAn `explicit` (single-argument) constructor blocks implicit conversions, preventing silent surprises.\n\n## The rules\n**Rule of three:** if you need one of destructor / copy constructor / copy assignment, you almost certainly need all three (the class manages a resource). **Rule of five:** extend with move constructor + move assignment for efficient moves. **Rule of zero:** make every member RAII (`std::vector`, `std::string`, `unique_ptr`) so the compiler-generated special members are correct and you write none.\n\n## Operators\n**Operator overloading** defines `operator+`, `operator==`, `operator<<`, `operator[]`, etc. so built-in operators work on your types (`a + b`, `std::cout << v`). Overload only where the meaning is obvious. A **chainable setter** returns `*this` by reference (`Point& setX(int v){ x = v; return *this; }`) so `obj.setX(1).setY(2)` works.\n\n## Pitfall\nA class holding a raw pointer with a destructor that `delete`s it, but no custom copy, gets a **shallow** default copy — two objects share one buffer and both destructors free it (double-free, UB). Fix via the rule of three (deep copy) or hold a `std::vector` (rule of zero).",
+  "name": "C++ — Classes & object lifetime",
+  "color": "#00599c",
+  "description": "Defining classes: members, access control, constructors and destructors, the member-initialiser list, the rule of three/five, and operator overloading. The foundation of object-oriented C++.",
+  "categories": {
+    "core": {
+      "label": "Core",
+      "color": "#66aaff"
+    },
+    "lifetime": {
+      "label": "Construct/destruct",
+      "color": "#9bff66"
+    },
+    "use": {
+      "label": "Use & pitfalls",
+      "color": "#ff9f55"
+    }
+  },
+  "cards": [
+    {
+      "term": "What is the difference between `class` and `struct` in C++?",
+      "sub": "A) only the default access: class members are private by default, struct members public    B) struct cannot have methods    C) class cannot be inherited from    D) they are completely different features",
+      "definition": "Correct: A) only the default access: class members are private by default, struct members public. Otherwise they are identical — both can have methods, constructors, inheritance and access specifiers. Convention: `struct` for plain data aggregates, `class` for types with invariants.",
+      "category": "core",
+      "last_updated": "2026-06-29",
+      "stale": true
+    },
+    {
+      "term": "What do `public`, `private` and `protected` mean?",
+      "definition": "Access specifiers controlling visibility. `public` members are usable by anyone; `private` members only by the class's own functions and friends; `protected` members by the class and its derived classes. Encapsulation = keep data `private`, expose a `public` interface.",
+      "summary": "public = anyone, private = the class only, protected = class + derived.",
+      "category": "core",
+      "last_updated": "2026-06-29",
+      "stale": true
+    },
+    {
+      "term": "What is a constructor?",
+      "definition": "A special member function with the class's name and no return type, run automatically when an object is created. It establishes the object's invariants — initialising members and acquiring resources. A class may have several (overloaded) constructors for different argument sets.",
+      "summary": "Special function that initialises a new object.",
+      "category": "lifetime",
+      "last_updated": "2026-06-29",
+      "stale": true
+    },
+    {
+      "term": "What is a destructor and when does it run?",
+      "definition": "`~ClassName()` is the destructor; it runs automatically when an object's lifetime ends (scope exit for locals, `delete` for heap objects). It releases the object's resources. With RAII the destructor is where cleanup lives, so you rarely write explicit teardown elsewhere.",
+      "summary": "`~T()` runs at end of lifetime to release resources.",
+      "category": "lifetime",
+      "last_updated": "2026-06-29",
+      "stale": true
+    },
+    {
+      "term": "What is the member-initialiser list, and why prefer it?",
+      "definition": "The `: a(x), b(y)` clause between a constructor's signature and body. It initialises members directly, instead of default-constructing then assigning in the body. It is required for `const` members, references, and members without a default constructor, and is more efficient in general.",
+      "summary": "`Ctor(...) : a(x), b(y) {}` — initialise members directly.",
+      "category": "lifetime",
+      "last_updated": "2026-06-29",
+      "stale": true
+    },
+    {
+      "type": "cloze",
+      "category": "core",
+      "term": "A member function marked {{const}}, written `int size() const;`, promises not to modify the object and can be called on const objects.",
+      "summary": "A const member function cannot mutate the object.",
+      "definition": "The trailing `const` in `int get() const;` makes `this` a pointer-to-const, so the body cannot modify members. Const-correctness lets you call such accessors on `const` objects and references.",
+      "last_updated": "2026-06-29",
+      "stale": true
+    },
+    {
+      "term": "What is the `this` pointer?",
+      "definition": "Inside a non-static member function, `this` is a pointer to the object the function was called on. It is used to disambiguate members from parameters (`this->x = x;`) and to return the current object (`return *this;`) for method chaining.",
+      "summary": "A pointer to the current object inside member functions.",
+      "category": "core",
+      "last_updated": "2026-06-29",
+      "stale": true
+    },
+    {
+      "term": "What is the rule of three?",
+      "definition": "If a class needs a user-defined destructor, copy constructor, or copy assignment operator, it almost certainly needs all three — because that usually means it manages a resource that requires consistent copy and cleanup logic. Defining one but not the others gives broken copies or double frees.",
+      "summary": "Need one of dtor / copy-ctor / copy-assign → define all three.",
+      "category": "lifetime",
+      "last_updated": "2026-06-29",
+      "stale": true
+    },
+    {
+      "term": "What is the rule of five?",
+      "definition": "The rule of three extended for move semantics: a resource-managing class should consider all five special members — destructor, copy constructor, copy assignment, move constructor, and move assignment — so that both copying and moving behave correctly and efficiently.",
+      "summary": "Dtor + copy-ctor + copy-assign + move-ctor + move-assign.",
+      "category": "lifetime",
+      "last_updated": "2026-06-29",
+      "stale": true
+    },
+    {
+      "term": "What is the rule of zero?",
+      "sub": "A) design classes so members manage their own resources, so you write none of the five    B) never write any class    C) classes should have zero members    D) always default all five members",
+      "definition": "Correct: A) design classes so members manage their own resources, so you write none of the five. If every member is itself RAII (e.g. `std::vector`, `std::string`, `unique_ptr`), the compiler-generated special members already do the right thing, and you write no destructor or copy/move operations at all.",
+      "category": "lifetime",
+      "last_updated": "2026-06-29",
+      "stale": true
+    },
+    {
+      "term": "What is operator overloading?",
+      "definition": "Giving operators (`+`, `==`, `<<`, `[]`, etc.) a meaning for your own types by defining functions like `operator+`. It lets `a + b` or `std::cout << v` read naturally for user types. Overload only where the operator's meaning is obvious; abuse hurts readability.",
+      "summary": "Define `operator@` so built-in operators work on your types.",
+      "category": "core",
+      "last_updated": "2026-06-29",
+      "stale": true
+    },
+    {
+      "type": "truefalse",
+      "category": "use",
+      "answer": true,
+      "term": "If a constructor is marked `explicit`, the compiler will not use it for implicit conversions.",
+      "summary": "True — explicit blocks silent single-argument conversions.",
+      "definition": "True. A single-argument constructor can otherwise be used for implicit conversions (e.g. passing an `int` where your type is expected). Marking it `explicit` requires the conversion to be written out, preventing surprising silent conversions.",
+      "last_updated": "2026-06-29",
+      "stale": true
+    },
+    {
+      "type": "truefalse",
+      "category": "lifetime",
+      "answer": false,
+      "term": "Members are initialised in the order you list them in the member-initialiser list.",
+      "summary": "False — they initialise in declaration order, not list order.",
+      "definition": "False. Members are always initialised in the order they are declared in the class, regardless of the order in the initialiser list. Listing them out of declaration order is a classic bug source (a member used to initialise another may not be ready yet).",
+      "last_updated": "2026-06-29",
+      "stale": true
+    },
+    {
+      "term": "What is a `static` data member?",
+      "definition": "A member shared by all instances of the class rather than stored per object — there is one copy for the whole class. Useful for counters or shared constants. Accessed as `ClassName::member` and (pre-C++17) defined once outside the class.",
+      "summary": "One copy shared across all objects of the class.",
+      "category": "core",
+      "last_updated": "2026-06-29",
+      "stale": true
+    },
+    {
+      "term": "Exercise: this class double-frees — diagnose it.\n`class Buf { int* p; public: Buf(int n){p=new int[n];} ~Buf(){delete[] p;} };` then `Buf a(10); Buf b = a;`",
+      "sub": "Think about what the default copy constructor does to the pointer.",
+      "definition": "`Buf b = a;` uses the compiler-generated copy constructor, which copies the pointer `p` (a shallow copy) — now `a.p` and `b.p` point to the same buffer. Both destructors run `delete[] p`, freeing it twice (undefined behaviour). This is the rule of three: add a proper copy constructor and copy-assignment (deep copy), or just hold a `std::vector<int>` (rule of zero).",
+      "summary": "Default shallow copy shares the pointer → double delete; rule of three.",
+      "category": "use",
+      "last_updated": "2026-06-29",
+      "stale": true
+    },
+    {
+      "term": "Exercise: write a chainable setter. How does `obj.setX(1).setY(2);` work?",
+      "sub": "What must each setter return to allow chaining?",
+      "definition": "Each setter returns a reference to the current object: `Point& setX(int v) { x = v; return *this; }`. Because it returns `*this` (the same object), the next `.setY(2)` is called on it, enabling fluent chaining. Returning by value instead would copy and break the chain's intent.",
+      "summary": "Return `*this` by reference so calls can chain.",
+      "category": "use",
+      "last_updated": "2026-06-29",
+      "stale": true
+    }
+  ]
+}

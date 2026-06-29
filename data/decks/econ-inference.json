@@ -1,0 +1,379 @@
+{
+  "id": "econ-inference",
+  "name": "Statistics & inference",
+  "color": "#9775fa",
+  "description": "26 interview-screen MCQs — statistics & inference. Each card explains the answer.",
+  "tags": [
+    "interview",
+    "econometrics",
+    "mcq"
+  ],
+  "primerTitle": "Statistics & inference — core ideas",
+  "primer": "## Statistics & inference\n**Type I** = reject a true null (rate α); **Type II** = fail to reject a false null (rate β); **power** = 1−β. A **p-value** is P(data at least this extreme | null true) — not P(null true). A 95% CI is a property of the *procedure* (95% coverage across samples). The **CLT** gives normal sampling distributions; the **LLN** gives convergence of the mean. Distinguish **unbiased** (right on average) from **consistent** (converges as n→∞), and statistical vs economic significance. Bootstrap resamples with replacement to get SEs/CIs without distributional assumptions.",
+  "cards": [
+    {
+      "term": "A Type I error in hypothesis testing is:",
+      "choices": [
+        "Failing to reject a false null hypothesis",
+        "Accepting a false null hypothesis",
+        "Choosing a test statistic with no power",
+        "Setting the sample size below the required minimum",
+        "Rejecting a true null hypothesis (a false positive)"
+      ],
+      "answer": 4,
+      "type": "mcq",
+      "definition": "A Type I error is rejecting a true null hypothesis, i.e. a false positive; its probability is the significance level alpha, which you choose before testing. It is right because the null is actually true here and you wrongly reject it. Failing to reject a false null is the opposite mistake, a Type II error, not Type I. Accepting a false null is likewise a Type II error, not a Type I error. Choosing a powerless test statistic raises the miss rate (Type II), not the false-positive rate. Setting the sample size too low hurts power and precision but is not itself a hypothesis-test error.",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "A Type II error is:",
+      "choices": [
+        "Rejecting a true null hypothesis (a false positive)",
+        "Failing to reject a false null hypothesis (a false negative)",
+        "Setting alpha higher than the true Type I rate",
+        "Choosing a one-sided test when two-sided is needed",
+        "Making an arithmetic slip in the test statistic"
+      ],
+      "answer": 1,
+      "type": "mcq",
+      "definition": "A Type II error is failing to reject a false null hypothesis, i.e. a false negative; its probability is beta and the power of the test is 1 - beta. It is right because the alternative is actually true yet you keep the null. Rejecting a true null is the opposite mistake, a Type I error, not Type II. Setting alpha too high raises the Type I rate, a design choice, not the miss itself. Choosing a one-sided test wrongly is a specification issue, not a Type II error. An arithmetic slip is a computation mistake, neither of which defines a Type II error.",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "The power of a statistical test is:",
+      "choices": [
+        "The significance level alpha set in advance",
+        "The probability of committing a Type I error",
+        "The p-value computed from the observed sample",
+        "One minus the confidence level of the interval",
+        "The probability of correctly rejecting a false null"
+      ],
+      "answer": 4,
+      "type": "mcq",
+      "definition": "Power is the probability of correctly rejecting a false null hypothesis, equal to 1 - beta; it measures a test's ability to detect a true effect. It is right because power is precisely the chance of avoiding a Type II error when the alternative holds. The significance level alpha is the Type I error rate, the chance of a false positive, not power. The probability of a Type I error is again alpha, whose complement is not power. The p-value is computed from one sample's data, whereas power is a pre-data property of the test. One minus the confidence level equals alpha, not 1 - beta.",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "A p-value is:",
+      "choices": [
+        "The probability of data this extreme if the null is true",
+        "The probability that the null hypothesis is true",
+        "The probability that the alternative hypothesis is true",
+        "The fixed threshold equal to one minus the confidence level",
+        "The magnitude of the estimated effect"
+      ],
+      "answer": 0,
+      "type": "mcq",
+      "definition": "A p-value is the probability of observing data at least as extreme as the sample if the null is true: P(data this extreme | null). It is right because it quantifies how surprising the data are under the null, which is what a test measures. It is NOT the probability the null is true, nor the probability the alternative is true - those are posterior (Bayesian) statements that need a prior, and conflating them is the classic fallacy. The fixed threshold equal to one minus the confidence level is alpha, not the data-dependent p-value. The p-value also does not measure the effect's magnitude - a tiny effect can give a small p-value in a large sample.",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "A 95% confidence interval is correctly interpreted as:",
+      "choices": [
+        "An interval with 95% probability of holding the parameter, given this sample",
+        "The data range that spans the central 95% of observations",
+        "The interval expected to contain 95% of future observations",
+        "A posterior credible interval built from a prior",
+        "An interval from a procedure that captures the parameter 95% of the time"
+      ],
+      "answer": 4,
+      "type": "mcq",
+      "definition": "A 95% confidence interval comes from a procedure that captures the true parameter 95% of the time across repeated samples; coverage is a property of the method, not of any one realised interval. Once computed, a given interval either contains the fixed parameter or not, so saying it has 95% probability of holding the parameter given this sample is the common frequentist misstatement. It is not the data range spanning the central 95% of observations (a percentile spread), nor the interval expected to contain 95% of future observations (a prediction interval). A posterior credible interval is a Bayesian object built from a prior, not the frequentist CI here.",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "The Central Limit Theorem states that, for large n, the distribution of the sample mean:",
+      "choices": [
+        "Matches the shape of the parent population distribution",
+        "Is exactly normal for every possible sample size n",
+        "Approaches normal whatever the population's shape",
+        "Approaches a flat uniform distribution as n grows",
+        "Has variance equal to the full population variance"
+      ],
+      "answer": 2,
+      "type": "mcq",
+      "definition": "The CLT says that for large n the distribution of the sample mean approaches a normal distribution regardless of the population's shape, provided the population has finite variance. It is right because it describes the limiting shape of the sampling distribution of the mean. It does not match the population distribution - that confuses the sample mean's distribution with the data's distribution. It is not exactly normal for every n; normality is only approximate and improves with n (exactness holds only if the population is already normal). It does not approach uniform, and the sample mean's variance is the population variance divided by n, not the full population variance.",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "The Law of Large Numbers states that as the sample size grows, the sample mean:",
+      "choices": [
+        "Diverges away from the population mean",
+        "Coincides with the population median",
+        "Becomes increasingly normally distributed",
+        "Has variance that grows with n",
+        "Converges to the population mean"
+      ],
+      "answer": 4,
+      "type": "mcq",
+      "definition": "The Law of Large Numbers states that as n grows the sample mean converges to the population mean; it is a statement about convergence to the true value. It is right because averaging more independent draws makes sampling fluctuations shrink toward zero. The mean does not diverge - that is the opposite of convergence. It does not coincide with the median in general (only for symmetric distributions). Becoming normally distributed is the CLT's claim about shape, not the LLN's claim about location. And the variance of the sample mean shrinks (as variance over n), it does not grow.",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "An estimator is unbiased if:",
+      "choices": [
+        "It converges in probability to the truth as n grows",
+        "Its sampling distribution is normal",
+        "It is obtained by maximum likelihood",
+        "Its expected value equals the true parameter",
+        "It attains the smallest possible variance"
+      ],
+      "answer": 3,
+      "type": "mcq",
+      "definition": "An estimator is unbiased if its expected value equals the true parameter - it is right on average over repeated samples. That is the literal definition, independent of sample size. Converging in probability to the truth as n grows is consistency, a distinct asymptotic property; an estimator can be one without the other. Having a normal sampling distribution describes its shape, not its centering. Being obtained by maximum likelihood is a method, not a guarantee of unbiasedness (MLEs are often biased in finite samples). Attaining the smallest possible variance is efficiency, which concerns precision, not centering.",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "An estimator is consistent if:",
+      "choices": [
+        "It is obtained by ordinary least squares",
+        "Its variance is exactly zero",
+        "It converges in probability to the parameter as n grows",
+        "Its sampling distribution is always normal",
+        "Its expected value equals the parameter in every sample"
+      ],
+      "answer": 2,
+      "type": "mcq",
+      "definition": "An estimator is consistent if it converges in probability to the true parameter as the sample size grows; the estimate gets arbitrarily close to the truth with enough data. That is the asymptotic definition. Being obtained by OLS is just a method and does not by itself imply consistency (it can fail under endogeneity). Zero variance is neither necessary nor typical. Always having a normal sampling distribution describes shape, not convergence. Having expected value equal to the parameter in every sample is unbiasedness, a finite-sample property - distinct from consistency, since an estimator can be biased in small samples yet still consistent as the bias vanishes.",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "Between two unbiased estimators, the more efficient one is the one with:",
+      "choices": [
+        "The larger sampling variance",
+        "The greater finite-sample bias",
+        "The smaller sampling variance",
+        "The more compact algebraic formula",
+        "The bigger required sample size"
+      ],
+      "answer": 2,
+      "type": "mcq",
+      "definition": "Between two unbiased estimators the more efficient one has the smaller variance, because with the same average target less variance means tighter, more reliable estimates. The larger variance is exactly the less efficient choice. Greater bias is irrelevant here since both are unbiased, and more bias would worsen, not improve, an estimator. A more compact formula is a convenience, not a measure of precision. A bigger required sample size speaks to data cost, not to efficiency given the same data - efficiency means squeezing more precision from a fixed sample.",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "Maximum likelihood estimation chooses parameter values that:",
+      "choices": [
+        "Maximise the regression R-squared",
+        "Maximise the likelihood of the observed sample",
+        "Coincide with method-of-moments estimates by construction",
+        "Drive every residual to exactly zero",
+        "Minimise the sum of squared residuals in all models"
+      ],
+      "answer": 1,
+      "type": "mcq",
+      "definition": "Maximum likelihood estimation chooses the parameter values that maximise the probability (likelihood) of observing the given sample; the best parameters are those that make the observed data most probable. Maximising R-squared is an OLS-style goodness-of-fit goal, not the likelihood criterion. MLE does not coincide with method-of-moments estimates by construction - they agree only in special cases. Driving every residual to zero would be overfitting/interpolation, not likelihood maximisation. Minimising the sum of squared residuals is the OLS objective; it equals MLE only in the classical linear model with normal errors, not in all models.",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "The standard deviation describes the spread of the data, whereas the standard error describes:",
+      "choices": [
+        "The correlation between two measured variables",
+        "The spread of a sample statistic over repeated samples",
+        "The systematic bias of an estimator from the truth",
+        "The spread of the underlying parent population",
+        "The full range width of the raw observations"
+      ],
+      "answer": 1,
+      "type": "mcq",
+      "definition": "The standard error describes the spread of a sample statistic (such as the sample mean) across repeated samples - it measures how much the estimate itself would vary. It is right because the SE is the standard deviation of an estimator's sampling distribution, typically shrinking with the square root of n. It is not the correlation between variables (a relationship measure) nor the bias of an estimator (centering, not spread). The spread of the underlying population is the population standard deviation, describing data not the statistic. The full range width of the raw data is a crude descriptive measure of the observations, not of the estimator's variability.",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "For a normal distribution, approximately what percentage of observations lie within two standard deviations of the mean?",
+      "choices": [
+        "About 90%",
+        "About 95%",
+        "About 68%",
+        "About 50%",
+        "About 99.7%"
+      ],
+      "answer": 1,
+      "type": "mcq",
+      "definition": "By the empirical rule for a normal distribution, about 95% of observations lie within two standard deviations of the mean. It is right because the normal's known density places roughly 95% of mass in the +/- 2 SD band. About 68% corresponds to within one SD, and about 99.7% to within three SD, so those answers shift the band by one sigma. About 90% and about 50% do not match the two-SD benchmark (90% relates to roughly 1.645 SD and 50% to about 0.674 SD), so both misstate the two-SD coverage.",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "Compared with the normal distribution, the Student's t-distribution has:",
+      "choices": [
+        "Thinner tails than the normal",
+        "No finite variance at any degrees of freedom",
+        "Fatter tails, converging to the normal as df increase",
+        "A mean shifted away from zero",
+        "Tails of identical weight at every sample size"
+      ],
+      "answer": 2,
+      "type": "mcq",
+      "definition": "Compared with the normal, the Student's t-distribution has fatter tails, and it converges to the normal as the degrees of freedom increase. It is right because t accounts for the extra uncertainty of estimating the variance from a small sample, putting more mass in the tails. Thinner tails is the reverse of this. Having no finite variance is false for t with more than two degrees of freedom (it is finite there). A mean shifted from zero is wrong - both are centred at zero (symmetric). Tails of identical weight at every sample size ignores the whole point: the tails are heaviest at low df and approach the normal only as df grows.",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "Financial asset returns are typically described as 'leptokurtic', meaning they have:",
+      "choices": [
+        "Exactly zero skewness in their distribution by construction",
+        "No finite variance at any horizon of the returns",
+        "Fatter tails and a sharper peak than the normal",
+        "Kurtosis sitting below that of the normal distribution",
+        "Markedly thinner tails than the normal distribution"
+      ],
+      "answer": 2,
+      "type": "mcq",
+      "definition": "Leptokurtic returns have fatter tails and a sharper peak than the normal, i.e. positive excess kurtosis (kurtosis above 3). It is right because empirically extreme moves occur far more often than a normal model predicts, which is central to risk modelling. Exactly zero skewness by construction is wrong - kurtosis and skewness are separate moments, and leptokurtosis says nothing about asymmetry. No finite variance describes extreme heavy-tailed (e.g. some stable) laws, not standard leptokurtosis. Kurtosis below the normal is platykurtic, the opposite. Thinner tails than the normal also contradicts the fat-tailed meaning of leptokurtic.",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "The Jarque-Bera test assesses whether a series is:",
+      "choices": [
+        "Free of any serial autocorrelation in its values",
+        "Affected by conditional heteroskedasticity over time",
+        "Cointegrated with another nonstationary series",
+        "Normally distributed, from skewness and kurtosis",
+        "Stationary in its levels rather than its differences"
+      ],
+      "answer": 3,
+      "type": "mcq",
+      "definition": "The Jarque-Bera test assesses whether a series is normally distributed, using the sample skewness and kurtosis. It is right because JB combines those two moments and compares them against the normal benchmarks of 0 skewness and 3 kurtosis, rejecting when the data depart from normality. Freedom from autocorrelation is tested by Ljung-Box or Durbin-Watson, not JB. Heteroskedasticity is tested by Breusch-Pagan or White. Cointegration is tested by Engle-Granger or Johansen. Stationarity is tested by unit-root tests such as ADF or KPSS - all different hypotheses about different properties.",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "Skewness measures:",
+      "choices": [
+        "The peakedness and tail-heaviness of a distribution",
+        "The autocorrelation across time periods",
+        "The asymmetry of a distribution",
+        "The central tendency of the values",
+        "The dispersion around the mean"
+      ],
+      "answer": 2,
+      "type": "mcq",
+      "definition": "Skewness measures the asymmetry of a distribution - whether one tail is longer than the other. It is right because skewness is the third standardised moment, capturing lopsidedness about the mean. Peakedness and tail-heaviness is kurtosis, the fourth moment, a different shape feature. Autocorrelation measures dependence across time, unrelated to a static distribution's shape. Central tendency is captured by the mean or median (location), and dispersion by the variance or standard deviation - neither describes asymmetry.",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "The bootstrap is a technique that:",
+      "choices": [
+        "Estimates a sampling distribution by resampling with replacement",
+        "Tests a series for the presence of a unit root",
+        "Eliminates the bias from omitted explanatory variables",
+        "Removes heteroskedasticity from the regression residuals",
+        "Forces the observed data to follow a normal law"
+      ],
+      "answer": 0,
+      "type": "mcq",
+      "definition": "The bootstrap estimates the sampling distribution of a statistic by resampling the data with replacement, then recomputing the statistic on each resample. It is right because the empirical resampling distribution approximates the true sampling distribution, giving standard errors and confidence intervals without strong distributional assumptions. It does not test for a unit root (that is ADF/KPSS). It does not eliminate omitted variable bias - resampling cannot recover information missing from the data. It does not remove heteroskedasticity (though it can be adapted to be robust to it), and it does not force normality; in fact it avoids assuming any particular distribution.",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "Covariance and correlation differ in that correlation is:",
+      "choices": [
+        "Always larger in value than the covariance",
+        "A standardised, unit-free measure bounded between -1 and 1",
+        "Expressed in the product of the variables' units",
+        "Unbounded above and below",
+        "Defined only for jointly normal variables"
+      ],
+      "answer": 1,
+      "type": "mcq",
+      "definition": "Correlation is a standardised, unit-free measure bounded between -1 and 1; it is covariance divided by the product of the two standard deviations, which removes scale. It is right because dividing out the units makes correlations comparable across variables. It is not always larger than covariance - rescaling can make either bigger. It is not expressed in the product of the variables' units; that describes covariance, which is scale-dependent. It is not unbounded - that is again covariance. And it is defined for any variables with finite nonzero variances, not only jointly normal ones.",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "Two events are statistically independent if:",
+      "choices": [
+        "They are mutually exclusive, disjoint outcomes",
+        "Knowing that one occurred tells you nothing about the other",
+        "Their correlation coefficient is exactly equal to 1",
+        "They share the same marginal probability of occurring",
+        "They can never both occur in the same trial"
+      ],
+      "answer": 1,
+      "type": "mcq",
+      "definition": "Two events are statistically independent if the probability of one is unaffected by whether the other occurs, equivalently P(A and B) = P(A)P(B). It is right because independence means knowing one event gives no information about the other. Mutual exclusivity is different and generally implies dependence: if disjoint events have positive probability, one occurring forces the other not to occur. A correlation of exactly 1 means perfect linear dependence, the opposite of independence. Equal marginal probabilities are unrelated to independence, and never occurring together is again mutual exclusivity, not independence.",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "Zero correlation between two random variables implies independence:",
+      "choices": [
+        "Only in special cases such as jointly normal variables",
+        "Never, under any conceivable joint distribution",
+        "Only when both of the variables are discrete",
+        "Only when both variables are centred at zero mean",
+        "Always, no matter what the joint distribution is"
+      ],
+      "answer": 0,
+      "type": "mcq",
+      "definition": "Zero correlation implies independence only in special cases, such as jointly normal variables; in general it does not. It is right because correlation captures only linear association, so variables can be uncorrelated yet strongly dependent through a nonlinear relationship (e.g. Y = X squared with symmetric X). 'Always' is the classic error - independence implies zero correlation, but not the reverse. 'Never' is too strong, since the jointly normal case is a genuine exception. The implication does not hinge on the variables being discrete, nor on both having zero mean - neither restores the missing equivalence.",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "The variance of the sum of two random variables equals:",
+      "choices": [
+        "Var(X) + Var(Y) - 2*Cov(X,Y) in all cases",
+        "Var(X) + Var(Y) + 2*Cov(X,Y)",
+        "Var(X) + Var(Y) regardless of dependence",
+        "Cov(X,Y) on its own",
+        "Var(X) * Var(Y), the product of the variances"
+      ],
+      "answer": 1,
+      "type": "mcq",
+      "definition": "The variance of a sum is Var(X) + Var(Y) + 2*Cov(X,Y); the covariance term must be added because positively related variables reinforce each other's variability. The version with minus 2*Cov is the variance of the difference X - Y, not the sum. Var(X) + Var(Y) regardless of dependence holds only when X and Y are uncorrelated, so dropping the covariance term in general is wrong. Cov(X,Y) on its own omits the individual variances entirely. Var(X) * Var(Y) confuses adding variances with multiplying them, which has no basis here.",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "A consistent but biased estimator is one that:",
+      "choices": [
+        "Has exactly zero variance at any sample size",
+        "May be off on average in small samples but converges as n grows",
+        "Is right on average yet never converges to the truth",
+        "Cannot be applied in any practical setting",
+        "Always equals the parameter in every sample"
+      ],
+      "answer": 1,
+      "type": "mcq",
+      "definition": "A consistent but biased estimator may be off on average in small samples but converges to the truth as n grows; bias and consistency are distinct properties. It is right because consistency is an asymptotic (large-n) statement while bias is a finite-sample one, and the bias of such an estimator vanishes as n increases. Zero variance is neither implied nor typical. Right on average yet never converging describes an unbiased-yet-inconsistent estimator, the opposite combination. It is certainly usable in practice - many standard estimators (e.g. MLE variance estimates) are consistent but finite-sample biased. Always equalling the parameter would mean a perfect estimator, not a biased one.",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "Increasing the sample size, all else equal, generally:",
+      "choices": [
+        "Increases the bias of the estimator",
+        "Widens the resulting confidence intervals",
+        "Leaves the precision of estimates unchanged",
+        "Lowers the statistical power of tests",
+        "Reduces standard errors, making estimates more precise"
+      ],
+      "answer": 4,
+      "type": "mcq",
+      "definition": "Increasing the sample size, all else equal, reduces standard errors so estimates become more precise. It is right because the SE typically falls with the square root of n, tightening the sampling distribution. It does not increase bias - bias depends on the estimator's form, and for consistent estimators bias tends to fall with n. It narrows, not widens, confidence intervals (smaller SE). It does not leave precision unchanged. And it raises rather than lowers power, since smaller SEs make true effects easier to detect.",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "A coefficient can be highly statistically significant yet economically unimportant when:",
+      "choices": [
+        "The available sample is far too small to be reliable",
+        "A tiny effect is measured very precisely in a huge sample",
+        "The regression's overall R-squared is quite low",
+        "The reported p-value on the coefficient is large",
+        "A relevant explanatory variable has been left out"
+      ],
+      "answer": 1,
+      "type": "mcq",
+      "definition": "A coefficient can be highly statistically significant yet economically unimportant when the estimated effect is tiny but precisely measured, often because a very large sample drives the standard error toward zero. It is right because significance reflects precision (small p-value) while economic importance reflects magnitude - two distinct things. A very small sample tends to do the opposite, producing imprecise, insignificant estimates. A low R-squared concerns overall fit, not whether one coefficient is significant-but-trivial. A large p-value would mean not significant, contradicting the premise. An omitted variable is a bias problem, unrelated to a significant-but-small effect.",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "Running many hypothesis tests and reporting only the significant ones leads to:",
+      "choices": [
+        "A guaranteed out-of-sample replication of findings",
+        "A lower effective Type I error rate across the tests",
+        "The spurious appearance of a unit root in the data",
+        "A systematic reduction in the estimator's variance",
+        "An inflated false-positive rate from multiple comparisons"
+      ],
+      "answer": 4,
+      "type": "mcq",
+      "definition": "Running many hypothesis tests and reporting only the significant ones inflates the false-positive rate - the multiple-comparisons or data-mining problem. It is right because with enough independent tests at level alpha, some will appear significant by pure chance, so cherry-picking them overstates real findings; remedies include Bonferroni-type corrections or out-of-sample validation. It does not guarantee replication - such findings often fail to replicate. It raises, not lowers, the effective Type I error. It has nothing to do with a unit root (a time-series property) and does not reduce estimator variance.",
+      "last_updated": "2026-06-29"
+    }
+  ]
+}

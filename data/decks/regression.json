@@ -1,0 +1,144 @@
+{
+  "id": "regression",
+  "name": "Linear regression",
+  "color": "#4dabf7",
+  "description": "OLS and its diagnostics: the Gauss-Markov assumptions and when OLS is BLUE, residuals, $R^2$ vs adjusted $R^2$, multicollinearity, heteroskedasticity, overfitting, and ridge/lasso regularization.",
+  "categories": {
+    "core": "Core",
+    "theorems": "Concepts",
+    "use": "Use & limitations",
+    "exercise": "Exercises"
+  },
+  "primerTitle": "Linear regression — quick recap",
+  "primer": "## OLS\\n\\n- Fits $y=X\\\\beta+\\\\varepsilon$ by **minimising the sum of squared residuals** $\\\\sum(y_i-\\\\hat{y}_i)^2$.\\n- Closed form (full column rank): $\\\\hat{\\\\beta}=(X^\\\\top X)^{-1}X^\\\\top y$.\\n- **Residual** $e_i=y_i-\\\\hat{y}_i$ (observed − fitted) — the sample estimate of the errors $\\\\varepsilon_i$ and the main diagnostic.\\n\\n## Gauss-Markov → BLUE\\n\\n- Under linearity in parameters, full rank (no perfect multicollinearity), **exogeneity** $E[\\\\varepsilon\\\\mid X]=0$, **homoskedasticity** and no autocorrelation, OLS is **BLUE** = Best (minimum-variance) Linear Unbiased Estimator.\\n- **Normality is NOT required** for BLUE — it is only needed for exact t/F inference.\\n\\n## Fit measures\\n\\n- **$R^2=1-\\\\text{SSR}/\\\\text{SST}$** = fraction of $y$'s variance explained (0–1). It **never decreases** when a regressor is added, even a useless one.\\n- **Adjusted $R^2$** docks a penalty per parameter, so it can **fall** when a junk variable is added → the fairer metric for comparing models of different size.\\n\\n## Assumption failures\\n\\n- **Multicollinearity** (regressors correlated with each other): does **not bias** $\\\\hat{\\\\beta}$, but inflates standard errors → unstable estimates. Diagnosed by VIF.\\n- **Heteroskedasticity** (non-constant error variance): OLS stays **unbiased** but no longer efficient and the usual SEs are wrong → use robust (White) SEs or WLS. Signature: a **funnel/fanning** spread in the residuals-vs-fitted plot (constant variance = flat even band).\\n\\n## Overfitting & regularization\\n\\n- **Overfitting** = capturing training noise: low training error, high test error (high variance). Fight it with simpler models, more data, **cross-validation**, and **regularization**. Adding irrelevant features makes it worse.\\n- **Ridge** = $L_2$ penalty $\\\\lambda\\\\sum\\\\beta_j^2$, shrinks toward zero but keeps all variables (good for multicollinearity).\\n- **Lasso** = $L_1$ penalty $\\\\lambda\\\\sum|\\\\beta_j|$, can set coefficients **exactly to zero** → automatic variable selection.\\n- Larger **$\\\\lambda$** trades **variance for bias** (more shrinkage = less variance, more bias); $\\\\lambda=0$ recovers OLS. Tune by cross-validation.",
+  "cards": [
+    {
+      "category": "core",
+      "term": "What does ordinary least squares (OLS) do?",
+      "summary": "Fits $y=X\\beta+\\varepsilon$ by minimising the sum of squared residuals.",
+      "definition": "OLS chooses the coefficients $\\hat{\\beta}$ that minimise the sum of squared residuals $\\sum (y_i-\\hat{y}_i)^2$. With $X$ of full column rank the closed-form solution is $\\hat{\\beta}=(X^\\top X)^{-1}X^\\top y$.",
+      "formula": "$\\hat{\\beta}=(X^\\top X)^{-1}X^\\top y$",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "category": "core",
+      "term": "What is a residual in a regression?",
+      "summary": "$e_i = y_i - \\hat{y}_i$: observed minus fitted value.",
+      "definition": "A residual is the difference between the observed value and the model's fitted value, $e_i=y_i-\\hat{y}_i$. Residuals are the sample estimate of the unobservable errors $\\varepsilon_i$; their pattern is the main diagnostic for checking regression assumptions.",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "category": "theorems",
+      "term": "Under the Gauss-Markov assumptions, what is special about OLS?",
+      "summary": "It is BLUE — the Best (minimum-variance) Linear Unbiased Estimator.",
+      "definition": "When the assumptions hold — linearity in parameters, full-rank regressors (no perfect multicollinearity), exogeneity $E[\\varepsilon\\mid X]=0$, homoskedasticity and no autocorrelation — OLS is BLUE: among all linear unbiased estimators it has the smallest variance. Note normality of errors is NOT required for BLUE (only for exact t/F inference).",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "category": "theorems",
+      "term": "[Regression] Which assumption is NOT required for OLS to be BLUE under Gauss-Markov?",
+      "sub": "A) normally distributed errors    B) homoskedastic errors    C) exogeneity, $E[\\varepsilon\\mid X]=0$    D) no perfect multicollinearity",
+      "definition": "Correct: A) normally distributed errors. The Gauss-Markov theorem needs linearity, exogeneity, homoskedasticity, no autocorrelation and full rank — but not normality. Normality is an extra assumption used to get exact t- and F-test distributions, not to make OLS the minimum-variance linear unbiased estimator.",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "category": "core",
+      "term": "What does $R^2$ measure?",
+      "summary": "The fraction of the variance of $y$ explained by the model, $1-\\text{SSR}/\\text{SST}$.",
+      "definition": "$R^2$ is the proportion of the total variation in $y$ that the regression explains: $R^2=1-\\text{SSR}/\\text{SST}$, between 0 and 1. A key caveat: $R^2$ never decreases when you add a regressor, even an irrelevant one.",
+      "formula": "$R^2 = 1 - \\dfrac{\\text{SSR}}{\\text{SST}}$",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "category": "theorems",
+      "term": "[Regression] Why prefer adjusted $R^2$ over plain $R^2$ when comparing models?",
+      "sub": "A) it penalises adding regressors, so it can fall when a useless variable is added    B) it is always larger than $R^2$    C) it ignores the residuals    D) it is the same as $R^2$ for large samples only",
+      "definition": "Correct: A) it penalises adding regressors, so it can fall when a useless variable is added. Plain $R^2$ mechanically rises (or stays flat) with every added regressor, so it cannot fairly compare models of different size. Adjusted $R^2$ docks a penalty for each parameter and rises only if the new variable improves fit more than chance.",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "category": "use",
+      "term": "What is multicollinearity and what does it do to OLS?",
+      "summary": "Regressors highly correlated with each other → unstable coefficients, inflated SEs.",
+      "definition": "Multicollinearity is strong correlation among the regressors. It does not bias $\\hat{\\beta}$, but it inflates the coefficients' standard errors, making individual estimates unstable and hard to interpret. It is diagnosed with the Variance Inflation Factor (VIF).",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "category": "use",
+      "term": "[Regression] Multicollinearity makes the OLS coefficient estimates biased.",
+      "type": "truefalse",
+      "answer": false,
+      "summary": "False — it inflates their variance/standard errors, not their bias.",
+      "definition": "False. Under the other Gauss-Markov assumptions OLS remains unbiased even with high multicollinearity; what suffers is precision — standard errors blow up, so estimates are imprecise and can swing wildly with small data changes.",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "category": "use",
+      "term": "What is heteroskedasticity, and how do you handle it?",
+      "summary": "Non-constant error variance; OLS stays unbiased but SEs are wrong → use robust SEs.",
+      "definition": "Heteroskedasticity means the error variance is not constant across observations. OLS coefficients remain unbiased but are no longer efficient (minimum-variance), and the usual standard errors are invalid — so use heteroskedasticity-robust (White) standard errors, or weighted least squares.",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "category": "use",
+      "term": "[Regression] What pattern in a residuals-vs-fitted plot signals heteroskedasticity?",
+      "sub": "A) a fanning-out (funnel) spread of residuals as fitted values grow    B) residuals scattered evenly in a flat band    C) all residuals exactly zero    D) residuals perfectly on a straight line",
+      "definition": "Correct: A) a fanning-out (funnel) spread of residuals as fitted values grow. Constant variance shows up as an even, flat band; a widening or narrowing funnel shape indicates the error variance changes with the level — heteroskedasticity.",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "category": "use",
+      "term": "What is overfitting?",
+      "summary": "Modelling training noise — low training error but poor generalisation.",
+      "definition": "Overfitting is when a model is so flexible it captures random noise in the training data rather than the underlying signal: training error is low but test/out-of-sample error is high (high variance). It is fought with simpler models, more data, cross-validation and regularization.",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "category": "theorems",
+      "term": "[Regression] How do ridge and lasso regularization differ?",
+      "sub": "A) ridge uses an $L_2$ penalty and shrinks coefficients toward zero; lasso uses an $L_1$ penalty and can set them exactly to zero    B) ridge does variable selection, lasso does not    C) both set coefficients exactly to zero    D) neither shrinks coefficients",
+      "definition": "Correct: A) ridge uses an $L_2$ penalty and shrinks coefficients toward zero; lasso uses an $L_1$ penalty and can set them exactly to zero. Ridge ($\\lambda\\sum\\beta_j^2$) shrinks but keeps all variables (good for multicollinearity); lasso ($\\lambda\\sum|\\beta_j|$) can zero out coefficients, performing automatic variable selection.",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "category": "theorems",
+      "term": "Increasing the regularization strength $\\lambda$ trades {{variance}} for bias — more shrinkage lowers variance but raises bias.",
+      "type": "cloze",
+      "definition": "A larger penalty $\\lambda$ shrinks coefficients harder: this reduces the model's variance (less sensitivity to the training sample) at the cost of more bias. Choosing $\\lambda$ (often by cross-validation) navigates the bias-variance trade-off; $\\lambda=0$ recovers ordinary OLS.",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "category": "use",
+      "term": "[Regression] Which techniques help combat overfitting? Select all that apply.",
+      "type": "multi",
+      "choices": [
+        "Cross-validation",
+        "Ridge/lasso regularization",
+        "Reducing model complexity",
+        "Adding more irrelevant features"
+      ],
+      "answers": [
+        0,
+        1,
+        2
+      ],
+      "summary": "Cross-validation, regularization and simpler models help; adding irrelevant features makes it worse.",
+      "definition": "Cross-validation gives an honest estimate of generalisation error, regularization penalises complexity, and a simpler model has less capacity to memorise noise. Adding irrelevant features increases capacity and the tendency to overfit.",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "category": "exercise",
+      "term": "[Exercise] A regression has total sum of squares SST $=200$ and residual sum of squares SSR $=50$. Compute $R^2$ and interpret it.",
+      "summary": "$R^2 = 1 - 50/200 = 0.75$: the model explains 75% of the variance in $y$.",
+      "definition": "$R^2=1-\\text{SSR}/\\text{SST}=1-50/200=1-0.25=0.75$. So 75% of the variation in the response is explained by the regressors, and 25% remains in the residuals.",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "category": "exercise",
+      "term": "[Exercise] Adding a totally irrelevant predictor to a model, what happens to $R^2$ and to adjusted $R^2$?",
+      "summary": "$R^2$ stays the same or rises; adjusted $R^2$ typically falls.",
+      "definition": "$R^2$ can only stay flat or increase when a regressor is added, so it does not penalise the junk variable. Adjusted $R^2$ applies a complexity penalty, so a useless predictor that barely improves fit usually makes it decrease — which is why it is the fairer model-comparison metric.",
+      "last_updated": "2026-06-29"
+    }
+  ]
+}

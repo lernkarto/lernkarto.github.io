@@ -1,0 +1,225 @@
+{
+  "id": "econ-panel-causal",
+  "name": "Panel data & causal inference",
+  "color": "#845ef7",
+  "description": "15 interview-screen MCQs — panel data & causal inference. Each card explains the answer.",
+  "tags": [
+    "interview",
+    "econometrics",
+    "mcq"
+  ],
+  "primerTitle": "Panel data & causal inference — designs",
+  "primer": "## Panel data & causal inference\n**Logit/probit** model a 0/1 outcome with an S-shaped link (coefficients act on the log-odds; compute marginal effects for probabilities). **Fixed effects** sweep out time-invariant unobserved heterogeneity using within-entity variation; **random effects** is more efficient *only if* those effects are uncorrelated with the regressors (Hausman test). Causal designs: **DiD** (parallel trends), **RDD** (jump at a cutoff), **IV** (as-if-random variation), randomisation (balances confounders in expectation). Beware confounding, reverse causality and selection.",
+  "cards": [
+    {
+      "term": "Logit and probit models are used when the dependent variable is:",
+      "choices": [
+        "Continuous and unbounded",
+        "An unbounded integer count",
+        "A non-stationary time series",
+        "A strictly positive duration",
+        "Binary (a 0/1 outcome)"
+      ],
+      "answer": 4,
+      "type": "mcq",
+      "definition": "Logit and probit map a linear index through an S-shaped link (logistic CDF or normal CDF) so fitted probabilities stay in [0,1], which is exactly what a 0/1 outcome requires. A continuous, unbounded variable would call for ordinary linear regression, not a bounded-probability link. An unbounded integer count is the domain of Poisson or negative-binomial models, a non-stationary time series calls for differencing or cointegration, and a strictly positive duration is handled by survival models such as Weibull or Cox; none of these are binary-choice models.",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "In a logit model, the raw coefficient on a regressor gives:",
+      "choices": [
+        "The effect on the log-odds of the outcome",
+        "The marginal effect evaluated at the sample mean",
+        "The change in fitted probability per unit",
+        "The variable's contribution to the model R-squared",
+        "The elasticity of the predicted outcome"
+      ],
+      "answer": 0,
+      "type": "mcq",
+      "definition": "Because logit applies a nonlinear logistic link, the raw coefficient measures the effect on the log-odds (the logit), not a direct probability change. It is not the marginal effect at the sample mean nor the per-unit change in probability: those require evaluating the slope of the nonlinear curve at chosen covariate values, since the probability impact depends on where you sit on the S-curve. It is not a contribution to model R-squared, which is a goodness-of-fit notion unrelated to a single coefficient, and it is not an elasticity, which would be a percentage-on-percentage response rather than an effect on log-odds.",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "A fixed-effects (within) estimator in panel data controls for:",
+      "choices": [
+        "Time-invariant unobserved heterogeneity",
+        "Common shocks shared across all entities",
+        "Classical measurement error in regressors",
+        "Heteroskedasticity in the panel errors",
+        "Reverse causality from outcome to regressor"
+      ],
+      "answer": 0,
+      "type": "mcq",
+      "definition": "The within (fixed-effects) estimator demeans each entity over time, so anything constant within an entity drops out, removing time-invariant unobserved heterogeneity such as innate ability or fixed firm culture. It does not absorb common shocks shared across all entities (those need time dummies, not entity demeaning), nor does it fix classical measurement error or heteroskedasticity, which require instruments or robust/clustered standard errors. It also does not cure reverse causality: a time-varying confounder or simultaneity still biases the within estimator.",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "The key difference between random effects and fixed effects is that random effects assume:",
+      "choices": [
+        "The entity effects are uncorrelated with regressors",
+        "The data have only a single cross-sectional dimension",
+        "The entity effects are correlated with the regressors",
+        "The idiosyncratic panel errors are heteroskedastic",
+        "There are no entity-specific effects present at all"
+      ],
+      "answer": 0,
+      "type": "mcq",
+      "definition": "Random effects treats the entity-specific effects as random draws uncorrelated with the regressors, which is precisely the assumption that lets it pool between- and within-variation efficiently. If that orthogonality holds, random effects is more efficient than fixed effects; if it fails, only fixed effects stays consistent. The option saying the effects are correlated with the regressors describes the fixed-effects situation, the opposite case. The claims about a cross-sectional-only dimension, heteroskedastic errors, or no entity effects miss the point: both estimators use panel data and assume such effects exist; the sole distinction is whether those effects correlate with the regressors.",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "The Hausman test in panel data helps you choose between:",
+      "choices": [
+        "Logit and probit binary-choice link functions",
+        "Autoregressive and moving-average models",
+        "OLS and two-stage least-squares estimators",
+        "Fixed-effects and random-effects estimators",
+        "Value-at-risk and expected-shortfall measures"
+      ],
+      "answer": 3,
+      "type": "mcq",
+      "definition": "The Hausman test compares the fixed-effects and random-effects estimators: under the random-effects assumption both are consistent but random effects is efficient, while under correlation only fixed effects is consistent, so a large divergence signals that random effects is biased. It is not a tool for picking between logit and probit links, AR and MA models, OLS and 2SLS, or VaR and expected shortfall. The intuition is that it directly tests the orthogonality condition by checking whether switching estimators meaningfully changes the coefficients.",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "Difference-in-differences estimation relies crucially on the assumption of:",
+      "choices": [
+        "Fully random assignment of the treatment",
+        "Parallel pre-treatment trends across groups",
+        "Normally distributed regression error terms",
+        "The complete absence of any control group",
+        "Stationarity of the measured outcome series"
+      ],
+      "answer": 1,
+      "type": "mcq",
+      "definition": "Difference-in-differences subtracts each group's own before/after change and compares them, so it requires parallel trends: absent treatment, treated and control groups would have evolved along the same path, letting any post-treatment divergence be attributed to the treatment. It does not require random assignment, which is what makes DiD quasi-experimental rather than an RCT, and it does need a control group, so 'no control group' is wrong. Normally distributed errors and stationary outcomes are not the identifying assumption; the entire credibility of DiD rests on the counterfactual common trend.",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "Regression discontinuity designs identify causal effects by:",
+      "choices": [
+        "Comparing units on either side of a cutoff",
+        "Randomly assigning units to the treatment arm",
+        "Differencing the panel data twice over time",
+        "Demeaning each entity with fixed effects",
+        "Instrumenting with lagged regressor values"
+      ],
+      "answer": 0,
+      "type": "mcq",
+      "definition": "RDD exploits a threshold rule in a running variable: units just below and just above the cutoff are nearly identical except for treatment, so the jump in the outcome at the cutoff identifies a local causal effect. It does not rely on random assignment (that is an RCT), on double differencing (that is DiD), on entity demeaning (fixed effects), or on a lagged-variable instrument (IV). The intuition is local as-good-as-random variation: assignment is deterministic in the running variable, but who lands marginally on each side of the cutoff is essentially noise.",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "A natural experiment is valuable for causal inference because it:",
+      "choices": [
+        "It requires no identifying assumptions at all",
+        "It gives variation unrelated to confounders",
+        "It removes heteroskedasticity in the errors",
+        "It eliminates the need for any observed data",
+        "It guarantees a high overall model R-squared"
+      ],
+      "answer": 1,
+      "type": "mcq",
+      "definition": "A natural experiment supplies variation in treatment generated by some external event or rule that is plausibly unrelated to confounders, approximating randomisation the researcher did not control. It is not assumption-free: the as-if-random claim is itself an identifying assumption that must be defended. It does not remove heteroskedasticity, does not eliminate the need for data, and does not guarantee a high R-squared; fit and identification are separate matters. The value is precisely that the assignment mechanism mimics an experiment without deliberate randomisation.",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "Generalized Method of Moments (GMM) estimation is based on:",
+      "choices": [
+        "Minimising the model's R-squared",
+        "Differencing the series until stationary",
+        "Maximising the likelihood directly",
+        "Matching sample to theoretical moments",
+        "Bootstrapping the regression residuals"
+      ],
+      "answer": 3,
+      "type": "mcq",
+      "definition": "GMM estimates parameters by choosing them to make sample moments match the theoretical moment conditions implied by the model (e.g. that instruments are uncorrelated with the error), minimising a weighted quadratic distance between the two. It is not about minimising R-squared, differencing to stationarity, maximising a likelihood (that is ML, which needs a full distributional assumption GMM avoids), or bootstrapping residuals. The unifying intuition is that OLS, IV, and 2SLS are all special cases of GMM with particular moment conditions and weighting matrices.",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "Correlation does not imply causation chiefly because of:",
+      "choices": [
+        "Heteroskedasticity in the regression errors",
+        "Rounding error in the recorded measurements",
+        "Non-normality of the regression error term",
+        "Confounding, reverse causality, or selection",
+        "Insufficiently large estimation sample sizes"
+      ],
+      "answer": 3,
+      "type": "mcq",
+      "definition": "Correlation need not be causation because an association can be produced by a confounder driving both variables, by reverse causality where the outcome affects the supposed cause, or by selection into the sample, all alternative explanations for the same pattern. Heteroskedastic errors, rounding error, and non-normal errors are issues of efficiency or inference, not of whether a relationship is causal. Small samples merely add noise; even an infinite sample with a precisely estimated correlation can still be entirely non-causal if a common cause is present.",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "In a randomized controlled trial, randomization is what allows a causal interpretation because it:",
+      "choices": [
+        "It removes measurement error in the outcomes",
+        "It increases the effective estimation sample size",
+        "It eliminates the need for any control group",
+        "It guarantees normally distributed outcome data",
+        "It makes treatment independent of confounders"
+      ],
+      "answer": 4,
+      "type": "mcq",
+      "definition": "Randomisation makes treatment status statistically independent of all confounders on average, so treated and control groups are comparable in expectation and the difference in outcomes estimates the causal effect. It does not remove measurement error, which is a property of how variables are recorded, nor does increasing sample size alone confer causal validity (a large biased study is still biased). It does not eliminate the need for a control group, the comparison group is what randomisation makes valid, and it does not guarantee normality; balance of confounders, not any distributional shape, is the source of causal interpretation.",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "The 'selection bias' problem in observational studies refers to:",
+      "choices": [
+        "Selecting too few regressors for the fitted model",
+        "Ordinary random sampling variability in the data",
+        "Choosing an incorrect functional form for the model",
+        "Units sorting into treatment on outcome traits",
+        "Setting the wrong significance threshold for a test"
+      ],
+      "answer": 3,
+      "type": "mcq",
+      "definition": "Selection bias arises when units sort into treatment based on characteristics that are themselves related to the potential outcomes, so a naive treated-versus-untreated comparison mixes the true treatment effect with pre-existing differences. It is not about including too few regressors, ordinary sampling variability, choosing the wrong functional form, or setting the wrong significance threshold; those are specification or inference concerns. The core intuition is that when assignment is correlated with potential outcomes, who got treated is informative about what would have happened anyway, contaminating the estimate.",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "A count outcome (e.g., number of defaults per month) with no natural upper bound is often modelled with:",
+      "choices": [
+        "A linear probability model on the counts",
+        "A probit binary-choice model on the counts",
+        "An ARIMA model fitted to the raw counts",
+        "A Poisson or negative-binomial regression",
+        "A binary logit model applied to the counts"
+      ],
+      "answer": 3,
+      "type": "mcq",
+      "definition": "An unbounded, non-negative count is well suited to Poisson regression, with negative binomial as the extension when the variance exceeds the mean (overdispersion). A linear probability model, probit, and logit are for binary outcomes, not counts, and would not respect non-negativity or the integer support. Fitting an ARIMA model to the raw counts treats them as a continuous series and ignores the discrete, non-negative count structure, which is exactly what the count-data models are built to honour.",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "Panel (longitudinal) data combine:",
+      "choices": [
+        "Many variables at a single fixed point in time",
+        "One single entity tracked over many periods",
+        "A set of one-shot cross-sectional snapshots",
+        "Multiple entities over multiple time periods",
+        "Only aggregated national-level time series"
+      ],
+      "answer": 3,
+      "type": "mcq",
+      "definition": "Panel (longitudinal) data follow multiple entities across multiple time periods, giving both a cross-sectional and a time dimension. Many variables at one point in time is a single cross-section; one entity tracked over many periods is a single time series; one-shot snapshots or aggregated national series likewise lack the combined entity-and-time structure. The intuition is that observing the same units repeatedly lets you net out unobserved heterogeneity a single cross-section cannot, because each entity serves as its own control over time.",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "Compared with cross-sectional data, a key advantage of panel data is the ability to:",
+      "choices": [
+        "Avoid every possible form of estimation bias at once",
+        "Remove the need for instruments entirely",
+        "Guarantee stationarity of the observed data",
+        "Strip out heteroskedasticity automatically",
+        "Control for unobserved time-invariant effects"
+      ],
+      "answer": 4,
+      "type": "mcq",
+      "definition": "Relative to a cross-section, panel data let you control for unobserved, time-invariant individual effects by exploiting repeated observations of the same entities. It does not avoid all bias (time-varying confounders and simultaneity remain), does not remove the need for instruments when endogeneity is present, does not guarantee stationarity, and does not automatically strip out heteroskedasticity, which still calls for robust or clustered standard errors. The intuition is that within-entity variation differences away fixed traits, attacking a major source of omitted-variable bias rather than every statistical problem at once.",
+      "last_updated": "2026-06-29"
+    }
+  ]
+}

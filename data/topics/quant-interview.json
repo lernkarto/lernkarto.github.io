@@ -1,0 +1,22 @@
+{
+  "topic": "Quant & trader interview",
+  "id": "quant-interview",
+  "standard": true,
+  "primerTitle": "Quant & trader interview — how to use it",
+  "primer": "## Quant & trader interview\nThe harder, desk-flavoured problem set: probability & Bayes, expected value / waiting times, market-making & EV decisions, combinatorial games, and math-olympiad puzzles (invariants, weighing/information, cryptarithms, spatial counting). **One deck per family**, each led by a method primer — learn the technique, then apply it. Great in exam mode.",
+  "deckFiles": [
+    "qi-bayes.json",
+    "qi-expected-value.json",
+    "qi-waiting-times.json",
+    "qi-birthday.json",
+    "qi-intransitivity.json",
+    "qi-games.json",
+    "qi-market-making.json",
+    "qi-quant-reasoning.json",
+    "qi-rates.json",
+    "qi-spatial.json",
+    "qi-cryptarithms.json",
+    "qi-weighing.json",
+    "qi-invariants.json"
+  ]
+}

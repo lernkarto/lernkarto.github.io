@@ -1,0 +1,49 @@
+{
+  "id": "banking-risk-full",
+  "name": "Banking Risk — Full Curriculum",
+  "subject": "Risk management",
+  "standard": true,
+  "description": "The complete banking-risk curriculum as an ordered course over the Risk management topics — each domain's glossary then its concepts, foundations first.",
+  "items": [
+    {
+      "type": "topic",
+      "ref": "Risk foundations"
+    },
+    {
+      "type": "topic",
+      "ref": "Financial risk management"
+    },
+    {
+      "type": "topic",
+      "ref": "Market risk"
+    },
+    {
+      "type": "topic",
+      "ref": "Credit risk"
+    },
+    {
+      "type": "topic",
+      "ref": "Counterparty risk & XVA"
+    },
+    {
+      "type": "topic",
+      "ref": "Liquidity & ALM"
+    },
+    {
+      "type": "topic",
+      "ref": "Capital & regulation"
+    },
+    {
+      "type": "topic",
+      "ref": "Operational, model & stress"
+    },
+    {
+      "type": "topic",
+      "ref": "Quantitative toolkit"
+    },
+    {
+      "type": "topic",
+      "ref": "Time series"
+    }
+  ]
+}

@@ -1,0 +1,145 @@
+{
+  "id": "phonetic-nato",
+  "name": "NATO phonetic alphabet",
+  "color": "#ff9f43",
+  "dual": true,
+  "lang": "en",
+  "description": "The NATO/ICAO radiotelephony spelling alphabet — the code words used to spell letters unambiguously over radio. Tested both ways (letter→code word and code word→letter), tracked separately.",
+  "primerTitle": "NATO phonetic alphabet — quick recap",
+  "primer": "The **NATO/ICAO radiotelephony spelling alphabet** assigns one distinctive **code word** to each letter A–Z so they can't be confused over a noisy radio (e.g. 'B' = *Bravo*). The words were chosen to be recognisable to speakers of many languages.\n\n**Full mapping — letter → code word:**\n\n- **A** — Alfa (spelled 'Alfa', not Alpha, so non-English speakers keep the 'f')\n- **B** — Bravo\n- **C** — Charlie\n- **D** — Delta\n- **E** — Echo\n- **F** — Foxtrot\n- **G** — Golf\n- **H** — Hotel\n- **I** — India\n- **J** — Juliett (double-t so French speakers sound the final 't')\n- **K** — Kilo\n- **L** — Lima\n- **M** — Mike\n- **N** — November\n- **O** — Oscar\n- **P** — Papa\n- **Q** — Quebec\n- **R** — Romeo\n- **S** — Sierra\n- **T** — Tango\n- **U** — Uniform\n- **V** — Victor\n- **W** — Whiskey\n- **X** — X-ray\n- **Y** — Yankee\n- **Z** — Zulu (also the radio name for UTC / 'Zulu time')\n\n**Special cases:** *Alfa* and *Juliett* use non-standard spellings on purpose; *Zulu* doubles as the name for UTC time.",
+  "cards": [
+    {
+      "term": "A",
+      "definition": "Alfa",
+      "note": "Spelled 'Alfa' (not Alpha) so non-English speakers don't drop the 'ph'.",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "B",
+      "definition": "Bravo",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "C",
+      "definition": "Charlie",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "D",
+      "definition": "Delta",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "E",
+      "definition": "Echo",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "F",
+      "definition": "Foxtrot",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "G",
+      "definition": "Golf",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "H",
+      "definition": "Hotel",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "I",
+      "definition": "India",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "J",
+      "definition": "Juliett",
+      "note": "Spelled with a double-t so French speakers sound the final 't'.",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "K",
+      "definition": "Kilo",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "L",
+      "definition": "Lima",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "M",
+      "definition": "Mike",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "N",
+      "definition": "November",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "O",
+      "definition": "Oscar",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "P",
+      "definition": "Papa",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "Q",
+      "definition": "Quebec",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "R",
+      "definition": "Romeo",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "S",
+      "definition": "Sierra",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "T",
+      "definition": "Tango",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "U",
+      "definition": "Uniform",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "V",
+      "definition": "Victor",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "W",
+      "definition": "Whiskey",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "X",
+      "definition": "X-ray",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "Y",
+      "definition": "Yankee",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "Z",
+      "definition": "Zulu",
+      "note": "Also the radio name for UTC / 'Zulu time'.",
+      "last_updated": "2026-06-29"
+    }
+  ]
+}

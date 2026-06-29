@@ -1,0 +1,212 @@
+{
+  "id": "derivatives-pricing",
+  "name": "Derivatives & pricing",
+  "color": "#ffcc55",
+  "description": "Instruments, no-arbitrage and the machinery of valuation.",
+  "primerTitle": "Pricing derivatives",
+  "primer": "A **derivative** is a contract whose value derives from an underlying — its risk lives in the *sensitivities*, not the (often huge) **notional**. Building blocks: a **forward** (OTC, settled once at maturity, bilateral counterparty risk, $F_0=S_0e^{(r-q)T}$); a **future** (exchange-traded, **marked to market daily** — that daily margin financing correlates with rates, a small **convexity** difference that makes future and forward prices *not* exactly equal); **swaps**; and **options**.\\n\\n**No-arbitrage** is the cornerstone: identical payoffs must have identical prices, so pricing is *relative* — a derivative is worth what **replicates** it. **Cost of carry** (financing $+$ storage $u$ $-$ income/convenience $q$) sets the forward–spot link, $F_0=S_0e^{(r+u-q)T}$: when carry dominates the curve rises with maturity (**contango**); the opposite is **backwardation**.\\n\\n**Options** give the right, not the obligation: call payoff $\\\\max(S_T-K,0)$, put $\\\\max(K-S_T,0)$. **Moneyness**: in-the-money (positive intrinsic), **at-the-money** ($K\\\\approx S$, most gamma and time value), out-of-the-money (zero intrinsic). Price $=$ **intrinsic** $+$ **time value**, and time value decays to zero at expiry (theta). **Put–call parity**: $C-P=S_0-Ke^{-rT}$.\\n\\n**Black–Scholes–Merton** prices a European option under geometric Brownian motion with constant vol, via a riskless replicating portfolio: $C=S_0N(d_1)-Ke^{-rT}N(d_2)$, $d_{1,2}=\\\\frac{\\\\ln(S_0/K)+(r\\\\pm\\\\frac12\\\\sigma^2)T}{\\\\sigma\\\\sqrt T}$. Its assumptions (constant vol and rates, lognormal prices, no jumps, frictionless continuous trading) all break in practice — the **volatility smile/skew** (in equities, higher implied vol for OTM puts, steep since the 1987 crash) directly repudiates constant vol. The full object is the **volatility surface** (vol across strike *and* maturity), which must be free of static arbitrage.\\n\\n**Risk-neutral valuation**: price $=$ discounted expected payoff under measure $\\\\mathbb{Q}$ where every asset earns the **risk-free** rate, $V_0=e^{-rT}\\\\mathbb{E}^{\\\\mathbb{Q}}[\\\\text{payoff}]$. It works because hedging removes risk preferences. Under $\\\\mathbb{Q}$ discounted prices are **martingales** (drift-free); fundamental theorem: no arbitrage $\\\\iff$ such a measure exists.\\n\\n**Hedging & replication**: **delta hedging** holds $-\\\\delta$ units of underlying per option, rebalanced as delta moves — the practical face of BSM. **Dynamic replication** continuously rebalances underlying $+$ cash; replication error grows with **gamma** and coarse rebalancing.\\n\\n**Numerical methods**: a **binomial tree** moves up/down each step with risk-neutral prob $p=\\\\frac{e^{r\\\\Delta t}-d}{u-d}$, rolled back from expiry — handles early exercise naturally. **Finite-difference** methods solve the BS PDE $\\\\frac{\\\\partial V}{\\\\partial t}+\\\\frac12\\\\sigma^2S^2\\\\frac{\\\\partial^2V}{\\\\partial S^2}+rS\\\\frac{\\\\partial V}{\\\\partial S}-rV=0$ on a grid. **American** options exercise any time, but an American call on a **non-dividend** stock is *never* optimally exercised early (holding preserves time value and interest on $K$), so it prices like its European twin — early exercise matters mainly with dividends/puts. **Exotics** (barriers, Asians, digitals, lookbacks) are path-dependent with sharp Greeks (barrier gamma can be unbounded).\\n\\n**Rates derivatives**: an **interest rate swap** exchanges fixed for floating, valued as $\\\\mathrm{PV}_{\\\\text{float}}-\\\\mathrm{PV}_{\\\\text{fixed}}$; a **FRA** fixes a rate for one future period (the swap's building block). A **payer swaption** (right to pay fixed) gains when rates rise; a **receiver** gains when they fall. **Caps/floors** are strips of caplets/floorlets bounding a floating rate. Post-2008, collateralised cash flows use **OIS discounting** (collateral earns OIS), with separate forecasting and discounting curves — basis between curves is now a priced risk.",
+  "cards": [
+    {
+      "term": "Derivative",
+      "definition": "A contract whose value derives from an underlying asset, rate or index — forwards, futures, swaps and options. Derivatives transfer specific risks between parties and can hedge, speculate or arbitrage, with exposure decoupled from notional.",
+      "note": "Risk lives in the sensitivities, not the (often huge) notional.",
+      "last_updated": "2026-06-29",
+      "stale": true
+    },
+    {
+      "term": "Forward contract",
+      "definition": "An OTC agreement to buy or sell an asset at a fixed price on a future date, settled once at maturity. It locks in a price today but carries bilateral counterparty risk and no interim cash flows.",
+      "formula": "$F_0 = S_0\\,e^{(r-q)T}$",
+      "last_updated": "2026-06-29",
+      "stale": true
+    },
+    {
+      "term": "Daily marking-to-market makes a futures contract identical in value to an otherwise-equivalent forward, so their prices are always exactly equal.",
+      "definition": "False. An exchange-traded future is marked to market daily with margin, and the financing of those daily cash flows correlates with rates, creating a small convexity difference from an otherwise identical forward — so their prices are not exactly equal.",
+      "note": "Marking to market introduces a small convexity (financing) difference vs forwards.",
+      "type": "truefalse",
+      "answer": false,
+      "summary": "False — daily settlement creates a convexity (financing) difference, so futures and forward prices can differ.",
+      "last_updated": "2026-06-29",
+      "stale": true
+    },
+    {
+      "term": "No-arbitrage principle",
+      "definition": "The assumption that no riskless profit can be made from zero net investment — the cornerstone that pins down derivative prices. If two portfolios have identical payoffs they must have identical prices, or arbitrageurs trade the gap away.",
+      "note": "Pricing is fundamentally relative: a derivative is valued by what replicates it.",
+      "last_updated": "2026-06-29",
+      "stale": true
+    },
+    {
+      "term": "A futures curve where forward prices rise with maturity (carry dominates) is said to be in {{contango}}.",
+      "definition": "The net cost of holding the underlying until delivery — financing cost plus storage, minus income or convenience yield — which determines the forward–spot relationship. It explains contango and backwardation in futures curves.",
+      "formula": "$F_0 = S_0\\,e^{(r + u - q)T}$",
+      "type": "cloze",
+      "last_updated": "2026-06-29",
+      "stale": true
+    },
+    {
+      "term": "Option",
+      "definition": "A contract granting the right, not the obligation, to buy (call) or sell (put) an underlying at a strike price. The asymmetry — capped loss, open-ended gain for the holder — is what makes options nonlinear and their risk management distinctive.",
+      "formula": "call payoff $=\\max(S_T-K,\\,0)$;  put payoff $=\\max(K-S_T,\\,0)$",
+      "last_updated": "2026-06-29",
+      "stale": true
+    },
+    {
+      "term": "Put–call parity",
+      "definition": "A no-arbitrage identity linking European call and put prices on the same strike and maturity to the underlying and a bond. It lets one be priced from the other and exposes mispricing instantly.",
+      "formula": "$C - P = S_0 - K\\,e^{-rT}$",
+      "last_updated": "2026-06-29",
+      "stale": true
+    },
+    {
+      "term": "An option whose strike is approximately equal to the spot price is described as {{at-the-money}}.",
+      "definition": "An option's strike relative to the underlying price: in-the-money (positive intrinsic value), at-the-money (strike ≈ spot), or out-of-the-money (zero intrinsic value). It governs the option's delta and risk profile.",
+      "note": "ATM options carry the most gamma and time value.",
+      "type": "cloze",
+      "last_updated": "2026-06-29",
+      "stale": true
+    },
+    {
+      "term": "Intrinsic vs time value",
+      "definition": "Intrinsic value is the payoff if exercised now; time value is the premium above that, reflecting the chance of finishing further in-the-money. Time value decays to zero at expiry, the source of theta.",
+      "formula": "option price $=$ intrinsic value $+$ time value",
+      "last_updated": "2026-06-29",
+      "stale": true
+    },
+    {
+      "term": "Black–Scholes–Merton",
+      "sub": "BSM",
+      "definition": "The closed-form price of a European option under geometric Brownian motion and constant volatility, derived by constructing a riskless replicating portfolio. The foundational result of modern derivatives pricing.",
+      "formula": "$C = S_0 N(d_1) - K e^{-rT} N(d_2),\\;\\; d_{1,2}=\\dfrac{\\ln(S_0/K)+(r\\pm\\tfrac12\\sigma^2)T}{\\sigma\\sqrt{T}}$",
+      "last_updated": "2026-06-29",
+      "stale": true
+    },
+    {
+      "term": "Black–Scholes assumptions",
+      "definition": "Constant volatility and rates, log-normal prices, no jumps, frictionless continuous trading, and no arbitrage. Each is violated in practice — the volatility smile is the market's direct repudiation of constant volatility.",
+      "note": "The model is a language for quoting prices (via implied vol) as much as a price itself.",
+      "last_updated": "2026-06-29",
+      "stale": true
+    },
+    {
+      "term": "In risk-neutral valuation, every asset is assumed to earn the {{risk-free}} rate, and the payoff is discounted at that rate.",
+      "definition": "Pricing a derivative as the discounted expectation of its payoff under a probability measure in which all assets earn the risk-free rate. It works because hedging removes risk preferences from the price, not because investors are risk-neutral.",
+      "formula": "$V_0 = e^{-rT}\\,\\mathbb{E}^{\\mathbb{Q}}\\!\\left[\\text{payoff}\\right]$",
+      "type": "cloze",
+      "last_updated": "2026-06-29",
+      "stale": true
+    },
+    {
+      "term": "Under the risk-neutral measure Q, discounted asset prices follow a drift-free process known as a {{martingale}}.",
+      "sub": "martingale measure",
+      "definition": "The probability measure under which discounted asset prices are martingales (drift-free), guaranteed to exist when markets are arbitrage-free. Pricing and hedging are carried out under this measure Q, not the real-world measure P.",
+      "note": "Fundamental theorem: no arbitrage ⇔ an equivalent martingale measure exists.",
+      "type": "cloze",
+      "last_updated": "2026-06-29",
+      "stale": true
+    },
+    {
+      "term": "In equity markets, implied volatility that is higher for out-of-the-money puts than for calls is called a volatility {{skew}}.",
+      "definition": "The empirical pattern that implied volatility varies with strike — higher for out-of-the-money puts in equities (skew). It reveals the market pricing fat tails and crash risk that Black–Scholes' constant vol ignores.",
+      "note": "Equity skew steepened permanently after the 1987 crash.",
+      "type": "cloze",
+      "last_updated": "2026-06-29",
+      "stale": true
+    },
+    {
+      "term": "Volatility surface",
+      "definition": "Implied volatility mapped across both strike and maturity, the full object traders quote and risk-manage. Its movements (level, skew, term structure) are themselves risk factors requiring vega bucketing.",
+      "note": "A self-consistent surface must be free of static arbitrage (calendar and butterfly).",
+      "last_updated": "2026-06-29",
+      "stale": true
+    },
+    {
+      "term": "Delta hedging",
+      "definition": "Neutralising an option's first-order exposure to the underlying by holding an offsetting position of delta units, rebalanced as delta changes. The practical embodiment of Black–Scholes replication.",
+      "formula": "hedge $= -\\,\\delta$ units of the underlying per option",
+      "last_updated": "2026-06-29",
+      "stale": true
+    },
+    {
+      "term": "Dynamic replication",
+      "definition": "Continuously rebalancing a portfolio of the underlying and cash to reproduce an option's payoff, which by no-arbitrage must cost the option's price. Discretisation, transaction costs and gaps make perfect replication impossible in practice.",
+      "note": "Replication error grows with gamma and the coarseness of rebalancing.",
+      "last_updated": "2026-06-29",
+      "stale": true
+    },
+    {
+      "term": "Binomial tree",
+      "definition": "A discrete-time lattice in which the underlying moves up or down each step, priced by risk-neutral expectation rolled back from expiry. Intuitive, and it handles early exercise naturally, unlike the closed-form BSM.",
+      "formula": "$p=\\dfrac{e^{r\\Delta t}-d}{u-d}$",
+      "last_updated": "2026-06-29",
+      "stale": true
+    },
+    {
+      "term": "Finite-difference methods",
+      "sub": "PDE",
+      "definition": "Numerically solving the Black–Scholes partial differential equation on a grid of price and time, useful for path-independent and early-exercise products. The third pricing route alongside closed forms and Monte Carlo.",
+      "formula": "$\\dfrac{\\partial V}{\\partial t}+\\tfrac12\\sigma^2 S^2\\dfrac{\\partial^2 V}{\\partial S^2}+rS\\dfrac{\\partial V}{\\partial S}-rV=0$",
+      "last_updated": "2026-06-29",
+      "stale": true
+    },
+    {
+      "term": "An American call on a non-dividend-paying stock is optimally exercised early, so it is worth strictly more than the equivalent European call.",
+      "definition": "False. An American call on a non-dividend-paying stock should never be exercised early — holding preserves time value and the interest on the strike — so it prices the same as the equivalent European call. American options exercise any time up to maturity, but the early-exercise premium here is zero.",
+      "note": "Early-exercise optionality is why trees and PDEs beat closed forms here.",
+      "type": "truefalse",
+      "answer": false,
+      "summary": "False — early exercise is never optimal for an American call on a non-dividend stock, so it prices like a European call.",
+      "last_updated": "2026-06-29",
+      "stale": true
+    },
+    {
+      "term": "Exotic options",
+      "definition": "Options with non-standard payoffs — barriers (knock-in/out), Asians (average price), digitals, lookbacks, baskets. Their path dependence and discontinuities demand simulation or specialised models and create sharp, hard-to-hedge Greeks.",
+      "note": "Barrier options can have unbounded gamma near the barrier — a hedging nightmare.",
+      "last_updated": "2026-06-29",
+      "stale": true
+    },
+    {
+      "term": "Interest rate swap",
+      "sub": "IRS",
+      "definition": "An agreement to exchange fixed for floating interest payments on a notional over time, the most traded OTC derivative. It transforms rate exposure and is valued as the difference between fixed- and floating-leg present values.",
+      "formula": "value $=\\mathrm{PV}_{\\text{float}}-\\mathrm{PV}_{\\text{fixed}}$",
+      "last_updated": "2026-06-29",
+      "stale": true
+    },
+    {
+      "term": "Forward rate agreement",
+      "sub": "FRA",
+      "definition": "An OTC contract fixing an interest rate on a notional for a future period, cash-settled against the realised reference rate. The single-period building block from which swaps are assembled.",
+      "formula": "settlement $\\propto (\\text{reference} - \\text{FRA rate})\\times \\text{notional}\\times \\tau$",
+      "last_updated": "2026-06-29",
+      "stale": true
+    },
+    {
+      "term": "A payer swaption gains value when interest rates rise, all else equal.",
+      "definition": "True. A payer swaption gives the right to pay fixed and receive floating, so rising rates make that preset fixed rate attractive and the swaption gains value; receiver swaptions gain when rates fall.",
+      "note": "Payer swaptions gain when rates rise; receiver swaptions when they fall.",
+      "type": "truefalse",
+      "answer": true,
+      "summary": "True — a payer swaption locks in paying a fixed rate, so it benefits as rates rise above the strike.",
+      "last_updated": "2026-06-29",
+      "stale": true
+    },
+    {
+      "term": "Cap / floor",
+      "definition": "A strip of interest-rate options that caps (or floors) the rate paid (received) on a floating exposure, each period's option a caplet (floorlet). Used to bound funding cost or guarantee a minimum yield.",
+      "formula": "caplet payoff $\\propto \\max(L-K,\\,0)\\times\\text{notional}\\times\\tau$",
+      "last_updated": "2026-06-29",
+      "stale": true
+    },
+    {
+      "term": "OIS discounting",
+      "sub": "multi-curve",
+      "definition": "Discounting collateralised derivative cash flows at the overnight index swap rate rather than a term reference rate, with separate curves for forecasting and discounting. The post-2008 standard, reflecting that collateral earns the OIS rate.",
+      "note": "The crisis broke the single-curve world; basis between curves is now a priced risk.",
+      "last_updated": "2026-06-29",
+      "stale": true
+    }
+  ]
+}

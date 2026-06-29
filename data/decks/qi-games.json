@@ -1,0 +1,128 @@
+{
+  "id": "qi-games",
+  "name": "Combinatorial games",
+  "color": "#5c7cfa",
+  "description": "Two-player perfect-information games solved by finding losing positions: subtraction games and their modular patterns, misere play, Nim (nim-sum), subtract-a-square, and ",
+  "tags": [
+    "aptitude",
+    "interview",
+    "quant",
+    "games"
+  ],
+  "primerTitle": "Combinatorial games — method",
+  "primer": "## Find the losing (P-)positions\n- **Subtraction game** (take 1..m, last wins): lose on multiples of (m+1); leave a multiple each turn.\n- **Misère** tweak shifts the target by one.\n- **Nim:** a position loses iff the **XOR (nim-sum)** of pile sizes is 0; move to make it 0.\n- **Subtract-a-square:** no modular rule — compute P-positions directly (0,2,5,7,10,12,15,…).\n- **Wythoff:** cold positions (⌊φk⌋,⌊φ²k⌋) — (3,5) is one.",
+  "cards": [
+    {
+      "term": "A pile has 23 coins. Two players alternate; on your turn you remove 1, 2, 3, or 4 coins. The player who takes the last coin wins. With optimal play, who wins?",
+      "choices": [
+        "The game can end in a draw",
+        "Both players can force a win",
+        "Second player wins",
+        "It depends only on luck",
+        "First player wins"
+      ],
+      "answer": 4,
+      "type": "mcq",
+      "definition": "Correct: First player wins. Losing positions are the multiples of 5 (whatever the opponent leaves, you can always restore a multiple of 5). 23 is not a multiple of 5, so the first player takes 3, leaving 20, and wins.",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "A pile has 20 coins. Players alternate removing 1, 2, or 3 coins; the player taking the last coin wins. With optimal play, who wins?",
+      "choices": [
+        "First player wins",
+        "Second player wins",
+        "Whoever removes 3 first wins",
+        "The game can end in a draw",
+        "It depends only on luck"
+      ],
+      "answer": 1,
+      "type": "mcq",
+      "definition": "Correct: Second player wins. Here the losing positions are the multiples of 4. 20 is already a multiple of 4, so whatever the first player removes, the second player restores a multiple of 4 and eventually takes the last coin.",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "A pile has 16 coins. Players alternate removing 1 or 2 coins, but in this version whoever is forced to take the LAST coin loses. With optimal play, who wins?",
+      "choices": [
+        "Second player wins",
+        "The game can end in a draw",
+        "Neither player can force a win",
+        "First player wins",
+        "It depends only on luck"
+      ],
+      "answer": 0,
+      "type": "mcq",
+      "definition": "Correct: Second player wins. In this misere game you want to leave your opponent exactly 1 coin. The losing positions for the mover are totals of the form 3k + 1. 16 = 3 x 5 + 1, so the first player is on a losing spot and the second player wins with correct play.",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "In Nim there are three piles with 3, 5, and 7 coins. Players alternate removing any positive number of coins from a single pile; the player taking the last coin wins. The first player wins - which of these is a winning first move?",
+      "choices": [
+        "There is no winning first move",
+        "Remove 1 coin from the pile of 3",
+        "Remove all 7 coins from the pile of 7",
+        "Remove 1 coin from the pile of 5",
+        "Remove 2 coins from the pile of 5"
+      ],
+      "answer": 1,
+      "type": "mcq",
+      "definition": "Correct: Remove 1 coin from the pile of 3. Win by making the running XOR (nim-sum) of the pile sizes zero. 3 XOR 5 XOR 7 = 1, and reducing the pile of 3 to 2 gives 2 XOR 5 XOR 7 = 0, handing the opponent a losing position.",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "In Nim there are three piles with 1, 4, and 5 coins; players alternate removing any number of coins from one pile, and the player taking the last coin wins. With optimal play, who wins?",
+      "choices": [
+        "It depends only on luck",
+        "Second player wins",
+        "Whoever empties the pile of 5 first wins",
+        "The game can end in a draw",
+        "First player wins"
+      ],
+      "answer": 1,
+      "type": "mcq",
+      "definition": "Correct: Second player wins. The nim-sum is 1 XOR 4 XOR 5 = 0, which is a losing position for the player to move. Whatever the first player does, the second player can always restore a nim-sum of zero.",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "From a pile of 15 coins, players alternate removing a perfect-square number of coins (1, 4, 9, ...); the player taking the last coin wins. Is the player who moves first in a winning or losing position?",
+      "choices": [
+        "Losing position",
+        "It depends only on luck",
+        "Winning, by removing 9 coins first",
+        "The game can end in a draw",
+        "Winning position"
+      ],
+      "answer": 0,
+      "type": "mcq",
+      "definition": "Correct: Losing position. Unlike the simple take-away games, 'subtract a square' has no neat modular rule; you compute the losing positions directly: 0, 2, 5, 7, 10, 12, 15, ... 15 is one of them, so every move hands the opponent a winning position - the first player loses.",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "Two piles hold 3 and 5 coins. On your turn you may remove any number of coins from one pile, OR remove an equal number of coins from BOTH piles. The player taking the last coin wins. With optimal play, who wins?",
+      "choices": [
+        "It depends only on luck",
+        "The game can end in a draw",
+        "Whoever clears a whole pile first wins",
+        "Second player wins",
+        "First player wins"
+      ],
+      "answer": 3,
+      "type": "mcq",
+      "definition": "Correct: Second player wins. This is Wythoff's game; its losing ('cold') positions are (1,2), (3,5), (4,7), ... built from the golden ratio. (3,5) is exactly one of them, so the first player to move loses.",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "Two players count up to 21 starting from 0; on each turn a player adds 1 or 2 to the running total. The player who says exactly 21 wins. With optimal play, who wins?",
+      "choices": [
+        "The game can end in a draw",
+        "First player wins",
+        "Second player wins",
+        "It depends only on luck",
+        "Whoever says 11 first wins"
+      ],
+      "answer": 2,
+      "type": "mcq",
+      "definition": "Correct: Second player wins. You win by saying the multiples of 3 (3, 6, 9, ..., 18, 21). Since the first player cannot reach 3 in one move and the second player can always complete each pair to the next multiple of 3, the second player controls the multiples of 3 and says 21.",
+      "last_updated": "2026-06-29"
+    }
+  ]
+}

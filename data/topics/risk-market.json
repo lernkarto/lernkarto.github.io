@@ -1,0 +1,11 @@
+{
+  "topic": "Market risk",
+  "id": "risk-market",
+  "standard": true,
+  "primerTitle": "Market risk",
+  "primer": "## Market risk\nLoss from moving prices. Pairs the **market-risk vocabulary** (the Greeks, DV01, the FRTB pieces, the VaR methods) with the **Market risk** deck (VaR/ES, sensitivities, backtesting, FRTB SA vs IMA).",
+  "deckFiles": [
+    "risk-glossary-market.json",
+    "market-risk.json"
+  ]
+}

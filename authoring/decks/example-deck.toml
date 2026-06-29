@@ -1,0 +1,95 @@
+# Gaussian fundamentals — example deck authored in TOML.
+# Convert with:
+#   python3 tools/toml-to-json.py authoring/decks/example-deck.toml data/decks/example-gauss.json
+# Note: use LITERAL strings (single quotes) for formulas so LaTeX backslashes
+# are kept verbatim — no doubling needed, unlike JSON or TOML basic ("...") strings.
+
+name        = "Gaussian fundamentals"
+id          = "example-gauss"
+color       = "#AFDBF5"
+description = "Core concepts of the Gaussian (normal) distribution — the engine example deck."
+
+# ── Category: The distribution ───────────────────────────────────────────────
+
+[[cards]]
+category   = "The distribution"
+term       = "Normal distribution"
+sub        = "𝒩(μ, σ²)"
+definition = "A continuous probability distribution that is symmetric and bell-shaped, fully characterised by its mean μ and variance σ²."
+formula    = '$X \sim \mathcal{N}(\mu,\,\sigma^2)$'
+
+[[cards]]
+category   = "The distribution"
+term       = "Probability density function"
+sub        = "PDF"
+definition = "The height of the bell curve at x — not a probability itself, but integrates to a probability over any interval."
+formula    = '$f(x) = \dfrac{1}{\sigma\sqrt{2\pi}}\,\exp\!\left(-\dfrac{(x-\mu)^2}{2\sigma^2}\right)$'
+note       = "The factor 1/(σ√2π) normalises the integral to 1."
+
+[[cards]]
+category   = "The distribution"
+term       = "Standard normal"
+sub        = "𝒩(0, 1)"
+definition = "The special case μ = 0, σ = 1. Any normal variable can be standardised to it by subtracting the mean and dividing by the standard deviation."
+formula    = '$Z = \dfrac{X - \mu}{\sigma},\quad Z \sim \mathcal{N}(0,1)$'
+
+[[cards]]
+category   = "The distribution"
+term       = "Mean of 𝒩(μ, σ²)"
+definition = "The expected value of a normal random variable equals its location parameter μ."
+formula    = '$\mathbb{E}[X] = \mu$'
+
+[[cards]]
+category   = "The distribution"
+term       = "Variance of 𝒩(μ, σ²)"
+definition = "The spread of the distribution is controlled by σ² (variance); σ is the standard deviation."
+formula    = '$\mathrm{Var}(X) = \sigma^2,\quad \mathrm{SD}(X) = \sigma$'
+
+# ── Category: Key results ────────────────────────────────────────────────────
+
+[[cards]]
+category   = "Key results"
+term       = "68–95–99.7 rule"
+sub        = "empirical rule"
+definition = "For any normal distribution, roughly 68 % of values fall within 1σ of the mean, 95 % within 2σ, and 99.7 % within 3σ."
+formula    = '$P(\mu - k\sigma \le X \le \mu + k\sigma) \approx \begin{cases}68\%&k=1\\95\%&k=2\\99.7\%&k=3\end{cases}$'
+
+[[cards]]
+category   = "Key results"
+term       = "Central Limit Theorem"
+sub        = "CLT"
+definition = "The sum (or mean) of a large number of independent, identically distributed random variables with finite variance converges in distribution to a normal, regardless of the original distribution."
+formula    = '$\dfrac{\bar{X}_n - \mu}{\sigma/\sqrt{n}} \xrightarrow{d} \mathcal{N}(0,1) \text{ as } n\to\infty$'
+note       = "This is why the normal distribution appears so widely in nature and statistics."
+
+[[cards]]
+category   = "Key results"
+term       = "Sum of independent normals"
+definition = "If X and Y are independent normals, their sum is also normal."
+formula    = '$X + Y \sim \mathcal{N}(\mu_X+\mu_Y,\;\sigma_X^2+\sigma_Y^2)$'
+
+# ── Category: Interactive ────────────────────────────────────────────────────
+
+[[cards]]
+category   = "Interactive"
+type       = "mcq"
+term       = "Which theorem guarantees that sample means converge to a normal distribution as sample size grows?"
+definition = "The Central Limit Theorem (CLT) — convergence holds regardless of the underlying distribution, provided it has finite variance."
+choices    = ["Central Limit Theorem", "Law of Large Numbers", "Bayes' theorem", "Chebyshev's inequality"]
+answer     = 0
+
+[[cards]]
+category   = "Interactive"
+type       = "mcq"
+term       = "For 𝒩(μ, σ²), approximately what fraction of observations fall within two standard deviations of the mean?"
+definition = "95 % — this is the '2σ' case of the empirical 68–95–99.7 rule."
+choices    = ["95 %", "68 %", "99.7 %", "50 %"]
+answer     = 0
+
+[[cards]]
+category   = "Interactive"
+type       = "truefalse"
+term       = "The probability density of a normal distribution can exceed 1 for large σ."
+definition = "False. For σ < 1/(√2π) ≈ 0.399, the peak density f(μ) = 1/(σ√2π) exceeds 1. The density is not bounded above by 1 — only the *integral* over any interval is bounded by 1."
+answer     = false
+note       = "Density values are not probabilities; only integrals of the density are."

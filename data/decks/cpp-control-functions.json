@@ -1,0 +1,161 @@
+{
+  "id": "cpp-control-functions",
+  "primerTitle": "C++ control flow & functions — quick recap",
+  "primer": "## Control flow\n**Loops:** `for` (known count / explicit counter), `while` (tests before the body, may run zero times), `do { ... } while (cond);` (runs once, then tests), and the **range-based for** `for (auto x : v)` which iterates a container/array without an index — `for (auto& x : v)` to modify in place, `for (const auto& x : v)` to read large elements without copying.\n\nIn a `switch`, a `case` **falls through** into the next unless you write `break` (or `return`) — a classic bug source. `break` exits the nearest loop/switch entirely; `continue` skips the rest of the current iteration and re-tests the condition. The **ternary** `cond ? x : y` is an expression form of if/else (`int m = (a > b) ? a : b;`), so it can sit inside an initialiser or argument.\n\n**Scope** is the region where a name is visible. A variable in `{ ... }` is local to that block and destroyed at the closing brace; inner scopes can shadow outer names. File scope = global.\n\n## Functions\nA **declaration** (prototype) states name, return type, parameter types and ends with `;` (`int add(int, int);`); a **definition** adds the body `{ ... }`. Declare many times, define exactly once (One Definition Rule).\n\n**Pass-by-value** copies the argument (use for small cheap types or a private copy); **pass-by-reference** `T&` aliases the caller's object so changes are visible. Pass a large object as **`const T&`**: the reference avoids a copy and `const` guarantees read-only — the default for non-cheap read-only params.\n\nA **default argument** supplies a value when the caller omits it (`int pow(int b, int e = 2);`); defaults must be trailing and given once in the declaration. **Overloading** = several functions with the same name but different parameter lists, resolved by argument types (return type alone cannot distinguish them). A `void` function returns no value (bare `return;` exits early). **Recursion** is a function calling itself; it needs a base case to stop and a step toward it (`factorial(0)=1`; `factorial(n)=n*factorial(n-1)`) — a missing base case overflows the stack.\n\n## Pitfalls\nReturning a reference/pointer to a **local** is a bug: the local dies when the function returns, leaving a dangling reference (UB) — return by value instead. An `unsigned` can never be negative, so `for (unsigned i = 5; i >= 0; --i)` loops forever (`--i` at 0 wraps to the max value).",
+  "name": "C++ — Control flow & functions",
+  "color": "#00599c",
+  "description": "Decision and loop constructs, then functions: declaration vs definition, parameters by value vs by reference, default arguments, overloading and scope. Builds directly on the syntax & types deck.",
+  "categories": {
+    "core": {
+      "label": "Control flow",
+      "color": "#66aaff"
+    },
+    "functions": {
+      "label": "Functions",
+      "color": "#9bff66"
+    },
+    "use": {
+      "label": "Use & pitfalls",
+      "color": "#ff9f55"
+    }
+  },
+  "cards": [
+    {
+      "term": "What are the loop constructs in C++?",
+      "definition": "`for` (when you know the count or want an explicit counter), `while` (test before the body, may run zero times), and `do { ... } while (cond);` (runs the body at least once, then tests). Modern C++ adds the range-based for loop for iterating containers.",
+      "summary": "for, while, do-while, and the range-based for.",
+      "category": "core",
+      "last_updated": "2026-06-29",
+      "stale": true
+    },
+    {
+      "term": "What is a range-based for loop?",
+      "definition": "`for (auto x : v) { ... }` iterates over every element of a container or array without an index. Use `for (auto& x : v)` to modify elements in place, and `for (const auto& x : v)` to read large elements without copying.",
+      "summary": "`for (const auto& x : v)` iterates a container directly.",
+      "note": "Use & to modify or to avoid copying; const& to read cheaply.",
+      "category": "core",
+      "last_updated": "2026-06-29",
+      "stale": true
+    },
+    {
+      "type": "truefalse",
+      "category": "core",
+      "answer": false,
+      "term": "In a `switch`, execution stops automatically at the end of each `case`.",
+      "summary": "False — without `break`, control falls through to the next case.",
+      "definition": "False. A `case` falls through into the following one unless you write `break` (or `return`). This fall-through is occasionally useful but is a classic source of bugs, so always `break` unless you mean to fall through.",
+      "last_updated": "2026-06-29",
+      "stale": true
+    },
+    {
+      "term": "What is the difference between a declaration and a definition of a function?",
+      "definition": "A declaration (prototype) states the name, return type and parameter types and ends with `;` — e.g. `int add(int, int);`. It lets callers compile. A definition additionally provides the body `{ ... }`. A function may be declared many times but defined exactly once (the One Definition Rule).",
+      "summary": "Declaration = signature only; definition = signature + body.",
+      "category": "functions",
+      "last_updated": "2026-06-29",
+      "stale": true
+    },
+    {
+      "term": "Pass-by-value vs pass-by-reference?",
+      "sub": "A) by value copies the argument; by reference (`T&`) aliases the caller's object so changes are visible    B) they behave identically    C) by value lets the function modify the caller's variable    D) by reference always copies the data",
+      "definition": "Correct: A) by value copies the argument; by reference (`T&`) aliases the caller's object so changes are visible. Pass by value for small, cheap types when you want a private copy; pass by reference to mutate the caller's object or to avoid copying large ones.",
+      "category": "functions",
+      "last_updated": "2026-06-29",
+      "stale": true
+    },
+    {
+      "term": "Why pass a large object as `const T&`?",
+      "definition": "`const T&` binds a reference to the caller's object (no copy of a potentially large `std::string` or `std::vector`) while `const` promises the function will not modify it. It is the default way to pass read-only parameters that are not cheap to copy.",
+      "summary": "Avoids a copy (reference) and guarantees read-only (const).",
+      "category": "functions",
+      "last_updated": "2026-06-29",
+      "stale": true
+    },
+    {
+      "term": "What is a default argument?",
+      "definition": "A parameter value supplied automatically when the caller omits it: `int pow(int b, int e = 2);` lets you call `pow(5)` (meaning `pow(5, 2)`) or `pow(5, 3)`. Defaults must be the trailing parameters and are given once, in the declaration.",
+      "summary": "A fallback value used when the caller omits that argument.",
+      "category": "functions",
+      "last_updated": "2026-06-29",
+      "stale": true
+    },
+    {
+      "term": "What is function overloading?",
+      "definition": "Defining several functions with the same name but different parameter lists; the compiler picks the match from the argument types. `print(int)` and `print(double)` are distinct overloads. The return type alone cannot distinguish overloads.",
+      "summary": "Same name, different parameter lists; resolved by arguments.",
+      "category": "functions",
+      "last_updated": "2026-06-29",
+      "stale": true
+    },
+    {
+      "type": "cloze",
+      "category": "functions",
+      "term": "A function whose return type is {{void}} returns no value and is called purely for its side effects.",
+      "summary": "void = returns nothing.",
+      "definition": "`void log(const std::string& m);` performs an action (printing, mutating) but produces no result. A bare `return;` exits it early; you cannot return a value from it.",
+      "last_updated": "2026-06-29",
+      "stale": true
+    },
+    {
+      "type": "truefalse",
+      "category": "use",
+      "answer": true,
+      "term": "Returning a reference or pointer to a local variable is a bug.",
+      "summary": "True — the local is destroyed when the function returns, leaving a dangling reference.",
+      "definition": "True. A local object's lifetime ends when the function returns, so a reference or pointer to it dangles and using it is undefined behaviour. Return by value instead, or return something whose lifetime outlives the call.",
+      "last_updated": "2026-06-29",
+      "stale": true
+    },
+    {
+      "term": "What is variable scope?",
+      "definition": "The region of code where a name is visible. A variable declared inside `{ ... }` is local to that block and destroyed at the closing brace; a name at file scope is global. Inner scopes can shadow outer names of the same identifier.",
+      "summary": "The block in which a name is visible and alive.",
+      "category": "core",
+      "last_updated": "2026-06-29",
+      "stale": true
+    },
+    {
+      "term": "What is recursion, and what does a recursive function need?",
+      "definition": "A function that calls itself. It needs a base case that stops the recursion and a recursive step that moves toward it. `factorial(0)=1` (base), `factorial(n)=n*factorial(n-1)` (step). Missing or unreachable base cases cause infinite recursion and stack overflow.",
+      "summary": "Self-calling function; needs a base case + a step toward it.",
+      "category": "functions",
+      "last_updated": "2026-06-29",
+      "stale": true
+    },
+    {
+      "term": "What does `break` vs `continue` do inside a loop?",
+      "sub": "A) `break` exits the loop entirely; `continue` skips to the next iteration    B) both exit the loop    C) `continue` exits the loop; `break` skips an iteration    D) both skip one iteration",
+      "definition": "Correct: A) `break` exits the loop entirely; `continue` skips to the next iteration. `break` jumps past the end of the nearest enclosing loop or switch; `continue` abandons the rest of the current iteration and re-evaluates the loop condition.",
+      "category": "core",
+      "last_updated": "2026-06-29",
+      "stale": true
+    },
+    {
+      "type": "cloze",
+      "category": "core",
+      "term": "The ternary conditional operator writes a small if/else inline: `int m = (a > b) {{?}} a : b;` picks the larger value.",
+      "summary": "cond ? whenTrue : whenFalse — an expression form of if/else.",
+      "definition": "`cond ? x : y` evaluates to `x` if `cond` is true, otherwise `y`. It is an expression, so it can appear inside an initialiser or argument, unlike a statement-level `if`.",
+      "last_updated": "2026-06-29",
+      "stale": true
+    },
+    {
+      "term": "Exercise: write a function that returns whether an integer is even, taking the argument the idiomatic way.",
+      "sub": "Think value vs reference for a cheap type, and const-correctness.",
+      "definition": "`bool is_even(int n) { return n % 2 == 0; }`. An `int` is small and cheap, so pass by value; the function does not modify its argument and returns a fresh `bool`, so no reference is needed. (Passing `const int&` would work but is needless overhead for a fundamental type.)",
+      "summary": "`bool is_even(int n){ return n%2==0; }` — by value for a cheap type.",
+      "category": "use",
+      "last_updated": "2026-06-29",
+      "stale": true
+    },
+    {
+      "term": "Exercise: this loop never ends — why? `for (unsigned i = 5; i >= 0; --i) { ... }`",
+      "sub": "Consider what an unsigned value does when it goes below 0.",
+      "definition": "An `unsigned` can never be negative: when `i` is `0` and you do `--i`, it wraps around to the maximum unsigned value, so `i >= 0` is always true. Use a signed counter, or restructure the test (e.g. count up, or `while (i-- > 0)` with care).",
+      "summary": "Unsigned wraps below 0, so `i >= 0` is always true.",
+      "category": "use",
+      "last_updated": "2026-06-29",
+      "stale": true
+    }
+  ]
+}

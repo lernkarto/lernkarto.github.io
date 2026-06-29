@@ -1,0 +1,11 @@
+{
+  "topic": "Greek alphabet",
+  "id": "greek",
+  "standard": true,
+  "description": "The 24 letters of the Greek alphabet — names and sounds, plus the math/science symbols you already half-know. Each item is tested both ways, tracked separately.",
+  "primerTitle": "Greek chart — quick recap",
+  "primer": "## How this set works\nThe 24 letters of the Greek alphabet. Each card is studied **both ways** and tracked separately — you only master it once you know it in both directions. You already know many from maths and science — lean on that, then beat the false friends.\n\n## Vowels\n- Α alpha **a** · Ε epsilon **e** (short) · Η eta **e** (long / modern 'i') · Ι iota **i** · Ο omicron **o** (short) · Υ upsilon **u/y** · Ω omega **o** (long)\n\n## Consonants\n- Β beta **b** (modern v) · Γ gamma **g** · Δ delta **d** · Ζ zeta **z** · Θ theta **th** · Κ kappa **k** · Λ lambda **l** · Μ mu **m** · Ν nu **n** · Ξ xi **x** · Π pi **p** · Ρ rho **r** · Σ/ς sigma **s** · Τ tau **t** · Φ phi **ph/f** · Χ chi **kh** · Ψ psi **ps**\n\n## False friends (look Latin, aren't)\n- Η = eta (a vowel, not 'h') · Ν = nu ('n', not 'v') · Ρ = rho ('r', not 'p') · Χ = chi ('kh', not 'x')\n\n## Already familiar from maths\n- π (pi), Σ (sum), Δ (change), λ, μ, σ, θ, φ (golden ratio), Ω (ohms), χ² (chi-squared).\n\nEvery card's answer is in this chart — know it both ways and you'll pass the deck.",
+  "deckFiles": [
+    "greek.json"
+  ]
+}

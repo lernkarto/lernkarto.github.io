@@ -1,0 +1,160 @@
+{
+  "id": "cpp-raii-smart-ptr",
+  "primerTitle": "C++ RAII, smart pointers & move — quick recap",
+  "primer": "## RAII\n**RAII** (Resource Acquisition Is Initialisation): a resource (heap memory, file handle, lock) is acquired in an object's constructor and released in its destructor. Because the destructor runs automatically when the object leaves scope — **including during stack unwinding when an exception propagates** — the resource is always freed, so RAII is exception-safe in a way a bare `new`/`delete` pair cannot be.\n\n## Smart pointers\n**`std::unique_ptr`** exclusively owns a heap object and deletes it on destruction. It is **move-only** (cannot be copied), so ownership is unique and transferable; zero overhead vs a raw pointer. Create it with **`std::make_unique<T>(args)`** (added in C++14) — no visible `new`, exception-safe. To pass a `unique_ptr` into a function/container you must wrap it in **`std::move`** (`sink(std::move(p));`, after which `p` is null), because it can't be copied. Transfer ownership out of a function by **returning a `unique_ptr` by value** (the return is moved) — the idiomatic factory.\n\n**`std::shared_ptr`** has shared ownership via a **reference count**: copying increments it, destroying decrements it, and the object is deleted when the last owner dies. Build with **`std::make_shared<T>(args)`** — one allocation for object + control block (faster, better locality), exception-safe, no raw `new`. Never build two independent `shared_ptr`s from the **same raw pointer** — each gets its own count and both will delete it (double-free); create one and copy it.\n\n**Prefer `unique_ptr` first**; reach for `shared_ptr` only when ownership is genuinely shared (it carries an atomic ref-count and is harder to reason about).\n\n**`std::weak_ptr`** is a non-owning observer of a `shared_ptr`-managed object (does not affect the count); call `.lock()` to get a `shared_ptr` if still alive. It fixes **reference cycles**: two `shared_ptr`s pointing at each other keep both counts above zero so neither frees (a leak) — make one direction a `weak_ptr` (e.g. a child's back-pointer to its parent).\n\n## Move semantics\n**`std::move`** does nothing at runtime: it is a **cast to an rvalue reference** that signals 'you may steal my resources', letting a move constructor/assignment transfer internals (e.g. a buffer pointer) instead of deep-copying. After moving from an object it is valid but unspecified. The point of **move semantics** is to transfer resources cheaply (return a big `std::vector` by value, store a `unique_ptr`) instead of duplicating — a performance win and what makes move-only types possible.",
+  "name": "C++ — RAII, smart pointers & move",
+  "color": "#00599c",
+  "description": "The C++ resource model: RAII, the smart pointers unique_ptr / shared_ptr / weak_ptr, and a first look at move semantics. How modern C++ makes manual new/delete unnecessary and leak-safe.",
+  "categories": {
+    "core": {
+      "label": "RAII",
+      "color": "#66aaff"
+    },
+    "smart": {
+      "label": "Smart pointers",
+      "color": "#9bff66"
+    },
+    "use": {
+      "label": "Use & pitfalls",
+      "color": "#ff9f55"
+    }
+  },
+  "cards": [
+    {
+      "term": "What is RAII?",
+      "definition": "Resource Acquisition Is Initialisation: a resource (heap memory, file handle, lock) is acquired in an object's constructor and released in its destructor. Because the destructor runs automatically when the object leaves scope — even on an exception — the resource is always freed without explicit cleanup.",
+      "summary": "Tie a resource's lifetime to an object; destructor frees it automatically.",
+      "category": "core",
+      "last_updated": "2026-06-29",
+      "stale": true
+    },
+    {
+      "term": "Why does RAII make exceptions safe?",
+      "definition": "When an exception propagates, the stack unwinds and every local object's destructor runs. An RAII wrapper therefore releases its resource on the way out, so there is no leaked memory or unreleased lock even on the error path — something a bare `new`/`delete` pair cannot guarantee.",
+      "summary": "Stack unwinding runs destructors, so RAII releases resources even on throw.",
+      "category": "core",
+      "last_updated": "2026-06-29",
+      "stale": true
+    },
+    {
+      "term": "What is `std::unique_ptr`?",
+      "definition": "A smart pointer that exclusively owns a heap object and deletes it automatically when the `unique_ptr` is destroyed. It is move-only (cannot be copied), so ownership is unique and transferable but never shared. Zero runtime overhead versus a raw pointer.",
+      "summary": "Sole-ownership smart pointer; move-only; frees on destruction.",
+      "category": "smart",
+      "last_updated": "2026-06-29",
+      "stale": true
+    },
+    {
+      "type": "cloze",
+      "category": "smart",
+      "term": "The preferred way to create a unique_ptr is {{std::make_unique}}, e.g. `auto p = std::make_unique<Widget>(args);`.",
+      "summary": "std::make_unique<T>(args) builds a unique_ptr without a raw new.",
+      "definition": "`std::make_unique<T>(args)` allocates a `T`, forwards the constructor arguments, and returns a `unique_ptr<T>` — no visible `new`, and exception-safe. It was added in C++14.",
+      "last_updated": "2026-06-29",
+      "stale": true
+    },
+    {
+      "term": "What is `std::shared_ptr`?",
+      "definition": "A smart pointer with shared ownership: it keeps a reference count, and the managed object is deleted when the last `shared_ptr` to it is destroyed. Copying one increments the count; destroying one decrements it. Build with `std::make_shared<T>(args)`.",
+      "summary": "Reference-counted shared ownership; frees when the last owner dies.",
+      "category": "smart",
+      "last_updated": "2026-06-29",
+      "stale": true
+    },
+    {
+      "term": "unique_ptr vs shared_ptr — which should you reach for first?",
+      "sub": "A) prefer unique_ptr; use shared_ptr only when ownership is genuinely shared    B) always use shared_ptr — it is safer    C) they are interchangeable    D) prefer raw pointers over both",
+      "definition": "Correct: A) prefer unique_ptr; use shared_ptr only when ownership is genuinely shared. `unique_ptr` is cheaper (no atomic ref-count) and expresses clear single ownership. Reach for `shared_ptr` only when multiple owners must keep an object alive — shared ownership is harder to reason about.",
+      "category": "smart",
+      "last_updated": "2026-06-29",
+      "stale": true
+    },
+    {
+      "term": "What problem does `std::weak_ptr` solve?",
+      "definition": "Two `shared_ptr`s that point at each other never reach a count of zero, so neither is freed — a reference cycle leak. A `weak_ptr` observes a `shared_ptr`-managed object without owning it (does not affect the count); call `.lock()` to get a `shared_ptr` if the object is still alive. Break cycles by making one direction `weak_ptr`.",
+      "summary": "A non-owning observer that breaks shared_ptr reference cycles.",
+      "category": "smart",
+      "last_updated": "2026-06-29",
+      "stale": true
+    },
+    {
+      "type": "truefalse",
+      "category": "smart",
+      "answer": true,
+      "term": "Two shared_ptrs holding each other create a leak that weak_ptr can fix.",
+      "summary": "True — a reference cycle keeps both counts above 0; make one a weak_ptr.",
+      "definition": "True. In a cycle each `shared_ptr` keeps the other alive, so neither count drops to zero and both objects leak. Making one of the links a `weak_ptr` removes its contribution to the count, allowing the cycle to be reclaimed.",
+      "last_updated": "2026-06-29",
+      "stale": true
+    },
+    {
+      "term": "What does std::move actually do?",
+      "definition": "Nothing at runtime by itself — it is a cast that turns its argument into an rvalue reference, signalling 'you may steal my resources'. This lets a move constructor or move assignment transfer internals (e.g. a buffer pointer) instead of deep-copying. After moving from an object it is valid but unspecified.",
+      "summary": "A cast to rvalue that permits stealing resources instead of copying.",
+      "category": "core",
+      "last_updated": "2026-06-29",
+      "stale": true
+    },
+    {
+      "term": "What is the point of move semantics?",
+      "definition": "It lets resources be transferred rather than copied. Returning a big `std::vector` by value, or storing a `unique_ptr`, moves the underlying buffer/ownership (cheap pointer swap) instead of duplicating it — a major performance win and the reason move-only types like `unique_ptr` can exist.",
+      "summary": "Transfer resources cheaply instead of deep-copying them.",
+      "category": "core",
+      "last_updated": "2026-06-29",
+      "stale": true
+    },
+    {
+      "type": "cloze",
+      "category": "smart",
+      "term": "To move a unique_ptr into a function or container you must wrap it in {{std::move}}, because a unique_ptr cannot be copied.",
+      "summary": "unique_ptr is move-only — transfer ownership with std::move.",
+      "definition": "`sink(std::move(p));` transfers ownership; afterwards `p` is null. Without `std::move` the compiler rejects the copy, which is exactly the safety guarantee that keeps ownership unique.",
+      "last_updated": "2026-06-29",
+      "stale": true
+    },
+    {
+      "term": "How do you transfer ownership out of a function?",
+      "definition": "Return a `unique_ptr` by value: `std::unique_ptr<Widget> make() { return std::make_unique<Widget>(); }`. The return is moved (not copied) to the caller, who now owns it. This is the idiomatic factory pattern in modern C++.",
+      "summary": "Return a unique_ptr by value — the move transfers ownership.",
+      "category": "smart",
+      "last_updated": "2026-06-29",
+      "stale": true
+    },
+    {
+      "type": "truefalse",
+      "category": "use",
+      "answer": false,
+      "term": "It is fine to build two separate shared_ptrs from the same raw `new` pointer.",
+      "summary": "False — two control blocks both delete it → double free; use make_shared.",
+      "definition": "False. Constructing two independent `shared_ptr`s from one raw pointer gives each its own reference count, so both will eventually delete the object — a double free. Create the `shared_ptr` once (ideally via `make_shared`) and copy that.",
+      "last_updated": "2026-06-29",
+      "stale": true
+    },
+    {
+      "term": "Why prefer `make_shared` over `shared_ptr<T>(new T)`?",
+      "definition": "`make_shared` allocates the object and its control block in a single allocation (faster, better locality) and is exception-safe — there is no raw `new` whose result could leak if another argument throws. It also avoids writing `new` explicitly.",
+      "summary": "One allocation, exception-safe, no raw new.",
+      "category": "smart",
+      "last_updated": "2026-06-29",
+      "stale": true
+    },
+    {
+      "term": "Exercise: rewrite this leak-prone code with a smart pointer. `Widget* w = new Widget(); w->run(); delete w;`",
+      "sub": "Pick the smart pointer that expresses single ownership.",
+      "definition": "`auto w = std::make_unique<Widget>(); w->run();` — and that is the whole thing: the `Widget` is destroyed automatically when `w` goes out of scope, on every path including exceptions, so the manual `delete` (and the leak risk if `run()` throws) disappears. Single owner, so `unique_ptr` is the right choice.",
+      "summary": "`auto w = std::make_unique<Widget>(); w->run();` — auto-frees, no delete.",
+      "category": "use",
+      "last_updated": "2026-06-29",
+      "stale": true
+    },
+    {
+      "term": "Exercise: a parent node holds `shared_ptr<Node>` children and each child holds a `shared_ptr<Node>` back to its parent. What's wrong and how do you fix it?",
+      "sub": "Trace the reference counts when the tree should be destroyed.",
+      "definition": "Parent and child keep each other's count above zero, so the cycle never frees — a leak. Make the back-pointer to the parent a `weak_ptr<Node>`: children no longer keep the parent alive, the parent owns the children, and when the parent dies the whole subtree is reclaimed. Use `.lock()` to access the parent safely.",
+      "summary": "Cycle leaks; make the parent back-pointer a weak_ptr.",
+      "category": "use",
+      "last_updated": "2026-06-29",
+      "stale": true
+    }
+  ]
+}

@@ -1,0 +1,176 @@
+{
+  "id": "braille",
+  "name": "Braille alphabet (A–Z)",
+  "color": "#ff9f43",
+  "dual": true,
+  "description": "The 26 letters A–Z in Braille, each a pattern of raised dots in a six-position cell (1-2-3 down the left column, 4-5-6 down the right). Each card is tested both ways (letter→dots and dots→letter), tracked separately.",
+  "categories": {
+    "line1": "First decade (A–J)",
+    "line2": "Second decade (K–T)",
+    "line3": "Third decade (U–Z)"
+  },
+  "primerTitle": "Braille alphabet — quick recap",
+  "primer": "Braille letters are patterns of raised dots in a **six-position cell**: positions **1-2-3** run down the left column, **4-5-6** down the right column. The alphabet is built in three *decades* with a clean rule:\n- **First decade (A–J)** uses only the top four positions (1, 2, 4, 5).\n- **Second decade (K–T)** = the matching first-decade letter **plus dot 3**.\n- **Third decade (U–Z)** = the matching first-decade letter **plus dots 3 and 6** (W is the exception).\n\n**Full mapping — letter → cell → dots:**\n\n*First decade (A–J):*\n- **A** ⠁ — dot 1\n- **B** ⠃ — dots 1,2\n- **C** ⠉ — dots 1,4\n- **D** ⠙ — dots 1,4,5\n- **E** ⠑ — dots 1,5\n- **F** ⠋ — dots 1,2,4\n- **G** ⠛ — dots 1,2,4,5\n- **H** ⠓ — dots 1,2,5\n- **I** ⠊ — dots 2,4\n- **J** ⠚ — dots 2,4,5\n\n*Second decade (K–T) = A–J + dot 3:*\n- **K** ⠅ — dots 1,3\n- **L** ⠇ — dots 1,2,3\n- **M** ⠍ — dots 1,3,4\n- **N** ⠝ — dots 1,3,4,5\n- **O** ⠕ — dots 1,3,5\n- **P** ⠏ — dots 1,2,3,4\n- **Q** ⠟ — dots 1,2,3,4,5\n- **R** ⠗ — dots 1,2,3,5\n- **S** ⠎ — dots 2,3,4\n- **T** ⠞ — dots 2,3,4,5\n\n*Third decade (U–Z) = A–J + dots 3,6:*\n- **U** ⠥ — dots 1,3,6\n- **V** ⠧ — dots 1,2,3,6\n- **W** ⠺ — dots 2,4,5,6 *(the odd one out)*\n- **X** ⠭ — dots 1,3,4,6\n- **Y** ⠽ — dots 1,3,4,5,6\n- **Z** ⠵ — dots 1,3,5,6\n\n**Special case:** **W** breaks the decade pattern — it was added later because the original French Braille had no W, so its cell (dots 2,4,5,6) doesn't follow the +3+6 rule.",
+  "cards": [
+    {
+      "term": "A",
+      "definition": "⠁ — dot 1",
+      "category": "line1",
+      "note": "The first decade A–J uses only the top four positions (1,2,4,5).",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "B",
+      "definition": "⠃ — dots 1,2",
+      "category": "line1",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "C",
+      "definition": "⠉ — dots 1,4",
+      "category": "line1",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "D",
+      "definition": "⠙ — dots 1,4,5",
+      "category": "line1",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "E",
+      "definition": "⠑ — dots 1,5",
+      "category": "line1",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "F",
+      "definition": "⠋ — dots 1,2,4",
+      "category": "line1",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "G",
+      "definition": "⠛ — dots 1,2,4,5",
+      "category": "line1",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "H",
+      "definition": "⠓ — dots 1,2,5",
+      "category": "line1",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "I",
+      "definition": "⠊ — dots 2,4",
+      "category": "line1",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "J",
+      "definition": "⠚ — dots 2,4,5",
+      "category": "line1",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "K",
+      "definition": "⠅ — dots 1,3",
+      "category": "line2",
+      "note": "Second decade K–T = first decade A–J plus dot 3.",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "L",
+      "definition": "⠇ — dots 1,2,3",
+      "category": "line2",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "M",
+      "definition": "⠍ — dots 1,3,4",
+      "category": "line2",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "N",
+      "definition": "⠝ — dots 1,3,4,5",
+      "category": "line2",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "O",
+      "definition": "⠕ — dots 1,3,5",
+      "category": "line2",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "P",
+      "definition": "⠏ — dots 1,2,3,4",
+      "category": "line2",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "Q",
+      "definition": "⠟ — dots 1,2,3,4,5",
+      "category": "line2",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "R",
+      "definition": "⠗ — dots 1,2,3,5",
+      "category": "line2",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "S",
+      "definition": "⠎ — dots 2,3,4",
+      "category": "line2",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "T",
+      "definition": "⠞ — dots 2,3,4,5",
+      "category": "line2",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "U",
+      "definition": "⠥ — dots 1,3,6",
+      "category": "line3",
+      "note": "Third decade U–Z = first decade plus dots 3 and 6 (W is the exception).",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "V",
+      "definition": "⠧ — dots 1,2,3,6",
+      "category": "line3",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "W",
+      "definition": "⠺ — dots 2,4,5,6",
+      "category": "line3",
+      "note": "The odd one out — W was added later (French Braille had no W), so it breaks the decade pattern.",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "X",
+      "definition": "⠭ — dots 1,3,4,6",
+      "category": "line3",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "Y",
+      "definition": "⠽ — dots 1,3,4,5,6",
+      "category": "line3",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "Z",
+      "definition": "⠵ — dots 1,3,5,6",
+      "category": "line3",
+      "last_updated": "2026-06-29"
+    }
+  ]
+}

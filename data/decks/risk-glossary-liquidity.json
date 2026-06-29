@@ -1,0 +1,158 @@
+{
+  "id": "risk-glossary-liquidity",
+  "name": "Risk glossary — Liquidity & ALM",
+  "color": "#7dd3fc",
+  "description": "20 liquidity & alm terms, each thoroughly explained.",
+  "tags": [
+    "risk",
+    "glossary",
+    "reference",
+    "liquidity"
+  ],
+  "primerTitle": "Liquidity & ALM vocabulary",
+  "primer": "## Liquidity & ALM — vocabulary\nThe liquidity & ALM vocabulary — HQLA, LCR/NSFR, IRRBB and the EVE/NII pair. Each card gives a full definition; this deck is the terms the matching concept deck assumes.\n\n**Terms:** Funding liquidity vs market liquidity · High-Quality Liquid Assets (HQLA) · Liquidity Coverage Ratio (LCR) · Net Stable Funding Ratio (NSFR) · Liquidity gap · Survival horizon · Asset encumbrance · Contingency Funding Plan (CFP) · Intraday liquidity risk · Deposit stickiness / runoff · Liquidity-adjusted VaR (LVaR) · Interest rate risk in the banking book (IRRBB) · Economic Value of Equity (EVE) and ΔEVE · Net Interest Income (NII) and ΔNII · Repricing gap · Duration gap · Deposit beta · Non-Maturing Deposits (NMD) · Funds Transfer Pricing (FTP) · Immunisation",
+  "cards": [
+    {
+      "term": "Funding liquidity vs market liquidity",
+      "definition": "Funding liquidity is the ability to raise or roll over cash to meet obligations as they fall due; market liquidity is the ability to sell an asset quickly near its marked value. They interact: a funding shortfall forces asset sales, and thin market liquidity makes those sales costly, so each can amplify the other into a liquidity spiral.",
+      "note": "A solvent firm can still fail purely from a funding shortfall (Northern Rock, 2007).",
+      "last_updated": "2026-06-29",
+      "stale": true
+    },
+    {
+      "term": "High-Quality Liquid Assets (HQLA)",
+      "definition": "Unencumbered assets that can be converted to cash quickly with little or no loss of value even in stress, forming the buffer a bank draws on first under the LCR. They are tiered: Level 1 (cash, central-bank reserves, high-grade sovereigns) at no haircut and no cap; Level 2A and 2B (high-grade corporates, certain RMBS, equities) carry rising haircuts and a combined cap of 40% of total HQLA, with Level 2B capped at 15%.",
+      "note": "Tiers: Level 1 / 2A / 2B, each with its own haircut and cap.",
+      "last_updated": "2026-06-29",
+      "stale": true
+    },
+    {
+      "term": "Liquidity Coverage Ratio (LCR)",
+      "definition": "A Basel III short-term metric requiring a bank to hold enough HQLA to survive 30 calendar days of stressed net cash outflows. Net outflows are stressed outflows (deposit runoff, undrawn commitments, etc.) minus capped inflows. The ratio must stay at or above 100%, ensuring the buffer alone covers a one-month acute stress without external funding.",
+      "note": "Inflows are capped at 75% of outflows, so a bank cannot fully rely on inflows.",
+      "last_updated": "2026-06-29",
+      "stale": true
+    },
+    {
+      "term": "Net Stable Funding Ratio (NSFR)",
+      "definition": "A Basel III structural metric requiring available stable funding (weighted by source stickiness) to cover required stable funding (weighted by asset liquidity and tenor) over a one-year horizon. Where the LCR addresses a 30-day acute shock, the NSFR curbs excessive reliance on short-term wholesale funding by mandating durable funding for long-dated, illiquid assets. It must remain at or above 100%.",
+      "note": "LCR = 30-day survival; NSFR = one-year structural funding stability.",
+      "last_updated": "2026-06-29",
+      "stale": true
+    },
+    {
+      "term": "Liquidity gap",
+      "sub": "maturity mismatch",
+      "definition": "The difference between contractual or behavioural cash inflows and outflows in each future time bucket. Persistent negative gaps reveal where the bank must raise funding and how dependent it is on rolling over maturing liabilities. It is the core tool of structural liquidity analysis and the basis for survival-horizon and funding-plan sizing.",
+      "note": "Behavioural gaps refine contractual ones using deposit-stickiness and prepayment models.",
+      "last_updated": "2026-06-29",
+      "stale": true
+    },
+    {
+      "term": "Survival horizon",
+      "sub": "time-to-survive",
+      "definition": "The number of days a firm can meet its outflows under a defined stress scenario using only its liquidity buffer, before external funding becomes necessary. It is the internal metric behind the LCR's 30-day window and the key output of a cash-flow liquidity stress test. A longer horizon buys time to execute the contingency funding plan in an orderly way.",
+      "note": "$\\\\text{survival days} = \\\\dfrac{\\\\text{liquidity buffer}}{\\\\text{net stressed daily outflow}}$",
+      "last_updated": "2026-06-29",
+      "stale": true
+    },
+    {
+      "term": "Asset encumbrance",
+      "definition": "The share of a bank's assets pledged as collateral (for repo, covered bonds, derivatives margin or central-bank facilities) and thus unavailable to other creditors or for raising emergency cash. High encumbrance leaves less to monetise in stress and structurally subordinates unsecured creditors and depositors. Supervisors monitor the encumbrance ratio as an early warning of constrained funding flexibility.",
+      "note": "encumbrance ratio $= \\\\dfrac{\\\\text{encumbered assets}}{\\\\text{total assets}}$",
+      "last_updated": "2026-06-29",
+      "stale": true
+    },
+    {
+      "term": "Contingency Funding Plan (CFP)",
+      "definition": "A pre-agreed playbook of actions and funding sources to invoke under liquidity stress, specifying early-warning triggers, escalation thresholds, responsibilities and the menu of contingent sources (HQLA sales, repo, committed lines, central-bank access). Its value is having decisions made and tested before a panic, not improvised during one. It is tightly linked to the survival horizon and the liquidity stress-testing framework.",
+      "note": "Triggers and roles must be calibrated and rehearsed before they are needed.",
+      "last_updated": "2026-06-29",
+      "stale": true
+    },
+    {
+      "term": "Intraday liquidity risk",
+      "definition": "The risk of lacking funds to meet payment and settlement obligations at the required moment within the day, even when end-of-day liquidity is adequate. It is critical for banks active in large-value payment systems (e.g. TARGET2, Fedwire, CHAPS), where a timing failure can cascade across counterparties. It is a throughput-and-timing problem distinct from the stock measures of LCR and NSFR.",
+      "note": "BCBS monitoring tools track peak intraday usage, available intraday liquidity and timing of payments.",
+      "last_updated": "2026-06-29",
+      "stale": true
+    },
+    {
+      "term": "Deposit stickiness / runoff",
+      "definition": "Runoff is the rate at which deposits leave during stress, by depositor type and insurance status; stickiness is the complementary tendency of granular insured retail balances to stay put. Runoff factors convert a deposit base into a stressed outflow for buffer sizing and the LCR, with far higher factors applied to wholesale and uninsured deposits than to stable insured retail.",
+      "note": "Modern app-driven runs can be far faster than historical calibration assumes.",
+      "last_updated": "2026-06-29",
+      "stale": true
+    },
+    {
+      "term": "Liquidity-adjusted VaR (LVaR)",
+      "definition": "Value-at-Risk augmented with the cost of actually liquidating a position, adding the bid-ask (and market-impact) cost to the price-risk loss. It recognises that exit is not free, especially for large or illiquid books where forced selling walks the price down. The simplest exogenous-spread version adds half the stressed spread to standard VaR.",
+      "note": "$\\\\mathrm{LVaR} = \\\\mathrm{VaR} + \\\\tfrac{1}{2}\\\\,(\\\\mu_s + z\\\\,\\\\sigma_s)\\\\,V$",
+      "last_updated": "2026-06-29",
+      "stale": true
+    },
+    {
+      "term": "Interest rate risk in the banking book (IRRBB)",
+      "definition": "The risk to a bank's earnings and economic value from adverse interest-rate moves on non-traded assets and liabilities such as loans and deposits. Unlike trading-book rate risk it is managed through ALM and held against capital under Pillar 2, not market-risk capital. It is measured both as an earnings view ($\\\\Delta$NII, short horizon) and a value view ($\\\\Delta$EVE, long run).",
+      "note": "Drivers: gap (repricing), basis, option and yield-curve risk.",
+      "last_updated": "2026-06-29",
+      "stale": true
+    },
+    {
+      "term": "Economic Value of Equity (EVE) and ΔEVE",
+      "definition": "EVE is the present value of banking-book assets minus the present value of liabilities, capturing the long-run, value-based intrinsic worth of the bank. $\\\\Delta$EVE is its change under a prescribed rate shock and is the value-based pillar of IRRBB. Regulators apply standardised shock scenarios and cap the EVE decline (e.g. the 15%-of-Tier-1 supervisory outlier test).",
+      "note": "$\\\\mathrm{EVE} = \\\\mathrm{PV}(\\\\text{assets}) - \\\\mathrm{PV}(\\\\text{liabilities})$; long-run value, not earnings.",
+      "last_updated": "2026-06-29",
+      "stale": true
+    },
+    {
+      "term": "Net Interest Income (NII) and ΔNII",
+      "definition": "NII is the difference between interest earned on assets and interest paid on liabilities — the core accrual earnings of a bank. $\\\\Delta$NII under rate shocks is the earnings-based view of IRRBB over a one-to-three-year horizon, complementing the value-based $\\\\Delta$EVE. The two can conflict: a structure that protects earnings may expose economic value, and vice versa.",
+      "note": "Short-horizon and accrual-based; sensitive to repricing gaps and deposit beta.",
+      "last_updated": "2026-06-29",
+      "stale": true
+    },
+    {
+      "term": "Repricing gap",
+      "definition": "A measure that buckets assets and liabilities by time to their next interest-rate reset, then nets them per bucket to expose the maturity-of-rate mismatch. A positive gap (more rate-sensitive assets than liabilities) means NII rises when rates rise; a negative gap means the opposite. It is the simplest, accrual-oriented gauge of earnings sensitivity to rates.",
+      "note": "$\\\\text{gap}_t = \\\\text{rate-sensitive assets}_t - \\\\text{rate-sensitive liabilities}_t$",
+      "last_updated": "2026-06-29",
+      "stale": true
+    },
+    {
+      "term": "Duration gap",
+      "definition": "The duration-weighted mismatch between assets and liabilities, measuring the sensitivity of the economic value of equity to rate moves. A nonzero gap exposes the bank's net worth to parallel curve shifts, and a positive duration gap means EVE falls when rates rise. It is the value-based counterpart to the earnings-based repricing gap.",
+      "note": "$\\\\Delta E \\\\approx -\\\\big(D_A - \\\\tfrac{L}{A}\\\\,D_L\\\\big)\\\\,A\\\\,\\\\Delta y$",
+      "last_updated": "2026-06-29",
+      "stale": true
+    },
+    {
+      "term": "Deposit beta",
+      "definition": "The share of a market-rate move that a bank passes through to its depositors. A low beta means deposit rates lag the market, widening margins when rates rise but understating how quickly funding could reprice or flee. Beta assumptions, together with assumed deposit life, dominate a retail bank's IRRBB and its non-maturing-deposit modelling.",
+      "note": "Low historical betas can jump abruptly once rates and competition rise.",
+      "last_updated": "2026-06-29",
+      "stale": true
+    },
+    {
+      "term": "Non-Maturing Deposits (NMD)",
+      "definition": "Deposits with no contractual maturity (current and savings accounts) that depositors can withdraw on demand but in practice leave largely in place. Because they have no fixed repricing or maturity date, banks assign them a behavioural duration and runoff profile via a stable-core / volatile-tranche split. These assumptions, driven by deposit beta and stickiness, are the largest behavioural judgement in IRRBB and liquidity modelling.",
+      "note": "Regulators cap modelled NMD behavioural maturity (e.g. an average life ceiling) to limit optimism.",
+      "last_updated": "2026-06-29",
+      "stale": true
+    },
+    {
+      "term": "Funds Transfer Pricing (FTP)",
+      "definition": "The internal mechanism that charges lending units for the funds they use and credits deposit-gathering units for the funds they provide, transferring interest-rate and liquidity risk to a central treasury. It lets business lines be measured on credit spread and customer margin rather than on rate or funding bets they should not own. A weak FTP framework hides where rate and liquidity risk actually sit.",
+      "note": "A proper FTP curve includes a term-liquidity premium, not just the base rate.",
+      "last_updated": "2026-06-29",
+      "stale": true
+    },
+    {
+      "term": "Immunisation",
+      "definition": "Structuring a portfolio so its value is insensitive to interest-rate moves over a horizon, classically by matching the duration of assets to that of liabilities while keeping PV(assets) at least PV(liabilities). It locks in a return against small parallel shifts but must be rebalanced as durations drift and only neutralises first-order (duration), not convexity, risk.",
+      "note": "set $D_A = D_L$ and $\\\\mathrm{PV}(\\\\text{assets}) \\\\ge \\\\mathrm{PV}(\\\\text{liabilities})$",
+      "last_updated": "2026-06-29",
+      "stale": true
+    }
+  ]
+}

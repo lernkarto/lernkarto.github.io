@@ -1,0 +1,13 @@
+{
+  "name": "C++",
+  "primerTitle": "C++ — what this subject covers",
+  "description": "A full C++ course, basics through modern standards, in order.",
+  "primer": "## C++\nAn ordered course in the language, easy to advanced.\n- **Basics** — types, control flow, functions, the build model.\n- **Memory & resources** — pointers, references, RAII, ownership.\n- **OOP** — classes, inheritance, polymorphism, the rule of 0/3/5.\n- **Templates & STL** — generics, containers, algorithms, iterators.\n- **Modern standards & novelties** — what each C++ version (11/14/17/20/23) added.\n\nThe through-line: each topic assumes the previous — clear the basics before memory, memory before templates.",
+  "topics": [
+    "Basics",
+    "Memory & resources",
+    "OOP",
+    "Templates & STL",
+    "Modern standards & novelties"
+  ]
+}

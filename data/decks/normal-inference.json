@@ -1,0 +1,137 @@
+{
+  "id": "normal-inference",
+  "name": "Inference",
+  "color": "#f783ac",
+  "description": "Using the normal on data: the CDF and error function, the Q-function and tail probabilities, reading z-tables, estimating μ and σ² by MLE with Bessel's correction and unbiasedness, the sampling distribution of the mean and standard error, and confidence intervals.",
+  "source": "https://en.wikipedia.org/wiki/Normal_distribution",
+  "license": "CC BY-SA 4.0",
+  "attribution": "Adapted from Wikipedia — 'Normal distribution', 'Error function' and 'Standard error' — licensed under CC BY-SA 4.0.",
+  "primerTitle": "Normal — Inference: quick recap",
+  "primer": "## CDF, error function & tails\n- The standard-normal **CDF** $\\Phi(x)=\\frac{1}{\\sqrt{2\\pi}}\\int_{-\\infty}^{x}e^{-t^2/2}dt$ has no elementary form; written via the **error function** as $\\Phi(x)=\\tfrac12\\big[1+\\operatorname{erf}(x/\\sqrt2)\\big]$. $\\operatorname{erf}$ is just the Gaussian integral rescaled, so it and $\\Phi$ carry the same information.\n- **Q-function** $Q(x)=1-\\Phi(x)=P(Z>x)$ — the **upper-tail probability**; by symmetry $Q(-x)=\\Phi(x)$.\n- **Using a z-table:** to get $P(X>x)$ for $X\\sim N(\\mu,\\sigma^2)$, first standardise $z=(x-\\mu)/\\sigma$, then read $P(X>x)=P(Z>z)=1-\\Phi(z)=Q(z)$. One $N(0,1)$ table serves every normal.\n\n## Estimation (MLE)\n- **Mean:** the MLE of $\\mu$ is the **sample mean** $\\bar X=\\tfrac1n\\sum X_i$, which is also unbiased ($E[\\bar X]=\\mu$).\n- **Variance:** the **unbiased** sample variance $S^2=\\frac{1}{n-1}\\sum(X_i-\\bar X)^2$ divides by $n-1$ — **Bessel's correction** — which removes the downward bias from fitting $\\mu$ by $\\bar X$.\n- The **MLE of $\\sigma^2$ divides by $n$ and is biased low** (underestimates $\\sigma^2$); the $n-1$ version is unbiased.\n- So $\\mu,\\sigma^2$ are estimated by the sample **mean** and sample variance respectively, together pinning the fitted normal.\n\n## Sampling distribution & confidence intervals\n- **Sampling distribution of the mean:** $\\bar X\\sim N(\\mu,\\ \\sigma^2/n)$ exactly (a linear combination of independent normals; approximate for non-normal populations by the CLT).\n- **Standard error** $\\mathrm{SE}=\\sigma/\\sqrt n$ — the SD of $\\bar X$; it shrinks like $1/\\sqrt n$ (quadruple $n$ to halve SE; cut SE 10× costs a 100× sample). Solve for $n$ via $n=(\\sigma/\\mathrm{SE})^2$.\n- **Confidence interval** (known $\\sigma$): $\\bar X\\pm z\\,\\sigma/\\sqrt n$; the **95% CI uses $z=1.96$** (the two-sided 95% z-quantile).\n- With **$\\sigma$ unknown and small $n$**, estimating $\\sigma$ adds uncertainty (fatter tails) → use the **t-distribution** ($n-1$ d.o.f.) in place of the normal; the t multiplier $\\to z$ as $n$ grows.",
+  "categories": {
+    "cdf": "CDF & tails",
+    "estimation": "Estimation",
+    "sampling": "Sampling & CIs",
+    "exercise": "Exercises"
+  },
+  "cards": [
+    {
+      "category": "cdf",
+      "term": "How is the normal CDF related to the error function?",
+      "summary": "$\\Phi(x)=\\tfrac12[1+\\operatorname{erf}(x/\\sqrt2)]$.",
+      "definition": "The standard-normal CDF $\\Phi(x)=\\frac{1}{\\sqrt{2\\pi}}\\int_{-\\infty}^{x}e^{-t^2/2}\\,dt$ has no elementary closed form; it is written via the error function as $\\Phi(x)=\\tfrac12\\big[1+\\operatorname{erf}(x/\\sqrt2)\\big]$. The $\\operatorname{erf}$ is just the Gaussian integral rescaled, so it and $\\Phi$ carry the same information.",
+      "formula": "$\\Phi(x)=\\dfrac12\\Big[1+\\operatorname{erf}\\!\\big(\\tfrac{x}{\\sqrt2}\\big)\\Big]$",
+      "note": "[1] Error function (Wikipedia) — https://en.wikipedia.org/wiki/Error_function",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "category": "cdf",
+      "term": "[Normal] What does the Q-function $Q(x)=1-\\Phi(x)$ give?",
+      "sub": "A) the upper-tail probability $P(Z>x)$ for a standard normal    B) the density at $x$    C) the median of the distribution    D) the variance beyond $x$",
+      "definition": "Correct: A) the upper-tail probability $P(Z>x)$ for a standard normal. $Q$ is the complement of the CDF, handy for tail/exceedance probabilities; by symmetry $Q(-x)=\\Phi(x)$.",
+      "note": "[1] Q-function (Wikipedia) — https://en.wikipedia.org/wiki/Q-function",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "category": "cdf",
+      "term": "[Normal] To find $P(X>x)$ for $X\\sim N(\\mu,\\sigma^2)$ using a standard z-table, you first compute the z-score $z=(x-\\mu)/\\sigma$ and then look up $1-\\Phi(z)$.",
+      "type": "truefalse",
+      "answer": true,
+      "summary": "True — standardise, then read the tail off the table.",
+      "definition": "True. Standardising turns any normal probability into a standard-normal one: $P(X>x)=P(Z>z)=1-\\Phi(z)=Q(z)$. The single $N(0,1)$ table then suffices for every normal.",
+      "note": "[1] Normal distribution (Wikipedia) — https://en.wikipedia.org/wiki/Normal_distribution",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "category": "estimation",
+      "term": "What is the maximum-likelihood estimator of the mean $\\mu$ from a normal sample?",
+      "summary": "The sample mean $\\bar X=\\tfrac1n\\sum X_i$.",
+      "definition": "For an i.i.d. normal sample the MLE of $\\mu$ is the sample mean $\\bar X=\\frac1n\\sum_{i=1}^n X_i$, which is also unbiased ($E[\\bar X]=\\mu$). It is the natural estimator of location.",
+      "note": "[1] Normal distribution (Wikipedia) — https://en.wikipedia.org/wiki/Normal_distribution",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "category": "estimation",
+      "term": "[Normal] The unbiased sample variance divides the sum of squared deviations by $n-1$ rather than $n$. What is this called?",
+      "sub": "A) Bessel's correction    B) the Bonferroni correction    C) the continuity correction    D) Sheppard's correction",
+      "definition": "Correct: A) Bessel's correction. Using $n-1$ in $S^2=\\frac{1}{n-1}\\sum(X_i-\\bar X)^2$ corrects the downward bias from estimating $\\mu$ by $\\bar X$, making $S^2$ unbiased for $\\sigma^2$.",
+      "note": "[1] Bessel's correction (Wikipedia) — https://en.wikipedia.org/wiki/Bessel%27s_correction",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "category": "estimation",
+      "term": "[Normal] The maximum-likelihood estimator of $\\sigma^2$ (dividing by $n$) is unbiased.",
+      "type": "truefalse",
+      "answer": false,
+      "summary": "False — the MLE divides by $n$ and is biased low; the $n-1$ version is unbiased.",
+      "definition": "False. The MLE $\\hat\\sigma^2=\\frac1n\\sum(X_i-\\bar X)^2$ systematically underestimates $\\sigma^2$ because $\\bar X$ is fitted to the same data. Dividing instead by $n-1$ (Bessel's correction) removes the bias.",
+      "note": "[1] Bessel's correction (Wikipedia) — https://en.wikipedia.org/wiki/Bessel%27s_correction",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "category": "estimation",
+      "term": "The two parameters $\\mu$ and $\\sigma^2$ are estimated from a sample by the sample {{mean}} and the sample variance respectively.",
+      "definition": "$\\mu$ is estimated by the sample mean $\\bar X=\\frac1n\\sum X_i$ and $\\sigma^2$ by the sample variance $S^2=\\frac{1}{n-1}\\sum(X_i-\\bar X)^2$. Together they fully pin down the fitted normal.",
+      "type": "cloze",
+      "note": "[1] Normal distribution (Wikipedia) — https://en.wikipedia.org/wiki/Normal_distribution",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "category": "sampling",
+      "term": "What is the sampling distribution of the mean $\\bar X$ for a sample of size $n$ from $N(\\mu,\\sigma^2)$?",
+      "summary": "$\\bar X\\sim N(\\mu,\\ \\sigma^2/n)$.",
+      "definition": "Because the mean is a linear combination of independent normals, $\\bar X\\sim N(\\mu,\\ \\sigma^2/n)$ exactly. Its spread shrinks as $n$ grows; for non-normal populations the same result holds approximately by the CLT.",
+      "formula": "$\\bar X\\sim N\\!\\big(\\mu,\\ \\sigma^2/n\\big)$",
+      "note": "[1] Normal distribution (Wikipedia) — https://en.wikipedia.org/wiki/Normal_distribution",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "category": "sampling",
+      "term": "[Normal] The standard error of the sample mean is:",
+      "sub": "A) $\\sigma/\\sqrt{n}$    B) $\\sigma/n$    C) $\\sigma\\sqrt{n}$    D) $\\sigma^2/n$",
+      "definition": "Correct: A) $\\sigma/\\sqrt{n}$. The standard error is the standard deviation of $\\bar X$; since $\\operatorname{Var}(\\bar X)=\\sigma^2/n$, its SD is $\\sigma/\\sqrt n$. Precision improves only like $\\sqrt n$ — quadrupling the sample halves the SE.",
+      "note": "[1] Standard error (Wikipedia) — https://en.wikipedia.org/wiki/Standard_error",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "category": "sampling",
+      "term": "[Normal] A 95% confidence interval for the mean (known $\\sigma$) is $\\bar X \\pm 1.96\\,\\sigma/\\sqrt{n}$; the multiplier 1.96 comes from the standard normal.",
+      "type": "truefalse",
+      "answer": true,
+      "summary": "True — 1.96 is the two-sided 95% z-quantile, scaled by the standard error.",
+      "definition": "True. With $\\sigma$ known, $\\bar X\\pm z\\,\\sigma/\\sqrt n$ is a CI; the 95% level uses $z=1.96$. When $\\sigma$ is unknown and $n$ small, the t-distribution (with $n-1$ degrees of freedom) replaces the z multiplier.",
+      "note": "[1] Confidence interval (Wikipedia) — https://en.wikipedia.org/wiki/Confidence_interval",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "category": "sampling",
+      "term": "A confidence interval for the mean with $\\sigma$ unknown and a small sample uses the {{t}}-distribution in place of the standard normal.",
+      "definition": "Estimating $\\sigma$ from the sample adds uncertainty, fattening the tails — so the multiplier comes from Student's t (with $n-1$ degrees of freedom) rather than the normal. As $n$ grows the t multiplier converges back to the z value.",
+      "type": "cloze",
+      "note": "[1] Student's t-distribution (Wikipedia) — https://en.wikipedia.org/wiki/Student%27s_t-distribution",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "category": "exercise",
+      "term": "[Exercise] $\\sigma=20$ for a population. How large must $n$ be for the standard error of the mean to drop to 2?",
+      "summary": "$n=100$ — solve $20/\\sqrt n = 2$.",
+      "definition": "Set $\\mathrm{SE}=\\sigma/\\sqrt n = 2$: $\\sqrt n = 20/2 = 10$, so $n=100$. The $1/\\sqrt n$ law means cutting the SE by a factor of 10 (from 20 to 2) costs a 100-fold sample.",
+      "note": "Solves $\\mathrm{SE}=\\sigma/\\sqrt n$ for $n$.",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "category": "exercise",
+      "term": "[Exercise] From $n=64$ observations with sample mean $\\bar X=50$ and known $\\sigma=8$, give a 95% confidence interval for $\\mu$.",
+      "summary": "$50 \\pm 1.96$, i.e. about $(48.04,\\ 51.96)$.",
+      "definition": "Standard error $=\\sigma/\\sqrt n = 8/\\sqrt{64}=8/8=1$. The 95% CI is $\\bar X\\pm 1.96\\times\\mathrm{SE}=50\\pm1.96\\times1=50\\pm1.96$, i.e. roughly $(48.04,\\ 51.96)$.",
+      "note": "Combines $\\mathrm{SE}=\\sigma/\\sqrt n$ with the 1.96 z-quantile from the primer.",
+      "last_updated": "2026-06-29"
+    }
+  ],
+  "tags": [
+    "distributions",
+    "normal",
+    "probability",
+    "inference"
+  ]
+}

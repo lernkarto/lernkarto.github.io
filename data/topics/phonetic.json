@@ -1,0 +1,11 @@
+{
+  "topic": "NATO phonetic alphabet",
+  "id": "phonetic",
+  "standard": true,
+  "description": "The NATO/ICAO radiotelephony spelling alphabet — code words for spelling letters clearly over radio. Each item is tested both ways, tracked separately.",
+  "primerTitle": "NATO phonetic — quick recap",
+  "primer": "## How this set works\nThe 26 NATO/ICAO **spelling alphabet** code words — used to say letters unambiguously over a noisy radio ('B as in Bravo'). Each card is studied **both ways** and tracked separately — you only master it once you know it in both directions.\n\n## The alphabet\n- A **Alfa** · B **Bravo** · C **Charlie** · D **Delta** · E **Echo** · F **Foxtrot** · G **Golf** · H **Hotel** · I **India** · J **Juliett** · K **Kilo** · L **Lima** · M **Mike**\n- N **November** · O **Oscar** · P **Papa** · Q **Quebec** · R **Romeo** · S **Sierra** · T **Tango** · U **Uniform** · V **Victor** · W **Whiskey** · X **X-ray** · Y **Yankee** · Z **Zulu**\n\n## Watch out (deliberate spellings)\n- **Alfa** and **Juliett** are spelled oddly on purpose — so French and other speakers pronounce them correctly.\n- Digits are spoken too, with **niner** for 9 (to avoid confusion with 'nein'/'five').\n- **Zulu** also names UTC ('Zulu time').\n\nEvery card's answer is in this chart — know it both ways and you'll pass the deck.",
+  "deckFiles": [
+    "phonetic-nato.json"
+  ]
+}

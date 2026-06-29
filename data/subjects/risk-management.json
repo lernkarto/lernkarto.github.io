@@ -1,0 +1,19 @@
+{
+  "name": "Risk management",
+  "primerTitle": "Risk management — what this subject covers",
+  "description": "Banking risk: market, credit, operational, liquidity and the Basel framework.",
+  "primer": "## Risk management\nMeasuring and controlling the ways a financial institution can lose money.\n- **Foundations & governance** — risk types, appetite, the three lines of defence.\n- **Market risk** — VaR/ES, sensitivities, the trading book.\n- **Credit risk** — PD, LGD, EAD, expected vs unexpected loss.\n- **Operational, liquidity & model risk**, and the **Basel** capital framework that ties them together.\n\nThe through-line: identify the exposure, quantify the loss distribution, hold capital against the tail, and govern the whole process.",
+  "topics": [
+    "Risk foundations",
+    "Financial risk management",
+    "Market risk",
+    "Credit risk",
+    "Counterparty risk & XVA",
+    "Liquidity & ALM",
+    "Capital & regulation",
+    "Operational, model & stress",
+    "Quantitative toolkit",
+    "Risk glossary",
+    "Time series"
+  ]
+}

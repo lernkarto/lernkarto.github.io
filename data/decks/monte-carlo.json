@@ -1,0 +1,129 @@
+{
+  "id": "monte-carlo",
+  "name": "Monte Carlo simulation",
+  "color": "#4dabf7",
+  "description": "Estimation by random sampling: what Monte Carlo is, its link to the law of large numbers, the $1/\\sqrt{N}$ convergence rate, variance-reduction tricks (antithetic and control variates), pseudo- vs quasi-random numbers, and use in pricing and risk.",
+  "categories": {
+    "core": "Core",
+    "theorems": "Concepts",
+    "use": "Use & limitations",
+    "exercise": "Exercises"
+  },
+  "primerTitle": "Monte Carlo — quick recap",
+  "primer": "## The idea\\n\\n- **Monte Carlo** estimates an expectation, integral or probability by drawing many random samples and averaging: $E[f(X)]\\\\approx\\\\frac{1}{N}\\\\sum_{i=1}^N f(X_i)$. Trades analytic difficulty for computation.\\n\\n## Why it works & how fast\\n\\n- The **Law of Large Numbers** guarantees the sample average $\\\\to$ true expectation as $N\\\\to\\\\infty$. The **Central Limit Theorem** then describes the error's distribution.\\n- **Error $\\\\propto 1/\\\\sqrt{N}$** (standard error $=\\\\sigma/\\\\sqrt{N}$), and this rate is **independent of dimension** — why MC beats grid methods in high dimensions.\\n- Because error scales as $1/\\\\sqrt{N}$: to **halve** the error you need **$4\\\\times$** the samples; to cut it to a quarter, $16\\\\times$.\\n\\n## Variance reduction\\n\\n- Lower the estimator's variance to hit target accuracy with fewer samples, **without changing what is estimated**.\\n- **Antithetic variates**: pair each draw with a negatively correlated mirror ($U$ and $1-U$, or $Z$ and $-Z$) so errors partly cancel.\\n- **Control variates**: subtract a correlated quantity with known mean, $\\\\hat\\\\theta_{cv}=\\\\bar f-c(\\\\bar g-E[g])$; stronger correlation = bigger reduction.\\n- Also: importance sampling (oversample the rare tail), stratification.\\n\\n## Random numbers\\n\\n- **Pseudo-random**: a deterministic algorithm from a seed that mimics independent uniforms — reproducible (same seed → same stream), which aids debugging.\\n- **Quasi-random (low-discrepancy)** sequences (Sobol, Halton) fill the space more evenly, giving faster convergence than $1/\\\\sqrt{N}$ — roughly $O((\\\\log N)^d/N)$.\\n\\n## Uses & limits\\n\\n- **Option pricing**: simulate many price paths under the risk-neutral measure, average the payoffs, discount to present value — great for path-dependent/high-dim payoffs.\\n- **VaR**: simulate the portfolio P&L distribution and read off the loss quantile (e.g. 99%); the average loss beyond it is expected shortfall.\\n- **Limitations**: slow $1/\\\\sqrt{N}$ convergence, can be expensive for tight accuracy, only as good as the assumed input distributions. High dimensionality is a **strength**, not a limit.",
+  "cards": [
+    {
+      "category": "core",
+      "term": "What is Monte Carlo simulation?",
+      "summary": "Estimating a quantity by averaging over many random samples.",
+      "definition": "A method that estimates an expectation, integral or probability by drawing many random samples, evaluating the quantity of interest on each, and averaging: $E[f(X)]\\approx\\frac{1}{N}\\sum_{i=1}^N f(X_i)$. It trades analytic difficulty for raw computation.",
+      "formula": "$E[f(X)]\\approx\\dfrac{1}{N}\\sum_{i=1}^N f(X_i)$",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "category": "theorems",
+      "term": "Which theorem guarantees that a Monte Carlo average converges to the true value?",
+      "summary": "The Law of Large Numbers.",
+      "definition": "The Law of Large Numbers says the sample average converges to the true expectation as the number of draws $N\\to\\infty$. That is exactly why a Monte Carlo estimate becomes accurate with enough samples; the Central Limit Theorem then describes the distribution of the estimation error.",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "category": "theorems",
+      "term": "[Monte Carlo] How fast does the Monte Carlo estimation error shrink with the number of samples $N$?",
+      "sub": "A) like $1/\\sqrt{N}$, independent of dimension    B) like $1/N$    C) like $1/N^2$    D) it does not depend on $N$",
+      "definition": "Correct: A) like $1/\\sqrt{N}$, independent of dimension. The standard error is $\\sigma/\\sqrt{N}$, so error falls as $O(1/\\sqrt{N})$. Crucially this rate does not depend on the dimension of the problem, which is why Monte Carlo beats grid methods in high dimensions.",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "category": "theorems",
+      "term": "To halve the standard error of a Monte Carlo estimate you must multiply the number of samples by {{4}} (because error scales as $1/\\sqrt{N}$).",
+      "type": "cloze",
+      "definition": "Since the error $\\propto 1/\\sqrt{N}$, cutting it in half requires $\\sqrt{N}$ to double, i.e. $N$ to quadruple. This slow convergence is the main cost of plain Monte Carlo and the motivation for variance-reduction techniques.",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "category": "core",
+      "term": "Why use variance-reduction techniques in Monte Carlo?",
+      "summary": "To reach a target accuracy with far fewer samples.",
+      "definition": "Because the error shrinks only as $1/\\sqrt{N}$, brute force is expensive. Variance-reduction methods (antithetic variates, control variates, importance sampling, stratification) lower the variance of the estimator so the same accuracy is reached with fewer samples — without changing what is being estimated.",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "category": "theorems",
+      "term": "[Monte Carlo] How do antithetic variates reduce variance?",
+      "sub": "A) by pairing each draw with a negatively correlated mirror draw (e.g. $U$ and $1-U$) so their errors partly cancel    B) by discarding outlier samples    C) by using more random-number generators    D) by increasing the time step",
+      "definition": "Correct: A) by pairing each draw with a negatively correlated mirror draw so their errors partly cancel. Using $U$ and $1-U$ (or $Z$ and $-Z$) introduces negative correlation between paired estimates; the variance of their average is lower than that of independent draws.",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "category": "theorems",
+      "term": "What is the control-variates technique?",
+      "summary": "Subtract a correlated quantity whose true mean is known to cancel variance.",
+      "definition": "A control variate is a second quantity, correlated with the target and with a known expectation. By adjusting the estimator using the control's known error you cancel much of the noise: $\\hat{\\theta}_{cv}=\\bar{f}-c(\\bar{g}-E[g])$, with $c$ chosen to minimise variance. The stronger the correlation, the larger the reduction.",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "category": "theorems",
+      "term": "[Monte Carlo] How do quasi-random (low-discrepancy) sequences differ from pseudo-random numbers?",
+      "sub": "A) they fill the sample space more evenly, giving faster convergence than $1/\\sqrt{N}$    B) they are truly random    C) they are slower to converge    D) they can only be used in one dimension",
+      "definition": "Correct: A) they fill the sample space more evenly, giving faster convergence than $1/\\sqrt{N}$. Quasi-random sequences (Sobol, Halton) are deliberately spread to minimise gaps and clumping; quasi-Monte Carlo can converge roughly as $O((\\log N)^d/N)$, faster than the pseudo-random $O(1/\\sqrt{N})$.",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "category": "core",
+      "term": "[Monte Carlo] Pseudo-random numbers are generated by a deterministic algorithm, not truly random.",
+      "type": "truefalse",
+      "answer": true,
+      "summary": "True — they are a reproducible deterministic stream that mimics randomness.",
+      "definition": "True. Pseudo-random generators produce a deterministic sequence from a seed that statistically imitates independent uniform draws. Being reproducible (same seed → same stream) is a feature: it makes simulations debuggable and repeatable.",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "category": "use",
+      "term": "[Monte Carlo] How is Monte Carlo used to price an option?",
+      "sub": "A) simulate many price paths, average the payoff, and discount to present value    B) solve the option's PDE on a fixed grid    C) take the historical average return    D) invert the covariance matrix",
+      "definition": "Correct: A) simulate many price paths, average the payoff, and discount to present value. You simulate many underlying-price trajectories under the risk-neutral measure, compute each path's payoff, average them (Law of Large Numbers), and discount — especially valuable for path-dependent or high-dimensional payoffs with no closed form.",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "category": "use",
+      "term": "[Monte Carlo] How does Monte Carlo produce a Value-at-Risk (VaR) estimate?",
+      "sub": "A) simulate the portfolio P&L distribution and read off the loss quantile    B) compute the mean return only    C) use the determinant of the covariance matrix    D) it cannot estimate VaR",
+      "definition": "Correct: A) simulate the portfolio P&L distribution and read off the loss quantile. By simulating many joint risk-factor scenarios you build an empirical distribution of portfolio profit and loss; VaR is the relevant tail quantile (e.g. the 99% loss), and the average loss beyond it is the expected shortfall.",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "category": "use",
+      "term": "[Monte Carlo] What are the main limitations of Monte Carlo? Select all that apply.",
+      "type": "multi",
+      "choices": [
+        "Slow $1/\\sqrt{N}$ convergence",
+        "Results depend on the assumed input distributions",
+        "It can be computationally expensive",
+        "It cannot handle high-dimensional problems"
+      ],
+      "answers": [
+        0,
+        1,
+        2
+      ],
+      "summary": "Slow convergence, sensitivity to input assumptions and cost are real limits; high dimensionality is actually a strength.",
+      "definition": "Monte Carlo converges only as $1/\\sqrt{N}$, can be costly for tight accuracy, and is only as good as the assumed input distributions (garbage in, garbage out). High dimensionality, by contrast, is where it shines — its error rate is dimension-independent.",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "category": "exercise",
+      "term": "[Exercise] A Monte Carlo estimate with $N=1{,}000$ samples has a standard error of $0.04$. Roughly how many samples are needed to reach a standard error of $0.01$?",
+      "summary": "About $16{,}000$ — cutting the error to a quarter needs $4^2=16\\times$ the samples.",
+      "definition": "Error scales as $1/\\sqrt{N}$, so to divide the error by 4 (from 0.04 to 0.01) you need $\\sqrt{N}$ to grow 4-fold, i.e. $N$ to grow $4^2=16$-fold: $1{,}000\\times16=16{,}000$ samples.",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "category": "exercise",
+      "term": "[Exercise] You estimate $\\pi$ by throwing $N$ random points into the unit square and counting the fraction inside the quarter-circle. Why does the estimate improve with larger $N$, and how fast?",
+      "summary": "By the Law of Large Numbers the fraction → $\\pi/4$; the error shrinks as $1/\\sqrt{N}$.",
+      "definition": "The probability a uniform point lands in the quarter-circle is its area, $\\pi/4$. By the Law of Large Numbers the observed fraction converges to $\\pi/4$ (so $4\\times$ fraction $\\to\\pi$) as $N$ grows, with statistical error falling as $1/\\sqrt{N}$ — quadrupling $N$ halves the error.",
+      "last_updated": "2026-06-29"
+    }
+  ]
+}

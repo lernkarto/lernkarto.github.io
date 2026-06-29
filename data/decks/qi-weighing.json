@@ -1,0 +1,128 @@
+{
+  "id": "qi-weighing",
+  "name": "Weighing & information",
+  "color": "#9775fa",
+  "description": "Counting how much information each action yields: balance-scale weighings (known and unknown direction), binary encoding (poison bottles, 20 questions), and reachability ",
+  "tags": [
+    "aptitude",
+    "interview",
+    "quant",
+    "weighing"
+  ],
+  "primerTitle": "Weighing & information — method",
+  "primer": "## Information per action\n- A **balance** gives 3 outcomes → k weighings separate 3^k cases (unknown-direction fake among n needs 3^k ≥ 2n+? — 12 coins → 3).\n- **Known-heavy among n:** split in 3s → ⌈log₃ n⌉ weighings.\n- **Yes/no** questions give 2 each → ⌈log₂ N⌉ (1,000,000 → 20).\n- **Binary encoding:** 1000 bottles, label in 10 bits → 10 rats.\n- **Digital scale once:** take i coins from stack i; the excess names the stack.\n- **Fuses:** light one at both ends (halves time). **Jugs:** reachable iff gcd divides target.",
+  "cards": [
+    {
+      "term": "You have 12 coins; exactly one is counterfeit and differs in weight, but you do NOT know whether it is heavier or lighter. Using only a two-pan balance, what is the minimum number of weighings that guarantees finding the fake AND determining whether it is heavy or light?",
+      "choices": [
+        "5",
+        "4",
+        "2",
+        "It cannot be guaranteed",
+        "3"
+      ],
+      "answer": 4,
+      "type": "mcq",
+      "definition": "Correct: 3. Each weighing has 3 outcomes (left heavy, right heavy, balanced), so k weighings distinguish up to 3^k cases. There are 2x12 = 24 possibilities (each coin, heavy or light); 3^2 = 9 < 24 but 3^3 = 27 >= 24, and a known scheme achieves it, so 3.",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "You have 27 coins, exactly one of which is HEAVIER than the rest (you know it is heavier). Using only a two-pan balance, what is the minimum number of weighings that guarantees finding it?",
+      "choices": [
+        "3",
+        "2",
+        "5",
+        "9",
+        "4"
+      ],
+      "answer": 0,
+      "type": "mcq",
+      "definition": "Correct: 3. Knowing the direction, each weighing splits the suspects into three equal groups and identifies which third contains the heavy coin. With 27 = 3^3 coins, three weighings suffice and are needed.",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "You have 8 balls, one of which is HEAVIER than the others (direction known). Using a two-pan balance, what is the minimum number of weighings that guarantees finding the heavy ball?",
+      "choices": [
+        "4",
+        "1",
+        "8",
+        "2",
+        "3"
+      ],
+      "answer": 3,
+      "type": "mcq",
+      "definition": "Correct: 2. Split into three groups (3, 3, 2). One weighing finds the group of at most three containing the heavy ball; a second weighing finds it among those. Two weighings suffice.",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "There are 1000 bottles of wine, exactly one of which is poisoned. The poison is lethal in any dose and takes effect after exactly 24 hours. You have test rats and only 24 hours. What is the minimum number of rats needed to be guaranteed to identify the poisoned bottle?",
+      "choices": [
+        "1000",
+        "9",
+        "500",
+        "100",
+        "10"
+      ],
+      "answer": 4,
+      "type": "mcq",
+      "definition": "Correct: 10. Number the bottles 0-999 in binary (10 bits). Rat i drinks from every bottle whose i-th bit is 1. After 24 hours, the pattern of which rats die spells out the bottle number in binary. Since 2^10 = 1024 >= 1000, ten rats suffice.",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "You have two fuses (ropes), each of which burns for exactly 60 minutes if lit at one end, but each burns at a non-uniform, unknown rate along its length. Using only these two fuses and a lighter, can you measure out exactly 45 minutes?",
+      "choices": [
+        "Only 90 minutes",
+        "No, it is impossible",
+        "Yes, exactly 45 minutes",
+        "Only if the rates were uniform",
+        "No, only 30 or 60"
+      ],
+      "answer": 2,
+      "type": "mcq",
+      "definition": "Correct: Yes, exactly 45 minutes. Light fuse 1 at BOTH ends and fuse 2 at one end simultaneously. Fuse 1 (burning from both ends) finishes in 30 minutes; at that instant light fuse 2's other end. Fuse 2's remaining 30 minutes' worth now burns from both ends, finishing in 15 more minutes: 30 + 15 = 45.",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "You have 10 stacks of 10 coins. Nine stacks are genuine (each coin 10 g); one stack is entirely counterfeit (each coin 11 g). Using a DIGITAL scale (which reads exact weight) only ONCE, what is the minimum number of weighings needed to identify the counterfeit stack?",
+      "choices": [
+        "2",
+        "0",
+        "1",
+        "10",
+        "4"
+      ],
+      "answer": 2,
+      "type": "mcq",
+      "definition": "Correct: 1. Take 1 coin from stack 1, 2 from stack 2, ..., 10 from stack 10, and weigh them together once. If all were genuine the total would be 550 g; the actual excess in grams equals the counterfeit stack's number.",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "You have an empty 5-litre jug and an empty 3-litre jug and an unlimited water supply, but no other markings. By filling, emptying, and pouring between them, can you measure out exactly 4 litres?",
+      "choices": [
+        "Yes, exactly 4 litres",
+        "Only 3 litres",
+        "Only 2 litres",
+        "Only 8 litres",
+        "No, it is impossible"
+      ],
+      "answer": 0,
+      "type": "mcq",
+      "definition": "Correct: Yes, exactly 4 litres. Fill the 5-litre jug, pour into the 3-litre jug (leaving 2 in the 5), empty the 3, pour the 2 litres in, fill the 5 again, then top up the 3-litre jug (needs 1 litre), leaving exactly 4 in the 5-litre jug. Reachable because gcd(5,3)=1 divides 4.",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "A friend thinks of a whole number between 1 and 1,000,000. You may ask only yes/no questions. What is the minimum number of questions that guarantees you can identify the number?",
+      "choices": [
+        "19",
+        "20",
+        "1000000",
+        "100",
+        "1000"
+      ],
+      "answer": 1,
+      "type": "mcq",
+      "definition": "Correct: 20. Each yes/no answer halves the candidates, so k questions distinguish up to 2^k numbers. Since 2^19 = 524,288 < 1,000,000 <= 1,048,576 = 2^20, you need 20 (binary search).",
+      "last_updated": "2026-06-29"
+    }
+  ]
+}

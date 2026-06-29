@@ -1,0 +1,151 @@
+{
+  "id": "cpp-templates",
+  "primerTitle": "C++ templates & generic programming — quick recap",
+  "primer": "## Templates basics\nA **function template** is a pattern the compiler turns into concrete functions for the types you use: `template <typename T> T max(T a, T b) { return a > b ? a : b; }` works for any `T` supporting `>`. The compiler **instantiates** a version per type on demand. `template <typename T>` introduces a **type parameter** `T`; `template <class T>` is exactly equivalent (`typename`/`class` are synonyms here; modern style prefers `typename`).\n\nA **class template** is a class parameterised on types: `template <typename T> class Box { T value; };` — `Box<int>` and `Box<std::string>` are separate instantiated classes (the STL's `vector<T>`, `map<K,V>` are class templates).\n\n**Template argument deduction** infers the parameters from the call's arguments, so `max(3, 4)` works without `max<int>(...)`. Class templates also get deduction (CTAD) since C++17: `std::vector v{1, 2, 3};` deduces `vector<int>`. A template's main benefit over hand-written overloads: write the logic **once** instead of one near-identical overload per type, with automatic support for new types.\n\n## Specialisation & non-type params\n**(Full) specialisation** gives a distinct implementation for a specific type argument: `template <> class Box<bool> { ... };`. **Partial specialisation** covers a *family* of arguments, e.g. `template <typename T> class Box<T*> { ... };` for all pointer types — only **class** templates support it (function templates use overloading instead). A **non-type template parameter** is a compile-time **value**, usually an integer: `template <typename T, std::size_t N> class Array { T data[N]; };` (as in `std::array<int, 4>`).\n\n`auto` return type lets the compiler deduce the return type from the `return` statements; a **generic lambda** `[](auto x){ ... }` is sugar for a templated call operator — templates and `auto` deduction share the same machinery.\n\n## Compilation model & trade-offs\nEach distinct set of arguments produces a separate **instantiation** — the concrete code generated (`max<int>` and `max<double>` are two), which is why heavy template use grows binary size (**code bloat**). Template **definitions live in headers**, because the compiler must see the full definition at each instantiation (a template in a .cpp gives 'undefined reference' link errors). Much of a template's body is only checked **at instantiation**, so type errors surface at the point of use, not the definition (hence long error messages; C++20 concepts move checks earlier).\n\n**Templates vs runtime polymorphism:** templates resolve at compile time — zero dispatch cost, full inlining, but larger code and template-y errors. Virtuals resolve at runtime — one indirection per call but a single shared implementation and smaller binaries.\n\n## Exercises\nA generic `min`: `template <typename T> T min(T a, T b) { return a < b ? a : b; }`. Calling `max(3, 4.0)` **fails** because both arguments share one `T` but `3` is `int` and `4.0` is `double` (deduction conflict) — force it (`max<double>(3, 4.0)`), cast, or use two type parameters with a deduced return type.",
+  "name": "C++ — Templates & generic programming",
+  "color": "#00599c",
+  "description": "Generic code in C++: function templates, class templates, template argument deduction, specialisation, non-type parameters, and how templates are compiled. The mechanism the STL is built on.",
+  "categories": {
+    "core": {
+      "label": "Core",
+      "color": "#66aaff"
+    },
+    "advanced": {
+      "label": "Specialisation & more",
+      "color": "#9bff66"
+    },
+    "use": {
+      "label": "Use & pitfalls",
+      "color": "#ff9f55"
+    }
+  },
+  "cards": [
+    {
+      "term": "What is a function template?",
+      "definition": "A pattern from which the compiler generates concrete functions for the types you use. `template <typename T> T max(T a, T b) { return a > b ? a : b; }` works for any type supporting `>`. The compiler 'instantiates' a version per type on demand.",
+      "summary": "A pattern the compiler instantiates into a function per type.",
+      "category": "core",
+      "last_updated": "2026-06-29",
+      "stale": true
+    },
+    {
+      "term": "What does `template <typename T>` mean, and is `class` different?",
+      "definition": "It introduces a type parameter `T` that stands in for a concrete type chosen at instantiation. `template <class T>` is exactly equivalent — `typename` and `class` are interchangeable here (modern style prefers `typename`).",
+      "summary": "Declares a type parameter; `typename` and `class` are synonyms here.",
+      "category": "core",
+      "last_updated": "2026-06-29",
+      "stale": true
+    },
+    {
+      "term": "What is a class template?",
+      "definition": "A class parameterised on one or more types, e.g. `template <typename T> class Box { T value; ... };`. `Box<int>` and `Box<std::string>` are separate instantiated classes. The STL containers (`vector<T>`, `map<K,V>`) are class templates.",
+      "summary": "A class parameterised by type, e.g. Box<T>.",
+      "category": "core",
+      "last_updated": "2026-06-29",
+      "stale": true
+    },
+    {
+      "term": "What is template argument deduction?",
+      "definition": "The compiler inferring template parameters from the call's arguments, so you can write `max(3, 4)` instead of `max<int>(3, 4)`. Class templates also get deduction (CTAD) since C++17: `std::vector v{1, 2, 3};` deduces `vector<int>`.",
+      "summary": "Compiler infers T from the arguments; no explicit <T> needed.",
+      "category": "core",
+      "last_updated": "2026-06-29",
+      "stale": true
+    },
+    {
+      "term": "What is template specialisation?",
+      "sub": "A) providing a distinct implementation for a specific type argument    B) making a template faster    C) inheriting from a template    D) deleting a template",
+      "definition": "Correct: A) providing a distinct implementation for a specific type argument. `template <> class Box<bool> { ... };` is a full specialisation giving `bool` its own definition. It lets you optimise or correct behaviour for particular types while the general template covers the rest.",
+      "category": "advanced",
+      "last_updated": "2026-06-29",
+      "stale": true
+    },
+    {
+      "term": "What is partial specialisation?",
+      "definition": "Specialising a class template for a family of arguments rather than one exact type, e.g. `template <typename T> class Box<T*> { ... };` to treat all pointer types specially. Only class templates support partial specialisation; function templates use overloading instead.",
+      "summary": "Specialise for a pattern of arguments (e.g. all T*).",
+      "category": "advanced",
+      "last_updated": "2026-06-29",
+      "stale": true
+    },
+    {
+      "term": "What is a non-type template parameter?",
+      "definition": "A template parameter that is a value, not a type — usually an integer: `template <typename T, std::size_t N> class Array { T data[N]; };`. `std::array<int, 4>` uses one. The value is a compile-time constant, fixing things like array size at instantiation.",
+      "summary": "A compile-time value parameter, e.g. the N in array<T,N>.",
+      "category": "advanced",
+      "last_updated": "2026-06-29",
+      "stale": true
+    },
+    {
+      "type": "truefalse",
+      "category": "use",
+      "answer": true,
+      "term": "Template definitions normally live in headers, not in a separate .cpp file.",
+      "summary": "True — the compiler needs the full definition at each instantiation.",
+      "definition": "True. A template is only compiled when instantiated with concrete arguments, and the compiler must see its full definition at that point. So template code generally goes in headers; putting it in a .cpp leads to 'undefined reference' link errors unless you explicitly instantiate.",
+      "last_updated": "2026-06-29",
+      "stale": true
+    },
+    {
+      "term": "What does `auto` deduce when returning, and what is a generic lambda's link to templates?",
+      "definition": "`auto` return type lets the compiler deduce the return type from the `return` statements. A generic lambda `[](auto x){ ... }` is sugar for a template — the compiler synthesises a call operator template parameterised on the argument type. Templates and `auto` deduction share the same machinery.",
+      "summary": "auto return deduces the type; a generic lambda is a templated call operator.",
+      "category": "advanced",
+      "last_updated": "2026-06-29",
+      "stale": true
+    },
+    {
+      "type": "cloze",
+      "category": "core",
+      "term": "Each distinct set of template arguments produces a separate {{instantiation}} — the concrete code the compiler generates from the pattern.",
+      "summary": "Instantiation = the concrete function/class generated for given arguments.",
+      "definition": "`max<int>` and `max<double>` are two instantiations of the one template, each compiled to its own machine code. This is why heavy template use can grow binary size (code bloat).",
+      "last_updated": "2026-06-29",
+      "stale": true
+    },
+    {
+      "term": "What is the trade-off of templates vs runtime polymorphism?",
+      "definition": "Templates resolve types at compile time: zero runtime dispatch cost and full inlining, but larger code and template-y error messages. Virtual functions resolve at runtime: one indirection per call but a single shared implementation and smaller binaries. Choose by whether the type set is known at compile time.",
+      "summary": "Templates: compile-time, fast, bloated. Virtuals: runtime, one impl.",
+      "category": "use",
+      "last_updated": "2026-06-29",
+      "stale": true
+    },
+    {
+      "type": "truefalse",
+      "category": "use",
+      "answer": false,
+      "term": "A template with a type error is reported as soon as the template is written.",
+      "summary": "False — errors surface at instantiation, when you use it with a concrete type.",
+      "definition": "False. Much of a template's body is only checked when instantiated with concrete arguments, so type errors often appear at the point of use, not at the definition — hence the famously long template error messages. (C++20 concepts move many of these checks earlier.)",
+      "last_updated": "2026-06-29",
+      "stale": true
+    },
+    {
+      "term": "What does a template let you avoid compared with overloading by hand?",
+      "definition": "Writing the same logic once instead of one overload per type. A single `template <typename T> void swap(T&, T&)` replaces an `int` version, a `double` version, a `string` version, and so on — less duplication and automatic support for new types.",
+      "summary": "One generic definition instead of many near-identical overloads.",
+      "category": "core",
+      "last_updated": "2026-06-29",
+      "stale": true
+    },
+    {
+      "term": "Exercise: write a generic `min` function template.",
+      "sub": "Parameterise on the type and require only comparison.",
+      "definition": "`template <typename T> T min(T a, T b) { return a < b ? a : b; }`. It works for any `T` that supports `<` (ints, doubles, strings...). Calling `min(3, 7)` deduces `T = int`; `min(2.5, 1.5)` deduces `double`. For mixed types you would add a second type parameter or convert explicitly.",
+      "summary": "`template<typename T> T min(T a,T b){return a<b?a:b;}`",
+      "category": "use",
+      "last_updated": "2026-06-29",
+      "stale": true
+    },
+    {
+      "term": "Exercise: why does `max(3, 4.0)` fail to compile, and how do you fix it?",
+      "sub": "Both parameters share one type parameter T.",
+      "definition": "With `template <typename T> T max(T a, T b)`, both arguments must deduce the *same* `T`, but `3` is `int` and `4.0` is `double` — deduction conflicts. Fixes: call it as `max<double>(3, 4.0)` to force `T`, cast one argument, or give the template two parameters `template <typename A, typename B>` with a deduced return type.",
+      "summary": "One T can't be both int and double; force T or use two type params.",
+      "category": "use",
+      "last_updated": "2026-06-29",
+      "stale": true
+    }
+  ]
+}

@@ -1,0 +1,151 @@
+{
+  "id": "cpp-stl",
+  "primerTitle": "C++ STL — containers, iterators & algorithms recap",
+  "primer": "## Containers\n**`std::vector`** is a dynamic, contiguous array that grows automatically and knows its size: `push_back` appends (amortised $O(1)$), `operator[]`/`at` index, elements are contiguous (cache-friendly). It is the **default** sequence container. Growing past capacity **reallocates** and moves elements, **invalidating** existing iterators/pointers/references — reserve up front or re-fetch.\n\n**`std::map`** is an ordered balanced tree: keys stay sorted, $O(\\\\log n)$ ops, ordered iteration. **`std::unordered_map`** is a hash table: average $O(1)$ lookup, no ordering. Pick by whether you need order or raw speed. **`std::set`** is a sorted collection of unique keys (balanced tree, $O(\\\\log n)$, sorted iteration); `std::unordered_set` is its hash-based average-$O(1)$ counterpart. **`std::list`** is a doubly linked list: no `operator[]`/random access, but $O(1)$ insert/remove at a known position.\n\nLook up a map key safely with **`find`**: `auto it = m.find(key); if (it != m.end()) use(it->second);` — `find` never inserts, whereas `m[key]` default-constructs (a silent insert) when the key is absent.\n\n## Iterators\nAn **iterator** is a generalised pointer over a container: `begin()` → first element, `end()` → one past the last; `++it` advances, `*it` dereferences. Ranges are **half-open `[begin, end)`** — `end()` is a sentinel, never dereferenced; the count is `end - begin` and an empty range is `begin == end`. Algorithms operate on iterator ranges, decoupling them from the container type.\n\n## Algorithms & lambdas\n`<algorithm>` provides generic range algorithms: `std::sort`, `std::find`, `std::count`/`std::count_if`, `std::for_each`, `std::transform`, `std::copy`, `std::remove`; `std::accumulate` (in `<numeric>`) folds a range to one value (sum by default, or a custom op like `std::multiplies<>{}`).\n\nA **lambda** is an inline anonymous function `[capture](params){ body }`. The **capture list** specifies which outer variables it uses and how: `[x]` by copy, `[&x]` by reference, `[=]`/`[&]` everything by copy/reference. Lambdas are the natural callables for STL algorithms. A **comparator** returns true when its first argument should come **before** the second, so `[](int a, int b){ return a > b; }` gives **descending** order: `std::sort(v.begin(), v.end(), [](int a, int b){ return a > b; });`. Count with a predicate: `std::count_if(v.begin(), v.end(), [](int x){ return x % 2 == 0; });`.\n\n**Pitfall:** capturing a local **by reference** into a lambda that outlives it (e.g. returning the lambda) dangles when the local dies — capture **by value** (`[=]`/`[local]`) so the lambda owns its own copy.",
+  "name": "C++ — STL containers, iterators & algorithms",
+  "color": "#00599c",
+  "description": "The Standard Template Library: the main containers (vector, map, set, unordered variants), iterators, the <algorithm> header, and lambdas as the callable glue. How to write idiomatic, container-driven C++.",
+  "categories": {
+    "containers": {
+      "label": "Containers",
+      "color": "#66aaff"
+    },
+    "algos": {
+      "label": "Iterators & algorithms",
+      "color": "#9bff66"
+    },
+    "use": {
+      "label": "Use & pitfalls",
+      "color": "#ff9f55"
+    }
+  },
+  "cards": [
+    {
+      "term": "What is `std::vector` and when is it your default container?",
+      "definition": "A dynamic, contiguous array that grows automatically and knows its own size. `push_back` appends (amortised $O(1)$), `operator[]` and `at` index, and elements sit in contiguous memory (cache-friendly). It is the default sequence container unless you have a specific reason otherwise.",
+      "summary": "Growable contiguous array; the default sequence container.",
+      "category": "containers",
+      "last_updated": "2026-06-29",
+      "stale": true
+    },
+    {
+      "term": "`std::map` vs `std::unordered_map` — what's the difference?",
+      "sub": "A) map is an ordered tree with O(log n) ops; unordered_map is a hash table with average O(1)    B) they are identical    C) map is a hash table, unordered_map a tree    D) unordered_map keeps keys sorted",
+      "definition": "Correct: A) map is an ordered tree with O(log n) ops; unordered_map is a hash table with average O(1). `std::map` keeps keys sorted (balanced BST) so iteration is ordered; `std::unordered_map` hashes keys for faster average lookup but no ordering. Pick by whether you need order or raw speed.",
+      "category": "containers",
+      "last_updated": "2026-06-29",
+      "stale": true
+    },
+    {
+      "term": "What is a `std::set`?",
+      "definition": "An ordered collection of unique keys (no duplicates), backed by a balanced tree, with $O(\\log n)$ insert/find/erase and sorted iteration. `std::unordered_set` is the hash-based, average-$O(1)$, unordered counterpart.",
+      "summary": "Sorted collection of unique elements; O(log n) ops.",
+      "category": "containers",
+      "last_updated": "2026-06-29",
+      "stale": true
+    },
+    {
+      "term": "What is an iterator?",
+      "definition": "A generalised pointer that traverses a container. `begin()` returns an iterator to the first element, `end()` to one past the last; `++it` advances, `*it` dereferences. Algorithms operate on iterator ranges `[begin, end)`, decoupling them from the container type.",
+      "summary": "A pointer-like object walking a container; ranges are [begin, end).",
+      "category": "algos",
+      "last_updated": "2026-06-29",
+      "stale": true
+    },
+    {
+      "type": "cloze",
+      "category": "algos",
+      "term": "An iterator range is half-open: it spans `[begin, {{end}})`, where the second iterator points one past the last element.",
+      "summary": "Ranges are half-open [begin, end); end is one-past-the-last.",
+      "definition": "`end()` is a sentinel past the final element, never dereferenced. The half-open convention makes the count `end - begin` and lets an empty range be `begin == end` cleanly.",
+      "last_updated": "2026-06-29",
+      "stale": true
+    },
+    {
+      "term": "What does `<algorithm>` give you? Name a few.",
+      "definition": "A library of generic algorithms working on iterator ranges: `std::sort`, `std::find`, `std::count`, `std::accumulate` (in `<numeric>`), `std::for_each`, `std::transform`, `std::copy`, `std::remove`. They work on any container exposing the right iterators, so you rarely hand-write loops.",
+      "summary": "Generic range algorithms: sort, find, transform, accumulate, etc.",
+      "category": "algos",
+      "last_updated": "2026-06-29",
+      "stale": true
+    },
+    {
+      "term": "What is a lambda expression?",
+      "definition": "An inline anonymous function: `[capture](params) { body }`. The `[...]` captures variables from the surrounding scope (`[=]` by copy, `[&]` by reference, or named). Lambdas are the natural callables to pass to STL algorithms, e.g. `std::sort(v.begin(), v.end(), [](int a, int b){ return a > b; });`.",
+      "summary": "`[capture](args){body}` — an inline anonymous function object.",
+      "category": "algos",
+      "last_updated": "2026-06-29",
+      "stale": true
+    },
+    {
+      "term": "What does a lambda's capture list do?",
+      "sub": "A) it specifies which outer variables the lambda can use, and whether by value or reference    B) it lists the lambda's parameters    C) it names the return type    D) it is purely decorative",
+      "definition": "Correct: A) it specifies which outer variables the lambda can use, and whether by value or reference. `[x]` copies `x`, `[&x]` references it, `[=]`/`[&]` capture everything used by copy/reference. Capturing by reference into a lambda that outlives the captured variable dangles.",
+      "category": "algos",
+      "last_updated": "2026-06-29",
+      "stale": true
+    },
+    {
+      "type": "truefalse",
+      "category": "use",
+      "answer": true,
+      "term": "Adding elements to a std::vector can invalidate existing iterators and references into it.",
+      "summary": "True — a reallocation on growth moves the elements, invalidating old iterators.",
+      "definition": "True. When a `vector` grows past its capacity it reallocates to a larger block and moves the elements, so any iterators, pointers or references to the old storage dangle. Reserve capacity up front, or re-fetch iterators after insertion.",
+      "last_updated": "2026-06-29",
+      "stale": true
+    },
+    {
+      "term": "How do you sort a vector descending with the STL?",
+      "definition": "Pass a comparator: `std::sort(v.begin(), v.end(), [](int a, int b){ return a > b; });`. The comparator returns true when `a` should come before `b`; `a > b` therefore yields descending order. Default `std::sort(v.begin(), v.end())` sorts ascending.",
+      "summary": "`std::sort(b, e, [](a,b){return a>b;})` for descending.",
+      "category": "algos",
+      "last_updated": "2026-06-29",
+      "stale": true
+    },
+    {
+      "type": "truefalse",
+      "category": "containers",
+      "answer": false,
+      "term": "std::list (a linked list) supports random access by index like a vector.",
+      "summary": "False — std::list has no O(1) indexing; you must traverse it.",
+      "definition": "False. `std::list` is a doubly linked list: no `operator[]`, no random access. Its strength is $O(1)$ insertion/removal at a known position; for index access or cache locality use `std::vector`.",
+      "last_updated": "2026-06-29",
+      "stale": true
+    },
+    {
+      "term": "How do you safely look up a key in a map?",
+      "definition": "Use `find`: `auto it = m.find(key); if (it != m.end()) use(it->second);`. Unlike `m[key]`, `find` does not insert anything. Beware: `m[key]` on `std::map` default-constructs a value if the key is absent — convenient but a silent insert.",
+      "summary": "`m.find(key)` returns end() if absent; `m[key]` would insert.",
+      "category": "containers",
+      "last_updated": "2026-06-29",
+      "stale": true
+    },
+    {
+      "term": "What is `std::accumulate` good for?",
+      "definition": "Reducing a range to a single value with an initial value and a binary operation (default `+`): `std::accumulate(v.begin(), v.end(), 0)` sums a vector. Supply a custom op for products or folds: `std::accumulate(v.begin(), v.end(), 1, std::multiplies<>{})`.",
+      "summary": "Folds a range to one value (sum by default); lives in <numeric>.",
+      "category": "algos",
+      "last_updated": "2026-06-29",
+      "stale": true
+    },
+    {
+      "term": "Exercise: count how many elements of a vector are even, using the STL.",
+      "sub": "Reach for an <algorithm> with a predicate, not a hand loop.",
+      "definition": "`auto n = std::count_if(v.begin(), v.end(), [](int x){ return x % 2 == 0; });`. `std::count_if` walks the range and counts elements for which the predicate (here a lambda testing evenness) returns true — clearer and less error-prone than a manual loop with a counter.",
+      "summary": "`std::count_if(b, e, [](int x){return x%2==0;})`.",
+      "category": "use",
+      "last_updated": "2026-06-29",
+      "stale": true
+    },
+    {
+      "term": "Exercise: this lambda dangles — explain.\n`std::function<int()> make() { int local = 5; return [&]{ return local; }; }`",
+      "sub": "What is captured, and how long does it live?",
+      "definition": "`[&]` captures `local` by reference, but `local` is destroyed when `make` returns — so the returned lambda holds a dangling reference, and calling it is undefined behaviour. Capture by value (`[=]` or `[local]`) so the lambda owns its own copy that outlives the function.",
+      "summary": "Capturing a local by reference and returning it dangles; capture by value.",
+      "category": "use",
+      "last_updated": "2026-06-29",
+      "stale": true
+    }
+  ]
+}

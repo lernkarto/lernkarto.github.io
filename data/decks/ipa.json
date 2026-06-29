@@ -1,0 +1,291 @@
+{
+  "id": "ipa",
+  "name": "IPA — International Phonetic Alphabet",
+  "color": "#ff9f43",
+  "dual": true,
+  "description": "Core IPA: one symbol per speech sound. Each card has a real pronunciation recording (🔊). Tested both ways — symbol→sound name and name→symbol — tracked separately.",
+  "source": "https://en.wikipedia.org/wiki/International_Phonetic_Alphabet",
+  "license": "CC BY-SA 4.0",
+  "attribution": "Pronunciation audio and phone names adapted from Wikimedia Commons / Wikipedia (CC BY-SA).",
+  "categories": {
+    "consonant": "Consonants",
+    "vowel": "Vowels"
+  },
+  "primerTitle": "IPA core symbols — quick recap",
+  "primer": "The **International Phonetic Alphabet** gives one symbol per speech sound. **Consonants** are named by three things: *voicing* (voiceless / voiced), *place* of articulation (where in the mouth, e.g. bilabial, alveolar, velar), and *manner* (how, e.g. plosive, nasal, fricative, affricate, approximant). **Vowels** are named by *height* (close … open), *backness* (front … back), and *rounding* (rounded / unrounded). This deck covers the core symbols below.\n\n**Consonants — symbol → name (example):**\n- **p** — voiceless bilabial plosive ('pat')\n- **b** — voiced bilabial plosive ('bat')\n- **t** — voiceless alveolar plosive ('tap')\n- **d** — voiced alveolar plosive ('dab')\n- **k** — voiceless velar plosive ('cat')\n- **g** — voiced velar plosive ('gap')\n- **ʔ** — glottal stop ('uh-oh')\n- **m** — bilabial nasal ('map')\n- **n** — alveolar nasal ('nap')\n- **ŋ** — velar nasal ('sing')\n- **f** — voiceless labiodental fricative ('fan')\n- **v** — voiced labiodental fricative ('van')\n- **θ** — voiceless dental fricative ('thin')\n- **ð** — voiced dental fricative ('this')\n- **s** — voiceless alveolar fricative ('sip')\n- **z** — voiced alveolar fricative ('zip')\n- **ʃ** — voiceless postalveolar fricative ('ship')\n- **ʒ** — voiced postalveolar fricative ('measure')\n- **h** — voiceless glottal fricative ('hat')\n- **tʃ** — voiceless postalveolar affricate ('church')\n- **dʒ** — voiced postalveolar affricate ('judge')\n- **ɹ** — alveolar approximant ('red')\n- **j** — palatal approximant ('yes')\n- **w** — voiced labial-velar approximant ('wet')\n- **l** — alveolar lateral approximant ('left')\n\n**Vowels — symbol → name (example):**\n- **i** — close front unrounded ('see')\n- **ɪ** — near-close near-front unrounded ('sit')\n- **e** — close-mid front unrounded (French 'é')\n- **ɛ** — open-mid front unrounded ('bed')\n- **æ** — near-open front unrounded ('cat')\n- **a** — open front unrounded (Spanish 'a')\n- **ə** — mid-central (schwa, 'about')\n- **ʌ** — open-mid back unrounded ('cup')\n- **ɑ** — open back unrounded ('father')\n- **ɔ** — open-mid back rounded ('thought')\n- **o** — close-mid back rounded (French 'eau')\n- **ʊ** — near-close near-back rounded ('put')\n- **u** — close back rounded ('boot')\n- **y** — close front rounded (French 'u')\n\n**Special cases:** **tʃ** and **dʒ** are *affricates* (a plosive that releases into a fricative); **ɹ** is the English 'r' (distinct from a trill); **ə** (schwa) is the neutral unstressed vowel; **j** is the consonant 'y' sound, not a vowel.",
+  "cards": [
+    {
+      "term": "p",
+      "definition": "voiceless bilabial plosive (as in 'pat')",
+      "category": "consonant",
+      "audio": "https://upload.wikimedia.org/wikipedia/commons/5/51/Voiceless_bilabial_plosive.ogg",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "b",
+      "definition": "voiced bilabial plosive (as in 'bat')",
+      "category": "consonant",
+      "audio": "https://upload.wikimedia.org/wikipedia/commons/2/2c/Voiced_bilabial_plosive.ogg",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "t",
+      "definition": "voiceless alveolar plosive (as in 'tap')",
+      "category": "consonant",
+      "audio": "https://upload.wikimedia.org/wikipedia/commons/0/02/Voiceless_alveolar_plosive.ogg",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "d",
+      "definition": "voiced alveolar plosive (as in 'dab')",
+      "category": "consonant",
+      "audio": "https://upload.wikimedia.org/wikipedia/commons/0/01/Voiced_alveolar_plosive.ogg",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "k",
+      "definition": "voiceless velar plosive (as in 'cat')",
+      "category": "consonant",
+      "audio": "https://upload.wikimedia.org/wikipedia/commons/e/e3/Voiceless_velar_plosive.ogg",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "g",
+      "definition": "voiced velar plosive (as in 'gap')",
+      "category": "consonant",
+      "audio": "https://upload.wikimedia.org/wikipedia/commons/b/b4/Voiced_velar_plosive.ogg",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "ʔ",
+      "definition": "glottal stop (as in 'uh-oh')",
+      "category": "consonant",
+      "audio": "https://upload.wikimedia.org/wikipedia/commons/4/4d/Glottal_stop.ogg",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "m",
+      "definition": "bilabial nasal (as in 'map')",
+      "category": "consonant",
+      "audio": "https://upload.wikimedia.org/wikipedia/commons/a/a9/Bilabial_nasal.ogg",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "n",
+      "definition": "alveolar nasal (as in 'nap')",
+      "category": "consonant",
+      "audio": "https://upload.wikimedia.org/wikipedia/commons/2/29/Alveolar_nasal.ogg",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "ŋ",
+      "definition": "velar nasal (as in 'sing')",
+      "category": "consonant",
+      "audio": "https://upload.wikimedia.org/wikipedia/commons/3/39/Velar_nasal.ogg",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "f",
+      "definition": "voiceless labiodental fricative (as in 'fan')",
+      "category": "consonant",
+      "audio": "https://upload.wikimedia.org/wikipedia/commons/3/33/Voiceless_labiodental_fricative.ogg",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "v",
+      "definition": "voiced labiodental fricative (as in 'van')",
+      "category": "consonant",
+      "audio": "https://upload.wikimedia.org/wikipedia/commons/8/85/Voiced_labiodental_fricative.ogg",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "θ",
+      "definition": "voiceless dental fricative (as in 'thin')",
+      "category": "consonant",
+      "audio": "https://upload.wikimedia.org/wikipedia/commons/8/80/Voiceless_dental_fricative.ogg",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "ð",
+      "definition": "voiced dental fricative (as in 'this')",
+      "category": "consonant",
+      "audio": "https://upload.wikimedia.org/wikipedia/commons/6/6a/Voiced_dental_fricative.ogg",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "s",
+      "definition": "voiceless alveolar fricative (as in 'sip')",
+      "category": "consonant",
+      "audio": "https://upload.wikimedia.org/wikipedia/commons/a/ac/Voiceless_alveolar_sibilant.ogg",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "z",
+      "definition": "voiced alveolar fricative (as in 'zip')",
+      "category": "consonant",
+      "audio": "https://upload.wikimedia.org/wikipedia/commons/c/c0/Voiced_alveolar_sibilant.ogg",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "ʃ",
+      "definition": "voiceless postalveolar fricative (as in 'ship')",
+      "category": "consonant",
+      "audio": "https://upload.wikimedia.org/wikipedia/commons/c/cc/Voiceless_palato-alveolar_sibilant.ogg",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "ʒ",
+      "definition": "voiced postalveolar fricative (as in 'measure')",
+      "category": "consonant",
+      "audio": "https://upload.wikimedia.org/wikipedia/commons/3/30/Voiced_palato-alveolar_sibilant.ogg",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "h",
+      "definition": "voiceless glottal fricative (as in 'hat')",
+      "category": "consonant",
+      "audio": "https://upload.wikimedia.org/wikipedia/commons/d/da/Voiceless_glottal_fricative.ogg",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "tʃ",
+      "definition": "voiceless postalveolar affricate (as in 'church')",
+      "category": "consonant",
+      "audio": "https://upload.wikimedia.org/wikipedia/commons/9/97/Voiceless_palato-alveolar_affricate.ogg",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "dʒ",
+      "definition": "voiced postalveolar affricate (as in 'judge')",
+      "category": "consonant",
+      "audio": "https://upload.wikimedia.org/wikipedia/commons/e/e6/Voiced_palato-alveolar_affricate.ogg",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "ɹ",
+      "definition": "alveolar approximant (as in 'red')",
+      "category": "consonant",
+      "audio": "https://upload.wikimedia.org/wikipedia/commons/1/1f/Alveolar_approximant.ogg",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "j",
+      "definition": "palatal approximant (as in 'yes')",
+      "category": "consonant",
+      "audio": "https://upload.wikimedia.org/wikipedia/commons/e/e8/Palatal_approximant.ogg",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "w",
+      "definition": "voiced labial-velar approximant (as in 'wet')",
+      "category": "consonant",
+      "audio": "https://upload.wikimedia.org/wikipedia/commons/f/f2/Voiced_labio-velar_approximant.ogg",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "l",
+      "definition": "alveolar lateral approximant (as in 'left')",
+      "category": "consonant",
+      "audio": "https://upload.wikimedia.org/wikipedia/commons/b/bc/Alveolar_lateral_approximant.ogg",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "i",
+      "definition": "close front unrounded vowel (as in 'see')",
+      "category": "vowel",
+      "audio": "https://upload.wikimedia.org/wikipedia/commons/9/91/Close_front_unrounded_vowel.ogg",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "ɪ",
+      "definition": "near-close near-front unrounded vowel (as in 'sit')",
+      "category": "vowel",
+      "audio": "https://upload.wikimedia.org/wikipedia/commons/4/4c/Near-close_near-front_unrounded_vowel.ogg",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "e",
+      "definition": "close-mid front unrounded vowel (French 'é')",
+      "category": "vowel",
+      "audio": "https://upload.wikimedia.org/wikipedia/commons/6/6c/Close-mid_front_unrounded_vowel.ogg",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "ɛ",
+      "definition": "open-mid front unrounded vowel (as in 'bed')",
+      "category": "vowel",
+      "audio": "https://upload.wikimedia.org/wikipedia/commons/7/71/Open-mid_front_unrounded_vowel.ogg",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "æ",
+      "definition": "near-open front unrounded vowel (as in 'cat')",
+      "category": "vowel",
+      "audio": "https://upload.wikimedia.org/wikipedia/commons/c/c9/Near-open_front_unrounded_vowel.ogg",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "a",
+      "definition": "open front unrounded vowel (Spanish 'a')",
+      "category": "vowel",
+      "audio": "https://upload.wikimedia.org/wikipedia/commons/6/65/Open_front_unrounded_vowel.ogg",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "ə",
+      "definition": "mid-central vowel (schwa, as in 'about')",
+      "category": "vowel",
+      "audio": "https://upload.wikimedia.org/wikipedia/commons/d/d9/Mid-central_vowel.ogg",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "ʌ",
+      "definition": "open-mid back unrounded vowel (as in 'cup')",
+      "category": "vowel",
+      "audio": "https://upload.wikimedia.org/wikipedia/commons/9/92/Open-mid_back_unrounded_vowel.ogg",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "ɑ",
+      "definition": "open back unrounded vowel (as in 'father')",
+      "category": "vowel",
+      "audio": "https://upload.wikimedia.org/wikipedia/commons/e/e5/Open_back_unrounded_vowel.ogg",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "ɔ",
+      "definition": "open-mid back rounded vowel (as in 'thought')",
+      "category": "vowel",
+      "audio": "https://upload.wikimedia.org/wikipedia/commons/0/02/Open-mid_back_rounded_vowel.ogg",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "o",
+      "definition": "close-mid back rounded vowel (French 'eau')",
+      "category": "vowel",
+      "audio": "https://upload.wikimedia.org/wikipedia/commons/8/84/Close-mid_back_rounded_vowel.ogg",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "ʊ",
+      "definition": "near-close near-back rounded vowel (as in 'put')",
+      "category": "vowel",
+      "audio": "https://upload.wikimedia.org/wikipedia/commons/d/d5/Near-close_near-back_rounded_vowel.ogg",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "u",
+      "definition": "close back rounded vowel (as in 'boot')",
+      "category": "vowel",
+      "audio": "https://upload.wikimedia.org/wikipedia/commons/5/5d/Close_back_rounded_vowel.ogg",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "y",
+      "definition": "close front rounded vowel (French 'u')",
+      "category": "vowel",
+      "audio": "https://upload.wikimedia.org/wikipedia/commons/e/ea/Close_front_rounded_vowel.ogg",
+      "last_updated": "2026-06-29"
+    }
+  ]
+}

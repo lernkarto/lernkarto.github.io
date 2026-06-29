@@ -1,0 +1,188 @@
+{
+  "id": "logical-fallacies",
+  "name": "Logical fallacies",
+  "color": "#0bda51",
+  "description": "Common errors of reasoning — formal and informal — with Latin names where apt, a definition and a quick example. Flip cards plus a few 'name the fallacy' multiple-choice cards.",
+  "primerTitle": "Fallacy glossary",
+  "primer": "A **logical fallacy** is a flaw in reasoning that makes an argument unsound. *Formal* fallacies are invalid by structure; *informal* ones fail because of irrelevant or misleading content. Each card tests one:\n\n**Relevance & distraction** (the premise doesn't bear on the conclusion)\n- **Ad hominem** — attacking the *person* instead of their argument.\n- **Straw man** — refuting a distorted, weaker caricature of the opponent's actual position.\n- **Appeal to authority** (*ad verecundiam*) — true merely because an authority says so, especially outside their field.\n- **Appeal to popularity** (*ad populum*) — true because many people believe it. Popularity isn't evidence.\n- **Red herring** — introducing an irrelevant point to divert attention.\n- **Tu quoque** (appeal to hypocrisy) — deflecting criticism with 'you do it too' instead of answering it.\n- **Appeal to emotion** (*ad passiones*) — swaying with pity/fear/anger in place of evidence.\n- **Bandwagon fallacy** — accept/join because it's popular or growing (the action-pushing cousin of appeal to popularity).\n\n**Faulty structure** (the argument's form fails)\n- **Slippery slope** — claiming one small step *must* cascade into extreme consequences, without justifying the links.\n- **False dilemma** (false dichotomy) — offering only two options when more exist.\n- **Circular reasoning** (begging the question, *petitio principii*) — assuming the conclusion inside the premises.\n- **Appeal to ignorance** (*ad ignorantiam*) — treating 'not proven false' as proof of true (or vice versa).\n- **No true Scotsman** — redefining the category to exclude any counterexample.\n- **Equivocation** — using one word in two meanings to slide between them mid-argument.\n- **Affirming the consequent** *(formal)* — from 'if P then Q' and Q, wrongly concluding P (a sprinkler, not rain, could wet the ground).\n- **Denying the antecedent** *(formal)* — from 'if P then Q' and not-P, wrongly concluding not-Q.\n\n**Causal & statistical** (bad inference about cause or evidence)\n- **Post hoc ergo propter hoc** — B followed A, so A caused B. Sequence is not causation.\n- **Correlation implies causation** (*cum hoc ergo propter hoc*) — two things vary together, so one causes the other — ignoring coincidence or a common cause (heat drives both ice-cream and drownings).\n- **Hasty generalisation** — a sweeping conclusion from too few or unrepresentative cases.\n\nFor the 'name the fallacy' cards, match the scenario to the definition above; the wrong options are other fallacies in this list.",
+  "categories": {
+    "relevance": "Relevance & distraction",
+    "structure": "Faulty structure",
+    "causal": "Causal & statistical",
+    "quiz": "Name the fallacy"
+  },
+  "cards": [
+    {
+      "term": "Ad hominem",
+      "definition": "Attacking the person making an argument instead of the argument itself. Example: 'You can't trust her economics, she's never run a business' — which says nothing about whether her reasoning is sound.",
+      "summary": "Attacking the arguer, not the argument.",
+      "category": "relevance",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "Straw man",
+      "definition": "Misrepresenting an opponent's position as a weaker, distorted version, then refuting that. Example: 'You want some gun limits, so you want to ban all weapons and leave us defenceless.'",
+      "summary": "Refuting a distorted version of the opponent's claim.",
+      "category": "relevance",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "Appeal to authority (argumentum ad verecundiam)",
+      "definition": "Treating a claim as true merely because an authority asserts it, especially outside their expertise. Example: 'This diet works — a famous actor swears by it.'",
+      "summary": "True because an authority says so.",
+      "category": "relevance",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "Appeal to popularity (argumentum ad populum)",
+      "definition": "Arguing that a claim is true because many people believe it. Example: 'Millions use this remedy, so it must work.' Popularity is not evidence of truth.",
+      "summary": "True because everyone believes it.",
+      "category": "relevance",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "Slippery slope",
+      "definition": "Claiming one small step will inevitably lead to a chain of extreme consequences, without justifying the links. Example: 'If we allow this minor exception, soon all the rules will collapse.'",
+      "summary": "One step must lead to disaster, unproven.",
+      "category": "structure",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "False dilemma (false dichotomy)",
+      "definition": "Presenting only two options as if they were the only ones, when more exist. Example: 'You're either with us or against us' — ignoring neutral or partial positions.",
+      "summary": "Only two choices offered when more exist.",
+      "category": "structure",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "Circular reasoning (begging the question, petitio principii)",
+      "definition": "Assuming the conclusion within the premises, so the argument proves nothing new. Example: 'This book is true because it says it is the word of truth.'",
+      "summary": "The conclusion is smuggled into the premise.",
+      "category": "structure",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "Post hoc ergo propter hoc",
+      "definition": "Assuming that because B followed A, A caused B. Example: 'I wore my lucky socks and we won, so the socks caused the win.' Sequence is not causation.",
+      "summary": "After this, therefore because of this.",
+      "category": "causal",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "Correlation implies causation (cum hoc ergo propter hoc)",
+      "definition": "Inferring that because two things vary together, one causes the other, ignoring coincidence or a common cause. Example: ice-cream sales and drownings both rise in summer, but neither causes the other (heat does).",
+      "summary": "Things move together, so one must cause the other.",
+      "category": "causal",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "Hasty generalisation",
+      "definition": "Drawing a broad conclusion from too few or unrepresentative cases. Example: 'Two rude tourists from that country — they must all be rude.'",
+      "summary": "A sweeping conclusion from a tiny sample.",
+      "category": "causal",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "Red herring",
+      "definition": "Introducing an irrelevant point to divert attention from the issue. Example: asked about a budget overrun, a manager pivots to how hard the team worked.",
+      "summary": "A distraction that changes the subject.",
+      "category": "relevance",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "Tu quoque (appeal to hypocrisy)",
+      "definition": "Deflecting a criticism by accusing the critic of the same fault, instead of addressing the point. Example: 'You say I should quit smoking? You smoke too!'",
+      "summary": "'You do it too' as a non-answer.",
+      "category": "relevance",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "Appeal to emotion (argumentum ad passiones)",
+      "definition": "Manipulating feelings — pity, fear, anger — in place of valid evidence. Example: 'Think of the children' used to win a debate that has nothing to do with children.",
+      "summary": "Swaying with feelings instead of reasons.",
+      "category": "relevance",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "Appeal to ignorance (argumentum ad ignorantiam)",
+      "definition": "Claiming something is true because it hasn't been proven false, or vice versa. Example: 'No one has proven ghosts don't exist, so they must.'",
+      "summary": "Absence of disproof treated as proof.",
+      "category": "structure",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "No true Scotsman",
+      "definition": "Defending a generalisation by redefining terms to exclude any counterexample. Example: 'No Scotsman puts sugar on porridge' — 'My uncle does' — 'Well, no *true* Scotsman does.'",
+      "summary": "Re-defining the category to dodge a counterexample.",
+      "category": "structure",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "Equivocation",
+      "definition": "Using a word with two meanings as if it had one, to slide between them. Example: 'A feather is light; what is light cannot be dark; so a feather cannot be dark.'",
+      "summary": "Shifting a word's meaning mid-argument.",
+      "category": "structure",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "Bandwagon fallacy",
+      "definition": "Pressing someone to accept a claim or join an action because it's popular or growing. Example: 'Everyone's switching to this app, so you should too.' Closely related to appeal to popularity.",
+      "summary": "Join in because it's the popular thing.",
+      "category": "relevance",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "Affirming the consequent",
+      "definition": "A formal error: from 'if P then Q' and 'Q', wrongly concluding 'P'. Example: 'If it rained, the ground is wet. The ground is wet, so it rained' — but a sprinkler could have wet it.",
+      "summary": "If P then Q; Q; therefore P (invalid).",
+      "category": "structure",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "Denying the antecedent",
+      "definition": "A formal error: from 'if P then Q' and 'not P', wrongly concluding 'not Q'. Example: 'If it rained, the ground is wet. It didn't rain, so the ground isn't wet' — ignoring other causes.",
+      "summary": "If P then Q; not P; therefore not Q (invalid).",
+      "category": "structure",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "type": "truefalse",
+      "category": "causal",
+      "answer": false,
+      "term": "The post hoc fallacy is valid reasoning because if one event follows another, the first must have caused the second.",
+      "summary": "False — sequence alone does not establish causation.",
+      "definition": "False. 'Post hoc ergo propter hoc' is a fallacy precisely because temporal order is not enough to prove causation. The two events may be coincidental or both caused by a third factor.",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "type": "truefalse",
+      "category": "relevance",
+      "answer": true,
+      "term": "A straw man argument refutes a distorted, weaker version of the opponent's actual position.",
+      "summary": "True — that is exactly the straw man move.",
+      "definition": "True. The straw man fallacy works by replacing the real claim with an easier, exaggerated caricature, then knocking that down — leaving the genuine argument untouched.",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "'You can't take his climate argument seriously — he flies on private jets.' Which fallacy is this?",
+      "sub": "A) Straw man    B) Ad hominem    C) False dilemma    D) Appeal to authority",
+      "definition": "Correct: B) Ad hominem. The argument attacks the person's conduct rather than the substance of his claim. A straw man would distort the claim, a false dilemma would force two options, and an appeal to authority would cite an expert as proof.",
+      "category": "quiz",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "'Either we cut the entire programme or the budget collapses.' Which fallacy is this?",
+      "sub": "A) False dilemma    B) Red herring    C) Slippery slope    D) Circular reasoning",
+      "definition": "Correct: A) False dilemma. It presents two options as the only possibilities when others exist. A red herring distracts with an irrelevance, a slippery slope chains consequences, and circular reasoning assumes its conclusion.",
+      "category": "quiz",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "'Sales rose right after the new logo launched, so the logo boosted sales.' Which fallacy is this?",
+      "sub": "A) Hasty generalisation    B) Appeal to popularity    C) Post hoc ergo propter hoc    D) Equivocation",
+      "definition": "Correct: C) Post hoc ergo propter hoc. It infers causation purely from sequence, ignoring other factors. Hasty generalisation over-extends from few cases, appeal to popularity cites numbers, and equivocation exploits an ambiguous word.",
+      "category": "quiz",
+      "last_updated": "2026-06-29"
+    }
+  ]
+}

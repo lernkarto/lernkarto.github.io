@@ -1,0 +1,142 @@
+{
+  "id": "qi-birthday",
+  "name": "The birthday problem family",
+  "color": "#e8590c",
+  "description": "The collision probability and everything around it: thresholds for 50% and 99%, matching a specific date versus any two people, expected number of matching pairs, smaller",
+  "tags": [
+    "aptitude",
+    "interview",
+    "quant",
+    "birthday"
+  ],
+  "primerTitle": "The birthday problem — method",
+  "primer": "## Birthday collisions\n- **Any-two match:** $P = 1 - \\dfrac{365\\cdot364\\cdots(365-n+1)}{365^n}$. Crosses 50% at **n=23**, ~71% at 30, ~97% at 50, 99% at 57.\n- **Why so small:** collisions scale with the number of *pairs* C(n,2) ~ n², not with n.\n- **Expected matching pairs:** C(n,2)/365 by linearity — ~1.19 for 30 people.\n- **A SPECIFIC date is far harder:** $1-(364/365)^n>\\tfrac12$ needs **n=253**; two *named* people match with prob just 1/365 ≈ 0.27%.\n- **Scaling law:** for a 'year' of d days the 50% threshold ≈ **1.18·√d** (√365≈19 → ~23); months (d=12) → 5.",
+  "cards": [
+    {
+      "term": "In a room of 30 people, what is the approximate probability that at least two of them share a birthday (365 equally likely days, ignoring leap years)?",
+      "choices": [
+        "about 8%",
+        "about 30%",
+        "about 99%",
+        "about 71%",
+        "about 50%"
+      ],
+      "answer": 3,
+      "type": "mcq",
+      "definition": "Correct: about 71%. P = 1 - (365/365)(364/365)...(336/365) ~ 0.706, about 71%. With C(30,2) = 435 pairs of people, a coincidence is quite likely.",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "In a room of 50 people, what is the approximate probability that at least two share a birthday (365 equally likely days)?",
+      "choices": [
+        "about 99.99%",
+        "about 14%",
+        "about 70%",
+        "about 50%",
+        "about 97%"
+      ],
+      "answer": 4,
+      "type": "mcq",
+      "definition": "Correct: about 97%. P ~ 0.970, about 97%. By 50 people a shared birthday is nearly certain - the probability climbs steeply once you pass the halfway point near 23.",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "What is the smallest number of people for which the probability that at least two share a birthday first exceeds 50% (365 equally likely days)?",
+      "choices": [
+        "50",
+        "253",
+        "23",
+        "30",
+        "183"
+      ],
+      "answer": 2,
+      "type": "mcq",
+      "definition": "Correct: 23. At 22 people the probability is about 0.476; at 23 it reaches about 0.507. The famous answer is 23 - strikingly small because it counts all C(23,2) = 253 pairs, not people.",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "What is the smallest number of people for which the probability of at least one shared birthday exceeds 99% (365 equally likely days)?",
+      "choices": [
+        "100",
+        "365",
+        "57",
+        "183",
+        "253"
+      ],
+      "answer": 2,
+      "type": "mcq",
+      "definition": "Correct: 57. P(57 people) ~ 0.9901. You reach near-certainty with far fewer than 365 people because pairs grow quadratically.",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "How many people must be in a room so that the probability at least one of them shares YOUR specific birthday exceeds 50% (365 equally likely days)?",
+      "choices": [
+        "253",
+        "365",
+        "183",
+        "100",
+        "23"
+      ],
+      "answer": 0,
+      "type": "mcq",
+      "definition": "Correct: 253. Matching one fixed date is far harder than matching any two people. P = 1 - (364/365)^n > 0.5 needs n = 253. Contrast this with 23 for the any-two version - the difference is the heart of the paradox.",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "In a room of 30 people, what is the expected NUMBER of pairs of people who share a birthday (365 equally likely days)?",
+      "choices": [
+        "about 2.4",
+        "about 1.19",
+        "about 0.08",
+        "about 0.5",
+        "about 30"
+      ],
+      "answer": 1,
+      "type": "mcq",
+      "definition": "Correct: about 1.19. By linearity of expectation, each of the C(30,2) = 435 pairs matches with probability 1/365, so the expected number of matching pairs is 435/365 ~ 1.19.",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "Suppose people are equally likely to be born in any of the 12 months. What is the smallest number of people for which the probability that at least two share a birth MONTH first exceeds 50%?",
+      "choices": [
+        "7",
+        "4",
+        "6",
+        "5",
+        "13"
+      ],
+      "answer": 3,
+      "type": "mcq",
+      "definition": "Correct: 5. With 12 categories, 4 people give a distinct-months probability of about 0.573 (collision 0.427), and 5 people drop it to about 0.382 (collision 0.618). So 5 is the threshold - roughly 1.2 x sqrt(12).",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "For a hypothetical 'year' of d equally likely days, roughly how does the number of people needed for a 50% chance of a shared birthday grow as d increases?",
+      "choices": [
+        "Proportional to d divided by 2",
+        "Proportional to d squared",
+        "Proportional to d",
+        "Proportional to the square root of d",
+        "Proportional to the logarithm of d"
+      ],
+      "answer": 3,
+      "type": "mcq",
+      "definition": "Correct: Proportional to the square root of d. The threshold is approximately 1.18 x sqrt(d) (so sqrt(365) ~ 19 gives the familiar ~23). It grows like sqrt(d) because the number of pairs - what actually drives collisions - grows like the square of the number of people.",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "In a room of 30 people, what is the probability that two PARTICULAR named people (say Alice and Bob specifically) share a birthday (365 equally likely days)?",
+      "choices": [
+        "about 8%",
+        "about 71%",
+        "about 0.27%",
+        "about 50%",
+        "about 3%"
+      ],
+      "answer": 2,
+      "type": "mcq",
+      "definition": "Correct: about 0.27%. For two fixed people it is simply 1/365 ~ 0.27%, regardless of how many others are present. The '30 people' is a red herring - the high any-two probability (71%) comes from there being 435 pairs, not from any single pair being likely.",
+      "last_updated": "2026-06-29"
+    }
+  ]
+}

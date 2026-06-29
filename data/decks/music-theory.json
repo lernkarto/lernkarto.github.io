@@ -1,0 +1,178 @@
+{
+  "id": "music-theory",
+  "name": "Music theory basics",
+  "color": "#0bda51",
+  "description": "Foundations of Western music theory — intervals by semitone, major and minor triads, the circle of fifths, note durations and key signatures. Flip cards plus a few multiple-choice checks.",
+  "primerTitle": "Theory glossary",
+  "primer": "The building blocks of Western music tested by these cards.\n\n**Intervals** (distance between two notes, counted in semitones)\n- **Semitone (half step)** — the smallest interval; two adjacent piano keys (E–F, C–C#). All larger intervals are counted in semitones.\n- **Whole tone (whole step)** — 2 semitones (C–D).\n- **Major third** — 4 semitones (C–E); the 'bright' third.\n- **Minor third** — 3 semitones (A–C); the 'darker' third.\n- **Perfect fourth** — 5 semitones (C–F); the inversion of the fifth.\n- **Perfect fifth** — 7 semitones (C–G); most consonant after the octave; generates the circle of fifths.\n- **Tritone** — 6 semitones, exactly half an octave (C–F#); historically the dissonant 'devil in music'.\n- **Octave** — 12 semitones (C–C); same letter name, frequency doubles.\n\n**Chords & triads** (three-note chords built by stacking thirds)\n- **Major triad** — root + major 3rd (4) then minor 3rd (3): C–E–G. Bright/stable. Root-to-fifth is a perfect fifth.\n- **Minor triad** — root + minor 3rd (3) then major 3rd (4): A–C–E. Darker. Same perfect fifth on top.\n- **Difference** — only the middle note (the third) changes: minor lowers the major's third by one semitone. Root and fifth are identical.\n\n**Circle of fifths & keys**\n- **Circle of fifths** — the 12 keys arranged so each clockwise step rises a perfect fifth (C, G, D, A, E, B, F#…). Clockwise adds one sharp per step; counter-clockwise (by fourths) adds one flat. From C, the next clockwise key is **G major** (one sharp, F#).\n- **Key signature** — the sharps/flats at the start of each staff, fixing which notes are raised/lowered for the whole piece (so they aren't marked each time). It identifies the key.\n- **Order of sharps** — always F C G D A E B (each a fifth apart). One sharp = F#, two = F# C#, … (mnemonic: 'Father Charles Goes Down And Ends Battle').\n- **Relative minor** — the minor key sharing a major key's signature, found a minor third (3 semitones) below the major's root. C major ↔ A minor (both: no sharps/flats).\n\n**Rhythm & duration** (in 4/4 time)\n- **Whole note (semibreve)** — 4 beats; the longest common value.\n- **Quarter note (crotchet)** — 1 beat; the typical foot-tapping pulse.\n- **Halving rule** — each value is half the one above: whole (4) → half (2) → quarter (1) → eighth (½) → sixteenth (¼). So two eighths fill a quarter.\n- **Dotted note** — a dot adds half the note's own value: dotted half = 2 + 1 = 3 beats; dotted quarter = 1½ beats.",
+  "categories": {
+    "intervals": "Intervals",
+    "chords": "Chords & triads",
+    "circle": "Circle of fifths & keys",
+    "rhythm": "Rhythm & duration",
+    "quiz": "Quick check"
+  },
+  "cards": [
+    {
+      "term": "Semitone (half step)",
+      "definition": "The smallest interval in standard Western music — the distance between two adjacent keys on a piano (e.g. E to F, or C to C#). All larger intervals are counted in semitones.",
+      "summary": "Smallest step; adjacent piano keys.",
+      "category": "intervals",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "Whole tone (whole step)",
+      "definition": "An interval of two semitones, e.g. C to D, or E to F#. A major scale is built from a pattern of whole and half steps.",
+      "summary": "Two semitones.",
+      "category": "intervals",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "Major third — how many semitones?",
+      "definition": "A major third spans 4 semitones, e.g. C to E. It is the 'bright' third that defines a major chord.",
+      "summary": "4 semitones (C to E).",
+      "category": "intervals",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "Minor third — how many semitones?",
+      "definition": "A minor third spans 3 semitones, e.g. C to E-flat, or A to C. It is the 'darker' third that defines a minor chord.",
+      "summary": "3 semitones (A to C).",
+      "category": "intervals",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "Perfect fifth — how many semitones?",
+      "definition": "A perfect fifth spans 7 semitones, e.g. C to G. It is the most consonant interval after the octave and is the step that generates the circle of fifths.",
+      "summary": "7 semitones (C to G).",
+      "category": "intervals",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "Perfect fourth — how many semitones?",
+      "definition": "A perfect fourth spans 5 semitones, e.g. C to F. It is the inversion of the perfect fifth (7 semitones up, 5 down completes the octave).",
+      "summary": "5 semitones (C to F).",
+      "category": "intervals",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "Octave — how many semitones?",
+      "definition": "An octave spans 12 semitones, e.g. C to the next C. The two notes share the same letter name and sound 'the same but higher/lower' because the upper frequency is double the lower.",
+      "summary": "12 semitones; frequency doubles.",
+      "category": "intervals",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "Tritone — how many semitones?",
+      "definition": "A tritone spans 6 semitones, exactly half an octave, e.g. C to F#. Historically dissonant ('the devil in music'), it is central to the dominant-seventh tension.",
+      "summary": "6 semitones; half an octave.",
+      "category": "intervals",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "Major triad — how is it built?",
+      "definition": "A three-note chord stacking a major third (4 semitones) then a minor third (3 semitones) above the root. From C: C–E–G. The root-to-fifth is a perfect fifth (7 semitones). It sounds bright/stable.",
+      "summary": "Root + major 3rd + minor 3rd (C–E–G).",
+      "category": "chords",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "Minor triad — how is it built?",
+      "definition": "A three-note chord stacking a minor third (3 semitones) then a major third (4 semitones) above the root. From A: A–C–E. The root-to-fifth is still a perfect fifth. It sounds darker/sadder than major.",
+      "summary": "Root + minor 3rd + major 3rd (A–C–E).",
+      "category": "chords",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "What makes a major triad differ from a minor triad?",
+      "definition": "Only the middle note (the third) changes. A major triad has a major third above the root (4 semitones); a minor triad has a minor third (3 semitones). The root and the perfect fifth are identical in both.",
+      "summary": "Major has a major 3rd; minor lowers that 3rd one semitone.",
+      "category": "chords",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "Circle of fifths — what is it?",
+      "definition": "A diagram arranging the 12 keys so each step clockwise rises by a perfect fifth (C, G, D, A, E, B, F#...). Moving clockwise adds one sharp to the key signature; moving counter-clockwise (by fourths) adds one flat.",
+      "summary": "Keys ordered by perfect fifths; clockwise adds sharps.",
+      "category": "circle",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "Going clockwise on the circle of fifths from C, what is the next key?",
+      "definition": "G major — a perfect fifth above C. C has no sharps or flats; G major has one sharp (F#). Each further clockwise step (D, A, E...) adds one more sharp.",
+      "summary": "G major (one sharp, F#).",
+      "category": "circle",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "Relative minor — what is it and how do you find it?",
+      "definition": "Every major key shares its key signature with a relative minor, found a minor third (3 semitones) below the major's root. C major's relative minor is A minor (both have no sharps or flats).",
+      "summary": "Same key signature, a minor 3rd below (C major ↔ A minor).",
+      "category": "circle",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "Key signature — what does it tell you?",
+      "definition": "The sharps or flats written at the start of each staff line, indicating which notes are consistently raised or lowered throughout the piece, so they needn't be marked each time. It identifies the key (e.g. two sharps = D major or B minor).",
+      "summary": "The sharps/flats fixing the key for the whole piece.",
+      "category": "circle",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "Order of sharps in key signatures",
+      "definition": "Sharps are always added in the fixed order F, C, G, D, A, E, B (each a fifth apart). One sharp = F#, two = F# C#, and so on. A mnemonic: 'Father Charles Goes Down And Ends Battle.'",
+      "summary": "F C G D A E B.",
+      "category": "circle",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "Whole note (semibreve) — duration",
+      "definition": "The longest common note value, lasting 4 beats in 4/4 time. All shorter values are fractions of it: a half note is 2 beats, a quarter note 1 beat.",
+      "summary": "4 beats in 4/4.",
+      "category": "rhythm",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "Quarter note (crotchet) — duration",
+      "definition": "A note lasting 1 beat in 4/4 time — one quarter of a whole note. It is the typical 'tap your foot' pulse in much Western music.",
+      "summary": "1 beat in 4/4.",
+      "category": "rhythm",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "How do successive note durations relate?",
+      "definition": "Each standard value is half the length of the one above it: whole (4 beats) → half (2) → quarter (1) → eighth (½) → sixteenth (¼). So two eighths fill one quarter, and four sixteenths fill one quarter.",
+      "summary": "Each value is half the previous (whole, half, quarter, eighth...).",
+      "category": "rhythm",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "What does a dot after a note do?",
+      "definition": "A dot adds half of the note's value to itself. A dotted half note = 2 + 1 = 3 beats; a dotted quarter = 1 + ½ = 1½ beats.",
+      "summary": "Adds half the note's value (dotted half = 3 beats).",
+      "category": "rhythm",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "A major triad is built as which two stacked intervals above the root?",
+      "sub": "A) A minor third then a major third    B) A major third then a minor third    C) Two minor thirds stacked    D) Two major thirds stacked",
+      "definition": "Correct: B) A major third then a minor third. From the root you stack a major third (4 semitones) and then a minor third (3 semitones), giving e.g. C–E–G. Stacking minor-then-major makes a minor triad instead.",
+      "category": "quiz",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "How many semitones are in a perfect fifth?",
+      "sub": "A) 5 semitones    B) 6 semitones    C) 7 semitones    D) 4 semitones",
+      "definition": "Correct: C) 7 semitones. A perfect fifth, e.g. C to G, spans 7 semitones — the interval that generates the circle of fifths. 5 is a perfect fourth, 6 a tritone, and 4 a major third.",
+      "category": "quiz",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "Which key is one perfect fifth clockwise from C on the circle of fifths?",
+      "sub": "A) F major, with one flat    B) A minor, with no accidentals    C) D major, with two sharps    D) G major, with one sharp",
+      "definition": "Correct: D) G major, with one sharp. A perfect fifth above C is G, whose key signature has a single sharp, F#. F major lies one fifth counter-clockwise (one flat), and D major is two fifths clockwise (two sharps).",
+      "category": "quiz",
+      "last_updated": "2026-06-29"
+    }
+  ]
+}

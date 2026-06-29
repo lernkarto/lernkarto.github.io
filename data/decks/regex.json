@@ -1,0 +1,175 @@
+{
+  "id": "regex",
+  "name": "Regex tokens",
+  "color": "#00ff88",
+  "description": "Regular-expression syntax, token by token — character classes, anchors, quantifiers, groups, and lookarounds. Term: the token; definition: what it matches and how it behaves. Based on the common PCRE / Perl-style flavour used in most languages.",
+  "primerTitle": "Regex token reference",
+  "primer": "Tokens in the common PCRE / Perl-style flavour. Most metacharacters lose their special meaning inside `[...]`.\n\n## Character classes (match one character)\n\n- `.` — any single character *except newline* (matches newline too under the dot-all / single-line flag).\n- `\\d` — a digit `0-9`; negation `\\D` is any non-digit.\n- `\\w` — a *word character*: letter, digit, or underscore; negation `\\W`.\n- `\\s` — any whitespace (space, tab, newline, carriage return, form feed); negation `\\S`.\n- `[abc]` — one character from the set {a, b, c}.\n- `[^abc]` — one character *not* in the set (leading `^` inside brackets negates).\n- `[a-z]` — one character in a *range*; combinable, e.g. `[a-zA-Z0-9]`.\n\n## Anchors & boundaries (zero-width — match a position, consume nothing)\n\n- `^` — start of string (or start of line in multiline mode).\n- `$` — end of string (or end of line in multiline mode).\n- `\\b` — word boundary: the position between a `\\w` and a non-word char (or string edge); used to match whole words.\n- `\\B` — *not* a word boundary (between two word chars, or two non-word chars).\n\n## Quantifiers (repeat the preceding token; greedy by default = match as much as possible)\n\n- `*` — zero or more.\n- `+` — one or more (fails if absent).\n- `?` — zero or one (makes the token *optional*). After a quantifier it instead makes it *lazy*.\n- `{n,m}` — between n and m times inclusive; `{n}` exactly n; `{n,}` n or more.\n- `*?` — *lazy* (non-greedy) zero-or-more: match as *few* characters as possible. The trailing `?` makes any quantifier lazy — useful to stop a match before the first delimiter.\n\n## Groups & lookarounds\n\n- `(abc)` — *capturing* group: matches the sequence and saves it in a numbered capture (`\\1`, etc.).\n- `(?:abc)` — *non-capturing* group: groups for quantifier/alternation but saves nothing; cheaper, keeps capture numbering clean.\n- `a|b` — *alternation*: match pattern a or b; low precedence, so it splits at the widest scope unless a group constrains it.\n- `(?=...)` — *positive lookahead*: zero-width assertion that the following text matches, without consuming it. E.g. `\\d+(?= dollars)`.\n- `(?!...)` — *negative lookahead*: zero-width assertion that the following text does *not* match. E.g. `foo(?!bar)`.",
+  "categories": {
+    "classes": {
+      "label": "Character classes",
+      "color": "#66aaff"
+    },
+    "anchors": {
+      "label": "Anchors & boundaries",
+      "color": "#9bff66"
+    },
+    "quant": {
+      "label": "Quantifiers",
+      "color": "#ff9f55"
+    },
+    "groups": {
+      "label": "Groups & lookarounds",
+      "color": "#b794ff"
+    }
+  },
+  "cards": [
+    {
+      "term": ".",
+      "definition": "Matches any single character except a newline (by default). With the dot-all / single-line flag, it also matches newlines.",
+      "summary": "Any one character (except newline).",
+      "category": "classes",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "\\d",
+      "definition": "Matches any single digit, 0-9. Its negation is \\D, which matches any non-digit character.",
+      "summary": "A digit, 0-9.",
+      "category": "classes",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "\\w",
+      "definition": "Matches any word character: a letter, a digit, or an underscore. Its negation \\W matches any non-word character.",
+      "summary": "A word char: letter, digit, or underscore.",
+      "category": "classes",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "\\s",
+      "definition": "Matches any whitespace character — space, tab, newline, carriage return, form feed. Its negation \\S matches any non-whitespace character.",
+      "summary": "Any whitespace character.",
+      "category": "classes",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "[abc]",
+      "definition": "A character class: matches a single character that is one of a, b, or c. Inside brackets most metacharacters lose their special meaning.",
+      "summary": "One character from the set {a,b,c}.",
+      "category": "classes",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "[^abc]",
+      "definition": "A negated character class: matches a single character that is NOT a, b, or c. The leading caret inside the brackets negates the set.",
+      "summary": "One character not in {a,b,c}.",
+      "category": "classes",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "[a-z]",
+      "definition": "A range inside a character class: matches any single lowercase letter from a to z. Ranges can be combined, e.g. [a-zA-Z0-9].",
+      "summary": "One character in the range a to z.",
+      "category": "classes",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "^",
+      "definition": "An anchor matching the start of the string (or the start of a line in multiline mode). It matches a position, not a character.",
+      "summary": "Start of string / line.",
+      "category": "anchors",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "$",
+      "definition": "An anchor matching the end of the string (or the end of a line in multiline mode). It matches a position, consuming no characters.",
+      "summary": "End of string / line.",
+      "category": "anchors",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "\\b",
+      "definition": "A word-boundary anchor: matches the zero-width position between a word character (\\w) and a non-word character (or string edge). Used to match whole words.",
+      "summary": "Word boundary (zero-width).",
+      "category": "anchors",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "\\B",
+      "definition": "A non-word-boundary anchor: matches any position that is NOT a word boundary — i.e. between two word characters or between two non-word characters.",
+      "summary": "Not a word boundary.",
+      "category": "anchors",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "*",
+      "definition": "A quantifier meaning zero or more of the preceding token. Greedy by default — it matches as much as possible while still allowing the overall match to succeed.",
+      "summary": "Zero or more (greedy).",
+      "category": "quant",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "+",
+      "definition": "A quantifier meaning one or more of the preceding token. Greedy by default. Fails if the token does not appear at least once.",
+      "summary": "One or more (greedy).",
+      "category": "quant",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "?",
+      "definition": "A quantifier meaning zero or one of the preceding token — i.e. it makes the token optional. Placed after another quantifier (e.g. *?), it instead makes it lazy.",
+      "summary": "Zero or one (optional).",
+      "category": "quant",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "{n,m}",
+      "definition": "A quantifier matching the preceding token between n and m times inclusive. {n} matches exactly n; {n,} matches n or more.",
+      "summary": "Between n and m repetitions.",
+      "category": "quant",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "*?",
+      "definition": "A lazy (non-greedy) quantifier: zero or more, but matching as FEW characters as possible. The trailing ? makes any quantifier lazy. Useful to stop a match running past the first delimiter.",
+      "summary": "Zero or more (lazy / minimal).",
+      "category": "quant",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "(abc)",
+      "definition": "A capturing group: matches the sequence abc and saves the matched text in a numbered capture, referenceable later as \\1 or in the result.",
+      "summary": "Capturing group — matches and saves.",
+      "category": "groups",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "(?:abc)",
+      "definition": "A non-capturing group: groups abc for applying a quantifier or alternation, but does NOT save the match into a capture slot. Cheaper and keeps capture numbering clean.",
+      "summary": "Group without capturing.",
+      "category": "groups",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "a|b",
+      "definition": "Alternation: matches either the pattern a or the pattern b. It has low precedence, so it splits at the widest scope unless constrained by a group.",
+      "summary": "Match a or b (alternation).",
+      "category": "groups",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "(?=...)",
+      "definition": "A positive lookahead: a zero-width assertion that the following text matches the pattern, without consuming it. E.g. \\d+(?= dollars) matches digits only if followed by ' dollars'.",
+      "summary": "Positive lookahead (zero-width).",
+      "category": "groups",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "(?!...)",
+      "definition": "A negative lookahead: a zero-width assertion that the following text does NOT match the pattern, without consuming it. E.g. foo(?!bar) matches 'foo' not followed by 'bar'.",
+      "summary": "Negative lookahead (zero-width).",
+      "category": "groups",
+      "last_updated": "2026-06-29"
+    }
+  ]
+}

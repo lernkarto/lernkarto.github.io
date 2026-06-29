@@ -1,0 +1,128 @@
+{
+  "id": "qi-invariants",
+  "name": "Invariants & colouring",
+  "color": "#69db7c",
+  "description": "Possibility puzzles cracked by a conserved quantity: checkerboard colouring, parity of flips and moves, permutation parity, and piece-count monovariants.",
+  "tags": [
+    "aptitude",
+    "interview",
+    "quant",
+    "invariants"
+  ],
+  "primerTitle": "Invariants & colouring — method",
+  "primer": "## Find a conserved quantity\n- **Checkerboard colouring:** a domino always covers 1 light + 1 dark; removing two same-colour squares breaks the balance → impossible (opposite corners share colour). One of each colour → always tileable (Gomory).\n- **Parity:** flipping two cups changes the up-count by an even number (0 even ≠ 15 odd); a knight flips colour each move (odd # moves can't return).\n- **Permutation parity:** 15-puzzle reaches only even permutations → can't swap just 14&15.\n- **Monovariant:** each chocolate break adds exactly one piece → 24 pieces need 23 breaks.",
+  "cards": [
+    {
+      "term": "Remove two diagonally opposite corner squares from a standard 8x8 chessboard, leaving 62 squares. Can the remaining board be perfectly tiled by 31 dominoes, each covering two adjacent squares?",
+      "choices": [
+        "No, it is impossible",
+        "It depends on the domino sizes",
+        "Yes, in many ways",
+        "Yes, in exactly one way",
+        "Only if one square is left uncovered"
+      ],
+      "answer": 0,
+      "type": "mcq",
+      "definition": "Correct: No, it is impossible. Colour the board like a checkerboard: every domino covers one light and one dark square. The two opposite corners share a colour, so you are left with 32 of one colour and 30 of the other - an impossible balance.",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "From an 8x8 chessboard you remove one dark square and one light square (any two of opposite colour). Can the remaining 62 squares always be tiled by 31 dominoes?",
+      "choices": [
+        "Yes, it is always possible",
+        "Only for corner squares",
+        "Only if the two squares are adjacent",
+        "No, it is never possible",
+        "Only if they are in the same row"
+      ],
+      "answer": 0,
+      "type": "mcq",
+      "definition": "Correct: Yes, it is always possible. Removing one square of each colour keeps the 31-31 balance, and a classic theorem (Gomory's) guarantees a tiling always exists - imagine a closed snake-path through all 64 squares; the two removals split it into two even arcs.",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "Can a 5x5 board (25 squares) be perfectly tiled by dominoes, each covering two adjacent squares?",
+      "choices": [
+        "Only if you start from a corner",
+        "No, it is impossible",
+        "Yes, in exactly one way",
+        "Only along the diagonal",
+        "Yes, in many ways"
+      ],
+      "answer": 1,
+      "type": "mcq",
+      "definition": "Correct: No, it is impossible. Each domino covers exactly two squares, so any tileable board must have an even number of squares. 25 is odd, so no tiling can exist - the simplest invariant of all.",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "A knight starts on a corner of a chessboard. Each move it makes a normal knight's move. Can it return to its starting square after exactly 7 moves?",
+      "choices": [
+        "No, it is impossible",
+        "Only if it visits the centre",
+        "Yes, easily",
+        "Only if no square is repeated",
+        "Yes, but only on a larger board"
+      ],
+      "answer": 0,
+      "type": "mcq",
+      "definition": "Correct: No, it is impossible. A knight always moves from a light square to a dark square and vice versa, so its colour flips every move. After 7 (an odd number of) moves it is on the opposite colour from where it started, so it cannot be back on the starting square.",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "Fifteen cups are placed on a table, all facing DOWN. In one move you must turn over exactly two cups (any two). Is it possible, after some sequence of moves, to have all fifteen cups facing UP?",
+      "choices": [
+        "Yes, but only an even number of moves",
+        "No, it is impossible",
+        "Yes, in 8 moves",
+        "Only if you may flip one cup",
+        "Yes, in 15 moves"
+      ],
+      "answer": 1,
+      "type": "mcq",
+      "definition": "Correct: No, it is impossible. Turning over two cups changes the number of upward-facing cups by an even amount, so its parity never changes. You start with 0 cups up (even) and want 15 (odd) - impossible.",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "You have a 4x6 rectangular chocolate bar scored into 24 unit squares. Each 'break' takes one piece and snaps it in a straight line into two pieces. What is the minimum number of breaks needed to reduce the whole bar to 24 separate unit squares?",
+      "choices": [
+        "23",
+        "11",
+        "47",
+        "24",
+        "12"
+      ],
+      "answer": 0,
+      "type": "mcq",
+      "definition": "Correct: 23. Every break increases the number of pieces by exactly one, no matter where you snap. Going from 1 piece to 24 pieces therefore always takes 24 - 1 = 23 breaks.",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "In the classic 15-puzzle (a 4x4 frame with 15 sliding tiles and one gap), starting from the solved position, is it possible to reach a position that looks solved EXCEPT that tiles 14 and 15 are swapped?",
+      "choices": [
+        "No, it is impossible",
+        "Only on a 5x5 puzzle",
+        "Only if you remove a tile",
+        "Yes, but only an even number of moves",
+        "Yes, with enough moves"
+      ],
+      "answer": 0,
+      "type": "mcq",
+      "definition": "Correct: No, it is impossible. Each legal slide is one transposition of tiles, and returning the gap to its corner requires an even number of slides - so only EVEN tile permutations are reachable. Swapping just 14 and 15 is a single (odd) transposition, hence impossible.",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "Remove all FOUR corner squares from an 8x8 chessboard, leaving 60 squares. Can the remaining board be tiled by 30 dominoes?",
+      "choices": [
+        "Only in exactly one way",
+        "Only if one square is left uncovered",
+        "Yes, it can be tiled",
+        "No, it is impossible",
+        "Only with dominoes of two sizes"
+      ],
+      "answer": 2,
+      "type": "mcq",
+      "definition": "Correct: Yes, it can be tiled. The four corners are two dark and two light squares, so the 30-30 colour balance is preserved (unlike removing two SAME-colour corners), and an explicit tiling exists. Balance plus a valid construction means it works.",
+      "last_updated": "2026-06-29"
+    }
+  ]
+}

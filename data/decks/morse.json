@@ -1,0 +1,236 @@
+{
+  "id": "morse",
+  "name": "Morse code (letters & digits)",
+  "color": "#ff9f43",
+  "dual": true,
+  "description": "International Morse code for the 26 letters A–Z and the 10 digits 0–9, built from dots (·) and dashes (−). Each card is tested both ways (letter→code and code→letter), tracked separately.",
+  "categories": {
+    "letters": "Letters A–Z",
+    "digits": "Digits 0–9"
+  },
+  "primerTitle": "Morse code — quick recap",
+  "primer": "International Morse code spells each character as a short sequence of **dots (·)** and **dashes (−)**. A dash is held about three times as long as a dot. The most common letters get the shortest codes (E = ·, T = −). Digits 1–0 follow a tidy pattern: they are five symbols long, starting all-dots for 1 and adding one dash at a time until 0 is all-dashes.\n\n**Letters A–Z:**\n- **A** · −\n- **B** − · · ·\n- **C** − · − ·\n- **D** − · ·\n- **E** · *(shortest code)*\n- **F** · · − ·\n- **G** − − ·\n- **H** · · · ·\n- **I** · ·\n- **J** · − − −\n- **K** − · −\n- **L** · − · ·\n- **M** − −\n- **N** − ·\n- **O** − − − *(the 'O' in SOS)*\n- **P** · − − ·\n- **Q** − − · −\n- **R** · − ·\n- **S** · · · *(the 'S' in SOS)*\n- **T** − *(other shortest code)*\n- **U** · · −\n- **V** · · · −\n- **W** · − −\n- **X** − · · −\n- **Y** − · − −\n- **Z** − − · ·\n\n**Digits 0–9:**\n- **1** · − − − −\n- **2** · · − − −\n- **3** · · · − −\n- **4** · · · · −\n- **5** · · · · ·\n- **6** − · · · ·\n- **7** − − · · ·\n- **8** − − − · ·\n- **9** − − − − ·\n- **0** − − − − −\n\n**Special cases:** E (·) and T (−) are the single-symbol codes; **SOS = · · · − − − · · ·** (S-O-S); the digits sweep from all-dots (1) to all-dashes (0).",
+  "cards": [
+    {
+      "term": "A",
+      "definition": "·−",
+      "category": "letters",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "B",
+      "definition": "−···",
+      "category": "letters",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "C",
+      "definition": "−·−·",
+      "category": "letters",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "D",
+      "definition": "−··",
+      "category": "letters",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "E",
+      "definition": "·",
+      "category": "letters",
+      "note": "The shortest code — a single dot, the most common letter in English.",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "F",
+      "definition": "··−·",
+      "category": "letters",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "G",
+      "definition": "−−·",
+      "category": "letters",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "H",
+      "definition": "····",
+      "category": "letters",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "I",
+      "definition": "··",
+      "category": "letters",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "J",
+      "definition": "·−−−",
+      "category": "letters",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "K",
+      "definition": "−·−",
+      "category": "letters",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "L",
+      "definition": "·−··",
+      "category": "letters",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "M",
+      "definition": "−−",
+      "category": "letters",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "N",
+      "definition": "−·",
+      "category": "letters",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "O",
+      "definition": "−−−",
+      "category": "letters",
+      "note": "Three dashes — the 'O' in the SOS distress signal (···−−−···).",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "P",
+      "definition": "·−−·",
+      "category": "letters",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "Q",
+      "definition": "−−·−",
+      "category": "letters",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "R",
+      "definition": "·−·",
+      "category": "letters",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "S",
+      "definition": "···",
+      "category": "letters",
+      "note": "Three dots — the 'S' in the SOS distress signal (···−−−···).",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "T",
+      "definition": "−",
+      "category": "letters",
+      "note": "A single dash — the other shortest code, paired with E (·).",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "U",
+      "definition": "··−",
+      "category": "letters",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "V",
+      "definition": "···−",
+      "category": "letters",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "W",
+      "definition": "·−−",
+      "category": "letters",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "X",
+      "definition": "−··−",
+      "category": "letters",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "Y",
+      "definition": "−·−−",
+      "category": "letters",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "Z",
+      "definition": "−−··",
+      "category": "letters",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "1",
+      "definition": "·−−−−",
+      "category": "digits",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "2",
+      "definition": "··−−−",
+      "category": "digits",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "3",
+      "definition": "···−−",
+      "category": "digits",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "4",
+      "definition": "····−",
+      "category": "digits",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "5",
+      "definition": "·····",
+      "category": "digits",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "6",
+      "definition": "−····",
+      "category": "digits",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "7",
+      "definition": "−−···",
+      "category": "digits",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "8",
+      "definition": "−−−··",
+      "category": "digits",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "9",
+      "definition": "−−−−·",
+      "category": "digits",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "0",
+      "definition": "−−−−−",
+      "category": "digits",
+      "note": "Five dashes — the longest digit; digit codes run 1–0 as dots give way to dashes.",
+      "last_updated": "2026-06-29"
+    }
+  ]
+}

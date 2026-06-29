@@ -1,0 +1,160 @@
+{
+  "id": "cpp-pointers-refs",
+  "primerTitle": "C++ pointers, references & raw memory — quick recap",
+  "primer": "## Pointers & references\nA **pointer** stores the memory **address** of an object: `int* p = &x;` (`&x` is the **address-of** operator), `*p` **dereferences** to read/write the target. A pointer can be reseated and can be null — modern C++ spells null **`nullptr`** (a typed null, type `std::nullptr_t`, never mistaken for the integer `0`/`NULL`). A **reference** must be initialised, can never be rebound, cannot be null, and uses plain syntax (`r`) — prefer it when you always have a valid object.\n\nThe symbol `&` plays two roles by **position**: prefix `&x` is address-of (an operator); in a type `int&` it means 'reference to'. `p->m` is shorthand for `(*p).m` — use `.` on objects/references and `->` on pointers (and smart pointers). Note `const int* p` = pointer to a constant int (can't change `*p`, can reseat `p`) vs `int* const p` = constant pointer to a mutable int (can change `*p`, can't reseat); read right-to-left.\n\n## Stack vs heap\nThe **stack** holds automatic locals — created at declaration, destroyed (destructor run) automatically at end of scope in reverse order, no `delete` needed; fast but limited and scope-tied. The **heap** (free store) is manually managed: **`new T`** allocates + constructs and returns a pointer, **`delete p`** destroys + frees; `new T[n]` pairs with `delete[] p`. Every `new` needs exactly one matching `delete`.\n\n**Pointer arithmetic**: adding an integer moves a pointer by whole **elements**, not bytes (`p + 1` advances by `sizeof(T)`); `a[i]` is `*(a + i)`. Going past the allocation is UB.\n\n## Bugs\nA **memory leak** is heap memory `new`d but never `delete`d (owning pointer lost, overwritten, or skipped by an early return / exception). A **dangling pointer** holds an address whose object was already destroyed/freed; dereferencing it is UB. **Double-free** (`delete` twice) is UB — after `delete p` set `p = nullptr` (deleting null is a safe no-op), or avoid raw `new`/`delete` with smart pointers (`std::make_unique<int>(7)` frees on every exit path via RAII). A raw array passed to a function **decays** to a bare pointer and loses its length, so `sizeof` gives the pointer size — pass the length, or use `std::vector`/`std::array`. Returning `&x` for a local `x` returns the address of a destroyed stack object (dangling) — return by value instead.",
+  "name": "C++ — Pointers, references & raw memory",
+  "color": "#00599c",
+  "description": "How C++ addresses memory: pointers vs references, the stack vs the heap, new/delete, dangling pointers and leaks. The raw-memory groundwork that motivates RAII and smart pointers in the next deck.",
+  "categories": {
+    "core": {
+      "label": "Core",
+      "color": "#66aaff"
+    },
+    "memory": {
+      "label": "Stack & heap",
+      "color": "#9bff66"
+    },
+    "use": {
+      "label": "Use & pitfalls",
+      "color": "#ff9f55"
+    }
+  },
+  "cards": [
+    {
+      "term": "What is a pointer?",
+      "definition": "A variable that stores the memory address of another object. `int* p = &x;` makes `p` point to `x`; `*p` dereferences it to read or write the pointed-to value, and `&x` takes the address of `x`. A pointer can be reseated to point elsewhere and can be null.",
+      "summary": "A variable holding an address; `*p` reads/writes the target.",
+      "category": "core",
+      "last_updated": "2026-06-29",
+      "stale": true
+    },
+    {
+      "term": "Pointer vs reference — name three differences.",
+      "definition": "(1) A reference must be initialised and can never be rebound; a pointer can be reassigned. (2) A reference cannot be null; a pointer can. (3) A reference is used with normal syntax (`r`); a pointer is dereferenced (`*p`) and supports arithmetic. Prefer references when you always have a valid object and never need to rebind.",
+      "summary": "Reference: bound once, non-null, plain syntax. Pointer: rebindable, nullable, dereferenced.",
+      "category": "core",
+      "last_updated": "2026-06-29",
+      "stale": true
+    },
+    {
+      "type": "cloze",
+      "category": "core",
+      "term": "Modern C++ spells the null pointer {{nullptr}}, a typed null that is preferred over the old macro `NULL` or the literal `0`.",
+      "summary": "nullptr = the type-safe null pointer literal.",
+      "definition": "`int* p = nullptr;` clearly states 'points to nothing'. Unlike `NULL`/`0`, `nullptr` has its own type (`std::nullptr_t`), so it never gets mistaken for an integer in overload resolution.",
+      "last_updated": "2026-06-29",
+      "stale": true
+    },
+    {
+      "term": "Stack vs heap — what is the difference?",
+      "sub": "A) the stack holds automatic locals freed at scope exit; the heap is manually managed dynamic memory    B) the heap is faster and automatic; the stack is manual    C) both are freed automatically at scope exit    D) the stack is unlimited; the heap is tiny",
+      "definition": "Correct: A) the stack holds automatic locals freed at scope exit; the heap is manually managed dynamic memory. Stack allocation is fast and automatic but limited in size and tied to scope. Heap (free store) allocation via `new` lives until you `delete` it, allowing dynamic lifetimes at the cost of manual management.",
+      "category": "memory",
+      "last_updated": "2026-06-29",
+      "stale": true
+    },
+    {
+      "term": "What do `new` and `delete` do?",
+      "definition": "`new T` allocates one `T` on the heap, runs its constructor, and returns a pointer; `delete p` runs the destructor and frees it. For arrays, `new T[n]` pairs with `delete[] p`. Every `new` must be matched by exactly one `delete` (and `new[]` by `delete[]`).",
+      "summary": "`new` allocates+constructs on the heap; `delete` destroys+frees.",
+      "category": "memory",
+      "last_updated": "2026-06-29",
+      "stale": true
+    },
+    {
+      "type": "truefalse",
+      "category": "use",
+      "answer": true,
+      "term": "Calling `delete` twice on the same pointer is undefined behaviour.",
+      "summary": "True — a double free corrupts the allocator; set the pointer to nullptr after delete.",
+      "definition": "True. Freeing the same block twice is undefined behaviour and can corrupt the heap. After `delete p`, set `p = nullptr;` (deleting a null pointer is safely a no-op), or better, avoid raw `new`/`delete` and use smart pointers.",
+      "last_updated": "2026-06-29",
+      "stale": true
+    },
+    {
+      "term": "What is a memory leak?",
+      "definition": "Heap memory that is allocated with `new` but never `delete`d, so it stays reserved until the program exits — the program's memory use grows without bound. Leaks happen when the owning pointer is lost (overwritten, goes out of scope, or an exception skips the `delete`).",
+      "summary": "Allocated heap memory that is never freed.",
+      "category": "use",
+      "last_updated": "2026-06-29",
+      "stale": true
+    },
+    {
+      "term": "What is a dangling pointer?",
+      "definition": "A pointer that still holds an address whose object has already been destroyed or freed — e.g. after `delete`, or a pointer to a local that went out of scope. Dereferencing it is undefined behaviour. The fix is to not keep pointers past their target's lifetime (and null them after delete).",
+      "summary": "A pointer to memory that has already been freed/destroyed.",
+      "category": "use",
+      "last_updated": "2026-06-29",
+      "stale": true
+    },
+    {
+      "term": "What does the `&` symbol mean in `int* p = &x;` versus `int& r = x;`?",
+      "sub": "A) prefix `&` is address-of (an operator); `&` in a type is 'reference to'    B) both mean reference    C) both mean address-of    D) they are interchangeable",
+      "definition": "Correct: A) prefix `&` is address-of (an operator); `&` in a type is 'reference to'. In `&x` the `&` is the unary address-of operator yielding a pointer. In the type `int&` the `&` declares a reference. Same symbol, two roles, told apart by position.",
+      "category": "core",
+      "last_updated": "2026-06-29",
+      "stale": true
+    },
+    {
+      "term": "What does `p->member` mean?",
+      "definition": "It dereferences pointer `p` and accesses a member: `p->m` is exactly `(*p).m`. Use `.` on objects and references, and `->` on pointers (and smart pointers) to reach members of the pointed-to object.",
+      "summary": "`p->m` is shorthand for `(*p).m` — member access through a pointer.",
+      "category": "core",
+      "last_updated": "2026-06-29",
+      "stale": true
+    },
+    {
+      "type": "cloze",
+      "category": "memory",
+      "term": "A function-local variable lives on the {{stack}} and is destroyed automatically when its enclosing block ends.",
+      "summary": "Automatic (local) storage lives on the stack.",
+      "definition": "Stack objects have automatic storage duration: created at their declaration, destroyed (destructor run) at the end of the enclosing scope, in reverse order of construction. No manual `delete` is needed.",
+      "last_updated": "2026-06-29",
+      "stale": true
+    },
+    {
+      "term": "What is pointer arithmetic?",
+      "definition": "Adding an integer to a pointer moves it by whole elements, not bytes: if `p` points to an `int`, `p + 1` advances by `sizeof(int)`. It underlies array indexing — `a[i]` is `*(a + i)`. Going past the bounds of the allocation is undefined behaviour.",
+      "summary": "`p + n` advances by n elements; `a[i]` is `*(a + i)`.",
+      "category": "memory",
+      "last_updated": "2026-06-29",
+      "stale": true
+    },
+    {
+      "type": "truefalse",
+      "category": "memory",
+      "answer": false,
+      "term": "An array passed to a function carries its length with it.",
+      "summary": "False — a C array decays to a bare pointer; the size is lost.",
+      "definition": "False. When you pass a raw array to a function it 'decays' to a pointer to its first element, so `sizeof` inside the function gives the pointer size, not the array's. Pass the length too, or use `std::vector`/`std::array` which know their own size.",
+      "last_updated": "2026-06-29",
+      "stale": true
+    },
+    {
+      "term": "What is the difference between `const int* p` and `int* const p`?",
+      "definition": "`const int* p` is a pointer to a constant int — you cannot change `*p`, but can reseat `p`. `int* const p` is a constant pointer to a mutable int — you can change `*p`, but cannot reseat `p`. Read right-to-left: the `const` binds to whatever is on its left.",
+      "summary": "`const int*` = can't change the value; `int* const` = can't move the pointer.",
+      "category": "core",
+      "last_updated": "2026-06-29",
+      "stale": true
+    },
+    {
+      "term": "Exercise: this code leaks — fix it. `void f() { int* p = new int(7); if (done()) return; delete p; }`",
+      "sub": "What happens on the early return path?",
+      "definition": "If `done()` is true the function returns before reaching `delete p`, so the `int` leaks. The robust fix is to not use raw `new` at all: `auto p = std::make_unique<int>(7);` frees automatically on every exit path (RAII). If you must use `new`, ensure every return path deletes.",
+      "summary": "Early return skips delete → leak; use std::make_unique (RAII).",
+      "category": "use",
+      "last_updated": "2026-06-29",
+      "stale": true
+    },
+    {
+      "term": "Exercise: why is `int* dangling() { int x = 5; return &x; }` broken?",
+      "sub": "Think about the lifetime of x.",
+      "definition": "`x` is a local on the stack; it is destroyed when `dangling` returns, so the returned address points to reclaimed storage — a dangling pointer, and using it is undefined behaviour. Return by value (`int dangling() { return 5; }`) or allocate something that outlives the call.",
+      "summary": "Returns the address of a destroyed local → dangling pointer.",
+      "category": "use",
+      "last_updated": "2026-06-29",
+      "stale": true
+    }
+  ]
+}

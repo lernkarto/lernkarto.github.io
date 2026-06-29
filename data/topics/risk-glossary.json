@@ -1,0 +1,16 @@
+{
+  "topic": "Risk glossary",
+  "id": "risk-glossary",
+  "standard": true,
+  "primerTitle": "Risk glossary — how to use it",
+  "primer": "## Risk glossary\nThe canonical vocabulary of the Banking Risk curriculum — the terms every later deck assumes. Grouped by domain:\n- **Foundations & measures** — risk types, appetite, capital, VaR/ES, backtesting.\n- **Market risk** — the Greeks, DV01, FRTB, VaR methods.\n- **Credit risk** — PD/LGD/EAD, RWA, IRB, IFRS 9.\n- **Counterparty & XVA** — exposure measures, the XVA stack, margin, CCPs.\n- **Liquidity & ALM** — HQLA, LCR/NSFR, IRRBB, EVE/NII.\n- **Capital & regulation** — CET1/AT1/T2, buffers, SREP, Basel, the authorities.\n- **Operational, model & stress** — event types, SMA, model risk, stress testing.\n\nClear this first — the rest of the course builds on these definitions. Each card defines one term; use the category chips to focus a domain.",
+  "deckFiles": [
+    "risk-glossary-foundations.json",
+    "risk-glossary-market.json",
+    "risk-glossary-credit.json",
+    "risk-glossary-counterparty.json",
+    "risk-glossary-liquidity.json",
+    "risk-glossary-capital.json",
+    "risk-glossary-oprisk.json"
+  ]
+}

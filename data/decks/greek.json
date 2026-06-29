@@ -1,0 +1,172 @@
+{
+  "id": "greek",
+  "name": "Greek alphabet",
+  "color": "#ff9f43",
+  "dual": true,
+  "lang": "el",
+  "description": "The 24 letters of the Greek alphabet — names and sounds, with the math/science uses you already half-know. Each letter is tested both ways, tracked separately.",
+  "categories": {
+    "vowel": "Vowels",
+    "consonant": "Consonants"
+  },
+  "primerTitle": "Greek alphabet — quick recap",
+  "primer": "The Greek alphabet has **24 letters**, each with an **uppercase** and **lowercase** form, in a fixed order (alpha … omega). Seven are vowels (Α Ε Η Ι Ο Υ Ω); the rest are consonants. Most letter names you already meet in maths and science (π, Σ, Δ, μ, φ, χ).\n\n**Full mapping — letter (upper/lower) → name → sound:**\n\n- **Α α** — alpha — a (as in 'father') · *vowel*\n- **Β β** — beta — b (modern: v) · *consonant*\n- **Γ γ** — gamma — g (hard) · *consonant*\n- **Δ δ** — delta — d · *consonant* (the 'change'/difference symbol)\n- **Ε ε** — epsilon — e (short, 'bet') · *vowel*\n- **Ζ ζ** — zeta — z · *consonant*\n- **Η η** — eta — e (long; 'i' in modern Greek) · *vowel* — looks like Latin H but is a vowel\n- **Θ θ** — theta — th (as in 'thin') · *consonant*\n- **Ι ι** — iota — i (as in 'machine') · *vowel*\n- **Κ κ** — kappa — k · *consonant*\n- **Λ λ** — lambda — l · *consonant*\n- **Μ μ** — mu — m · *consonant* ('micro' / the mean μ)\n- **Ν ν** — nu — n · *consonant* — looks like Latin v but is 'n'\n- **Ξ ξ** — xi — x (ks) · *consonant*\n- **Ο ο** — omicron — o (short) · *vowel* ('little o')\n- **Π π** — pi — p · *consonant* (π ≈ 3.14159)\n- **Ρ ρ** — rho — r · *consonant* — looks like Latin P but is 'r'\n- **Σ σ ς** — sigma — s · *consonant* (Σ = sum; ς is the word-final form)\n- **Τ τ** — tau — t · *consonant*\n- **Υ υ** — upsilon — u / y · *vowel* (ancestor of Latin U/V and Y)\n- **Φ φ** — phi — ph / f · *consonant* (golden ratio φ ≈ 1.618)\n- **Χ χ** — chi — ch (kh, as in 'loch') · *consonant* — looks like Latin x; chi-squared\n- **Ψ ψ** — psi — ps · *consonant*\n- **Ω ω** — omega — o (long) · *vowel* ('big o', the last letter)\n\n**Special cases:** sigma is written **ς** only at the end of a word (**σ** elsewhere); omicron vs omega = short o vs long o; several letters are *false friends* of Latin (Η, Ν, Ρ, Χ).",
+  "cards": [
+    {
+      "term": "Α α",
+      "definition": "alpha — a (as in 'father')",
+      "category": "vowel",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "Ε ε",
+      "definition": "epsilon — e (short, as in 'bet')",
+      "category": "vowel",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "Η η",
+      "definition": "eta — e (long; 'i' in modern Greek)",
+      "category": "vowel",
+      "note": "False friend — looks like Latin H, but it's a vowel.",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "Ι ι",
+      "definition": "iota — i (as in 'machine')",
+      "category": "vowel",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "Ο ο",
+      "definition": "omicron — o (short)",
+      "category": "vowel",
+      "note": "'o micron' = little o; contrast omega 'big o'.",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "Υ υ",
+      "definition": "upsilon — u / y",
+      "category": "vowel",
+      "note": "Ancestor of both Latin U/V and Y.",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "Ω ω",
+      "definition": "omega — o (long)",
+      "category": "vowel",
+      "note": "The last letter — 'the omega'.",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "Β β",
+      "definition": "beta — b (modern: v)",
+      "category": "consonant",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "Γ γ",
+      "definition": "gamma — g (hard)",
+      "category": "consonant",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "Δ δ",
+      "definition": "delta — d",
+      "category": "consonant",
+      "note": "Famous as 'change' / difference in maths.",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "Ζ ζ",
+      "definition": "zeta — z",
+      "category": "consonant",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "Θ θ",
+      "definition": "theta — th (as in 'thin')",
+      "category": "consonant",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "Κ κ",
+      "definition": "kappa — k",
+      "category": "consonant",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "Λ λ",
+      "definition": "lambda — l",
+      "category": "consonant",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "Μ μ",
+      "definition": "mu — m",
+      "category": "consonant",
+      "note": "'micro' / the mean in stats.",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "Ν ν",
+      "definition": "nu — n",
+      "category": "consonant",
+      "note": "False friend — looks like Latin v, but it's 'n'.",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "Ξ ξ",
+      "definition": "xi — x (ks)",
+      "category": "consonant",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "Π π",
+      "definition": "pi — p",
+      "category": "consonant",
+      "note": "Yes, that π = 3.14159…",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "Ρ ρ",
+      "definition": "rho — r",
+      "category": "consonant",
+      "note": "False friend — looks like Latin P, but it's 'r'.",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "Σ σ ς",
+      "definition": "sigma — s",
+      "category": "consonant",
+      "note": "ς is the word-final form; Σ = 'sum' in maths.",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "Τ τ",
+      "definition": "tau — t",
+      "category": "consonant",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "Φ φ",
+      "definition": "phi — ph / f",
+      "category": "consonant",
+      "note": "The golden ratio φ ≈ 1.618.",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "Χ χ",
+      "definition": "chi — ch (kh, as in 'loch')",
+      "category": "consonant",
+      "note": "False friend — looks like Latin x; chi-squared in stats.",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "Ψ ψ",
+      "definition": "psi — ps",
+      "category": "consonant",
+      "last_updated": "2026-06-29"
+    }
+  ]
+}

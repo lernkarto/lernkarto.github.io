@@ -1,0 +1,105 @@
+{
+  "id": "dist-student-t",
+  "name": "Student's t",
+  "color": "#f783ac",
+  "description": "The fat-tailed cousin of the normal: degrees of freedom, convergence to the Gaussian, small-sample inference, fat-tailed return modelling, and the variance caveat.",
+  "source": "https://en.wikipedia.org/wiki/Student%27s_t-distribution",
+  "license": "CC BY-SA 4.0",
+  "attribution": "Adapted from Wikipedia — \"Student's t-distribution\" and \"Student's t-test\" — licensed under CC BY-SA 4.0.",
+  "primerTitle": "Student's t — quick recap",
+  "primer": "## Definition\\n\\n**Student's t** is symmetric and bell-shaped like the normal but with **heavier (fatter) tails** — more probability on extreme values. Its single shape parameter is the **degrees of freedom** $\\\\nu$.\\n\\n- **Small $\\\\nu$ (e.g. 3–5):** very heavy tails. As $\\\\nu$ grows, tails thin.\\n- **Construction:** $t = Z/\\\\sqrt{V/\\\\nu}$ with $Z\\\\sim N(0,1)$ and an independent $V\\\\sim\\\\chi^2_\\\\nu$. Replacing the unknown population SD by a sample estimate (the chi-squared piece) is exactly what fattens the tails.\\n- **Convergence:** as $\\\\nu\\\\to\\\\infty$ the t → standard normal $N(0,1)$; by $\\\\nu>30$ it's already close (so large samples use $z$).\\n- **Variance** $=\\\\nu/(\\\\nu-2)$ for $\\\\nu>2$; **infinite/undefined for $\\\\nu\\\\le 2$** (a t with 1 df is Cauchy — no finite mean or variance).\\n\\n## Inference\\n\\n- **Small-sample t-test:** when the population SD is unknown and estimated from a small sample, the normal understates uncertainty; the t's heavier tails widen intervals and critical values correctly.\\n- **df in a one-sample test:** $\\\\nu = n-1$.\\n- **Critical values are LARGER than $z$** at any df (fatter tails ⇒ wider intervals), shrinking toward $z$ as df grows. E.g. 97.5% with 10 df ≈ 2.23 vs 1.96; with 9 df ≈ 2.26.\\n\\n## Use & limits\\n\\n- **Financial returns:** show excess kurtosis — extremes far more often than Gaussian. A t (or skewed-t) with **low $\\\\nu$** captures fat tails, giving more realistic VaR/ES.\\n- **Consequence of $\\\\nu\\\\approx4$:** pronounced fat tails; Gaussian (parametric) VaR/ES **understate** tail losses — size limits/capital from the t (or historical/EVT) tail and stress beyond 99%.",
+  "categories": {
+    "core": "Core",
+    "theorems": "Links",
+    "use": "Use & limits",
+    "exercise": "Exercises"
+  },
+  "cards": [
+    {
+      "category": "core",
+      "term": "How does Student's t-distribution differ in shape from the normal?",
+      "summary": "Bell-shaped and symmetric, but with heavier (fatter) tails.",
+      "definition": "The t-distribution is symmetric and bell-shaped like the normal but has heavier tails: it puts more probability on extreme values. The fatness is governed by a single shape parameter, the degrees of freedom $\\nu$.",
+      "note": "[1] Student's t-distribution (Wikipedia) — https://en.wikipedia.org/wiki/Student%27s_t-distribution",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "category": "core",
+      "term": "The single shape parameter of the t-distribution is its {{degrees of freedom}} (ν); smaller values give fatter tails.",
+      "definition": "The degrees of freedom $\\nu$ control tail thickness: small $\\nu$ (e.g. 3–5) gives very heavy tails, and as $\\nu$ grows the tails thin out. In a one-sample t-test $\\nu = n-1$.",
+      "type": "cloze",
+      "note": "[1] Student's t-distribution (Wikipedia) — https://en.wikipedia.org/wiki/Student%27s_t-distribution",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "category": "theorems",
+      "term": "[Student-t] What happens to the t-distribution as the degrees of freedom $\\nu \\to \\infty$?",
+      "sub": "A) it converges to the standard normal $N(0,1)$    B) it becomes uniform    C) its tails get heavier    D) it becomes a Poisson",
+      "definition": "Correct: A) it converges to the standard normal $N(0,1)$. As $\\nu$ grows the extra tail mass vanishes; by roughly $\\nu>30$ the t is already very close to the normal — which is why large-sample tests use z instead of t.",
+      "note": "[1] Student's t-distribution (Wikipedia) — https://en.wikipedia.org/wiki/Student%27s_t-distribution",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "category": "theorems",
+      "term": "[Student-t] How is the t-distribution constructed from a normal and a chi-squared variable?",
+      "sub": "A) a standard normal divided by the square root of an independent chi-squared over its df    B) the sum of a normal and a chi-squared    C) the product of two normals    D) the log of a chi-squared",
+      "definition": "Correct: A) a standard normal divided by the square root of an independent chi-squared over its df: $t = Z/\\sqrt{V/\\nu}$ with $Z\\sim N(0,1)$ and $V\\sim\\chi^2_\\nu$. Replacing the unknown population SD by a sample estimate (a chi-squared quantity) is exactly what fattens the tails.",
+      "note": "[1] Student's t-distribution (Wikipedia) — https://en.wikipedia.org/wiki/Student%27s_t-distribution",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "category": "use",
+      "term": "Why use the t-distribution for small-sample inference instead of the normal?",
+      "summary": "It accounts for the extra uncertainty of estimating σ from a small sample.",
+      "definition": "When the population standard deviation is unknown and estimated from a small sample, using the normal understates uncertainty. The t-distribution's heavier tails widen confidence intervals and critical values appropriately, giving correctly-sized tests at small $n$ (the t-test).",
+      "note": "[1] Student's t-test (Wikipedia) — https://en.wikipedia.org/wiki/Student%27s_t-test",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "category": "use",
+      "term": "Why is the t-distribution popular for modelling financial returns?",
+      "summary": "Its fat tails match the frequent extreme moves the normal misses.",
+      "definition": "Asset returns show excess kurtosis — extreme moves happen far more often than a Gaussian predicts. A t-distribution (or skewed-t) with low degrees of freedom captures these fat tails, giving more realistic VaR/ES than a normal fit.",
+      "note": "[1] Student's t-distribution (Wikipedia) — https://en.wikipedia.org/wiki/Student%27s_t-distribution",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "category": "use",
+      "term": "[Student-t] At the same confidence level, a t critical value is smaller than the corresponding z value.",
+      "type": "truefalse",
+      "answer": false,
+      "summary": "False — t critical values are LARGER (fatter tails ⇒ wider intervals), converging down to z as df grows.",
+      "definition": "False. Because the t has heavier tails, its critical values are larger than the normal's at any given df — e.g. 97.5% with 10 df is about 2.23 versus 1.96 for z. They shrink toward the z values as the degrees of freedom increase.",
+      "note": "[1] Student's t-distribution (Wikipedia) — https://en.wikipedia.org/wiki/Student%27s_t-distribution",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "category": "use",
+      "term": "[Student-t] What is the variance of a t-distribution, and what is the catch?",
+      "sub": "A) $\\nu/(\\nu-2)$ for $\\nu>2$, and it is infinite/undefined for $\\nu\\le 2$    B) always 1    C) equal to the degrees of freedom    D) $\\nu-1$ for all $\\nu$",
+      "definition": "Correct: A) $\\nu/(\\nu-2)$ for $\\nu>2$, and it is infinite/undefined for $\\nu\\le 2$. So a t with 1 df (Cauchy) has no finite mean or variance — a reminder that very-fat-tailed models can break moment-based tools like ordinary variance/VaR scaling.",
+      "note": "[1] Student's t-distribution (Wikipedia) — https://en.wikipedia.org/wiki/Student%27s_t-distribution",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "category": "exercise",
+      "term": "[Exercise] You estimate a mean from $n=10$ observations with unknown σ. Which reference distribution and how many degrees of freedom set your 95% CI — and is the interval wider or narrower than the normal one?",
+      "summary": "t with 9 df ($n-1$); wider than the normal interval.",
+      "definition": "Use the t-distribution with $\\nu = n-1 = 9$ degrees of freedom. The two-sided 95% critical value is about 2.26 (vs 1.96 for z), so the interval is wider — correctly reflecting the extra uncertainty from estimating σ with only 10 points.",
+      "note": "Applies the small-sample and critical-value cards above.",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "category": "exercise",
+      "term": "[Exercise] Fitting returns, a t-distribution selects ν ≈ 4. What does that tell you about tail risk versus a normal fit, and one practical consequence?",
+      "summary": "ν≈4 ⇒ pronounced fat tails; the normal materially understates extreme-loss probability, so Gaussian VaR is too low.",
+      "definition": "A low $\\nu\\approx4$ means heavy tails and high kurtosis — extreme returns are far more likely than under a normal. Practical consequence: Gaussian (parametric) VaR/ES understate tail losses, so you'd size capital/limits using the t (or historical/EVT) tail instead, and stress beyond the 99% point.",
+      "note": "Connects to the Normal deck's fat-tail limitation.",
+      "last_updated": "2026-06-29"
+    }
+  ],
+  "tags": [
+    "distributions",
+    "probability"
+  ]
+}

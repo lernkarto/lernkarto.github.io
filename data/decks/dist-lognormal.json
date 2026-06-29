@@ -1,0 +1,106 @@
+{
+  "id": "dist-lognormal",
+  "name": "Lognormal",
+  "color": "#f783ac",
+  "description": "When the log is normal: positivity, right skew, the role in asset prices and Black–Scholes, the mean formula, and the multiplicative CLT.",
+  "source": "https://en.wikipedia.org/wiki/Log-normal_distribution",
+  "license": "CC BY-SA 4.0",
+  "attribution": "Adapted from Wikipedia — 'Log-normal distribution' and 'Geometric Brownian motion' — licensed under CC BY-SA 4.0.",
+  "primerTitle": "Lognormal — quick recap",
+  "primer": "## Definition\\n\\n$X$ is **lognormal** when its natural log is normal: $\\\\ln X \\\\sim N(\\\\mu,\\\\sigma^2)$, equivalently $X = e^{Y}$ with $Y\\\\sim N(\\\\mu,\\\\sigma^2)$.\\n\\n- **Support & shape:** strictly positive $(0,\\\\infty)$ and **right-skewed** — the exponential of a normal can never be negative and has a long right tail.\\n- $\\\\mu,\\\\sigma$ describe **$\\\\ln X$** (the log scale), **not** $X$ itself.\\n\\n## Key formulas\\n\\n- **Median** $= e^{\\\\mu}$.\\n- **Mean** $= e^{\\\\mu+\\\\sigma^2/2}$ — strictly **above** the median because of right skew; the gap widens with $\\\\sigma$. So 'expected' > 'typical'.\\n- **Normal ⇔ lognormal:** $X$ lognormal $\\\\Leftrightarrow \\\\ln X$ normal; exponentiate to go one way, take logs the other. Model/test on the log scale, exponentiate back.\\n\\n## Multiplicative CLT\\n\\nA product of many independent positive factors has a log that is a **sum** of many terms → ordinary CLT pushes it to normal → the product itself tends **lognormal**. Compounding growth is the canonical case.\\n\\n## Use cases & limits\\n\\n- **Positive, right-skewed, multiplicatively-driven quantities:** stock/commodity prices, income, biological sizes, time-to-failure, insurance claim severities.\\n- **Asset prices:** under **geometric Brownian motion** the log-return is normal, so the price is lognormal (positive, compounds) — the basis of **Black–Scholes**.\\n- **Limitation:** real log-returns still show **fatter tails and skew** than the model (constant-vol GBM); it understates extreme moves.\\n\\n*Reference value:* $\\\\sigma^2/2$ is the median→mean correction (e.g. $\\\\sigma=0.2 \\\\Rightarrow 0.02$).",
+  "categories": {
+    "core": "Core",
+    "theorems": "Theorems",
+    "use": "Use & limits",
+    "exercise": "Exercises"
+  },
+  "cards": [
+    {
+      "category": "core",
+      "term": "A random variable $X$ is lognormal when {{log X}} (its natural logarithm) is normally distributed.",
+      "definition": "If $\\ln X \\sim N(\\mu,\\sigma^2)$ then $X$ is lognormal. Equivalently $X = e^{Y}$ with $Y$ normal. So $X$ is strictly positive and right-skewed, even though its log is a symmetric bell.",
+      "type": "cloze",
+      "formula": "$X = e^{Y},\\quad Y\\sim N(\\mu,\\sigma^2)$",
+      "note": "[1] Log-normal distribution (Wikipedia) — https://en.wikipedia.org/wiki/Log-normal_distribution",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "category": "core",
+      "term": "[Lognormal] What are the support and shape of a lognormal distribution?",
+      "sub": "A) strictly positive $(0,\\infty)$ and right-skewed    B) the whole real line and symmetric    C) bounded on $[0,1]$    D) integer-valued and discrete",
+      "definition": "Correct: A) strictly positive $(0,\\infty)$ and right-skewed. Because it is the exponential of a normal, it can never be negative and has a long right tail — a natural fit for quantities that are positive and multiplicatively driven.",
+      "note": "[1] Log-normal distribution (Wikipedia) — https://en.wikipedia.org/wiki/Log-normal_distribution",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "category": "core",
+      "term": "[Lognormal] If $\\ln X \\sim N(\\mu,\\sigma^2)$, the mean of $X$ is:",
+      "sub": "A) $e^{\\mu + \\sigma^2/2}$    B) $e^{\\mu}$    C) $\\mu$    D) $e^{\\mu - \\sigma^2/2}$",
+      "definition": "Correct: A) $e^{\\mu + \\sigma^2/2}$. The mean exceeds $e^{\\mu}$ (which is the median) because of the right skew; the gap grows with $\\sigma$. Confusing $e^{\\mu}$ (median) with the mean is a classic error.",
+      "note": "[1] Log-normal distribution (Wikipedia) — https://en.wikipedia.org/wiki/Log-normal_distribution",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "category": "core",
+      "term": "[Lognormal] For a lognormal, the parameters $\\mu$ and $\\sigma$ are the mean and SD of $X$ itself.",
+      "type": "truefalse",
+      "answer": false,
+      "summary": "False — $\\mu,\\sigma$ describe $\\ln X$, not $X$.",
+      "definition": "False. $\\mu$ and $\\sigma$ are the mean and standard deviation of the underlying normal $\\ln X$, on the log scale — not of $X$. The mean of $X$ is $e^{\\mu+\\sigma^2/2}$ and its median is $e^{\\mu}$.",
+      "note": "[1] Log-normal distribution (Wikipedia) — https://en.wikipedia.org/wiki/Log-normal_distribution",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "category": "theorems",
+      "term": "Why does a 'multiplicative CLT' motivate the lognormal?",
+      "summary": "Products of many independent positive factors tend to lognormal (logs add → normal).",
+      "definition": "If a quantity is the product of many independent positive random factors, its logarithm is a sum of many independent terms, which the ordinary CLT pushes toward normal — so the quantity itself tends to lognormal. Compounding growth rates is the canonical example.",
+      "note": "[1] Log-normal distribution (Wikipedia) — https://en.wikipedia.org/wiki/Log-normal_distribution",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "category": "use",
+      "term": "Why are asset prices often modelled as lognormal?",
+      "summary": "Prices stay positive and compound multiplicatively; log-returns are taken normal (GBM).",
+      "definition": "Under geometric Brownian motion the log-return over any horizon is normal, so the price is lognormal: it can't go negative and grows multiplicatively. This is the assumption behind the Black–Scholes option-pricing formula.",
+      "note": "[1] Geometric Brownian motion (Wikipedia) — https://en.wikipedia.org/wiki/Geometric_Brownian_motion",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "category": "use",
+      "term": "[Lognormal] Which is a genuine limitation of the lognormal model for asset returns?",
+      "sub": "A) empirically, real log-returns still show fatter tails and skew than the model implies    B) it allows negative prices    C) it has no closed-form mean    D) it cannot be fitted to positive data",
+      "definition": "Correct: A) empirically, real log-returns still show fatter tails and skew than the model implies. Lognormal/GBM assumes normal log-returns with constant volatility, but markets exhibit fat tails, volatility clustering and jumps — so it understates extreme moves, just as the normal does on the log scale.",
+      "note": "[1] Geometric Brownian motion (Wikipedia) — https://en.wikipedia.org/wiki/Geometric_Brownian_motion",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "category": "use",
+      "term": "Name typical quantities modelled as lognormal.",
+      "summary": "Asset/stock prices, income, biological sizes, time-to-failure, claim sizes.",
+      "definition": "Strictly-positive, right-skewed, multiplicatively-driven quantities: stock and commodity prices, incomes, particle/organism sizes, certain reliability lifetimes, and insurance claim severities. The common thread is 'positive and built from products of effects'.",
+      "note": "[1] Log-normal distribution (Wikipedia) — https://en.wikipedia.org/wiki/Log-normal_distribution",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "category": "theorems",
+      "term": "How do the normal and lognormal relate via a simple transformation?",
+      "summary": "$X$ lognormal ⇔ $\\ln X$ normal; exponentiate/log to move between them.",
+      "definition": "They are a log/exp pair: if $X$ is lognormal then $\\ln X$ is normal, and if $Y$ is normal then $e^Y$ is lognormal. Practically, you model and test on the log scale (where tools assume normality) and exponentiate back to the price/quantity scale.",
+      "note": "[1] Log-normal distribution (Wikipedia) — https://en.wikipedia.org/wiki/Log-normal_distribution",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "category": "exercise",
+      "term": "[Exercise] A stock price one year out is lognormal with $\\ln S_T \\sim N(\\mu=4.6,\\ \\sigma=0.2)$. Give its median and explain why its mean is higher.",
+      "summary": "Median $=e^{4.6}\\approx\\$99.5$; mean $=e^{4.6+0.02}\\approx\\$101.5$, higher due to right skew.",
+      "definition": "Median $= e^{\\mu} = e^{4.6} \\approx \\$99.5$. Mean $= e^{\\mu+\\sigma^2/2} = e^{4.6+0.02} \\approx \\$101.5$. The mean exceeds the median because the lognormal's right skew lets a few large outcomes pull the average up while the bulk sits lower — so 'expected price' > 'typical price'.",
+      "note": "Watch the median-vs-mean trap from the mean card above.",
+      "last_updated": "2026-06-29"
+    }
+  ],
+  "tags": [
+    "distributions",
+    "probability"
+  ]
+}

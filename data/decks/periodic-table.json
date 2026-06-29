@@ -1,0 +1,268 @@
+{
+  "id": "periodic-table",
+  "name": "Periodic table — element symbols",
+  "color": "#f783ac",
+  "dual": true,
+  "description": "Common chemical elements, tested both ways: symbol → name and name → symbol, tracked separately. Grouped by where they sit in the periodic table.",
+  "primerTitle": "Reading the periodic table",
+  "primer": "The **periodic table** arranges elements by increasing **atomic number** $Z$ (number of protons). Each element has a one- or two-letter **symbol** and a **name**. This deck tests both directions — symbol → name and name → symbol — for common elements.\n\n### How it's organised\n\n- **Periods** — the horizontal rows.\n- **Groups** — the vertical columns; elements in a group share chemical behaviour.\n- This deck groups the cards by family: **alkali & alkaline-earth metals**, **transition metals**, **other metals**, **non-metals & metalloids**, **halogens**, and **noble gases**.\n\n### The recall method\n\nMost symbols are just the first letter (or first two) of the English name — **H**ydrogen, **C**arbon, **Ca**lcium. A handful come from **Latin** names and must be memorised separately:\n\n| Symbol | Element | From |\n|---|---|---|\n| Na | Sodium | natrium |\n| K | Potassium | kalium |\n| Fe | Iron | ferrum |\n| Cu | Copper | cuprum |\n| Ag | Silver | argentum |\n| Sn | Tin | stannum |\n| Au | Gold | aurum |\n| Hg | Mercury | hydrargyrum |\n| Pb | Lead | plumbum |\n\n### A high-frequency subset\n\n- **Non-metals:** H (hydrogen), C (carbon), N (nitrogen), O (oxygen), P (phosphorus), S (sulfur), Si (silicon).\n- **Halogens:** F (fluorine), Cl (chlorine), Br (bromine), I (iodine).\n- **Noble gases:** He (helium), Ne (neon), Ar (argon).\n- **Alkali / alkaline-earth:** Li, Na, K (alkali); Mg, Ca (alkaline-earth).\n- **Transition metals:** Fe (iron), Cu (copper), Zn (zinc), Ag (silver), Au (gold), Pt (platinum).\n\nThis is a representative sample, not the full list — *the deck's cards cover more elements than are enumerated here, so work through the cards for the complete set.*",
+  "categories": {
+    "alkali": "Alkali & alkaline earth",
+    "transition": "Transition metals",
+    "metal": "Other metals",
+    "nonmetal": "Non-metals & metalloids",
+    "halogen": "Halogens",
+    "noble": "Noble gases"
+  },
+  "cards": [
+    {
+      "term": "H",
+      "definition": "Hydrogen",
+      "category": "nonmetal",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "He",
+      "definition": "Helium",
+      "category": "noble",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "Li",
+      "definition": "Lithium",
+      "category": "alkali",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "Be",
+      "definition": "Beryllium",
+      "category": "alkali",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "B",
+      "definition": "Boron",
+      "category": "nonmetal",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "C",
+      "definition": "Carbon",
+      "category": "nonmetal",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "N",
+      "definition": "Nitrogen",
+      "category": "nonmetal",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "O",
+      "definition": "Oxygen",
+      "category": "nonmetal",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "F",
+      "definition": "Fluorine",
+      "category": "halogen",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "Ne",
+      "definition": "Neon",
+      "category": "noble",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "Na",
+      "definition": "Sodium",
+      "category": "alkali",
+      "note": "Symbol from Latin 'natrium'.",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "Mg",
+      "definition": "Magnesium",
+      "category": "alkali",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "Al",
+      "definition": "Aluminium",
+      "category": "metal",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "Si",
+      "definition": "Silicon",
+      "category": "nonmetal",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "P",
+      "definition": "Phosphorus",
+      "category": "nonmetal",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "S",
+      "definition": "Sulfur",
+      "category": "nonmetal",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "Cl",
+      "definition": "Chlorine",
+      "category": "halogen",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "Ar",
+      "definition": "Argon",
+      "category": "noble",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "K",
+      "definition": "Potassium",
+      "category": "alkali",
+      "note": "Symbol from Latin 'kalium'.",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "Ca",
+      "definition": "Calcium",
+      "category": "alkali",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "Ti",
+      "definition": "Titanium",
+      "category": "transition",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "Cr",
+      "definition": "Chromium",
+      "category": "transition",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "Mn",
+      "definition": "Manganese",
+      "category": "transition",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "Fe",
+      "definition": "Iron",
+      "category": "transition",
+      "note": "Symbol from Latin 'ferrum'.",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "Co",
+      "definition": "Cobalt",
+      "category": "transition",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "Ni",
+      "definition": "Nickel",
+      "category": "transition",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "Cu",
+      "definition": "Copper",
+      "category": "transition",
+      "note": "Symbol from Latin 'cuprum'.",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "Zn",
+      "definition": "Zinc",
+      "category": "transition",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "Br",
+      "definition": "Bromine",
+      "category": "halogen",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "Kr",
+      "definition": "Krypton",
+      "category": "noble",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "Ag",
+      "definition": "Silver",
+      "category": "transition",
+      "note": "Symbol from Latin 'argentum'.",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "Sn",
+      "definition": "Tin",
+      "category": "metal",
+      "note": "Symbol from Latin 'stannum'.",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "I",
+      "definition": "Iodine",
+      "category": "halogen",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "Xe",
+      "definition": "Xenon",
+      "category": "noble",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "Pt",
+      "definition": "Platinum",
+      "category": "transition",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "Au",
+      "definition": "Gold",
+      "category": "transition",
+      "note": "Symbol from Latin 'aurum'.",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "Hg",
+      "definition": "Mercury",
+      "category": "transition",
+      "note": "Symbol from Latin 'hydrargyrum'.",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "Pb",
+      "definition": "Lead",
+      "category": "metal",
+      "note": "Symbol from Latin 'plumbum'.",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "U",
+      "definition": "Uranium",
+      "category": "metal",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "Rn",
+      "definition": "Radon",
+      "category": "noble",
+      "last_updated": "2026-06-29"
+    }
+  ]
+}

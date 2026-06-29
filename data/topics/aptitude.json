@@ -1,0 +1,20 @@
+{
+  "topic": "Cognitive & quant aptitude",
+  "id": "aptitude",
+  "standard": true,
+  "primerTitle": "Cognitive & quant aptitude — how to use it",
+  "primer": "## Cognitive & quant aptitude\nA practice pool of timed cognitive/quant problems, **one deck per problem family**. Learn the *technique* in each deck's primer, then apply it on the cards — the goal is the method, not memorising answers. Best drilled in **exam mode** (~5 minutes per question).\n\nFamilies: probability & games · the complement rule ('at least one') · random walks · counting · pigeonhole · digit/number puzzles · pseudocode (tracing & completion) · logic puzzles & conditional chains.",
+  "deckFiles": [
+    "aptitude-probability.json",
+    "aptitude-complement.json",
+    "aptitude-probability-games.json",
+    "aptitude-random-walk.json",
+    "aptitude-counting.json",
+    "aptitude-pigeonhole.json",
+    "aptitude-digit-puzzle.json",
+    "aptitude-pseudocode-trace.json",
+    "aptitude-pseudocode-fill.json",
+    "aptitude-logic-puzzle.json",
+    "aptitude-logic-chains.json"
+  ]
+}

@@ -1,0 +1,154 @@
+{
+  "id": "option-greeks",
+  "name": "Option Greeks & Black–Scholes",
+  "color": "#4dabf7",
+  "description": "The Greeks (delta, gamma, vega, theta, rho) with their signs and intuition, the Black–Scholes assumptions, implied volatility and the smile, put–call parity, and moneyness.",
+  "categories": {
+    "core": "Core",
+    "theorems": "Relations & assumptions",
+    "use": "Use & limits",
+    "exercise": "Exercises"
+  },
+  "primerTitle": "Greeks & Black–Scholes",
+  "primer": "The **Greeks** are sensitivities of an option's value $V$ to its inputs.\\n\\n- **Delta** $\\\\Delta=\\\\partial V/\\\\partial S$: sensitivity to the underlying price. A call's delta runs $0\\\\to+1$, a put's $-1\\\\to 0$. It is the **hedge ratio** — the number of underlying units to delta-hedge one option.\\n- **Gamma** $\\\\Gamma=\\\\partial^2 V/\\\\partial S^2$: the *second* derivative in $S$, the curvature of $V$ and the rate of change of delta. Positive for any **long** option (call or put), largest **at-the-money and near expiry** — there delta is poised between 0 and 1, so a small move in $S$ flips it sharply, making the position costly and risky to hedge.\\n- **Vega** $=\\\\partial V/\\\\partial\\\\sigma$: sensitivity to **volatility**, positive for long calls and puts (more vol $\\\\Rightarrow$ higher chance of finishing deep in-the-money). Not actually a Greek letter.\\n- **Theta** $=\\\\partial V/\\\\partial t$: usually **negative** for long options — **time decay**, value erodes as time passes, fastest at-the-money near expiry.\\n- **Rho** $=\\\\partial V/\\\\partial r$: positive for calls, negative for puts. A higher rate lowers the PV of the strike paid later, helping a call (pays $K$ in future) and hurting a put — consistent with put–call parity.\\n\\n**Black–Scholes assumptions**: the underlying follows **geometric Brownian motion** with **constant volatility** and a constant risk-free rate; markets are arbitrage-free; trading is continuous and frictionless (no costs/taxes, short selling and fractional trading allowed); and (basic European form) **no dividends**. These imply **lognormal** terminal prices.\\n\\n**Implied volatility** is the $\\\\sigma$ that, plugged into Black–Scholes, reproduces the option's market price — the market's forward-looking vol and the language options are quoted in (versus historical/realised vol). Plotting implied vol against strike gives the **volatility smile** (equities: a downward **skew**) rather than a flat line: direct evidence that the **constant-volatility** assumption is the one most clearly violated — the market charges extra for tail/crash protection.\\n\\n**Put–call parity**: $C-P=S-Ke^{-rT}$ (no dividends). It is a **model-free** no-arbitrage relation — it holds regardless of any pricing model, so it would bind even if Black–Scholes were wrong. It lets you price one option from the other, back out the implied forward, and explains why rho and delta have opposite signs for calls vs puts.\\n\\n**Moneyness**: a call is **in-the-money** when $S>K$ (intrinsic value $S-K$), at-the-money when $S\\\\approx K$, out-of-the-money when $S<K$; for a put the inequalities reverse.\\n\\n**Hedging**: a delta-neutral hedge shorts $\\\\Delta\\\\times(\\\\text{shares per contract})\\\\times(\\\\text{contracts})$ shares. This only neutralises small first-order moves — **gamma** (the hedge ratio drifts as $S$ moves) plus **vega** and **theta** exposures remain.",
+  "cards": [
+    {
+      "category": "core",
+      "term": "Define delta, and give the sign/range for calls and puts.",
+      "summary": "$\\Delta=\\partial V/\\partial S$; call $0$ to $+1$, put $-1$ to $0$. The hedge ratio.",
+      "definition": "Delta is the option value's sensitivity to the underlying price, $\\Delta=\\partial V/\\partial S$. A call's delta runs from 0 (deep out-of-the-money) to $+1$ (deep in-the-money); a put's runs from $-1$ to $0$. It is the number of underlying units needed to delta-hedge one option.",
+      "formula": "$\\Delta=\\dfrac{\\partial V}{\\partial S}$",
+      "last_updated": "2026-06-29",
+      "stale": true
+    },
+    {
+      "category": "core",
+      "term": "Define gamma and state its sign for long options.",
+      "summary": "$\\Gamma=\\partial^2 V/\\partial S^2$ — curvature; positive for long calls and puts.",
+      "definition": "Gamma is the rate of change of delta with the underlying, $\\Gamma=\\partial^2 V/\\partial S^2$ — the convexity of the option value. It is positive for any long option (call or put), largest at-the-money and near expiry, and it tells you how fast a delta hedge goes stale.",
+      "formula": "$\\Gamma=\\dfrac{\\partial^2 V}{\\partial S^2}$",
+      "last_updated": "2026-06-29",
+      "stale": true
+    },
+    {
+      "category": "core",
+      "term": "[Greeks] Vega measures sensitivity to which input, and what is its sign for a long option?",
+      "sub": "A) volatility; positive    B) the underlying price; positive    C) time; negative    D) the interest rate; positive",
+      "definition": "Correct: A) volatility; positive. Vega $=\\partial V/\\partial\\sigma$ is positive for long calls and puts — more volatility raises the chance of finishing deep in-the-money, so the option is worth more. (It is not a Greek letter, but is treated as one.)",
+      "last_updated": "2026-06-29",
+      "stale": true
+    },
+    {
+      "category": "core",
+      "term": "[Greeks] Theta is usually negative for a long option. What does that mean?",
+      "sub": "A) value erodes as time passes (time decay), all else equal    B) value rises as time passes    C) it measures rate sensitivity    D) it is the second derivative in price",
+      "definition": "Correct: A) value erodes as time passes (time decay). Theta $=\\partial V/\\partial t$ is negative for most long options: with less time left there is less chance for favourable moves, so the option bleeds value — fastest for at-the-money options near expiry.",
+      "last_updated": "2026-06-29",
+      "stale": true
+    },
+    {
+      "category": "core",
+      "term": "Rho is the option value's sensitivity to the interest rate, and is {{positive}} for calls and negative for puts.",
+      "definition": "Rho $=\\partial V/\\partial r$. A higher rate lowers the present value of the strike paid later, which helps a call (you pay $K$ in the future) and hurts a put (you receive $K$). So rho is positive for calls, negative for puts — consistent with put–call parity $C-P=S-Ke^{-rT}$.",
+      "type": "cloze",
+      "formula": "$\\rho=\\dfrac{\\partial V}{\\partial r}$",
+      "last_updated": "2026-06-29",
+      "stale": true
+    },
+    {
+      "category": "core",
+      "term": "[Greeks] Which Greek is the second derivative of the option value with respect to the underlying?",
+      "sub": "A) gamma    B) delta    C) vega    D) theta",
+      "definition": "Correct: A) gamma. Delta is the first derivative in $S$; gamma is the second, $\\Gamma=\\partial^2 V/\\partial S^2$. Vega is the derivative in volatility and theta the derivative in time, so neither is a second derivative in price.",
+      "last_updated": "2026-06-29",
+      "stale": true
+    },
+    {
+      "category": "theorems",
+      "term": "List the key Black–Scholes assumptions.",
+      "summary": "GBM underlying with constant vol and rate, no arbitrage, continuous frictionless trading, no dividends.",
+      "definition": "The underlying follows geometric Brownian motion with constant volatility and a constant risk-free rate; markets are arbitrage-free; trading is continuous, with no transaction costs or taxes; you can short and trade fractional amounts; and (in the basic European form) the stock pays no dividends. These imply lognormal terminal prices.",
+      "note": "Ties to GBM in the Stochastic calculus deck.",
+      "last_updated": "2026-06-29",
+      "stale": true
+    },
+    {
+      "category": "theorems",
+      "term": "[Greeks] Which Black–Scholes assumption is most clearly violated by the volatility smile?",
+      "sub": "A) constant volatility    B) no arbitrage    C) continuous trading    D) the stock pays no dividends",
+      "definition": "Correct: A) constant volatility. If volatility were truly constant, implied vol would be the same across strikes. Instead it varies — the smile/skew — showing the market prices in fat tails and crash risk that the constant-vol lognormal model omits.",
+      "last_updated": "2026-06-29",
+      "stale": true
+    },
+    {
+      "category": "theorems",
+      "term": "State put–call parity for European options and why it is powerful.",
+      "summary": "$C-P=S-Ke^{-rT}$ — model-free; a call minus a put replicates a forward.",
+      "definition": "Put–call parity: $C-P=S-Ke^{-rT}$ (no dividends). It is an arbitrage relation, independent of any pricing model, so it lets you price one option from the other, back out the implied forward, and explains why rho and delta have opposite signs for calls vs puts.",
+      "formula": "$C-P=S-Ke^{-rT}$",
+      "last_updated": "2026-06-29",
+      "stale": true
+    },
+    {
+      "category": "theorems",
+      "term": "[Greeks] Put–call parity holds only if the Black–Scholes formula is correct.",
+      "type": "truefalse",
+      "answer": false,
+      "summary": "False — parity is a model-free arbitrage relation.",
+      "definition": "False. Put–call parity follows purely from no-arbitrage replication and holds regardless of the option-pricing model. Black–Scholes is one model consistent with it, but parity would still bind even if Black–Scholes were wrong.",
+      "last_updated": "2026-06-29",
+      "stale": true
+    },
+    {
+      "category": "core",
+      "term": "Define implied volatility.",
+      "summary": "The $\\sigma$ that makes the Black–Scholes price equal the observed market price.",
+      "definition": "Implied volatility is the volatility input that, plugged into Black–Scholes, reproduces the option's traded market price. It is the market's forward-looking volatility estimate and the language in which options are actually quoted, rather than the historical (realised) volatility.",
+      "last_updated": "2026-06-29",
+      "stale": true
+    },
+    {
+      "category": "use",
+      "term": "What is the volatility smile/skew, and what does it reveal?",
+      "summary": "Implied vol varies with strike; the constant-vol assumption fails empirically.",
+      "definition": "Plotting implied volatility against strike gives a smile or (for equities) a downward skew rather than a flat line. Since Black–Scholes assumes one constant volatility, this pattern is direct evidence that the model is misspecified — the market charges more for tail/crash protection.",
+      "note": "Empirical counterpart to the constant-vol assumption.",
+      "last_updated": "2026-06-29",
+      "stale": true
+    },
+    {
+      "category": "core",
+      "term": "[Greeks] A call option with strike $K$ is 'in-the-money' when:",
+      "sub": "A) $S>K$    B) $S<K$    C) $S=0$    D) $S=K$ exactly only",
+      "definition": "Correct: A) $S>K$. A call is in-the-money when the spot exceeds the strike (it has intrinsic value $S-K$), at-the-money when $S\\approx K$, and out-of-the-money when $S<K$. For a put the inequalities reverse.",
+      "last_updated": "2026-06-29",
+      "stale": true
+    },
+    {
+      "category": "use",
+      "term": "Why is gamma largest for at-the-money options near expiry?",
+      "summary": "Delta swings fastest there — from ~0.5 toward 0 or 1 with tiny price moves.",
+      "definition": "Near expiry an at-the-money option's delta is poised between 0 and 1: a small move in $S$ flips it sharply toward 0 (if it goes out-of-the-money) or 1 (if in-the-money). That rapid change of delta is exactly high gamma, which makes such positions costly and risky to hedge.",
+      "last_updated": "2026-06-29",
+      "stale": true
+    },
+    {
+      "category": "exercise",
+      "term": "[Exercise] A European call trades at $C=7$, the put at $P=2$, with $S=100$, $K=100$, $r=5\\%$, $T=1$. Is put–call parity satisfied?",
+      "summary": "Yes: $C-P=5$ and $S-Ke^{-rT}=100-100e^{-0.05}\\approx4.88\\approx5$.",
+      "definition": "Parity needs $C-P=S-Ke^{-rT}$. Left side: $7-2=5$. Right side: $100-100e^{-0.05}=100-95.12=4.88$. These match to within rounding, so there is no arbitrage. A gap would signal a parity (conversion/reversal) arbitrage.",
+      "note": "Uses the parity formula and discounting from the primer.",
+      "last_updated": "2026-06-29",
+      "stale": true
+    },
+    {
+      "category": "exercise",
+      "term": "[Exercise] You are long a call with delta $+0.6$ on 100 shares per contract, for 10 contracts. How many shares do you short to delta-hedge, and what risk remains?",
+      "summary": "Short $0.6\\times100\\times10=600$ shares; gamma (and vega/theta) risk remains.",
+      "definition": "Delta-neutral hedge: short $\\Delta\\times$ (shares per contract) $\\times$ contracts $=0.6\\times100\\times10=600$ shares. This only neutralises small first-order price moves; gamma means the hedge ratio changes as $S$ moves, and vega/theta exposures (volatility and time decay) remain.",
+      "note": "Derives from delta as the hedge ratio.",
+      "last_updated": "2026-06-29",
+      "stale": true
+    }
+  ]
+}

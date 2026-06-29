@@ -1,0 +1,134 @@
+{
+  "id": "linear-algebra",
+  "name": "Linear algebra",
+  "color": "#4dabf7",
+  "description": "The matrix machinery behind quant methods: vectors and matrices, dot product, matrix multiplication, determinant and inverse, rank, eigenvalues and eigenvectors, positive-definiteness, and the singular value decomposition.",
+  "categories": {
+    "core": "Core",
+    "theorems": "Concepts",
+    "use": "Use & limitations",
+    "exercise": "Exercises"
+  },
+  "primerTitle": "Linear algebra — quick recap",
+  "primer": "## Vectors & matrices\\n\\n- A **vector** is an ordered list of numbers (a point/arrow in $\\\\mathbb{R}^n$); a **matrix** is a rectangular array. An $m\\\\times n$ matrix is a linear map $\\\\mathbb{R}^n\\\\to\\\\mathbb{R}^m$, $\\\\mathbf{x}\\\\mapsto A\\\\mathbf{x}$.\\n- **Dot product** $\\\\mathbf{a}\\\\cdot\\\\mathbf{b}=\\\\sum_i a_ib_i=\\\\lVert a\\\\rVert\\\\lVert b\\\\rVert\\\\cos\\\\theta$. It is **zero iff the vectors are orthogonal** ($90^\\\\circ$). Norm $\\\\lVert a\\\\rVert=\\\\sqrt{\\\\mathbf{a}\\\\cdot\\\\mathbf{a}}$.\\n- **Matrix product $AB$** is defined when columns of $A$ = rows of $B$ (inner dims match): $m\\\\times n$ times $n\\\\times p$ gives $m\\\\times p$. It is associative and distributive but **NOT commutative** ($AB\\\\neq BA$ in general).\\n\\n## Determinant, inverse, rank\\n\\n- **Determinant**: a scalar; $|\\\\det|$ scales area/volume, its sign flags orientation reversal. For $2\\\\times2$, $\\\\det=ad-bc$. Also $\\\\det(AB)=\\\\det A\\\\det B$.\\n- $A^{-1}$ exists **iff $\\\\det(A)\\\\neq0$**, equivalently iff $A$ is **full rank** (independent columns). $\\\\det=0$ ⇒ singular, columns dependent.\\n- **Rank** = number of linearly independent columns (= independent rows) = dimension of the column space.\\n\\n## Eigenvalues & definiteness\\n\\n- **Eigenvector/eigenvalue**: $A\\\\mathbf{v}=\\\\lambda\\\\mathbf{v}$, $\\\\mathbf{v}\\\\neq0$ — direction preserved, scaled by $\\\\lambda$. Found from $\\\\det(A-\\\\lambda I)=0$.\\n- **$\\\\operatorname{tr}(A)=\\\\sum\\\\lambda_i$** and **$\\\\det(A)=\\\\prod\\\\lambda_i$**. Real symmetric matrices have real eigenvalues and orthogonal eigenvectors.\\n- **Positive-definite** (symmetric): $\\\\mathbf{x}^\\\\top A\\\\mathbf{x}>0$ for all $\\\\mathbf{x}\\\\neq0$ ⇔ all eigenvalues $>0$. **Positive-semidefinite** relaxes to $\\\\geq0$. A **covariance matrix** is symmetric and PSD ($\\\\mathbf{x}^\\\\top\\\\Sigma\\\\mathbf{x}=\\\\operatorname{Var}(\\\\mathbf{x}^\\\\top X)\\\\geq0$); it can be singular (redundant asset) so it need not be invertible.\\n\\n## SVD\\n\\n- Every matrix factors as **$A=U\\\\Sigma V^\\\\top$**, $U,V$ orthogonal, $\\\\Sigma$ diagonal of non-negative **singular values** (decreasing). Works for any (even non-square) matrix; number of nonzero singular values = rank.\\n- Keeping only the largest singular values gives the **best low-rank approximation** (Eckart-Young) → PCA, dimensionality reduction, denoising, compression.",
+  "cards": [
+    {
+      "category": "core",
+      "term": "What is a vector, and what is a matrix?",
+      "summary": "A vector is an ordered list of numbers; a matrix is a rectangular array, and an $m\\times n$ matrix is a map $\\mathbb{R}^n\\to\\mathbb{R}^m$.",
+      "definition": "A vector is an ordered tuple of numbers — a point or arrow in $\\mathbb{R}^n$. A matrix is a rectangular array of numbers; an $m\\times n$ matrix represents a linear map from $\\mathbb{R}^n$ to $\\mathbb{R}^m$, sending a vector $\\mathbf{x}$ to $A\\mathbf{x}$.",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "category": "core",
+      "term": "What is the dot product of two vectors, and what does it equal zero mean?",
+      "summary": "$\\mathbf{a}\\cdot\\mathbf{b}=\\sum_i a_ib_i=\\lVert a\\rVert\\lVert b\\rVert\\cos\\theta$; zero iff orthogonal.",
+      "definition": "The dot product sums the products of matching components, and equals $\\lVert a\\rVert\\,\\lVert b\\rVert\\cos\\theta$. It is zero exactly when the vectors are orthogonal (perpendicular), and the norm is $\\lVert a\\rVert=\\sqrt{\\mathbf{a}\\cdot\\mathbf{a}}$.",
+      "formula": "$\\mathbf{a}\\cdot\\mathbf{b}=\\sum_i a_i b_i = \\lVert a\\rVert\\,\\lVert b\\rVert\\cos\\theta$",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "category": "core",
+      "term": "[Linear algebra] For matrix multiplication $AB$ to be defined, what must hold?",
+      "sub": "A) the number of columns of $A$ equals the number of rows of $B$    B) $A$ and $B$ must be square    C) $A$ and $B$ must have the same shape    D) the number of rows of $A$ equals the number of columns of $B$",
+      "definition": "Correct: A) the number of columns of $A$ equals the number of rows of $B$. The inner dimensions must match: an $m\\times n$ times an $n\\times p$ gives an $m\\times p$ matrix, with $(AB)_{ij}=\\sum_k A_{ik}B_{kj}$.",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "category": "core",
+      "term": "[Linear algebra] Matrix multiplication is commutative: $AB=BA$ always.",
+      "type": "truefalse",
+      "answer": false,
+      "summary": "False — $AB\\neq BA$ in general (it is associative, not commutative).",
+      "definition": "False. Matrix multiplication is associative and distributive but generally NOT commutative: $AB$ and $BA$ usually differ (and may not even both be defined). Order matters.",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "category": "core",
+      "term": "What does the determinant of a square matrix tell you?",
+      "summary": "A scalar; $\\det=0$ means singular (non-invertible); $|\\det|$ scales volume.",
+      "definition": "The determinant is a scalar summarising the linear map: $|\\det|$ is the factor by which it scales area/volume, and its sign flags orientation reversal. $\\det(A)=0$ means the matrix is singular — columns are linearly dependent and it has no inverse. Also $\\det(AB)=\\det(A)\\det(B)$.",
+      "formula": "$\\det\\!\\begin{pmatrix}a&b\\\\c&d\\end{pmatrix}=ad-bc$",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "category": "core",
+      "term": "When does a square matrix have an inverse?",
+      "summary": "Iff $\\det(A)\\neq0$, equivalently iff it is full rank.",
+      "definition": "$A^{-1}$ exists iff $\\det(A)\\neq0$ — equivalently, iff $A$ is full rank with linearly independent columns. Then $AA^{-1}=A^{-1}A=I$, and the system $A\\mathbf{x}=\\mathbf{b}$ has the unique solution $\\mathbf{x}=A^{-1}\\mathbf{b}$.",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "category": "core",
+      "term": "What is the rank of a matrix?",
+      "summary": "The number of linearly independent columns (= independent rows).",
+      "definition": "The rank is the dimension of the column space — the number of linearly independent columns, which equals the number of linearly independent rows. 'Full rank' means rank equals the smaller of the two dimensions; a square matrix is invertible iff it has full rank.",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "category": "theorems",
+      "term": "Define an eigenvalue and eigenvector of a matrix.",
+      "summary": "$A\\mathbf{v}=\\lambda\\mathbf{v}$ with $\\mathbf{v}\\neq0$: $\\mathbf{v}$ keeps its direction, scaled by $\\lambda$.",
+      "definition": "A nonzero vector $\\mathbf{v}$ with $A\\mathbf{v}=\\lambda\\mathbf{v}$ is an eigenvector; the scalar $\\lambda$ is its eigenvalue. The map only stretches $\\mathbf{v}$ along its own direction. Eigenvalues solve the characteristic equation $\\det(A-\\lambda I)=0$.",
+      "formula": "$A\\mathbf{v}=\\lambda\\mathbf{v},\\quad \\mathbf{v}\\neq 0$",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "category": "theorems",
+      "term": "[Linear algebra] Which relations between eigenvalues and a matrix are correct?",
+      "sub": "A) the trace equals the sum of eigenvalues and the determinant equals their product    B) the trace equals the product and the determinant the sum    C) eigenvalues are always positive    D) every matrix has exactly one eigenvalue",
+      "definition": "Correct: A) the trace equals the sum of eigenvalues and the determinant equals their product. So $\\operatorname{tr}(A)=\\sum\\lambda_i$ and $\\det(A)=\\prod\\lambda_i$ — a quick consistency check. A real symmetric matrix additionally has all-real eigenvalues and orthogonal eigenvectors.",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "category": "theorems",
+      "term": "A symmetric matrix is {{positive-definite}} when $\\mathbf{x}^\\top A\\mathbf{x}>0$ for every nonzero $\\mathbf{x}$ — equivalently, when all its eigenvalues are strictly positive.",
+      "type": "cloze",
+      "definition": "A positive-definite symmetric matrix has $\\mathbf{x}^\\top A\\mathbf{x}>0$ for all $\\mathbf{x}\\neq0$, which holds iff every eigenvalue is $>0$. Positive-semidefinite relaxes this to $\\geq0$. Covariance matrices are positive-semidefinite by construction.",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "category": "use",
+      "term": "[Linear algebra] A covariance matrix is always:",
+      "sub": "A) symmetric and positive-semidefinite    B) skew-symmetric    C) always invertible    D) negative-definite",
+      "definition": "Correct: A) symmetric and positive-semidefinite. A covariance matrix is symmetric and satisfies $\\mathbf{x}^\\top\\Sigma\\mathbf{x}=\\operatorname{Var}(\\mathbf{x}^\\top X)\\geq0$, so it is positive-semidefinite. It need not be strictly positive-definite (a perfectly redundant asset makes it singular and non-invertible).",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "category": "theorems",
+      "term": "What is the singular value decomposition (SVD)?",
+      "summary": "Any matrix $A=U\\Sigma V^\\top$ with $U,V$ orthogonal and $\\Sigma$ diagonal of singular values.",
+      "definition": "Every $m\\times n$ matrix factors as $A=U\\Sigma V^\\top$, where $U$ and $V$ are orthogonal and $\\Sigma$ is diagonal with non-negative singular values in decreasing order. It generalises the eigendecomposition to any (even non-square) matrix; the count of nonzero singular values is the rank.",
+      "formula": "$A = U\\Sigma V^\\top$",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "category": "use",
+      "term": "[Linear algebra] Why is the SVD useful in practice?",
+      "sub": "A) keeping only the largest singular values gives the best low-rank approximation — the basis of PCA and compression    B) it only works for symmetric matrices    C) it computes the matrix inverse exactly    D) it requires the matrix to be positive-definite",
+      "definition": "Correct: A) keeping only the largest singular values gives the best low-rank approximation. Truncating the small singular values yields the optimal low-rank approximation (Eckart-Young), which underlies PCA, dimensionality reduction, denoising and image/data compression. SVD works for any matrix.",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "category": "exercise",
+      "term": "[Exercise] Compute the determinant of $\\begin{pmatrix}2&1\\\\4&3\\end{pmatrix}$ and state whether the matrix is invertible.",
+      "summary": "$\\det = 2\\cdot3 - 1\\cdot4 = 2 \\neq 0$, so it is invertible.",
+      "definition": "For a $2\\times2$ matrix, $\\det=ad-bc=(2)(3)-(1)(4)=6-4=2$. Since the determinant is nonzero, the matrix is full rank and invertible.",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "category": "exercise",
+      "term": "[Exercise] The dot product of $\\mathbf{a}=(1,2,2)$ and $\\mathbf{b}=(2,-1,0)$ — compute it and say what it implies about the angle.",
+      "summary": "$1\\cdot2 + 2\\cdot(-1) + 2\\cdot0 = 0$, so the vectors are orthogonal.",
+      "definition": "$\\mathbf{a}\\cdot\\mathbf{b}=(1)(2)+(2)(-1)+(2)(0)=2-2+0=0$. A zero dot product means $\\cos\\theta=0$, so the vectors are orthogonal (at $90^\\circ$).",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "category": "exercise",
+      "term": "[Exercise] A $2\\times2$ matrix has eigenvalues $3$ and $-1$. What are its trace and determinant?",
+      "summary": "Trace $=3+(-1)=2$; determinant $=3\\times(-1)=-3$.",
+      "definition": "The trace equals the sum of the eigenvalues, $3+(-1)=2$, and the determinant equals their product, $(3)(-1)=-3$. (The negative determinant also tells you the map reverses orientation.)",
+      "last_updated": "2026-06-29"
+    }
+  ]
+}

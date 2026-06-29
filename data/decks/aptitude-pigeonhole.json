@@ -1,0 +1,170 @@
+{
+  "id": "aptitude-pigeonhole",
+  "name": "Pigeonhole principle",
+  "color": "#ffd43b",
+  "description": "Worst-case guarantees: the minimum draws forcing k items in one hole.",
+  "tags": [
+    "aptitude",
+    "interview",
+    "pigeonhole",
+    "combinatorics"
+  ],
+  "primerTitle": "Pigeonhole — method",
+  "primer": "The pigeonhole principle answers \"how many must I draw to be CERTAIN of k items in one group?\" by reasoning about the unluckiest possible draw. \\textbf{Step 1 — name the holes.} Identify the categories items fall into (sock colours, calendar months, digit-sum values, residues mod n, complementary pairs). Let $h$ = number of holes. \\textbf{Step 2 — fill the worst case.} The adversary spreads draws as evenly as possible, taking up to $k-1$ per hole without ever completing a group of $k$. That maximal safe haul is $(k-1)\\cdot h$. \\textbf{Step 3 — add one.} One more draw cannot avoid every hole, so it forces a $k$-th item somewhere: $\\text{answer} = (k-1)\\cdot h + 1$. \\textbf{Limited supply caveat.} When some holes hold fewer than $k-1$ items (e.g. extreme digit-sums 1 and 36 have only one card each), you cannot take $k-1$ from them. Replace the flat $(k-1)\\cdot h$ with $\\sum_{\\text{holes}} \\min(\\text{count},\\, k-1)$, then $+1$. \\textbf{Pairing arguments.} \"Two that sum to $N$\" or \"two that differ by a multiple of $d$\" are pigeonhole in disguise: the holes are the complementary pairs (e.g. $\\{1,N-1\\},\\dots$) or the residue classes. Pick one from each hole safely, then $+1$ forces a full pair.",
+  "cards": [
+    {
+      "term": "9000 cards numbered 1000-9999. Drawing without replacement and recording each card's digit sum, what is the minimum number of cards you must draw to be certain at least 3 share the same digit sum?",
+      "choices": [
+        "73",
+        "72",
+        "71",
+        "108",
+        "109"
+      ],
+      "answer": 2,
+      "type": "mcq",
+      "definition": "Correct: 71. The holes are the possible digit sums. For 1000-9999 the digit sum ranges from 1 (1000) to 36 (9999), so there are 36 holes. We want k=3 in one hole. Naively the worst case is 2 cards per hole then +1 = 2*36+1 = 73 — but two holes are too small to fill: digit sum 1 occurs only once (1000) and digit sum 36 occurs only once (9999). From each of those you can take at most 1 card, not 2. So the true worst-case safe haul is sum of min(count,2) over all sums = 2*34 + 1 + 1 = 70, and one more card forces a third match: 70+1 = 71. Verified by computing the full digit-sum distribution over 1000..9999.",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "9000 cards numbered 1000-9999. Drawing without replacement and recording each card's digit sum, what is the minimum number of cards you must draw to be certain at least 4 share the same digit sum?",
+      "choices": [
+        "108",
+        "105",
+        "144",
+        "106",
+        "107"
+      ],
+      "answer": 1,
+      "type": "mcq",
+      "definition": "Correct: 105. Same 36 holes (digit sums 1 to 36), now k=4. Naive worst case is 3 per hole then +1 = 3*36+1 = 109. But the extreme sums cannot supply 3 cards each: sum 1 has only 1 card and sum 36 has only 1 card (you lose 2 from each, -4 total), while sums 2 and 35 have exactly 4 cards each — that is >= 3, so they are not limiting. The capped safe haul is sum of min(count,3) = 109 - 1 - 2 - 2 - 1... computed exactly = 104, and +1 forces a fourth match: 104+1 = 105. Verified by direct distribution computation: sums 1 and 36 hold 1 card each, sums 2 and 35 hold 4 each.",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "900 cards numbered 100-999. Drawing without replacement and recording each card's digit sum, what is the minimum number of cards you must draw to guarantee at least 3 share the same digit sum?",
+      "choices": [
+        "51",
+        "54",
+        "52",
+        "53",
+        "55"
+      ],
+      "answer": 3,
+      "type": "mcq",
+      "definition": "Correct: 53. Holes = digit sums of 100-999, which run from 1 (100) to 27 (999): 27 holes. We want k=3. Naive worst case is 2 per hole then +1 = 2*27+1 = 55. But the extremes are undersupplied: digit sum 1 occurs only once (100) and digit sum 27 occurs only once (999), so each yields at most 1 card instead of 2 (-1 each, -2 total). Capped safe haul = sum of min(count,2) = 2*25 + 1 + 1 = 52, and one more card forces a third match: 52+1 = 53. Verified against the computed distribution (sums 1 and 27 have 1 card each; the next-extreme sums 2 and 26 have 3 each, so they are not limiting).",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "A drawer holds loose socks in 3 colours. Reaching in blind, what is the minimum number you must pull to be sure of a matching pair (two of the same colour)?",
+      "choices": [
+        "2",
+        "4",
+        "5",
+        "3",
+        "6"
+      ],
+      "answer": 1,
+      "type": "mcq",
+      "definition": "Correct: 4. The holes are the 3 colours; a \"pair\" means k=2 in one hole. Worst case: one sock of each colour (3 socks) gives no pair. The 4th sock must repeat a colour. Answer = (k-1)*holes + 1 = 1*3 + 1 = 4.",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "A drawer holds loose socks in 5 colours. Reaching in blind, what is the minimum number you must pull to be sure of a matching pair (two of the same colour)?",
+      "choices": [
+        "10",
+        "8",
+        "6",
+        "7",
+        "5"
+      ],
+      "answer": 2,
+      "type": "mcq",
+      "definition": "Correct: 6. The holes are the 5 colours; a pair is k=2. Worst case: one sock of each colour (5 socks) still has no pair; the 6th sock must duplicate a colour. Answer = (k-1)*holes + 1 = 1*5 + 1 = 6.",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "A box holds many socks in 4 colours (at least 3 of each). Picking blind, what is the minimum number you must take to be certain of 3 socks of some single colour?",
+      "choices": [
+        "10",
+        "8",
+        "13",
+        "9",
+        "12"
+      ],
+      "answer": 3,
+      "type": "mcq",
+      "definition": "Correct: 9. The holes are the 4 colours; we want k=3 of one colour. Worst case: 2 socks of every colour (2*4 = 8) gives no colour with 3; the 9th sock completes a triple. Answer = (k-1)*holes + 1 = 2*4 + 1 = 9. (Supply is at least 3 per colour, so no hole is undersupplied and the flat formula applies.)",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "A box holds many socks in 3 colours (at least 4 of each). Picking blind, what is the minimum number you must take to be certain of 4 socks of some single colour?",
+      "choices": [
+        "12",
+        "13",
+        "11",
+        "9",
+        "10"
+      ],
+      "answer": 4,
+      "type": "mcq",
+      "definition": "Correct: 10. The holes are the 3 colours; we want k=4 of one colour. Worst case: 3 socks of every colour (3*3 = 9) gives no colour with 4; the 10th sock completes a group of 4. Answer = (k-1)*holes + 1 = 3*3 + 1 = 10. (At least 4 per colour, so every hole can hold k-1=3; flat formula applies.)",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "People enter a room one by one. What is the minimum number that must be present to guarantee at least 3 were born in the same calendar month?",
+      "choices": [
+        "25",
+        "13",
+        "24",
+        "26",
+        "37"
+      ],
+      "answer": 0,
+      "type": "mcq",
+      "definition": "Correct: 25. The holes are the 12 calendar months; we want k=3 in one month. Worst case: 2 people per month (2*12 = 24) avoids any triple; the 25th person forces a third birthday into some month. Answer = (k-1)*holes + 1 = 2*12 + 1 = 25.",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "From the integers 1 to 100, what is the minimum number you must select to be certain that two chosen numbers differ by a multiple of 9 (same remainder mod 9)?",
+      "choices": [
+        "12",
+        "8",
+        "10",
+        "11",
+        "9"
+      ],
+      "answer": 2,
+      "type": "mcq",
+      "definition": "Correct: 10. Two numbers differ by a multiple of 9 exactly when they share the same remainder mod 9. The holes are the 9 residue classes {0,1,...,8}; we want k=2 in one class. Worst case: one number from each of the 9 residues (9 numbers) — all different remainders, so no two differ by a multiple of 9. The 10th number must repeat a residue. Answer = (k-1)*holes + 1 = 1*9 + 1 = 10. (Each residue class has 11-12 members in 1..100, so all 9 holes are amply supplied.)",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "From {1, 2, ..., 20}, what is the minimum number of integers you must pick to guarantee some two of them add up to 21?",
+      "choices": [
+        "12",
+        "10",
+        "9",
+        "21",
+        "11"
+      ],
+      "answer": 4,
+      "type": "mcq",
+      "definition": "Correct: 11. Partition 1..20 into 10 complementary pairs that each sum to 21: {1,20}, {2,19}, ..., {10,11}. These 10 pairs are the holes. Worst case: pick one number from each pair (10 numbers) and no two sum to 21. The 11th pick must complete one of the pairs. Answer = (number of pairs) + 1 = 10 + 1 = 11.",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "From {1, 2, ..., 50}, what is the minimum number of integers you must choose to guarantee some two of them add up to 51?",
+      "choices": [
+        "51",
+        "27",
+        "25",
+        "26",
+        "24"
+      ],
+      "answer": 3,
+      "type": "mcq",
+      "definition": "Correct: 26. Partition 1..50 into 25 complementary pairs that each sum to 51: {1,50}, {2,49}, ..., {25,26}. These 25 pairs are the holes. Worst case: choose one number from each pair (25 numbers) so no two sum to 51. The 26th choice must complete one pair. Answer = (number of pairs) + 1 = 25 + 1 = 26.",
+      "last_updated": "2026-06-29"
+    }
+  ]
+}

@@ -1,0 +1,207 @@
+# ECB / SSM supervision & internal-model review — the supervisory domain for
+# on-site inspections and internal-model investigations.
+# Convert with:
+#   python3 tools/toml-to-json.py authoring/decks/ecb-ssm-models.toml data/decks/ecb-ssm-models.json
+# Prose = basic ("...") strings; formulas = literal ('...') strings.
+# Complements the curriculum's Basel/IRB/credit decks with the SUPERVISION side.
+
+name = "ECB / SSM & internal models"
+id = "ecb-ssm-models"
+color = "#8ab4ff"
+description = "How euro-area banks are supervised and how their internal models get reviewed on-site — the work of acting for the ECB to check a bank's risk management."
+author = "lernkarto contributors"
+
+[categories]
+ssm = { label = "SSM architecture", color = "#8ab4ff" }
+onsite = { label = "On-site & investigations", color = "#ff6f9c" }
+models = { label = "Internal models & validation", color = "#00e0d0" }
+regulation = { label = "Rules & guides", color = "#ffd166" }
+
+# ---------------------------------------------------------------- SSM architecture
+[[cards]]
+term = "Single Supervisory Mechanism"
+sub = "SSM"
+definition = "The euro-area banking-supervision system, live since November 2014, in which the ECB and national competent authorities (NCAs) jointly supervise banks. The ECB directly supervises the significant institutions; NCAs handle the rest under ECB oversight."
+note = "The 'who supervises whom' backbone of everything else here."
+category = "ssm"
+
+[[cards]]
+term = "Significant vs less-significant"
+sub = "SIs / LSIs"
+definition = "A bank is significant — and supervised directly by the ECB — if it meets criteria such as assets above EUR 30bn, more than 20% of national GDP, or being among the three largest in its country. Others are less-significant, supervised by the NCA."
+note = "~110 significant groups hold the bulk of euro-area banking assets."
+category = "ssm"
+
+[[cards]]
+term = "Joint Supervisory Team"
+sub = "JST"
+definition = "The team that runs day-to-day supervision of each significant institution, staffed by ECB and NCA supervisors and led by an ECB coordinator. It plans inspections, runs the SREP and follows up on findings."
+note = "The 'client team' an external specialist effectively supports."
+category = "ssm"
+
+[[cards]]
+term = "SREP"
+sub = "Supervisory Review & Evaluation Process"
+definition = "The annual cycle in which supervisors score a bank's business model, governance, capital risks and liquidity risks, then set bank-specific requirements. The supervisory counterpart to the bank's own ICAAP/ILAAP."
+note = "Output drives Pillar 2 add-ons (see P2R / P2G)."
+category = "ssm"
+
+[[cards]]
+term = "P2R and P2G"
+definition = "SREP outputs: the Pillar 2 Requirement is a binding, bank-specific capital add-on above Pillar 1 minimums; Pillar 2 Guidance is a non-binding expectation for an additional buffer. Breaching P2R is a hard breach; missing P2G triggers dialogue."
+formula = 'Overall capital requirement $=$ Pillar 1 $+$ P2R $+$ combined buffers $(+\,\text{P2G})$'
+note = "Binding vs non-binding is the distinction interviewers probe."
+category = "ssm"
+
+[[cards]]
+term = "Supervisory priorities"
+definition = "The ECB sets multi-year supervisory priorities that steer inspections and reviews — recurring themes include credit risk and provisioning, internal-model and model-risk deficiencies, IT/cyber and operational resilience, and climate & environmental risk."
+note = "Knowing the current priorities shows you track the supervisor's agenda."
+category = "ssm"
+
+# ---------------------------------------------------------------- on-site & investigations
+[[cards]]
+term = "On-site inspection"
+sub = "OSI"
+definition = "An in-depth, time-bound investigation conducted at the bank's premises into a specific risk area, process or control. A dedicated head-of-mission and team gather evidence, test, and issue graded findings — distinct from ongoing off-site monitoring."
+note = "The 'visiting other banks for the ECB' part of the role."
+category = "onsite"
+
+[[cards]]
+term = "Internal-model investigation"
+sub = "IMI"
+definition = "A specialised on-site review assessing whether a bank's internal model may be approved, extended or changed, or remains compliant. IMIs combine regulatory assessment with quantitative testing of the model's data, methodology and performance."
+note = "Where a quant who can re-run models is most useful."
+category = "onsite"
+
+[[cards]]
+term = "TRIM"
+sub = "Targeted Review of Internal Models"
+definition = "A major ECB project (2016–2021) that reviewed around 200 internal models across significant institutions to confirm their regulatory compliance and reduce unwarranted variability in risk-weighted assets. It standardised supervisory expectations and seeded the ECB Guide to Internal Models."
+note = "The landmark exercise that professionalised internal-model review."
+category = "onsite"
+
+[[cards]]
+term = "Findings & severity grading"
+definition = "Inspection conclusions are documented as findings graded by severity (commonly F1 low through F4 very high), each tied to remediation obligations and deadlines that the JST then tracks to closure."
+note = "Severity grading + remediation tracking = the output of a mission."
+category = "onsite"
+
+[[cards]]
+term = "IMAS / IMAS portal"
+definition = "The Information Management System for the SSM — the workflow system supervisors use for processes and findings — with a bank-facing IMAS portal for submitting model-change requests, applications and documentation."
+note = "The plumbing through which investigations and follow-ups flow."
+category = "onsite"
+
+[[cards]]
+term = "What the external specialist does"
+definition = "On an IMI/OSI a consultant typically replicates the bank's model outputs on its data, tests data quality and representativeness, builds challenger/benchmark models, reviews methodology and governance documentation, and drafts evidence for findings."
+note = "This is the day job — and it is your QA/validation skillset retargeted."
+category = "onsite"
+
+# ---------------------------------------------------------------- internal models & validation
+[[cards]]
+term = "Internal models (regulatory)"
+definition = "With supervisory permission a bank may use its own models instead of standardised approaches to compute own-funds requirements: IRB for credit risk, IMM for counterparty credit, and the internal models approach for market risk. More risk-sensitive, but model-dependent."
+note = "Permission, ongoing compliance and change control are all supervised."
+category = "models"
+
+[[cards]]
+term = "Risk-parameter review"
+sub = "PD / LGD / EAD"
+definition = "Reviewing an IRB model means scrutinising how its parameters are estimated: data history and representativeness, default sample, segmentation, calibration, and the conservatism applied. (The parameters themselves are defined in the credit-risk deck.)"
+formula = 'expected loss $\;\mathrm{EL}=\mathrm{PD}\times\mathrm{LGD}\times\mathrm{EAD}$'
+note = "Inspectors challenge the estimation, not just the formula."
+category = "models"
+
+[[cards]]
+term = "Internal validation function"
+definition = "The bank's own independent unit that validates models at least annually — separate from model development — checking discriminatory power, calibration and stability. Supervisors assess whether this function is genuinely independent and effective."
+note = "Independence of validation from development is a recurring finding."
+category = "models"
+
+[[cards]]
+term = "Use test"
+definition = "The requirement that an internal model is actually used in day-to-day risk management and decisions (limits, pricing, provisioning), not maintained solely to compute regulatory capital. A model that fails the use test is hard to approve."
+note = "Regulators distrust 'capital-only' models."
+category = "models"
+
+[[cards]]
+term = "Margin of conservatism"
+sub = "MoC"
+definition = "An explicit add-on to risk-parameter estimates compensating for identified deficiencies — data/methodology limitations (category A), estimation error (B), and general caution (C). It quantifies uncertainty rather than hiding it."
+note = "A direct analogue to systematic-uncertainty budgeting in physics."
+category = "models"
+
+[[cards]]
+term = "Rating philosophy: PIT vs TTC"
+definition = "A point-in-time rating reflects current conditions, so PDs rise in downturns; a through-the-cycle rating averages over the cycle, giving more stable PDs. The philosophy drives procyclicality and must match how the model is calibrated and used."
+note = "Mixing philosophies between estimation and use is a classic flaw."
+category = "models"
+
+[[cards]]
+term = "Downturn LGD"
+definition = "Loss-given-default calibrated to economic-downturn conditions, since recoveries fall when defaults cluster. EBA guidelines prescribe how to identify the downturn period and quantify the adjustment when data is scarce."
+note = "Where 'use the long-run average' is not conservative enough."
+category = "models"
+
+[[cards]]
+term = "Ongoing model monitoring"
+sub = "OMM"
+definition = "Continuous tracking of a model's performance between full validations — backtesting outcomes, stability and override rates — so deterioration is caught early and reported. Banks report validation results to the ECB on a defined schedule."
+note = "Monitoring + validation reporting = the model's health check."
+category = "models"
+
+[[cards]]
+term = "Model risk management"
+sub = "MRM"
+definition = "The governance discipline covering a model's whole lifecycle — inventory, development standards, validation, approval, change control and decommissioning — to manage the risk of using wrong or misused models. A standing supervisory priority."
+note = "The umbrella the validation and review work sits under."
+category = "models"
+
+# ---------------------------------------------------------------- rules & guides
+[[cards]]
+term = "ECB Guide to Internal Models"
+sub = "EGIM"
+definition = "The ECB's consolidated statement of supervisory expectations for internal models — a general chapter plus credit-, market- and counterparty-risk chapters. First issued around 2019 out of TRIM and revised in 2024–2025."
+note = "The reference an inspector measures a model against."
+category = "regulation"
+
+[[cards]]
+term = "CRR / CRD"
+definition = "The EU's transposition of Basel: the Capital Requirements Regulation (directly applicable rules, including IRB permission conditions) and the Capital Requirements Directive (national law, supervisory powers, Pillar 2). The legal basis for model approval."
+note = "Basel is the standard; CRR/CRD is the binding EU law."
+category = "regulation"
+
+[[cards]]
+term = "Supervisory benchmarking"
+sub = "Art. 78 CRD"
+definition = "An annual EBA/ECB exercise in which banks run their internal models on common benchmark portfolios so supervisors can compare risk-weight outcomes and flag institutions whose estimates are outliers. A cross-bank check on model variability."
+note = "The data-driven complement to on-site investigation."
+category = "regulation"
+
+[[cards]]
+term = "Definition of default"
+definition = "Harmonised EBA trigger: a default is recognised at 90 days past due on a material exposure, or when the obligor is judged unlikely to pay. Materiality thresholds and the return-to-non-default rules are prescribed to align banks."
+note = "Get the default flag wrong and every downstream PD/LGD is off."
+category = "regulation"
+
+[[cards]]
+term = "EBA IRB repair programme"
+definition = "A set of EBA guidelines and technical standards (on PD/LGD estimation, downturn LGD and the default definition) that re-harmonised the IRB framework after TRIM, narrowing the discretion that drove RWA variability across banks."
+note = "Why post-2021 IRB models look more alike than they used to."
+category = "regulation"
+
+[[cards]]
+term = "Output floor"
+definition = "A Basel III / CRR3 backstop: model-based RWA cannot fall below 72.5% of the standardised computation, capping how much capital internal models can save and limiting cross-bank variability. (Mechanics in the regulation deck.)"
+formula = '$\mathrm{RWA}\ge 72.5\%\times\mathrm{RWA}_{\text{standardised}}$'
+note = "The ceiling on internal-model benefit — a live supervisory theme."
+category = "regulation"
+
+[[cards]]
+term = "Climate & environmental risk"
+sub = "C&E"
+definition = "Supervisors now expect banks to embed climate and environmental risks into governance, risk management and, increasingly, models and stress tests. A relatively new front in inspections and a stated ECB priority."
+note = "A growth area where a fast learner can add value early."
+category = "regulation"

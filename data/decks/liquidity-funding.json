@@ -1,0 +1,152 @@
+{
+  "id": "liquidity-funding",
+  "name": "Liquidity & funding",
+  "color": "#2ee6b6",
+  "description": "The risk of running out of cash, and of markets that won't trade.",
+  "primerTitle": "Liquidity & funding in one page",
+  "primer": "**Liquidity risk** is the risk of being unable to meet obligations as they fall due *without unacceptable losses*. A firm that is **solvent can still fail** purely from a liquidity shortfall (Northern Rock, 2007). It splits into two interacting types:\\n\\n- **Funding liquidity risk** — cannot roll over or raise funding for cash outflows, forcing asset sales or default. **Maturity transformation** (short funding, long assets) is the banking model and its core fragility.\\n- **Market liquidity risk** — a position cannot be unwound near its mark because the market is thin; spreads widen and price moves against the seller. Liquidation cost $\\\\approx \\\\tfrac12\\\\,\\\\text{spread}\\\\times\\\\text{size}+\\\\text{market impact}$.\\n\\n**Measures & tools.** The **liquidity gap** (maturity mismatch) is inflows − outflows per time bucket; persistent negative gaps show rollover dependence. **HQLA** (high-quality liquid assets: cash, reserves, high-grade govies) are tiered **Level 1 / 2A / 2B** with haircuts and caps under the **LCR**. The **liquidity buffer** is the stock of HQLA + facilities held to absorb stressed outflows over a survival horizon. The **LCR** requires surviving **30 days** of stressed net outflows on the buffer alone; survival days $=\\\\text{buffer}/\\\\text{net stressed daily outflow}$.\\n\\n**Funding fragilities.** **Funding concentration** — over-reliance on one source/tenor/currency; short wholesale is the most dangerous as it reprices and flees fastest. In stress, **retail deposits are sticky** while **wholesale funding (interbank, repo, CP) is rate-sensitive and flight-prone** — runoff assumptions are far higher for wholesale than insured retail. **Deposit runoff** = assumed rate deposits leave; app-driven runs can be faster than history. **Asset encumbrance** = pledged assets unavailable to monetise (ratio = encumbered/total). A **contingency funding plan (CFP)** is the pre-agreed playbook of triggers and sources. **Intraday liquidity risk** = lacking funds at the *moment* a payment is due, even if end-of-day is fine.\\n\\n**Market-liquidity metrics.** **Bid–ask spread** = round-trip trading cost; half-spread $=\\\\tfrac12(P_{ask}-P_{bid})$. **Depth** is size tradable without moving price; **market impact** typically scales *sublinearly, near the square root* of order size. **Liquidity-adjusted VaR (LVaR)** = VaR + liquidation cost: $\\\\mathrm{LVaR}=\\\\mathrm{VaR}+\\\\tfrac12(\\\\mu_s+z\\\\sigma_s)V$. **Cash flow at risk (CFaR)** is VaR's analogue for cash flows — the $\\\\alpha$-quantile shortfall of net cash flow. The **liquidity spiral (Brunnermeier–Pedersen)**: forced sales depress prices → lower marks/collateral → more margin calls and sales, a self-reinforcing downward loop that turns a shock systemic.",
+  "cards": [
+    {
+      "term": "A firm that is solvent can still fail purely from a liquidity shortfall.",
+      "definition": "True. Liquidity risk is the risk of being unable to meet obligations as they fall due without incurring unacceptable losses. It splits into funding liquidity (can I raise cash?) and market liquidity (can I sell assets at a fair price?), which feed on each other in a crisis.",
+      "note": "Solvent firms still fail from liquidity — Northern Rock, 2007.",
+      "type": "truefalse",
+      "answer": true,
+      "summary": "True — solvency is no guarantee of survival; a solvent firm can still run out of cash, as Northern Rock did in 2007.",
+      "last_updated": "2026-06-29",
+      "stale": true
+    },
+    {
+      "term": "Funding liquidity risk",
+      "definition": "The risk that a firm cannot roll over or raise funding to meet cash outflows, forcing asset sales or default. It crystallises when lenders withdraw, deposits flee, or collateral demands spike simultaneously.",
+      "note": "Maturity transformation — short funding, long assets — is the banking model and its core fragility.",
+      "last_updated": "2026-06-29",
+      "stale": true
+    },
+    {
+      "term": "Market liquidity risk",
+      "definition": "The risk that a position cannot be unwound near its marked value because the market is thin, widening bid–ask spreads and moving the price against the seller. It makes mark-to-market values unrealisable precisely when liquidation is forced.",
+      "formula": "liquidation cost $\\approx \\tfrac{1}{2}\\,\\text{spread}\\times \\text{size} + \\text{market impact}$",
+      "last_updated": "2026-06-29",
+      "stale": true
+    },
+    {
+      "term": "Liquidity gap",
+      "sub": "maturity mismatch",
+      "definition": "The difference between contractual (or behavioural) cash inflows and outflows in each future time bucket. Persistent negative gaps reveal where the bank must raise funding and how rollover-dependent it is.",
+      "formula": "gap$_t = $ inflows$_t - $ outflows$_t$ (per maturity bucket)",
+      "last_updated": "2026-06-29",
+      "stale": true
+    },
+    {
+      "term": "Under the LCR, HQLA are split into tiers known as Level 1, Level 2A and {{Level 2B}}, each with its own haircuts and caps.",
+      "sub": "HQLA",
+      "definition": "Unencumbered assets that can be converted to cash quickly with little loss of value even in stress — cash, central-bank reserves and high-grade government bonds. They form the buffer a bank draws on first.",
+      "note": "Tiered (Level 1 / 2A / 2B) with haircuts and caps under the LCR.",
+      "type": "cloze",
+      "last_updated": "2026-06-29",
+      "stale": true
+    },
+    {
+      "term": "Liquidity buffer",
+      "definition": "The stock of HQLA and committed facilities held specifically to absorb a stress outflow over a defined survival horizon. Sizing it trades the cost of holding low-yield assets against the cost of a funding squeeze.",
+      "note": "The buffer is insurance: it earns little but prevents ruin.",
+      "last_updated": "2026-06-29",
+      "stale": true
+    },
+    {
+      "term": "The LCR's survival-horizon window requires a bank to withstand {{30}} days of stressed net outflows using only its liquidity buffer.",
+      "sub": "time-to-survive",
+      "definition": "The number of days a firm can meet outflows under a defined stress using only its liquidity buffer, before external funding is needed. A key internal metric and the spirit behind the LCR's 30-day window.",
+      "formula": "$\\text{survival days} = \\dfrac{\\text{liquidity buffer}}{\\text{net stressed daily outflow}}$",
+      "type": "cloze",
+      "last_updated": "2026-06-29",
+      "stale": true
+    },
+    {
+      "term": "Funding concentration",
+      "definition": "Over-reliance on a single counterparty, market, instrument or currency for funding, so that one withdrawal threatens the whole book. Diversifying funding sources and tenors is the direct mitigant.",
+      "note": "Concentration in short wholesale funding is especially dangerous — it reprices and flees fastest.",
+      "last_updated": "2026-06-29",
+      "stale": true
+    },
+    {
+      "term": "In a liquidity stress, wholesale funding is more stable and sticky than retail deposits.",
+      "definition": "False. Retail deposits are granular and behaviourally sticky; wholesale funding (interbank, repo, commercial paper) is concentrated, rate-sensitive and flight-prone. The funding mix is a primary determinant of liquidity resilience, and runoff assumptions in stress are far higher for wholesale than insured retail.",
+      "note": "Runoff assumptions in stress are far higher for wholesale than insured retail.",
+      "type": "truefalse",
+      "answer": false,
+      "summary": "False — it's the reverse: retail deposits are behaviourally sticky, while wholesale funding is rate-sensitive and flight-prone.",
+      "last_updated": "2026-06-29",
+      "stale": true
+    },
+    {
+      "term": "Deposit runoff",
+      "definition": "The assumed or actual rate at which deposits leave during stress, by depositor type and insurance status. Runoff factors convert a deposit base into a stressed outflow for buffer sizing and the LCR.",
+      "note": "A modern, app-driven bank run can be far faster than historical calibration assumes.",
+      "last_updated": "2026-06-29",
+      "stale": true
+    },
+    {
+      "term": "Asset encumbrance",
+      "definition": "The share of a bank's assets pledged as collateral (for repo, covered bonds, derivatives margin) and thus unavailable to other creditors or for raising emergency cash. High encumbrance leaves less to monetise in stress and subordinates unsecured creditors.",
+      "formula": "encumbrance ratio $= \\dfrac{\\text{encumbered assets}}{\\text{total assets}}$",
+      "last_updated": "2026-06-29",
+      "stale": true
+    },
+    {
+      "term": "Contingency funding plan",
+      "sub": "CFP",
+      "definition": "A pre-agreed playbook of actions and funding sources to invoke under liquidity stress, with triggers, responsibilities and escalation. Its value is having decisions made before panic, not during it.",
+      "last_updated": "2026-06-29",
+      "stale": true
+    },
+    {
+      "term": "Intraday liquidity risk",
+      "definition": "The risk of lacking funds to meet payment and settlement obligations at the required moment within the day, even if end-of-day liquidity is adequate. Critical for banks in large-value payment systems where timing failures cascade.",
+      "note": "A throughput problem: the cash exists but not when the payment is due.",
+      "last_updated": "2026-06-29",
+      "stale": true
+    },
+    {
+      "term": "Bid–ask spread",
+      "definition": "The gap between the best buy and sell prices — the immediate round-trip cost of trading and the most basic gauge of market liquidity. Spreads widen sharply in stress, raising the cost of forced liquidation.",
+      "formula": "half-spread cost $= \\tfrac{1}{2}(P_{\\text{ask}}-P_{\\text{bid}})$ per unit",
+      "last_updated": "2026-06-29",
+      "stale": true
+    },
+    {
+      "term": "Market impact from a large order typically scales sublinearly, often near the {{square root}} of order size.",
+      "definition": "Depth is the size tradable without moving the price; market impact is the adverse price move a large order itself causes. Thin depth means liquidating a big position walks the price down, realising more than the quoted spread in cost.",
+      "note": "Impact typically scales sublinearly, often near the square root of order size.",
+      "type": "cloze",
+      "last_updated": "2026-06-29",
+      "stale": true
+    },
+    {
+      "term": "Liquidity-adjusted VaR",
+      "sub": "LVaR",
+      "definition": "VaR augmented with the cost of liquidating the position — adding the bid–ask (and impact) cost to the price-risk loss. It recognises that exit is not free, especially for large or illiquid books.",
+      "formula": "$\\mathrm{LVaR} = \\mathrm{VaR} + \\tfrac{1}{2}\\,(\\mu_s + z\\,\\sigma_s)\\,V$",
+      "last_updated": "2026-06-29",
+      "stale": true
+    },
+    {
+      "term": "The self-reinforcing liquidity spiral in which funding and market liquidity drive each other downward is associated with {{Brunnermeier}}–Pedersen.",
+      "sub": "liquidity spiral",
+      "definition": "Forced asset sales that depress prices, which lowers marks and collateral values across holders, triggering more margin calls and sales — a self-reinforcing downward spiral. The mechanism that turns a liquidity shock into a systemic event.",
+      "note": "Funding and market liquidity reinforce each other downward (Brunnermeier–Pedersen).",
+      "type": "cloze",
+      "last_updated": "2026-06-29",
+      "stale": true
+    },
+    {
+      "term": "Cash flow at risk",
+      "sub": "CFaR",
+      "definition": "The analogue of VaR for cash flows: the worst shortfall in operating or funding cash flow over a horizon at a given confidence. Used by treasurers and corporates focused on liquidity rather than mark-to-market value.",
+      "formula": "$\\mathrm{CFaR}_\\alpha = $ the $\\alpha$-quantile shortfall of projected net cash flow",
+      "last_updated": "2026-06-29",
+      "stale": true
+    }
+  ]
+}

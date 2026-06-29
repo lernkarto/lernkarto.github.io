@@ -1,0 +1,14 @@
+{
+  "name": "Quantitative interview prep",
+  "primerTitle": "Quantitative interview prep — what this subject covers",
+  "description": "A standalone, comprehensive prep for quant, data and SWE interviews: method-based aptitude and desk puzzles plus deep knowledge recall across econometrics, time series, risk, markets and the Python/R/SAS toolchain.",
+  "primer": "## Quantitative interview prep\nA complete, self-contained set for pre-hire screens and quant/data/SWE interviews — the **method-based** problem decks plus the **knowledge-recall** decks that screens lean on.\n- **Cognitive & quant aptitude** — timed problems solved by technique: probability & games, the complement rule ('at least one'), random walks, counting & pigeonhole, digit/number puzzles, pseudocode (tracing & completion), logic puzzles & chains.\n- **Quant & trader interview** — the harder desk-flavoured set: Bayes, expected value / waiting times, market-making & EV, combinatorial games, and olympiad puzzles (invariants, weighing, cryptarithms, spatial counting).\n- **Banking data handling** — Python · R · SAS, one deck per language: concepts plus which-function recall.\n- **Econometrics, statistics & time series** — OLS, diagnostics, inference, panel/causal designs, and time series (fundamentals + cointegration/GARCH).\n- **Risk, markets & asset pricing** — VaR/ES & Greeks, credit & other risk, CAPM/portfolio, applied cases, and the nominal-vs-real/Fisher algebra.\n- **Mixed question bank** — a 160-question mixed bank to rehearse breadth out loud.\n\nThe method decks lead with a technique primer (drill in exam mode); the knowledge decks are for fast, accurate recall.",
+  "topics": [
+    "Cognitive & quant aptitude",
+    "Quant & trader interview",
+    "Banking data handling",
+    "Econometrics, statistics & time series",
+    "Risk, markets & asset pricing",
+    "Mixed question bank"
+  ]
+}

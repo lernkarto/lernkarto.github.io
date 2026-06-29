@@ -1,0 +1,752 @@
+{
+  "id": "kanji-n5",
+  "name": "Kanji starter (JLPT N5)",
+  "color": "#ff9f43",
+  "dual": true,
+  "lang": "ja",
+  "description": "About 90 of the most basic kanji, the level expected for JLPT N5. Each kanji is tested both ways — recall the meaning from the character and the character from the meaning — tracked separately. Readings are simplified to one main reading.",
+  "primerTitle": "Kanji at N5 — how to read this deck",
+  "primer": "**Kanji** are the logographic characters borrowed from Chinese; each one carries a *meaning* and one or more *readings*. This is a **recall deck of ~103 of the most basic kanji** — the set expected at **JLPT N5**, the easiest level of the Japanese proficiency exam. They are grouped by theme (numbers, time, nature, body, common verbs, places, adjectives, …). Because there are ~103, this primer **orients** you rather than listing them all — it explains the structure and gives a high-frequency starter set; the deck itself drills the full list.\n\n### Two kinds of reading\nMost kanji have two reading families, and the cards show both (the **say** field gives the main one):\n- **on'yomi** — the *Sino-Japanese* reading, derived from Chinese. Used mostly in **compounds** of two or more kanji (e.g. 学校 *gakkō* 'school' uses the *on* readings *gaku* + *kō*). On readings are conventionally written in katakana in dictionaries.\n- **kun'yomi** — the *native Japanese* reading, used when the kanji stands **alone** or with hiragana okurigana (e.g. 山 alone = *yama* 'mountain'; 見る *miru* 'to see', where 見 takes the kun reading *mi* and る is okurigana).\n\nA card like 月 — *month / moon — getsu, tsuki* lists the **meaning** plus *getsu* (on) and *tsuki* (kun). Verbs are shown with the okurigana in parentheses, e.g. 行 *kō, i(ku)* — the *i* is the kanji's part, *ku* is the trailing hiragana.\n\n### Card structure\nEach kanji is tested **both directions**, tracked separately:\n- character → meaning + reading (\"what is 水?\" → water / *sui, mizu*)\n- meaning → character (\"write 'water'\" → 水)\n\n### A recall method\n1. **Anchor on meaning first**, then attach the readings — pick the *on* for compounds, the *kun* for standalone use.\n2. Use **pictographs** where you can: 山 looks like a mountain, 川 like a flowing river, 木 like a tree, 田 like a divided rice field.\n3. Spot **components**: 休 is 人 (person) beside 木 (tree) = rest; 好 is 女 (woman) + 子 (child) = to like. Reusing known pieces is the fastest path through the set.\n4. Lean on **high-frequency compounds** to fix readings: 日本 *Nihon* (Japan), 学生 *gakusei* (student), 電車 *densha* (train).\n\n### High-frequency starter set (~18 of the ~103)\n| Kanji | Meaning | Reading |\n|---|---|---|\n| 一 | one | ichi |\n| 二 | two | ni |\n| 三 | three | san |\n| 日 | day / sun | nichi, hi |\n| 月 | month / moon | getsu, tsuki |\n| 人 | person | jin, hito |\n| 大 | big | dai, ō(kii) |\n| 小 | small | shō, chii(sai) |\n| 中 | middle / inside | chū, naka |\n| 山 | mountain | san, yama |\n| 川 | river | sen, kawa |\n| 水 | water | sui, mizu |\n| 火 | fire | ka, hi |\n| 木 | tree / wood | moku, ki |\n| 本 | book / origin | hon, moto |\n| 行 | to go | kō, i(ku) |\n| 見 | to see | ken, mi(ru) |\n| 学 | study | gaku, mana(bu) |\n\nThese recur constantly; master them first, then the rest of the deck follows the same meaning + on/kun pattern. The remaining ~85 kanji are drilled by the cards, not enumerated here.",
+  "categories": {
+    "num": "Numbers",
+    "time": "Time & days",
+    "nature": "Nature & elements",
+    "size": "Size & position",
+    "people": "People & family",
+    "body": "Body",
+    "verb": "Common verbs",
+    "school": "School & language",
+    "place": "Places & directions",
+    "adj": "Adjectives & misc"
+  },
+  "cards": [
+    {
+      "term": "一",
+      "definition": "one — ichi",
+      "category": "num",
+      "say": "いち",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "二",
+      "definition": "two — ni",
+      "category": "num",
+      "say": "に",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "三",
+      "definition": "three — san",
+      "category": "num",
+      "say": "さん",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "四",
+      "definition": "four — shi / yon",
+      "category": "num",
+      "say": "し",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "五",
+      "definition": "five — go",
+      "category": "num",
+      "say": "ご",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "六",
+      "definition": "six — roku",
+      "category": "num",
+      "say": "ろく",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "七",
+      "definition": "seven — shichi / nana",
+      "category": "num",
+      "say": "しち",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "八",
+      "definition": "eight — hachi",
+      "category": "num",
+      "say": "はち",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "九",
+      "definition": "nine — kyū / ku",
+      "category": "num",
+      "say": "きゅう",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "十",
+      "definition": "ten — jū",
+      "category": "num",
+      "say": "じゅう",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "百",
+      "definition": "hundred — hyaku",
+      "category": "num",
+      "say": "ひゃく",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "千",
+      "definition": "thousand — sen",
+      "category": "num",
+      "say": "せん",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "万",
+      "definition": "ten thousand — man",
+      "category": "num",
+      "say": "まん",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "円",
+      "definition": "yen / circle — en",
+      "category": "num",
+      "note": "The currency 円 also means 'round/circle'.",
+      "say": "えん",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "日",
+      "definition": "day / sun — nichi, hi",
+      "category": "time",
+      "say": "にち",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "月",
+      "definition": "month / moon — getsu, tsuki",
+      "category": "time",
+      "say": "つき",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "火",
+      "definition": "fire (Tuesday) — ka, hi",
+      "category": "time",
+      "say": "ひ",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "水",
+      "definition": "water (Wednesday) — sui, mizu",
+      "category": "time",
+      "say": "みず",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "木",
+      "definition": "tree / wood (Thursday) — moku, ki",
+      "category": "time",
+      "say": "き",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "金",
+      "definition": "gold / money (Friday) — kin, kane",
+      "category": "time",
+      "say": "きん",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "土",
+      "definition": "earth / soil (Saturday) — do, tsuchi",
+      "category": "time",
+      "say": "つち",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "年",
+      "definition": "year — nen, toshi",
+      "category": "time",
+      "say": "とし",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "時",
+      "definition": "time / hour — ji, toki",
+      "category": "time",
+      "say": "とき",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "間",
+      "definition": "interval / between — kan, aida",
+      "category": "time",
+      "say": "あいだ",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "分",
+      "definition": "minute / part — fun, wa(keru)",
+      "category": "time",
+      "say": "ふん",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "今",
+      "definition": "now — kon, ima",
+      "category": "time",
+      "say": "いま",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "半",
+      "definition": "half — han",
+      "category": "time",
+      "say": "はん",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "毎",
+      "definition": "every — mai",
+      "category": "time",
+      "note": "As in 毎日 mainichi 'every day'.",
+      "say": "まい",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "週",
+      "definition": "week — shū",
+      "category": "time",
+      "say": "しゅう",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "山",
+      "definition": "mountain — san, yama",
+      "category": "nature",
+      "say": "やま",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "川",
+      "definition": "river — sen, kawa",
+      "category": "nature",
+      "say": "かわ",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "田",
+      "definition": "rice field — den, ta",
+      "category": "nature",
+      "say": "た",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "天",
+      "definition": "heaven / sky — ten",
+      "category": "nature",
+      "say": "てん",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "気",
+      "definition": "spirit / air — ki",
+      "category": "nature",
+      "note": "As in 天気 tenki 'weather', 元気 genki 'energy'.",
+      "say": "き",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "雨",
+      "definition": "rain — u, ame",
+      "category": "nature",
+      "say": "あめ",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "電",
+      "definition": "electricity — den",
+      "category": "nature",
+      "note": "As in 電車 densha 'train'.",
+      "say": "でん",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "花",
+      "definition": "flower — ka, hana",
+      "category": "nature",
+      "say": "はな",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "魚",
+      "definition": "fish — gyo, sakana",
+      "category": "nature",
+      "say": "さかな",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "大",
+      "definition": "big — dai, ō(kii)",
+      "category": "size",
+      "say": "だい",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "小",
+      "definition": "small — shō, chii(sai)",
+      "category": "size",
+      "say": "しょう",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "中",
+      "definition": "middle / inside — chū, naka",
+      "category": "size",
+      "say": "なか",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "上",
+      "definition": "up / above — jō, ue",
+      "category": "size",
+      "say": "うえ",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "下",
+      "definition": "down / below — ka, shita",
+      "category": "size",
+      "say": "した",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "左",
+      "definition": "left — sa, hidari",
+      "category": "size",
+      "say": "ひだり",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "右",
+      "definition": "right — u, migi",
+      "category": "size",
+      "say": "みぎ",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "前",
+      "definition": "front / before — zen, mae",
+      "category": "size",
+      "say": "まえ",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "後",
+      "definition": "behind / after — go, ato, ushi(ro)",
+      "category": "size",
+      "say": "うしろ",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "外",
+      "definition": "outside — gai, soto",
+      "category": "size",
+      "say": "そと",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "人",
+      "definition": "person — jin, hito",
+      "category": "people",
+      "say": "ひと",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "男",
+      "definition": "man / male — dan, otoko",
+      "category": "people",
+      "say": "おとこ",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "女",
+      "definition": "woman / female — jo, onna",
+      "category": "people",
+      "say": "おんな",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "子",
+      "definition": "child — shi, ko",
+      "category": "people",
+      "say": "こ",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "父",
+      "definition": "father — fu, chichi",
+      "category": "people",
+      "say": "ちち",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "母",
+      "definition": "mother — bo, haha",
+      "category": "people",
+      "say": "はは",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "友",
+      "definition": "friend — yū, tomo",
+      "category": "people",
+      "say": "とも",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "名",
+      "definition": "name — mei, na",
+      "category": "people",
+      "say": "な",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "口",
+      "definition": "mouth — kō, kuchi",
+      "category": "body",
+      "say": "くち",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "目",
+      "definition": "eye — moku, me",
+      "category": "body",
+      "say": "め",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "耳",
+      "definition": "ear — ji, mimi",
+      "category": "body",
+      "say": "みみ",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "手",
+      "definition": "hand — shu, te",
+      "category": "body",
+      "say": "て",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "足",
+      "definition": "foot / leg (suffice) — soku, ashi",
+      "category": "body",
+      "say": "あし",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "力",
+      "definition": "power / strength — ryoku, chikara",
+      "category": "body",
+      "say": "ちから",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "体",
+      "definition": "body — tai, karada",
+      "category": "body",
+      "say": "からだ",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "行",
+      "definition": "to go — kō, i(ku)",
+      "category": "verb",
+      "say": "いく",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "来",
+      "definition": "to come — rai, ku(ru)",
+      "category": "verb",
+      "say": "くる",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "見",
+      "definition": "to see / look — ken, mi(ru)",
+      "category": "verb",
+      "say": "みる",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "聞",
+      "definition": "to hear / ask — bun, ki(ku)",
+      "category": "verb",
+      "say": "きく",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "言",
+      "definition": "to say — gen, i(u)",
+      "category": "verb",
+      "say": "いう",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "食",
+      "definition": "to eat — shoku, ta(beru)",
+      "category": "verb",
+      "say": "たべる",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "飲",
+      "definition": "to drink — in, no(mu)",
+      "category": "verb",
+      "say": "のむ",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "読",
+      "definition": "to read — doku, yo(mu)",
+      "category": "verb",
+      "say": "よむ",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "書",
+      "definition": "to write — sho, ka(ku)",
+      "category": "verb",
+      "say": "かく",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "話",
+      "definition": "to speak / talk — wa, hana(su)",
+      "category": "verb",
+      "say": "はなす",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "出",
+      "definition": "to exit / leave — shutsu, de(ru)",
+      "category": "verb",
+      "say": "でる",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "入",
+      "definition": "to enter — nyū, hai(ru)",
+      "category": "verb",
+      "say": "はいる",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "買",
+      "definition": "to buy — bai, ka(u)",
+      "category": "verb",
+      "say": "かう",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "立",
+      "definition": "to stand — ritsu, ta(tsu)",
+      "category": "verb",
+      "say": "たつ",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "学",
+      "definition": "study / learning — gaku, mana(bu)",
+      "category": "school",
+      "say": "がく",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "校",
+      "definition": "school — kō",
+      "category": "school",
+      "note": "As in 学校 gakkō 'school'.",
+      "say": "こう",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "先",
+      "definition": "previous / ahead — sen, saki",
+      "category": "school",
+      "note": "As in 先生 sensei 'teacher'.",
+      "say": "さき",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "生",
+      "definition": "life / birth — sei, i(kiru), u(mareru)",
+      "category": "school",
+      "say": "せい",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "国",
+      "definition": "country — koku, kuni",
+      "category": "school",
+      "say": "くに",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "語",
+      "definition": "language / word — go, kata(ru)",
+      "category": "school",
+      "note": "As in 日本語 nihongo 'Japanese language'.",
+      "say": "ご",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "本",
+      "definition": "book / origin — hon, moto",
+      "category": "school",
+      "say": "ほん",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "字",
+      "definition": "character / letter — ji",
+      "category": "school",
+      "say": "じ",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "文",
+      "definition": "writing / sentence — bun, mon",
+      "category": "school",
+      "say": "ぶん",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "東",
+      "definition": "east — tō, higashi",
+      "category": "place",
+      "say": "ひがし",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "西",
+      "definition": "west — sei, nishi",
+      "category": "place",
+      "say": "にし",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "南",
+      "definition": "south — nan, minami",
+      "category": "place",
+      "say": "みなみ",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "北",
+      "definition": "north — hoku, kita",
+      "category": "place",
+      "say": "きた",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "店",
+      "definition": "shop / store — ten, mise",
+      "category": "place",
+      "say": "みせ",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "駅",
+      "definition": "station — eki",
+      "category": "place",
+      "say": "えき",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "道",
+      "definition": "road / way — dō, michi",
+      "category": "place",
+      "say": "みち",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "車",
+      "definition": "car / vehicle — sha, kuruma",
+      "category": "place",
+      "say": "くるま",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "高",
+      "definition": "high / expensive — kō, taka(i)",
+      "category": "adj",
+      "say": "たかい",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "安",
+      "definition": "cheap / peaceful — an, yasu(i)",
+      "category": "adj",
+      "say": "やすい",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "新",
+      "definition": "new — shin, atara(shii)",
+      "category": "adj",
+      "say": "あたらしい",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "古",
+      "definition": "old — ko, furu(i)",
+      "category": "adj",
+      "say": "ふるい",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "長",
+      "definition": "long / chief — chō, naga(i)",
+      "category": "adj",
+      "say": "ながい",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "白",
+      "definition": "white — haku, shiro(i)",
+      "category": "adj",
+      "say": "しろい",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "多",
+      "definition": "many — ta, ō(i)",
+      "category": "adj",
+      "say": "おおい",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "少",
+      "definition": "few / little — shō, suku(nai)",
+      "category": "adj",
+      "say": "すくない",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "好",
+      "definition": "to like / fond — kō, su(ki)",
+      "category": "adj",
+      "say": "すき",
+      "last_updated": "2026-06-29"
+    }
+  ]
+}

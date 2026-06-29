@@ -1,0 +1,17 @@
+{
+  "name": "Languages",
+  "primerTitle": "Languages — what this subject covers",
+  "description": "Writing systems and phonetics: alphabets, kana, kanji and the IPA.",
+  "primer": "## Languages\nThe building blocks of reading and pronouncing scripts.\n- **Alphabets** — Cyrillic, Greek, Arabic, Hebrew, Korean Hangul: each glyph paired with its name/sound, drilled both directions (symbol→sound and sound→symbol).\n- **Japanese** — kana (the two syllabaries) and starter **kanji** (JLPT N5) with readings.\n- **IPA** — the phonetic alphabet for transcribing any language's sounds.\n- **NATO phonetic alphabet** — the spelling alphabet (Alpha, Bravo…).\n\nThe through-line: a script maps marks to sounds; learn the mapping cold, both ways.",
+  "topics": [
+    "Japanese kana",
+    "Cyrillic (Russian)",
+    "Greek alphabet",
+    "Hebrew alphabet",
+    "Arabic alphabet",
+    "Korean Hangul",
+    "NATO phonetic alphabet",
+    "IPA (phonetics)",
+    "Kanji (JLPT N5)"
+  ]
+}

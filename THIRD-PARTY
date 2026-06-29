@@ -1,0 +1,46 @@
+Third-Party Software Notices
+============================
+
+rectoverso includes the following third-party software. Each component is
+listed with its licence and the location of the bundled copy.
+
+
+KaTeX 0.16.11
+-------------
+Source:    https://katex.org  (https://github.com/KaTeX/KaTeX)
+Location:  vendor/katex/
+Licence:   MIT
+
+  The MIT License (MIT)
+  Copyright (c) 2013-2020 Khan Academy and other contributors
+
+  Permission is hereby granted, free of charge, to any person obtaining a copy
+  of this software and associated documentation files (the "Software"), to deal
+  in the Software without restriction, including without limitation the rights
+  to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+  copies of the Software, and to permit persons to whom the Software is
+  furnished to do so, subject to the following conditions:
+
+  The above copyright notice and this permission notice shall be included in
+  all copies or substantial portions of the Software.
+
+  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+  FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+  AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+  LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+  THE SOFTWARE.
+
+
+Deck content derived from Wikipedia
+------------------------------------
+Selected flashcard decks contain content adapted from Wikipedia articles.
+Wikipedia text is licensed under the Creative Commons Attribution-ShareAlike 4.0
+International (CC BY-SA 4.0) licence.
+
+  https://creativecommons.org/licenses/by-sa/4.0/
+
+Attribution details (source article, licence, and any modifications) are
+recorded per-deck in the "source", "license", and "attribution" fields of the
+respective deck JSON file under data/decks/.

@@ -1,0 +1,322 @@
+{
+  "id": "katakana",
+  "name": "Katakana (gojūon)",
+  "color": "#ff9f43",
+  "dual": true,
+  "lang": "ja",
+  "description": "The 46 basic katakana (used for loanwords). Each kana is tested both ways (symbol→reading and reading→symbol), tracked separately.",
+  "primerTitle": "Reading katakana",
+  "primer": "**Katakana** is the second Japanese phonetic script — same 46 sounds as hiragana, but a different set of angular shapes. It is used mainly for **loanwords** (コーヒー *kōhī* = coffee), foreign names, onomatopoeia, and emphasis. The sounds follow the same **gojūon** order: five vowels, then each consonant row.\n\n| | a | i | u | e | o |\n|---|---|---|---|---|---|\n| **–** | ア a | イ i | ウ u | エ e | オ o |\n| **k** | カ ka | キ ki | ク ku | ケ ke | コ ko |\n| **s** | サ sa | シ **shi** | ス su | セ se | ソ so |\n| **t** | タ ta | チ **chi** | ツ **tsu** | テ te | ト to |\n| **n** | ナ na | ニ ni | ヌ nu | ネ ne | ノ no |\n| **h** | ハ ha | ヒ hi | フ **fu** | ヘ he | ホ ho |\n| **m** | マ ma | ミ mi | ム mu | メ me | モ mo |\n| **y** | ヤ ya | | ユ yu | | ヨ yo |\n| **r** | ラ ra | リ ri | ル ru | レ re | ロ ro |\n| **w** | ワ wa | | | | ヲ **wo** |\n| **n** | ン **n** | | | | |\n\n**Irregular readings** (same four as hiragana): シ = *shi*, チ = *chi*, ツ = *tsu*, フ = *fu*.\n\n**Easily-confused look-alikes** — these trip up almost everyone:\n- **シ (shi)** vs **ツ (tsu)**: シ strokes sweep up and are flatter; ツ strokes come down and are more vertical.\n- **ソ (so)** vs **ン (n)**: ソ is more vertical; ン sweeps up and is flatter.\n- **ヘ (he)** is the *same glyph* as hiragana へ.\n\n**Special kana:** **ン** is the standalone *n*; **ヲ** (*wo*) is the object particle and is rare in katakana. The y- and w-rows have the same gaps as hiragana.",
+  "categories": {
+    "v": "Vowels",
+    "k": "K-row",
+    "s": "S-row",
+    "t": "T-row",
+    "n": "N-row",
+    "h": "H-row",
+    "m": "M-row",
+    "y": "Y-row",
+    "r": "R-row",
+    "w": "W-row + ン"
+  },
+  "cards": [
+    {
+      "term": "ア",
+      "definition": "a (as in 'father')",
+      "category": "v",
+      "audio": "https://upload.wikimedia.org/wikipedia/commons/e/ed/Ja-A.oga",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "イ",
+      "definition": "i (as in 'machine')",
+      "category": "v",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "ウ",
+      "definition": "u (as in 'flute')",
+      "category": "v",
+      "audio": "https://upload.wikimedia.org/wikipedia/commons/4/4c/Ja-U.oga",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "エ",
+      "definition": "e (as in 'bet')",
+      "category": "v",
+      "audio": "https://upload.wikimedia.org/wikipedia/commons/8/86/Ja-E.oga",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "オ",
+      "definition": "o (as in 'or')",
+      "category": "v",
+      "audio": "https://upload.wikimedia.org/wikipedia/commons/2/21/Ja-O.oga",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "カ",
+      "definition": "ka",
+      "category": "k",
+      "audio": "https://upload.wikimedia.org/wikipedia/commons/e/ec/Ja-Ka.oga",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "キ",
+      "definition": "ki",
+      "category": "k",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "ク",
+      "definition": "ku",
+      "category": "k",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "ケ",
+      "definition": "ke",
+      "category": "k",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "コ",
+      "definition": "ko",
+      "category": "k",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "サ",
+      "definition": "sa",
+      "category": "s",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "シ",
+      "definition": "shi",
+      "category": "s",
+      "note": "Looks like ツ (tsu) — シ strokes sweep up, flatter.",
+      "audio": "https://upload.wikimedia.org/wikipedia/commons/1/16/Ja-Shi.oga",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "ス",
+      "definition": "su",
+      "category": "s",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "セ",
+      "definition": "se",
+      "category": "s",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "ソ",
+      "definition": "so",
+      "category": "s",
+      "note": "Looks like ン (n) — ソ strokes are more vertical.",
+      "audio": "https://upload.wikimedia.org/wikipedia/commons/7/73/Ja-So.oga",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "タ",
+      "definition": "ta",
+      "category": "t",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "チ",
+      "definition": "chi",
+      "category": "t",
+      "audio": "https://upload.wikimedia.org/wikipedia/commons/c/cb/Ja-Chi.oga",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "ツ",
+      "definition": "tsu",
+      "category": "t",
+      "note": "Looks like シ (shi) — ツ strokes come down, more vertical.",
+      "audio": "https://upload.wikimedia.org/wikipedia/commons/c/ca/Ja-Tsu.oga",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "テ",
+      "definition": "te",
+      "category": "t",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "ト",
+      "definition": "to",
+      "category": "t",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "ナ",
+      "definition": "na",
+      "category": "n",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "ニ",
+      "definition": "ni",
+      "category": "n",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "ヌ",
+      "definition": "nu",
+      "category": "n",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "ネ",
+      "definition": "ne",
+      "category": "n",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "ノ",
+      "definition": "no",
+      "category": "n",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "ハ",
+      "definition": "ha",
+      "category": "h",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "ヒ",
+      "definition": "hi",
+      "category": "h",
+      "audio": "https://upload.wikimedia.org/wikipedia/commons/0/04/Ja-Hi.oga",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "フ",
+      "definition": "fu",
+      "category": "h",
+      "audio": "https://upload.wikimedia.org/wikipedia/commons/1/14/Ja-Fu.oga",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "ヘ",
+      "definition": "he",
+      "category": "h",
+      "note": "Same glyph as hiragana へ.",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "ホ",
+      "definition": "ho",
+      "category": "h",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "マ",
+      "definition": "ma",
+      "category": "m",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "ミ",
+      "definition": "mi",
+      "category": "m",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "ム",
+      "definition": "mu",
+      "category": "m",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "メ",
+      "definition": "me",
+      "category": "m",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "モ",
+      "definition": "mo",
+      "category": "m",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "ヤ",
+      "definition": "ya",
+      "category": "y",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "ユ",
+      "definition": "yu",
+      "category": "y",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "ヨ",
+      "definition": "yo",
+      "category": "y",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "ラ",
+      "definition": "ra",
+      "category": "r",
+      "audio": "https://upload.wikimedia.org/wikipedia/commons/f/f0/Ja-Ra.oga",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "リ",
+      "definition": "ri",
+      "category": "r",
+      "audio": "https://upload.wikimedia.org/wikipedia/commons/3/37/Ja-Ri.oga",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "ル",
+      "definition": "ru",
+      "category": "r",
+      "audio": "https://upload.wikimedia.org/wikipedia/commons/e/eb/Ja-Ru.oga",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "レ",
+      "definition": "re",
+      "category": "r",
+      "audio": "https://upload.wikimedia.org/wikipedia/commons/1/1d/Ja-Re.oga",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "ロ",
+      "definition": "ro",
+      "category": "r",
+      "audio": "https://upload.wikimedia.org/wikipedia/commons/a/af/Ja-Ro.oga",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "ワ",
+      "definition": "wa",
+      "category": "w",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "ヲ",
+      "definition": "wo",
+      "category": "w",
+      "note": "Object particle; rare in katakana.",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "ン",
+      "definition": "n",
+      "category": "w",
+      "note": "Looks like ソ (so) — ン strokes sweep up, flatter.",
+      "last_updated": "2026-06-29"
+    }
+  ]
+}

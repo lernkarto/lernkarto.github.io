@@ -1,0 +1,139 @@
+{
+  "id": "time-series-spectral",
+  "name": "Spectral analysis",
+  "color": "#8888ff",
+  "description": "The frequency domain: Fourier/spectral analysis, the periodogram, the Wiener-Khinchin link between autocovariance and spectral density, aliasing and the Nyquist limit, and wavelets for non-stationary signals. Distilled from Wikipedia.",
+  "source": "https://en.wikipedia.org/wiki/Time_series",
+  "license": "CC BY-SA 4.0",
+  "attribution": "Adapted from Wikipedia — 'Time series', 'Spectral density estimation', 'Periodogram', 'Wiener-Khinchin theorem', 'Nyquist-Shannon sampling theorem' and 'Wavelet' — licensed under CC BY-SA 4.0.",
+  "primerTitle": "Spectral analysis — quick recap",
+  "primer": "## Time domain vs frequency domain\\n\\nThe **time domain** describes a series by its values over time (and its autocorrelation). The **frequency domain** describes the *same* series as a sum of **sinusoids** of different frequencies, asking **which periodic components (cycles) are present and how strong each is**. Spectral analysis is the frequency-domain view; it can reveal **cyclic behaviour that need not be seasonal** — e.g. the ~11-year sunspot cycle.\\n\\n## Fourier idea\\n\\nA signal is decomposed into sinusoids via the **Fourier transform**; the **Fast Fourier Transform (FFT)** computes the discrete version efficiently. **Frequency $f$ and period $T$ are reciprocals:** $f = 1/T$.\\n\\n## Power spectral density (PSD) and the periodogram\\n\\n- The **power spectral density** $S(f)$ shows how the **variance (power)** of the series is distributed across frequencies. A peak at frequency $f_0$ means a strong cycle of period $1/f_0$.\\n- The **periodogram** is the basic *estimate* of the PSD, formed from the squared magnitude of the Fourier transform of the data. It is a **noisy/inconsistent** estimator — its variance does **not** shrink as the sample grows — so it is **smoothed** (or windowed, e.g. Welch's method) to get a usable spectral estimate.\\n\\n## Wiener-Khinchin theorem (the key link)\\n\\nFor a (wide-sense) stationary process the **power spectral density is the Fourier transform of the autocovariance function**, and vice versa. So the **autocovariance (time domain)** and the **spectral density (frequency domain)** are a Fourier-transform pair — two equivalent descriptions of the same second-order structure. (White noise has constant autocovariance only at lag 0, so its spectrum is **flat** — equal power at all frequencies, hence 'white'.)\\n\\n## Sampling: Nyquist & aliasing\\n\\nThe **Nyquist-Shannon sampling theorem:** to represent a signal without loss you must sample at **more than twice** its highest frequency; that limit ($f_s/2$) is the **Nyquist frequency**. Sampling too slowly causes **aliasing** — high-frequency content masquerades as a spurious low frequency.\\n\\n## Wavelets (brief)\\n\\nThe Fourier transform assumes the frequency content is **fixed over time** and tells you *which* frequencies but not *when*. **Wavelet analysis** uses localised, scalable basis functions to give **joint time-frequency** resolution, so it suits **non-stationary** signals whose spectrum changes over time. (The short-time Fourier transform is a simpler windowed alternative with a fixed-resolution trade-off.)",
+  "categories": {
+    "core": "Core",
+    "theorems": "Theorems",
+    "use": "Use & limits",
+    "exercise": "Exercises"
+  },
+  "cards": [
+    {
+      "category": "core",
+      "term": "What does spectral analysis describe about a time series?",
+      "summary": "How its variance is distributed across frequencies — which cycles are present and how strong.",
+      "definition": "Spectral analysis is the frequency-domain view of a series: it represents the series as a sum of sinusoids and shows which periodic components (frequencies) are present and how much power each carries. It can reveal cyclic behaviour that need not be seasonal, such as the roughly 11-year sunspot cycle.",
+      "note": "[1] Time series (Wikipedia) — https://en.wikipedia.org/wiki/Time_series",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "category": "core",
+      "term": "[Time series] In spectral analysis, frequency $f$ and period $T$ are related by:",
+      "sub": "A) $f = 1/T$ (they are reciprocals)    B) $f = T$    C) $f = T^2$    D) $f = 2T$",
+      "definition": "Correct: A) $f = 1/T$. Frequency is the reciprocal of period, so a peak at frequency $f_0$ in the spectrum corresponds to a cyclic component of period $1/f_0$.",
+      "note": "[1] Spectral density (Wikipedia) — https://en.wikipedia.org/wiki/Spectral_density",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "category": "core",
+      "term": "What is the power spectral density (PSD) of a series?",
+      "summary": "A function showing how the series' variance (power) is spread across frequencies.",
+      "definition": "The power spectral density $S(f)$ describes how the variance, or power, of a stationary series is distributed over frequency. A peak at frequency $f_0$ indicates a strong cyclic component of period $1/f_0$; a flat PSD means power is spread equally across all frequencies.",
+      "note": "[1] Spectral density (Wikipedia) — https://en.wikipedia.org/wiki/Spectral_density",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "category": "core",
+      "term": "The basic estimate of the power spectral density, formed from the squared magnitude of the Fourier transform of the data, is called the {{periodogram}}.",
+      "definition": "The periodogram is the elementary estimator of the spectral density, computed as the squared magnitude of the discrete Fourier transform of the observations. It is the starting point for spectral estimation but is noisy and is usually smoothed.",
+      "type": "cloze",
+      "note": "[1] Periodogram (Wikipedia) — https://en.wikipedia.org/wiki/Periodogram",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "category": "use",
+      "term": "[Time series] Why is the raw periodogram usually smoothed or windowed before use?",
+      "sub": "A) it is an inconsistent estimator whose variance does not shrink as the sample grows    B) it cannot be computed for more than 100 points    C) it requires the series to be non-stationary    D) it always returns negative values",
+      "definition": "Correct: A) it is an inconsistent estimator whose variance does not shrink as the sample grows. The raw periodogram is very noisy regardless of sample size, so it is smoothed across frequencies or averaged over segments (e.g. Welch's method) to obtain a usable, lower-variance spectral estimate.",
+      "note": "[1] Spectral density estimation (Wikipedia) — https://en.wikipedia.org/wiki/Spectral_density_estimation",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "category": "theorems",
+      "term": "What does the Wiener-Khinchin theorem state?",
+      "summary": "The power spectral density is the Fourier transform of the autocovariance function.",
+      "definition": "For a wide-sense stationary process, the Wiener-Khinchin theorem says the power spectral density and the autocovariance function are a Fourier-transform pair: the PSD is the Fourier transform of the autocovariance, and vice versa. The time-domain and frequency-domain descriptions are therefore equivalent.",
+      "note": "[1] Wiener-Khinchin theorem (Wikipedia) — https://en.wikipedia.org/wiki/Wiener%E2%80%93Khinchin_theorem",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "category": "theorems",
+      "term": "[Time series] By the Wiener-Khinchin theorem, the time-domain autocovariance function and the frequency-domain spectral density are:",
+      "sub": "A) a Fourier-transform pair — two equivalent descriptions of the same second-order structure    B) completely unrelated quantities    C) equal only for non-stationary processes    D) always both equal to zero",
+      "definition": "Correct: A) a Fourier-transform pair. The autocovariance (time domain) and the power spectral density (frequency domain) carry the same second-order information; one is the Fourier transform of the other, so you can move freely between the two views.",
+      "note": "[1] Wiener-Khinchin theorem (Wikipedia) — https://en.wikipedia.org/wiki/Wiener%E2%80%93Khinchin_theorem",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "category": "theorems",
+      "term": "[Time series] What does the power spectrum of white noise look like, and why?",
+      "sub": "A) flat — equal power at all frequencies, because its autocovariance is non-zero only at lag 0    B) a single sharp spike at low frequency    C) decaying steeply toward high frequencies    D) undefined, because white noise has no spectrum",
+      "definition": "Correct: A) flat. White noise is uncorrelated, so its autocovariance is non-zero only at lag 0; by Wiener-Khinchin its Fourier transform is constant, giving equal power at every frequency — which is exactly why it is called 'white'.",
+      "note": "[1] White noise (Wikipedia) — https://en.wikipedia.org/wiki/White_noise",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "category": "theorems",
+      "term": "What does the Nyquist-Shannon sampling theorem require?",
+      "summary": "Sample at more than twice the highest frequency to avoid losing information.",
+      "definition": "To represent a band-limited signal without loss, the sampling rate must exceed twice the highest frequency present. Half the sampling rate, $f_s/2$, is the Nyquist frequency — the highest frequency that can be unambiguously represented.",
+      "note": "[1] Nyquist-Shannon sampling theorem (Wikipedia) — https://en.wikipedia.org/wiki/Nyquist%E2%80%93Shannon_sampling_theorem",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "category": "use",
+      "term": "[Time series] What is aliasing in spectral analysis?",
+      "sub": "A) sampling too slowly makes a high-frequency component appear as a spurious lower frequency    B) the periodogram returning two identical peaks    C) the loss of the trend component during decomposition    D) error introduced by smoothing the spectrum",
+      "definition": "Correct: A) sampling too slowly makes a high-frequency component appear as a spurious lower frequency. When the sampling rate is below the Nyquist limit, frequencies above $f_s/2$ are folded back and masquerade as lower frequencies, corrupting the estimated spectrum.",
+      "note": "[1] Aliasing (Wikipedia) — https://en.wikipedia.org/wiki/Aliasing",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "category": "use",
+      "term": "[Time series] Wavelet analysis is preferred over the ordinary Fourier transform when:",
+      "sub": "A) the signal is non-stationary and you need joint time-frequency localisation (which frequencies, and when)    B) the signal is perfectly periodic and stationary    C) you only care about the mean of the series    D) the data have no frequency content at all",
+      "definition": "Correct: A) the signal is non-stationary and you need joint time-frequency localisation. The Fourier transform assumes fixed frequency content over time and tells you which frequencies but not when; wavelets use localised, scalable basis functions to track how the spectrum changes over time.",
+      "note": "[1] Wavelet (Wikipedia) — https://en.wikipedia.org/wiki/Wavelet",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "category": "use",
+      "term": "[Time series] The Fourier transform tells you which frequencies are present in a signal, but not when they occur.",
+      "type": "truefalse",
+      "answer": true,
+      "summary": "True — Fourier gives global frequency content with no time localisation; wavelets fix this.",
+      "definition": "True. The Fourier transform integrates over all time, so it reports the overall frequency content without saying when each frequency is active. Time-localised methods such as wavelets or the short-time Fourier transform recover the 'when'.",
+      "note": "[1] Wavelet (Wikipedia) — https://en.wikipedia.org/wiki/Wavelet",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "category": "exercise",
+      "term": "[Time series] A spectral analysis of an annual-resolution series shows a strong peak at frequency $f_0 = 1/11$ per year. What cycle does this indicate?",
+      "sub": "A) a cycle of period 11 years    B) a cycle of period 1/11 of a year    C) a 22-year cycle    D) no cycle, just noise",
+      "definition": "Correct: A) a cycle of period 11 years. Since period $T = 1/f$, a peak at $f_0 = 1/11$ per year corresponds to $T = 11$ years — the classic sunspot example.",
+      "note": "[1] Time series (Wikipedia) — https://en.wikipedia.org/wiki/Time_series",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "category": "exercise",
+      "term": "[Time series] A signal contains a component at 30 Hz. By Nyquist, what is the minimum sampling rate needed to represent it without aliasing?",
+      "sub": "A) just over 60 Hz    B) 30 Hz    C) 15 Hz    D) just over 30 Hz",
+      "definition": "Correct: A) just over 60 Hz. The Nyquist-Shannon theorem requires sampling at more than twice the highest frequency: $2 \\times 30 = 60$ Hz, so the rate must exceed 60 Hz.",
+      "note": "[1] Nyquist-Shannon sampling theorem (Wikipedia) — https://en.wikipedia.org/wiki/Nyquist%E2%80%93Shannon_sampling_theorem",
+      "last_updated": "2026-06-29"
+    }
+  ],
+  "tags": [
+    "time series",
+    "spectral analysis",
+    "frequency domain",
+    "fourier"
+  ]
+}

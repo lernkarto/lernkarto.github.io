@@ -1,0 +1,151 @@
+{
+  "id": "cpp-inheritance-poly",
+  "primerTitle": "C++ inheritance & polymorphism — quick recap",
+  "primer": "## Inheritance\n**Inheritance** lets a derived class extend a base, reusing and adding to its members: `class Dog : public Animal` gives `Dog` everything `public`/`protected` in the base. **`public` inheritance models 'is-a'** (a Derived is usable wherever a Base is expected). **`private` inheritance** hides the base interface and models 'implemented-in-terms-of' — usually better done with composition (a member).\n\n## Virtual functions & polymorphism\nA **virtual function** is declared `virtual` in the base, so a call through a base **pointer or reference** dispatches to the most-derived override at **runtime** (dynamic dispatch). Without `virtual`, the call resolves statically by the pointer's static type. **Runtime polymorphism** = treating different derived types uniformly through one base interface, with behaviour chosen at runtime (a `std::vector<Shape*>` each `->area()` dispatches correctly).\n\nA **pure virtual** `virtual void f() = 0;` has no required body and must be overridden; a class with at least one pure virtual is **abstract** (cannot be instantiated). An **interface** in C++ = an abstract base of only pure virtuals plus a virtual destructor.\n\nUnder the hood, a polymorphic object stores a hidden **vptr** to its class's **vtable** (table of function pointers); a virtual call reads the vptr, looks up the function, and jumps there — one indirection per call.\n\n## Keywords\n**`override`** marks an intended override so the compiler verifies a matching base virtual exists (catching signature typos). **`final`** forbids further overriding (on a function) or inheritance (on a class), and can enable devirtualisation.\n\nDon't confuse **overriding** (redefining an inherited virtual with the *same* signature — runtime dispatch) with **overloading** (same name, *different* parameters in one scope — compile-time resolution).\n\n## Pitfalls\nA polymorphic base needs a **virtual destructor** (`virtual ~Base() = default;`): `delete`ing a derived object through a base pointer with a non-virtual base destructor runs only `~Base`, never the derived destructor — UB and usually a leak. **Object slicing**: copying a derived object into a base **by value** (`Base b = derivedObj;`) keeps only the base subobject and drops derived data/overrides — handle polymorphic objects through pointers/references, never by value. (`std::unique_ptr<Shape>` in a `std::vector` gives correct dispatch and automatic cleanup.)",
+  "name": "C++ — Inheritance & polymorphism",
+  "color": "#00599c",
+  "description": "Inheritance, virtual functions and runtime polymorphism, abstract classes and interfaces, the importance of virtual destructors, override/final, and slicing. The dynamic-dispatch half of C++ OOP.",
+  "categories": {
+    "core": {
+      "label": "Core",
+      "color": "#66aaff"
+    },
+    "poly": {
+      "label": "Polymorphism",
+      "color": "#9bff66"
+    },
+    "use": {
+      "label": "Use & pitfalls",
+      "color": "#ff9f55"
+    }
+  },
+  "cards": [
+    {
+      "term": "What is inheritance?",
+      "definition": "A mechanism where a derived class extends a base class, reusing and adding to its members. `class Dog : public Animal` gives `Dog` everything `public`/`protected` in the base plus its own additions. `public` inheritance models an 'is-a' relationship.",
+      "summary": "A derived class extends a base, modelling 'is-a'.",
+      "category": "core",
+      "last_updated": "2026-06-29",
+      "stale": true
+    },
+    {
+      "term": "What is a virtual function?",
+      "definition": "A member function declared `virtual` in the base class, so a call through a base pointer or reference dispatches to the most-derived override at runtime (dynamic dispatch). Without `virtual`, the call is resolved statically by the static type of the pointer.",
+      "summary": "Resolved at runtime to the derived override (dynamic dispatch).",
+      "category": "poly",
+      "last_updated": "2026-06-29",
+      "stale": true
+    },
+    {
+      "term": "What is runtime polymorphism?",
+      "definition": "Treating different derived types uniformly through a common base interface, with the correct behaviour selected at runtime via virtual functions. A `std::vector<Shape*>` of mixed shapes can each `->area()` and dispatch to the right `area` override.",
+      "summary": "One base interface, behaviour chosen at runtime per object.",
+      "category": "poly",
+      "last_updated": "2026-06-29",
+      "stale": true
+    },
+    {
+      "term": "What is a pure virtual function and an abstract class?",
+      "definition": "A pure virtual function `virtual void f() = 0;` has no (required) implementation and must be overridden by derived classes. A class with at least one pure virtual is abstract — it cannot be instantiated, only used as a base or interface.",
+      "summary": "`= 0` makes it pure virtual; a class with one is abstract.",
+      "category": "poly",
+      "last_updated": "2026-06-29",
+      "stale": true
+    },
+    {
+      "type": "truefalse",
+      "category": "use",
+      "answer": true,
+      "term": "A base class meant for polymorphic use should have a virtual destructor.",
+      "summary": "True — otherwise deleting via a base pointer skips the derived destructor (UB).",
+      "definition": "True. If you `delete` a derived object through a base pointer and the base destructor is not `virtual`, only the base part is destroyed — the derived destructor never runs (undefined behaviour, often a leak). Polymorphic base classes need a `virtual ~Base() = default;`.",
+      "last_updated": "2026-06-29",
+      "stale": true
+    },
+    {
+      "term": "What does the `override` keyword do?",
+      "definition": "It declares that a member function is intended to override a base virtual. The compiler then checks that a matching base virtual exists — catching typos or signature mismatches that would silently create a new function instead of overriding. Always use it on intended overrides.",
+      "summary": "Marks an intended override so the compiler verifies it.",
+      "category": "poly",
+      "last_updated": "2026-06-29",
+      "stale": true
+    },
+    {
+      "term": "What does `final` mean on a class or virtual function?",
+      "definition": "`final` forbids further overriding or derivation: a `final` virtual function cannot be overridden again, and a `final` class cannot be inherited from. It documents intent and can enable compiler devirtualisation optimisations.",
+      "summary": "Blocks further overriding (function) or inheritance (class).",
+      "category": "poly",
+      "last_updated": "2026-06-29",
+      "stale": true
+    },
+    {
+      "term": "What is object slicing?",
+      "sub": "A) copying a derived object into a base-by-value variable drops the derived parts    B) cutting a vector in half    C) a way to speed up copies    D) calling a base method from a derived one",
+      "definition": "Correct: A) copying a derived object into a base-by-value variable drops the derived parts. `Base b = derivedObj;` copies only the base subobject — the derived data and overrides are 'sliced' off. Avoid by handling polymorphic objects through pointers or references, never by value.",
+      "category": "use",
+      "last_updated": "2026-06-29",
+      "stale": true
+    },
+    {
+      "type": "cloze",
+      "category": "poly",
+      "term": "Polymorphism requires accessing the object through a base {{pointer}} or reference; calling a virtual on an object by value resolves statically.",
+      "summary": "Dynamic dispatch needs a base pointer/reference, not a by-value object.",
+      "definition": "Virtual dispatch happens only through a pointer or reference to the base, because that is where the runtime type can differ from the static type. A by-value `Base` is exactly a `Base`, so its virtuals resolve statically and slicing has already occurred.",
+      "last_updated": "2026-06-29",
+      "stale": true
+    },
+    {
+      "term": "How does a virtual call work under the hood (vtable)?",
+      "definition": "A polymorphic object stores a hidden pointer (vptr) to its class's table of function pointers (the vtable). A virtual call reads the vptr, looks up the function in the vtable, and jumps there — so the implementation matches the object's actual type. This adds one indirection per virtual call.",
+      "summary": "vptr → vtable lookup selects the right override at runtime.",
+      "category": "poly",
+      "last_updated": "2026-06-29",
+      "stale": true
+    },
+    {
+      "term": "How do you model an interface in C++?",
+      "definition": "Define an abstract base class containing only pure virtual functions (and a virtual destructor). Derived classes implement them. This gives an interface contract without multiple-inheritance complications: `class Drawable { public: virtual void draw() const = 0; virtual ~Drawable() = default; };`.",
+      "summary": "An abstract base of pure virtuals = an interface.",
+      "category": "poly",
+      "last_updated": "2026-06-29",
+      "stale": true
+    },
+    {
+      "type": "truefalse",
+      "category": "core",
+      "answer": false,
+      "term": "`private` inheritance models an 'is-a' relationship just like `public` inheritance.",
+      "summary": "False — public inheritance is 'is-a'; private is 'implemented-in-terms-of'.",
+      "definition": "False. `public` inheritance expresses 'is-a' (a Derived can be used wherever a Base is expected). `private` inheritance hides the base interface and expresses 'implemented-in-terms-of' — usually better modelled by composition (a member).",
+      "last_updated": "2026-06-29",
+      "stale": true
+    },
+    {
+      "term": "What is the difference between overriding and overloading?",
+      "sub": "A) overriding replaces a base virtual with the same signature; overloading is same name, different parameters in one scope    B) they are synonyms    C) overloading happens at runtime, overriding at compile time    D) overriding requires different parameter types",
+      "definition": "Correct: A) overriding replaces a base virtual with the same signature; overloading is same name, different parameters in one scope. Override = redefining an inherited virtual (runtime dispatch, identical signature). Overload = multiple functions sharing a name distinguished by parameters (compile-time resolution).",
+      "category": "core",
+      "last_updated": "2026-06-29",
+      "stale": true
+    },
+    {
+      "term": "Exercise: this leaks the derived part — fix it.\n`struct Base { ~Base(){} virtual void f(){} }; struct D : Base { int* big = new int[1000]; ~D(){ delete[] big; } }; Base* p = new D; delete p;`",
+      "sub": "What does delete p call when ~Base is non-virtual?",
+      "definition": "`~Base` is not `virtual`, so `delete p` (a `Base*`) calls only `~Base`, never `~D` — the `big` array leaks and behaviour is undefined. Make the base destructor virtual: `virtual ~Base() = default;`. Then `delete p` dispatches to `~D` first.",
+      "summary": "Non-virtual base dtor skips ~D → leak; make ~Base virtual.",
+      "category": "use",
+      "last_updated": "2026-06-29",
+      "stale": true
+    },
+    {
+      "term": "Exercise: design a tiny shape hierarchy where `area()` is polymorphic. Sketch the base.",
+      "sub": "Think pure virtual + virtual destructor.",
+      "definition": "`struct Shape { virtual double area() const = 0; virtual ~Shape() = default; };` makes `Shape` an abstract interface. `struct Circle : Shape { double r; double area() const override { return 3.14159 * r * r; } };`. Now a `std::vector<std::unique_ptr<Shape>>` can hold mixed shapes and call `->area()` with correct dispatch and automatic cleanup.",
+      "summary": "Abstract Shape with pure-virtual area() + virtual dtor; derived override.",
+      "category": "use",
+      "last_updated": "2026-06-29",
+      "stale": true
+    }
+  ]
+}

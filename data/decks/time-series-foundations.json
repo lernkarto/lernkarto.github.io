@@ -1,0 +1,157 @@
+{
+  "id": "time-series-foundations",
+  "name": "Foundations",
+  "color": "#4dabf7",
+  "description": "Base concepts: what a time series is, its components, stationarity, autocorrelation, white noise and the random walk. Distilled from Wikipedia as a test of the article→deck pipeline.",
+  "source": "https://en.wikipedia.org/wiki/Time_series",
+  "license": "CC BY-SA 4.0",
+  "attribution": "Adapted from Wikipedia — 'Time series', 'Stationary process', 'Autocorrelation', 'Random walk' and 'Decomposition of time series' — licensed under CC BY-SA 4.0.",
+  "primerTitle": "Time-series foundations — quick recap",
+  "primer": "## What a time series is\\n\\nA **sequence of observations indexed in chronological order**, usually equally spaced. The temporal **ordering** is the defining feature: nearby points are dependent (serially correlated). This is what separates it from **cross-sectional** data, which has no inherent order.\\n\\n## Structure & decomposition\\n\\nFour classical components: **trend** (long-run direction), **seasonality** (fixed, known period), **cyclical** variation (longer swings, no fixed period), and the **irregular**/residual remainder. *(Heteroskedasticity — time-varying variance — is a separate property, not a component.)*\\n\\n- **Seasonality vs cycle:** seasonality has a fixed known period (e.g. 12 months); cycles vary in length/amplitude.\\n- **Additive** $Y_t=T_t+S_t+e_t$ for constant-amplitude seasonality; **multiplicative** $Y_t=T_t\\\\times S_t\\\\times e_t$ when swings grow with the level (logs turn it additive).\\n- **Lag/backshift operator** $L$ (or $B$): $L X_t = X_{t-1}$, $L^k X_t = X_{t-k}$; first differencing is $(1-L)X_t$.\\n- **Moving average:** averages a sliding window to smooth noise and expose trend/cycle; wider windows smooth more but lag and trim ends.\\n\\n## Stationarity\\n\\n- **Weak (second-order) stationary:** constant mean, constant variance, and autocovariance depending only on the **lag**, not absolute time.\\n- **Strict** stationarity: the whole joint distribution is shift-invariant; weak only fixes the first two moments. (They coincide for Gaussian processes.)\\n- **ACF at lag $k$:** $\\\\mathrm{corr}(X_t,X_{t-k})$ — serial dependence vs lag; the main diagnostic for structure.\\n- **White noise:** zero-mean, constant-variance, **uncorrelated** shocks ($\\\\mathrm{corr}=0$ at every non-zero lag). A good model leaves white-noise residuals.\\n- **Random walk** $X_t=X_{t-1}+\\\\varepsilon_t$: accumulates shocks, variance grows unbounded → **non-stationary, unit root**. Differencing once gives white noise, i.e. $I(1)$. **Differencing** removes a trend/unit root to make a series stationary.\\n- **Stationary examples:** white noise, stable AR(1) with $|\\\\phi|<1$, finite-variance i.i.d. **Not** stationary: a pure random walk.",
+  "categories": {
+    "basics": "Basics",
+    "stationarity": "Stationarity",
+    "structure": "Structure"
+  },
+  "cards": [
+    {
+      "category": "basics",
+      "term": "What is a time series?",
+      "summary": "A sequence of observations indexed in time order.",
+      "definition": "A sequence of data points indexed, listed or graphed in chronological order — most often observations taken at equally spaced instants. The temporal ordering is the defining feature: points close in time are typically related.",
+      "note": "[1] Time series (Wikipedia) — https://en.wikipedia.org/wiki/Time_series",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "category": "basics",
+      "term": "[Time series] How does time-series data differ from cross-sectional data?",
+      "sub": "A) it has a natural temporal ordering, so nearby observations are dependent    B) it is always larger in sample size    C) it can only contain a single variable    D) it never exhibits any trend or seasonality",
+      "definition": "Correct: A) it has a natural temporal ordering, so nearby observations are dependent. Cross-sectional data (e.g. wages by education across people) has no inherent order; in a time series the order carries information and successive points are serially correlated.",
+      "note": "[1] Time series (Wikipedia) — https://en.wikipedia.org/wiki/Time_series",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "category": "structure",
+      "term": "The four classical components a time series is decomposed into are trend, seasonality, cyclical variation and the {{irregular}} (residual / noise) component.",
+      "definition": "Classical decomposition separates a series into trend (long-run direction), seasonality (fixed-period fluctuation), a cyclical component (longer swings of no fixed period) and an irregular/residual term — the unpredictable remainder once the structure is removed.",
+      "type": "cloze",
+      "note": "[1] Decomposition of time series (Wikipedia) — https://en.wikipedia.org/wiki/Decomposition_of_time_series",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "category": "structure",
+      "term": "[Time series] When is a multiplicative decomposition preferred over an additive one?",
+      "sub": "A) when the seasonal swings grow in proportion to the level of the series    B) when the series has no trend    C) when the data are negative    D) when observations are unequally spaced",
+      "definition": "Correct: A) when the seasonal swings grow in proportion to the level of the series. Additive ($Y_t = T_t + S_t + e_t$) suits roughly constant-amplitude seasonality; multiplicative ($Y_t = T_t \\times S_t \\times e_t$) suits amplitude that scales with the level — often handled by taking logs to turn it back into an additive model.",
+      "note": "[1] Decomposition of time series (Wikipedia) — https://en.wikipedia.org/wiki/Decomposition_of_time_series",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "category": "structure",
+      "term": "[Time series] Seasonality and cyclicity are the same thing.",
+      "type": "truefalse",
+      "answer": false,
+      "summary": "False — seasonality has a fixed known period; cycles do not.",
+      "definition": "False. Seasonality repeats at a fixed, known period (e.g. 12 months). A cycle is a longer-term rise-and-fall with no fixed period — like a business cycle — whose length and amplitude vary.",
+      "note": "[1] Time series (Wikipedia) — https://en.wikipedia.org/wiki/Time_series",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "category": "stationarity",
+      "term": "What does it mean for a time series to be (weakly) stationary?",
+      "summary": "Mean, variance and autocovariance don't change over time.",
+      "definition": "A weakly (second-order) stationary series has a constant mean and variance, and an autocovariance that depends only on the lag between two points, not on absolute time. Most classical time-series theory is built on this assumption.",
+      "note": "[1] Stationary process (Wikipedia) — https://en.wikipedia.org/wiki/Stationary_process",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "category": "stationarity",
+      "term": "[Time series] How does strict stationarity differ from weak (second-order) stationarity?",
+      "sub": "A) strict requires the whole joint distribution to be shift-invariant; weak only constrains the first two moments    B) strict only constrains the mean; weak constrains everything    C) they are identical for all processes    D) strict applies only to discrete series",
+      "definition": "Correct: A) strict requires the whole joint distribution to be shift-invariant; weak only constrains the first two moments. Strict stationarity means every finite joint distribution is invariant to a time shift; weak stationarity only fixes a constant mean and a lag-dependent autocovariance. For a Gaussian process the two coincide.",
+      "note": "[1] Stationary process (Wikipedia) — https://en.wikipedia.org/wiki/Stationary_process",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "category": "stationarity",
+      "term": "[Time series] The autocorrelation function (ACF) at lag $k$ measures:",
+      "sub": "A) the correlation of the series with a lagged copy of itself, $\\mathrm{corr}(X_t, X_{t-k})$    B) the correlation between two entirely different series    C) the long-run trend slope    D) the variance of the residuals",
+      "definition": "Correct: A) the correlation of the series with a lagged copy of itself, $\\mathrm{corr}(X_t, X_{t-k})$. The ACF summarises serial dependence as a function of lag; it is the main time-domain diagnostic for structure and model identification.",
+      "note": "[1] Autocorrelation (Wikipedia) — https://en.wikipedia.org/wiki/Autocorrelation",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "category": "basics",
+      "term": "What is white noise in a time-series context?",
+      "summary": "Zero-mean, constant-variance, serially uncorrelated shocks.",
+      "definition": "A sequence of uncorrelated random variables with mean zero and constant variance — no autocorrelation at any non-zero lag. It is the benchmark for 'no remaining structure': a good model leaves white-noise residuals.",
+      "formula": "$E[\\varepsilon_t]=0,\\; \\mathrm{Var}(\\varepsilon_t)=\\sigma^2,\\; \\mathrm{corr}(\\varepsilon_t,\\varepsilon_s)=0$",
+      "note": "[1] White noise (Wikipedia) — https://en.wikipedia.org/wiki/White_noise",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "category": "stationarity",
+      "term": "A series that follows $X_t = X_{t-1} + \\varepsilon_t$ is called a {{random walk}}, and it is non-stationary because it has a unit root.",
+      "definition": "A random walk accumulates shocks, so its variance grows without bound with time — it is non-stationary and has a 'unit root'. Differencing it once ($X_t - X_{t-1} = \\varepsilon_t$) recovers white noise, i.e. it is integrated of order 1, $I(1)$.",
+      "type": "cloze",
+      "note": "[1] Random walk (Wikipedia) — https://en.wikipedia.org/wiki/Random_walk",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "category": "stationarity",
+      "term": "[Time series] Which of these processes is NOT stationary?",
+      "sub": "A) a pure random walk    B) zero-mean white noise    C) a stable AR(1) with $|\\phi|<1$    D) an i.i.d. sequence with finite variance",
+      "definition": "Correct: A) a pure random walk. Its variance grows with time and it has a unit root, so it violates stationarity. White noise, a stable AR(1) with $|\\phi|<1$, and any finite-variance i.i.d. sequence are all stationary.",
+      "note": "[1] Stationary process (Wikipedia) — https://en.wikipedia.org/wiki/Stationary_process",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "category": "structure",
+      "term": "What is the lag operator $L$ (a.k.a. backshift operator $B$)?",
+      "summary": "It shifts a series back one step: $L X_t = X_{t-1}$.",
+      "definition": "An operator that returns the previous value: $L X_t = X_{t-1}$, and $L^k X_t = X_{t-k}$. It lets AR, MA and differencing be written compactly — e.g. first differencing is $(1-L)X_t$.",
+      "note": "[1] Lag operator (Wikipedia) — https://en.wikipedia.org/wiki/Lag_operator",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "category": "structure",
+      "term": "What does a (simple) moving average do to a series?",
+      "summary": "Averages a sliding window to smooth out noise.",
+      "definition": "It replaces each point with the average of a sliding window of neighbouring points, damping short-term noise to expose the slower trend/cycle. Wider windows smooth more but lag the data and trim the ends.",
+      "note": "[1] Moving average (Wikipedia) — https://en.wikipedia.org/wiki/Moving_average",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "category": "stationarity",
+      "term": "[Time series] What is the main purpose of differencing a series?",
+      "sub": "A) to remove a trend or unit root and make the series stationary    B) to add seasonality    C) to increase the sample size    D) to convert it to the frequency domain",
+      "definition": "Correct: A) to remove a trend or unit root and make the series stationary. Taking $\\nabla X_t = X_t - X_{t-1}$ strips a stochastic trend; the number of differences needed is the integration order $d$ used in ARIMA.",
+      "note": "[1] Time series (Wikipedia) — https://en.wikipedia.org/wiki/Time_series",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "category": "structure",
+      "term": "[Time series] Which of these are components of a classical time-series decomposition? Select all that apply.",
+      "type": "multi",
+      "choices": [
+        "Trend",
+        "Seasonality",
+        "Cyclical variation",
+        "Heteroskedasticity"
+      ],
+      "answers": [
+        0,
+        1,
+        2
+      ],
+      "summary": "Trend, seasonality and cyclical variation are components; heteroskedasticity is a property of the variance.",
+      "definition": "Classical decomposition splits a series into trend, seasonality and a cyclical component (plus an irregular residual). Heteroskedasticity — time-varying variance — is a separate property modelled by ARCH/GARCH, not a decomposition component.",
+      "note": "[1] Decomposition of time series (Wikipedia) — https://en.wikipedia.org/wiki/Decomposition_of_time_series",
+      "last_updated": "2026-06-29"
+    }
+  ],
+  "tags": [
+    "time series",
+    "forecasting"
+  ]
+}

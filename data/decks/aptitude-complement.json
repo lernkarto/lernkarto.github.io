@@ -1,0 +1,156 @@
+{
+  "id": "aptitude-complement",
+  "name": "Complement & 'at least one'",
+  "color": "#4dabf7",
+  "description": "The 'at least one' trick: P(at least one) = 1 − P(none). Dice and coins, de Méré's paradox, and the expected-count-vs-probability trap.",
+  "tags": [
+    "aptitude",
+    "interview",
+    "probability",
+    "complement"
+  ],
+  "primerTitle": "The complement rule — method",
+  "primer": "## 'At least one' = 1 − 'none'\nDirectly summing the ways to get **at least one** success double-counts (one trial succeeding doesn't exclude another). The clean route is the **complement**:\n\n$$P(\\text{at least one}) = 1 - P(\\text{none}).$$\n\nFor **independent** trials the 'none' case factorises:\n\n$$P(\\text{none}) = \\prod_i (1 - p_i).$$\n\n- **One die, n rolls, at least one 6:** $1 - (5/6)^n$. ($n=4 \\to 0.518$, just favourable.)\n- **A coin, n flips, at least one head:** $1 - (1/2)^n$. ($n=3 \\to 7/8$.)\n- **Two dice, 24 rolls, at least one double-six:** $1 - (35/36)^{24} \\approx 0.491$, just **un**favourable.\n\n**de Méré's paradox:** betting on a 6 in 4 single-die rolls wins ($0.518$), but a double-six in 24 two-die rolls loses ($0.491$) — even though the naive ratio $4/6 = 24/36$ suggests they should be equal. The exponent, not the ratio, decides it.\n\n**The trap:** the *probability* of at least one success is **not** the *expected number* of successes. Rolling a die 6 times, the expected count of 6s is $6 \\times \\tfrac16 = 1$ (linearity of expectation), while the probability of **at least one** 6 is $1 - (5/6)^6 \\approx 0.665$. A probability can never exceed 1; an expected count can.",
+  "cards": [
+    {
+      "term": "You roll a fair six-sided die 6 times. What is the probability of getting at least one 6?",
+      "choices": [
+        "About 66.5%",
+        "About 33.5%",
+        "About 50%",
+        "100%",
+        "About 16.7%"
+      ],
+      "answer": 0,
+      "type": "mcq",
+      "definition": "Complement: P(at least one 6) = 1 − P(no 6) = 1 − (5/6)^6 = 1 − 15625/46656 ≈ 1 − 0.335 = 0.665, so ≈66.5%. The tempting 100% confuses this with the EXPECTED number of 6s (6 × 1/6 = 1, a count, not a probability). 33.5% is P(no 6) — the complement itself, not the answer. 16.7% ≈ 1/6 is one single roll; 50% is just a guess.",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "You roll a fair die 6 times. What is the EXPECTED number of 6s you will roll?",
+      "choices": [
+        "1",
+        "6",
+        "1.665",
+        "About 0.665",
+        "0"
+      ],
+      "answer": 0,
+      "type": "mcq",
+      "definition": "By linearity of expectation, write the count as a sum of 6 indicator variables, each with mean 1/6; the expected count is 6 × 1/6 = 1 regardless of dependence. This is deliberately contrasted with the ≈66.5% PROBABILITY of at least one 6: an expected count (1) and a probability (0.665) are different quantities — 0.665 is the wrong answer precisely because it answers the previous question. '6' would require every roll to be a 6.",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "You roll a fair die 4 times. What is the probability of rolling NO 6 at all?",
+      "choices": [
+        "About 33.3%",
+        "About 48.2%",
+        "About 51.8%",
+        "About 16.7%",
+        "About 66.7%"
+      ],
+      "answer": 1,
+      "type": "mcq",
+      "definition": "Independent rolls: P(no 6) = (5/6)^4 = 625/1296 ≈ 0.482, so ≈48.2%. 51.8% is its complement, P(at least one 6) — the answer to the NEXT question, not this one. 16.7% ≈ 1/6 is a single roll; 33.3% and 66.7% (≈1/3, 2/3) don't arise here.",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "You roll a fair die 4 times. What is the probability of at least one 6? (This is the bet that made the gambler de Méré famous.)",
+      "choices": [
+        "About 51.8%",
+        "About 66.7%",
+        "About 48.2%",
+        "About 4/6",
+        "Exactly 50%"
+      ],
+      "answer": 0,
+      "type": "mcq",
+      "definition": "1 − (5/6)^4 = 1 − 625/1296 ≈ 0.518, so ≈51.8% — just above one half, so betting on at least one 6 in four rolls is (slightly) favourable. 48.2% is P(no 6), the complement. The naive '4/6 ≈ 66.7%' wrongly multiplies a per-roll chance by the number of rolls (that gives the expected count, 4 × 1/6 = 2/3, not a probability).",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "What is the smallest number of rolls of a fair die for which the probability of getting at least one 6 first exceeds 50%?",
+      "choices": [
+        "5",
+        "4",
+        "3",
+        "2",
+        "6"
+      ],
+      "answer": 1,
+      "type": "mcq",
+      "definition": "We need the smallest n with 1 − (5/6)^n > 0.5, i.e. (5/6)^n < 0.5. (5/6)^3 = 125/216 ≈ 0.579 (so 3 rolls give only 0.421 < 0.5), while (5/6)^4 = 625/1296 ≈ 0.482 (so 4 rolls give 0.518 > 0.5). Hence 4 is the tipping point. (Not 'the expected wait' 6, a common wrong instinct.)",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "You roll a pair of fair dice 24 times. What is the probability of getting at least one double-six (a 6 on both dice simultaneously)?",
+      "choices": [
+        "About 49.1%",
+        "About 66.7%",
+        "About 24/36",
+        "About 50.9%",
+        "Exactly 50%"
+      ],
+      "answer": 0,
+      "type": "mcq",
+      "definition": "A double-six has probability 1/36 per throw, so P(at least one in 24) = 1 − (35/36)^24 ≈ 1 − 0.509 = 0.491, ≈49.1% — just UNfavourable. This is the heart of de Méré's paradox: 4 single-die rolls is favourable (0.518) yet 24 two-die rolls is not, even though 4/6 = 24/36. 50.9% is the complement P(no double-six); 25 rolls would tip the bet over 50%.",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "You flip a fair coin 3 times. What is the probability of getting at least one head?",
+      "choices": [
+        "7/8",
+        "3/8",
+        "1/8",
+        "3/4",
+        "1/2"
+      ],
+      "answer": 0,
+      "type": "mcq",
+      "definition": "P(at least one head) = 1 − P(all tails) = 1 − (1/2)^3 = 1 − 1/8 = 7/8. The only excluded outcome is TTT. 1/8 is P(all tails) itself; 3/8 is P(exactly one head) = C(3,1)/8; 1/2 and 3/4 don't match.",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "You flip a fair coin 10 times. What is the probability of getting at least one head?",
+      "choices": [
+        "511/512",
+        "1/2",
+        "1023/1024",
+        "1/1024",
+        "10/1024"
+      ],
+      "answer": 2,
+      "type": "mcq",
+      "definition": "1 − (1/2)^10 = 1 − 1/1024 = 1023/1024 ≈ 0.999 — almost certain; the only excluded outcome is all ten tails. 511/512 = 1 − (1/2)^9 is the answer for nine flips; 1/1024 is P(all tails); 10/1024 = C(10,1)/1024 is P(exactly one head).",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "What is the standard trick for computing the probability of 'at least one' success in a series of independent trials?",
+      "choices": [
+        "Use the expected number of successes directly",
+        "Multiply the probabilities of each trial",
+        "Add the probabilities of each trial succeeding",
+        "Take the probability of exactly one success",
+        "Compute 1 minus the probability of zero successes (the complement)"
+      ],
+      "answer": 4,
+      "type": "mcq",
+      "definition": "P(at least one) = 1 − P(none). Adding per-trial probabilities double-counts overlaps (and can exceed 1); multiplying them gives P(all succeed); the expected count and 'exactly one' answer different questions. The complement turns a messy union into a single clean product, P(none) = ∏(1 − pᵢ).",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "You roll two fair dice. What is the probability that at least one of them shows an even number?",
+      "choices": [
+        "3/4",
+        "1/2",
+        "2/3",
+        "5/6",
+        "1/4"
+      ],
+      "answer": 0,
+      "type": "mcq",
+      "definition": "Complement again: P(at least one even) = 1 − P(both odd). Each die is odd with probability 1/2, so P(both odd) = 1/2 × 1/2 = 1/4 and the answer is 1 − 1/4 = 3/4. 1/2 is the chance a single die is even; 1/4 is P(both odd) itself.",
+      "last_updated": "2026-06-29"
+    }
+  ]
+}

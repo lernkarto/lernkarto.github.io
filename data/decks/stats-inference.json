@@ -1,0 +1,146 @@
+{
+  "id": "stats-inference",
+  "name": "Statistical inference",
+  "color": "#4dabf7",
+  "description": "Hypothesis testing from the ground up: null and alternative hypotheses, Type I/II errors, the correct meaning of a p-value, confidence intervals, statistical power, and when to use a t-test versus a z-test.",
+  "categories": {
+    "core": "Core",
+    "theorems": "Concepts",
+    "use": "Use & limitations",
+    "exercise": "Exercises"
+  },
+  "primerTitle": "Statistical inference — quick recap",
+  "primer": "## Hypotheses\\n\\n- **$H_0$** (null) = the default *no-effect / status-quo* claim being tested; **$H_1$** (alternative) = the rival accepted only if the data **reject** $H_0$.\\n- A test can **reject** $H_0$ or **fail to reject** it — it never *proves* $H_0$ true.\\n\\n## The two errors\\n\\n- **Type I** = rejecting a *true* $H_0$ (false positive). Its rate is the chosen significance level **$\\\\alpha$** (often 0.05).\\n- **Type II** = failing to reject a *false* $H_0$ (false negative), probability **$\\\\beta$**.\\n- For fixed $n$ there is a trade-off: lowering $\\\\alpha$ tends to raise $\\\\beta$.\\n\\n## The p-value\\n\\n- $p = P(\\\\text{data this extreme}\\\\mid H_0\\\\ \\\\text{true})$ — computed **assuming $H_0$ holds**.\\n- It is **not** $P(H_0\\\\text{ true})$ and **not** the probability the result is chance. A small $p$ means the data would be unusual under $H_0$.\\n\\n## Power\\n\\n- **Power $=1-\\\\beta = P(\\\\text{reject }H_0\\\\mid H_1\\\\text{ true})$** — chance of detecting a real effect (target $\\\\geq 0.80$).\\n- Power **rises** with larger $n$, larger true effect size, smaller variance; it **falls** with a smaller $\\\\alpha$ (stricter threshold).\\n\\n## Confidence intervals\\n\\n- A 95% CI is a **procedure** that captures the fixed true parameter in ~95% of repeated samples — *not* a 95% probability for one realised interval.\\n- **Duality:** a 95% CI excludes the null value exactly when the two-sided test rejects $H_0$ at $\\\\alpha=0.05$.\\n- z-CI for a mean: $\\\\bar{x}\\\\pm z_{0.975}\\\\,\\\\sigma/\\\\sqrt{n}$ with $z_{0.975}=1.96$ and standard error $\\\\sigma/\\\\sqrt{n}$.\\n\\n## t-test vs z-test\\n\\n- Use a **t-test** when $\\\\sigma$ is **unknown** and estimated by the sample SD $s$ (adds uncertainty → $t$ distribution). A one-sample t-test has **$n-1$** degrees of freedom; as $n\\\\to\\\\infty$, $t\\\\to$ normal.\\n- Use a **z-test** when $\\\\sigma$ is known (or $n$ large so $s\\\\approx\\\\sigma$).\\n\\n## Multiple testing\\n\\n- **p-hacking**: running many tests until one is significant inflates the real Type I rate (many tests at 5% make a false positive almost certain). Guard with corrections (Bonferroni) or pre-registration.",
+  "cards": [
+    {
+      "category": "core",
+      "term": "What are the null and alternative hypotheses?",
+      "summary": "$H_0$ = no-effect / status quo; $H_1$ = what you accept if you reject $H_0$.",
+      "definition": "The null hypothesis $H_0$ is the default 'no effect / no difference' claim being tested; the alternative $H_1$ is the rival claim accepted only if the data reject $H_0$. A test can reject $H_0$ or fail to reject it — it never proves $H_0$ true.",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "category": "core",
+      "term": "[Inference] What is the correct definition of a p-value?",
+      "sub": "A) the probability the null hypothesis is true    B) the probability, assuming $H_0$ is true, of a result at least as extreme as observed    C) the probability the result occurred by chance    D) the probability of making a Type II error",
+      "definition": "Correct: B) the probability, assuming $H_0$ is true, of a result at least as extreme as observed. It is computed under the assumption that $H_0$ holds; it says nothing directly about how likely $H_0$ itself is. A and C are the classic misreadings.",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "category": "core",
+      "term": "[Inference] A small p-value means there is a small probability that the null hypothesis is true.",
+      "type": "truefalse",
+      "answer": false,
+      "summary": "False — the p-value is computed assuming $H_0$ is true.",
+      "definition": "False. The p-value is $P(\\text{data this extreme}\\mid H_0\\ \\text{true})$, not $P(H_0\\ \\text{true}\\mid\\text{data})$. A small p-value means the observed data would be unusual if $H_0$ held, which leads us to reject $H_0$ — but it is not the probability that $H_0$ is true.",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "category": "core",
+      "term": "A {{Type I}} error is rejecting a true null hypothesis (a false positive), and its probability is the significance level $\\alpha$.",
+      "type": "cloze",
+      "definition": "A Type I error rejects $H_0$ when $H_0$ is actually true — a false positive. The significance level $\\alpha$ (often 0.05) is the rate of Type I error you choose to tolerate.",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "category": "core",
+      "term": "What is a Type II error?",
+      "summary": "Failing to reject a false $H_0$ — a false negative, with probability $\\beta$.",
+      "definition": "A Type II error is failing to reject $H_0$ when $H_0$ is in fact false — a false negative. Its probability is denoted $\\beta$; the test's power is $1-\\beta$. There is a trade-off: lowering $\\alpha$ (fewer false positives) tends to raise $\\beta$ for a fixed sample size.",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "category": "theorems",
+      "term": "What is statistical power?",
+      "summary": "$1-\\beta$: the probability of correctly rejecting a false $H_0$.",
+      "definition": "Power is the probability that the test rejects $H_0$ when the alternative is true, i.e. $1-\\beta$. A well-powered study (commonly 0.80+) is likely to detect a real effect of the assumed size.",
+      "formula": "$\\text{Power} = 1-\\beta = P(\\text{reject } H_0 \\mid H_1 \\text{ true})$",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "category": "theorems",
+      "term": "[Inference] Which change does NOT increase the power of a test?",
+      "sub": "A) increasing the sample size $n$    B) a larger true effect size    C) reducing the population variance    D) lowering the significance level $\\alpha$ from 0.05 to 0.01",
+      "definition": "Correct: D) lowering the significance level $\\alpha$ from 0.05 to 0.01. A stricter $\\alpha$ makes rejection harder, so it lowers power. Power rises with larger $n$, larger effect size, and smaller variance.",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "category": "theorems",
+      "term": "[Inference] Which factors increase statistical power? Select all that apply.",
+      "type": "multi",
+      "choices": [
+        "Larger sample size",
+        "Larger true effect size",
+        "Smaller population variance",
+        "Smaller significance level $\\alpha$"
+      ],
+      "answers": [
+        0,
+        1,
+        2
+      ],
+      "summary": "Bigger $n$, bigger effect and smaller variance raise power; a smaller $\\alpha$ lowers it.",
+      "definition": "Power $=1-\\beta$ increases with sample size, effect size and a smaller error variance — all make a true effect easier to detect. Shrinking $\\alpha$ makes the rejection threshold stricter and therefore reduces power.",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "category": "core",
+      "term": "What does a 95% confidence interval actually mean?",
+      "summary": "A procedure that captures the true parameter in 95% of repeated samples.",
+      "definition": "If you repeated the sampling-and-interval procedure many times, about 95% of the resulting intervals would contain the true parameter. It is a statement about the long-run reliability of the method, not a 95% probability that the true value lies in one particular computed interval (the parameter is fixed; the interval is random).",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "category": "core",
+      "term": "[Inference] A 95% CI means there is a 95% probability the true parameter lies inside this particular interval.",
+      "type": "truefalse",
+      "answer": false,
+      "summary": "False — the parameter is fixed; the 95% refers to the procedure across samples.",
+      "definition": "False. In the frequentist view the true parameter is a fixed constant and a given interval either contains it or not. The 95% is the coverage rate of the procedure over repeated samples, not a probability attached to one realised interval.",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "category": "theorems",
+      "term": "[Inference] When should you use a t-test rather than a z-test?",
+      "sub": "A) when the population standard deviation is unknown and estimated from the sample    B) when the population standard deviation is known    C) when the sample size is very large    D) only for proportions",
+      "definition": "Correct: A) when the population standard deviation is unknown and estimated from the sample. Estimating $\\sigma$ by the sample SD $s$ adds uncertainty, so the statistic follows a $t$ distribution (with $n-1$ d.o.f.). When $\\sigma$ is known (or $n$ is large so $s\\approx\\sigma$), the z-test applies.",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "category": "theorems",
+      "term": "How many degrees of freedom does a one-sample t-test use?",
+      "summary": "$n-1$, where $n$ is the sample size.",
+      "definition": "The one-sample t-test uses $\\nu=n-1$ degrees of freedom because one degree is 'spent' estimating the mean to compute the sample standard deviation. As $n$ grows, the $t$ distribution approaches the standard normal.",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "category": "use",
+      "term": "[Inference] The duality between a confidence interval and a two-sided test is:",
+      "sub": "A) a 95% CI excludes the null value exactly when the two-sided test rejects $H_0$ at $\\alpha=0.05$    B) a CI and a test never agree    C) a wider CI always means a smaller p-value    D) the CI replaces the need for an alternative hypothesis",
+      "definition": "Correct: A) a 95% CI excludes the null value exactly when the two-sided test rejects $H_0$ at $\\alpha=0.05$. Confidence intervals and two-sided hypothesis tests are two views of the same calculation: if the hypothesised value falls outside the $(1-\\alpha)$ CI, you reject $H_0$ at level $\\alpha$.",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "category": "use",
+      "term": "[Inference] What is p-hacking (multiple testing) and why is it a problem?",
+      "sub": "A) running many tests until one is significant, which inflates the real Type I error rate    B) using too large a sample    C) reporting confidence intervals instead of p-values    D) choosing a one-sided test",
+      "definition": "Correct: A) running many tests until one is significant, which inflates the real Type I error rate. Each test at $\\alpha=0.05$ has a 5% false-positive chance; testing many hypotheses makes a spurious 'significant' result almost certain. Corrections (e.g. Bonferroni) or pre-registration guard against it.",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "category": "exercise",
+      "term": "[Exercise] A sample of $n=100$ has mean $\\bar{x}=50$ with known population SD $\\sigma=10$. Give the 95% confidence interval for the mean.",
+      "summary": "$50 \\pm 1.96\\times(10/\\sqrt{100}) = 50 \\pm 1.96$, i.e. about $[48.04,\\ 51.96]$.",
+      "definition": "The standard error is $\\sigma/\\sqrt{n}=10/10=1$. The two-sided 95% z-quantile is 1.96, so the margin of error is $1.96\\times1=1.96$ and the CI is $50\\pm1.96=[48.04,\\ 51.96]$.",
+      "formula": "$\\bar{x} \\pm z_{0.975}\\,\\dfrac{\\sigma}{\\sqrt{n}}$",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "category": "exercise",
+      "term": "[Exercise] A test has $\\beta=0.20$ (probability of a Type II error). What is its power, and what does that number mean?",
+      "summary": "Power $=1-0.20=0.80$: an 80% chance of detecting the effect if $H_1$ is true.",
+      "definition": "Power $=1-\\beta=1-0.20=0.80$. So if the true effect is the assumed size, the test has an 80% chance of correctly rejecting the false null (and a 20% chance of missing it). 0.80 is the conventional minimum for a well-designed study.",
+      "last_updated": "2026-06-29"
+    }
+  ]
+}

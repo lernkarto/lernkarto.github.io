@@ -1,0 +1,11 @@
+{
+  "topic": "Arabic alphabet",
+  "id": "arabic",
+  "standard": true,
+  "description": "The 28 letters of the Arabic abjad (isolated forms) — consonants written right-to-left that connect and reshape by position. Each item is tested both ways, tracked separately.",
+  "primerTitle": "Arabic chart — quick recap",
+  "primer": "## How this set works\nThe 28 letters of the Arabic alphabet. It's an **abjad** (consonants; short vowels are optional marks), written **right-to-left**, and letters **connect** — each has up to four shapes (isolated / initial / medial / final). These cards show the **isolated** form. Each card is studied **both ways** and tracked separately — you only master it once you know it in both directions.\n\n## The letters (isolated)\n- ا alif **a** · ب ba **b** · ت ta **t** · ث tha **th** · ج jim **j** · ح ha **ḥ** · خ kha **kh** · د dal **d** · ذ dhal **dh** · ر ra **r** · ز zay **z** · س sin **s** · ش shin **sh** · ص sad **ṣ** · ض dad **ḍ** · ط ta **ṭ** · ظ za **ẓ** · ع ayn **ʿ** · غ ghayn **gh** · ف fa **f** · ق qaf **q** · ك kaf **k** · ل lam **l** · م mim **m** · ن nun **n** · ه ha **h** · و waw **w/u** · ي ya **y/i**\n\n## Watch out\n- **Emphatic letters** ص ض ط ظ are 'heavier' versions of s/d/t/dh.\n- ح ha, ع ayn, غ ghayn, ق qaf are **guttural/back** sounds with no English equivalent.\n- Dotting distinguishes many pairs: ب/ت/ث, ج/ح/خ, د/ذ, ر/ز, س/ش, ص/ض, ط/ظ, ع/غ — watch the dots.\n\nEvery card's answer is in this chart — know it both ways and you'll pass the deck.",
+  "deckFiles": [
+    "arabic.json"
+  ]
+}

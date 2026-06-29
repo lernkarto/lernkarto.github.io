@@ -1,0 +1,184 @@
+{
+  "id": "aptitude-digit-puzzle",
+  "name": "Digit & number puzzles",
+  "color": "#ffa94d",
+  "description": "Digit-product/-sum puzzles, two-digit algebra, units-digit cycles, inclusion-exclusion, digital roots.",
+  "tags": [
+    "aptitude",
+    "interview",
+    "digits",
+    "number theory"
+  ],
+  "primerTitle": "Digit puzzles — method",
+  "primer": "These puzzles all reduce to small searches or one-line algebra; the trick is choosing the right frame. \\textbf{Digit-product puzzles.} \"The digits multiply to $P$\" with distinct nonzero digits means: factor $P$ into a set of $k$ distinct values from $\\{1,\\dots,9\\}$. Prime-factorise $P$, then bundle the primes into single digits (e.g. $2\\cdot3=6$, $2\\cdot4=8$). Because the digits must be distinct and $\\le 9$, the valid factorisation is usually \\emph{unique}, so you never need the actual number — just read off the sum of that one digit set. \\textbf{Two-digit algebra.} Write the number as $10a+b$ ($a$ the tens digit, $1\\le a\\le 9$; $b$ the units, $0\\le b\\le 9$). Its reversal is $10b+a$. Then reversal $-$ original $= 9(b-a)$ — every \"reverse and compare\" fact collapses to a relation on $b-a$. Combine with the digit-sum condition $a+b=S$ and solve two linear equations. (For a 3-digit number, $100a+10b+c$; reversal difference is $99(c-a)$.) \\textbf{Consecutive integers.} If $n(n+1)(n+2)=N$, estimate $n\\approx N^{1/3}$ and test the integer nearby. \\textbf{Units-digit cycles.} The last digit of $n^k$ is periodic in $k$. Powers of 7 cycle $7,9,3,1$ (period 4); of 2 cycle $2,4,8,6$; of 3 cycle $3,9,7,1$. Reduce the exponent mod the period (mapping a remainder of 0 to the last entry). \\textbf{Inclusion-exclusion.} \"Divisible by neither $p$ nor $q$\" in $1..N$ is $N-\\lfloor N/p\\rfloor-\\lfloor N/q\\rfloor+\\lfloor N/\\mathrm{lcm}(p,q)\\rfloor$. \\textbf{Digital root.} Repeatedly summing digits is congruence mod 9: $\\mathrm{dr}(n)=1+((n-1)\\bmod 9)$, i.e. $n\\bmod 9$ except that any nonzero multiple of 9 has digital root 9.",
+  "cards": [
+    {
+      "term": "The product of the digits of a 4-digit number is 160. If none of its digits is repeated (and none is zero), what is the sum of its digits?",
+      "choices": [
+        "18",
+        "14",
+        "16",
+        "37",
+        "19"
+      ],
+      "answer": 0,
+      "type": "mcq",
+      "definition": "Correct: 18. Factor $160 = 2^5 \\cdot 5$ into four distinct nonzero digits. The factor 5 must stand alone (no other digit contains a 5), leaving $2^5 = 32$ to split into three more distinct digits from $\\{1,2,4,8\\}$ (the only powers of 2 that are single digits, plus 1). To use four distinct digits we need the remaining three to multiply to 32: testing combinations, $1 \\cdot 4 \\cdot 8 = 32$ works, while $2 \\cdot 2 \\cdot 8$, $2 \\cdot 4 \\cdot 4$ repeat digits and $1 \\cdot 2 \\cdot \\ldots$ cannot reach 32 without a repeat. Brute force over all $\\binom{9}{4}$ distinct digit sets confirms exactly one set with product 160: $\\{1,4,5,8\\}$. Its sum is $1+4+5+8 = 18$. (Such a number exists, e.g. 1458.)",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "The product of the digits of a 3-digit number is 105. If none of its digits is repeated (and none is zero), what is the sum of its digits?",
+      "choices": [
+        "13",
+        "17",
+        "14",
+        "16",
+        "15"
+      ],
+      "answer": 4,
+      "type": "mcq",
+      "definition": "Correct: 15. Factor $105 = 3 \\cdot 5 \\cdot 7$. Each prime is already a single digit, and all three are distinct and $\\le 9$, so the digit set is forced to be $\\{3,5,7\\}$ — no prime can be combined with another without exceeding 9 ($3\\cdot5=15$, $3\\cdot7=21$, $5\\cdot7=35$ are all two-digit). A brute-force search over all distinct 3-digit sets confirms $\\{3,5,7\\}$ is the unique solution. Sum $= 3+5+7 = 15$.",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "The product of the digits of a 3-digit number is 210. If none of its digits is repeated (and none is zero), what is the sum of its digits?",
+      "choices": [
+        "18",
+        "17",
+        "19",
+        "20",
+        "16"
+      ],
+      "answer": 0,
+      "type": "mcq",
+      "definition": "Correct: 18. Factor $210 = 2 \\cdot 3 \\cdot 5 \\cdot 7$. That is four prime factors but we have only three digit slots, so two primes must be bundled into one digit $\\le 9$. The only product of two of these primes staying $\\le 9$ is $2 \\cdot 3 = 6$ (others: $2\\cdot5=10$, $2\\cdot7=14$, $3\\cdot5=15$, all too big). That forces the digit set $\\{6,5,7\\}$, with $6 \\cdot 5 \\cdot 7 = 210$. Brute force confirms it is the unique distinct 3-digit set. Sum $= 5+6+7 = 18$.",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "The product of the digits of a 4-digit number is 1260. If none of its digits is repeated (and none is zero), what is the sum of its digits?",
+      "choices": [
+        "25",
+        "26",
+        "23",
+        "24",
+        "27"
+      ],
+      "answer": 0,
+      "type": "mcq",
+      "definition": "Correct: 25. Factor $1260 = 2^2 \\cdot 3^2 \\cdot 5 \\cdot 7$. We need four distinct nonzero digits. The 5 and 7 must each stand alone (they cannot combine with anything to stay $\\le 9$), using two slots and leaving $2^2 \\cdot 3^2 = 36$ for two more distinct digits. Splitting 36 into two distinct single digits: $4 \\cdot 9 = 36$ works; $6 \\cdot 6 = 36$ repeats. So the set is $\\{4,5,7,9\\}$. A brute-force search over all $\\binom{9}{4}$ distinct digit sets confirms this is the unique solution with product 1260. Sum $= 4+5+7+9 = 25$.",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "A two-digit number is 6 times the sum of its digits. The number obtained by reversing its digits is 9 times the sum of its digits. What is the original number?",
+      "choices": [
+        "63",
+        "45",
+        "54",
+        "36",
+        "27"
+      ],
+      "answer": 2,
+      "type": "mcq",
+      "definition": "Correct: 54. Write the number as $10a+b$ with digit sum $s=a+b$. The first condition $10a+b = 6(a+b)$ gives $4a = 5b$, so $(a,b)=(5,4)$ is the only single-digit solution: the number is $54$, and indeed $6 \\cdot (5+4) = 54$. Note: the puzzle's second clause as stated ('reversal $= 9 \\times$ digit-sum') does NOT actually hold — the reversal is $45$ but $9 \\times 9 = 81 \\ne 45$. The first condition alone already pins the answer uniquely to 54, so the answer is sound, but the second condition (and the source's gloss '$45 = 9 \\cdot 9$') is arithmetically wrong; the true relation is $45 = 5 \\times 9 = 5s$, not $9s$. A brute force over all two-digit numbers confirms 54 as the unique value satisfying $10a+b=6(a+b)$.",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "A three-digit number equals 11 times the sum of its three digits. What is the sum of all such three-digit numbers?",
+      "choices": [
+        "209",
+        "187",
+        "198",
+        "550",
+        "396"
+      ],
+      "answer": 2,
+      "type": "mcq",
+      "definition": "Correct: 198. Write it as $100a+10b+c = 11(a+b+c)$, i.e. $89a = b + 10c$. Since $b+10c \\le 9 + 90 = 99$ and $89a \\ge 89$ for $a \\ge 1$, we must have $a=1$, giving $b + 10c = 89$, so $c=8, b=9$. That is the number $198 = 11 \\cdot 18$. A brute-force scan of all 900 three-digit numbers finds exactly one satisfying $n = 11 \\cdot (\\text{digit sum})$, namely 198, so the sum of all such numbers is $198$.",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "The product of three consecutive positive integers is 7980. What is their sum?",
+      "choices": [
+        "59",
+        "63",
+        "60",
+        "61",
+        "57"
+      ],
+      "answer": 2,
+      "type": "mcq",
+      "definition": "Correct: 60. For $n(n+1)(n+2) = 7980$, the cube root of 7980 is about $19.98$, so the middle integer is near 20. Test $19 \\cdot 20 \\cdot 21 = 7980$ — exact. (Adjacent triples bracket it: $18\\cdot19\\cdot20 = 6840$ and $20\\cdot21\\cdot22 = 9240$, so the solution is unique.) Their sum is $19 + 20 + 21 = 60$ (equivalently $3 \\times$ the middle term).",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "A two-digit number has digit sum 11. If you swap its two digits, the value increases by 27. What is the original number?",
+      "choices": [
+        "56",
+        "29",
+        "38",
+        "74",
+        "47"
+      ],
+      "answer": 4,
+      "type": "mcq",
+      "definition": "Correct: 47. Write the number $10a+b$. The swap gives $10b+a$, and the increase is $(10b+a) - (10a+b) = 9(b-a) = 27$, so $b - a = 3$. Combined with $a + b = 11$: adding the two equations gives $2b = 14$, $b=7$, $a=4$. The number is $47$ (reversal $74 = 47 + 27$). Brute force over all two-digit numbers confirms 47 is the unique solution.",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "What is the last digit (units digit) of 7^2026?",
+      "choices": [
+        "5",
+        "3",
+        "7",
+        "1",
+        "9"
+      ],
+      "answer": 4,
+      "type": "mcq",
+      "definition": "Correct: 9. The units digit of powers of 7 cycles with period 4: $7^1 \\to 7$, $7^2 \\to 9$, $7^3 \\to 3$, $7^4 \\to 1$, then repeats. Reduce the exponent: $2026 \\bmod 4 = 2$ (since $2024$ is divisible by 4), which corresponds to the second entry of the cycle, $9$. Direct computation of $7^{2026} \\bmod 10$ confirms $9$.",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "How many integers from 1 to 300 are divisible by neither 3 nor 5?",
+      "choices": [
+        "180",
+        "160",
+        "200",
+        "140",
+        "150"
+      ],
+      "answer": 1,
+      "type": "mcq",
+      "definition": "Correct: 160. By inclusion-exclusion, count those divisible by 3 or 5 and subtract from 300. Multiples of 3: $\\lfloor 300/3 \\rfloor = 100$. Multiples of 5: $\\lfloor 300/5 \\rfloor = 60$. Multiples of 15 (counted twice, so add back once): $\\lfloor 300/15 \\rfloor = 20$. Divisible by 3 or 5 $= 100 + 60 - 20 = 140$. Divisible by neither $= 300 - 140 = 160$. A direct count over $1..300$ confirms 160.",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "What is the digital root of 9^100 (repeatedly sum the digits until a single digit remains)?",
+      "choices": [
+        "3",
+        "6",
+        "1",
+        "8",
+        "9"
+      ],
+      "answer": 4,
+      "type": "mcq",
+      "definition": "Correct: 9. The digital root equals the value modulo 9, with the convention that any nonzero multiple of 9 has digital root 9 (since $9 \\equiv 0 \\pmod 9$). Here $9^{100}$ is clearly a multiple of 9, so its digital root is $9$. Verified by computing the full integer $9^{100}$ and iterating the digit-sum down to a single digit, which yields 9.",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "A two-digit number has digits summing to 12. The number obtained by reversing its digits is 36 larger than the original. What is the original number?",
+      "choices": [
+        "75",
+        "84",
+        "57",
+        "48",
+        "39"
+      ],
+      "answer": 3,
+      "type": "mcq",
+      "definition": "Correct: 48. Write the number $10a+b$. Reversal minus original is $(10b+a) - (10a+b) = 9(b-a) = 36$, so $b - a = 4$. With $a + b = 12$: adding gives $2b = 16$, $b = 8$, $a = 4$. The number is $48$, and its reversal $84 = 48 + 36$. Brute force over all two-digit numbers confirms 48 as the unique solution.",
+      "last_updated": "2026-06-29"
+    }
+  ]
+}

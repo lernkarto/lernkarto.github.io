@@ -1,0 +1,171 @@
+{
+  "id": "aptitude-probability-games",
+  "name": "Probability games",
+  "color": "#20c997",
+  "description": "Coin-and-parameter problems in the style of the unfair-coin question. Common thread: p^a*(1-p)^b is maximised at p = a/(a+b), and the special case p*(1-p) <= 1/",
+  "tags": [
+    "aptitude",
+    "interview",
+    "probability",
+    "optimization",
+    "maximum likelihood"
+  ],
+  "primerTitle": "Probability games — method",
+  "primer": "## Parametrised coin & dice games\nMost reduce to two facts:\n- **Maximum likelihood:** a probability of the form $p^a(1-p)^b$ (a heads, b tails in a fixed sequence) is maximised at **p = a/(a+b)** — the fraction of heads the sequence asks for.\n- **The 1/4 bound:** $p(1-p) ≤ 1/4$, equality at the fair coin p=1/2 (complete the square). So 'exactly one of two' ≤ 1/2, and 'both of complementary events' ≤ 1/4.\n- **Convexity flips it:** 'all same' $p^k+(1-p)^k$ is convex → maximised at the endpoints p=0 or 1.\n- **Re-roll / optional stopping:** keep a value only if it beats the expected value of playing on (a die re-roll is worth 3.5).\n\nThe planted distractor is almost always **1/2** — the fair-coin reflex.",
+  "cards": [
+    {
+      "term": "An unfair coin lands heads with probability p (you may choose any p in [0, 1]). You toss it twice. Over all choices of p, what is the LARGEST possible probability of getting exactly one head and one tail (in either order)?",
+      "choices": [
+        "1/2",
+        "1/3",
+        "1",
+        "1/4",
+        "3/4"
+      ],
+      "answer": 0,
+      "type": "mcq",
+      "definition": "Correct: 1/2. P(exactly one head) = 2p(1−p). The product p(1−p) peaks at p=1/2 where it equals 1/4 (complete the square: p(1−p)=1/4−(p−1/2)²), so the max is 2×1/4 = 1/2 — the fair coin. It can never exceed one half, so 3/4 and 1 are impossible.",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "A biased coin shows tails with probability q in [0, 1]. A player tosses it twice and wins when the two results differ (one head and one tail). For how many values of q is the game strictly in the player's favour, meaning the win probability is greater than 1/2?",
+      "choices": [
+        "0 (no value of q)",
+        "Exactly 2 values",
+        "Infinitely many values",
+        "Exactly 1 value",
+        "Every q in [0, 1]"
+      ],
+      "answer": 0,
+      "type": "mcq",
+      "definition": "Correct: 0 (no value of q). 'Differ' (one head, one tail) has probability 2q(1−q) ≤ 1/2 for every q, reaching 1/2 only at the fair coin q=1/2 — and 1/2 is not strictly greater than 1/2. So the game is never strictly favourable; the 1/2 is the ceiling, not an edge.",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "You roll a fair six-sided die once. You may either keep the number shown, or re-roll exactly once and must then keep the second roll. To maximise your expected final number, you should choose to re-roll only when your first roll is at most what value?",
+      "choices": [
+        "5",
+        "3",
+        "2",
+        "1",
+        "4"
+      ],
+      "answer": 1,
+      "type": "mcq",
+      "definition": "Correct: 3. A re-roll is worth its expected value E=3.5, so keep the first roll only when it beats that: keep 4,5,6 and re-roll 1,2,3. Hence re-roll when the first roll is at most 3. (Rule: re-roll iff what you hold is below the expected future value.)",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "A weighted coin lands heads with probability p. You toss it until either heads or tails has come up twice in total, and you 'win' if heads reaches two occurrences first. For what value of p is your win probability exactly 1/2?",
+      "choices": [
+        "1/2",
+        "3/4",
+        "1/3",
+        "No such p exists",
+        "2/3"
+      ],
+      "answer": 0,
+      "type": "mcq",
+      "definition": "Correct: 1/2. Heads reaches two first via HH, HTH, THH: P = p²+2p²(1−p) = p²(3−2p). At p=1/2 this is (1/4)(2)=1/2. Since p²(3−2p) is strictly increasing on [0,1], p=1/2 is the unique fair value.",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "A number q is chosen in [0, 1]. Event A occurs with probability q and an independent event B occurs with probability 1 - q. Over all choices of q, what is the maximum possible probability that A and B BOTH occur?",
+      "choices": [
+        "1/3",
+        "1/4",
+        "1/2",
+        "2/9",
+        "1"
+      ],
+      "answer": 1,
+      "type": "mcq",
+      "definition": "Correct: 1/4. With A at probability q and independent B at 1−q, P(both) = q(1−q) ≤ 1/4 (max at q=1/2, by AM–GM / completing the square). The most you can force 'both' is one quarter.",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "A coin lands heads with probability p (you may choose p in [0, 1]). It is tossed three times and you win if all three tosses are identical (HHH or TTT). Which choice of p maximises your win probability?",
+      "choices": [
+        "p = 0 or p = 1",
+        "Every p gives the same probability",
+        "p = 3/4",
+        "p = 1/2",
+        "p = 1/3 or p = 2/3"
+      ],
+      "answer": 0,
+      "type": "mcq",
+      "definition": "Correct: p = 0 or p = 1. P(all three identical) = p³+(1−p)³ is convex with its MINIMUM (1/4) at p=1/2, so it is largest at the endpoints: a coin that always lands the same way wins with probability 1. Counter-intuitively the fair coin is the worst choice.",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "A biased coin lands tails with probability q in [0, 1]. A player tosses it twice and wins if the two results MATCH (HH or TT). For which values of q is the player's win probability at least 1/2?",
+      "choices": [
+        "Every q in [0, 1]",
+        "No value of q",
+        "Only q >= 1/2",
+        "Only q <= 1/2",
+        "Only q = 1/2"
+      ],
+      "answer": 0,
+      "type": "mcq",
+      "definition": "Correct: Every q in [0,1]. 'Match' (HH or TT) has probability q²+(1−q)² = 1−2q(1−q). Since 2q(1−q) ≤ 1/2 always, P(match) ≥ 1/2 for every q (equality only at the fair coin). Betting on a match never loses on average — the mirror of the 'differ' trap.",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "A coin lands heads with probability p (you may choose p in [0, 1]) and is tossed four times. Over all choices of p, what is the largest possible probability of getting exactly two heads and two tails?",
+      "choices": [
+        "1/8",
+        "3/16",
+        "3/8",
+        "1/2",
+        "1/4"
+      ],
+      "answer": 2,
+      "type": "mcq",
+      "definition": "Correct: 3/8. P(2 heads, 2 tails in 4 tosses) = C(4,2)p²(1−p)² = 6·(p(1−p))². With p(1−p) ≤ 1/4, the max is 6×(1/4)² = 6/16 = 3/8, at the fair coin.",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "A biased coin lands heads with probability p and is tossed repeatedly. A player wins only if the first two tosses are both heads. Given that the first toss has already come up heads, for what values of p is the player now more likely than not to win?",
+      "choices": [
+        "All p in [0, 1]",
+        "p < 1/2",
+        "p >= 1/2",
+        "Only p = 1/2",
+        "p > 1/2"
+      ],
+      "answer": 4,
+      "type": "mcq",
+      "definition": "Correct: p > 1/2. Given the first toss is heads, winning ('first two both heads') reduces to 'next toss is heads', probability p. 'More likely than not' means strictly > 1/2, so p > 1/2. (p=1/2 gives exactly 1/2, which doesn't count.)",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "A coin lands heads with probability p (you may choose any p in [0, 1]). You win only if the first three tosses give the exact sequence Heads, Heads, Tails (in that order). Which value of p maximises your probability of winning?",
+      "choices": [
+        "2/3",
+        "1/2",
+        "3/4",
+        "1",
+        "1/3"
+      ],
+      "answer": 0,
+      "type": "mcq",
+      "definition": "Correct: 2/3. P(HHT) = p²(1−p). A product p^a(1−p)^b is maximised at p = a/(a+b); with a=2 heads, b=1 tail, p = 2/3 (the maximum-likelihood estimate). The reflex 1/2 is wrong because the sequence wants more heads than tails.",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "A coin lands heads with probability p (you may choose any p in [0, 1]). You win only if the first five tosses give the exact sequence Heads, Heads, Heads, Tails, Tails. Which value of p maximises your win probability?",
+      "choices": [
+        "2/3",
+        "2/5",
+        "1",
+        "3/5",
+        "1/2"
+      ],
+      "answer": 3,
+      "type": "mcq",
+      "definition": "Correct: 3/5. P(HHHTT) = p³(1−p)², maximised at p = a/(a+b) with a=3, b=2 → p = 3/5. Same maximum-likelihood rule: the optimal bias equals the fraction of heads the target sequence asks for.",
+      "last_updated": "2026-06-29"
+    }
+  ]
+}

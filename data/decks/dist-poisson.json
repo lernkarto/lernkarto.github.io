@@ -1,0 +1,127 @@
+{
+  "id": "dist-poisson",
+  "name": "Poisson",
+  "color": "#f783ac",
+  "description": "Counting rare events in a fixed window: the single rate λ, equidispersion, the assumptions, links to the binomial and exponential, and where overdispersion breaks it.",
+  "source": "https://en.wikipedia.org/wiki/Poisson_distribution",
+  "license": "CC BY-SA 4.0",
+  "attribution": "Adapted from Wikipedia — 'Poisson distribution', 'Poisson limit theorem' and 'Exponential distribution' — licensed under CC BY-SA 4.0.",
+  "primerTitle": "Poisson — quick recap",
+  "primer": "## Definition\\n\\nThe **Poisson** distribution gives the probability of $k$ events in a fixed interval of time/space when events occur **independently** at a **constant average rate**. Its only parameter is $\\\\lambda$ = expected count.\\n\\n$$P(X=k)=\\\\dfrac{\\\\lambda^k e^{-\\\\lambda}}{k!}$$\\n\\n- **Support:** non-negative integers $\\\\{0,1,2,\\\\dots\\\\}$ — a count, never negative. Small $\\\\lambda$ just piles mass on 0 and 1.\\n- **Equidispersion:** $E[X]=\\\\mathrm{Var}(X)=\\\\lambda$, so $\\\\mathrm{SD}=\\\\sqrt{\\\\lambda}$. This is also the model's main testable assumption.\\n\\n## Process assumptions\\n\\nEvents are **independent**, arrive at a **constant rate**, are counted as **integers**, and are **orderly** (no two at the exact same instant). Clustering or a time-varying rate breaks the fit.\\n\\n## Links\\n\\n- **Binomial limit (law of rare events):** binomial$(n,p)\\\\to$ Poisson$(\\\\lambda=np)$ as $n\\\\to\\\\infty$, $p\\\\to0$ with $np$ fixed.\\n- **Exponential waiting times:** in a Poisson process the inter-arrival times are **exponential** with the same rate $\\\\lambda$ (memoryless), mean $1/\\\\lambda$. 'How many per interval' = Poisson; 'how long until next' = exponential.\\n\\n## Use & limits\\n\\n- **Risk/finance:** default counts, operational-loss event counts, claim arrivals, trade/order arrivals — the **frequency** half of a frequency × severity loss model.\\n- **Overdispersion:** if variance ≫ mean, Poisson's variance=mean is violated (unstable rate / clustering); switch to the **negative binomial**, which adds a dispersion parameter.\\n\\n*Derivations:* $P(0)=e^{-\\\\lambda}$ (set $k=0$). A value $x$ is $(x-\\\\lambda)/\\\\sqrt{\\\\lambda}$ standard deviations above the mean.",
+  "categories": {
+    "core": "Core",
+    "theorems": "Links",
+    "use": "Use & limits",
+    "exercise": "Exercises"
+  },
+  "cards": [
+    {
+      "category": "core",
+      "term": "What does the Poisson distribution model, and what is its single parameter?",
+      "summary": "The count of independent events in a fixed interval; parameter λ = expected count.",
+      "definition": "It gives the probability of observing $k$ events in a fixed interval of time or space when events occur independently at a constant average rate. Its only parameter is $\\lambda$, the expected number of events in that interval.",
+      "formula": "$P(X=k)=\\dfrac{\\lambda^k e^{-\\lambda}}{k!}$",
+      "note": "[1] Poisson distribution (Wikipedia) — https://en.wikipedia.org/wiki/Poisson_distribution",
+      "graph": {
+        "type": "poisson",
+        "params": {
+          "lambda": 3
+        },
+        "controls": [
+          "lambda"
+        ]
+      },
+      "last_updated": "2026-06-29"
+    },
+    {
+      "category": "core",
+      "term": "For a Poisson distribution the mean and the {{variance}} are both equal to λ (a property called equidispersion).",
+      "definition": "A defining feature: $E[X]=\\mathrm{Var}(X)=\\lambda$. This 'equidispersion' is also the model's main testable assumption — real count data whose variance exceeds the mean are overdispersed and need a different model.",
+      "type": "cloze",
+      "note": "[1] Poisson distribution (Wikipedia) — https://en.wikipedia.org/wiki/Poisson_distribution",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "category": "core",
+      "term": "[Poisson] Which assumptions underlie a Poisson process? Select all that apply.",
+      "type": "multi",
+      "choices": [
+        "Events occur independently",
+        "The average rate is constant over the interval",
+        "Two events can occur at exactly the same instant",
+        "Counts are non-negative integers"
+      ],
+      "answers": [
+        0,
+        1,
+        3
+      ],
+      "summary": "Independent events, constant rate, integer counts; simultaneous events are ruled out (orderliness).",
+      "definition": "A Poisson process assumes events are independent, arrive at a constant average rate, and are counted as non-negative integers. 'Orderliness' rules out two events at the exact same instant. Violations (clustering, time-varying rate) break the fit.",
+      "note": "[1] Poisson point process (Wikipedia) — https://en.wikipedia.org/wiki/Poisson_point_process",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "category": "use",
+      "term": "Give risk/finance use cases for the Poisson distribution.",
+      "summary": "Frequency of defaults, operational-loss events, claim arrivals, trade/order arrivals.",
+      "definition": "It models event frequency: number of credit defaults in a portfolio over a year, count of operational-loss events, insurance claim arrivals, and order/trade arrivals in market microstructure. In operational risk it is the classic 'frequency' half of a frequency × severity loss model.",
+      "note": "[1] Poisson distribution (Wikipedia) — https://en.wikipedia.org/wiki/Poisson_distribution",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "category": "use",
+      "term": "[Poisson] Your count data has variance much larger than its mean. What does this signal, and what is a common fix?",
+      "sub": "A) overdispersion — Poisson is too restrictive; use the negative binomial    B) the data are perfectly Poisson    C) the mean must be negative    D) you should switch to a normal distribution",
+      "definition": "Correct: A) overdispersion — Poisson is too restrictive; use the negative binomial. Because Poisson forces variance = mean, extra variability (often from an unstable rate or clustering) violates it. The negative binomial adds a dispersion parameter to absorb the excess.",
+      "note": "[1] Overdispersion (Wikipedia) — https://en.wikipedia.org/wiki/Overdispersion",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "category": "theorems",
+      "term": "[Poisson] How does the Poisson arise as a limit of the binomial?",
+      "sub": "A) binomial$(n,p)$ → Poisson$(\\lambda=np)$ as $n\\to\\infty$, $p\\to0$ with $np$ fixed    B) Poisson is the binomial with $p=0.5$    C) they are unrelated    D) binomial → Poisson as $p\\to1$",
+      "definition": "Correct: A) binomial$(n,p)$ → Poisson$(\\lambda=np)$ as $n\\to\\infty$, $p\\to0$ with $np$ fixed. The Poisson limit theorem ('law of rare events'): many trials, each with tiny success probability, give a Poisson count with $\\lambda = np$.",
+      "note": "[1] Poisson limit theorem (Wikipedia) — https://en.wikipedia.org/wiki/Poisson_limit_theorem",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "category": "theorems",
+      "term": "If event counts are Poisson, what distribution describes the waiting time between events?",
+      "summary": "The exponential distribution (with the same rate λ).",
+      "definition": "In a Poisson process the inter-arrival (waiting) times are exponentially distributed with rate $\\lambda$, and they are memoryless. So 'how many per interval' is Poisson while 'how long until the next' is exponential — two views of the same process.",
+      "note": "[1] Exponential distribution (Wikipedia) — https://en.wikipedia.org/wiki/Exponential_distribution",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "category": "use",
+      "term": "[Poisson] The Poisson distribution can take negative values when λ is small.",
+      "type": "truefalse",
+      "answer": false,
+      "summary": "False — it is supported on non-negative integers 0, 1, 2, …",
+      "definition": "False. A Poisson variable is a count, supported on $\\{0,1,2,\\dots\\}$; it can never be negative. A small $\\lambda$ just puts most of the mass on 0 and 1.",
+      "note": "[1] Poisson distribution (Wikipedia) — https://en.wikipedia.org/wiki/Poisson_distribution",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "category": "exercise",
+      "term": "[Exercise] A desk sees on average 3 limit breaches per month (Poisson). What is the probability of zero breaches in a given month?",
+      "summary": "$P(0)=e^{-3}\\approx 0.05$ (about 5%).",
+      "definition": "With $\\lambda=3$, $P(X=0)=\\dfrac{3^0 e^{-3}}{0!}=e^{-3}\\approx 0.0498$ — about a 5% chance of a clean month. (And the expected wait to the next breach is exponential with mean $1/\\lambda = 1/3$ month.)",
+      "note": "Uses the Poisson pmf and the exponential link above.",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "category": "exercise",
+      "term": "[Exercise] Same desk ($\\lambda=3$/month). Roughly how surprised should you be by a month with 9 breaches?",
+      "summary": "Very — 9 is 3 SD above the mean (SD $=\\sqrt{3}\\approx1.73$), tail prob ≈ 0.4%.",
+      "definition": "Mean $=\\lambda=3$, variance $=3$, so SD $=\\sqrt3\\approx1.73$. Nine breaches is $(9-3)/1.73\\approx 3.5$ SD above the mean; $P(X\\ge9)\\approx 0.004$. A genuine red flag — and a hint the constant-rate assumption may have broken (regime change / clustering).",
+      "note": "Combines equidispersion with the overdispersion caveat.",
+      "last_updated": "2026-06-29"
+    }
+  ],
+  "tags": [
+    "distributions",
+    "probability"
+  ]
+}

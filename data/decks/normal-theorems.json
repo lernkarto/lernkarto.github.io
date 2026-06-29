@@ -1,0 +1,153 @@
+{
+  "id": "normal-theorems",
+  "name": "Theorems",
+  "color": "#f783ac",
+  "description": "Why the normal is central: the Central Limit Theorem and its conditions, closure under addition and linear combinations, stability, the maximum-entropy characterisation, the MGF / characteristic function, and links to the lognormal, chi-squared, t and F distributions.",
+  "source": "https://en.wikipedia.org/wiki/Normal_distribution",
+  "license": "CC BY-SA 4.0",
+  "attribution": "Adapted from Wikipedia — 'Normal distribution' and 'Central limit theorem' — licensed under CC BY-SA 4.0.",
+  "primerTitle": "Normal — Theorems: quick recap",
+  "primer": "## Central Limit Theorem (Lindeberg–Lévy)\n- If $X_1,X_2,\\dots$ are **i.i.d. with finite mean $\\mu$ and finite variance $\\sigma^2$**, then $\\sqrt{n}(\\bar X_n-\\mu)\\xrightarrow{d}N(0,\\sigma^2)$ — the standardised sample mean tends to normal **whatever the underlying shape**.\n- **Conditions:** independent, identically distributed, finite mean and variance. The data need **not** be normal to begin with.\n- It describes the **sampling distribution of the mean** across repeated samples — **not** the population (which stays fixed) and **not** individual observations. There is **no '$n>30$' threshold**; convergence speed depends on the underlying shape.\n- This universality is **why the normal is 'central'**: sums/means of many independent finite-variance variables converge to it regardless of their own shape.\n\n## Closure & stability\n- **Sum of independent normals is normal:** $X\\sim N(\\mu_1,\\sigma_1^2)$, $Y\\sim N(\\mu_2,\\sigma_2^2)$ ⇒ $X+Y\\sim N(\\mu_1+\\mu_2,\\ \\sigma_1^2+\\sigma_2^2)$. **Means and variances add** (SDs do not — they'd add only under perfect correlation).\n- **Linear combination:** $aX+bY\\sim N(a\\mu_1+b\\mu_2,\\ a^2\\sigma_1^2+b^2\\sigma_2^2)$ — means scale linearly, variances pick up **squared** weights (no covariance cross-term for independent terms).\n- **Stable:** a linear combination of independent copies stays in the family up to location/scale. The normal is a stable, **infinitely divisible** law with a closed-form density.\n\n## Characterisations\n- **Maximum entropy:** among all distributions with a **given mean and variance**, the normal has the **largest differential entropy** $H=\\tfrac12\\log(2\\pi e\\,\\sigma^2)$ — the least-committal / most non-committal choice when only the first two moments are known.\n- **MGF:** $M(t)=e^{\\mu t+\\sigma^2 t^2/2}$ (generates moments at $t=0$).\n- **Characteristic function:** $\\phi(t)=e^{i\\mu t-\\sigma^2 t^2/2}$. Since the c.f. of a sum is the product of c.f.s, the standardised sum's c.f. $[\\phi(t/\\sqrt n)]^n\\to e^{-t^2/2}$ (the standard normal's) — the core of the **CLT** proof (via Lévy continuity).\n\n## Relationships\n- $Y=e^{X}$ with $X$ normal is **lognormal** (strictly positive, right-skewed — prices).\n- $Z\\sim N(0,1)$ ⇒ $Z^2\\sim\\chi^2_1$; a sum of $k$ squared standard normals is $\\chi^2_k$.\n- **Student's t:** $t=Z/\\sqrt{V/\\nu}$ with $Z\\sim N(0,1)$ independent of $V\\sim\\chi^2_\\nu$ (fatter tails; $\\to$ normal as $\\nu\\to\\infty$). Ratios of scaled chi-squares give the **F** distribution.",
+  "categories": {
+    "clt": "Central Limit Theorem",
+    "closure": "Closure & stability",
+    "characterise": "Characterisations",
+    "relations": "Relationships",
+    "exercise": "Exercises"
+  },
+  "cards": [
+    {
+      "category": "clt",
+      "term": "State the classical (Lindeberg–Lévy) Central Limit Theorem.",
+      "summary": "For i.i.d. variables with finite mean and variance, the standardised sample mean tends to normal.",
+      "definition": "If $X_1,X_2,\\dots$ are independent and identically distributed with mean $\\mu$ and finite variance $\\sigma^2$, then $\\sqrt{n}(\\bar X_n-\\mu)\\xrightarrow{d}N(0,\\sigma^2)$ as $n\\to\\infty$. The standardised mean converges in distribution to a normal whatever the underlying shape.",
+      "formula": "$\\sqrt{n}\\,(\\bar X_n-\\mu)\\ \\xrightarrow{d}\\ N(0,\\sigma^2)$",
+      "note": "[1] Central limit theorem (Wikipedia) — https://en.wikipedia.org/wiki/Central_limit_theorem",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "category": "clt",
+      "term": "[CLT] Which set of conditions does the classical CLT require of the $X_i$?",
+      "sub": "A) independent, identically distributed, with finite mean and finite variance    B) normally distributed to begin with    C) bounded between 0 and 1    D) positively correlated with a common mean",
+      "definition": "Correct: A) independent, identically distributed, with finite mean and finite variance. Crucially the underlying distribution need NOT be normal — only finite variance is needed for the standardised mean to converge to a normal.",
+      "note": "[1] Central limit theorem (Wikipedia) — https://en.wikipedia.org/wiki/Central_limit_theorem",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "category": "clt",
+      "term": "[CLT] The Central Limit Theorem says the population distribution itself becomes normal as the sample grows.",
+      "type": "truefalse",
+      "answer": false,
+      "summary": "False — it is the sampling distribution of the mean that becomes normal, not the population.",
+      "definition": "False. The CLT concerns the sampling distribution of the sample mean across repeated samples; the population is fixed and individual observations keep their original distribution. Likewise there is no magic '$n>30$' threshold — convergence speed depends on the underlying shape.",
+      "note": "[1] Central limit theorem (Wikipedia) — https://en.wikipedia.org/wiki/Central_limit_theorem",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "category": "clt",
+      "term": "[CLT] Why is the normal distribution described as 'central' in probability and statistics?",
+      "sub": "A) sums/means of many independent finite-variance variables converge to it regardless of their own shape    B) it is the only distribution with a mean    C) all real data are exactly normal    D) it is the simplest discrete distribution",
+      "definition": "Correct: A) sums/means of many independent finite-variance variables converge to it regardless of their own shape. This universality (the CLT) is why normal-based inference applies so broadly across domains.",
+      "note": "[1] Central limit theorem (Wikipedia) — https://en.wikipedia.org/wiki/Central_limit_theorem",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "category": "closure",
+      "term": "[Normal] The sum of two independent normal random variables is itself normal.",
+      "type": "truefalse",
+      "answer": true,
+      "summary": "True — normals are closed under addition; means and variances add.",
+      "definition": "True. If $X\\sim N(\\mu_1,\\sigma_1^2)$ and $Y\\sim N(\\mu_2,\\sigma_2^2)$ independently, then $X+Y\\sim N(\\mu_1+\\mu_2,\\ \\sigma_1^2+\\sigma_2^2)$. This closure under addition underlies portfolio aggregation of normal P&L.",
+      "note": "[1] Sum of normally distributed random variables (Wikipedia) — https://en.wikipedia.org/wiki/Sum_of_normally_distributed_random_variables",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "category": "closure",
+      "term": "[Normal] For independent $X\\sim N(\\mu_1,\\sigma_1^2)$ and $Y\\sim N(\\mu_2,\\sigma_2^2)$, the distribution of $aX+bY$ is:",
+      "sub": "A) $N(a\\mu_1+b\\mu_2,\\ a^2\\sigma_1^2+b^2\\sigma_2^2)$    B) $N(a\\mu_1+b\\mu_2,\\ a\\sigma_1^2+b\\sigma_2^2)$    C) $N(\\mu_1+\\mu_2,\\ \\sigma_1^2+\\sigma_2^2)$    D) not normal in general",
+      "definition": "Correct: A) $N(a\\mu_1+b\\mu_2,\\ a^2\\sigma_1^2+b^2\\sigma_2^2)$. Means combine linearly with the weights, but variances pick up the squared weights (and for independent terms there is no covariance cross-term).",
+      "note": "[1] Sum of normally distributed random variables (Wikipedia) — https://en.wikipedia.org/wiki/Sum_of_normally_distributed_random_variables",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "category": "closure",
+      "term": "Why is the normal called a 'stable' distribution?",
+      "summary": "Linear combinations of independent normals stay in the normal family (same shape, new parameters).",
+      "definition": "A distribution is stable if a linear combination of independent copies has the same distribution up to location and scale. Normals satisfy this — sums and scalings stay normal — and the normal is one of the few stable laws with a closed-form density. It is also infinitely divisible.",
+      "note": "[1] Normal distribution (Wikipedia) — https://en.wikipedia.org/wiki/Normal_distribution",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "category": "characterise",
+      "term": "What is the maximum-entropy characterisation of the normal distribution?",
+      "summary": "Among all distributions with a given mean and variance, the normal has the largest differential entropy.",
+      "definition": "For a fixed mean and variance, the normal maximises differential entropy $H=\\tfrac12\\log(2\\pi e\\,\\sigma^2)$. So it is the 'least informative' / most spread-out choice consistent with those two moments — a principled default when only the first two moments are known.",
+      "note": "[1] Normal distribution (Wikipedia) — https://en.wikipedia.org/wiki/Normal_distribution",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "category": "characterise",
+      "term": "[Normal] What is the moment generating function of $N(\\mu,\\sigma^2)$?",
+      "sub": "A) $M(t)=e^{\\mu t+\\sigma^2 t^2/2}$    B) $M(t)=e^{i\\mu t-\\sigma^2 t^2/2}$    C) $M(t)=e^{-\\mu t-\\sigma^2 t^2}$    D) $M(t)=(1-\\sigma^2 t)^{-\\mu}$",
+      "definition": "Correct: A) $M(t)=e^{\\mu t+\\sigma^2 t^2/2}$. Differentiating it at $t=0$ generates the moments. The closely related characteristic function is $\\phi(t)=e^{i\\mu t-\\sigma^2 t^2/2}$ (option B is that, not the MGF).",
+      "note": "[1] Normal distribution (Wikipedia) — https://en.wikipedia.org/wiki/Normal_distribution",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "category": "characterise",
+      "term": "The characteristic function of $N(\\mu,\\sigma^2)$ is $\\phi(t)=e^{i\\mu t-\\sigma^2 t^2/2}$; that its product form $[\\phi(t/\\sqrt{n})]^n$ tends to $e^{-t^2/2}$ is the core of the {{CLT}} proof.",
+      "definition": "Because the characteristic function of a sum is the product of the individual ones, the standardised sum has characteristic function $[\\phi(t/\\sqrt n)]^n\\to e^{-t^2/2}$, the standard normal's. Lévy's continuity theorem then gives convergence in distribution — the standard proof of the Central Limit Theorem.",
+      "type": "cloze",
+      "note": "[1] Central limit theorem (Wikipedia) — https://en.wikipedia.org/wiki/Central_limit_theorem",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "category": "relations",
+      "term": "[Normal] If $X\\sim N(\\mu,\\sigma^2)$, what is the distribution of $Y=e^{X}$?",
+      "sub": "A) lognormal    B) chi-squared    C) Student's t    D) another normal",
+      "definition": "Correct: A) lognormal. A variable is lognormal exactly when its logarithm is normal, so exponentiating a normal gives a strictly-positive, right-skewed lognormal — used for prices and other multiplicatively-driven quantities.",
+      "note": "[1] Log-normal distribution (Wikipedia) — https://en.wikipedia.org/wiki/Log-normal_distribution",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "category": "relations",
+      "term": "[Normal] If $Z\\sim N(0,1)$, then $Z^2$ follows a chi-squared distribution with one degree of freedom.",
+      "type": "truefalse",
+      "answer": true,
+      "summary": "True — $Z^2\\sim\\chi^2_1$, and a sum of $k$ squared standard normals is $\\chi^2_k$.",
+      "definition": "True. Squaring a standard normal gives $\\chi^2_1$; summing $k$ independent squared standard normals gives $\\chi^2_k$. This is the bridge from the normal to chi-squared, and onward to the t and F distributions.",
+      "note": "[1] Chi-squared distribution (Wikipedia) — https://en.wikipedia.org/wiki/Chi-squared_distribution",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "category": "relations",
+      "term": "[Normal] How is Student's t-distribution built from a normal and a chi-squared variable?",
+      "sub": "A) $t=Z/\\sqrt{V/\\nu}$ with $Z\\sim N(0,1)$ independent of $V\\sim\\chi^2_\\nu$    B) $t=Z\\cdot V$    C) $t=Z+V$    D) $t=Z^2/\\nu$",
+      "definition": "Correct: A) $t=Z/\\sqrt{V/\\nu}$ with $Z\\sim N(0,1)$ independent of $V\\sim\\chi^2_\\nu$. Dividing the standard normal by an independent (scaled, square-rooted) chi-squared is what fattens the tails; as $\\nu\\to\\infty$ the t collapses back to the normal. Ratios of scaled chi-squares instead give the F distribution.",
+      "note": "[1] Student's t-distribution (Wikipedia) — https://en.wikipedia.org/wiki/Student%27s_t-distribution",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "category": "exercise",
+      "term": "[Exercise] Two independent daily P&Ls are $X\\sim N(0,\\ 3^2)$ and $Y\\sim N(0,\\ 4^2)$ (in \\$M). What is the distribution of the combined P&L $X+Y$?",
+      "summary": "$N(0,\\ 25)$ — i.e. mean 0, $\\sigma=\\$5$M.",
+      "definition": "By closure under addition, means and variances add: mean $0+0=0$, variance $3^2+4^2=9+16=25$, so $X+Y\\sim N(0,25)$ with $\\sigma=\\sqrt{25}=\\$5$M. Note the SDs do NOT add (it would be \\$7M only if perfectly correlated, not independent).",
+      "note": "Direct use of the closure rule: variances add for independent normals.",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "category": "exercise",
+      "term": "[Exercise] You only know a quantity's mean and variance and want the most non-committal distribution consistent with them. Which distribution does the maximum-entropy principle select, and why?",
+      "summary": "The normal — it maximises entropy for a given mean and variance.",
+      "definition": "The normal. Among all distributions with the specified mean and variance, it has the greatest differential entropy, so it adds the fewest extra assumptions beyond those two moments. That is the formal justification for reaching for the normal as a default when only the first two moments are pinned down.",
+      "note": "Applies the maximum-entropy characterisation from the primer.",
+      "last_updated": "2026-06-29"
+    }
+  ],
+  "tags": [
+    "distributions",
+    "normal",
+    "probability",
+    "clt"
+  ]
+}

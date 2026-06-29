@@ -1,0 +1,197 @@
+{
+  "id": "foundations",
+  "name": "Foundations & governance",
+  "color": "#00ff88",
+  "description": "The vocabulary and scaffolding every risk function shares.",
+  "primerTitle": "Risk vocabulary & governance",
+  "primer": "**Risk** is the potential for financial loss from an adverse event — quantifiable (known probabilities), unlike Knightian *uncertainty*. A firm earns its return by *holding* risks it can manage, not eliminating them.\n\n**Appetite vs capacity.** *Capacity* is the maximum risk the balance sheet can absorb before threatening solvency. **Risk appetite** — the risk a firm chooses to take, set by the **board** in a Risk Appetite Statement — is always strictly *inside* capacity. **Risk tolerance** is the acceptable band around a specific limit. **Inherent risk** is exposure before controls; **residual risk** is what remains after hedging, collateral, insurance and controls — and *capital is held against residual, not inherent, risk*.\n\n**Risk–return:** higher expected return demands higher risk; investors require a *risk premium* for undiversifiable risk, so $\\\\text{required return}=r_f+\\\\text{premium}$.\n\n**Loss split.** *Expected loss* $\\\\mathrm{EL}=\\\\mathrm{PD}\\\\times\\\\mathrm{LGD}\\\\times\\\\mathrm{EAD}$ is covered by **provisions/pricing** (a cost of doing business). *Unexpected loss* — volatility of loss around the mean, $\\\\mathrm{UL}\\\\approx\\\\mathrm{VaR}_\\\\alpha(L)-\\\\mathrm{EL}$ — is absorbed by **capital**.\n\n**Mitigants.** *Hedging* takes an offsetting position (basis risk remains). *Netting* offsets mutual obligations to a single net figure (close-out netting is the bedrock of counterparty risk). *Collateral/margin*: initial margin covers potential future exposure, variation margin settles daily MtM. *Notional* is the reference amount, **not** the amount at risk. *Mark-to-market* values at current price (mark-to-model adds model risk).\n\n**Diversification** lowers *unexpected* loss (volatility) by combining exposures with $\\\\rho_{ij}<1$ — $\\\\sigma_p^2=\\\\sum_i w_i^2\\\\sigma_i^2+\\\\sum_{i\\\\ne j}w_iw_j\\\\rho_{ij}\\\\sigma_i\\\\sigma_j$ — but **never reduces expected loss**; it fails when correlations rise toward 1 in a crisis. **Concentration** is the opposite failure: the **Herfindahl** index $\\\\mathrm{HHI}=\\\\sum_i w_i^2$ rises toward 1 as a portfolio concentrates.\n\n**Governance.** *Three lines of defence*: (1) the business owns its risks; (2) independent risk & compliance challenge; (3) **internal audit** assures the whole framework. Tools: a *risk register* (inventory of risks), *key risk indicators* (KRIs, early-warning metrics), *P&L attribution* (decompose P&L into factors; large residuals flag a missing factor). *RAROC* $=\\\\dfrac{\\\\text{return}-\\\\mathrm{EL}}{\\\\text{economic capital}}$ charges each activity for the capital its risk consumes; it creates value when above the cost of capital. *Economic capital* is the firm's own estimate (typically the **99.9%** loss quantile, matching a target rating); *regulatory capital* is the external minimum.\n\n**Systemic notions.** *Tail risk*: rare, severe outcomes; fat tails make them likelier than a normal model implies. The *black swan* (popularised by **Taleb**) is a high-impact event rationalised only after the fact. *Procyclicality*: risk measures amplify the cycle (low vol begets leverage); countercyclical buffers dampen it. *Moral hazard*: a party insulated from a risk takes on more of it (e.g. bailout expectations).",
+  "cards": [
+    {
+      "term": "Risk",
+      "definition": "The uncertainty of future outcomes — concretely, the potential for financial loss arising from an adverse event. Risk is measured, priced and capitalised rather than simply eliminated; a firm earns its return precisely by holding risks it can manage.",
+      "note": "Distinguish risk (quantifiable probabilities) from Knightian uncertainty (probabilities unknown).",
+      "last_updated": "2026-06-29",
+      "stale": true
+    },
+    {
+      "term": "Risk appetite — the aggregate amount and type of risk a firm is willing to take — is ultimately set by the {{board}}.",
+      "definition": "It is expressed in a Risk Appetite Statement and cascaded into concrete limits per desk, portfolio and risk type.",
+      "note": "Appetite is a choice; capacity is the ceiling the balance sheet can bear.",
+      "type": "cloze",
+      "last_updated": "2026-06-29",
+      "stale": true
+    },
+    {
+      "term": "Risk tolerance",
+      "definition": "The acceptable variation around a specific target or limit — the band within which a metric may move before action is required. Tolerances operationalise the broader appetite at the level of individual exposures.",
+      "last_updated": "2026-06-29",
+      "stale": true
+    },
+    {
+      "term": "Risk appetite is always set strictly inside risk capacity.",
+      "definition": "True. Capacity is the maximum risk a firm can absorb given its capital, liquidity and regulatory constraints before threatening solvency; appetite, the risk the firm chooses to take, is always set strictly inside that ceiling.",
+      "type": "truefalse",
+      "answer": true,
+      "summary": "True — appetite is a chosen amount of risk set strictly below capacity, the maximum the firm can absorb.",
+      "last_updated": "2026-06-29",
+      "stale": true
+    },
+    {
+      "term": "Capital is held against inherent risk, the exposure before any controls are applied.",
+      "definition": "False. Inherent risk is the exposure before controls; residual risk is what remains after hedging, collateral, insurance and controls. Capital is held against residual, not inherent, risk.",
+      "type": "truefalse",
+      "answer": false,
+      "summary": "False — capital is held against residual risk, after controls and mitigants, not inherent risk.",
+      "last_updated": "2026-06-29",
+      "stale": true
+    },
+    {
+      "term": "Risk–return trade-off",
+      "definition": "The principle that higher expected return can only be obtained by accepting higher risk; rational investors demand compensation (a risk premium) for bearing undiversifiable risk.",
+      "formula": "$\\text{required return} = r_f + \\text{risk premium}$",
+      "last_updated": "2026-06-29",
+      "stale": true
+    },
+    {
+      "term": "Expected loss",
+      "sub": "EL",
+      "definition": "The average loss anticipated on an exposure over a horizon — the amount a prudent firm provisions for in advance. In credit it factors into default probability, severity and exposure.",
+      "formula": "$\\mathrm{EL} = \\mathrm{PD}\\times\\mathrm{LGD}\\times\\mathrm{EAD}$",
+      "note": "Covered by provisions/pricing; it is a cost of doing business, not a surprise.",
+      "last_updated": "2026-06-29",
+      "stale": true
+    },
+    {
+      "term": "Unexpected loss",
+      "sub": "UL",
+      "definition": "The volatility of loss around its expected value — the deviation that capital, not provisions, must absorb. It is typically measured as a high quantile of the loss distribution minus the mean.",
+      "formula": "$\\mathrm{UL} \\approx \\mathrm{VaR}_\\alpha(L) - \\mathrm{EL}$",
+      "last_updated": "2026-06-29",
+      "stale": true
+    },
+    {
+      "term": "Hedging",
+      "definition": "Taking an offsetting position whose value moves opposite to an existing exposure, reducing net sensitivity to a chosen risk factor. A perfect hedge removes the risk entirely; in practice basis risk remains.",
+      "formula": "$\\text{hedged P\\&L} = \\Delta V_{\\text{asset}} + h\\,\\Delta V_{\\text{hedge}}$",
+      "last_updated": "2026-06-29",
+      "stale": true
+    },
+    {
+      "term": "Diversification reduces a portfolio's expected loss.",
+      "definition": "False. Combining less-than-perfectly-correlated exposures lets independent losses partly cancel, lowering portfolio volatility (unexpected loss) for a given expected return — it never reduces expected loss itself.",
+      "formula": "$\\sigma_p^2 = \\sum_i w_i^2\\sigma_i^2 + \\sum_{i\\ne j} w_i w_j \\rho_{ij}\\sigma_i\\sigma_j$",
+      "note": "Works only because $\\rho_{ij}<1$; correlations rising toward 1 in a crisis is why diversification fails when most needed.",
+      "type": "truefalse",
+      "answer": false,
+      "summary": "False — diversification lowers unexpected loss (volatility), but never reduces expected loss.",
+      "last_updated": "2026-06-29",
+      "stale": true
+    },
+    {
+      "term": "Netting",
+      "definition": "Offsetting mutual obligations between two parties so only the net amount is owed, shrinking gross exposure to a single figure. Close-out netting on default is the legal bedrock of derivative counterparty risk management.",
+      "note": "Enforceable netting can cut counterparty exposure by an order of magnitude.",
+      "last_updated": "2026-06-29",
+      "stale": true
+    },
+    {
+      "term": "Collateral / margin",
+      "definition": "Assets pledged to secure an exposure, seized if the counterparty defaults. Initial margin covers potential future exposure; variation margin settles daily mark-to-market moves so exposure is reset toward zero.",
+      "last_updated": "2026-06-29",
+      "stale": true
+    },
+    {
+      "term": "Notional",
+      "definition": "The reference amount on which a contract's payments are computed — not the amount at risk. A large notional can carry small market risk; exposure depends on sensitivities, not face value.",
+      "formula": "a €10M interest-rate swap exchanges payments on 10M; its risk is a few thousand €/bp",
+      "last_updated": "2026-06-29",
+      "stale": true
+    },
+    {
+      "term": "Mark-to-market",
+      "sub": "MtM",
+      "definition": "Valuing a position at its current market price rather than book or historical cost. MtM drives daily P&L, collateral calls and risk metrics; for illiquid positions it shades into mark-to-model.",
+      "note": "Mark-to-model introduces model risk where observable prices are absent.",
+      "last_updated": "2026-06-29",
+      "stale": true
+    },
+    {
+      "term": "P&L attribution",
+      "definition": "Decomposing realised profit and loss into the risk factors that produced it (rates, spreads, FX, vol, carry, residual). Large unexplained residuals are a red flag that the risk model is missing a factor.",
+      "note": "A core control linking the front-office model to actual outcomes.",
+      "last_updated": "2026-06-29",
+      "stale": true
+    },
+    {
+      "term": "In the three-lines-of-defence model, the third line that objectively assures the whole framework is {{internal audit}}.",
+      "definition": "The standard risk-governance model: (1) the business owns and manages its risks day-to-day; (2) independent risk management and compliance set policy and challenge; (3) the third line assures the whole framework objectively.",
+      "note": "Independence of the second and third lines from revenue is the point.",
+      "type": "cloze",
+      "last_updated": "2026-06-29",
+      "stale": true
+    },
+    {
+      "term": "Risk register",
+      "definition": "A maintained inventory of identified risks with their assessed likelihood, impact, owner, controls and mitigation status. It is the operational backbone of enterprise risk management.",
+      "last_updated": "2026-06-29",
+      "stale": true
+    },
+    {
+      "term": "Key risk indicator",
+      "sub": "KRI",
+      "definition": "A measurable metric that signals changing risk levels and serves as an early warning ahead of losses — e.g. limit-breach frequency, trade-error rate, system downtime, or staff turnover on a critical desk.",
+      "last_updated": "2026-06-29",
+      "stale": true
+    },
+    {
+      "term": "RAROC",
+      "sub": "risk-adjusted return on capital",
+      "definition": "A profitability measure that charges each activity for the economic capital its risk consumes, enabling comparison across businesses with different risk profiles. Activities are value-creating when RAROC exceeds the cost of capital.",
+      "formula": "$\\mathrm{RAROC} = \\dfrac{\\text{expected return} - \\mathrm{EL}}{\\text{economic capital}}$",
+      "last_updated": "2026-06-29",
+      "stale": true
+    },
+    {
+      "term": "Economic capital is typically calibrated to a high loss quantile of {{99.9%}}, matching a target credit rating.",
+      "definition": "A firm's own estimate of the capital needed to remain solvent over a horizon at a chosen confidence level, given its actual risk profile.",
+      "note": "Contrast with regulatory capital, the externally imposed minimum.",
+      "type": "cloze",
+      "last_updated": "2026-06-29",
+      "stale": true
+    },
+    {
+      "term": "Tail risk",
+      "definition": "The risk of rare, severe outcomes in the extreme tail of the loss distribution — events far from the mean that dominate solvency concerns. Fat-tailed distributions make these far likelier than a normal model implies.",
+      "last_updated": "2026-06-29",
+      "stale": true
+    },
+    {
+      "term": "The concept of a high-impact, unforeseen event rationalised only after the fact was popularised by {{Taleb}}.",
+      "definition": "A high-impact event that lies outside ordinary expectations and is rationalised only after the fact. The risk lesson is humility: models calibrated on benign history systematically understate the unprecedented.",
+      "type": "cloze",
+      "last_updated": "2026-06-29",
+      "stale": true
+    },
+    {
+      "term": "Procyclicality",
+      "definition": "The tendency of risk measures and rules to amplify the cycle — risk looks low and leverage builds in booms, then measures spike and force deleveraging in busts. Countercyclical buffers exist to dampen this feedback.",
+      "note": "VaR and margin models are inherently procyclical: low vol begets high leverage.",
+      "last_updated": "2026-06-29",
+      "stale": true
+    },
+    {
+      "term": "Moral hazard",
+      "definition": "The distortion in which a party insulated from a risk's consequences takes on more of it — e.g. a bank expecting a bailout. Much prudential regulation exists to counter the moral hazard of implicit guarantees.",
+      "last_updated": "2026-06-29",
+      "stale": true
+    },
+    {
+      "term": "A common measure of portfolio concentration that rises toward 1 as exposure concentrates is the {{Herfindahl}} index.",
+      "definition": "Loss potential from outsized exposure to a single name, sector, region or risk factor, so that one event causes disproportionate damage. It is the failure mode diversification is meant to prevent and is penalised in large-exposure rules.",
+      "formula": "a Herfindahl index $\\mathrm{HHI}=\\sum_i w_i^2$ rises toward 1 as a portfolio concentrates",
+      "type": "cloze",
+      "last_updated": "2026-06-29",
+      "stale": true
+    }
+  ]
+}

@@ -1,0 +1,159 @@
+{
+  "id": "time-series-decomposition",
+  "name": "Decomposition",
+  "color": "#8888ff",
+  "description": "Splitting a series into trend, seasonal, cyclic and irregular parts: additive vs multiplicative models, classical decomposition, STL, detrending and seasonal adjustment. Distilled from Wikipedia.",
+  "source": "https://en.wikipedia.org/wiki/Time_series",
+  "license": "CC BY-SA 4.0",
+  "attribution": "Adapted from Wikipedia — 'Time series', 'Decomposition of time series', 'Seasonal adjustment' and 'Seasonal and Trend decomposition using Loess (STL)' — licensed under CC BY-SA 4.0.",
+  "primerTitle": "Decomposition — quick recap",
+  "primer": "## The idea\\n\\n**Decomposition** splits an observed series into unobserved **components** so each can be studied or removed separately. The classical set is **trend-cycle** $T_t$, **seasonal** $S_t$, and **irregular/remainder** $R_t$ (some texts keep trend $T_t$ and cycle $C_t$ apart). The point is *separation*: extract the part you care about (e.g. the underlying trend) and strip the parts you don't (e.g. seasonality).\\n\\n## Two combination rules\\n\\n- **Additive:** $Y_t = T_t + S_t + R_t$ — use when the seasonal swing is roughly **constant** in absolute size regardless of the level.\\n- **Multiplicative:** $Y_t = T_t \\\\times S_t \\\\times R_t$ — use when the seasonal swing **grows with the level** of the series.\\n- **Logs link them:** $\\\\log(T_t S_t R_t)=\\\\log T_t+\\\\log S_t+\\\\log R_t$, so taking logs turns a multiplicative model into an additive one.\\n\\n## What each component is\\n\\n- **Trend** $T_t$: the long-run direction (up/down/flat).\\n- **Seasonal** $S_t$: a pattern of **fixed, known period** (12 for monthly-with-yearly-season, 7 for daily-with-weekly).\\n- **Cyclic** $C_t$: rises and falls of **no fixed period** (e.g. business cycles); distinct from seasonal precisely because the period varies.\\n- **Irregular / remainder** $R_t$: the leftover after trend and season are removed — ideally noise.\\n\\n## How it's done\\n\\n- **Classical decomposition:** estimate $T_t$ with a **moving average** (window = the seasonal period, which averages each full season away); remove it; average the de-trended values by season position to get $S_t$; the rest is $R_t$. Limitations: the moving average **loses observations at both ends**, the seasonal figure is assumed **constant over time**, and it is sensitive to outliers.\\n- **STL** (Seasonal-Trend decomposition using **Loess**): an iterative method using **loess** smoothers. Advantages over classical: it handles **any** seasonal period, lets the seasonal component **change over time** (controllable smoothness), and is **robust to outliers**. STL is additive (apply to logs for multiplicative effects).\\n- **Detrending:** removing $T_t$ — by differencing, by subtracting a fitted trend (regression), or by a moving average. Reveals the variation around the trend.\\n- **Seasonal adjustment:** removing $S_t$ to produce a 'seasonally adjusted' series — additive $Y_t-S_t$, multiplicative $Y_t/S_t$ — so the trend and turning points are not masked by the calendar (e.g. seasonally adjusted unemployment). X-11/X-13ARIMA-SEATS are standard official-statistics procedures.\\n\\n## Why bother\\n\\nDecomposition aids **understanding** (see the trend clearly), **seasonal adjustment** (compare months fairly), and **forecasting** (forecast each component, then recombine).",
+  "categories": {
+    "core": "Core",
+    "methods": "Methods",
+    "use": "Use & limits",
+    "exercise": "Exercises"
+  },
+  "cards": [
+    {
+      "category": "core",
+      "term": "What does it mean to decompose a time series?",
+      "summary": "Split it into unobserved trend, seasonal, cyclic and irregular components.",
+      "definition": "Decomposition separates an observed series into component parts — typically a trend-cycle, a seasonal component and an irregular remainder — so each can be examined or removed on its own (e.g. extract the trend, strip the seasonality).",
+      "note": "[1] Decomposition of time series (Wikipedia) — https://en.wikipedia.org/wiki/Decomposition_of_time_series",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "category": "core",
+      "term": "The additive decomposition model is written $Y_t = T_t + S_t + R_t$, while the multiplicative model is written $Y_t = T_t \\times S_t \\times {{R_t}}$.",
+      "definition": "Additive: $Y_t = T_t + S_t + R_t$ (trend + seasonal + remainder). Multiplicative: $Y_t = T_t \\times S_t \\times R_t$. Taking logs of the multiplicative form gives $\\log T_t + \\log S_t + \\log R_t$ — an additive model again.",
+      "type": "cloze",
+      "note": "[1] Decomposition of time series (Wikipedia) — https://en.wikipedia.org/wiki/Decomposition_of_time_series",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "category": "core",
+      "term": "[Time series] When should you choose a multiplicative decomposition rather than an additive one?",
+      "sub": "A) when the size of the seasonal swing grows with the level of the series    B) when the series has no trend at all    C) when the data are recorded daily rather than monthly    D) when there are missing values",
+      "definition": "Correct: A) when the size of the seasonal swing grows with the level of the series. Constant-amplitude seasonality suits an additive model; seasonality whose amplitude scales with the level suits a multiplicative model (often handled by taking logs to make it additive).",
+      "note": "[1] Decomposition of time series (Wikipedia) — https://en.wikipedia.org/wiki/Decomposition_of_time_series",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "category": "core",
+      "term": "[Time series] Which statement correctly distinguishes the seasonal component from the cyclic component?",
+      "sub": "A) the seasonal component has a fixed, known period; the cyclic component rises and falls with no fixed period    B) the seasonal component has no fixed period; the cyclic one repeats every 12 months    C) they are identical, just named differently    D) the cyclic component is always shorter than the seasonal one",
+      "definition": "Correct: A) the seasonal component has a fixed, known period; the cyclic component rises and falls with no fixed period. Seasonality is calendar-driven (e.g. period 12 for monthly data); a cycle (e.g. a business cycle) varies in length and amplitude, which is exactly why it is treated separately.",
+      "note": "[1] Decomposition of time series (Wikipedia) — https://en.wikipedia.org/wiki/Decomposition_of_time_series",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "category": "core",
+      "term": "What is the irregular (remainder) component?",
+      "summary": "Whatever is left after trend and seasonality are removed — ideally noise.",
+      "definition": "The irregular or remainder component $R_t$ is the residual variation that remains once the trend-cycle and seasonal components have been extracted. In a good decomposition it should look like noise, with no leftover structure.",
+      "note": "[1] Decomposition of time series (Wikipedia) — https://en.wikipedia.org/wiki/Decomposition_of_time_series",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "category": "methods",
+      "term": "How does classical decomposition estimate the trend, and then the seasonal component?",
+      "summary": "Moving average for the trend; average the de-trended values by season position for the seasonal.",
+      "definition": "Classical decomposition first estimates the trend-cycle with a moving average whose window equals the seasonal period (so a full season averages out). It subtracts (or divides) that trend off, then averages the de-trended values at each position within the season to get the seasonal figure; the rest is the remainder.",
+      "note": "[1] Decomposition of time series (Wikipedia) — https://en.wikipedia.org/wiki/Decomposition_of_time_series",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "category": "methods",
+      "term": "[Time series] In classical decomposition, why is the trend estimated with a moving average whose window equals the seasonal period?",
+      "sub": "A) averaging over one full season cancels the seasonal pattern, leaving the trend-cycle    B) it minimises the number of observations lost    C) it converts the series to the frequency domain    D) it guarantees the remainder is exactly zero",
+      "definition": "Correct: A) averaging over one full season cancels the seasonal pattern, leaving the trend-cycle. A window of exactly one period contains each season position once, so the seasonal ups and downs average out and what remains is the smooth trend-cycle.",
+      "note": "[1] Decomposition of time series (Wikipedia) — https://en.wikipedia.org/wiki/Decomposition_of_time_series",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "category": "methods",
+      "term": "What is STL decomposition?",
+      "summary": "Seasonal-Trend decomposition using Loess — an iterative, robust additive method.",
+      "definition": "STL ('Seasonal and Trend decomposition using Loess') is an iterative procedure that uses loess smoothers to extract a trend and seasonal component. It is additive, handles any seasonal period, lets the seasonal component change over time, and is robust to outliers.",
+      "note": "[1] STL — Seasonal and Trend decomposition using Loess (Wikipedia) — https://en.wikipedia.org/wiki/Decomposition_of_time_series",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "category": "use",
+      "term": "[Time series] Which is an advantage of STL over classical decomposition?",
+      "sub": "A) it allows the seasonal component to change over time and is robust to outliers    B) it never loses any observations under any method    C) it requires no choice of seasonal period    D) it works only on strictly stationary series",
+      "definition": "Correct: A) it allows the seasonal component to change over time and is robust to outliers. Classical decomposition assumes a constant seasonal figure and is sensitive to outliers; STL relaxes both, and also handles any seasonal period.",
+      "note": "[1] STL — Seasonal and Trend decomposition using Loess (Wikipedia) — https://en.wikipedia.org/wiki/Decomposition_of_time_series",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "category": "use",
+      "term": "[Time series] A drawback of classical (moving-average) decomposition is that it loses observations at both ends of the series.",
+      "type": "truefalse",
+      "answer": true,
+      "summary": "True — a centred moving average has no estimate for the first and last few points.",
+      "definition": "True. A moving average needs a full window around each point, so the trend-cycle (and hence the decomposition) cannot be computed for the first and last few observations. Classical decomposition also assumes the seasonal pattern is constant over time.",
+      "note": "[1] Decomposition of time series (Wikipedia) — https://en.wikipedia.org/wiki/Decomposition_of_time_series",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "category": "use",
+      "term": "What is seasonal adjustment, and why is it done?",
+      "summary": "Removing the seasonal component so the trend and turning points are visible.",
+      "definition": "Seasonal adjustment removes the estimated seasonal component from a series — additive $Y_t - S_t$ or multiplicative $Y_t / S_t$ — so that movements due to the calendar don't mask the underlying trend and turning points (e.g. seasonally adjusted unemployment figures). X-13ARIMA-SEATS is a standard procedure.",
+      "note": "[1] Seasonal adjustment (Wikipedia) — https://en.wikipedia.org/wiki/Seasonal_adjustment",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "category": "use",
+      "term": "What does detrending a series mean?",
+      "summary": "Removing the trend component to study the variation around it.",
+      "definition": "Detrending removes the trend $T_t$ — by differencing, by subtracting a fitted (e.g. regression) trend, or via a moving average — leaving the fluctuations around the long-run direction so they can be analysed on their own.",
+      "note": "[1] Decomposition of time series (Wikipedia) — https://en.wikipedia.org/wiki/Decomposition_of_time_series",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "category": "exercise",
+      "term": "[Time series] Monthly sales have a roughly constant trend of 200 units, and December seasonal effect is estimated as $S_{Dec}=+50$ in an additive model. With an irregular term of $-10$ that December, what is the modelled value $Y_t$?",
+      "sub": "A) 240    B) 250    C) 260    D) 200",
+      "definition": "Correct: A) 240. In the additive model $Y_t = T_t + S_t + R_t = 200 + 50 + (-10) = 240$. The components simply add.",
+      "note": "[1] Decomposition of time series (Wikipedia) — https://en.wikipedia.org/wiki/Decomposition_of_time_series",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "category": "exercise",
+      "term": "[Time series] In a multiplicative model the level is $T_t = 200$ and the December seasonal index is $S_{Dec}=1.25$. Ignoring the irregular term, what is the seasonally adjusted value $Y_t / S_t$ for an observed $Y_t = 250$?",
+      "sub": "A) 200    B) 250    C) 312.5    D) 50",
+      "definition": "Correct: A) 200. Multiplicative seasonal adjustment divides by the seasonal index: $250 / 1.25 = 200$, recovering the level free of the seasonal effect.",
+      "note": "[1] Seasonal adjustment (Wikipedia) — https://en.wikipedia.org/wiki/Seasonal_adjustment",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "category": "core",
+      "term": "[Time series] Which of the following are reasons to decompose a time series? Select all that apply.",
+      "type": "multi",
+      "choices": [
+        "To understand and visualise the underlying trend",
+        "To seasonally adjust the series for fair comparison",
+        "To forecast each component separately and recombine",
+        "To guarantee the series becomes strictly stationary"
+      ],
+      "answers": [
+        0,
+        1,
+        2
+      ],
+      "summary": "Understanding, seasonal adjustment and component-wise forecasting — not a stationarity guarantee.",
+      "definition": "Decomposition supports understanding the trend, seasonal adjustment, and forecasting components separately before recombining. It does not by itself guarantee strict stationarity — that needs differencing or other transformations.",
+      "note": "[1] Decomposition of time series (Wikipedia) — https://en.wikipedia.org/wiki/Decomposition_of_time_series",
+      "last_updated": "2026-06-29"
+    }
+  ],
+  "tags": [
+    "time series",
+    "decomposition",
+    "seasonality",
+    "trend"
+  ]
+}

@@ -1,0 +1,157 @@
+{
+  "id": "data-r",
+  "name": "R for data (base · dplyr · DBI)",
+  "color": "#9bff66",
+  "description": "R for statistics & risk data work: vectors, data.frames, factors, dplyr verbs, models (lm/glm), the apply family, DBI — concepts then a which-function recall quiz.",
+  "tags": [
+    "interview",
+    "data",
+    "r",
+    "fluency"
+  ],
+  "primerTitle": "R for data — recap",
+  "primer": "## R\nThe **vector** is the basic structure: ordered values of one type (even a single number is a length-1 vector); `c()` combines, arithmetic is **vectorised** (`x*2` doubles each element), `mean(x)` averages. A **data.frame** is R's table (equal-length column vectors); extract a column with `d[['name']]` or `d$name`, subset rows with `d[condition, ]` (trailing comma = all columns). A **factor** stores a categorical variable as fixed **levels** (integer codes + labels); `factor(c('A','B','A'), levels=c('A','B','C'))` fixes valid categories — regression auto-expands a factor into dummy (0/1) variables with the first level as baseline. Read files with `read.csv('loans.csv')` (base) or `readr::read_csv` (tidyverse, returns a tibble); inspect with `str(d)`. Filter rows: `d[d$x>0, ]`, `subset(d, x>0)`, or dplyr `filter(d, x>0)`. **dplyr** verbs: `filter` (rows), `select` (columns), `mutate` (add/change), `group_by`, `summarise` (collapse), chained with the **pipe** `%>%` (or `|>`): `d %>% group_by(grade) %>% summarise(rate = mean(default))`. **Models**: `lm(y ~ x1 + x2, data=d)` fits OLS and returns an object — `summary(m)` prints the table, `coef(m)` returns the bare coefficient vector, `confint(m)` their intervals. `glm(default ~ x1 + x2, family=binomial, data=d)` fits logistic regression (logit link); `predict(m, type='response')` gives probabilities. The **apply family**: `apply(M, MARGIN, FUN)` over matrix rows (1) or columns (2); `lapply` returns a list, `sapply` simplifies to a vector, `tapply` applies within factor groups. Base-R grouped summary: `aggregate(default ~ grade, data=d, FUN=mean)`. **ggplot2** builds plots in layers added with `+`: `ggplot(d, aes(score, default)) + geom_point()` (`aes` maps columns to roles; geoms decide how data is drawn).\n\n---\nThe last cards are quick **which-function** recall checks (multiple choice).",
+  "cards": [
+    {
+      "term": "R: what is a vector, and how does vectorised arithmetic work?",
+      "definition": "The vector is R's most basic data structure: an ordered collection of values that all share one type — and even a single number is really a length-1 vector. Arithmetic is vectorised, meaning an operation is applied to every element at once with no explicit loop. c() ('combine') builds a vector from individual values. In the snippet x is c(1, 2, 3); y <- x * 2 doubles each element and mean(x) averages them. Expected result: y is c(2, 4, 6) and mean(x) is 2.",
+      "formula": "x <- c(1, 2, 3); y <- x * 2; mean(x)",
+      "note": "[1] The R Project — https://www.r-project.org/",
+      "last_updated": "2026-06-29",
+      "stale": true
+    },
+    {
+      "term": "R: what is a data.frame, and how do you pull out a column?",
+      "definition": "A data.frame is R's table type: a set of equal-length columns where each column is a vector with its own type (numbers, text, factors). It is what you load a dataset into for analysis. Extract one column with d[['name']] or d$name (you get the underlying vector back), and subset rows by putting a logical condition before the comma: d[condition, ]. In the snippet d has a 'grade' and a 'default' column. Expected result: d[['default']] returns the vector c(0, 1).",
+      "formula": "d <- data.frame(grade = c('A','B'), default = c(0, 1)); d[['default']]",
+      "note": "[1] The R Project — https://www.r-project.org/",
+      "last_updated": "2026-06-29",
+      "stale": true
+    },
+    {
+      "term": "R: what is a factor, and why does it matter for regression?",
+      "definition": "A factor is how R stores a categorical variable: values are mapped to a fixed set of levels (the allowed categories), held internally as integer codes with text labels. Declaring the levels explicitly fixes their order and which categories are valid, so an unexpected value shows up as missing rather than being silently accepted. It matters for modelling because regression functions automatically expand a factor into dummy (0/1) variables, treating the first level as the baseline. In the snippet g is given levels A, B, C even though no 'C' appears in the data. Expected result: levels(g) returns 'A' 'B' 'C', and table(g) counts 2 As, 1 B and 0 Cs.",
+      "formula": "g <- factor(c('A','B','A'), levels = c('A','B','C'))",
+      "note": "[1] The R Project — https://www.r-project.org/",
+      "last_updated": "2026-06-29",
+      "stale": true
+    },
+    {
+      "term": "R: how do you read a CSV file into a data.frame?",
+      "definition": "read.csv (base R) reads a comma-separated file and returns a data.frame, guessing each column's type. readr::read_csv (tidyverse) does the same job faster, detects types more cleanly, and returns a tibble. Whichever you use, inspect the result before trusting it. In the snippet read.csv loads loans.csv and str(d) prints its structure. Expected result: d is a data.frame, and str(d) lists every column with its type and first values, so you can confirm numbers were not read as text.",
+      "formula": "d <- read.csv('loans.csv'); str(d)",
+      "note": "[1] The R Project — https://www.r-project.org/",
+      "last_updated": "2026-06-29",
+      "stale": true
+    },
+    {
+      "term": "R: how do you keep only the rows that meet a condition?",
+      "definition": "You filter rows with a logical condition that is TRUE for the rows you want. Base R gives two ways: bracket indexing, d[d$x > 0, ], or the subset(d, x > 0) helper. In the tidyverse, dplyr's filter(d, x > 0) does the same and reads more naturally inside a pipeline. The trailing comma in the bracket form matters: it means 'these rows, all columns'. In the snippet both styles keep rows where x is positive. Expected result: a smaller data.frame with only the rows whose x > 0, all columns retained.",
+      "formula": "subset(d, x > 0)            # base\nlibrary(dplyr); filter(d, x > 0)",
+      "note": "[1] The R Project — https://www.r-project.org/",
+      "last_updated": "2026-06-29",
+      "stale": true
+    },
+    {
+      "term": "R: what are the core dplyr verbs and the pipe?",
+      "definition": "dplyr expresses data wrangling as a chain of small verbs, each doing one job: filter (keep rows), select (keep columns), mutate (add or change columns), group_by (define groups) and summarise (collapse each group to a single row). The pipe %>% (or the base |>) passes the result of one step straight into the next, so the chain reads top-to-bottom like a sentence instead of nesting calls inside-out. In the snippet the data is grouped by grade and each group's default is averaged. Expected result: a tibble with one row per grade and a 'rate' column holding that grade's mean default.",
+      "formula": "d %>% group_by(grade) %>% summarise(rate = mean(default))",
+      "note": "[1] The R Project — https://www.r-project.org/",
+      "last_updated": "2026-06-29",
+      "stale": true
+    },
+    {
+      "term": "R: how do you fit a linear regression, and where do the results live?",
+      "definition": "lm fits an ordinary least-squares regression. You describe the model with a formula — response ~ predictor1 + predictor2 — and pass data =. lm returns a fitted-model object rather than printing anything, so the numbers you care about live inside it; call summary(m) to print the regression table. In the snippet y is regressed on x1 and x2. Expected result: summary(m) shows each coefficient with its standard error, t-value and p-value, plus an R-squared describing overall fit.",
+      "formula": "m <- lm(y ~ x1 + x2, data = d); summary(m)",
+      "note": "[1] R — lm() — https://stat.ethz.ch/R-manual/R-devel/library/stats/html/lm.html",
+      "last_updated": "2026-06-29",
+      "stale": true
+    },
+    {
+      "term": "R: how do you fit a logistic regression for a 0/1 outcome?",
+      "definition": "For a binary outcome you use glm (a generalised linear model) with family = binomial, which applies the logit link so the model's output is a probability between 0 and 1. The formula interface is identical to lm. By default predictions are on the log-odds scale, so to get actual probabilities you ask for predict(m, type = 'response'). In the snippet default is modelled on x1 and x2. Expected result: m is a fitted logistic model, and predict(m, type='response') returns each row's estimated probability of default.",
+      "formula": "m <- glm(default ~ x1 + x2, family = binomial, data = d)",
+      "note": "[1] R — glm() — https://stat.ethz.ch/R-manual/R-devel/library/stats/html/glm.html",
+      "last_updated": "2026-06-29",
+      "stale": true
+    },
+    {
+      "term": "R: how do you read full model output versus just extract the coefficients?",
+      "definition": "summary(m) prints the full, human-readable inference for a model — coefficients, standard errors, test statistics, p-values and fit measures — which is what you read when interpreting results. coef(m) instead returns just the bare numeric vector of coefficients, for when you want to feed the numbers into more code. confint(m) adds their confidence intervals. In the snippet both coef and confint are called on a fitted model m. Expected result: coef(m) returns a named vector of estimates and confint(m) returns a lower/upper bound for each one.",
+      "formula": "coef(m); confint(m)",
+      "note": "[1] The R Project — https://www.r-project.org/",
+      "last_updated": "2026-06-29",
+      "stale": true
+    },
+    {
+      "term": "R: when do you use apply versus sapply/lapply versus tapply?",
+      "definition": "The apply family runs a function repeatedly without writing a loop. apply(X, MARGIN, FUN) works across the rows (MARGIN = 1) or columns (MARGIN = 2) of a matrix. lapply runs over the elements of a list and always returns a list; sapply does the same but simplifies the result to a vector when it can. tapply applies a function within groups defined by a factor. In the snippet apply(M, 2, mean) takes column means and sapply(d, class) reports the type of each column. Expected result: a vector of column means, and a vector naming the class of each column.",
+      "formula": "apply(M, 2, mean)   # column means\nsapply(d, class)    # type of each column",
+      "note": "[1] The R Project — https://www.r-project.org/",
+      "last_updated": "2026-06-29",
+      "stale": true
+    },
+    {
+      "term": "R: how do you compute a grouped summary in base R?",
+      "definition": "aggregate computes a summary statistic within groups using a formula: value ~ group, plus data = and FUN = the function to apply per group. It is base R's counterpart to a grouped summarise, handy for things like a default rate per segment without loading a package. In the snippet default is averaged within each grade. Expected result: a data.frame with one row per grade and that grade's mean default.",
+      "formula": "aggregate(default ~ grade, data = d, FUN = mean)",
+      "note": "[1] The R Project — https://www.r-project.org/",
+      "last_updated": "2026-06-29",
+      "stale": true
+    },
+    {
+      "term": "R: how does ggplot2 build up a plot?",
+      "definition": "ggplot2 builds a plot in layers that you literally add together with +. You start from ggplot(data, aes(...)), where aes maps columns to visual roles (x, y, colour, size), then add one or more geoms that decide how the data is drawn (points, lines, bars). Each added layer refines the picture. In the snippet score is mapped to x, default to y, and geom_point() draws the data as a scatter. Expected result: a scatter plot of default against score, one point per row.",
+      "formula": "library(ggplot2); ggplot(d, aes(score, default)) + geom_point()",
+      "note": "[1] The R Project — https://www.r-project.org/",
+      "last_updated": "2026-06-29",
+      "stale": true
+    },
+    {
+      "term": "In R using the dplyr package, to join two data frames keeping all rows from the left one, you use:",
+      "choices": [
+        "left_join(df1, df2, by = 'key')",
+        "inner_join(df1, df2, by = 'key')",
+        "right_join(df1, df2, by = 'key')",
+        "full_join(df1, df2, by = 'key')",
+        "semi_join(df1, df2, by = 'key')"
+      ],
+      "answer": 0,
+      "type": "mcq",
+      "definition": "left_join keeps every left-hand row, filling NA where the right has no match; the base-R equivalent is merge(df1, df2, all.x=TRUE). inner_join keeps only rows that match on the key; right_join keeps all right-hand rows instead; full_join keeps rows from both sides; semi_join filters the left frame to matches but adds no columns from the right.",
+      "last_updated": "2026-06-29",
+      "stale": true
+    },
+    {
+      "term": "In R, to send a SQL query to a database and get the result as a data frame (using the DBI package), you use:",
+      "choices": [
+        "dbWriteTable(con, name, df)",
+        "dbExecute(con, \"SELECT ...\")",
+        "dbReadTable(con, \"SELECT ...\")",
+        "dbGetQuery(con, \"SELECT ...\")",
+        "dbSendStatement(con, \"SELECT\")"
+      ],
+      "answer": 3,
+      "type": "mcq",
+      "definition": "dbGetQuery runs the statement and fetches the whole result as a data frame. dbWriteTable does the reverse, writing a data frame into a table; dbReadTable pulls a whole named table, not a query string; dbExecute runs a statement for its side effect and returns only a row count, not the rows; dbSendStatement is for non-SELECT statements and returns a result object, not the data.",
+      "last_updated": "2026-06-29",
+      "stale": true
+    },
+    {
+      "term": "In R's dplyr, the verbs to (a) keep rows meeting a condition and (b) keep certain columns are, respectively:",
+      "choices": [
+        "subset() for rows and slice() for columns",
+        "select() for rows and filter() for columns",
+        "filter() for rows and select() for columns",
+        "where() for rows and pick() for the columns",
+        "keep() for rows and discard() for columns"
+      ],
+      "answer": 2,
+      "type": "mcq",
+      "definition": "filter() subsets ROWS by a logical condition and select() chooses COLUMNS by name. Stating them as select()/filter() reverses the pair — the classic confusion (pandas adds to it, since pandas .filter is about columns). slice() picks rows by position not columns; where() and pick() are selection helpers used INSIDE select(), not standalone row/column verbs; keep() and discard() are not dplyr verbs at all.",
+      "last_updated": "2026-06-29",
+      "stale": true
+    }
+  ]
+}

@@ -1,0 +1,126 @@
+{
+  "id": "stochastic-calculus",
+  "name": "Stochastic calculus",
+  "color": "#4dabf7",
+  "description": "Brownian motion, Itô processes and SDEs, Itô's lemma and its drift correction, quadratic variation, and geometric Brownian motion — the dynamics behind lognormal asset prices and Black–Scholes.",
+  "categories": {
+    "core": "Core",
+    "theorems": "Theorems & rules",
+    "use": "Use & limits",
+    "exercise": "Exercises"
+  },
+  "primerTitle": "Stochastic calculus — quick recap",
+  "primer": "## Brownian motion (Wiener process) $W_t$\\n\\n- $W_0=0$; **independent** increments over disjoint intervals; **stationary Gaussian** increments $W_t-W_s\\\\sim N(0,\\\\,t-s)$ (mean 0, variance = the time gap); paths **continuous but nowhere differentiable**.\\n- So $\\\\mathbb{E}[dW]=0$, $\\\\operatorname{Var}(dW)=dt$. Variance of $W_t-W_s$ is **$t-s$** (linear in time) → std dev $\\\\propto\\\\sqrt{t-s}$, which is why volatility annualises by $\\\\sqrt{T}$.\\n- No ordinary $dW/dt$ exists, so we need Itô calculus built on $dW$ and $(dW)^2=dt$.\\n\\n## Itô processes & quadratic variation\\n\\n- **SDE**: $dX_t=\\\\mu\\\\,dt+\\\\sigma\\\\,dW_t$ — the $\\\\mu\\\\,dt$ term is the **drift** (predictable trend), the $\\\\sigma\\\\,dW_t$ term is the **diffusion** (random shock). $\\\\mu,\\\\sigma$ may depend on $X_t,t$.\\n- **Quadratic variation** of $W$ over $[0,t]$ equals **$t$** (not 0, unlike smooth functions): the precise statement of **$(dW)^2=dt$**.\\n\\n## Itô's lemma\\n\\n- For $f(X_t,t)$ with $dX=\\\\mu\\\\,dt+\\\\sigma\\\\,dW$: $$df=\\\\big(f_t+\\\\mu f_x+\\\\tfrac12\\\\sigma^2 f_{xx}\\\\big)dt+\\\\sigma f_x\\\\,dW.$$\\n- The extra **$\\\\tfrac12\\\\sigma^2 f_{xx}\\\\,dt$** term comes from $(dW)^2=dt$: in the Taylor expansion $(dX)^2$ contains $\\\\sigma^2(dW)^2=\\\\sigma^2 dt$, first-order in $dt$ so it survives. **Intuition**: jagged squared moves don't vanish, so for convex $f$ ($f_{xx}>0$) up-moves help more than down-moves hurt → an upward drift correction.\\n\\n## Geometric Brownian motion (GBM)\\n\\n- $dS_t=\\\\mu S_t\\\\,dt+\\\\sigma S_t\\\\,dW_t$: drift and diffusion **proportional to $S$**, so *returns* have constant statistics; keeps prices positive; the Black–Scholes price model.\\n- Apply Itô to $f=\\\\ln S$ ($f_x=1/S,\\\\ f_{xx}=-1/S^2$): $$d\\\\ln S=(\\\\mu-\\\\tfrac12\\\\sigma^2)\\\\,dt+\\\\sigma\\\\,dW.$$ The log-drift is **$\\\\mu-\\\\tfrac12\\\\sigma^2$** — the Itô correction / **volatility drag**.\\n- Hence $\\\\ln S_T=\\\\ln S_0+(\\\\mu-\\\\tfrac12\\\\sigma^2)T+\\\\sigma W_T$ is **normal** → $S_T$ is **lognormal** and positive. **Median** $=S_0 e^{(\\\\mu-\\\\sigma^2/2)T}$, **mean** $=S_0 e^{\\\\mu T}$; the mean exceeds the median by the lognormal right skew.\\n\\n## Limits\\n\\n- GBM assumes **constant volatility** and normal log-returns, but markets show fat tails, vol clustering and jumps — motivating stochastic-volatility and jump-diffusion models.",
+  "cards": [
+    {
+      "category": "core",
+      "term": "What are the defining properties of standard Brownian motion (a Wiener process) $W_t$?",
+      "summary": "Starts at 0; independent, stationary, Gaussian increments; continuous, nowhere-differentiable paths.",
+      "definition": "$W_0=0$; increments over disjoint intervals are independent; an increment $W_t-W_s\\sim N(0,\\ t-s)$ (mean 0, variance equal to the time gap, so stationary); and the paths are continuous but nowhere differentiable. Informally $\\mathbb{E}[dW_t]=0$ and $\\mathrm{Var}(dW_t)=dt$.",
+      "formula": "$W_t-W_s\\sim N(0,\\ t-s)$",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "category": "core",
+      "term": "[Stochastic calculus] For Brownian motion, the variance of the increment $W_t-W_s$ is:",
+      "sub": "A) $t-s$    B) $(t-s)^2$    C) $\\sqrt{t-s}$    D) $1$",
+      "definition": "Correct: A) $t-s$. Variance grows linearly with the elapsed time, so the standard deviation grows as $\\sqrt{t-s}$. This $\\sqrt{\\text{time}}$ scaling of uncertainty is why volatility is annualised by $\\sqrt{T}$.",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "category": "core",
+      "term": "[Stochastic calculus] Brownian motion paths are continuous but differentiable nowhere.",
+      "type": "truefalse",
+      "answer": true,
+      "summary": "True — continuous yet nowhere differentiable.",
+      "definition": "True. The paths never jump (continuous) but are infinitely jagged, so no ordinary derivative $dW/dt$ exists. This is exactly why we need a new calculus (Itô's) built on $dW$ and $(dW)^2=dt$ rather than on $dW/dt$.",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "category": "core",
+      "term": "An Itô process / SDE is written $dX_t=\\mu\\,dt+\\sigma\\,dW_t$, where the $\\mu\\,dt$ term is the {{drift}} and the $\\sigma\\,dW_t$ term is the diffusion.",
+      "definition": "The drift $\\mu\\,dt$ is the predictable trend (its expected change per unit time); the diffusion $\\sigma\\,dW_t$ is the random shock scaled by the volatility $\\sigma$. $\\mu$ and $\\sigma$ may themselves depend on $X_t$ and $t$.",
+      "type": "cloze",
+      "formula": "$dX_t=\\mu(X_t,t)\\,dt+\\sigma(X_t,t)\\,dW_t$",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "category": "core",
+      "term": "What is the quadratic variation of Brownian motion over $[0,t]$, and why does it matter?",
+      "summary": "It equals $t$ (not 0); this $(dW)^2=dt$ is what makes Itô calculus differ from ordinary calculus.",
+      "definition": "Summing the squared increments of $W$ over $[0,t]$ converges to $t$, whereas for any smooth function the same sum vanishes. This non-zero quadratic variation is the precise statement of $(dW_t)^2=dt$, the rule that produces the extra second-order term in Itô's lemma.",
+      "formula": "$\\sum (\\Delta W)^2 \\to t,\\qquad (dW_t)^2=dt$",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "category": "theorems",
+      "term": "State Itô's lemma for $f(X_t,t)$ when $dX=\\mu\\,dt+\\sigma\\,dW$.",
+      "summary": "$df=(f_t+\\mu f_x+\\tfrac12\\sigma^2 f_{xx})\\,dt+\\sigma f_x\\,dW$.",
+      "definition": "Itô's lemma is the chain rule for Itô processes: $df=\\big(f_t+\\mu f_x+\\tfrac12\\sigma^2 f_{xx}\\big)dt+\\sigma f_x\\,dW$. It differs from the ordinary chain rule by the second-order term $\\tfrac12\\sigma^2 f_{xx}\\,dt$, which arises because $(dW)^2=dt$ is not negligible.",
+      "formula": "$df=\\Big(f_t+\\mu f_x+\\tfrac12\\sigma^2 f_{xx}\\Big)dt+\\sigma f_x\\,dW$",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "category": "theorems",
+      "term": "[Stochastic calculus] Where does the extra $\\tfrac12\\sigma^2 f_{xx}$ term in Itô's lemma come from?",
+      "sub": "A) from $(dW)^2=dt$, the non-zero quadratic variation of Brownian motion    B) from the drift $\\mu$ being non-zero    C) from $f$ depending on time    D) from $\\sigma$ being constant",
+      "definition": "Correct: A) from $(dW)^2=dt$, the non-zero quadratic variation of Brownian motion. In a Taylor expansion of $f$, the $(dX)^2$ term contains $\\sigma^2(dW)^2=\\sigma^2\\,dt$, which is first-order in $dt$ and so survives — unlike in ordinary calculus where $(dx)^2$ is negligible.",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "category": "theorems",
+      "term": "Intuitively, why does Itô's lemma add a drift correction that ordinary calculus lacks?",
+      "summary": "Brownian wiggle is so rough that squared moves accumulate; convex $f$ benefits from this volatility.",
+      "definition": "Because Brownian paths are infinitely jagged, the squared increments don't vanish — volatility 'leaks' into the mean. For a convex function ($f_{xx}>0$) the up-moves help more than the down-moves hurt, so the expected value drifts upward by $\\tfrac12\\sigma^2 f_{xx}$ per unit time. Ordinary smooth functions have no such squared-move accumulation.",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "category": "core",
+      "term": "Write the SDE for geometric Brownian motion (GBM) and say what it models.",
+      "summary": "$dS_t=\\mu S_t\\,dt+\\sigma S_t\\,dW_t$ — proportional drift and volatility; models asset prices.",
+      "definition": "GBM is $dS_t=\\mu S_t\\,dt+\\sigma S_t\\,dW_t$: both drift and diffusion are proportional to $S$, so returns (not absolute moves) have constant statistics. It keeps the price positive and is the asset-price model underlying Black–Scholes.",
+      "formula": "$dS_t=\\mu S_t\\,dt+\\sigma S_t\\,dW_t$",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "category": "theorems",
+      "term": "Applying Itô's lemma to $\\ln S$ under GBM, the drift of $\\ln S$ is:",
+      "sub": "A) $\\mu-\\tfrac12\\sigma^2$    B) $\\mu$    C) $\\mu+\\tfrac12\\sigma^2$    D) $\\tfrac12\\sigma^2$",
+      "type": "mcq",
+      "definition": "Correct: A) $\\mu-\\tfrac12\\sigma^2$. With $f=\\ln S$, $f_x=1/S$, $f_{xx}=-1/S^2$; Itô's lemma gives $d\\ln S=(\\mu-\\tfrac12\\sigma^2)\\,dt+\\sigma\\,dW$. The $-\\tfrac12\\sigma^2$ is the Itô correction — the log-growth is slower than the simple drift $\\mu$ because of volatility drag.",
+      "formula": "$d\\ln S=(\\mu-\\tfrac12\\sigma^2)\\,dt+\\sigma\\,dW$",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "category": "use",
+      "term": "[Stochastic calculus] Why is the terminal price $S_T$ under GBM lognormally distributed?",
+      "sub": "A) because $\\ln S_T$ is normal (Itô gives $\\ln S_T=\\ln S_0+(\\mu-\\tfrac12\\sigma^2)T+\\sigma W_T$)    B) because the drift is positive    C) because prices are discrete    D) because volatility is constant",
+      "definition": "Correct: A) because $\\ln S_T$ is normal. Itô's lemma makes $\\ln S$ an arithmetic Brownian motion, so $\\ln S_T=\\ln S_0+(\\mu-\\tfrac12\\sigma^2)T+\\sigma W_T$ is normal — hence $S_T$ is lognormal and strictly positive. This is exactly the lognormal-price assumption of Black–Scholes.",
+      "note": "Ties to the Lognormal deck in Probability distributions.",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "category": "use",
+      "term": "Under GBM, how do the mean and median of $S_T$ grow, and why do they differ?",
+      "summary": "Median grows at $\\mu-\\tfrac12\\sigma^2$; mean grows at $\\mu$; the gap is the lognormal right skew.",
+      "definition": "Because $\\ln S_T$ is normal with mean $\\ln S_0+(\\mu-\\tfrac12\\sigma^2)T$, the median is $S_0 e^{(\\mu-\\sigma^2/2)T}$ while the mean is $S_0 e^{\\mu T}$. The mean exceeds the median by the lognormal skew; the $-\\tfrac12\\sigma^2$ 'volatility drag' lowers the typical (median) growth below the expected growth.",
+      "note": "Ties to the lognormal mean $=e^{\\mu+\\sigma^2/2}$.",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "category": "use",
+      "term": "[Stochastic calculus] Which is a real limitation of the GBM / constant-volatility model for asset prices?",
+      "sub": "A) it assumes constant volatility and normal log-returns, but markets show fat tails, vol clustering and jumps    B) it allows negative prices    C) it cannot be simulated    D) it has no drift",
+      "definition": "Correct: A) it assumes constant volatility and normal log-returns, but markets show fat tails, vol clustering and jumps. GBM's clean lognormal output is convenient but understates extreme moves and the volatility smile — motivating stochastic-volatility and jump-diffusion extensions.",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "category": "exercise",
+      "term": "[Exercise] A stock follows GBM with $S_0=100$, $\\mu=0.10$, $\\sigma=0.20$. Over $T=1$ year, give the drift of $\\ln S$ and the median terminal price.",
+      "summary": "Log-drift $=\\mu-\\tfrac12\\sigma^2=0.08$; median $=100\\,e^{0.08}\\approx\\$108.3$.",
+      "definition": "Itô gives the log-drift $\\mu-\\tfrac12\\sigma^2=0.10-\\tfrac12(0.20)^2=0.10-0.02=0.08$. The median terminal price is $S_0 e^{(\\mu-\\sigma^2/2)T}=100\\,e^{0.08}\\approx\\$108.3$. (The mean is higher: $100\\,e^{0.10}\\approx\\$110.5$ — the lognormal skew.)",
+      "note": "Uses the GBM log-drift and the lognormal median from the primer.",
+      "last_updated": "2026-06-29"
+    }
+  ]
+}

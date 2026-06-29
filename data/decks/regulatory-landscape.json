@@ -1,0 +1,479 @@
+{
+  "id": "regulatory-landscape",
+  "name": "Regulatory landscape — EU · Italy · Middle East",
+  "color": "#b794ff",
+  "description": "Supervisory architecture and regulatory landscape across the EU, Italy and the GCC / Islamic-finance world. Quick multiple-choice cards (~1 min each) plus a few open exercises (~30 min). Non-firm-specific market context for risk and quant interviews.",
+  "categories": {
+    "eu": {
+      "label": "EU",
+      "color": "#66aaff"
+    },
+    "italy": {
+      "label": "Italy",
+      "color": "#9bff66"
+    },
+    "gulf": {
+      "label": "Gulf / Islamic finance",
+      "color": "#ff9f55"
+    }
+  },
+  "primerTitle": "Supervisors — EU · Italy · Gulf",
+  "primer": "**EU architecture.** Under the **Single Supervisory Mechanism (SSM)** the **ECB** directly supervises *significant* euro-area banks (e.g. Intesa Sanpaolo, UniCredit); national competent authorities supervise *less-significant* ones under ECB oversight (via joint supervisory teams). The **EBA** writes the *single rulebook* (binding technical standards) and runs the EU-wide *stress test* — a standard-setter, **not** a day-to-day supervisor. Other EU bodies: **ESMA** (securities markets, MiFID II/MiFIR, investor protection), **EIOPA** (insurance & pensions under Solvency II), **SRB** (Single Resolution Mechanism — resolution via bail-in and **MREL**, under BRRD/SRMR). Basel enters EU law through the **CRR** (directly applicable) and **CRD** (transposed nationally); **CRR3/CRD6** bring the Basel III finalisation, including the **output floor** (internal-model RWA $\\\\ge$ **72.5%** of standardised, phasing in from 1 Jan 2025). The **leverage ratio** minimum is **3%** of Tier 1 to total exposure. The **SREP** sets, per bank, a binding *Pillar 2 requirement (P2R)* plus non-binding *Pillar 2 guidance (P2G)* — and the EBA stress test is an *input* to it, not a pass/fail; a weak result raises P2G, with graded consequences (capital plan, payout limits, ultimately SRB resolution). The harmonised **Deposit Guarantee** covers **€100,000** per depositor per bank. **IFRS 9** provisions via a three-stage *expected-credit-loss* model (Stage 1 = 12-month ECL; Stages 2–3 = lifetime). **AnaCredit** is the ECB's granular, loan-level credit dataset. **Expected Shortfall** $\\\\ge$ VaR at the same confidence (it is the mean loss beyond VaR).\n\n**Italy.** **Banca d'Italia** is the central bank and national supervisor (leads for less-significant banks under the SSM, runs macroprudential policy); its **Centrale dei Rischi** is the national central credit register. **CONSOB** = securities markets and investor protection (Italy's ESMA counterpart); **IVASS** = insurers (Solvency II); **COVIP** = supplementary private pension funds. Banking law = **Testo Unico Bancario (TUB)**; financial-markets law = **TUF**. **GACS** = a state guarantee on *senior tranches of NPL securitisations*, used to offload the large post-2011 **non-performing-loan** stock. The 2015–16 reforms grouped small mutual banks (**BCC**) into cooperative banking groups (Iccrea, Cassa Centrale). The *anti-usury* regime publishes threshold rates (*tassi soglia*) above which a loan is usurious.\n\n**Gulf / Islamic finance.** Onshore regulators: **SAMA** (Saudi Arabia), **CBUAE** (UAE), **QCB** (Qatar onshore), **CBB** (Bahrain, a single integrated regulator). Common-law *free zones* have their own regulators: **DFSA** (DIFC, Dubai), **FSRA** (ADGM, Abu Dhabi), **QFCRA** (QFC, Doha). GCC supervisors broadly implement **Basel III**, often with high capital ratios. Standard-setters: the **IFSB** (Kuala Lumpur) issues *prudential* standards for Islamic financial institutions (adapting Basel); **AAOIFI** (Bahrain) issues *Sharia, accounting and governance* standards. Islamic finance prohibits **riba** (interest/usury), **gharar** (excessive uncertainty) and **maysir** (gambling), and requires real *asset-backing* and risk-sharing (so guaranteed fixed returns are not allowed). A **sukuk** is a Sharia-compliant *certificate of ownership* in an underlying asset/venture — returns come from real assets, not interest, so holders bear asset risk (unlike a conventional bond). A *profit-sharing investment account (PSIA)* is structured as a **mudarabah**: the holder supplies capital, the bank manages it, and both share profit/loss (the holder bears investment losses absent misconduct). Under IFSB capital rules, assets funded by unrestricted PSIA are largely *removed* from risk-weighted assets, but supervisors keep an **'alpha'** fraction to reflect *displaced commercial risk* (banks smoothing payouts to retain depositors). EU market entry: a Gulf bank generally needs an authorised EU *subsidiary* (full CRR/CRD, ECB if significant) rather than a *branch* (narrower, no EU passport), since third-country *equivalence* is patchy.",
+  "cards": [
+    {
+      "term": "[EU] Which authority directly supervises 'significant' euro-area banks?",
+      "sub": "A) the ECB, through the SSM    B) the European Commission, through its financial-stability directorate    C) the EBA, through its college-of-supervisors mandate    D) each national central bank acting on its own authority",
+      "definition": "Correct: A) the ECB, through the SSM. Under the Single Supervisory Mechanism the ECB directly supervises significant institutions; national competent authorities supervise less significant ones under ECB oversight. The EBA writes rules but does not supervise individual banks.",
+      "note": "[1] ECB Banking Supervision — https://www.bankingsupervision.europa.eu/",
+      "category": "eu",
+      "last_updated": "2026-06-29",
+      "stale": true
+    },
+    {
+      "term": "[EU] The EBA's main role is to:",
+      "sub": "A) write the single rulebook and run EU-wide stress tests    B) plan and execute the resolution of failing cross-border banks    C) set the euro-area monetary-policy stance and interest rates    D) carry out the day-to-day supervision of the largest banks",
+      "definition": "Correct: A) write the single rulebook and run EU-wide stress tests. The European Banking Authority issues binding technical standards (the single rulebook) and coordinates the EU-wide stress test; it is a standard-setter, not a day-to-day supervisor.",
+      "note": "[1] EBA — https://www.eba.europa.eu/",
+      "category": "eu",
+      "last_updated": "2026-06-29",
+      "stale": true
+    },
+    {
+      "term": "[EU] Basel standards enter EU law mainly through:",
+      "sub": "A) Solvency II    B) the BRRD    C) the CRR and CRD    D) MiFID II",
+      "definition": "Correct: C) the CRR and CRD. The Capital Requirements Regulation (directly applicable across member states) and the Capital Requirements Directive (transposed nationally) implement Basel for banks. CRR3/CRD6 bring in the Basel III finalisation.",
+      "note": "[1] EUR-Lex (CRR/CRD) — https://eur-lex.europa.eu/",
+      "category": "eu",
+      "last_updated": "2026-06-29",
+      "stale": true
+    },
+    {
+      "term": "[EU] The Basel III 'output floor' introduced by CRR3:",
+      "sub": "A) caps a bank's total balance-sheet assets relative to capital    B) fixes the level of the harmonised EU deposit guarantee    C) sets the binding minimum leverage ratio at 3% of exposure    D) limits internal-model RWA to 72.5% of the standardised figure",
+      "definition": "Correct: D) limits internal-model RWA to 72.5% of the standardised figure. The output floor stops internal models producing risk-weighted assets below 72.5% of the standardised approach, capping model-driven capital savings. It phases in from 1 January 2025.",
+      "note": "[1] EBA — https://www.eba.europa.eu/",
+      "category": "eu",
+      "last_updated": "2026-06-29",
+      "stale": true
+    },
+    {
+      "term": "[EU] Insurance and pensions across the EU are overseen by:",
+      "sub": "A) ESMA    B) the SRB    C) the EBA    D) EIOPA",
+      "definition": "Correct: D) EIOPA. EIOPA oversees insurers and pension funds under the Solvency II framework. ESMA covers securities markets, the EBA banks, and the SRB bank resolution.",
+      "note": "[1] EIOPA — https://www.eiopa.europa.eu/",
+      "category": "eu",
+      "last_updated": "2026-06-29",
+      "stale": true
+    },
+    {
+      "term": "[EU] MiFID II / MiFIR (securities markets, investor protection) sit with:",
+      "sub": "A) EIOPA    B) the ECB    C) the EBA    D) ESMA",
+      "definition": "Correct: D) ESMA. The European Securities and Markets Authority is the EU-level body for securities markets and investor protection.",
+      "note": "[1] ESMA — https://www.esma.europa.eu/",
+      "category": "eu",
+      "last_updated": "2026-06-29",
+      "stale": true
+    },
+    {
+      "term": "[EU] The ECB's SREP produces, for each bank, a:",
+      "sub": "A) fixed remuneration rate on overnight central-bank deposits    B) mandatory ban on any payment of ordinary dividends    C) Pillar 2 requirement (P2R) and guidance (P2G)    D) hard cap on the bank's permitted leverage exposure",
+      "definition": "Correct: C) Pillar 2 requirement (P2R) and guidance (P2G). The Supervisory Review and Evaluation Process sets a binding Pillar 2 requirement plus non-binding Pillar 2 guidance on top of the Pillar 1 minimum.",
+      "note": "[1] ECB Banking Supervision — https://www.bankingsupervision.europa.eu/",
+      "category": "eu",
+      "last_updated": "2026-06-29",
+      "stale": true
+    },
+    {
+      "term": "[EU] The body running the Single Resolution Mechanism is the:",
+      "sub": "A) Single Resolution Board (SRB)    B) European Commission    C) ESMA    D) ECB",
+      "definition": "Correct: A) Single Resolution Board (SRB). The SRB plans and executes resolution of significant banks using tools such as bail-in and the MREL requirement, under the BRRD/SRMR.",
+      "note": "[1] Single Resolution Board — https://www.srb.europa.eu/",
+      "category": "eu",
+      "last_updated": "2026-06-29",
+      "stale": true
+    },
+    {
+      "term": "[EU] The harmonised EU deposit guarantee covers, per depositor per bank:",
+      "sub": "A) €50,000    B) an unlimited amount    C) €250,000    D) €100,000",
+      "definition": "Correct: D) €100,000. The Deposit Guarantee Schemes Directive sets coverage at €100,000 per depositor per institution.",
+      "note": "[1] EUR-Lex (CRR/CRD) — https://eur-lex.europa.eu/",
+      "category": "eu",
+      "last_updated": "2026-06-29",
+      "stale": true
+    },
+    {
+      "term": "[EU] IFRS 9 measures loan loss provisions using:",
+      "sub": "A) a three-stage expected-credit-loss model    B) mark-to-market fair value through profit or loss only    C) a single incurred-loss model triggered at default    D) only the Basel regulatory expected-loss figure",
+      "definition": "Correct: A) a three-stage expected-credit-loss model. IFRS 9 stages exposures 1–3: Stage 1 carries 12-month expected credit loss; Stages 2–3 carry lifetime ECL once credit risk has risen significantly or the asset is impaired.",
+      "note": "[1] EUR-Lex (CRR/CRD) — https://eur-lex.europa.eu/",
+      "category": "eu",
+      "last_updated": "2026-06-29",
+      "stale": true
+    },
+    {
+      "term": "[EU] AnaCredit is:",
+      "sub": "A) an adverse macro-financial stress-test scenario    B) a pan-European credit rating agency for sovereigns    C) the ECB's granular loan-level credit dataset    D) an EU-wide 'bad bank' for non-performing loans",
+      "definition": "Correct: C) the ECB's granular loan-level credit dataset. AnaCredit (Analytical Credit Datasets) collects harmonised, loan-level data on credit to legal entities across the euro area.",
+      "note": "[1] ECB Banking Supervision — https://www.bankingsupervision.europa.eu/",
+      "category": "eu",
+      "last_updated": "2026-06-29",
+      "stale": true
+    },
+    {
+      "term": "[EU] The Basel/CRR leverage-ratio minimum is:",
+      "sub": "A) 3%    B) 8%    C) 10.5%    D) 1%",
+      "definition": "Correct: A) 3%. The leverage ratio requires Tier 1 capital of at least 3% of total exposure — a simple, non-risk-based backstop to risk-weighted requirements.",
+      "note": "[1] EUR-Lex (CRR/CRD) — https://eur-lex.europa.eu/",
+      "category": "eu",
+      "last_updated": "2026-06-29",
+      "stale": true
+    },
+    {
+      "term": "[Italy] Italy's central bank and national banking supervisor is:",
+      "sub": "A) IVASS    B) Banca d'Italia    C) CONSOB    D) the MEF",
+      "definition": "Correct: B) Banca d'Italia. Banca d'Italia is the central bank and national competent authority; it directly supervises less-significant Italian banks under the SSM and runs macroprudential policy.",
+      "note": "[1] Banca d'Italia — https://www.bancaditalia.it/",
+      "category": "italy",
+      "last_updated": "2026-06-29",
+      "stale": true
+    },
+    {
+      "term": "[Italy] Italy's largest banks (e.g. Intesa Sanpaolo, UniCredit) are directly supervised by:",
+      "sub": "A) CONSOB, as listed-securities issuers    B) the EBA, as systemic EU institutions    C) the ECB, as significant institutions    D) Banca d'Italia acting entirely on its own",
+      "definition": "Correct: C) the ECB, as significant institutions. As significant institutions they fall under direct ECB supervision; Banca d'Italia participates through the joint supervisory teams.",
+      "note": "[1] ECB Banking Supervision — https://www.bankingsupervision.europa.eu/",
+      "category": "italy",
+      "last_updated": "2026-06-29",
+      "stale": true
+    },
+    {
+      "term": "[Italy] The Italian insurance supervisor is:",
+      "sub": "A) CONSOB    B) Banca d'Italia    C) IVASS    D) COVIP",
+      "definition": "Correct: C) IVASS. IVASS (Istituto per la Vigilanza sulle Assicurazioni) supervises insurers under Solvency II and works closely with Banca d'Italia.",
+      "note": "[1] IVASS — https://www.ivass.it/",
+      "category": "italy",
+      "last_updated": "2026-06-29",
+      "stale": true
+    },
+    {
+      "term": "[Italy] CONSOB is responsible for:",
+      "sub": "A) supplementary private pension funds    B) the conduct of national monetary policy    C) bank capital and prudential requirements    D) securities markets and investor protection",
+      "definition": "Correct: D) securities markets and investor protection. CONSOB (Commissione Nazionale per le Società e la Borsa) supervises securities markets, prospectuses and market conduct — Italy's counterpart to ESMA.",
+      "note": "[1] CONSOB — https://www.consob.it/",
+      "category": "italy",
+      "last_updated": "2026-06-29",
+      "stale": true
+    },
+    {
+      "term": "[Italy] Supplementary (private) pension funds in Italy are supervised by:",
+      "sub": "A) IVASS    B) CONSOB    C) INPS    D) COVIP",
+      "definition": "Correct: D) COVIP. COVIP (Commissione di Vigilanza sui Fondi Pensione) supervises Italy's funded supplementary pension schemes.",
+      "note": "[1] COVIP — https://www.covip.it/",
+      "category": "italy",
+      "last_updated": "2026-06-29",
+      "stale": true
+    },
+    {
+      "term": "[Italy] The consolidated law governing Italian banking is the:",
+      "sub": "A) Testo Unico Bancario (TUB)    B) Testo Unico della Finanza (TUF)    C) MiFID    D) Codice Civile",
+      "definition": "Correct: A) Testo Unico Bancario (TUB). The Testo Unico Bancario (Legislative Decree 385/1993) governs banking; the TUF (D.Lgs 58/1998) governs financial markets and intermediaries.",
+      "note": "[1] Banca d'Italia — https://www.bancaditalia.it/",
+      "category": "italy",
+      "last_updated": "2026-06-29",
+      "stale": true
+    },
+    {
+      "term": "[Italy] 'GACS' refers to:",
+      "sub": "A) an adverse supervisory stress-test scenario    B) an AAOIFI Sharia-compliance standard for sukuk    C) a state guarantee on senior tranches of NPL securitisations    D) a national deposit-guarantee scheme for savers",
+      "definition": "Correct: C) a state guarantee on senior tranches of NPL securitisations. The Garanzia Cartolarizzazione Sofferenze is an Italian state guarantee on the senior notes of bad-loan securitisations, used to help banks offload non-performing loans.",
+      "note": "[1] Banca d'Italia — https://www.bancaditalia.it/",
+      "category": "italy",
+      "last_updated": "2026-06-29",
+      "stale": true
+    },
+    {
+      "term": "[Italy] Banca d'Italia's 'Centrale dei Rischi' is:",
+      "sub": "A) the national central credit register    B) the resolution fund for failing Italian banks    C) the national retail-payments clearing system    D) the domestic sovereign credit rating agency",
+      "definition": "Correct: A) the national central credit register. The Centrale dei Rischi records borrowers' exposures across lenders — a core data source for credit-risk assessment in Italy.",
+      "note": "[1] Banca d'Italia — https://www.bancaditalia.it/",
+      "category": "italy",
+      "last_updated": "2026-06-29",
+      "stale": true
+    },
+    {
+      "term": "[Italy] A defining feature of the Italian banking system in the 2010s was:",
+      "sub": "A) the complete absence of any cooperative banks    B) majority ownership of major banks by the ECB    C) negligible levels of non-performing loans    D) a large stock of non-performing loans needing work-out",
+      "definition": "Correct: D) a large stock of non-performing loans needing work-out. The post-2011 recession left Italian banks with one of Europe's largest NPL stocks, driving disposals, GACS and ECB NPL guidance.",
+      "note": "[1] ECB Banking Supervision — https://www.bankingsupervision.europa.eu/",
+      "category": "italy",
+      "last_updated": "2026-06-29",
+      "stale": true
+    },
+    {
+      "term": "[Italy] The 2015–16 reforms reorganised Italy's small mutual banks (BCC) into:",
+      "sub": "A) insurance firms    B) foreign branches    C) cooperative banking groups (e.g. Iccrea, Cassa Centrale)    D) a single state bank",
+      "definition": "Correct: C) cooperative banking groups (e.g. Iccrea, Cassa Centrale). The banche di credito cooperativo were consolidated under cohesive groups to strengthen capital and enable consolidated supervision.",
+      "note": "[1] Banca d'Italia — https://www.bancaditalia.it/",
+      "category": "italy",
+      "last_updated": "2026-06-29",
+      "stale": true
+    },
+    {
+      "term": "[Italy] Italy's anti-usury regime works by periodically publishing:",
+      "sub": "A) threshold rates (tassi soglia) above which a loan is usurious    B) the Basel III output floor for internal models    C) the central bank's main refinancing policy rate    D) the statutory ceiling of the deposit guarantee",
+      "definition": "Correct: A) threshold rates (tassi soglia) above which a loan is usurious. Average market rates are surveyed and a statutory multiple sets the usury threshold (tasso soglia) that lenders must not exceed.",
+      "note": "[1] Banca d'Italia — https://www.bancaditalia.it/",
+      "category": "italy",
+      "last_updated": "2026-06-29",
+      "stale": true
+    },
+    {
+      "term": "[Gulf] SAMA is the central bank and regulator of:",
+      "sub": "A) Saudi Arabia    B) Qatar    C) Bahrain    D) the United Arab Emirates",
+      "definition": "Correct: A) Saudi Arabia. The Saudi Central Bank (still abbreviated SAMA) regulates banks, insurers and finance companies in Saudi Arabia.",
+      "note": "[1] Saudi Central Bank (SAMA) — https://www.sama.gov.sa/",
+      "category": "gulf",
+      "last_updated": "2026-06-29",
+      "stale": true
+    },
+    {
+      "term": "[Gulf] Onshore banks in the UAE are supervised by:",
+      "sub": "A) the Central Bank of the UAE (CBUAE)    B) the ADGM FSRA    C) SAMA    D) the DFSA",
+      "definition": "Correct: A) the Central Bank of the UAE (CBUAE). The CBUAE supervises onshore UAE banks; the DFSA and ADGM's FSRA regulate the DIFC and ADGM financial free zones respectively.",
+      "note": "[1] Central Bank of the UAE — https://www.centralbank.ae/",
+      "category": "gulf",
+      "last_updated": "2026-06-29",
+      "stale": true
+    },
+    {
+      "term": "[Gulf] The DFSA regulates:",
+      "sub": "A) the DIFC free zone in Dubai    B) the Qatar Financial Centre (QFC) in Doha    C) all banks across the United Arab Emirates    D) onshore Saudi banks and finance companies",
+      "definition": "Correct: A) the DIFC free zone in Dubai. The Dubai Financial Services Authority is the independent regulator of the Dubai International Financial Centre, a common-law financial free zone.",
+      "note": "[1] DFSA — https://www.dfsa.ae/",
+      "category": "gulf",
+      "last_updated": "2026-06-29",
+      "stale": true
+    },
+    {
+      "term": "[Gulf] Firms in Abu Dhabi Global Market are regulated by the:",
+      "sub": "A) DFSA    B) QFCRA    C) CBUAE    D) FSRA",
+      "definition": "Correct: D) FSRA. The Financial Services Regulatory Authority regulates the ADGM, Abu Dhabi's common-law financial free zone.",
+      "note": "[1] ADGM FSRA — https://www.adgm.com/",
+      "category": "gulf",
+      "last_updated": "2026-06-29",
+      "stale": true
+    },
+    {
+      "term": "[Gulf] Bahrain's single integrated financial regulator is the:",
+      "sub": "A) QCB    B) CBB    C) DFSA    D) CMA",
+      "definition": "Correct: B) CBB. The Central Bank of Bahrain regulates banking, insurance and capital markets; Bahrain is a long-standing Islamic-finance hub.",
+      "note": "[1] Central Bank of Bahrain — https://www.cbb.gov.bh/",
+      "category": "gulf",
+      "last_updated": "2026-06-29",
+      "stale": true
+    },
+    {
+      "term": "[Gulf] Qatar's onshore regulator is the QCB; the Qatar Financial Centre is regulated by the:",
+      "sub": "A) QFCRA    B) FSRA    C) SAMA    D) DFSA",
+      "definition": "Correct: A) QFCRA. The Qatar Financial Centre Regulatory Authority regulates firms in the QFC, separate from the Qatar Central Bank's onshore remit.",
+      "note": "[1] QFCRA — https://www.qfcra.com/",
+      "category": "gulf",
+      "last_updated": "2026-06-29",
+      "stale": true
+    },
+    {
+      "term": "[Gulf] On Basel adoption, GCC regulators have broadly:",
+      "sub": "A) rejected the Basel framework outright    B) adopted only the original Basel I accord    C) implemented Basel III, often with high capital ratios    D) imposed no binding capital requirements at all",
+      "definition": "Correct: C) implemented Basel III, often with high capital ratios. GCC supervisors implement Basel III, and regional banks typically hold capital comfortably above the minimum ratios.",
+      "note": "[1] Central Bank of the UAE — https://www.centralbank.ae/",
+      "category": "gulf",
+      "last_updated": "2026-06-29",
+      "stale": true
+    },
+    {
+      "term": "[Gulf] The IFSB sets:",
+      "sub": "A) regional crude-oil benchmark prices    B) prudential standards for Islamic financial institutions    C) individual Sharia rulings for retail customers    D) the EU's harmonised bank capital rules",
+      "definition": "Correct: B) prudential standards for Islamic financial institutions. The Islamic Financial Services Board (Kuala Lumpur) issues prudential and supervisory standards — capital adequacy, risk management — adapting Basel to Islamic finance.",
+      "note": "[1] Islamic Financial Services Board — https://www.ifsb.org/",
+      "category": "gulf",
+      "last_updated": "2026-06-29",
+      "stale": true
+    },
+    {
+      "term": "[Gulf] AAOIFI, based in Bahrain, issues:",
+      "sub": "A) regional monetary-policy decisions    B) credit ratings for sovereign sukuk issuers    C) Sharia, accounting and governance standards for Islamic finance    D) approvals for sukuk stock-exchange listings",
+      "definition": "Correct: C) Sharia, accounting and governance standards for Islamic finance. The Accounting and Auditing Organization for Islamic Financial Institutions sets widely adopted Sharia and accounting standards.",
+      "note": "[1] AAOIFI — https://aaoifi.com/",
+      "category": "gulf",
+      "last_updated": "2026-06-29",
+      "stale": true
+    },
+    {
+      "term": "[Gulf] 'Riba', which Islamic finance prohibits, refers to:",
+      "sub": "A) interest / usury    B) short-selling of securities    C) excessive contractual uncertainty    D) speculative gambling-like contracts",
+      "definition": "Correct: A) interest / usury. Islamic finance bars riba (interest), and also gharar (excessive uncertainty) and maysir (gambling), favouring asset-backed, risk-sharing structures.",
+      "note": "[1] Islamic Financial Services Board — https://www.ifsb.org/",
+      "category": "gulf",
+      "last_updated": "2026-06-29",
+      "stale": true
+    },
+    {
+      "term": "[Gulf] A sukuk is best described as:",
+      "sub": "A) a Sharia-compliant certificate of ownership in an underlying asset or venture    B) an ordinary listed equity share carrying voting rights    C) a conventional fixed-coupon interest-bearing bond    D) a profit-sharing bank deposit account for savers",
+      "definition": "Correct: A) a Sharia-compliant certificate of ownership in an underlying asset or venture. Sukuk pay returns generated by real assets or projects rather than interest, so holders bear ownership/asset risk.",
+      "note": "[1] AAOIFI — https://aaoifi.com/",
+      "category": "gulf",
+      "last_updated": "2026-06-29",
+      "stale": true
+    },
+    {
+      "term": "[Gulf] A profit-sharing investment account (PSIA) is typically structured as a:",
+      "sub": "A) mudarabah where the bank invests the funds and shares profit/loss    B) fixed-rate term deposit with a guaranteed return    C) block of ordinary equity in the bank itself    D) senior unsecured loan extended to the bank",
+      "definition": "Correct: A) mudarabah where the bank invests the funds and shares profit/loss. Under a mudarabah the holder supplies capital and the bank manages it; returns depend on actual profit and the holder bears investment losses (absent misconduct).",
+      "note": "[1] Islamic Financial Services Board — https://www.ifsb.org/",
+      "category": "gulf",
+      "last_updated": "2026-06-29",
+      "stale": true
+    },
+    {
+      "term": "[Gulf] Under IFSB capital rules, assets funded by unrestricted PSIA are:",
+      "sub": "A) fully included, at par, in the capital-ratio denominator    B) partly excluded, with an 'alpha' share kept for displaced commercial risk    C) never made subject to any capital requirement at all    D) charged double the standard regulatory capital",
+      "definition": "Correct: B) partly excluded, with an 'alpha' share kept for displaced commercial risk. Because PSIA holders absorb investment risk, their funded assets are largely removed from risk-weighted assets — but supervisors retain an 'alpha' fraction to reflect displaced commercial risk (the bank smoothing returns to retain depositors).",
+      "note": "[1] Islamic Financial Services Board — https://www.ifsb.org/",
+      "category": "gulf",
+      "last_updated": "2026-06-29",
+      "stale": true
+    },
+    {
+      "term": "[Italy] You must validate the IRB credit-risk model of a mid-sized Italian bank that still carries a legacy non-performing-loan (NPL) book. Outline your approach and what is specific to the Italian/EU context.",
+      "sub": "Open-ended exercise — structure a full answer in ~30 min (written or spoken).",
+      "definition": "This tests whether you can run a structured validation and then layer the local context on top, not whether you can list Italian acronyms. Start generic: is the model still fit for use? Check that the current portfolio still resembles the development data, that it still separates good borrowers from bad, that predicted default rates match what actually happened, and that it is stable and properly used. Then add what is Italy/EU-specific and reason about how each one bites. A legacy NPL book means the historical data is dominated by work-out and disposal dynamics — and state-guaranteed GACS securitisations may have removed bad loans from the book — so the default sample may not represent fresh lending. The EU harmonised definition of default and supervisory 'calendar provisioning' change how and when defaults and losses are recognised, which can break comparability with older vintages. Supervision is split: Banca d'Italia leads for a less-significant bank, the ECB via joint supervisory teams if it is significant, so expectations and documentation must match the relevant supervisor. Conclude with a clear call: recalibrate if the ranking still holds but levels have drifted; redevelop if discrimination has decayed or the book has structurally changed. The aptitude on show is adapting a general method to a specific market.",
+      "note": "[1] Banca d'Italia — https://www.bancaditalia.it/ · [2] ECB internal models — https://www.bankingsupervision.europa.eu/",
+      "category": "italy",
+      "last_updated": "2026-06-29",
+      "stale": true
+    },
+    {
+      "term": "[Gulf] Design the capital-adequacy treatment for an Islamic bank funded largely by profit-sharing investment accounts (PSIA). How does it differ from a conventional bank?",
+      "sub": "Open-ended exercise — structure a full answer in ~30 min (written or spoken).",
+      "definition": "They want you to reason from how the funding actually behaves, not to recite IFSB clauses. The key insight: PSIA holders are not depositors owed a fixed return — under a mudarabah they share in profits and bear investment losses, so economically they absorb risk more like investors than creditors. Reason through the consequence for capital: if those holders genuinely take the asset risk, the assets they fund should not all sit in the bank's risk-weighted denominator the way a conventional loan book does, so a large share is excluded and required capital falls. Then introduce the realistic complication: in practice banks smooth payouts to stop depositors leaving (displaced commercial risk), so the bank effectively bears some of that risk after all — which is why supervisors keep an 'alpha' fraction of PSIA-funded assets in the calculation rather than excluding them entirely. Round it out with constraints a conventional model ignores: no interest (riba) and no excessive uncertainty (gharar); asset-backed structures (sukuk, murabaha, ijara); and a Sharia board signing off products. The aptitude is reasoning from who bears the risk to how much capital is needed, and noticing that theory (full risk transfer) and practice (displaced commercial risk) diverge.",
+      "note": "[1] Islamic Financial Services Board — https://www.ifsb.org/ · [2] AAOIFI — https://aaoifi.com/",
+      "category": "gulf",
+      "last_updated": "2026-06-29",
+      "stale": true
+    },
+    {
+      "term": "[EU] A significant euro-area bank comes out badly in the EBA adverse stress-test scenario. Walk through what actually happens next.",
+      "sub": "Open-ended exercise — structure a full answer in ~30 min (written or spoken).",
+      "definition": "This checks that you understand the supervisory feedback loop, not just the modelling. The EU stress test is not a hard pass/fail — it is an input. Trace the chain: the projected capital depletion under the adverse scenario feeds the ECB's annual supervisory review (SREP), which turns a weak result into higher Pillar 2 guidance — the buffer the bank is expected to hold above its binding requirements for exactly this kind of stress. Sitting in or near that buffer triggers supervisory dialogue and constraints rather than instant failure: a credible capital plan, possible limits on dividends and buy-backs, and closer monitoring. Reason about the bank's levers — raise capital, cut risk-weighted assets, retain earnings — and the trade-offs of each. Then note the escalation path if capital actually falls toward the combined buffer or the minimum: automatic distribution restrictions, and ultimately the resolution machinery (SRB, bail-in, MREL) if the bank becomes non-viable. The aptitude is showing you grasp stress testing as a governance mechanism with graded consequences.",
+      "note": "[1] EBA stress testing — https://www.eba.europa.eu/ · [2] ECB Banking Supervision — https://www.bankingsupervision.europa.eu/",
+      "category": "eu",
+      "last_updated": "2026-06-29",
+      "stale": true
+    },
+    {
+      "term": "[Gulf] A Gulf bank wants to expand into the EU. Compare how it would be regulated there versus at home, and the choices it faces.",
+      "sub": "Open-ended exercise — structure a full answer in ~30 min (written or spoken).",
+      "definition": "They are probing whether you can reason across two regulatory regimes, not recall statutes. Frame the core choice: to do meaningful banking business in the EU the bank generally needs an authorised EU presence — typically a subsidiary, an EU-incorporated bank supervised under the same CRR/CRD rules as any other (and, if significant, directly by the ECB under the SSM), versus a branch, which has narrower scope and no cross-border EU passport. Contrast with home: GCC supervision (say CBUAE or SAMA) is Basel III-based too, so the prudential language rhymes, but the EU layers on the single rulebook, harmonised resolution (SRB/MREL), an EU deposit guarantee, and conduct regimes (MiFID II) that can be heavier than at home. Reason about the practical decision factors: which activities (retail, wholesale, markets), how much capital and liquidity gets trapped locally, whether to lean on a free-zone track record (DIFC/ADGM common-law) as a bridge, and Islamic-finance products needing EU-compatible structuring. Close on third-country 'equivalence' being patchy, so a subsidiary is usually the robust route. The aptitude is mapping one framework onto another and surfacing the trade-offs.",
+      "note": "[1] ECB Banking Supervision — https://www.bankingsupervision.europa.eu/ · [2] Central Bank of the UAE — https://www.centralbank.ae/",
+      "category": "gulf",
+      "last_updated": "2026-06-29",
+      "stale": true
+    },
+    {
+      "type": "truefalse",
+      "category": "eu",
+      "answer": false,
+      "term": "[EU] The EBA directly supervises significant euro-area banks.",
+      "summary": "False — that's the ECB, via the SSM.",
+      "definition": "False — the ECB directly supervises significant institutions through the Single Supervisory Mechanism. The EBA writes the single rulebook and runs the EU-wide stress test, but it does not supervise individual banks.",
+      "note": "[1] ECB Banking Supervision — https://www.bankingsupervision.europa.eu/",
+      "last_updated": "2026-06-29",
+      "stale": true
+    },
+    {
+      "type": "truefalse",
+      "category": "eu",
+      "answer": true,
+      "term": "[EU] Expected Shortfall is always at least as large as VaR at the same confidence level.",
+      "summary": "True — ES is the average loss beyond VaR, so it can't be smaller.",
+      "definition": "True. Expected Shortfall is the mean loss in the tail beyond the VaR threshold, so by construction ES ≥ VaR at the same confidence — which is why it captures tail severity that VaR ignores.",
+      "note": "[1] EBA — https://www.eba.europa.eu/",
+      "last_updated": "2026-06-29",
+      "stale": true
+    },
+    {
+      "type": "truefalse",
+      "category": "gulf",
+      "answer": false,
+      "term": "[Gulf] Sukuk pay a fixed rate of interest, just like a conventional bond.",
+      "summary": "False — returns come from real assets, not interest (riba is prohibited).",
+      "definition": "False. Sukuk are Sharia-compliant certificates of ownership in an underlying asset or venture; their returns are generated by those real assets, not by interest (riba), which is prohibited. Holders therefore bear asset/ownership risk.",
+      "note": "[1] AAOIFI — https://aaoifi.com/",
+      "last_updated": "2026-06-29",
+      "stale": true
+    },
+    {
+      "type": "multi",
+      "category": "eu",
+      "choices": [
+        "EBA",
+        "ECB",
+        "EIOPA",
+        "SAMA"
+      ],
+      "answers": [
+        0,
+        1,
+        2
+      ],
+      "term": "[EU] Which of these are EU-level supervisory or standard-setting authorities? Select all that apply.",
+      "summary": "EBA, ECB and EIOPA are EU bodies; SAMA is Saudi Arabia's central bank.",
+      "definition": "The EBA (banks/rulebook), the ECB (SSM supervision) and EIOPA (insurance & pensions) are EU authorities. SAMA is the Saudi Central Bank, not an EU body.",
+      "note": "[1] EU supervision — https://www.bankingsupervision.europa.eu/",
+      "last_updated": "2026-06-29",
+      "stale": true
+    },
+    {
+      "type": "multi",
+      "category": "gulf",
+      "choices": [
+        "No riba (interest)",
+        "No gharar (excessive uncertainty)",
+        "Guaranteed fixed returns",
+        "Asset-backing"
+      ],
+      "answers": [
+        0,
+        1,
+        3
+      ],
+      "term": "[Gulf] Which principles must Sharia-compliant finance respect? Select all that apply.",
+      "summary": "Prohibits riba and gharar and requires asset-backing; guaranteed fixed returns are not allowed.",
+      "definition": "Islamic finance prohibits riba (interest) and gharar (excessive uncertainty) and requires real asset-backing and risk-sharing. Guaranteed fixed returns are not permitted, since the provider of capital must share in risk.",
+      "note": "[1] IFSB — https://www.ifsb.org/",
+      "last_updated": "2026-06-29",
+      "stale": true
+    },
+    {
+      "type": "cloze",
+      "category": "eu",
+      "term": "[EU] The Basel leverage-ratio minimum is {{3}}% of Tier 1 capital to total exposure.",
+      "summary": "3% — a non-risk-based backstop to the risk-weighted requirements.",
+      "definition": "The leverage ratio requires Tier 1 capital of at least 3% of total exposure, a simple backstop that does not depend on risk weights.",
+      "note": "[1] EUR-Lex (CRR) — https://eur-lex.europa.eu/",
+      "last_updated": "2026-06-29",
+      "stale": true
+    },
+    {
+      "type": "cloze",
+      "category": "gulf",
+      "term": "[Gulf] An Islamic profit-sharing investment account is structured as a {{mudarabah}}, where the bank invests the funds and shares profit and loss with the holder.",
+      "summary": "A mudarabah — the holder supplies capital, the bank manages it, and both share the outcome.",
+      "definition": "Under a mudarabah the account holder provides capital and the bank acts as manager; returns depend on the actual profit earned, and the holder bears investment losses absent misconduct. This risk-sharing is why PSIA-funded assets get special capital treatment under IFSB rules.",
+      "note": "[1] IFSB — https://www.ifsb.org/",
+      "last_updated": "2026-06-29",
+      "stale": true
+    }
+  ]
+}

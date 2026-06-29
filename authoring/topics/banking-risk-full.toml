@@ -1,0 +1,23 @@
+# Banking Risk — Full Curriculum, authored in TOML.
+# Convert with:  python3 tools/toml-to-json.py authoring/topics/banking-risk-full.toml data/topics/banking-risk-full.json
+# A "set" references deck files (or inlines whole decks under [[decks]]).
+
+topic = "Banking Risk — Full Curriculum"
+id = "banking-risk-full"
+description = "282 concepts across twelve decks — foundations through Basel, quant methods and stress testing. A study companion for risk and quant interviews."
+author = "lernkarto contributors"
+
+deckFiles = [
+  "foundations.json",
+  "market-risk.json",
+  "interest-rate-alm.json",
+  "credit-risk.json",
+  "counterparty-xva.json",
+  "liquidity-funding.json",
+  "operational-model.json",
+  "quant-methods.json",
+  "derivatives-pricing.json",
+  "regulation-capital.json",
+  "portfolio-investment.json",
+  "stress-scenario.json",
+]

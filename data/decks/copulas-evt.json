@@ -1,0 +1,121 @@
+{
+  "id": "copulas-evt",
+  "name": "Copulas & extreme-value theory",
+  "color": "#4dabf7",
+  "description": "Sklar's theorem and the copula idea, tail dependence, the Gaussian/Student-t/Clayton/Gumbel families, and extreme-value theory (block maxima → GEV, peaks-over-threshold → GPD) — the tools for modelling joint and far-tail risk.",
+  "categories": {
+    "core": "Core",
+    "theorems": "Theorems",
+    "use": "Use & limits",
+    "exercise": "Exercises"
+  },
+  "primerTitle": "Copulas & EVT — quick recap",
+  "primer": "## Copulas\\n\\n- A **copula** is a joint CDF whose one-dimensional margins are **uniform on $[0,1]$** — it captures only the **dependence structure**, letting you choose each variable's marginal and their co-movement **separately**.\\n- **Sklar's theorem**: any joint CDF factors as $F(x,y)=C\\\\big(F_X(x),F_Y(y)\\\\big)$, and the copula $C$ is **unique when the margins are continuous** — so the margins-vs-dependence split is always possible.\\n\\n## Tail dependence\\n\\n- **Tail dependence $\\\\lambda$** = limiting conditional probability that one variable is extreme **given** the other is. $\\\\lambda>0$ = extremes occur together; $\\\\lambda=0$ = far-tail behaviour as if independent. It is a property of the **copula, not the margins**.\\n- **Gaussian copula**: $\\\\lambda=0$ even at high correlation → joint crashes vanish in the tail (the CDO criticism before 2008).\\n- **Family table**: **Student-t** — dependence in **both** tails (symmetric, fatter than Gaussian); **Clayton** — **lower**-tail (joint crashes); **Gumbel** — **upper**-tail (joint booms); **Gaussian** — none. So to model assets that **crash together but rally independently**, use **Clayton** (or t for symmetric tail dependence).\\n\\n## Extreme Value Theory\\n\\n- EVT models the **tail itself** rather than the whole distribution. Two approaches:\\n- **Block maxima → GEV**: take the max of each block (e.g. annual max loss), fit the **Generalised Extreme Value** family. Justified by **Fisher–Tippett–Gnedenko** (the 'extremal CLT': rescaled block maxima of i.i.d. data converge to GEV). The shape parameter $\\\\xi$ selects the tail: **$\\\\xi>0$ Fréchet** (fat power-law, typical for losses), **$\\\\xi=0$ Gumbel** (light exponential), **$\\\\xi<0$ Weibull** (bounded above).\\n- **Peaks-over-threshold (POT) → GPD**: take exceedances above a high threshold, fit the **Generalised Pareto Distribution**. Justified by **Pickands–Balkema–de Haan** (exceedances converge to GPD as the threshold rises). POT keeps **every** large observation, not one per block, so it uses scarce tail data **more efficiently** — better for rare quantiles (e.g. 1-in-50-year VaR from limited years).\\n\\n## Why both matter\\n\\n- **EVT** fits the far tail directly → more reliable high-quantile **VaR/ES** than a whole-distribution Gaussian fit. **Copulas** model how many positions blow up **together** — tail dependence Gaussian correlation misses. Tail risk = fat tails **and** tail dependence.\\n- **Caveat**: tail estimates rest on **few** extreme observations → data-hungry and sensitive to threshold, block size, and copula-family choice; wide uncertainty and model risk.",
+  "cards": [
+    {
+      "category": "core",
+      "term": "What is a copula, and what does it let you separate?",
+      "summary": "A joint CDF with uniform margins — it encodes dependence apart from the marginals.",
+      "definition": "A copula is a multivariate distribution function whose one-dimensional margins are uniform on $[0,1]$. It captures only the dependence structure between variables, letting you model each variable's marginal distribution and the way they co-move as two independent choices.",
+      "note": "Builds on the marginal distributions in the Probability distributions set.",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "category": "theorems",
+      "term": "State Sklar's theorem.",
+      "summary": "Any joint CDF factors as a copula of its marginal CDFs; the copula is unique for continuous margins.",
+      "definition": "Sklar's theorem: for any joint CDF $F$ with margins $F_X,F_Y$ there exists a copula $C$ with $F(x,y)=C\\big(F_X(x),F_Y(y)\\big)$, and $C$ is unique when the margins are continuous. This is what guarantees the margins-and-dependence split is always possible.",
+      "formula": "$F(x,y)=C\\big(F_X(x),\\,F_Y(y)\\big)$",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "category": "core",
+      "term": "Tail dependence $\\lambda$ measures the probability that one variable is extreme {{given}} the other is, in the limit.",
+      "definition": "Tail dependence is the limiting conditional probability that $X$ exceeds a high (or low) quantile given that $Y$ does. $\\lambda>0$ means extremes occur together; $\\lambda=0$ means that in the far tail the variables behave as if independent. It is a property of the copula, not the margins.",
+      "type": "cloze",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "category": "theorems",
+      "term": "[Copulas] What is the tail dependence of the Gaussian copula, and why is that a problem for risk?",
+      "sub": "A) zero — extremes become asymptotically independent, so it under-models joint crashes    B) one — everything crashes together    C) it depends on the margins    D) it is always negative",
+      "definition": "Correct: A) zero — extremes become asymptotically independent. Even with high correlation, the Gaussian copula has $\\lambda=0$: the chance of a *joint* extreme vanishes in the tail. Trusting it makes simultaneous defaults/crashes look far less likely than they are — the criticism levelled at the Gaussian-copula CDO models before 2008.",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "category": "use",
+      "term": "[Copulas] Match the copula to its tail behaviour — which is correct?",
+      "sub": "A) Student-t: dependence in BOTH tails    B) Clayton: upper-tail dependence only    C) Gumbel: lower-tail dependence only    D) Gaussian: strong lower-tail dependence",
+      "definition": "Correct: A) Student-t: dependence in both tails. The t-copula is symmetric with fatter joint tails than Gaussian. Clayton has *lower*-tail dependence (joint crashes), Gumbel has *upper*-tail dependence (joint booms), and Gaussian has none. Picking the copula chooses where co-movement concentrates.",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "category": "use",
+      "term": "Which copula would you choose to capture assets that crash together but rally more independently?",
+      "summary": "Clayton — lower-tail dependence.",
+      "definition": "The Clayton copula concentrates dependence in the lower tail, so joint large losses are modelled as more likely than joint large gains. That asymmetry matches the stylised fact that markets 'fall together' in crises far more than they 'rise together'.",
+      "note": "Gumbel is the mirror image (upper-tail / joint booms).",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "category": "core",
+      "term": "What does Extreme Value Theory (EVT) model, and what are its two main approaches?",
+      "summary": "The tail itself — via block maxima (GEV) or peaks-over-threshold (GPD).",
+      "definition": "EVT models the behaviour of extremes rather than the whole distribution. Block maxima takes the maximum of each block (e.g. annual maximum loss) and fits the Generalised Extreme Value (GEV) distribution; peaks-over-threshold (POT) takes exceedances above a high threshold and fits the Generalised Pareto Distribution (GPD).",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "category": "theorems",
+      "term": "[Copulas] In EVT, the block-maxima approach is justified by which result?",
+      "sub": "A) Fisher–Tippett–Gnedenko: block maxima converge to the GEV distribution    B) the Central Limit Theorem    C) Sklar's theorem    D) the law of large numbers",
+      "definition": "Correct: A) Fisher–Tippett–Gnedenko. This 'extremal CLT' says that, after rescaling, the maximum of an i.i.d. block converges to the Generalised Extreme Value family — the analogue of the CLT but for maxima instead of means.",
+      "note": "Contrast: the ordinary CLT governs sums/means (Normal deck).",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "category": "core",
+      "term": "The GEV shape parameter $\\xi$ selects the tail type: $\\xi>0$ gives the fat-tailed {{Frechet}} type, $\\xi=0$ the Gumbel type, and $\\xi<0$ the bounded Weibull type.",
+      "definition": "The GEV unifies three limit shapes through one shape parameter $\\xi$: Fréchet ($\\xi>0$, heavy/polynomial tail — typical for financial losses), Gumbel ($\\xi=0$, light exponential tail), and Weibull ($\\xi<0$, a finite upper bound). Estimating $\\xi$ tells you how heavy the tail is.",
+      "type": "cloze",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "category": "theorems",
+      "term": "What does the peaks-over-threshold (POT) approach fit, and on what theorem does it rest?",
+      "summary": "Exceedances over a high threshold → Generalised Pareto Distribution (Pickands–Balkema–de Haan).",
+      "definition": "POT models the exceedances of a high threshold; the Pickands–Balkema–de Haan theorem says these exceedances converge to the Generalised Pareto Distribution (GPD) as the threshold rises. POT typically uses the data more efficiently than block maxima because it keeps every large observation, not just one per block.",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "category": "use",
+      "term": "Why do copulas and EVT matter for tail risk, in one sentence each?",
+      "summary": "EVT fits the tail directly (better far VaR/ES); copulas model how losses cluster jointly.",
+      "definition": "EVT estimates the shape of the far tail directly, giving more reliable high-quantile VaR and Expected Shortfall than fitting a whole Gaussian. Copulas model the dependence in the tails — how many positions blow up together — which Gaussian correlation alone misses. Tail risk is driven by both fat tails and tail dependence.",
+      "note": "Ties to VaR/ES from the market-risk material.",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "category": "use",
+      "term": "[Copulas] A practical caveat of EVT and copula tail modelling is:",
+      "sub": "A) tail estimates rely on few extreme observations, so they are data-hungry and sensitive to threshold/copula choice    B) they cannot be fitted to financial data    C) they only work for symmetric data    D) they ignore the marginals entirely",
+      "definition": "Correct: A) tail estimates rely on few extreme observations, so they are data-hungry and sensitive to choices. By construction the tail is sparse, so GPD threshold selection, GEV block size, and copula family choice all materially move the answer — extreme-quantile estimates carry wide uncertainty and model risk.",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "category": "exercise",
+      "term": "[Exercise] Two equity indices are highly correlated. A risk team wants their model to make simultaneous large losses appropriately likely. Why is a Gaussian copula a poor choice, and what fixes it?",
+      "summary": "Gaussian has zero tail dependence, so joint crashes vanish in the tail; use a t- or Clayton copula.",
+      "definition": "High linear correlation does not give a Gaussian copula any tail dependence ($\\lambda=0$): in the far tail the indices behave as if independent, so joint crashes are under-counted. Switching to a Student-t copula (symmetric tail dependence) or a Clayton copula (lower-tail dependence) restores realistic joint-loss probabilities.",
+      "note": "Derives from the zero-tail-dependence fact and the copula-family table.",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "category": "exercise",
+      "term": "[Exercise] You have 30 years of daily losses and want a 1-in-50-year VaR. Why might peaks-over-threshold beat annual block maxima here?",
+      "summary": "POT keeps all large exceedances, not one max per year, so it uses scarce tail data far more efficiently.",
+      "definition": "Annual block maxima would yield only 30 data points (one per year) to fit the tail, wasting other large losses within each year. POT keeps every exceedance above a high threshold — many more tail observations — giving a more efficient GPD fit and a more stable extrapolation to the 1-in-50-year quantile.",
+      "note": "Derives from the POT-vs-block-maxima efficiency point in the primer.",
+      "last_updated": "2026-06-29"
+    }
+  ]
+}

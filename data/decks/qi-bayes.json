@@ -1,0 +1,156 @@
+{
+  "id": "qi-bayes",
+  "name": "Bayes & conditional probability",
+  "color": "#e64980",
+  "description": "Updating beliefs given evidence: base-rate traps, the two-children/at-least-one subtlety, Monty Hall, and which-source posteriors. The intuitive answer is usually the pla",
+  "tags": [
+    "aptitude",
+    "interview",
+    "quant",
+    "bayes"
+  ],
+  "primerTitle": "Bayes & conditional — method",
+  "primer": "## Posterior ∝ prior × likelihood\n- **Base-rate trap:** a rare disease + 5% false positives → P(sick|+) only 1/6 despite 99% sensitivity; a 2nd independent positive → ~80%.\n- **'At least one' ≠ 'a specific one':** two children with ≥1 boy → P(both boys)=1/3; two dice with ≥1 six → P(both six)=1/11.\n- **Monty Hall** (4 doors, host opens 2): switch wins 3/4.\n- **Weight each hypothesis** by how well it explains the evidence (double-headed coin after HH → 4/5).",
+  "cards": [
+    {
+      "term": "A disease affects 1 in 100 people. A test detects it in 99% of people who have it, but also gives a positive result in 5% of people who do NOT have it. A randomly chosen person tests positive. What is the probability that they actually have the disease?",
+      "choices": [
+        "1/6",
+        "1/20",
+        "19/20",
+        "99/100",
+        "1/2"
+      ],
+      "answer": 0,
+      "type": "mcq",
+      "definition": "Correct: 1/6. Bayes' rule: P(disease | +) = (0.99 x 0.01) / (0.99 x 0.01 + 0.05 x 0.99) = 1/6 ~ 16.7%. Because the disease is rare, most positives are false positives - the 99% sensitivity is the trap.",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "A family has two children. You are told that at least one of them is a boy. What is the probability that both children are boys? (Assume each child is independently a boy or girl with probability 1/2.)",
+      "choices": [
+        "1/3",
+        "1/4",
+        "2/3",
+        "1/2",
+        "1/8"
+      ],
+      "answer": 0,
+      "type": "mcq",
+      "definition": "Correct: 1/3. The equally likely cases are BB, BG, GB, GG. 'At least one boy' removes GG, leaving three cases, only one of which (BB) is two boys: 1/3. The instinct 1/2 ignores that BG and GB are two separate, equally likely outcomes.",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "There are 4 doors; one hides a car, the others goats. You pick a door. The host, who knows where the car is, opens 2 of the other 3 doors, both revealing goats, and offers you the chance to switch to the one remaining unopened door. If you switch, what is your probability of winning the car?",
+      "choices": [
+        "1/3",
+        "3/4",
+        "1/4",
+        "2/3",
+        "1/2"
+      ],
+      "answer": 1,
+      "type": "mcq",
+      "definition": "Correct: 3/4. Your first pick is right with probability 1/4, so the car is behind one of the other doors with probability 3/4 - and the host has concentrated all of that onto the single remaining door. Switching wins 3/4 of the time.",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "One coin is fair; another is double-headed (both sides heads). You pick one of the two coins at random and flip it twice, getting heads both times. What is the probability you picked the double-headed coin?",
+      "choices": [
+        "4/5",
+        "3/4",
+        "1/2",
+        "1/3",
+        "2/3"
+      ],
+      "answer": 0,
+      "type": "mcq",
+      "definition": "Correct: 4/5. P(DH | HH) = (1 x 1/2) / (1 x 1/2 + 1/4 x 1/2) = (1/2)/(5/8) = 4/5. Each additional head makes the double-headed coin more likely; with three heads it would be 8/9.",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "Urn 1 contains 2 red and 1 blue ball; Urn 2 contains 1 red and 3 blue balls. You pick an urn at random and draw one ball, which is red. What is the probability it came from Urn 1?",
+      "choices": [
+        "3/11",
+        "8/11",
+        "1/2",
+        "8/24",
+        "2/3"
+      ],
+      "answer": 1,
+      "type": "mcq",
+      "definition": "Correct: 8/11. P(Urn1 | red) = (1/2 x 2/3) / (1/2 x 2/3 + 1/2 x 1/4) = (1/3)/(11/24) = 8/11. Urn 1 is more likely because it yields red more often.",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "Continuing the disease example (1 in 100 prevalence, 99% detection, 5% false-positive rate): a person who already tested positive once now takes a SECOND independent test, which is also positive. What is the probability they have the disease now?",
+      "choices": [
+        "about 80%",
+        "about 50%",
+        "about 33%",
+        "about 17%",
+        "about 99%"
+      ],
+      "answer": 0,
+      "type": "mcq",
+      "definition": "Correct: about 80%. Use the first posterior (1/6) as the new prior: P = (0.99 x 1/6) / (0.99 x 1/6 + 0.05 x 5/6) = 99/124 ~ 79.8%. A second positive moves you from 'probably fine' to 'probably sick' - independent evidence compounds.",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "Three cards sit in a hat: one is red on both sides, one is black on both sides, and one is red on one side and black on the other. You draw a card at random and look at one side: it is red. What is the probability the other side is also red?",
+      "choices": [
+        "2/3",
+        "1/4",
+        "3/4",
+        "1/3",
+        "1/2"
+      ],
+      "answer": 0,
+      "type": "mcq",
+      "definition": "Correct: 2/3. Of the three equally likely red faces you could be seeing (two on the red/red card, one on the red/black card), two have red on the reverse: 2/3. The seductive 1/2 forgets the red/red card offers two ways to show red.",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "A bag holds three coins with heads-probabilities 0.2, 0.5, and 0.8. You pick one coin at random and flip it once, getting heads. What is the probability you picked the 0.8 coin?",
+      "choices": [
+        "2/5",
+        "4/5",
+        "8/15",
+        "1/3",
+        "1/2"
+      ],
+      "answer": 2,
+      "type": "mcq",
+      "definition": "Correct: 8/15. Posterior is proportional to each coin's chance of heads: 0.8 / (0.2 + 0.5 + 0.8) = 0.8/1.5 = 8/15. Bayes here is just 'weight each hypothesis by how well it explains the heads'.",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "Two fair dice are rolled and you are told their sum is 7. What is the probability that at least one of the dice shows a 3?",
+      "choices": [
+        "1/9",
+        "1/2",
+        "1/6",
+        "2/11",
+        "1/3"
+      ],
+      "answer": 4,
+      "type": "mcq",
+      "definition": "Correct: 1/3. Conditioning on sum 7 leaves six equally likely ordered outcomes: (1,6),(2,5),(3,4),(4,3),(5,2),(6,1). Two of them contain a 3, so the probability is 2/6 = 1/3.",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "Two fair dice are rolled and you are told that at least one of them shows a 6. What is the probability that both dice show a 6?",
+      "choices": [
+        "1/11",
+        "1/6",
+        "2/11",
+        "1/12",
+        "1/36"
+      ],
+      "answer": 0,
+      "type": "mcq",
+      "definition": "Correct: 1/11. There are 11 ordered outcomes containing at least one 6, and only one of them is (6,6): 1/11. This is the same subtlety as the two-children problem - 'at least one' is not the same as 'a specific one'.",
+      "last_updated": "2026-06-29"
+    }
+  ]
+}

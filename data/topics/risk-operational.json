@@ -1,0 +1,12 @@
+{
+  "topic": "Operational, model & stress",
+  "id": "risk-operational",
+  "standard": true,
+  "primerTitle": "Operational, model & stress",
+  "primer": "## Operational, model & stress\nNon-financial risks and forward-looking testing. Pairs the **operational / model / stress vocabulary** (event types, SMA, model risk, reverse stress tests) with the **Operational & model** and **Stress & scenario** decks (RCSA/KRI, SR 11-7, supervisory stress tests).",
+  "deckFiles": [
+    "risk-glossary-oprisk.json",
+    "operational-model.json",
+    "stress-scenario.json"
+  ]
+}

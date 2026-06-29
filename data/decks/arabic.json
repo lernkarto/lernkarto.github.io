@@ -1,0 +1,153 @@
+{
+  "id": "arabic",
+  "name": "Arabic alphabet",
+  "color": "#ff9f43",
+  "dual": true,
+  "lang": "ar",
+  "description": "The 28 letters of the Arabic abjad, shown in isolated form (letters connect and change shape by position). Written right-to-left. Each letter is tested both ways, tracked separately.",
+  "primerTitle": "Arabic alphabet — quick recap",
+  "primer": "The Arabic alphabet is an **abjad** of **28 letters** written **right-to-left**. It marks consonants and long vowels; short vowels are added as optional diacritics. Most letters change shape depending on position (isolated / initial / medial / final) and connect to their neighbours — but several letters never join to the *following* letter (ا د ذ ر ز و). The forms below are the **isolated** forms. Several letters are distinguished only by dots above or below the same base shape (e.g. ب/ت/ث, ج/ح/خ). Arabic also has *emphatic* (pharyngealised) consonants written with ṣ/ḍ/ṭ/ẓ.\n\n**Full mapping — letter → name → sound:**\n\n- **ا** — alif — long 'a' / glottal stop\n- **ب** — ba — b\n- **ت** — ta — t\n- **ث** — tha — th (as in 'think')\n- **ج** — jim — j\n- **ح** — ha — emphatic h (ḥ)\n- **خ** — kha — kh (as in 'loch')\n- **د** — dal — d\n- **ذ** — dhal — dh (as in 'this')\n- **ر** — ra — r (rolled)\n- **ز** — zay — z\n- **س** — sin — s\n- **ش** — shin — sh\n- **ص** — sad — emphatic s (ṣ)\n- **ض** — dad — emphatic d (ḍ) — Arabic is nicknamed 'the language of the ḍād'\n- **ط** — ta — emphatic t (ṭ)\n- **ظ** — za — emphatic dh/z (ẓ)\n- **ع** — ayn — voiced pharyngeal (ʿ)\n- **غ** — ghayn — gh (guttural)\n- **ف** — fa — f\n- **ق** — qaf — q (uvular k)\n- **ك** — kaf — k\n- **ل** — lam — l\n- **م** — mim — m\n- **ن** — nun — n\n- **ه** — ha — h\n- **و** — waw — w (or long 'u')\n- **ي** — ya — y (or long 'i')\n\n**Special cases:** ا و ي double as the long vowels ā / ū / ī; ع (ayn) and ء (hamza, the glottal stop) have no English equivalent; the emphatic pairs (ص/س, ض/د, ط/ت, ظ/ذ) sound deeper/back in the throat than their plain counterparts.",
+  "cards": [
+    {
+      "term": "ا",
+      "definition": "alif — long 'a' / glottal stop",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "ب",
+      "definition": "ba — b",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "ت",
+      "definition": "ta — t",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "ث",
+      "definition": "tha — th (as in 'think')",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "ج",
+      "definition": "jim — j",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "ح",
+      "definition": "ha — emphatic h (ḥ)",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "خ",
+      "definition": "kha — kh (as in 'loch')",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "د",
+      "definition": "dal — d",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "ذ",
+      "definition": "dhal — dh (as in 'this')",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "ر",
+      "definition": "ra — r (rolled)",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "ز",
+      "definition": "zay — z",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "س",
+      "definition": "sin — s",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "ش",
+      "definition": "shin — sh",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "ص",
+      "definition": "sad — emphatic s (ṣ)",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "ض",
+      "definition": "dad — emphatic d (ḍ)",
+      "note": "Arabic is nicknamed 'the language of the ḍād'.",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "ط",
+      "definition": "ta — emphatic t (ṭ)",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "ظ",
+      "definition": "za — emphatic dh/z (ẓ)",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "ع",
+      "definition": "ayn — voiced pharyngeal (ʿ)",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "غ",
+      "definition": "ghayn — gh (guttural)",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "ف",
+      "definition": "fa — f",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "ق",
+      "definition": "qaf — q (uvular k)",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "ك",
+      "definition": "kaf — k",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "ل",
+      "definition": "lam — l",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "م",
+      "definition": "mim — m",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "ن",
+      "definition": "nun — n",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "ه",
+      "definition": "ha — h",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "و",
+      "definition": "waw — w (or long 'u')",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "ي",
+      "definition": "ya — y (or long 'i')",
+      "last_updated": "2026-06-29"
+    }
+  ]
+}

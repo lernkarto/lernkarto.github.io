@@ -1,0 +1,140 @@
+{
+  "id": "frm-practice",
+  "name": "FRM — practice areas",
+  "color": "#ff6b6b",
+  "description": "How the FRM discipline is organised in a firm: hedging programmes, ALM, treasury, model governance and the regulatory frame.",
+  "tags": [
+    "risk",
+    "financial risk management",
+    "ALM",
+    "treasury",
+    "governance",
+    "regulation"
+  ],
+  "primerTitle": "FRM in practice — functions & frame",
+  "primer": "In a real firm, financial risk management is split across recognisable **functions**, each owning part of the cycle (identify → measure → mitigate → monitor).\n\n**Hedging programmes.** Corporates run standing programmes in which risk analysts manage and hedge exposures using traded instruments to build **commodity-, interest-rate- and FX hedges**. A *programme* (vs a one-off trade) sets policy — what to hedge, how much, with which instruments, over what horizon — so hedging is systematic and governed, not discretionary.\n\n**Asset–liability management (ALM).** ALM is the discipline of managing **assets and liabilities together** so the firm can always meet obligations as they fall due. Its core concern is **interest-rate risk** in the banking book — changes in the yield curve move the value of (and income from) assets and liabilities by different amounts, depending on their **durations and repricing dates** — plus the structural **liquidity** of the balance sheet. ALM matches or deliberately mismatches durations and cash-flow timing within appetite; for insurers it ensures investments align with the timing and size of expected claim payouts.\n\n**Treasury.** The treasury function owns the firm's overall **funding and capital structure**: it manages cash and liquidity, raises funding, runs **interest-rate (and FX) hedging** for the institution as a whole, and operates a **funds-transfer-pricing (FTP)** framework that charges each business for the funding and liquidity it consumes. Treasury is where firm-level ALM decisions are executed.\n\n**Model governance.** Because FRM leans on models (VaR, pricing, PD/LGD), an independent function **validates** the models each division uses and controls **model risk** — the risk of loss from a model being wrong or misused. For VaR specifically, **backtesting** is especially employed: comparing predicted VaR against realised P&L and counting exceptions to check the model stays calibrated.\n\n**Regulatory context (brief).** For banks, the **Basel** framework anchors FRM. Under **Pillar 1**, regulators set **minimum regulatory capital** for quantifiable risks — principally credit, market and operational risk — computed against **risk-weighted assets (RWA)** via standardised or internal-model approaches. Under **Pillar 2**, a bank runs its own **ICAAP** (Internal Capital Adequacy Assessment Process) to capture *all* material risks and hold enough **economic capital** for them. **Basel III** added enhanced **stress testing**, a **leverage ratio**, and liquidity ratios — the **LCR** (Liquidity Coverage Ratio, short-term survival) and **NSFR** (Net Stable Funding Ratio, structural funding) — plus buffers for systemically important banks. Regulation sets the *floor*; the firm's own appetite and economic capital usually bind tighter.",
+  "source": "https://en.wikipedia.org/wiki/Financial_risk_management",
+  "license": "CC BY-SA 4.0",
+  "attribution": "Adapted from Wikipedia — 'Financial risk management' — licensed under CC BY-SA 4.0.",
+  "categories": {
+    "core": "Core",
+    "theorems": "Links",
+    "use": "Use & limits",
+    "exercise": "Exercises"
+  },
+  "cards": [
+    {
+      "category": "core",
+      "term": "Asset–liability management",
+      "sub": "ALM",
+      "definition": "The discipline of managing assets and liabilities together so the firm can meet obligations as they fall due. Its core concern is interest-rate risk in the banking book — yield-curve moves revalue assets and liabilities differently by duration and repricing date — together with the structural liquidity of the balance sheet.",
+      "note": "For an insurer, ALM ensures investments align with the timing and size of expected claim payouts.",
+      "last_updated": "2026-06-29",
+      "stale": true
+    },
+    {
+      "category": "core",
+      "term": "The risk that the treasury and ALM functions are most centrally concerned with in the banking book is {{interest-rate}} risk.",
+      "definition": "Changes in the yield curve move the value of, and income from, assets and liabilities by different amounts depending on their durations and repricing dates. Managing this mismatch — alongside structural liquidity — is the heart of ALM, executed by treasury.",
+      "type": "cloze",
+      "last_updated": "2026-06-29",
+      "stale": true
+    },
+    {
+      "category": "core",
+      "term": "Which function owns the firm's overall funding and capital structure and runs funds-transfer pricing?",
+      "sub": "A) The treasury    B) Internal audit    C) The trading desk    D) Model validation",
+      "definition": "Correct: A) The treasury. Treasury manages cash and liquidity, raises funding, runs firm-wide interest-rate and FX hedging, and operates the funds-transfer-pricing framework that charges each business for the funding and liquidity it uses. Audit assures, the desk takes positions, and validation checks models.",
+      "type": "mcq",
+      "last_updated": "2026-06-29",
+      "stale": true
+    },
+    {
+      "category": "core",
+      "term": "Model governance / model risk",
+      "definition": "Because FRM relies on models (VaR, pricing, PD/LGD), an independent function validates the models each division uses and controls model risk — the risk of loss from a model being wrong or misused. For VaR, backtesting is especially employed: comparing predicted VaR with realised P&L and counting exceptions to confirm the model stays calibrated.",
+      "note": "Validation is independent of the model's users by design.",
+      "last_updated": "2026-06-29",
+      "stale": true
+    },
+    {
+      "category": "core",
+      "term": "A hedging programme differs from a one-off hedge because it",
+      "sub": "A) is always cheaper    B) sets standing policy on what, how much and with which instruments to hedge    C) removes all basis risk    D) is run only by regulators",
+      "definition": "Correct: B) sets standing policy on what, how much and with which instruments to hedge. A programme makes hedging systematic and governed — over a defined horizon — rather than discretionary. It is not inherently cheaper, does not remove basis risk, and is run by the firm.",
+      "type": "mcq",
+      "last_updated": "2026-06-29",
+      "stale": true
+    },
+    {
+      "category": "theorems",
+      "term": "Under Basel Pillar 1, minimum regulatory capital is set for the three quantifiable risks: credit, market and {{operational}} risk.",
+      "definition": "Pillar 1 fixes the minimum capital for these principal quantifiable risks, computed against risk-weighted assets (RWA) using standardised or internal-model approaches. Risks not covered there are caught by Pillar 2.",
+      "type": "cloze",
+      "last_updated": "2026-06-29",
+      "stale": true
+    },
+    {
+      "category": "theorems",
+      "term": "Basel Pillar 1 vs Pillar 2",
+      "definition": "Pillar 1 sets minimum regulatory capital for the principal quantifiable risks — credit, market and operational — against risk-weighted assets via standardised or internal-model approaches. Pillar 2 requires the bank's own ICAAP (Internal Capital Adequacy Assessment Process) to capture all material risks and hold enough economic capital for them, so it covers what Pillar 1 misses.",
+      "note": "Pillar 1 = external minimum on named risks; Pillar 2 = the firm's own all-risks assessment.",
+      "last_updated": "2026-06-29",
+      "stale": true
+    },
+    {
+      "category": "theorems",
+      "term": "Which Basel III liquidity ratio targets a bank's structural, longer-term funding stability rather than short-term survival?",
+      "sub": "A) LCR    B) NSFR    C) RWA    D) ICAAP",
+      "definition": "Correct: B) NSFR. The Net Stable Funding Ratio addresses structural funding over a one-year horizon, while the LCR (Liquidity Coverage Ratio) covers short-term survival under stress. RWA is the capital denominator and ICAAP is the Pillar-2 self-assessment.",
+      "type": "mcq",
+      "last_updated": "2026-06-29",
+      "stale": true
+    },
+    {
+      "category": "use",
+      "term": "For a bank, regulatory minimum capital is always the binding constraint on how much risk it takes.",
+      "definition": "False. Regulation sets a floor; a bank's own risk appetite and economic-capital estimate (via ICAAP under Pillar 2) usually bind tighter, since they target the firm's chosen solvency standard and rating. The regulatory minimum is a backstop, not normally the active limit.",
+      "type": "truefalse",
+      "answer": false,
+      "summary": "False — regulatory capital is a floor; the firm's own appetite and economic capital usually bind tighter.",
+      "last_updated": "2026-06-29",
+      "stale": true
+    },
+    {
+      "category": "use",
+      "term": "Why does a treasury operate a funds-transfer-pricing (FTP) framework?",
+      "definition": "To charge each business line for the funding and liquidity it actually consumes, so the cost (and risk) of funding is reflected in each unit's economics. Without FTP, businesses would treat funding as free, mis-stating profitability and encouraging excess liquidity risk. FTP aligns incentives with the firm's ALM and liquidity position.",
+      "note": "FTP is how firm-level ALM costs are pushed down to the activities that create them.",
+      "last_updated": "2026-06-29",
+      "stale": true
+    },
+    {
+      "category": "use",
+      "term": "Backtesting is the model-governance control most specifically associated with validating which measure?",
+      "sub": "A) Value at Risk (VaR)    B) Funds-transfer pricing    C) The leverage ratio    D) Risk-weighted assets",
+      "definition": "Correct: A) Value at Risk (VaR). Backtesting compares predicted VaR against realised P&L and counts exceptions to check the model stays calibrated. FTP is a treasury pricing tool, and the leverage ratio and RWA are regulatory capital measures, not model-validation tests.",
+      "type": "mcq",
+      "last_updated": "2026-06-29",
+      "stale": true
+    },
+    {
+      "category": "exercise",
+      "term": "[Exercise] A bank funds 10-year fixed-rate mortgages with overnight deposits. Name the practice area responsible, the risk created, and one mitigation it would use.",
+      "summary": "ALM/treasury; the mismatch creates interest-rate (and liquidity) risk; mitigate by an interest-rate swap (pay fixed/receive floating) or by lengthening funding.",
+      "definition": "This is a classic ALM problem: long fixed assets funded by short floating liabilities means rising rates lift funding cost while mortgage income is fixed — interest-rate risk in the banking book, plus refinancing/liquidity risk. Treasury executes the fix: an interest-rate swap to convert the funding cost to fixed (or paying fixed on the asset side), and lengthening/diversifying funding to ease the liquidity mismatch.",
+      "note": "Combines the ALM duration-mismatch and the interest-rate-swap mitigation from the primers.",
+      "last_updated": "2026-06-29",
+      "stale": true
+    },
+    {
+      "category": "exercise",
+      "term": "[Exercise] A bank's risk team finds its internal VaR model has been breaching far more often than its 99% confidence implies. Which practice area owns this, and what does it do?",
+      "summary": "Model governance / validation; investigate via backtesting, recalibrate or replace the model, and meanwhile hold add-on capital — the model-risk response.",
+      "definition": "Frequent VaR exceptions are a model-risk signal owned by independent model validation. Backtesting quantifies the over-breaching; the response is to investigate, recalibrate or replace the model, and in the interim hold a capital add-on so the understated risk is still covered. This is the monitor → identify loop feeding back into both model governance and capital.",
+      "note": "Applies backtesting and model risk from the primer to a concrete VaR failure.",
+      "last_updated": "2026-06-29",
+      "stale": true
+    }
+  ]
+}

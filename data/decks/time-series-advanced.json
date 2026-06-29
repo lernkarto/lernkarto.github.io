@@ -1,0 +1,139 @@
+{
+  "id": "time-series-advanced",
+  "name": "Advanced",
+  "color": "#4dabf7",
+  "description": "Volatility models (ARCH/GARCH), multivariate and cointegrated systems (VAR/VECM), state-space/Kalman, the frequency domain, and how forecasts are evaluated and backtested — with the link to market-risk practice. Distilled from Wikipedia.",
+  "source": "https://en.wikipedia.org/wiki/Autoregressive_conditional_heteroskedasticity",
+  "license": "CC BY-SA 4.0",
+  "attribution": "Adapted from Wikipedia — 'Autoregressive conditional heteroskedasticity', 'Vector autoregression', 'Cointegration', 'Error correction model', 'State-space representation', 'Kalman filter', 'Spectral density estimation' and 'Forecasting' — licensed under CC BY-SA 4.0.",
+  "primerTitle": "Advanced time series — quick recap",
+  "primer": "## Volatility (ARCH/GARCH)\\n\\n- **Volatility clustering:** large returns tend to be followed by large returns (either sign) — high-volatility periods group together. This violates constant variance and motivates ARCH/GARCH.\\n- **ARCH:** models the **conditional variance** as a function of past **squared shocks**, so big moves follow big moves.\\n- **GARCH(1,1):** lets variance depend on past squared shocks **and** its own past values: $\\\\sigma_t^2=\\\\omega+\\\\alpha\\\\varepsilon_{t-1}^2+\\\\beta\\\\sigma_{t-1}^2$. The $\\\\beta$ term gives persistent, smoothly-decaying volatility with few parameters. GARCH models the **variance/volatility**, not the level.\\n- **Market-risk link:** the forecast conditional volatility scales the loss quantile, e.g. VaR $=z_\\\\alpha\\\\,\\\\sigma_t$ — so VaR/ES rise in turbulent periods and fall in calm ones.\\n\\n## Multivariate & cointegration\\n\\n- **VAR (vector autoregression):** multivariate AR — each variable on its own lags **and** the lags of every other variable; feeds impulse-response and Granger-causality.\\n- **Cointegration:** each series is non-stationary but some **linear combination is stationary** — a shared stochastic trend, moving together long-run.\\n- **Spurious regression:** two unrelated **$I(1)$** series can show high $R^2$ purely from shared trending; the danger arises when series are **not** cointegrated. Cure: test for cointegration or model in differences. If they **are** cointegrated the relationship is genuine.\\n- **VECM (error-correction model):** models each change as short-run lagged changes **plus** an error-correction term (lagged deviation from the long-run equilibrium), nudging the system back to equilibrium.\\n\\n## Methods\\n\\n- **State-space + Kalman filter:** an unobserved **state** evolves dynamically plus a noisy observation equation; the Kalman filter **recursively** estimates the hidden state as data arrive.\\n- **Spectral analysis:** studies the series in the **frequency domain** to find cyclic behaviour at different frequencies (spectral density / periodogram), beyond calendar seasonality.\\n\\n## Evaluation\\n\\n- **Accuracy metrics:** **MAE** (mean absolute error, robust), **RMSE** (penalises large misses more), **MAPE** (scale-free %, unstable near zero).\\n- **Walk-forward / rolling-origin backtesting:** always train on the past, test on the next period. Random **k-fold leaks future info** into training, breaking temporal order — so it's invalid for time series.",
+  "categories": {
+    "volatility": "Volatility",
+    "multivariate": "Multivariate",
+    "methods": "Methods",
+    "evaluation": "Evaluation"
+  },
+  "cards": [
+    {
+      "category": "volatility",
+      "term": "What does an ARCH model capture?",
+      "summary": "Time-varying (conditional) variance — volatility that clusters.",
+      "definition": "ARCH (autoregressive conditional heteroskedasticity) models the conditional variance as a function of past squared shocks, so large moves tend to follow large moves. It targets volatility clustering, which constant-variance models miss.",
+      "note": "[1] ARCH (Wikipedia) — https://en.wikipedia.org/wiki/Autoregressive_conditional_heteroskedasticity",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "category": "volatility",
+      "term": "What does GARCH(1,1) add over a plain ARCH model?",
+      "summary": "Conditional variance also depends on its own past values.",
+      "definition": "GARCH lets today's conditional variance depend on past squared shocks AND on past variances: $\\sigma_t^2 = \\omega + \\alpha\\varepsilon_{t-1}^2 + \\beta\\sigma_{t-1}^2$. The $\\beta$ term gives persistent, smoothly decaying volatility with far fewer parameters than a high-order ARCH.",
+      "formula": "$\\sigma_t^2 = \\omega + \\alpha\\,\\varepsilon_{t-1}^2 + \\beta\\,\\sigma_{t-1}^2$",
+      "note": "[1] GARCH (Wikipedia) — https://en.wikipedia.org/wiki/Autoregressive_conditional_heteroskedasticity",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "category": "volatility",
+      "term": "[Time series] A GARCH model is primarily used to model which quantity?",
+      "sub": "A) the conditional variance (volatility) of a series    B) the long-run mean of a series    C) the seasonal period    D) the integration order",
+      "definition": "Correct: A) the conditional variance (volatility) of a series. GARCH models the evolving variance of the shocks, not the level — which is why it underpins volatility forecasting and time-varying VaR/ES in market risk.",
+      "note": "[1] GARCH (Wikipedia) — https://en.wikipedia.org/wiki/Autoregressive_conditional_heteroskedasticity",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "category": "volatility",
+      "term": "The tendency of large returns to be followed by large returns (of either sign) is called volatility {{clustering}}, and it motivates ARCH/GARCH models.",
+      "definition": "Volatility clustering is the empirical fact that periods of high volatility group together in time. It violates the constant-variance assumption and is the central feature GARCH-type models are built to reproduce.",
+      "type": "cloze",
+      "note": "[1] Volatility clustering (Wikipedia) — https://en.wikipedia.org/wiki/Volatility_clustering",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "category": "multivariate",
+      "term": "What is a vector autoregression (VAR)?",
+      "summary": "A multivariate AR: each variable regressed on lags of all variables.",
+      "definition": "A VAR models several time series jointly: each variable is a linear function of its own lags and the lags of every other variable in the system, with a vector of shocks. It captures dynamic interdependence and feeds impulse-response and Granger-causality analysis.",
+      "note": "[1] Vector autoregression (Wikipedia) — https://en.wikipedia.org/wiki/Vector_autoregression",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "category": "multivariate",
+      "term": "[Time series] Two series are cointegrated when:",
+      "sub": "A) each is non-stationary but some linear combination of them is stationary    B) they have identical means    C) both are already stationary    D) they are uncorrelated at every lag",
+      "definition": "Correct: A) each is non-stationary but some linear combination of them is stationary. Cointegration means the series share a common stochastic trend and move together in the long run, even though each individually wanders.",
+      "note": "[1] Cointegration (Wikipedia) — https://en.wikipedia.org/wiki/Cointegration",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "category": "multivariate",
+      "term": "[Time series] If two non-stationary series are cointegrated, a regression of one on the other is spurious.",
+      "type": "truefalse",
+      "answer": false,
+      "summary": "False — cointegration is exactly the case where the long-run relationship is genuine.",
+      "definition": "False. Spurious regression is the danger when non-stationary series are NOT cointegrated. If they ARE cointegrated, the long-run relationship is real and is properly modelled by an error-correction model (VECM) that ties short-run dynamics to the long-run equilibrium.",
+      "note": "[1] Error correction model (Wikipedia) — https://en.wikipedia.org/wiki/Error_correction_model",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "category": "methods",
+      "term": "What is a state-space model, and what is the Kalman filter's role in it?",
+      "summary": "Latent state evolves over time; Kalman filter estimates it recursively.",
+      "definition": "A state-space model describes an unobserved state that evolves dynamically plus a noisy observation equation linking it to the data. The Kalman filter recursively estimates the hidden state (and updates it as each observation arrives), giving an efficient time-domain alternative to frequency methods.",
+      "note": "[1] State-space representation (Wikipedia) — https://en.wikipedia.org/wiki/State-space_representation",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "category": "methods",
+      "term": "[Time series] Spectral analysis studies a series in which domain, and to find what?",
+      "sub": "A) the frequency domain, to find cyclic behaviour at different frequencies    B) the time domain, to find the trend slope    C) the spatial domain, to find clusters    D) the probability domain, to find the distribution",
+      "definition": "Correct: A) the frequency domain, to find cyclic behaviour at different frequencies. By decomposing variance across frequencies (the spectral density / periodogram), it reveals periodicities that need not correspond to calendar seasonality.",
+      "note": "[1] Spectral density estimation (Wikipedia) — https://en.wikipedia.org/wiki/Spectral_density_estimation",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "category": "evaluation",
+      "term": "What do RMSE, MAE and MAPE measure for a forecast?",
+      "summary": "Forecast accuracy — average size of the errors, on different scales.",
+      "definition": "All summarise forecast error: MAE is the mean absolute error (same units, robust); RMSE is the root-mean-square error (same units, penalises large misses more); MAPE is the mean absolute percentage error (scale-free, but undefined/unstable near zero values).",
+      "note": "[1] Forecasting (Wikipedia) — https://en.wikipedia.org/wiki/Forecasting",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "category": "evaluation",
+      "term": "[Time series] Why must time-series models be validated with rolling-origin / walk-forward backtesting rather than ordinary random k-fold cross-validation?",
+      "sub": "A) random folds leak future information into the training set, breaking temporal order    B) k-fold is too slow for time series    C) time series cannot be split at all    D) walk-forward needs less data",
+      "definition": "Correct: A) random folds leak future information into the training set, breaking temporal order. Walk-forward validation always trains on the past and tests on the immediately following period, mimicking real forecasting and avoiding look-ahead bias.",
+      "note": "[1] Forecasting (Wikipedia) — https://en.wikipedia.org/wiki/Forecasting",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "category": "evaluation",
+      "term": "Running a regression between two unrelated non-stationary series can produce a high $R^2$ purely by chance; this is called {{spurious}} regression.",
+      "definition": "Spurious regression: two independent $I(1)$ series can show a strong, highly 'significant' fit driven only by their shared trending behaviour, not any real link. The cure is to test for cointegration or to model the series in differences.",
+      "type": "cloze",
+      "note": "[1] Spurious relationship (Wikipedia) — https://en.wikipedia.org/wiki/Spurious_relationship",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "category": "volatility",
+      "term": "[Risk] How does a GARCH volatility forecast feed a market-risk VaR estimate?",
+      "sub": "A) the forecast conditional volatility $\\sigma_t$ scales the loss quantile, e.g. VaR $= z_\\alpha\\,\\sigma_t$    B) it replaces the portfolio's positions    C) it sets the confidence level    D) it removes the need for a holding period",
+      "definition": "Correct: A) the forecast conditional volatility $\\sigma_t$ scales the loss quantile, e.g. VaR $= z_\\alpha\\,\\sigma_t$. Because GARCH tracks time-varying volatility, the resulting VaR/ES rises in turbulent periods and falls in calm ones, rather than assuming a constant variance.",
+      "note": "[1] Value at risk (Wikipedia) — https://en.wikipedia.org/wiki/Value_at_risk",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "category": "multivariate",
+      "term": "What does an error-correction model (VECM) represent?",
+      "summary": "Short-run dynamics that pull cointegrated series back to long-run equilibrium.",
+      "definition": "A VECM models the change in each variable as a function of short-run lagged changes PLUS an error-correction term — the lagged deviation from the long-run cointegrating relationship — so the system is continually nudged back toward equilibrium.",
+      "note": "[1] Error correction model (Wikipedia) — https://en.wikipedia.org/wiki/Error_correction_model",
+      "last_updated": "2026-06-29"
+    }
+  ],
+  "tags": [
+    "time series",
+    "volatility",
+    "forecasting"
+  ]
+}

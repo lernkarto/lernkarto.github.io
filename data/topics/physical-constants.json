@@ -1,0 +1,10 @@
+{
+  "topic": "Physical constants",
+  "id": "physical-constants-set",
+  "standard": true,
+  "primerTitle": "Physical constants — quick recap",
+  "primer": "## How this set works\nFundamental constants and their values across **unit systems**. Three ideas first:\n- **SI** (m, kg, s, J) is the default; **Gaussian-cgs** (cm, g, s, erg) differs mostly in electromagnetism (charge in esu, no $\\varepsilon_0$).\n- **Natural units** set $c=\\hbar=1$ (often $k_B=1$): lengths/times/masses/energies share dimensions, so masses are quoted in **eV/$c^2$**.\n- **Dimensionless** constants (like $\\alpha$) are pure numbers — the **same in every system**.\n\n## The constants\n- **c** (speed of light): $2.998\\times10^8$ m/s · $2.998\\times10^{10}$ cm/s · $=1$ natural\n- **h**: $6.626\\times10^{-34}$ J·s · $6.626\\times10^{-27}$ erg·s; **ħ** $=h/2\\pi=1.055\\times10^{-34}$ J·s ($=1$ natural)\n- **G**: $6.674\\times10^{-11}$ m³kg⁻¹s⁻² · $6.674\\times10^{-8}$ cm³g⁻¹s⁻²\n- **k_B**: $1.381\\times10^{-23}$ J/K · $1.381\\times10^{-16}$ erg/K ($=1$ natural); **R** $=N_A k_B=8.314$ J·mol⁻¹K⁻¹; **N_A** $=6.022\\times10^{23}$ mol⁻¹; **σ** $=5.670\\times10^{-8}$ W·m⁻²K⁻⁴\n- **e**: $1.602\\times10^{-19}$ C (SI) · $4.803\\times10^{-10}$ esu (Gaussian); **ε₀** $=8.854\\times10^{-12}$ F/m (absorbed in cgs); **μ₀** $\\approx4\\pi\\times10^{-7}$ N·A⁻²; **α** $=e^2/4\\pi\\varepsilon_0\\hbar c\\approx1/137$\n- **m_e** $=9.109\\times10^{-31}$ kg $=0.511$ MeV/$c^2$; **m_p** $=1.673\\times10^{-27}$ kg $=938.3$ MeV/$c^2$ ($\\approx1836\\,m_e$); **u** $=1.661\\times10^{-27}$ kg $=931.5$ MeV/$c^2$\n- **a₀** (Bohr radius) $=5.292\\times10^{-11}$ m $=0.529$ Å; **1 eV** $=1.602\\times10^{-19}$ J\n\nEvery card's answer is in this chart.",
+  "deckFiles": [
+    "physical-constants.json"
+  ]
+}

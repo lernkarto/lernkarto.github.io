@@ -1,0 +1,142 @@
+{
+  "id": "qi-quant-reasoning",
+  "name": "Quant reasoning (finance)",
+  "color": "#51cf66",
+  "description": "Desk-style reasoning: volatility drag and geometric vs arithmetic means, Kelly sizing, EV vs median, the Rule of 72, no-arbitrage forward pricing, diversification, and Sh",
+  "tags": [
+    "aptitude",
+    "interview",
+    "quant",
+    "quant-reasoning"
+  ],
+  "primerTitle": "Quant reasoning — method",
+  "primer": "## Finance gotchas\n- **Geometric vs arithmetic mean / volatility drag:** +50% then −50% = ×0.75 (−25%); equal up/down %s never cancel.\n- **CAGR** is the geometric mean of growth factors.\n- **Kelly fraction** (even money) = p−q = edge.\n- **EV vs median:** a +EV bet can lose most plays (the median misleads).\n- **Rule of 72:** doubling time ≈ 72/rate%.\n- **No-arbitrage forward** = spot×(1+r) (not the spot).\n- **Diversification:** n independent equal assets → σ/√n; two → σ/√2 ≈ 7.07%.\n- **Sharpe** = (return−rf)/σ. **Martingale** nets +1 unit but needs infinite bankroll.",
+  "cards": [
+    {
+      "term": "An investment gains 50% in year 1 and loses 50% in year 2. What is the net change in value over the two years?",
+      "choices": [
+        "Down 12.5%",
+        "Down 50%",
+        "Up 25%",
+        "No change",
+        "Down 25%"
+      ],
+      "answer": 4,
+      "type": "mcq",
+      "definition": "Correct: Down 25%. 1.5 x 0.5 = 0.75, a 25% loss. The arithmetic mean of the two returns is 0%, but compounding ('volatility drag') makes the actual outcome negative - the geometric mean is what you keep.",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "A fund returns +100% in year 1 and -50% in year 2. What is its compound annual growth rate (CAGR) over the two years?",
+      "choices": [
+        "-25%",
+        "+12.5%",
+        "0%",
+        "+50%",
+        "+25%"
+      ],
+      "answer": 2,
+      "type": "mcq",
+      "definition": "Correct: 0%. Final value = 2.0 x 0.5 = 1.0, exactly the starting value, so the compound return is 0%. The arithmetic average (+25%) badly overstates what actually compounds.",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "You can repeatedly bet at even money on a coin that lands in your favour 60% of the time. The Kelly criterion says to stake what fraction of your bankroll on each bet to maximise long-run growth?",
+      "choices": [
+        "60%",
+        "40%",
+        "20%",
+        "100%",
+        "10%"
+      ],
+      "answer": 2,
+      "type": "mcq",
+      "definition": "Correct: 20%. For an even-money bet, Kelly fraction = p - q = 0.60 - 0.40 = 0.20. Betting your full edge maximises expected log-growth; betting more (or everything) eventually ruins you.",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "A bet loses you EUR 1 with probability 99% and pays you EUR 1000 with probability 1%. What is its expected value per play?",
+      "choices": [
+        "+EUR 9.01",
+        "-EUR 0.99",
+        "+EUR 10.00",
+        "EUR 0.00",
+        "-EUR 1.00"
+      ],
+      "answer": 0,
+      "type": "mcq",
+      "definition": "Correct: +EUR 9.01. EV = 0.99 x (-1) + 0.01 x 1000 = -0.99 + 10 = +EUR 9.01. The bet is strongly positive on average even though you lose on 99 plays out of 100 - the median outcome (-EUR 1) is misleading.",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "At a 6% annual compound growth rate, approximately how many years does it take to double your money?",
+      "choices": [
+        "About 24 years",
+        "About 9 years",
+        "About 12 years",
+        "About 16 years",
+        "About 6 years"
+      ],
+      "answer": 2,
+      "type": "mcq",
+      "definition": "Correct: About 12 years. The Rule of 72 estimates doubling time as 72 / 6 = 12 years, very close to the exact ln(2)/ln(1.06) ~ 11.9 years.",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "A non-dividend-paying stock trades at EUR 100 and the risk-free interest rate is 5% per year. By no-arbitrage, what is the fair price agreed today to buy the stock in one year (the 1-year forward price)?",
+      "choices": [
+        "EUR 100",
+        "EUR 105.13",
+        "EUR 105",
+        "EUR 110",
+        "EUR 95"
+      ],
+      "answer": 2,
+      "type": "mcq",
+      "definition": "Correct: EUR 105. Buying now with borrowed money costs 100 x 1.05 = EUR 105 to repay in a year, so the forward must equal EUR 105 or a riskless arbitrage exists. The forward is NOT just today's spot price.",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "Two assets each have a return standard deviation of 10%, and their returns are independent. What is the standard deviation of an equally weighted (50/50) portfolio of the two?",
+      "choices": [
+        "About 14.1%",
+        "5%",
+        "About 7.07%",
+        "10%",
+        "0%"
+      ],
+      "answer": 2,
+      "type": "mcq",
+      "definition": "Correct: About 7.07%. Variance = 0.5^2 x 0.1^2 + 0.5^2 x 0.1^2 = 0.005, so std dev = sqrt(0.005) ~ 7.07%. Independent diversification cuts volatility by a factor of sqrt(2), not by half.",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "A portfolio returns 8% per year with a return standard deviation of 4%, while the risk-free rate is 2%. What is its Sharpe ratio?",
+      "choices": [
+        "2.0",
+        "3.0",
+        "0.5",
+        "1.0",
+        "1.5"
+      ],
+      "answer": 4,
+      "type": "mcq",
+      "definition": "Correct: 1.5. Sharpe ratio = (return - risk-free) / volatility = (8% - 2%) / 4% = 1.5. It measures excess return earned per unit of risk.",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "You use a 'martingale' staking plan on a fair even-money coin: bet EUR 1, and after any loss double your next bet, stopping the instant you first win. Assuming you have unlimited funds and time, what is your net profit at the moment you stop?",
+      "choices": [
+        "+EUR 2",
+        "-EUR 1",
+        "It depends on how long it takes",
+        "EUR 0",
+        "+EUR 1"
+      ],
+      "answer": 4,
+      "type": "mcq",
+      "definition": "Correct: +EUR 1. When the first win finally comes it returns your entire accumulated stake plus EUR 1, so you always end exactly +EUR 1. The catch is the 'unlimited funds' assumption: with a finite bankroll a long losing streak wipes you out, which is why it is not free money.",
+      "last_updated": "2026-06-29"
+    }
+  ]
+}

@@ -1,0 +1,295 @@
+{
+  "id": "econ-diagnostics",
+  "name": "Regression diagnostics",
+  "color": "#3bc9db",
+  "description": "20 interview-screen MCQs — regression diagnostics. Each card explains the answer.",
+  "tags": [
+    "interview",
+    "econometrics",
+    "mcq"
+  ],
+  "primerTitle": "Regression diagnostics — what breaks OLS",
+  "primer": "## Regression diagnostics\nHeteroskedasticity and autocorrelation leave OLS **unbiased but inefficient** and, crucially, make the usual **standard errors wrong** → invalid t/F tests. Detect with Breusch–Pagan/White (heteroskedasticity) and Durbin–Watson (AR(1)); fix inference with robust (White/Huber) or **Newey–West (HAC)** errors. **Endogeneity** (E[u|X]≠0) is the serious one — it makes OLS biased *and* inconsistent; cure with **IV/2SLS** using a relevant, exogenous instrument. Watch omitted-variable bias (sign from the product of correlations), measurement error (attenuation), and the spurious-regression signature.",
+  "cards": [
+    {
+      "term": "In the presence of heteroskedasticity (and no other violations), OLS coefficient estimates are:",
+      "choices": [
+        "Unbiased and consistent, but no longer efficient (not BLUE)",
+        "Biased in small samples, but consistent and efficient",
+        "Inconsistent, yet still the minimum-variance estimator",
+        "Unbiased, consistent, and still fully BLUE",
+        "Biased and inconsistent, with no asymptotic remedy"
+      ],
+      "answer": 0,
+      "type": "mcq",
+      "definition": "OLS coefficients require only E[u|X]=0 for unbiasedness and consistency, and heteroskedasticity does not violate that — it only changes the variance of u, so the estimates stay unbiased and consistent but lose minimum-variance status and are no longer BLUE. Calling them unbiased, consistent, and still BLUE is wrong precisely because the Gauss-Markov efficiency result fails when errors are heteroskedastic. Claiming the estimates are biased in small samples misdiagnoses the problem: bias comes from endogeneity, not from non-constant error variance. The option calling OLS inconsistent yet minimum-variance is doubly wrong — consistency holds and efficiency is exactly what is lost. The intuition: heteroskedasticity is a second-moment problem, so it corrupts the standard errors, never the point estimates.",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "The main practical consequence of heteroskedasticity is that:",
+      "choices": [
+        "The dependent variable acquires a unit root over time",
+        "The reported R-squared is systematically overstated",
+        "The regressors become perfectly collinear with each other",
+        "The usual standard errors are wrong, biasing t- and F-tests",
+        "The slope coefficients become biased toward zero"
+      ],
+      "answer": 3,
+      "type": "mcq",
+      "definition": "Because heteroskedasticity changes the error variance, the conventional OLS variance formula is wrong, so the reported standard errors are biased and the resulting t- and F-tests are unreliable. The claim that slope coefficients become biased toward zero is false — point estimates stay unbiased and consistent; only inference breaks. A unit root in the dependent variable is a time-series property of the data, unrelated to the error variance structure. Heteroskedasticity neither makes the regressors perfectly collinear (that is about correlation between X variables) nor does it systematically overstate R-squared. The practical takeaway: trust the betas, distrust the default SEs.",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "Which is a common test for heteroskedasticity?",
+      "choices": [
+        "The Augmented Dickey-Fuller unit-root test",
+        "The Durbin-Watson serial-correlation test",
+        "The Breusch-Pagan test (or White test)",
+        "The Johansen cointegration-rank test",
+        "The Hausman estimator-comparison test"
+      ],
+      "answer": 2,
+      "type": "mcq",
+      "definition": "Breusch-Pagan (and its more general White variant) regresses the squared OLS residuals on the regressors and tests whether they explain residual variance, directly probing for non-constant error variance. The Durbin-Watson test targets first-order autocorrelation, not heteroskedasticity. The Augmented Dickey-Fuller test checks for a unit root (non-stationarity). The Johansen test detects cointegration among non-stationary series, and the Hausman test compares estimators (e.g., OLS vs IV, or fixed vs random effects) to detect endogeneity. Only Breusch-Pagan/White is built to model the variance as a function of the regressors.",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "The standard fix for heteroskedasticity in modern practice is to:",
+      "choices": [
+        "Drop the intercept and re-estimate the model",
+        "Report White/Huber-White robust standard errors",
+        "Instrument the suspect regressor with 2SLS",
+        "Add a lagged dependent variable to the model",
+        "First-difference the data before estimating"
+      ],
+      "answer": 1,
+      "type": "mcq",
+      "definition": "The modern default is heteroskedasticity-robust (White / Huber-White) standard errors, which deliver valid inference without specifying the form of the variance, leaving the consistent OLS coefficients untouched. Instrumenting the regressor with 2SLS cures endogeneity-driven bias, not a variance problem. First-differencing and adding a lagged dependent variable are time-series tools aimed at autocorrelation or non-stationarity, not heteroskedasticity. Dropping the intercept does nothing for the error variance and typically biases the fit. Robust SEs win because they fix exactly what is broken — the variance estimate — and require no assumption about how the variance varies.",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "Serial correlation (autocorrelation) of the errors in a time-series regression causes OLS to be:",
+      "choices": [
+        "Still BLUE, with valid standard errors",
+        "Biased and inconsistent, with no remedy",
+        "Inconsistent, with bias growing in the sample size",
+        "Unbiased but inefficient, with invalid usual standard errors",
+        "Biased but efficient, with correct standard errors"
+      ],
+      "answer": 3,
+      "type": "mcq",
+      "definition": "Like heteroskedasticity, serial correlation is a property of the error covariance, so OLS stays unbiased and consistent but becomes inefficient, and the usual standard errors are wrong, invalidating t- and F-tests (this holds absent a lagged dependent variable). Saying OLS is still BLUE with valid SEs is wrong because efficiency is lost and the SEs are not valid. The options calling it biased — whether biased and inconsistent, inconsistent with bias growing in n, or biased but efficient — confuse autocorrelation with endogeneity; pure error autocorrelation does not bias the coefficients. The key distinction: a lagged dependent variable combined with autocorrelation WOULD cause bias, but that is a separate setup from autocorrelation alone.",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "The Durbin-Watson statistic is used to detect:",
+      "choices": [
+        "A unit root in the regressors",
+        "First-order autocorrelation in the residuals",
+        "Multicollinearity among the regressors",
+        "Heteroskedasticity in the errors",
+        "Non-normality of the residuals"
+      ],
+      "answer": 1,
+      "type": "mcq",
+      "definition": "The Durbin-Watson statistic detects first-order autocorrelation in the residuals; values near 2 indicate no AR(1) serial correlation, near 0 strong positive, near 4 strong negative. It does not test for heteroskedasticity (that is Breusch-Pagan/White) or non-normality (that is Jarque-Bera). It says nothing about multicollinearity, which is diagnosed via VIF or condition numbers. A unit root in the regressors is a stationarity question for ADF-type tests, not Durbin-Watson. Durbin-Watson is specifically a lag-1 residual correlation diagnostic and loses validity when a lagged dependent variable is present.",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "To obtain valid standard errors under both heteroskedasticity and autocorrelation, one commonly uses:",
+      "choices": [
+        "Bootstrapped coefficients with i.i.d. resampling",
+        "A probit model for the conditional mean",
+        "Newey-West (HAC) standard errors",
+        "White standard errors, which suffice on their own",
+        "Ordinary OLS standard errors after rescaling"
+      ],
+      "answer": 2,
+      "type": "mcq",
+      "definition": "Newey-West standard errors are heteroskedasticity-and-autocorrelation-consistent (HAC), so they simultaneously correct inference for both error-variance and serial-correlation problems — exactly the stated combination. White standard errors only handle heteroskedasticity and ignore autocorrelation, so the claim that they suffice on their own is false. Ordinary OLS standard errors are wrong under either violation, and rescaling does not repair them. A probit model is for binary outcomes and is unrelated to fixing SEs. Bootstrapping with i.i.d. resampling ignores the serial dependence, so it does not generically deliver valid SEs here; the standard, off-the-shelf answer is Newey-West HAC.",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "Endogeneity (a regressor correlated with the error term) makes OLS:",
+      "choices": [
+        "Inconsistent, yet still unbiased in finite samples",
+        "Unbiased but merely inefficient",
+        "Still BLUE, with valid inference",
+        "Biased and inconsistent",
+        "Biased in small samples, but consistent as n grows"
+      ],
+      "answer": 3,
+      "type": "mcq",
+      "definition": "Endogeneity means a regressor is correlated with the error, so E[u|X] is not zero; this violates the core identifying assumption and makes OLS both biased in finite samples and inconsistent, never converging to the true parameters even as n grows. Unbiased but merely inefficient, and still BLUE, describe the heteroskedasticity/autocorrelation case, where the moment condition still holds — not endogeneity. Inconsistent yet still unbiased is internally contradictory here: the same broken moment condition that destroys consistency also creates bias. Biased in small samples but consistent as n grows is wrong because the asymptotic bias does not vanish. This is why endogeneity is the serious violation — more data cannot save you.",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "Which is NOT a typical source of endogeneity?",
+      "choices": [
+        "Measurement error in a regressor",
+        "Simultaneous (reverse) causality",
+        "Non-random sample selection",
+        "An omitted variable correlated with X",
+        "Heteroskedastic (non-constant variance) errors"
+      ],
+      "answer": 4,
+      "type": "mcq",
+      "definition": "Heteroskedasticity is about the variance of the error, not about whether the error is correlated with the regressors, so it does not create endogeneity — making it the one item that is NOT a source. An omitted variable correlated with X, simultaneous (reverse) causality, measurement error in a regressor, and non-random sample selection all induce correlation between a regressor and the error term, which is exactly the definition of endogeneity. Measurement error, for instance, puts the noise into the residual and correlates it with the mismeasured X. The clean dividing line: endogeneity is a first-moment correlation problem; heteroskedasticity is a second-moment variance problem.",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "The standard remedy for endogeneity is:",
+      "choices": [
+        "Instrumental variables / two-stage least squares (2SLS)",
+        "First-differencing the data each period",
+        "Switching to robust standard errors for inference",
+        "Adding more control regressors mechanically to the model",
+        "Collecting a much larger sample of observations"
+      ],
+      "answer": 0,
+      "type": "mcq",
+      "definition": "Endogeneity biases OLS, and the standard cure is instrumental variables / two-stage least squares, which uses exogenous variation from a valid instrument to recover a consistent causal estimate. Switching to robust standard errors only fixes inference and does nothing for bias. Collecting a much larger sample cannot help because the estimator is inconsistent — the bias persists asymptotically. First-differencing addresses non-stationarity or some panel fixed effects, not general endogeneity. Mechanically adding more control regressors does not solve it and risks bad controls or worse bias unless the specific confounder is both available and correctly included; IV remains the canonical remedy.",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "A valid instrumental variable must satisfy two conditions:",
+      "choices": [
+        "A high first-stage R-squared and a low VIF on it",
+        "Strict linearity of the structural equation in X",
+        "Relevance (correlated with X) and exogeneity (orthogonal to u)",
+        "Homoskedastic and serially uncorrelated structural errors",
+        "Normally distributed and stationary instrument values"
+      ],
+      "answer": 2,
+      "type": "mcq",
+      "definition": "A valid instrument needs relevance — genuine correlation with the endogenous regressor so the first stage has power — and exogeneity, meaning it is uncorrelated with the error and affects Y only through the regressor (the exclusion restriction). A high first-stage R-squared and low VIF are about overall fit and collinearity, not instrument validity. Strict linearity with a large sample, normality with stationarity, and homoskedastic serially uncorrelated errors are general regression or inference conditions, not the two defining instrument properties. Miss relevance and you have a weak instrument; miss exogeneity and the instrument is itself endogenous, reintroducing the very bias IV was meant to remove.",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "A 'weak instrument' is problematic because it:",
+      "choices": [
+        "Explains too much of the variation in the outcome Y",
+        "Is itself correlated with the structural error term",
+        "Renders the endogenous regressor series non-stationary",
+        "Introduces heteroskedasticity into the second-stage errors",
+        "Is barely correlated with X, inflating 2SLS bias and variance"
+      ],
+      "answer": 4,
+      "type": "mcq",
+      "definition": "A weak instrument is only weakly correlated with the endogenous regressor, so the first stage is nearly uninformative; this inflates the variance of 2SLS and biases it toward OLS, even with valid exogeneity. Being correlated with the structural error term describes a failure of exogeneity (an invalid instrument), a different defect. Explaining much of the variation in Y, introducing heteroskedasticity, or rendering the regressor series non-stationary are unrelated to first-stage strength. The danger is counterintuitive: a weak but technically exogenous instrument can leave 2SLS more biased than the OLS it was meant to fix, while delivering wildly imprecise estimates — hence first-stage F-statistic checks.",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "Omitted variable bias arises when a left-out variable is:",
+      "choices": [
+        "Both correlated with an included regressor and a driver of Y",
+        "Statistically insignificant when added back to the model",
+        "Uncorrelated with both the regressors and the outcome",
+        "An exact linear function of the dependent variable Y",
+        "Correlated with the error term but not with the regressors"
+      ],
+      "answer": 0,
+      "type": "mcq",
+      "definition": "Omitted variable bias requires the left-out variable to be both correlated with an included regressor and a determinant of the dependent variable; only then does its effect contaminate the included coefficient. A variable uncorrelated with both the regressors and the outcome, or one correlated with the error but not the regressors, leaves the coefficient of interest unbiased because the contamination channel is broken. Being statistically insignificant when added back is not the criterion — relevance to Y is. An exact linear function of the dependent variable is a different (degenerate) pathology, not the OVB condition. The intuition: the omitted term must both belong in the model and overlap with X to transfer bias.",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "If an omitted variable is positively related to Y and positively correlated with the included regressor X, the OLS coefficient on X will be:",
+      "choices": [
+        "Driven to exactly zero",
+        "Inconsistent, yet unbiased on average",
+        "Unbiased despite the omission",
+        "Biased downward (understated)",
+        "Biased upward (overstated)"
+      ],
+      "answer": 4,
+      "type": "mcq",
+      "definition": "With the omitted variable positively related to Y and positively correlated with X, OLS attributes the omitted variable's positive effect to X, so the coefficient is biased upward (overstated). The OVB sign rule is the product of two correlations: positive times positive yields positive bias. Biased downward (understated) would require the two correlations to have opposite signs. Unbiased despite the omission, or driven to exactly zero, would require breaking one of the two channels, which both hold here. Inconsistent yet unbiased on average is contradictory under OVB — the same correlation that biases the finite-sample estimate also makes it inconsistent, so the distortion does not vanish with more data.",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "Classical measurement error in an independent variable typically causes:",
+      "choices": [
+        "Attenuation bias — the coefficient is pulled toward zero",
+        "Bias confined to the intercept, slopes untouched",
+        "Perfect multicollinearity among the included regressors",
+        "No bias at all, just extra noise in the residuals",
+        "Bias away from zero, overstating the true slope"
+      ],
+      "answer": 0,
+      "type": "mcq",
+      "definition": "Classical measurement error in a regressor adds noise that is uncorrelated with the true value, which dilutes the signal and produces attenuation bias — the coefficient is pulled toward zero. This is why no bias at all is wrong: the mismeasured X correlates with the error, creating endogeneity. Bias away from zero is the opposite of the attenuation direction. Perfect multicollinearity is about an exact linear relationship among regressors, not measurement noise. Bias confined to the intercept misstates the result; the slope on the mismeasured variable is the casualty, shrunk by the noise-to-signal ratio. More noise means more shrinkage toward zero.",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "The Ramsey RESET test checks for:",
+      "choices": [
+        "Functional-form misspecification (omitted nonlinearities)",
+        "Serial correlation in the residuals",
+        "A unit root in the dependent variable",
+        "Non-constant error variance (heteroskedasticity)",
+        "Multicollinearity among the regressors"
+      ],
+      "answer": 0,
+      "type": "mcq",
+      "definition": "The Ramsey RESET test adds powers of the fitted values back into the regression and tests their joint significance, detecting functional-form misspecification such as neglected nonlinearities. It is not a heteroskedasticity test (Breusch-Pagan/White), an autocorrelation test (Durbin-Watson), or a unit-root test (ADF). It also does not diagnose multicollinearity, which is assessed with VIF or condition numbers. The intuition: if powers of the fitted values carry explanatory power, the linear specification is missing curvature or interaction terms, signaling the conditional mean is misspecified.",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "Robust (White) standard errors fix the problem of:",
+      "choices": [
+        "Variance inflation from multicollinearity",
+        "Biased coefficients caused by endogeneity",
+        "Invalid inference due to heteroskedasticity",
+        "Coefficient bias from an omitted variable",
+        "Non-stationarity in trending series"
+      ],
+      "answer": 2,
+      "type": "mcq",
+      "definition": "Robust (White) standard errors fix invalid inference caused by heteroskedasticity by correcting the variance-covariance estimate, while leaving the consistent coefficients unchanged. They do nothing about bias from endogeneity or an omitted variable — those distort the point estimates, which robust SEs never touch. They do not address multicollinearity, which inflates variance through correlated regressors and is a design issue, not a variance-estimator issue. Non-stationarity is a time-series property unrelated to robust SEs. The recurring lesson: robust SEs repair the standard errors only; bias problems demand IV or correct specification.",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "Clustered standard errors are appropriate when:",
+      "choices": [
+        "Errors are heteroskedastic but otherwise mutually independent",
+        "The included regressors are highly collinear with each other",
+        "Errors are correlated within groups but independent across them",
+        "The dependent variable is binary or categorical in form",
+        "The series contains a unit root or deterministic trend"
+      ],
+      "answer": 2,
+      "type": "mcq",
+      "definition": "Clustered standard errors are appropriate when errors are correlated within groups but independent across them, such as repeated observations on the same firm, region, or individual; they account for that within-cluster dependence. Plain heteroskedasticity without grouping calls for ordinary robust (White) SEs, not clustering. Highly collinear regressors and a binary dependent variable are unrelated to the clustering structure of the errors. A unit root or trend is a non-stationarity problem, not within-group correlation. The intuition: clustering relaxes the independence assumption only along the group dimension, so it is right precisely when observations share a common group-level shock.",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "Weighted least squares (WLS) can be used to address heteroskedasticity by:",
+      "choices": [
+        "Automatically discarding the high-leverage outlier rows",
+        "First-differencing the data to remove the variance trend",
+        "Weighting each observation inversely to its error variance",
+        "Replacing the endogenous regressor with an instrument",
+        "Adding lagged dependent variables to soak up the variance"
+      ],
+      "answer": 2,
+      "type": "mcq",
+      "definition": "WLS addresses heteroskedasticity by weighting each observation inversely to its error variance, which restores efficiency by giving noisier observations less influence and recovers the BLUE property when the variance form is known. It does not discard outliers automatically, first-difference the data, replace the regressor with an instrument, or add lagged dependent variables — those target other problems entirely. The catch: WLS needs the variance structure to be correct, and getting it wrong can hurt; that is why heteroskedasticity-robust standard errors are usually preferred in practice, since the exact variance form is rarely known. WLS trades a strong assumption for efficiency; robust SEs trade efficiency for safety.",
+      "last_updated": "2026-06-29"
+    },
+    {
+      "term": "If a regression of one variable on another yields a high R-squared and a very low Durbin-Watson statistic with both series trending, you should suspect:",
+      "choices": [
+        "Classical measurement error in Y",
+        "Heteroskedasticity and nothing more",
+        "A perfectly specified causal model",
+        "A genuine long-run equilibrium relationship",
+        "A spurious regression between non-stationary series"
+      ],
+      "answer": 4,
+      "type": "mcq",
+      "definition": "A high R-squared together with a very low Durbin-Watson (strong residual autocorrelation) between two trending series is the classic signature of a spurious regression between non-stationary variables — the fit reflects shared trends, not a genuine relationship. It is not a genuine long-run equilibrium relationship, nor a perfectly specified causal model; the telltale residual autocorrelation warns against exactly that conclusion. Heteroskedasticity and nothing more, or classical measurement error in Y, do not explain the combination of inflated R-squared and near-zero Durbin-Watson on trending data. The fix is to test for stationarity/cointegration before trusting the regression; trends alone can manufacture significance.",
+      "last_updated": "2026-06-29"
+    }
+  ]
+}
