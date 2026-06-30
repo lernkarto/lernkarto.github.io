@@ -227,3 +227,4 @@ $("bLoad").onclick = () => {
 
 /* start with one empty card */
 bAddCard();
+if ($("appVersion")) $("appVersion").textContent = "v" + APP_VERSION;

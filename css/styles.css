@@ -50,6 +50,7 @@ header{ margin-bottom:18px; }
 .brand-mark{ flex:none; filter:drop-shadow(0 0 10px rgba(0,255,136,.25)); }
 .brand-name{ display:flex; flex-direction:column; font-family:var(--mono); font-weight:700; font-size:19px; line-height:1; color:var(--accent); letter-spacing:.04em; text-shadow:0 0 12px rgba(0,255,136,.35); }
 .brand-sub{ font-size:9.5px; letter-spacing:.26em; text-transform:uppercase; color:var(--text-soft); font-weight:400; margin-top:5px; text-shadow:none; }
+.brand-ver{ font-size:8px; letter-spacing:.08em; color:var(--text-faint); font-weight:400; margin-top:3px; text-shadow:none; }
 
 .ghost-btn{ font-family:var(--mono); font-size:13px; font-weight:400; color:var(--text); background:rgba(0,255,136,.04); border:1px solid var(--line-2); border-radius:7px; padding:8px 13px; cursor:pointer; transition:border-color .15s,background .15s,color .15s; }
 .ghost-btn:hover{ border-color:var(--accent); color:var(--accent); }

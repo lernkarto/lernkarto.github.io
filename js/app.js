@@ -506,6 +506,7 @@ function applyBrand(deck) {
   currentBrandName = brand.name || DEFAULT_BRAND.name;
   if ($("brandName")) $("brandName").textContent = currentBrandName;
   if ($("brandSub")) $("brandSub").textContent = brand.tagline || DEFAULT_BRAND.tagline;
+  if ($("appVersion")) $("appVersion").textContent = "v" + APP_VERSION;
   const markEl = $("brandMark");
   if (markEl) {
     const trusted = brand.mark && !(deck && deck.imported);   // SVG only from shipped content

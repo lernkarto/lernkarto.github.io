@@ -2,6 +2,8 @@
 /* ---- constants & text helpers ---- */
 /* Loaded first. Defines globals used by graphs.js, primer.js, and app.js. */
 
+const APP_VERSION = "0.3.1";
+
 /* neon accents auto-assigned to categories without a colour */
 const PALETTE = [
   "#00ff88", "#00e0d0", "#9bff66", "#ffcc55", "#ff66cc",
