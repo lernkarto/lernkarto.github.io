@@ -163,6 +163,26 @@ h1{ font-family:var(--mono); font-weight:700; font-size:clamp(24px,4.8vw,34px); 
   -webkit-tap-highlight-color:rgba(0,255,136,.25); touch-action:manipulation; }
 .card-link:hover,.card-link:focus-visible{ background:rgba(0,255,136,.12); outline:none; }
 
+/* glossary markup — author-placed [[term]] in card text */
+.gloss-term{ text-decoration:underline dotted; text-underline-offset:2px; cursor:help; position:relative; }
+.gloss-term::after{
+  content:attr(data-gloss); position:absolute; bottom:calc(100% + 6px); left:50%;
+  transform:translateX(-50%); background:#1e211e; color:var(--text);
+  border:1px solid var(--line-2); padding:6px 10px; border-radius:6px;
+  font-size:12px; font-family:var(--mono); font-weight:normal; letter-spacing:normal;
+  text-transform:none; line-height:1.4; max-width:min(220px,80vw); width:max-content;
+  text-align:left; z-index:100; pointer-events:none;
+  opacity:0; visibility:hidden; transition:opacity .15s,visibility .15s;
+}
+.gloss-term:hover::after{ opacity:1; visibility:visible; }
+.gloss-panel{
+  margin-top:10px; padding:10px 14px; background:var(--surface);
+  border:1px solid var(--line-2); border-radius:8px;
+  display:flex; flex-wrap:wrap; gap:4px 20px;
+}
+.gloss-entry{ font-size:12px; color:var(--text-soft); }
+.gloss-entry b{ color:var(--text); font-weight:600; }
+
 /* multiple-choice: smaller question, tappable options, inline reveal */
 /* interactive cards flow in normal layout and GROW to fit the question +
    options + revealed answer (no fixed height, no 3-D flip, no inner scroll). */
@@ -261,10 +281,12 @@ h1{ font-family:var(--mono); font-weight:700; font-size:clamp(24px,4.8vw,34px); 
   .mcq-opt.correct,.mcq-opt.wrong,.cloze-input.correct,.cloze-input.wrong{ animation:none; }
 }
 
-/* tabs */
-.tabs{ display:flex; gap:4px; margin:4px 0 18px; border-bottom:1px solid var(--line); }
+/* tabs — sticky so they don't move as content below changes height */
+.tabs{ position:sticky; top:0; z-index:20; display:flex; gap:4px; margin:4px 0 18px;
+  border-bottom:1px solid var(--line); background:var(--bg); }
 .tab{ font-family:var(--mono); font-size:13px; color:var(--text-faint); background:none; border:none;
-  border-bottom:2px solid transparent; padding:9px 14px; margin-bottom:-1px; cursor:pointer; letter-spacing:.03em; }
+  border-bottom:2px solid transparent; padding:9px 14px; margin-bottom:-1px; cursor:pointer;
+  letter-spacing:.03em; text-decoration:none; display:inline-block; }
 .tab:hover{ color:var(--text-soft); }
 .tab.active{ color:var(--accent); border-bottom-color:var(--accent); }
 body.building .deck-head, body.building .topbar-actions{ display:none; }

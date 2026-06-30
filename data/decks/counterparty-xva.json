@@ -4,13 +4,33 @@
   "color": "#ff66cc",
   "description": "Default risk on derivatives, exposure profiles and valuation adjustments.",
   "primerTitle": "Counterparty risk & XVA in one page",
+  "glossary": {
+    "CCR": "Counterparty Credit Risk — the risk that a derivative counterparty defaults before settling when the contract has positive value",
+    "CVA": "Credit Valuation Adjustment — the market value reduction of a derivative reflecting the counterparty's default risk",
+    "DVA": "Debit Valuation Adjustment — the valuation adjustment reflecting the bank's own default risk on its derivatives liabilities",
+    "FVA": "Funding Valuation Adjustment — the cost or benefit of funding the uncollateralised portion of a derivative above the risk-free rate",
+    "MVA": "Margin Valuation Adjustment — the lifetime funding cost of posting initial margin for a derivative",
+    "KVA": "Capital Valuation Adjustment — the cost of holding regulatory capital against a derivative over its life",
+    "XVA": "Valuation Adjustment umbrella — the collective term for CVA, DVA, FVA, MVA, KVA and related adjustments moving prices away from risk-free values",
+    "PFE": "Potential Future Exposure — a high-quantile measure of future derivative exposure, the counterparty analogue of VaR",
+    "EE": "Expected Exposure — the mean of positive derivative exposure across simulated market paths at a future date",
+    "EPE": "Expected Positive Exposure — the time-average of expected exposure over a netting set's life, used in regulatory EAD computation",
+    "CCP": "Central Counterparty — a clearing house that interposes itself between buyer and seller, becoming counterparty to both",
+    "IM": "Initial Margin — collateral posted upfront to cover potential future exposure over the close-out period",
+    "VM": "Variation Margin — collateral exchanged periodically (typically daily) to settle mark-to-market changes",
+    "SA-CCR": "Standardised Approach for Counterparty Credit Risk — the Basel method for computing derivative exposure-at-default",
+    "EAD": "Exposure at Default — the amount of credit exposure expected at the time of default",
+    "PD": "Probability of Default — the likelihood a counterparty defaults over a stated horizon",
+    "LGD": "Loss Given Default — the fraction of exposure lost if default occurs, after recoveries",
+    "VaR": "Value at Risk — a quantile-based risk measure"
+  },
   "primer": "**Counterparty credit risk (CCR)** is the risk a derivative counterparty defaults *before settling* when the contract is in-the-money to you. It is bilateral and stochastic — exposure exists only when the contract is positive to the surviving party.\\n\\n**Exposure measures.** **Current exposure** = $\\\\mathrm{CE}(t)=\\\\max(V(t),0)$ — negative MtM means *zero* current exposure (you owe them). **PFE** (potential future exposure) = a high quantile (95–99%) of future exposure, the counterparty analogue of VaR: $Q_\\\\alpha(\\\\max(V(t),0))$; it sizes credit limits. **EE** (expected exposure) = mean of positive exposure across paths, $\\\\mathbb{E}[\\\\max(V(t),0)]$ — the core CVA input. **EPE** (expected positive exposure) = time-average of EE, $\\\\tfrac1T\\\\int_0^T\\\\mathrm{EE}(t)dt$, used in regulatory EAD (Effective EPE floors roll-off). The **exposure profile** is exposure's shape over time: diffusion widens it, amortisation/cash flows shrink it — swaps peak mid-life, FX forwards rise to maturity.\\n\\n**Valuation adjustments (XVA)** move price off the risk-free value. **CVA** = market price of counterparty default risk, reducing value: $(1-R)\\\\int_0^T\\\\mathrm{EE}(t)\\\\,d\\\\mathrm{PD}(t)$ — hedgeable, owned by a CVA desk. **DVA** = the *bank's own* credit risk, a **benefit** (gain as own credit worsens) — the mirror of CVA, largely un-monetisable. **FVA** = cost/benefit of funding the uncollateralised part above risk-free. **MVA** = lifetime funding cost of posting initial margin; **KVA** = cost of holding regulatory capital over the trade's life. **XVA** is the umbrella (CVA, DVA, FVA, MVA, KVA, ColVA…) — pricing means clearing the whole stack. **Wrong-way risk**: exposure rises as the counterparty's credit *falls* (adverse correlation), inflating CVA; right-way risk is the benign opposite.\\n\\n**Mitigation.** A **netting set** is the group of trades under one enforceable netting agreement; exposure is on the net value, $\\\\max(\\\\sum_i V_i,0)$ — the netting set, not the trade, is the unit of exposure. **Close-out netting** (under an ISDA Master Agreement) is the right to terminate all trades and settle one net amount on default — without it, gross exposure applies. **Initial margin (IM)** covers PFE over the close-out period at a high quantile (often **99% over 10 days**), segregated and not rehypothecated (extended by UMR). **Variation margin (VM)** is exchanged ~daily to settle MtM changes, resetting current exposure toward zero ($\\\\mathrm{VM}_t\\\\approx\\\\Delta V_t$).\\n\\n**Clearing & capital.** A **central counterparty (CCP)** interposes itself between buyer and seller, becoming counterparty to both and mutualising risk via margin and a default fund — concentrating risk into systemic nodes. The **default waterfall**: defaulter's margin + default-fund contribution → the CCP's own capital (**'skin in the game'**) → surviving members' mutualised funds. **SA-CCR** computes EAD = $1.4\\\\times(\\\\mathrm{RC}+\\\\mathrm{PFE})$, replacing the Current Exposure Method. **Bilateral vs cleared**: bilateral settles under ISDA/CSA with negotiated collateral; cleared novates to a CCP with standardised margin and lower capital — regimes steer standardised risk toward clearing.",
   "cards": [
     {
       "term": "Counterparty credit risk",
       "sub": "CCR",
       "definition": "The risk that a derivative counterparty defaults before settling, when the contract has positive value to you. Unlike loan exposure it is bilateral and stochastic — it depends on where the market moves over the trade's life.",
-      "note": "Exposure exists only when the contract is in-the-money to the surviving party.",
+      "note": "Exposure exists only when the contract is in-the-money to the surviving party. Key measures include [[EE]] (expected exposure) and [[PFE]] (potential future exposure).",
       "last_updated": "2026-06-29",
       "stale": true
     },
@@ -20,30 +40,32 @@
       "formula": "$\\mathrm{CE}(t) = \\max\\big(V(t),\\,0\\big)$",
       "type": "truefalse",
       "answer": true,
-      "summary": "True — exposure exists only when the contract is in-the-money to you; negative MtM means you owe them, so there is nothing to lose on their default.",
+      "summary": "True — exposure exists only when the contract is in-the-money to you; negative MtM means you owe them, so there is nothing to lose on their default. [[PFE]] and [[CCR]] measures only apply when exposure is positive.",
       "last_updated": "2026-06-29",
       "stale": true
     },
     {
       "term": "Potential future exposure",
       "sub": "PFE",
-      "definition": "A high quantile (e.g. 95–99%) of exposure at a future date, capturing how large the exposure could plausibly grow. It sizes credit limits and is the counterparty-risk analogue of VaR.",
+      "definition": "A high quantile (e.g. 95–99%) of exposure at a future date, capturing how large the exposure could plausibly grow. It sizes credit limits and is the counterparty-risk analogue of [[VaR]].",
       "formula": "$\\mathrm{PFE}_\\alpha(t) = Q_\\alpha\\big(\\max(V(t),0)\\big)$",
+      "note": "Complements [[EE]]: while [[EE]] is the average, PFE is a tail quantile used for limit-setting under [[CCR]] frameworks.",
       "last_updated": "2026-06-29",
       "stale": true
     },
     {
       "term": "Expected exposure",
       "sub": "EE",
-      "definition": "The average of positive exposure across simulated market paths at a future time — the mean of the exposure distribution. The EE profile over time is the core input to CVA.",
+      "definition": "The average of positive exposure across simulated market paths at a future time — the mean of the exposure distribution. The EE profile over time is the core input to [[CVA]].",
       "formula": "$\\mathrm{EE}(t) = \\mathbb{E}\\big[\\max(V(t),0)\\big]$",
+      "note": "Contrasted with [[PFE]]: EE is the mean whereas [[PFE]] is a high quantile of the same distribution.",
       "last_updated": "2026-06-29",
       "stale": true
     },
     {
       "term": "Expected positive exposure",
       "sub": "EPE",
-      "definition": "The time-averaged expected exposure over the life of the netting set — a single summary number used in the regulatory exposure (EAD) for counterparty capital. Effective EPE applies a non-decreasing floor to avoid understating roll-off.",
+      "definition": "The time-averaged [[EE]] over the life of the netting set — a single summary number used in the regulatory exposure ([[EAD]]) for counterparty capital. Effective EPE applies a non-decreasing floor to avoid understating roll-off.",
       "formula": "$\\mathrm{EPE} = \\dfrac{1}{T}\\displaystyle\\int_0^T \\mathrm{EE}(t)\\,dt$",
       "last_updated": "2026-06-29",
       "stale": true
@@ -51,7 +73,7 @@
     {
       "term": "Exposure profile",
       "definition": "The shape of expected (or potential) exposure over time, set by competing effects: diffusion widens it while amortisation and cash flows shrink it. Swaps peak mid-life; FX forwards rise to maturity.",
-      "note": "The profile's shape, not just its peak, drives CVA and collateral terms.",
+      "note": "The profile's shape, not just its peak, drives [[CVA]] and collateral terms.",
       "last_updated": "2026-06-29",
       "stale": true
     },
@@ -59,18 +81,19 @@
       "term": "Credit valuation adjustment",
       "sub": "CVA",
       "definition": "The market price of counterparty default risk — the amount by which a derivative's risk-free value is reduced to reflect the chance the counterparty defaults. It is a P&L-relevant, hedgeable adjustment owned by a CVA desk.",
-      "formula": "$\\mathrm{CVA} = (1-R)\\displaystyle\\int_0^T \\mathrm{EE}(t)\\,d\\,\\mathrm{PD}(t)$",
+      "formula": "$\\mathrm{CVA} = (1-[[LGD]])\\displaystyle\\int_0^T \\mathrm{[[EE]]}(t)\\,d\\,\\mathrm{[[PD]]}(t)$",
+      "note": "[[EE]] is the exposure input; [[PD]] drives the default probability term; [[LGD]] is one minus the recovery rate.",
       "last_updated": "2026-06-29",
       "stale": true
     },
     {
-      "term": "DVA is a charge that reduces the value of a derivative to the bank, just like CVA.",
+      "term": "DVA is a charge that reduces the value of a derivative to the bank, just like [[CVA]].",
       "sub": "DVA",
-      "definition": "False. Debit Valuation Adjustment stems from the bank's own credit risk and is a benefit to the bank, the mirror of CVA — counterintuitively booking a gain as one's own credit worsens. It makes derivative valuation symmetric but its gains are largely un-monetisable.",
+      "definition": "False. Debit Valuation Adjustment stems from the bank's own credit risk and is a benefit to the bank, the mirror of [[CVA]] — counterintuitively booking a gain as one's own credit worsens. It makes derivative valuation symmetric but its gains are largely un-monetisable.",
       "note": "Profiting from your own deterioration is why DVA is controversial and partly filtered from capital.",
       "type": "truefalse",
       "answer": false,
-      "summary": "False — DVA reflects the bank's OWN default risk and lowers liabilities, booking a GAIN as the bank's credit worsens — the mirror of CVA.",
+      "summary": "False — DVA reflects the bank's OWN default risk and lowers liabilities, booking a GAIN as the bank's credit worsens — the mirror of [[CVA]].",
       "last_updated": "2026-06-29",
       "stale": true
     },
@@ -78,7 +101,7 @@
       "term": "Funding valuation adjustment",
       "sub": "FVA",
       "definition": "The cost or benefit of funding the uncollateralised portion of a derivative over its life, above the risk-free rate. It arises because the funding curve differs from the discount curve in an imperfect market.",
-      "note": "Its existence and overlap with DVA were genuinely contested in the literature.",
+      "note": "Its existence and overlap with [[DVA]] were genuinely contested in the literature. Unlike [[CVA]], FVA is not universally accepted as a pricing adjustment.",
       "last_updated": "2026-06-29",
       "stale": true
     },
@@ -86,13 +109,13 @@
       "term": "Margin & capital adjustments",
       "sub": "MVA / KVA",
       "definition": "MVA is the lifetime funding cost of posting initial margin; KVA is the cost of holding regulatory capital against the trade over its life. Both push pricing beyond risk-free value to reflect the true balance-sheet cost of a trade.",
-      "note": "Together with CVA/DVA/FVA they form the full XVA stack a modern trade must clear.",
+      "note": "Together with [[CVA]], [[DVA]], and [[FVA]] they form the full XVA stack a modern trade must clear.",
       "last_updated": "2026-06-29",
       "stale": true
     },
     {
       "term": "XVA",
-      "definition": "The umbrella term for the family of valuation adjustments (CVA, DVA, FVA, MVA, KVA, ColVA…) that move a derivative's price away from its idealised risk-free value to reflect credit, funding, margin and capital. Pricing a trade means clearing the whole stack.",
+      "definition": "The umbrella term for the family of valuation adjustments ([[CVA]], [[DVA]], [[FVA]], [[MVA]], [[KVA]], ColVA…) that move a derivative's price away from its idealised risk-free value to reflect credit, funding, margin and capital. Pricing a trade means clearing the whole stack.",
       "note": "Post-2008 these moved from afterthoughts to front-and-centre desk economics.",
       "last_updated": "2026-06-29",
       "stale": true
@@ -100,13 +123,13 @@
     {
       "term": "Wrong-way risk",
       "definition": "When exposure to a counterparty rises precisely as that counterparty's credit quality falls — the two are adversely correlated, magnifying loss. Selling protection on a name correlated to the counterparty is the textbook case.",
-      "note": "Right-way risk is the benign opposite; wrong-way risk inflates CVA beyond the independent estimate.",
+      "note": "Right-way risk is the benign opposite; wrong-way risk inflates [[CVA]] beyond the independent estimate and is a key concern in [[CCR]] management.",
       "last_updated": "2026-06-29",
       "stale": true
     },
     {
       "term": "Netting set",
-      "definition": "The group of trades with a counterparty covered by a single enforceable netting agreement, so exposure is computed on the net, not gross, value. The netting set, not the individual trade, is the unit of counterparty exposure.",
+      "definition": "The group of trades with a counterparty covered by a single enforceable netting agreement, so exposure is computed on the net, not gross, value. The netting set, not the individual trade, is the unit of counterparty exposure and the basis for [[CCR]] and [[EAD]] calculations.",
       "formula": "$\\mathrm{CE} = \\max\\big(\\textstyle\\sum_i V_i,\\,0\\big)$ within the set",
       "last_updated": "2026-06-29",
       "stale": true
@@ -121,8 +144,8 @@
     {
       "term": "Initial margin is typically sized to cover potential future exposure over the close-out period at a {{99%}} confidence level (often over 10 days).",
       "sub": "IM",
-      "definition": "Collateral posted up front to cover potential future exposure over the close-out period if a counterparty defaults — sized to a high quantile (often 99% over 10 days). It is held segregated and not rehypothecated.",
-      "note": "Uncleared margin rules (UMR) extended bilateral IM to most large market participants.",
+      "definition": "Collateral posted up front to cover [[PFE]] over the close-out period if a counterparty defaults — sized to a high quantile (often 99% over 10 days). It is held segregated and not rehypothecated.",
+      "note": "Uncleared margin rules (UMR) extended bilateral [[IM]] to most large market participants.",
       "type": "cloze",
       "last_updated": "2026-06-29",
       "stale": true
@@ -132,14 +155,15 @@
       "sub": "VM",
       "definition": "Collateral exchanged frequently (typically daily) to settle changes in mark-to-market, resetting current exposure toward zero. Full daily VM means current exposure is limited to one day's move plus the close-out gap.",
       "formula": "$\\mathrm{VM}_t \\approx \\Delta V_t$ (the day's MtM change)",
+      "note": "Complements [[IM]]: while VM resets current exposure daily, [[IM]] covers the residual gap. Together they are the main collateral tools in [[CCR]] mitigation.",
       "last_updated": "2026-06-29",
       "stale": true
     },
     {
       "term": "A clearing house that interposes itself between buyer and seller, becoming counterparty to both, is a {{central counterparty}} (CCP).",
       "sub": "CCP / clearing",
-      "definition": "A clearing house that interposes itself between buyer and seller, becoming counterparty to both and mutualising default risk through margin and a default fund. Mandatory clearing of standardised derivatives concentrated risk into a few systemic CCPs.",
-      "note": "CCPs reduce bilateral CCR but create new 'too-central-to-fail' systemic nodes.",
+      "definition": "A clearing house that interposes itself between buyer and seller, becoming counterparty to both and mutualising default risk through [[IM]], [[VM]], and a default fund. Mandatory clearing of standardised derivatives concentrated risk into a few systemic CCPs.",
+      "note": "CCPs reduce bilateral [[CCR]] but create new 'too-central-to-fail' systemic nodes.",
       "type": "cloze",
       "last_updated": "2026-06-29",
       "stale": true
@@ -155,8 +179,9 @@
     {
       "term": "Under SA-CCR, exposure-at-default is replacement cost plus PFE scaled by a regulatory multiplier of {{1.4}}.",
       "sub": "standardised approach for CCR",
-      "definition": "The post-crisis standardised method for computing derivative exposure-at-default, replacing the crude Current Exposure Method. It combines a haircut-based replacement cost with a risk-factor-bucketed potential-future-exposure add-on, recognising netting and margin more sensibly.",
+      "definition": "The post-crisis standardised method for computing derivative [[EAD]], replacing the crude Current Exposure Method. It combines a haircut-based replacement cost with a risk-factor-bucketed [[PFE]] add-on, recognising netting and margin more sensibly.",
       "formula": "$\\mathrm{EAD} = 1.4\\times(\\mathrm{RC} + \\mathrm{PFE})$",
+      "note": "SA-CCR is Basel's answer to [[CCR]] capital; the 1.4 multiplier is a regulatory floor on the [[EAD]] estimate.",
       "type": "cloze",
       "last_updated": "2026-06-29",
       "stale": true

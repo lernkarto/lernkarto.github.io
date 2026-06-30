@@ -4,6 +4,25 @@
   "color": "#ff9f55",
   "description": "The Basel framework: how much capital and liquidity a bank must hold.",
   "primerTitle": "The Basel framework",
+  "glossary": {
+    "CET1": "Common Equity Tier 1 — the highest quality regulatory capital, comprising common shares and retained earnings",
+    "AT1": "Additional Tier 1 — going-concern capital instruments such as contingent convertibles (CoCos) that can absorb losses",
+    "RWA": "Risk-Weighted Assets — the sum of exposures scaled by regulatory risk weights, forming the denominator of capital ratios",
+    "FRTB": "Fundamental Review of the Trading Book — a Basel Committee redesign of market-risk capital rules",
+    "LCR": "Liquidity Coverage Ratio — a Basel III liquidity rule requiring sufficient high-quality liquid assets to cover short-term stressed outflows",
+    "NSFR": "Net Stable Funding Ratio — a Basel III structural liquidity rule requiring stable funding to match funding needs over a one-year horizon",
+    "CCyB": "Countercyclical Capital Buffer — a variable CET1 buffer adjusted by national authorities over the credit cycle",
+    "IRB": "Internal Ratings-Based approach — a Basel capital framework allowing banks to use their own credit risk estimates",
+    "SA": "Standardised Approach — a Basel capital framework using regulator-prescribed risk weights rather than internal models",
+    "ECL": "Expected Credit Loss — a forward-looking accounting provisioning measure (IFRS 9) based on probability-weighted expected losses",
+    "CVA": "Credit Valuation Adjustment — the market value reduction of a derivative to reflect the counterparty's default risk",
+    "TLAC": "Total Loss-Absorbing Capacity — a minimum requirement for systemically important banks to hold bail-inable equity and debt",
+    "MREL": "Minimum Requirement for own funds and Eligible Liabilities — the EU equivalent of TLAC for resolution planning",
+    "ICAAP": "Internal Capital Adequacy Assessment Process — a bank's own assessment of its capital needs under Pillar 2",
+    "SREP": "Supervisory Review and Evaluation Process — the supervisor's review and challenge of the ICAAP under Pillar 2",
+    "ES": "Expected Shortfall — a coherent risk measure averaging losses beyond the VaR threshold",
+    "VaR": "Value at Risk — a quantile-based loss threshold measure at a stated confidence level"
+  },
   "primer": "The **Basel Accords** are international banking standards from the Basel Committee, transposed into national law (EU CRR/CRD, US rules): **Basel I** (1988) → **II** (2004) → **2.5** (2009) → **III** (2010–, with 2017 'Basel IV' finalisation).\n\n**Evolution.** *Basel I*: minimum **8%** capital ratio against crudely risk-weighted assets (0/20/50/100% weights), almost all credit risk — invited arbitrage. *Basel II*: risk-sensitive capital via internal models, the *three pillars*, an explicit op-risk charge (criticised post-2008 for procyclicality and model reliance). *Basel 2.5*: trading-book fixes — stressed VaR, incremental risk charge, securitisation penalties. *Basel III*: more and higher-quality capital, leverage + liquidity (LCR, NSFR), buffers, systemic surcharges; its 2017 elements (output floor, revised approaches) are 'Basel IV'.\n\n**Three Pillars.** P1 = minimum capital by formula; P2 = supervisory review (**ICAAP** by the bank, **SREP** by the supervisor) for risks P1 misses (concentration, IRRBB), with add-ons; P3 = standardised public disclosure for market discipline.\n\n**RWA & ratios.** **RWA** $=\\\\sum_i\\\\mathrm{EAD}_i\\\\times w_i$ — riskier assets consume more capital; it is the denominator of every ratio. *Capital adequacy ratio* $\\\\mathrm{CAR}=\\\\frac{\\\\text{eligible capital}}{\\\\mathrm{RWA}}\\\\ge 8\\\\%$. *RWA density* = RWA/total assets (gauges average riskiness; low density invites scrutiny).\n\n**Capital tiers (quality ladder).** **CET1** (common shares + retained earnings) = highest quality, *going-concern* loss absorption, $\\\\ge 4.5\\\\%$ of RWA. **Tier 1** = CET1 + Additional Tier 1 (AT1 'CoCos' convert/write down at a trigger), going-concern, $\\\\ge 6\\\\%$. **Tier 2** = mainly subordinated debt, *gone-concern* — absorbs losses only in **liquidation**; Total (T1+T2) $\\\\ge 8\\\\%$.\n\n**Backstops & buffers.** *Leverage ratio* = Tier 1 / total exposure (non-risk-weighted), $\\\\ge\\\\mathbf{3\\\\%}$ — guards against gaming risk weights. *Capital conservation buffer* = **2.5%** CET1 above minimums; sitting inside it triggers automatic limits on dividends/bonuses (it doesn't fail the bank). *Countercyclical buffer (CCyB)* = variable CET1 (0–2.5%+), **raised in booms, released in downturns**, set by national authorities. *G-SIB surcharge* = extra CET1 scaled by systemic footprint (size, interconnectedness, complexity, cross-jurisdictional, substitutability). *Pillar 1 minimums*: 4.5% CET1, 6% T1, 8% total, 3% leverage, 100% LCR/NSFR — buffers stack on top; falling into a buffer restricts payouts, breaching a minimum triggers resolution.\n\n**Approaches.** *Standardised (SA)*: regulator-set weights keyed to external ratings — simple, comparable. *Internal ratings-based (IRB)*: own PD (Foundation), plus own LGD/EAD (Advanced), constrained by input and output floors. The **output floor** caps IRB benefit: model RWA $\\\\ge\\\\mathbf{72.5\\\\%}$ of the standardised figure (the headline 'Basel IV' constraint). **FRTB** redesigns market risk: ES at 97.5% with liquidity horizons, a harder trading/banking-book boundary. FRTB *SBM* (standardised) = delta + vega + curvature + DRC + RRAO (mandatory even for IMA banks). FRTB *IMA* (internal) = ES with desk-level P&L-attribution and backtesting approval; non-modellable risk factors get a punitive stressed charge.\n\n**Liquidity & resolution.** *LCR* = HQLA / 30-day stressed net outflows $\\\\ge 100\\\\%$ (survive **30** days). *NSFR* = available / required stable funding over **1** year $\\\\ge 100\\\\%$ (structural funding). *CVA charge*: capital for MtM losses from counterparties' credit-quality deterioration on derivatives (separate from default risk). *TLAC/MREL*: minimum loss-absorbing + recapitalisation capacity (equity + bail-inable debt) so banks are resolved by bail-in, not bailout (TLAC = FSB global; MREL = EU). *IFRS 9 ECL*: forward-looking provisioning, Stage 1 = 12-month ECL, Stages 2–3 = lifetime.",
   "cards": [
     {
@@ -23,28 +42,28 @@
     },
     {
       "term": "Basel II",
-      "definition": "The 2004 framework introducing risk-sensitive capital via internal models, the three-pillar structure, and an explicit operational-risk charge. It let sophisticated banks use their own (IRB) estimates, increasing sensitivity but also model dependence.",
+      "definition": "The 2004 framework introducing risk-sensitive capital via internal models, the three-pillar structure, and an explicit operational-risk charge. It let sophisticated banks use their own ([[IRB]]) estimates, increasing sensitivity but also model dependence.",
       "note": "Criticised post-2008 for procyclicality and over-reliance on bank models.",
       "last_updated": "2026-06-29",
       "stale": true
     },
     {
       "term": "Basel 2.5",
-      "definition": "The 2009 enhancement to trading-book rules after the crisis, adding stressed VaR, an incremental risk charge and securitisation penalties. A stopgap that roughly tripled some trading-book capital before the fuller FRTB rewrite.",
+      "definition": "The 2009 enhancement to trading-book rules after the crisis, adding stressed [[VaR]], an incremental risk charge and securitisation penalties. A stopgap that roughly tripled some trading-book capital before the fuller [[FRTB]] rewrite.",
       "note": "Bolted fixes onto VaR rather than redesigning the regime.",
       "last_updated": "2026-06-29",
       "stale": true
     },
     {
       "term": "Basel III",
-      "definition": "The post-crisis overhaul raising the quantity and quality of capital, adding leverage and liquidity (LCR, NSFR) requirements, buffers, and systemic surcharges. Its final 2017 elements — the output floor and revised approaches — are often called 'Basel IV'.",
+      "definition": "The post-crisis overhaul raising the quantity and quality of capital, adding leverage and liquidity ([[LCR]], [[NSFR]]) requirements, buffers, and systemic surcharges. Its final 2017 elements — the output floor and revised approaches — are often called 'Basel IV'.",
       "note": "Shifted emphasis to loss-absorbing common equity, leverage and liquidity together.",
       "last_updated": "2026-06-29",
       "stale": true
     },
     {
       "term": "Three Pillars",
-      "definition": "Basel II's architecture: Pillar 1 sets minimum capital by formula; Pillar 2 is supervisory review of risks not fully captured; Pillar 3 mandates market disclosure to enforce discipline. The pillars are complementary, not alternatives.",
+      "definition": "Basel II's architecture: Pillar 1 sets minimum capital by formula; Pillar 2 is supervisory review of risks not fully captured ([[ICAAP]] by the bank, [[SREP]] by the supervisor); Pillar 3 mandates market disclosure to enforce discipline. The pillars are complementary, not alternatives.",
       "note": "Pillar 1 is the floor; Pillar 2 catches what the formulas miss.",
       "last_updated": "2026-06-29",
       "stale": true
@@ -52,14 +71,14 @@
     {
       "term": "Pillar 2",
       "sub": "ICAAP / SREP",
-      "definition": "The supervisory pillar requiring banks to assess all material risks and capital adequacy (ICAAP), which supervisors then evaluate and challenge (SREP), often imposing add-ons. It captures concentration, IRRBB and other risks outside Pillar 1.",
+      "definition": "The supervisory pillar requiring banks to assess all material risks and capital adequacy ([[ICAAP]]), which supervisors then evaluate and challenge ([[SREP]]), often imposing add-ons. It captures concentration, IRRBB and other risks outside Pillar 1.",
       "note": "Where idiosyncratic, judgement-based capital requirements are set.",
       "last_updated": "2026-06-29",
       "stale": true
     },
     {
       "term": "Pillar 3",
-      "definition": "The market-discipline pillar mandating standardised public disclosure of risk, capital and RWA so that investors and counterparties can assess a bank. Transparency is meant to reward prudence and penalise opacity.",
+      "definition": "The market-discipline pillar mandating standardised public disclosure of risk, capital and [[RWA]] so that investors and counterparties can assess a bank. Transparency is meant to reward prudence and penalise opacity.",
       "note": "Comparability across banks is the design goal.",
       "last_updated": "2026-06-29",
       "stale": true
@@ -67,7 +86,7 @@
     {
       "term": "Risk-weighted assets",
       "sub": "RWA",
-      "definition": "Exposures scaled by risk weights so that riskier assets consume more capital, the denominator of every capital ratio. Computing RWA via standardised or internal-model approaches is the central machinery of the framework.",
+      "definition": "Exposures scaled by risk weights so that riskier assets consume more capital, the denominator of every capital ratio. Computing RWA via standardised ([[SA]]) or internal-model ([[IRB]]) approaches is the central machinery of the framework.",
       "formula": "$\\mathrm{RWA}=\\sum_i \\mathrm{EAD}_i\\times w_i$",
       "last_updated": "2026-06-29",
       "stale": true
@@ -75,7 +94,7 @@
     {
       "term": "Capital adequacy ratio",
       "sub": "CAR",
-      "definition": "The ratio of eligible regulatory capital to risk-weighted assets, with an 8% Pillar 1 minimum before buffers. The headline solvency gauge of the Basel framework.",
+      "definition": "The ratio of eligible regulatory capital to risk-weighted assets ([[RWA]]), with an 8% Pillar 1 minimum before buffers. The headline solvency gauge of the Basel framework.",
       "formula": "$\\mathrm{CAR}=\\dfrac{\\text{eligible capital}}{\\mathrm{RWA}}\\ge 8\\%$",
       "last_updated": "2026-06-29",
       "stale": true
@@ -83,28 +102,28 @@
     {
       "term": "Common Equity Tier 1",
       "sub": "CET1",
-      "definition": "The highest-quality capital — common shares and retained earnings — that absorbs losses on a going-concern basis. The minimum CET1 ratio is 4.5% of RWA before the conservation and other buffers stack on top.",
+      "definition": "The highest-quality capital — common shares and retained earnings — that absorbs losses on a going-concern basis. The minimum CET1 ratio is 4.5% of [[RWA]] before the conservation and other buffers stack on top.",
       "formula": "$\\dfrac{\\mathrm{CET1}}{\\mathrm{RWA}}\\ge 4.5\\%\\;(+\\text{buffers})$",
       "last_updated": "2026-06-29",
       "stale": true
     },
     {
       "term": "Tier 1 capital",
-      "definition": "Going-concern capital comprising CET1 plus Additional Tier 1 (e.g. perpetual instruments that convert or write down under stress). It must be at least 6% of RWA and absorbs losses while the bank keeps operating.",
-      "note": "AT1 'CoCos' convert to equity or write down when CET1 falls below a trigger.",
+      "definition": "Going-concern capital comprising [[CET1]] plus Additional Tier 1 (e.g. perpetual instruments that convert or write down under stress). It must be at least 6% of [[RWA]] and absorbs losses while the bank keeps operating.",
+      "note": "[[AT1]] 'CoCos' convert to equity or write down when CET1 falls below a trigger.",
       "last_updated": "2026-06-29",
       "stale": true
     },
     {
       "term": "Tier 2 capital",
-      "definition": "Gone-concern capital — mainly subordinated debt — that absorbs losses only in liquidation, protecting depositors and senior creditors. Total capital (Tier 1 + Tier 2) must be at least 8% of RWA.",
-      "note": "Lower quality than Tier 1: it cushions failure, not survival.",
+      "definition": "Gone-concern capital — mainly subordinated debt — that absorbs losses only in liquidation, protecting depositors and senior creditors. Total capital (Tier 1 + Tier 2) must be at least 8% of [[RWA]].",
+      "note": "Lower quality than Tier 1: it cushions failure, not survival. Compare [[CET1]] (going-concern).",
       "last_updated": "2026-06-29",
       "stale": true
     },
     {
       "term": "The Basel III leverage ratio is a non-risk-weighted backstop — Tier 1 capital over a total exposure measure — with a {{3}}% minimum.",
-      "definition": "A non-risk-weighted backstop: Tier 1 capital over a total exposure measure including off-balance-sheet items, with a 3% minimum. It guards against gaming of risk weights and against model error in RWA.",
+      "definition": "A non-risk-weighted backstop: Tier 1 capital over a total exposure measure including off-balance-sheet items, with a 3% minimum. It guards against gaming of risk weights and against model error in [[RWA]].",
       "formula": "$\\dfrac{\\text{Tier 1}}{\\text{exposure measure}}\\ge 3\\%$",
       "note": "Binds when RWA-based requirements look deceptively low.",
       "type": "cloze",
@@ -113,7 +132,7 @@
     },
     {
       "term": "The capital conservation buffer is a {{2.5}}% CET1 buffer above the minimums; sitting inside it triggers automatic limits on dividends and bonuses.",
-      "definition": "A 2.5% CET1 buffer above minimums that a bank may draw down in stress, but at the cost of automatic restrictions on dividends and bonuses. It builds usable capital in good times.",
+      "definition": "A 2.5% [[CET1]] buffer above minimums that a bank may draw down in stress, but at the cost of automatic restrictions on dividends and bonuses. It builds usable capital in good times.",
       "note": "Breaching it doesn't fail the bank — it constrains payouts to rebuild capital.",
       "type": "cloze",
       "last_updated": "2026-06-29",
@@ -122,14 +141,14 @@
     {
       "term": "Countercyclical capital buffer",
       "sub": "CCyB",
-      "definition": "A variable CET1 buffer (0–2.5%+) that authorities raise in credit booms and release in downturns, leaning against procyclicality. It aims to build defences when systemic risk is accumulating.",
+      "definition": "A variable [[CET1]] buffer (0–2.5%+) that authorities raise in credit booms and release in downturns, leaning against procyclicality. It aims to build defences when systemic risk is accumulating.",
       "note": "A macroprudential dial, set by national authorities on domestic exposures.",
       "last_updated": "2026-06-29",
       "stale": true
     },
     {
       "term": "G-SIB surcharge",
-      "definition": "An additional CET1 requirement on global systemically important banks, scaled by their systemic footprint (size, interconnectedness, complexity, cross-jurisdictional activity, substitutability). It internalises the externality that a giant's failure imposes on the system.",
+      "definition": "An additional [[CET1]] requirement on global systemically important banks, scaled by their systemic footprint (size, interconnectedness, complexity, cross-jurisdictional activity, substitutability). It internalises the externality that a giant's failure imposes on the system.",
       "note": "Higher buckets demand higher surcharges — a tax on systemic importance.",
       "last_updated": "2026-06-29",
       "stale": true
@@ -137,7 +156,7 @@
     {
       "term": "Standardised approach",
       "sub": "credit risk",
-      "definition": "Capital computed with regulator-set risk weights keyed to external ratings or exposure type, requiring no internal model. Simpler and more comparable across banks, at the cost of risk sensitivity.",
+      "definition": "Capital computed with regulator-set risk weights keyed to external ratings or exposure type, requiring no internal model. Simpler and more comparable across banks than [[IRB]], at the cost of risk sensitivity.",
       "note": "The revised SA reduces mechanical reliance on external ratings.",
       "last_updated": "2026-06-29",
       "stale": true
@@ -145,7 +164,7 @@
     {
       "term": "Internal ratings-based",
       "sub": "IRB",
-      "definition": "An approach letting approved banks use their own PD (and, under advanced IRB, LGD and EAD) estimates in supervisory capital formulas. More risk-sensitive but model-dependent, and now constrained by input floors and the output floor.",
+      "definition": "An approach letting approved banks use their own PD (and, under advanced IRB, LGD and EAD) estimates in supervisory capital formulas. More risk-sensitive than [[SA]] but model-dependent, and now constrained by input floors and the output floor against [[RWA]] under the standardised method.",
       "note": "Foundation IRB: own PD only; Advanced IRB: own PD, LGD, EAD.",
       "last_updated": "2026-06-29",
       "stale": true
@@ -153,7 +172,7 @@
     {
       "term": "FRTB",
       "sub": "Fundamental Review of the Trading Book",
-      "definition": "The redesigned market-risk framework replacing VaR with expected shortfall, hardening the boundary between trading and banking books, and overhauling both standardised and internal-model approaches. The most significant market-risk reform since 1996.",
+      "definition": "The redesigned market-risk framework replacing [[VaR]] with expected shortfall ([[ES]]), hardening the boundary between trading and banking books, and overhauling both standardised and internal-model approaches. It also reforms [[RWA]] computation for market risk. The most significant market-risk reform since 1996.",
       "note": "Switches the regulatory measure to 97.5% ES with liquidity horizons.",
       "last_updated": "2026-06-29",
       "stale": true
@@ -161,7 +180,7 @@
     {
       "term": "FRTB standardised approach",
       "sub": "SBM",
-      "definition": "A sensitivities-based method summing delta, vega and curvature charges across prescribed risk classes with regulatory correlations, plus default and residual add-ons. Now mandatory to compute even for internal-model banks, as a floor and fallback.",
+      "definition": "A sensitivities-based method summing delta, vega and curvature charges across prescribed risk classes with regulatory correlations, plus default and residual add-ons. Now mandatory to compute even for internal-model banks, as a floor and fallback. Feeds into [[RWA]] for market risk.",
       "formula": "capital $=$ SBM (delta + vega + curvature) $+$ DRC $+$ RRAO",
       "last_updated": "2026-06-29",
       "stale": true
@@ -169,7 +188,7 @@
     {
       "term": "FRTB internal models",
       "sub": "IMA",
-      "definition": "The model-based FRTB option using expected shortfall with liquidity horizons, subject to desk-level approval via a P&L attribution test and backtesting. Desks failing the tests are forced onto the standardised approach.",
+      "definition": "The model-based [[FRTB]] option using expected shortfall ([[ES]]) with liquidity horizons, subject to desk-level approval via a P&L attribution test and backtesting. Desks failing the tests are forced onto the standardised approach.",
       "note": "Non-modellable risk factors get a separate, punitive stressed-scenario charge.",
       "last_updated": "2026-06-29",
       "stale": true
@@ -177,7 +196,7 @@
     {
       "term": "The Liquidity Coverage Ratio requires enough high-quality liquid assets to survive {{30}} days of stressed net cash outflows.",
       "sub": "LCR",
-      "definition": "A Basel III rule requiring enough high-quality liquid assets to cover 30 days of stressed net cash outflows. It ensures a bank can survive a month-long liquidity shock unaided.",
+      "definition": "A Basel III rule requiring enough high-quality liquid assets to cover 30 days of stressed net cash outflows. It ensures a bank can survive a month-long liquidity shock unaided. Complements the [[NSFR]], which addresses structural funding over a one-year horizon.",
       "formula": "$\\mathrm{LCR}=\\dfrac{\\mathrm{HQLA}}{\\text{net cash outflows over 30 days}}\\ge 100\\%$",
       "type": "cloze",
       "last_updated": "2026-06-29",
@@ -186,7 +205,7 @@
     {
       "term": "The Net Stable Funding Ratio requires available stable funding to cover required stable funding over a {{1}}-year horizon.",
       "sub": "NSFR",
-      "definition": "A Basel III rule requiring available stable funding to cover required stable funding over a one-year horizon, curbing reliance on short-term wholesale money. It targets structural, not acute, liquidity risk — the complement to the LCR.",
+      "definition": "A Basel III rule requiring available stable funding to cover required stable funding over a one-year horizon, curbing reliance on short-term wholesale money. It targets structural, not acute, liquidity risk — the complement to the [[LCR]].",
       "formula": "$\\mathrm{NSFR}=\\dfrac{\\text{available stable funding}}{\\text{required stable funding}}\\ge 100\\%$",
       "type": "cloze",
       "last_updated": "2026-06-29",
@@ -194,7 +213,7 @@
     },
     {
       "term": "The Basel III output floor stops internal-model RWA from falling below {{72.5}}% of the standardised figure.",
-      "definition": "A Basel III backstop capping the benefit of internal models: model-based RWA cannot fall below 72.5% of the standardised result. It limits variability and gaming of internal-model capital across banks.",
+      "definition": "A Basel III backstop capping the benefit of internal models ([[IRB]], [[FRTB]] IMA): model-based [[RWA]] cannot fall below 72.5% of the [[SA]] standardised result. It limits variability and gaming of internal-model capital across banks.",
       "formula": "$\\mathrm{RWA}\\ge 72.5\\%\\times \\mathrm{RWA}_{\\text{standardised}}$",
       "note": "The headline 'Basel IV' constraint, phased in gradually.",
       "type": "cloze",
@@ -203,22 +222,22 @@
     },
     {
       "term": "CVA capital charge",
-      "definition": "Capital held against the risk of mark-to-market losses from deterioration in counterparties' credit quality on derivative exposures. Introduced after CVA losses, not outright defaults, drove much of 2008's derivative damage.",
+      "definition": "Capital held against the risk of mark-to-market losses from deterioration in counterparties' credit quality on derivative exposures — i.e. the [[CVA]] risk charge. Introduced after CVA losses, not outright defaults, drove much of 2008's derivative damage. Calculated on [[RWA]] terms under the BA-CVA or SA-CVA approach.",
       "note": "Counterparty default risk and CVA (spread) risk are capitalised separately.",
       "last_updated": "2026-06-29",
       "stale": true
     },
     {
       "term": "TLAC / MREL",
-      "definition": "Requirements that systemic banks hold a minimum of loss-absorbing and recapitalisation capacity (equity plus bail-inable debt) to be resolved without taxpayer support. They make bail-in, not bailout, the default failure path.",
-      "note": "TLAC is the FSB global standard; MREL the EU equivalent.",
+      "definition": "Requirements that systemic banks hold a minimum of loss-absorbing and recapitalisation capacity (equity plus bail-inable debt) to be resolved without taxpayer support. They make bail-in, not bailout, the default failure path. Stacks on top of [[CET1]] and other regulatory capital minimums.",
+      "note": "[[TLAC]] is the FSB global standard; [[MREL]] the EU equivalent.",
       "last_updated": "2026-06-29",
       "stale": true
     },
     {
       "term": "IFRS 9 expected credit loss",
       "sub": "ECL",
-      "definition": "The accounting standard requiring forward-looking expected-loss provisioning, staged by whether credit risk has significantly increased since origination. It front-loads loss recognition versus the old incurred-loss model.",
+      "definition": "The accounting standard requiring forward-looking expected-loss ([[ECL]]) provisioning, staged by whether credit risk has significantly increased since origination. It front-loads loss recognition versus the old incurred-loss model.",
       "formula": "lifetime $\\mathrm{ECL}=\\sum_t \\mathrm{PD}_t\\times\\mathrm{LGD}_t\\times\\mathrm{EAD}_t\\times \\mathrm{DF}_t$",
       "note": "Stage 1 books 12-month ECL; stages 2–3 book lifetime ECL.",
       "last_updated": "2026-06-29",
@@ -226,14 +245,14 @@
     },
     {
       "term": "RWA density",
-      "definition": "The ratio of risk-weighted assets to total assets — a quick gauge of average portfolio riskiness and of how aggressively internal models are reducing capital. Suspiciously low density invites supervisory scrutiny.",
+      "definition": "The ratio of risk-weighted assets ([[RWA]]) to total assets — a quick gauge of average portfolio riskiness and of how aggressively internal models ([[IRB]]) are reducing capital. Suspiciously low density invites supervisory scrutiny.",
       "formula": "RWA density $=\\dfrac{\\mathrm{RWA}}{\\text{total assets}}$",
       "last_updated": "2026-06-29",
       "stale": true
     },
     {
       "term": "Pillar 1 minimum ratios",
-      "definition": "The hard Basel III floors before buffers: 4.5% CET1, 6% Tier 1 and 8% total capital of RWA, plus a 3% leverage ratio and 100% LCR/NSFR. Buffers (conservation, countercyclical, systemic) stack on top of these minimums.",
+      "definition": "The hard Basel III floors before buffers: 4.5% [[CET1]], 6% Tier 1 and 8% total capital of [[RWA]], plus a 3% leverage ratio and 100% [[LCR]]/[[NSFR]]. Buffers (conservation, countercyclical [[CCyB]], systemic) stack on top of these minimums.",
       "note": "Falling into the buffer triggers payout restrictions; breaching the minimum triggers resolution.",
       "last_updated": "2026-06-29",
       "stale": true
@@ -243,7 +262,7 @@
       "answer": false,
       "term": "Tier 2 capital absorbs losses on a going-concern basis.",
       "summary": "False — Tier 2 is gone-concern; it mainly absorbs losses in liquidation.",
-      "definition": "False. Tier 2 (mainly subordinated debt) is gone-concern capital that absorbs losses in liquidation, protecting depositors and senior creditors. Going-concern loss absorption is CET1 and Additional Tier 1.",
+      "definition": "False. Tier 2 (mainly subordinated debt) is gone-concern capital that absorbs losses in liquidation, protecting depositors and senior creditors. Going-concern loss absorption is [[CET1]] and [[AT1]].",
       "note": "[1] Basel III — https://www.bis.org/",
       "last_updated": "2026-06-29",
       "stale": true
@@ -253,7 +272,7 @@
       "answer": false,
       "term": "The countercyclical capital buffer is raised during downturns and released during credit booms.",
       "summary": "False — it's the other way round: raised in booms, released in downturns.",
-      "definition": "False. The countercyclical buffer (0–2.5%+ CET1) is built up in credit booms and released in downturns, leaning against procyclicality so banks keep lending in a bust.",
+      "definition": "False. The [[CCyB]] (0–2.5%+ [[CET1]]) is built up in credit booms and released in downturns, leaning against procyclicality so banks keep lending in a bust.",
       "note": "[1] Basel III — https://www.bis.org/",
       "last_updated": "2026-06-29",
       "stale": true
@@ -263,7 +282,7 @@
       "answer": true,
       "term": "CET1 is the highest-quality, going-concern loss-absorbing capital.",
       "summary": "True — common shares plus retained earnings, absorbing losses while the bank operates.",
-      "definition": "True. Common Equity Tier 1 — common shares and retained earnings — is the highest-quality capital and absorbs losses on a going-concern basis; its Pillar 1 minimum is 4.5% of RWA.",
+      "definition": "True. Common Equity Tier 1 — common shares and retained earnings — is the highest-quality capital and absorbs losses on a going-concern basis; its Pillar 1 minimum is 4.5% of [[RWA]].",
       "note": "[1] Basel III — https://www.bis.org/",
       "last_updated": "2026-06-29",
       "stale": true

@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>build a deck — lernkarto</title>
+<meta name="description" content="Author flashcard decks in a form — flip, MCQ, cloze, true/false — and load them straight into the study engine.">
+<link rel="icon" href="icon.svg">
+<link rel="apple-touch-icon" href="icon.svg">
+<link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+<div class="wrap">
+
+  <header>
+    <div class="topbar">
+      <div class="brand">
+        <span class="brand-mark" aria-hidden="true">
+          <svg width="46" height="42" viewBox="0 0 46 42">
+            <rect x="11" y="5" width="26" height="19" rx="3" fill="none" stroke="#00ff88" stroke-width="2" opacity=".4"/>
+            <rect x="6" y="13" width="30" height="23" rx="3" fill="#0e120e" stroke="#00ff88" stroke-width="2"/>
+            <line x1="12" y1="23" x2="30" y2="23" stroke="#00ff88" stroke-width="2" stroke-linecap="round"/>
+            <line x1="12" y1="29" x2="24" y2="29" stroke="#00ff88" stroke-width="2" stroke-linecap="round" opacity=".55"/>
+          </svg>
+        </span>
+        <span class="brand-name"><span>lernkarto</span><span class="brand-sub">flashcards</span></span>
+      </div>
+    </div>
+  </header>
+
+  <nav class="tabs">
+    <a href="./" class="tab">study</a>
+    <a href="./" class="tab">review</a>
+    <a href="./" class="tab">library</a>
+    <span class="tab active">build a deck</span>
+  </nav>
+
+  <div class="build-grid">
+    <div class="build-form">
+      <div class="build-formhead">
+        <p class="eyebrow">// new deck</p>
+        <label class="ghost-btn file-btn" title="load an existing deck JSON to edit">open .json<input type="file" id="bFile" accept=".json,application/json" hidden></label>
+      </div>
+      <div class="bwiki">
+        <input id="bWikiUrl" type="text" placeholder="Wikipedia article URL or title — e.g. Value at risk">
+        <button class="ghost-btn" id="bWikiFetch" title="Draft a deck from a Wikipedia article (CC BY-SA attribution auto-filled)">from Wikipedia</button>
+      </div>
+      <div class="bwiki-status" id="bWikiStatus"></div>
+      <label class="bfield"><span>deck name</span><input id="bDeckName" type="text" placeholder="My deck"></label>
+      <label class="bfield"><span>description</span><input id="bDeckDesc" type="text" placeholder="optional"></label>
+      <div class="bcards" id="bCards"></div>
+      <button class="ghost-btn" id="bAddCard">+ add card</button>
+    </div>
+    <div class="build-out">
+      <p class="eyebrow">// system format (JSON)</p>
+      <textarea id="bJson" readonly spellcheck="false" aria-label="Generated deck JSON"></textarea>
+      <div class="build-actions">
+        <button class="solid-btn" id="bLoad">load into study</button>
+        <button class="ghost-btn" id="bDownload">download .json</button>
+        <button class="ghost-btn" id="bCopy">copy</button>
+        <span class="import-error" id="bError" role="alert"></span>
+      </div>
+    </div>
+  </div>
+
+</div>
+<script src="js/schema.js"></script>
+<script src="js/build.js"></script>
+</body>
+</html>

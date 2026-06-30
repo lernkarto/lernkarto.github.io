@@ -17,14 +17,16 @@ See [TOPIC-GUIDE.md](TOPIC-GUIDE.md), [SUBJECT-GUIDE.md](SUBJECT-GUIDE.md), and 
   "primer": "## Market risk\nOne-pager of notions needed to pass the deck...",
   "primerTitle": "Market risk — what this deck covers",
   "tags": ["risk", "quant"],
+  "glossary": {
+    "VaR": "Value at Risk — a quantile of the loss distribution",
+    "ES":  "Expected Shortfall — the mean loss in the tail beyond VaR"
+  },
   "cards": [
     {
-      "term": "Value at Risk",
-      "sub": "VaR",
-      "definition": "The α-quantile of the loss distribution — the loss not exceeded with probability α.",
-      "formula": "$\\mathrm{VaR}_\\alpha(L) = \\inf\\{l : P(L > l) \\le 1-\\alpha\\}$",
-      "note": "Not coherent — fails subadditivity for non-elliptical distributions.",
-      "category": "measures"
+      "term": "[[VaR]] at the 99 % confidence level means:",
+      "choices": ["..."],
+      "answer": 0,
+      "definition": "..."
     }
   ],
   "categories": {
@@ -49,6 +51,7 @@ See [TOPIC-GUIDE.md](TOPIC-GUIDE.md), [SUBJECT-GUIDE.md](SUBJECT-GUIDE.md), and 
 | `categories` | In-deck sections. Keys match card `category` values. |
 | `direction` | `"forward"` / `"reverse"` / `"shuffle"` — default ask direction. |
 | `dual` | `true` — double every card into a forward and a reverse card. |
+| `glossary` | Object mapping term → definition. Cards opt in with `[[term]]` markup. See §4. |
 
 **Per-card optional fields:**
 
@@ -141,6 +144,43 @@ A deck that ships a `primer` must satisfy:
 This separates understanding from rote recall. If a card can only be answered by recalling a fact the primer never taught, either the card is trivia or the primer is incomplete — fix one.
 
 **Workflow:** write the primer → write cards answerable from it → **audit coverage**: classify each card's answer as DIRECT (in the primer), DERIVED (one step from it), or GAP — then close every GAP by adding the missing notion to the primer or cutting the card.
+
+---
+
+## 4. Inline glossary
+
+A deck may carry a `glossary` object at the top level — a plain map from term string to definition string. Individual cards then opt in to the feature by placing `[[term]]` markers in their text:
+
+```json
+"glossary": {
+  "VaR":  "Value at Risk — a quantile of the loss distribution",
+  "FRTB": "Fundamental Review of the Trading Book — Basel III market-risk overhaul"
+},
+"cards": [
+  {
+    "term": "Under [[FRTB]], the primary risk metric replacing [[VaR]] is:",
+    "choices": ["ES at 97.5 %", "VaR at 99 %", "CVaR at 95 %"],
+    "answer": 0,
+    "definition": "..."
+  }
+]
+```
+
+**What renders:**
+- Each `[[term]]` is replaced by an underlined span. On desktop, hovering shows the definition as a tooltip. On all devices, a compact glossary panel appears below the card listing every referenced term and its definition.
+- Cards without any `[[…]]` markers are unaffected — there is no performance cost.
+- A `[[term]]` that has no matching key in `glossary` renders as literal text (visible as a typo to the author).
+
+**Where markers are supported:** `term`, `definition`, `note`, MCQ `choices`, cloze display text. Not in `formula` (LaTeX conflicts with bracket syntax).
+
+**Authoring rule — don't give away the answer.** The definition shown in the tooltip and panel is visible *before* the card is answered. Write definitions that identify *what* a term is, not *what it does* in the context of this specific card:
+
+| Context | Too revealing | Safe |
+|---|---|---|
+| Card asks for ADF's null hypothesis | `"ADF — H₀: unit root"` | `"ADF — Augmented Dickey-Fuller test, a unit-root hypothesis test"` |
+| Card asks what ARMA requires | `"ARMA — requires stationarity"` | `"ARMA — Autoregressive Moving-Average model, a class of linear time-series models"` |
+
+If the card tests the very property that naturally belongs in the definition, either rephrase the definition to omit that property, or don't mark up the term on that card (the marker is voluntary — each `[[term]]` is an explicit author choice).
 
 ---
 

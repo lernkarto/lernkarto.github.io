@@ -25,6 +25,26 @@ function escapeHtml(text) {
 }
 function escapeAttr(text) { return escapeHtml(text).replace(/"/g, "&quot;"); }
 
+/* expand author-placed [[term]] markers into underlined spans with tooltip.
+   Returns {html, refs} — html is the safe string, refs is [{term, def}].
+   Only terms explicitly present in `glossary` are expanded; unknown markers
+   are left as literal text so typos are visible to the author. */
+function applyGlossary(rawText, glossary) {
+  if (!rawText || !glossary || !Object.keys(glossary).length) {
+    return { html: escapeHtml(rawText || ""), refs: [] };
+  }
+  const refs = [], seen = new Set();
+  const html = String(rawText).split(/(\[\[[^\]]+\]\])/).map((p) => {
+    const m = p.match(/^\[\[([^\]]+)\]\]$/);
+    if (!m) return escapeHtml(p);
+    const term = m[1], def = glossary[term];
+    if (!def) return escapeHtml(p);
+    if (!seen.has(term)) { refs.push({ term, def }); seen.add(term); }
+    return `<span class="gloss-term" data-gloss="${escapeAttr(def)}">${escapeHtml(term)}</span>`;
+  }).join("");
+  return { html, refs };
+}
+
 /* turn bare http(s) URLs in already-escaped text into tappable links.
    Runs AFTER escapeHtml, so any "&" is already "&amp;" — valid in href and
    text alike. Trailing sentence punctuation is left outside the link. */
@@ -235,6 +255,7 @@ function normalizeDeck(raw, fallbackId) {
     primerTitle: (raw && raw.primerTitle) ? String(raw.primerTitle) : null,
     lang: (raw && raw.lang) ? String(raw.lang) : null,               // BCP-47 — enables the 🔊 speak button (TTS)
     tags: Array.isArray(raw && raw.tags) ? raw.tags.map((t) => String(t).toLowerCase()) : [],
+    glossary: (raw && raw.glossary && typeof raw.glossary === "object" && !Array.isArray(raw.glossary)) ? raw.glossary : {},
     categories, cards: finalCards,
   };
 }

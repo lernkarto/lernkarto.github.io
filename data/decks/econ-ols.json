@@ -9,10 +9,20 @@
     "mcq"
   ],
   "primerTitle": "OLS regression — the essentials",
-  "primer": "## The model\n\nOLS fits $Y_i = \\beta_0 + \\beta_1 X_{1i} + \\cdots + \\beta_k X_{ki} + \\varepsilon_i$ by choosing $\\hat{\\beta}$ to **minimise** $\\sum_i \\hat{u}_i^2$ — the sum of squared residuals. The **residual** $\\hat{u}_i = Y_i - \\hat{Y}_i$ is the observable leftover; the **error** $\\varepsilon_i$ is the unobservable true disturbance. By construction $\\sum \\hat{u}_i = 0$ and every regressor is uncorrelated with $\\hat{u}$ — these are arithmetic identities of OLS, not assumptions.\n\n## Gauss-Markov theorem: BLUE\n\nUnder four conditions OLS is **BLUE** — Best Linear Unbiased Estimator (minimum variance among all linear unbiased estimators):\n\n- **Zero conditional mean** — $E[\\varepsilon | X] = 0$: no systematic relationship between X and the errors\n- **Homoskedasticity** — $\\text{Var}(\\varepsilon | X) = \\sigma^2$: error spread is constant across all X\n- **No autocorrelation** — $\\text{Cov}(\\varepsilon_i, \\varepsilon_j) = 0$ for $i \\neq j$: errors are uncorrelated across observations\n- **No perfect multicollinearity** — no regressor is an exact linear combination of the others\n\n**Normality** of ε is not required for BLUE. It is needed only for exact finite-sample t / F distributions. By the CLT, those tests are approximately valid in large samples regardless of the error distribution.\n\n## Coefficient interpretation\n\nEach slope $\\hat{\\beta}_j$ is the **ceteris paribus** (all-else-equal) partial effect: a one-unit increase in $X_j$ is associated with a $\\hat{\\beta}_j$-unit change in Y, holding all other regressors fixed. This interpretation requires that all relevant confounders are included in the model. Omitting a variable that is correlated with a regressor biases that regressor's coefficient — **omitted variable bias**.\n\n## Goodness of fit\n\n$$R^2 = 1 - \\frac{SSR}{SST}$$\n\nR² is the share of total variation in Y explained by the model. It **never decreases** when a regressor is added — even a useless one — so comparing models with different numbers of regressors requires **adjusted R²**:\n\n$$\\bar{R}^2 = 1 - \\frac{SSR/(n-k-1)}{SST/(n-1)}$$\n\nwhich penalises for additional parameters. High R² does not imply causation, correct specification, or out-of-sample validity.\n\n## Inference: t-test and F-test\n\n- **t-test** — for a single coefficient: $t = \\hat{\\beta}_j / SE(\\hat{\\beta}_j)$. Reject $H_0: \\beta_j = 0$ when $|t|$ exceeds the two-sided critical value. The SE measures the precision of the estimate — smaller when n is large, variance is low, or regressors vary widely.\n- **F-test** — for joint restrictions, e.g. are several slopes simultaneously zero? Compares the restricted to the unrestricted model. The F-statistic follows $F_{q,\\, n-k-1}$ under $H_0$, where q is the number of restrictions imposed.\n\nHigh R² with all t-stats small is a classic symptom of **multicollinearity**, not model failure.\n\n## Functional forms\n\n- **Lin-lin** $Y = a + bX$: b = units of Y per unit of X (level effect)\n- **Log-log** $\\ln Y = a + b\\ln X + u$: b is the **elasticity** — a 1% increase in X → b% change in Y\n- **Log-linear** $\\ln Y = a + bX + u$: b × 100 is the **semi-elasticity** — a 1-unit increase in X → approximately (b × 100)% change in Y\n\nNote: a is the intercept and u is the error term — two separate, distinct parameters. The intercept is a fixed scalar estimated from data; the error u is a random variable representing everything the model does not capture. Neither can absorb the other.\n\n## Dummy variables and interactions\n\nA binary dummy D ∈ {0, 1} shifts the **intercept** for one group relative to the other. With k mutually exclusive, exhaustive categories use only **k − 1** dummies — the omitted category is the baseline. Including all k produces an exact linear dependence with the constant column: the **dummy-variable trap** (perfect multicollinearity).\n\nAn **interaction term** $X_1 \\times X_2$ lets the slope on $X_1$ vary with the level of $X_2$ (and vice versa), capturing conditional effects that a simple additive model misses.\n\n## Multicollinearity\n\n- **Perfect**: one regressor is an exact linear combination of others → $(X^\\top X)$ is singular, OLS has no unique solution\n- **High but imperfect**: OLS is still consistent, but standard errors inflate. Individual t-stats shrink while R² stays large. Detected with the **Variance Inflation Factor**: $\\text{VIF}_j = 1/(1 - R_j^2)$ where $R_j^2$ is the R² from regressing $X_j$ on all other regressors. VIF > 10 is a common warning threshold.\n\nAdding an irrelevant regressor (true β = 0) leaves $\\hat{\\beta}$ unbiased on average but inflates standard errors and wastes a degree of freedom — a precision cost, not a bias.",
+  "glossary": {
+    "OLS": "Ordinary Least Squares — a method that fits a linear model by minimising the sum of squared residuals",
+    "BLUE": "Best Linear Unbiased Estimator — the Gauss-Markov property that a linear estimator is optimal among unbiased linear estimators",
+    "SSR": "Sum of Squared Residuals — the sum of squared differences between observed and fitted values",
+    "SST": "Sum of Squares Total — the total variation in the dependent variable around its mean",
+    "VIF": "Variance Inflation Factor — a diagnostic measuring how much a regressor's variance is inflated by collinearity with others",
+    "LPM": "Linear Probability Model — OLS applied to a binary (0/1) dependent variable",
+    "GLS": "Generalised Least Squares — a regression method that accounts for non-spherical errors (heteroskedasticity or autocorrelation)",
+    "irrelevant regressor": "a regressor whose true population coefficient is zero — it carries no genuine information about the outcome"
+  },
+  "primer": "**Vocabulary** — these terms are interchangeable across textbooks and fields; this deck uses *regressor* and *regressand* throughout:\n\n| Side | Equivalent names |\n|---|---|\n| Y — what you are explaining | **regressand** = dependent variable = response variable = outcome |\n| X — what you use to explain it | **regressor** = independent variable = explanatory variable = covariate |\n\n## The model\n\nOLS fits $Y_i = \\beta_0 + \\beta_1 X_{1i} + \\cdots + \\beta_k X_{ki} + \\varepsilon_i$ by choosing $\\hat{\\beta}$ to **minimise** $\\sum_i \\hat{u}_i^2$ — the sum of squared residuals. The **residual** $\\hat{u}_i = Y_i - \\hat{Y}_i$ is the observable leftover; the **error** $\\varepsilon_i$ is the unobservable true disturbance. By construction $\\sum \\hat{u}_i = 0$ and every regressor is uncorrelated with $\\hat{u}$ — these are arithmetic identities of OLS, not assumptions.\n\n## Gauss-Markov theorem: BLUE\n\nUnder four conditions OLS is **BLUE** — Best Linear Unbiased Estimator (minimum variance among all linear unbiased estimators):\n\n- **Zero conditional mean** — $E[\\varepsilon | X] = 0$: no systematic relationship between X and the errors\n- **Homoskedasticity** — $\\text{Var}(\\varepsilon | X) = \\sigma^2$: error spread is constant across all X\n- **No autocorrelation** — $\\text{Cov}(\\varepsilon_i, \\varepsilon_j) = 0$ for $i \\neq j$: errors are uncorrelated across observations\n- **No perfect multicollinearity** — no regressor is an exact linear combination of the others\n\n**Normality** of ε is not required for BLUE. It is needed only for exact finite-sample t / F distributions. By the CLT, those tests are approximately valid in large samples regardless of the error distribution.\n\n## Coefficient interpretation\n\nEach slope $\\hat{\\beta}_j$ is the **ceteris paribus** (all-else-equal) partial effect: a one-unit increase in $X_j$ is associated with a $\\hat{\\beta}_j$-unit change in Y, holding all other regressors fixed. This interpretation requires that all relevant confounders are included in the model. Omitting a variable that is correlated with a regressor biases that regressor's coefficient — **omitted variable bias**.\n\n## Goodness of fit\n\n$$R^2 = 1 - \\frac{SSR}{SST}$$\n\nR² is the share of total variation in Y explained by the model. It **never decreases** when a regressor is added — even a useless one — so comparing models with different numbers of regressors requires **adjusted R²**:\n\n$$\\bar{R}^2 = 1 - \\frac{SSR/(n-k-1)}{SST/(n-1)}$$\n\nwhich penalises for additional parameters. High R² does not imply causation, correct specification, or out-of-sample validity.\n\n## Inference: t-test and F-test\n\n- **t-test** — for a single coefficient: $t = \\hat{\\beta}_j / SE(\\hat{\\beta}_j)$. Reject $H_0: \\beta_j = 0$ when $|t|$ exceeds the two-sided critical value. The SE measures the precision of the estimate — smaller when n is large, variance is low, or regressors vary widely.\n- **F-test** — for joint restrictions, e.g. are several slopes simultaneously zero? Compares the restricted to the unrestricted model. The F-statistic follows $F_{q,\\, n-k-1}$ under $H_0$, where q is the number of restrictions imposed.\n\nHigh R² with all t-stats small is a classic symptom of **multicollinearity**, not model failure.\n\n## Functional forms\n\n- **Lin-lin** $Y = a + bX$: b = units of Y per unit of X (level effect)\n- **Log-log** $\\ln Y = a + b\\ln X + u$: b is the **elasticity** — a 1% increase in X → b% change in Y\n- **Log-linear** $\\ln Y = a + bX + u$: b × 100 is the **semi-elasticity** — a 1-unit increase in X → approximately (b × 100)% change in Y\n\nNote: a is the intercept and u is the error term — two separate, distinct parameters. The intercept is a fixed scalar estimated from data; the error u is a random variable representing everything the model does not capture. Neither can absorb the other.\n\n## Dummy variables and interactions\n\nA binary dummy D ∈ {0, 1} shifts the **intercept** for one group relative to the other. With k mutually exclusive, exhaustive categories use only **k − 1** dummies — the omitted category is the baseline. Including all k produces an exact linear dependence with the constant column: the **dummy-variable trap** (perfect multicollinearity).\n\nAn **interaction term** $X_1 \\times X_2$ lets the slope on $X_1$ vary with the level of $X_2$ (and vice versa), capturing conditional effects that a simple additive model misses.\n\n## Multicollinearity\n\n- **Perfect**: one regressor is an exact linear combination of others → $(X^\\top X)$ is singular, OLS has no unique solution\n- **High but imperfect**: OLS is still consistent, but standard errors inflate. Individual t-stats shrink while R² stays large. Detected with the **Variance Inflation Factor**: $\\text{VIF}_j = 1/(1 - R_j^2)$ where $R_j^2$ is the R² from regressing $X_j$ on all other regressors. VIF > 10 is a common warning threshold.\n\nAdding an irrelevant regressor (true β = 0) leaves $\\hat{\\beta}$ unbiased on average but inflates standard errors and wastes a degree of freedom — a precision cost, not a bias.",
   "cards": [
     {
-      "term": "Under the Gauss-Markov assumptions, the OLS estimator is described as BLUE. What does BLUE stand for?",
+      "term": "Under the Gauss-Markov assumptions, the [[OLS]] estimator is described as BLUE. What does BLUE stand for?",
       "choices": [
         "Best Linear Unbiased Estimator",
         "Best Linear Unbiased Equation",
@@ -26,7 +36,7 @@
       "last_updated": "2026-06-29"
     },
     {
-      "term": "The Gauss-Markov theorem guarantees OLS is BLUE provided which assumption about the errors holds, among others?",
+      "term": "The Gauss-Markov theorem guarantees [[OLS]] is [[BLUE]] provided which assumption about the errors holds, among others?",
       "choices": [
         "Errors have zero conditional mean and constant variance",
         "Errors are normally distributed about the mean",
@@ -36,11 +46,11 @@
       ],
       "answer": 0,
       "type": "mcq",
-      "definition": "Gauss-Markov requires errors with zero conditional mean (E[u|X]=0), constant variance (homoskedasticity), and no autocorrelation; together these make OLS BLUE. Normality of the errors is NOT required for BLUE - it is needed only for exact finite-sample t and F inference, so the normality option overstates the requirement. Errors growing with the regressors is heteroskedasticity, a violation of the constant-variance condition, not a requirement. First-order autocorrelation likewise violates Gauss-Markov rather than satisfying it. The error mean is zero, not the intercept; the intercept absorbs the average level of Y.",
+      "definition": "Gauss-Markov requires errors with zero conditional mean (E[u|X]=0), constant variance (homoskedasticity), and no autocorrelation; together these make [[OLS]] [[BLUE]]. Normality of the errors is NOT required for BLUE - it is needed only for exact finite-sample t and F inference, so the normality option overstates the requirement. Errors growing with the regressors is heteroskedasticity, a violation of the constant-variance condition, not a requirement. First-order autocorrelation likewise violates Gauss-Markov rather than satisfying it. The error mean is zero, not the intercept; the intercept absorbs the average level of Y.",
       "last_updated": "2026-06-29"
     },
     {
-      "term": "In the regression of Y on X, the OLS slope coefficient is best interpreted as:",
+      "term": "In the regression of Y on X, the [[OLS]] slope coefficient is best interpreted as:",
       "choices": [
         "The intercept value of Y when X is zero",
         "The expected change in Y per one-unit rise in X",
@@ -50,7 +60,7 @@
       ],
       "answer": 1,
       "type": "mcq",
-      "definition": "The OLS slope is the expected change in Y for a one-unit increase in X, holding the other regressors fixed - a partial, ceteris paribus effect. The intercept (not the slope) is the value of Y when X is zero. The correlation between X and Y is a unitless measure bounded in [-1,1], whereas a slope carries units of Y per unit of X. A regression measures association, not a probability that X causes Y; causality requires extra identifying assumptions. The share of Y's variance explained is R-squared, not a coefficient.",
+      "definition": "The [[OLS]] slope is the expected change in Y for a one-unit increase in X, holding the other regressors fixed - a partial, ceteris paribus effect. The intercept (not the slope) is the value of Y when X is zero. The correlation between X and Y is a unitless measure bounded in [-1,1], whereas a slope carries units of Y per unit of X. A regression measures association, not a probability that X causes Y; causality requires extra identifying assumptions. The share of Y's variance explained is R-squared, not a coefficient.",
       "last_updated": "2026-06-29"
     },
     {
@@ -64,11 +74,11 @@
       ],
       "answer": 0,
       "type": "mcq",
-      "definition": "R-squared = 1 - SSR/SST is the proportion of total variation in the dependent variable the model explains, with SSR the residual sum of squares and SST the total sum of squares. It says nothing about whether individual coefficients are significant - that is a t-test. It is not a probability that the model is 'correct'; a model can fit well yet be misspecified. It is not the correlation between two regressors, which relates to multicollinearity. And it is not the average residual size; residuals enter only through SSR relative to SST.",
+      "definition": "R-squared = 1 - [[SSR]]/[[SST]] is the proportion of total variation in the dependent variable the model explains, with [[SSR]] the residual sum of squares and [[SST]] the total sum of squares. It says nothing about whether individual coefficients are significant - that is a t-test. It is not a probability that the model is 'correct'; a model can fit well yet be misspecified. It is not the correlation between two regressors, which relates to multicollinearity. And it is not the average residual size; residuals enter only through [[SSR]] relative to [[SST]].",
       "last_updated": "2026-06-29"
     },
     {
-      "term": "When you add an additional regressor to an OLS model, R-squared:",
+      "term": "When you add an additional regressor to an [[OLS]] model, R-squared:",
       "choices": [
         "Decreases whenever the added variable is irrelevant",
         "Never decreases, weakly increasing regardless of relevance",
@@ -78,7 +88,7 @@
       ],
       "answer": 1,
       "type": "mcq",
-      "definition": "Adding a regressor never decreases R-squared: OLS can always set the new coefficient near zero, so fit weakly improves regardless of relevance. It therefore does not decrease when the variable is irrelevant - it stays flat or rises, and it does not spend degrees of freedom the way adjusted R-squared does. It does not move up or down depending on the variable, nor stay exactly the same when the variable is insignificant. Because R-squared mechanically rewards more terms, adjusted R-squared, which penalises added regressors, is used for model comparison.",
+      "definition": "Adding a regressor never decreases R-squared: [[OLS]] can always set the new coefficient near zero, so fit weakly improves regardless of relevance. It therefore does not decrease when the variable is irrelevant - it stays flat or rises, and it does not spend degrees of freedom the way adjusted R-squared does. It does not move up or down depending on the variable, nor stay exactly the same when the variable is insignificant. Because R-squared mechanically rewards more terms, adjusted R-squared, which penalises added regressors, is used for model comparison.",
       "last_updated": "2026-06-29"
     },
     {
@@ -204,7 +214,7 @@
       ],
       "answer": 2,
       "type": "mcq",
-      "definition": "Perfect multicollinearity means one regressor is an exact linear combination of others, so the matrix X'X is singular and OLS has no unique solution. It is the opposite of regressors being uncorrelated. It is unrelated to the dependent variable being non-stationary, which is a time-series property. It is not autocorrelation of the errors, a separate Gauss-Markov violation. And it is not about having too many observations; the problem is rank deficiency among columns, not row count.",
+      "definition": "Perfect multicollinearity means one regressor is an exact linear combination of others, so the matrix X'X is singular and [[OLS]] has no unique solution. It is the opposite of regressors being uncorrelated. It is unrelated to the dependent variable being non-stationary, which is a time-series property. It is not autocorrelation of the errors, a separate Gauss-Markov violation. And it is not about having too many observations; the problem is rank deficiency among columns, not row count.",
       "last_updated": "2026-06-29"
     },
     {
@@ -218,25 +228,25 @@
       ],
       "answer": 0,
       "type": "mcq",
-      "definition": "High but not perfect multicollinearity inflates standard errors and makes individual coefficients imprecise, yet OLS remains unbiased and consistent - estimates are just noisy. It does not create a unit root, which is a property of a series' dynamics. It does not make estimates inconsistent; consistency holds as long as the regressors are not perfectly collinear. It does not by construction cause heteroskedastic errors. And it does not bias the coefficients - the variance grows but the expected value is still correct.",
+      "definition": "High but not perfect multicollinearity inflates standard errors and makes individual coefficients imprecise, yet [[OLS]] remains unbiased and consistent - estimates are just noisy. It does not create a unit root, which is a property of a series' dynamics. It does not make estimates inconsistent; consistency holds as long as the regressors are not perfectly collinear. It does not by construction cause heteroskedastic errors. And it does not bias the coefficients - the variance grows but the expected value is still correct.",
       "last_updated": "2026-06-29"
     },
     {
       "term": "A common diagnostic for multicollinearity is the:",
       "choices": [
         "Ljung-Box autocorrelation statistic",
-        "Variance Inflation Factor (VIF)",
+        "Variance Inflation Factor ([[VIF]])",
         "Jarque-Bera normality statistic",
         "Durbin-Watson serial-correlation statistic",
         "Augmented Dickey-Fuller unit-root test"
       ],
       "answer": 1,
       "type": "mcq",
-      "definition": "The Variance Inflation Factor (VIF) diagnoses multicollinearity: for regressor j, VIF = 1/(1-R_j^2) from regressing X_j on the other regressors, with values above about 10 commonly flagged. The Ljung-Box statistic tests autocorrelation in residuals. The Jarque-Bera statistic tests normality. The Durbin-Watson statistic tests first-order autocorrelation. The Augmented Dickey-Fuller test checks for a unit root in a time series - none of these measure collinearity.",
+      "definition": "The Variance Inflation Factor ([[VIF]]) diagnoses multicollinearity: for regressor j, VIF = 1/(1-R_j^2) from regressing X_j on the other regressors, with values above about 10 commonly flagged. The Ljung-Box statistic tests autocorrelation in residuals. The Jarque-Bera statistic tests normality. The Durbin-Watson statistic tests first-order autocorrelation. The Augmented Dickey-Fuller test checks for a unit root in a time series - none of these measure collinearity.",
       "last_updated": "2026-06-29"
     },
     {
-      "term": "Adding an irrelevant regressor (one with a true coefficient of zero) to an OLS model:",
+      "term": "Adding an [[irrelevant regressor]] to an [[OLS]] model:",
       "choices": [
         "Biases the remaining coefficient estimates",
         "Makes the estimator inconsistent in large samples",
@@ -250,7 +260,7 @@
       "last_updated": "2026-06-29"
     },
     {
-      "term": "The residuals of an OLS regression are:",
+      "term": "The residuals of an [[OLS]] regression are:",
       "choices": [
         "The estimated regression coefficients themselves",
         "The standard errors of the coefficients",
@@ -274,11 +284,11 @@
       ],
       "answer": 2,
       "type": "mcq",
-      "definition": "A coefficient's standard error is the estimated standard deviation of its sampling distribution - how much the estimate would vary across repeated samples - and it shrinks roughly with the square root of n. It is not the model's R-squared, not the spread of Y itself, not a bias (SEs concern variance, not bias), and not a measure of regressor collinearity (that is the VIF).",
+      "definition": "A coefficient's standard error is the estimated standard deviation of its sampling distribution - how much the estimate would vary across repeated samples - and it shrinks roughly with the square root of n. It is not the model's R-squared, not the spread of Y itself, not a bias (SEs concern variance, not bias), and not a measure of regressor collinearity (that is the [[VIF]]).",
       "last_updated": "2026-06-29"
     },
     {
-      "term": "In OLS the sum of the residuals (when an intercept is included) equals:",
+      "term": "In [[OLS]] the sum of the residuals (when an intercept is included) equals:",
       "choices": [
         "Zero",
         "The number of regressors",
@@ -288,7 +298,7 @@
       ],
       "answer": 0,
       "type": "mcq",
-      "definition": "When the model includes an intercept, the OLS first-order conditions force the residuals to sum to zero, and to be orthogonal to each regressor. The sum is not the number of regressors, the R-squared, one, or the total sum of squares - those confuse the residual sum with unrelated quantities. This zero-sum property is a direct consequence of the normal equations, not an empirical accident, and it underlies the variance decomposition SST = SSE + SSR.",
+      "definition": "When the model includes an intercept, the [[OLS]] first-order conditions force the residuals to sum to zero, and to be orthogonal to each regressor. The sum is not the number of regressors, the R-squared, one, or the total sum of squares - those confuse the residual sum with unrelated quantities. This zero-sum property is a direct consequence of the normal equations, not an empirical accident, and it underlies the variance decomposition SST = [[SSR]] + SSE.",
       "last_updated": "2026-06-29"
     },
     {
@@ -330,7 +340,7 @@
       ],
       "answer": 0,
       "type": "mcq",
-      "definition": "The ceteris paribus reading of a multiple-regression coefficient requires only that the other regressors are held constant; OLS does this by partialling them out. It does not require a large sample - the interpretation is the same in small samples, precision aside. It does not require a high R-squared, which concerns fit, not interpretation. It does not require normal errors, which matter only for exact inference. And it does not require X to be randomly assigned; random assignment strengthens the CAUSAL claim but is not needed for the partial-effect interpretation.",
+      "definition": "The ceteris paribus reading of a multiple-regression coefficient requires only that the other regressors are held constant; [[OLS]] does this by partialling them out. It does not require a large sample - the interpretation is the same in small samples, precision aside. It does not require a high R-squared, which concerns fit, not interpretation. It does not require normal errors, which matter only for exact inference. And it does not require X to be randomly assigned; random assignment strengthens the CAUSAL claim but is not needed for the partial-effect interpretation.",
       "last_updated": "2026-06-29"
     },
     {
@@ -348,7 +358,7 @@
       "last_updated": "2026-06-29"
     },
     {
-      "term": "In the linear probability model (OLS with a binary dependent variable), a key drawback is:",
+      "term": "In the [[LPM]], a key drawback is:",
       "choices": [
         "It requires the variables to be cointegrated",
         "Predicted probabilities can fall below 0 or above 1",
@@ -358,7 +368,7 @@
       ],
       "answer": 1,
       "type": "mcq",
-      "definition": "The linear probability model fits a binary outcome by OLS, so its fitted line is unbounded and predicted probabilities can fall below 0 or above 1 - nonsensical values that motivate logit/probit. It does not require cointegration, a time-series concept. It can be estimated by OLS - that is exactly what the LPM is. It has no inherent unit root. And it can include continuous regressors freely; the binary variable is the dependent one, not a constraint on the regressors.",
+      "definition": "The linear probability model fits a binary outcome by [[OLS]], so its fitted line is unbounded and predicted probabilities can fall below 0 or above 1 - nonsensical values that motivate logit/probit. It does not require cointegration, a time-series concept. It can be estimated by OLS - that is exactly what the [[LPM]] is. It has no inherent unit root. And it can include continuous regressors freely; the binary variable is the dependent one, not a constraint on the regressors.",
       "last_updated": "2026-06-29"
     }
   ]

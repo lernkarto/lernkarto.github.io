@@ -85,7 +85,7 @@
     <button class="tab active" data-tab="study">study</button>
     <button class="tab" data-tab="review">review</button>
     <button class="tab" data-tab="library">library</button>
-    <button class="tab" data-tab="build">build a deck</button>
+    <a href="build.html" class="tab">build a deck ↗</a>
   </nav>
 
   <div id="studyView">
@@ -206,36 +206,6 @@
     <div id="libList" class="lib-list"></div>
   </section>
 
-  <!-- ───────── build a deck ───────── -->
-  <section id="buildView" hidden>
-    <div class="build-grid">
-      <div class="build-form">
-        <div class="build-formhead">
-          <p class="eyebrow">// new deck</p>
-          <label class="ghost-btn file-btn" title="load an existing deck JSON to edit">open .json<input type="file" id="bFile" accept=".json,application/json" hidden></label>
-        </div>
-        <div class="bwiki">
-          <input id="bWikiUrl" type="text" placeholder="Wikipedia article URL or title — e.g. Value at risk">
-          <button class="ghost-btn" id="bWikiFetch" title="Draft a deck from a Wikipedia article (CC BY-SA attribution auto-filled)">from Wikipedia</button>
-        </div>
-        <div class="bwiki-status" id="bWikiStatus"></div>
-        <label class="bfield"><span>deck name</span><input id="bDeckName" type="text" placeholder="My deck"></label>
-        <label class="bfield"><span>description</span><input id="bDeckDesc" type="text" placeholder="optional"></label>
-        <div class="bcards" id="bCards"></div>
-        <button class="ghost-btn" id="bAddCard">+ add card</button>
-      </div>
-      <div class="build-out">
-        <p class="eyebrow">// system format (JSON)</p>
-        <textarea id="bJson" readonly spellcheck="false" aria-label="Generated deck JSON"></textarea>
-        <div class="build-actions">
-          <button class="solid-btn" id="bLoad">load into study</button>
-          <button class="ghost-btn" id="bDownload">download .json</button>
-          <button class="ghost-btn" id="bCopy">copy</button>
-          <span class="import-error" id="bError" role="alert"></span>
-        </div>
-      </div>
-    </div>
-  </section>
 
 </div>
 <script>

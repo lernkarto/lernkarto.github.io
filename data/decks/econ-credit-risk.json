@@ -9,6 +9,16 @@
     "mcq"
   ],
   "primerTitle": "Credit & other risk",
+  "glossary": {
+    "PD": "Probability of Default — the likelihood that a borrower will default over a specified horizon",
+    "LGD": "Loss Given Default — the fraction of exposure lost if default occurs, after recoveries",
+    "EAD": "Exposure at Default — the amount owed at the moment of default",
+    "EL": "Expected Loss — the product of PD, LGD and EAD; the average credit loss over a period",
+    "CVA": "Credit Valuation Adjustment — the market price of counterparty default risk on a derivative, reducing the fair value",
+    "FRTB": "Fundamental Review of the Trading Book — a Basel Committee market-risk capital reform replacing VaR with Expected Shortfall",
+    "VaR": "Value at Risk — a quantile-based risk measure representing the loss threshold not expected to be exceeded at a stated confidence level",
+    "ES": "Expected Shortfall — a coherent risk measure representing the average loss in the tail beyond the VaR threshold"
+  },
   "primer": "## Credit & other risk\n**Expected loss = PD × LGD × EAD**, where LGD = 1 − recovery; EL is provisioned while **capital** buffers *unexpected* loss (the volatility around EL). **Counterparty** risk depends on default probability and exposure-at-default; **wrong-way risk** is adverse correlation between the two; **CVA** prices expected counterparty-default loss on derivatives. Operational risk = failed processes/people/systems/external events; model risk = a wrong/misused model. Basel pillars: 1 capital, 2 supervisory review, 3 market discipline (disclosure).",
   "cards": [
     {
@@ -22,7 +32,7 @@
       ],
       "answer": 1,
       "type": "mcq",
-      "definition": "Expected loss is the product of all three factors, EL = PD x LGD x EAD: the probability of default, the fraction of exposure lost if default occurs, and the exposure outstanding at default. Multiplying them gives the mean loss per period, which banks provision for. Using loss-given-default times exposure alone omits the chance the default ever happens, overstating EL. Dividing by exposure or summing the three terms is dimensionally meaningless, mixing a probability, a fraction, and a money amount. PD times exposure alone ignores that recovery cushions the loss, again overstating it.",
+      "definition": "[[EL]] is the product of all three factors, EL = PD x LGD x EAD: the probability of default, the fraction of exposure lost if default occurs, and the exposure outstanding at default. Multiplying them gives the mean loss per period, which banks provision for. Using loss-given-default times exposure alone omits the chance the default ever happens, overstating [[EL]]. Dividing by exposure or summing the three terms is dimensionally meaningless, mixing a probability, a fraction, and a money amount. PD times exposure alone ignores that recovery cushions the loss, again overstating it.",
       "last_updated": "2026-06-29",
       "stale": true
     },
@@ -37,12 +47,12 @@
       ],
       "answer": 2,
       "type": "mcq",
-      "definition": "LGD = 1 - recovery rate, because whatever you do not recover on a defaulted exposure is what you lose; recover 40% and you lose 60%. Setting LGD equal to the recovery rate inverts the relationship, calling the recovered fraction a loss. One plus the recovery rate exceeds 1, impossible for a loss fraction bounded in [0,1]. Squaring the recovery rate has no economic meaning and would not sum to 100% with recovery. Multiplying PD by recovery mixes a default probability into a quantity that should be a pure loss severity, independent of how often default occurs.",
+      "definition": "LGD = 1 - recovery rate, because whatever you do not recover on a defaulted [[EAD]] is what you lose; recover 40% and you lose 60%. Setting LGD equal to the recovery rate inverts the relationship, calling the recovered fraction a loss. One plus the recovery rate exceeds 1, impossible for a loss fraction bounded in [0,1]. Squaring the recovery rate has no economic meaning and would not sum to 100% with recovery. Multiplying [[PD]] by recovery mixes a default probability into a quantity that should be a pure loss severity, independent of how often default occurs.",
       "last_updated": "2026-06-29",
       "stale": true
     },
     {
-      "term": "For a loan with PD = 2%, LGD = 60%, and EAD = 1,000,000 EUR, the expected loss is:",
+      "term": "For a loan with [[PD]] = 2%, [[LGD]] = 60%, and [[EAD]] = 1,000,000 EUR, the expected loss is:",
       "choices": [
         "120,000 EUR",
         "6,000 EUR",
@@ -67,7 +77,7 @@
       ],
       "answer": 1,
       "type": "mcq",
-      "definition": "Capital is held against unexpected loss, the variability of losses around their expected level, because a bank can plan and provision for the average but must buffer the swings above it. Expected loss itself is covered by provisions and pricing, not capital, so naming it confuses the two layers of defence. The recovery rate, the probability of default, and the exposure at default are inputs that feed the expected loss; none is the dispersion measure that capital is sized to absorb. The key intuition: provisions cover the mean, capital covers the volatility of the tail.",
+      "definition": "Capital is held against unexpected loss, the variability of losses around their expected level, because a bank can plan and provision for the average but must buffer the swings above it. [[EL]] itself is covered by provisions and pricing, not capital, so naming it confuses the two layers of defence. The recovery rate, the probability of default, and the exposure at default are inputs that feed the [[EL]]; none is the dispersion measure that capital is sized to absorb. The key intuition: provisions cover the mean, capital covers the volatility of the tail.",
       "last_updated": "2026-06-29",
       "stale": true
     },
@@ -82,7 +92,7 @@
       ],
       "answer": 0,
       "type": "mcq",
-      "definition": "Counterparty credit risk is the risk that the other party to a derivatives trade defaults before settling its obligations, leaving you with a replacement cost. It depends jointly on the counterparty's default probability and the exposure at the time of default. A misspecified or miscalibrated model is model risk, not counterparty risk. Rising volatility and rising interest rates are market risks that move the position's value but are not about the counterparty failing. An asset becoming hard to sell is liquidity risk, concerning the ability to trade out rather than a counterparty's default.",
+      "definition": "Counterparty credit risk is the risk that the other party to a derivatives trade defaults before settling its obligations, leaving you with a replacement cost. It depends jointly on the counterparty's default probability and the exposure at the time of default. A misspecified or miscalibrated model is model risk, not counterparty risk. Rising volatility and rising interest rates are market risks that move the position's value but are not about the counterparty failing. An asset becoming hard to sell is liquidity risk, concerning the ability to trade out rather than a counterparty's default. [[CVA]] prices this expected counterparty-default loss on a derivative.",
       "last_updated": "2026-06-29",
       "stale": true
     },
@@ -97,7 +107,7 @@
       ],
       "answer": 3,
       "type": "mcq",
-      "definition": "Wrong-way risk is adverse correlation: exposure to a counterparty rises just as that counterparty's default probability rises, so you owe the most exactly when they are least able to pay, amplifying losses precisely when defaults are most likely. Exposure and default moving independently is the benign neutral case, not wrong-way risk. Exposure falling as default risk rises is right-way risk, the favourable opposite. A recovery rate near 100% means almost no loss given default, and a fully collateralised position is largely protected, so neither describes the dangerous correlation that defines wrong-way risk.",
+      "definition": "Wrong-way risk is adverse correlation: exposure to a counterparty rises just as that counterparty's [[PD]] rises, so you owe the most exactly when they are least able to pay, amplifying losses precisely when defaults are most likely. Exposure and default moving independently is the benign neutral case, not wrong-way risk. Exposure falling as default risk rises is right-way risk, the favourable opposite. A recovery rate near 100% means almost no loss given default, and a fully collateralised position is largely protected, so neither describes the dangerous correlation that defines wrong-way risk.",
       "last_updated": "2026-06-29",
       "stale": true
     },
@@ -157,7 +167,7 @@
       ],
       "answer": 0,
       "type": "mcq",
-      "definition": "FRTB shifted the regulatory market-risk measure from 99% Value-at-Risk to 97.5% Expected Shortfall, because ES averages losses beyond the threshold and so captures tail severity that VaR, a single quantile, ignores. The two ES-to-something options run the change backwards or replace ES with a cruder metric, contradicting the move toward better tail capture. Duration measures interest-rate sensitivity, not portfolio loss, so duration-to-VaR and VaR-to-standard-deviation describe transitions that never occurred. The crisis exposed VaR's blindness to how bad losses get once the threshold is breached, motivating the switch to ES.",
+      "definition": "[[FRTB]] shifted the regulatory market-risk measure from 99% [[VaR]] to 97.5% [[ES]], because [[ES]] averages losses beyond the threshold and so captures tail severity that [[VaR]], a single quantile, ignores. The two ES-to-something options run the change backwards or replace ES with a cruder metric, contradicting the move toward better tail capture. Duration measures interest-rate sensitivity, not portfolio loss, so duration-to-VaR and VaR-to-standard-deviation describe transitions that never occurred. The crisis exposed [[VaR]]'s blindness to how bad losses get once the threshold is breached, motivating the switch to [[ES]].",
       "last_updated": "2026-06-29",
       "stale": true
     },
@@ -172,7 +182,7 @@
       ],
       "answer": 0,
       "type": "mcq",
-      "definition": "The capital adequacy ratio relates regulatory capital to risk-weighted assets, so riskier assets receive higher weights and require proportionally more capital. Measuring equity to total assets unadjusted for risk is a plain leverage ratio that ignores how risky those assets are, which is exactly what risk-weighting corrects. Dividends to earnings is a payout ratio, profit to revenue is a margin, and deposits to loans is a funding ratio; none measure solvency against risk. The ratio answers whether a bank holds enough loss-absorbing capital relative to the risk it carries.",
+      "definition": "The capital adequacy ratio relates regulatory capital to risk-weighted assets, so riskier assets receive higher weights and require proportionally more capital. The weights themselves depend on each asset's [[PD]], [[LGD]], and [[EAD]] under the internal-ratings-based approach. Measuring equity to total assets unadjusted for risk is a plain leverage ratio that ignores how risky those assets are, which is exactly what risk-weighting corrects. Dividends to earnings is a payout ratio, profit to revenue is a margin, and deposits to loans is a funding ratio; none measure solvency against risk. The ratio answers whether a bank holds enough loss-absorbing capital relative to the risk it carries.",
       "last_updated": "2026-06-29",
       "stale": true
     },
@@ -187,7 +197,7 @@
       ],
       "answer": 1,
       "type": "mcq",
-      "definition": "Credit Value Adjustment is the reduction in a derivative's value for the counterparty's default risk: it prices the expected loss from the counterparty defaulting over the life of the trade, roughly the discounted expected exposure times PD times LGD. An interest-rate hedge offsets rate moves, not default. A volatility adjustment concerns option-pricing inputs, and a liquidity premium compensates for trading difficulty, neither about counterparty default. A tax adjustment is an accounting item unrelated to credit. CVA is specifically the credit-risk haircut on what a defaultable counterparty owes you.",
+      "definition": "Credit Value Adjustment is the reduction in a derivative's value for the counterparty's default risk: it prices the expected loss from the counterparty defaulting over the life of the trade, roughly the discounted expected exposure times [[PD]] times [[LGD]]. An interest-rate hedge offsets rate moves, not default. A volatility adjustment concerns option-pricing inputs, and a liquidity premium compensates for trading difficulty, neither about counterparty default. A tax adjustment is an accounting item unrelated to credit. CVA is specifically the credit-risk haircut on what a defaultable counterparty owes you.",
       "last_updated": "2026-06-29",
       "stale": true
     },

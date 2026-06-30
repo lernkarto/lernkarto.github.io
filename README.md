@@ -67,7 +67,8 @@ Three file types, all plain JSON (authorable in TOML — see below).
 **Required:** `name`, and each card's `term` + `definition`.
 **Optional, deck-level:** `id` (defaults from name), `description`,
 `color` (the deck's accent — used for the card rail and uncategorised labels),
-`topic` (a group label; legacy alias `set`), and `categories` (see below).
+`topic` (a group label; legacy alias `set`), `categories` (see below), and
+`glossary` (see below).
 **Optional, per card:** `sub` (a subtitle/abbreviation), `formula` (shown in a
 monospace block; put LaTeX here), `note` (a one-line caveat), `category` (a key
 into `categories`).
@@ -90,6 +91,14 @@ uses the deck `color`; include them for in-deck filter chips:
 Any category referenced by a card but not defined here gets an auto-assigned
 colour. (This curriculum keeps most decks single-themed and relies on the
 **topic → deck** split for navigation.)
+
+**Glossary** is a deck-level `glossary` object (term → definition string). Cards opt
+in with `[[term]]` markers in any text field. On hover (desktop) a tooltip shows the
+definition; on all devices a compact panel below the card lists every referenced term.
+Only markers the author explicitly places are expanded — automatic detection is off by
+design so the author controls what is and isn't surfaced. Key authoring rule: write
+definitions that identify *what* a term is, not *what it does* in the context of the
+card, so definitions don't give away answers. See [DECK-DESIGN-GUIDE.md §4](docs/guides/DECK-DESIGN-GUIDE.md).
 
 ### A topic (a collection of decks)
 

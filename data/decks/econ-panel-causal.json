@@ -9,6 +9,17 @@
     "mcq"
   ],
   "primerTitle": "Panel data & causal inference — designs",
+  "glossary": {
+    "DiD": "Difference-in-Differences — a quasi-experimental method comparing before/after changes in treated vs. control groups to estimate causal effects",
+    "RDD": "Regression Discontinuity Design — a causal inference method exploiting a threshold rule in a running variable to identify local treatment effects",
+    "IV": "Instrumental Variables — an estimation approach using exogenous instruments to recover causal estimates when regressors are endogenous",
+    "FE": "Fixed Effects — a panel data estimator that removes time-invariant unobserved heterogeneity by demeaning within each entity",
+    "RE": "Random Effects — a panel data estimator that treats entity effects as random draws, more efficient when those effects are uncorrelated with regressors",
+    "GMM": "Generalised Method of Moments — an estimation framework choosing parameters to match sample moments to theoretical moment conditions",
+    "RCT": "Randomised Controlled Trial — an experimental design in which units are randomly assigned to treatment and control groups",
+    "OLS": "Ordinary Least Squares — a regression method that minimises the sum of squared residuals",
+    "2SLS": "Two-Stage Least Squares — a two-step IV estimator projecting endogenous variables onto instruments before the second-stage regression"
+  },
   "primer": "## Panel data & causal inference\n**Logit/probit** model a 0/1 outcome with an S-shaped link (coefficients act on the log-odds; compute marginal effects for probabilities). **Fixed effects** sweep out time-invariant unobserved heterogeneity using within-entity variation; **random effects** is more efficient *only if* those effects are uncorrelated with the regressors (Hausman test). Causal designs: **DiD** (parallel trends), **RDD** (jump at a cutoff), **IV** (as-if-random variation), randomisation (balances confounders in expectation). Beware confounding, reverse causality and selection.",
   "cards": [
     {
@@ -22,7 +33,7 @@
       ],
       "answer": 4,
       "type": "mcq",
-      "definition": "Logit and probit map a linear index through an S-shaped link (logistic CDF or normal CDF) so fitted probabilities stay in [0,1], which is exactly what a 0/1 outcome requires. A continuous, unbounded variable would call for ordinary linear regression, not a bounded-probability link. An unbounded integer count is the domain of Poisson or negative-binomial models, a non-stationary time series calls for differencing or cointegration, and a strictly positive duration is handled by survival models such as Weibull or Cox; none of these are binary-choice models.",
+      "definition": "Logit and probit map a linear index through an S-shaped link (logistic CDF or normal CDF) so fitted probabilities stay in [0,1], which is exactly what a 0/1 outcome requires. A continuous, unbounded variable would call for [[OLS|ordinary linear regression]], not a bounded-probability link. An unbounded integer count is the domain of Poisson or negative-binomial models, a non-stationary time series calls for differencing or cointegration, and a strictly positive duration is handled by survival models such as Weibull or Cox; none of these are binary-choice models.",
       "last_updated": "2026-06-29"
     },
     {
@@ -50,7 +61,7 @@
       ],
       "answer": 0,
       "type": "mcq",
-      "definition": "The within (fixed-effects) estimator demeans each entity over time, so anything constant within an entity drops out, removing time-invariant unobserved heterogeneity such as innate ability or fixed firm culture. It does not absorb common shocks shared across all entities (those need time dummies, not entity demeaning), nor does it fix classical measurement error or heteroskedasticity, which require instruments or robust/clustered standard errors. It also does not cure reverse causality: a time-varying confounder or simultaneity still biases the within estimator.",
+      "definition": "The within (fixed-effects) estimator demeans each entity over time, so anything constant within an entity drops out, removing time-invariant unobserved heterogeneity such as innate ability or fixed firm culture. It does not absorb common shocks shared across all entities (those need time dummies, not entity demeaning), nor does it fix classical measurement error or heteroskedasticity, which require [[IV|instruments]] or robust/clustered standard errors. It also does not cure reverse causality: a time-varying confounder or simultaneity still biases the within estimator. Compare with [[RE]], which is more efficient when the entity effects are uncorrelated with regressors.",
       "last_updated": "2026-06-29"
     },
     {
@@ -78,7 +89,7 @@
       ],
       "answer": 3,
       "type": "mcq",
-      "definition": "The Hausman test compares the fixed-effects and random-effects estimators: under the random-effects assumption both are consistent but random effects is efficient, while under correlation only fixed effects is consistent, so a large divergence signals that random effects is biased. It is not a tool for picking between logit and probit links, AR and MA models, OLS and 2SLS, or VaR and expected shortfall. The intuition is that it directly tests the orthogonality condition by checking whether switching estimators meaningfully changes the coefficients.",
+      "definition": "The Hausman test compares the [[FE|fixed-effects]] and [[RE|random-effects]] estimators: under the random-effects assumption both are consistent but random effects is efficient, while under correlation only fixed effects is consistent, so a large divergence signals that random effects is biased. It is not a tool for picking between logit and probit links, AR and MA models, [[OLS]] and [[2SLS]], or VaR and expected shortfall. The intuition is that it directly tests the orthogonality condition by checking whether switching estimators meaningfully changes the coefficients.",
       "last_updated": "2026-06-29"
     },
     {
@@ -92,7 +103,7 @@
       ],
       "answer": 1,
       "type": "mcq",
-      "definition": "Difference-in-differences subtracts each group's own before/after change and compares them, so it requires parallel trends: absent treatment, treated and control groups would have evolved along the same path, letting any post-treatment divergence be attributed to the treatment. It does not require random assignment, which is what makes DiD quasi-experimental rather than an RCT, and it does need a control group, so 'no control group' is wrong. Normally distributed errors and stationary outcomes are not the identifying assumption; the entire credibility of DiD rests on the counterfactual common trend.",
+      "definition": "Difference-in-differences subtracts each group's own before/after change and compares them, so it requires parallel trends: absent treatment, treated and control groups would have evolved along the same path, letting any post-treatment divergence be attributed to the treatment. It does not require random assignment, which is what makes DiD quasi-experimental rather than an [[RCT]], and it does need a control group, so 'no control group' is wrong. Normally distributed errors and stationary outcomes are not the identifying assumption; the entire credibility of DiD rests on the counterfactual common trend.",
       "last_updated": "2026-06-29"
     },
     {
@@ -106,7 +117,7 @@
       ],
       "answer": 0,
       "type": "mcq",
-      "definition": "RDD exploits a threshold rule in a running variable: units just below and just above the cutoff are nearly identical except for treatment, so the jump in the outcome at the cutoff identifies a local causal effect. It does not rely on random assignment (that is an RCT), on double differencing (that is DiD), on entity demeaning (fixed effects), or on a lagged-variable instrument (IV). The intuition is local as-good-as-random variation: assignment is deterministic in the running variable, but who lands marginally on each side of the cutoff is essentially noise.",
+      "definition": "[[RDD]] exploits a threshold rule in a running variable: units just below and just above the cutoff are nearly identical except for treatment, so the jump in the outcome at the cutoff identifies a local causal effect. It does not rely on random assignment (that is an [[RCT]]), on double differencing (that is [[DiD]]), on entity demeaning (fixed effects), or on a lagged-variable instrument ([[IV]]). The intuition is local as-good-as-random variation: assignment is deterministic in the running variable, but who lands marginally on each side of the cutoff is essentially noise.",
       "last_updated": "2026-06-29"
     },
     {
@@ -120,7 +131,7 @@
       ],
       "answer": 1,
       "type": "mcq",
-      "definition": "A natural experiment supplies variation in treatment generated by some external event or rule that is plausibly unrelated to confounders, approximating randomisation the researcher did not control. It is not assumption-free: the as-if-random claim is itself an identifying assumption that must be defended. It does not remove heteroskedasticity, does not eliminate the need for data, and does not guarantee a high R-squared; fit and identification are separate matters. The value is precisely that the assignment mechanism mimics an experiment without deliberate randomisation.",
+      "definition": "A natural experiment supplies variation in treatment generated by some external event or rule that is plausibly unrelated to confounders, approximating randomisation the researcher did not control. Quasi-experimental designs such as [[IV]], [[DiD]], and [[RDD]] all rely on such naturally occurring variation. It is not assumption-free: the as-if-random claim is itself an identifying assumption that must be defended. It does not remove heteroskedasticity, does not eliminate the need for data, and does not guarantee a high R-squared; fit and identification are separate matters. The value is precisely that the assignment mechanism mimics an [[RCT]] without deliberate randomisation.",
       "last_updated": "2026-06-29"
     },
     {
@@ -134,7 +145,7 @@
       ],
       "answer": 3,
       "type": "mcq",
-      "definition": "GMM estimates parameters by choosing them to make sample moments match the theoretical moment conditions implied by the model (e.g. that instruments are uncorrelated with the error), minimising a weighted quadratic distance between the two. It is not about minimising R-squared, differencing to stationarity, maximising a likelihood (that is ML, which needs a full distributional assumption GMM avoids), or bootstrapping residuals. The unifying intuition is that OLS, IV, and 2SLS are all special cases of GMM with particular moment conditions and weighting matrices.",
+      "definition": "[[GMM]] estimates parameters by choosing them to make sample moments match the theoretical moment conditions implied by the model (e.g. that instruments are uncorrelated with the error), minimising a weighted quadratic distance between the two. It is not about minimising R-squared, differencing to stationarity, maximising a likelihood (that is ML, which needs a full distributional assumption GMM avoids), or bootstrapping residuals. The unifying intuition is that [[OLS]], [[IV]], and [[2SLS]] are all special cases of GMM with particular moment conditions and weighting matrices.",
       "last_updated": "2026-06-29"
     },
     {
@@ -176,7 +187,7 @@
       ],
       "answer": 3,
       "type": "mcq",
-      "definition": "Selection bias arises when units sort into treatment based on characteristics that are themselves related to the potential outcomes, so a naive treated-versus-untreated comparison mixes the true treatment effect with pre-existing differences. It is not about including too few regressors, ordinary sampling variability, choosing the wrong functional form, or setting the wrong significance threshold; those are specification or inference concerns. The core intuition is that when assignment is correlated with potential outcomes, who got treated is informative about what would have happened anyway, contaminating the estimate.",
+      "definition": "Selection bias arises when units sort into treatment based on characteristics that are themselves related to the potential outcomes, so a naive treated-versus-untreated comparison mixes the true treatment effect with pre-existing differences. Causal methods such as [[IV]] and [[DiD]] are designed precisely to overcome this problem. It is not about including too few regressors, ordinary sampling variability, choosing the wrong functional form, or setting the wrong significance threshold; those are specification or inference concerns. The core intuition is that when assignment is correlated with potential outcomes, who got treated is informative about what would have happened anyway, contaminating the estimate.",
       "last_updated": "2026-06-29"
     },
     {
@@ -218,7 +229,7 @@
       ],
       "answer": 4,
       "type": "mcq",
-      "definition": "Relative to a cross-section, panel data let you control for unobserved, time-invariant individual effects by exploiting repeated observations of the same entities. It does not avoid all bias (time-varying confounders and simultaneity remain), does not remove the need for instruments when endogeneity is present, does not guarantee stationarity, and does not automatically strip out heteroskedasticity, which still calls for robust or clustered standard errors. The intuition is that within-entity variation differences away fixed traits, attacking a major source of omitted-variable bias rather than every statistical problem at once.",
+      "definition": "Relative to a cross-section, panel data let you control for unobserved, time-invariant individual effects by exploiting repeated observations of the same entities. It does not avoid all bias (time-varying confounders and simultaneity remain), does not remove the need for [[IV|instruments]] when endogeneity is present, does not guarantee stationarity, and does not automatically strip out heteroskedasticity, which still calls for robust or clustered standard errors. The intuition is that within-entity variation differences away fixed traits, attacking a major source of omitted-variable bias rather than every statistical problem at once.",
       "last_updated": "2026-06-29"
     }
   ]

@@ -9,7 +9,14 @@
     "mcq"
   ],
   "primerTitle": "Statistics & inference — core ideas",
-  "primer": "## Statistics & inference\n**Type I** = reject a true null (rate α); **Type II** = fail to reject a false null (rate β); **power** = 1−β. A **p-value** is P(data at least this extreme | null true) — not P(null true). A 95% CI is a property of the *procedure* (95% coverage across samples). The **CLT** gives normal sampling distributions; the **LLN** gives convergence of the mean. Distinguish **unbiased** (right on average) from **consistent** (converges as n→∞), and statistical vs economic significance. Bootstrap resamples with replacement to get SEs/CIs without distributional assumptions.",
+  "glossary": {
+    "CLT": "Central Limit Theorem — a fundamental result in probability about the asymptotic distribution of sample averages",
+    "LLN": "Law of Large Numbers — a theorem describing the convergence of sample averages as sample size grows",
+    "MLE": "Maximum Likelihood Estimation — a method of estimating parameters by maximising the probability of the observed data under a model",
+    "ADF": "Augmented Dickey-Fuller test — a hypothesis test for the presence of a unit root in a time series",
+    "KPSS": "Kwiatkowski–Phillips–Schmidt–Shin test — a hypothesis test for stationarity of a time series (null: stationary)"
+  },
+  "primer": "## Statistics & inference\n**Type I** = reject a true null (rate α); **Type II** = fail to reject a false null (rate β); **power** = 1−β. A **p-value** is P(data at least this extreme | null true) — not P(null true). A 95% CI is a property of the *procedure* (95% coverage across samples). The **[[CLT]]** gives normal sampling distributions; the **[[LLN]]** gives convergence of the mean. Distinguish **unbiased** (right on average) from **consistent** (converges as n→∞), and statistical vs economic significance. Bootstrap resamples with replacement to get SEs/CIs without distributional assumptions.",
   "cards": [
     {
       "term": "A Type I error in hypothesis testing is:",
@@ -106,7 +113,7 @@
       ],
       "answer": 4,
       "type": "mcq",
-      "definition": "The Law of Large Numbers states that as n grows the sample mean converges to the population mean; it is a statement about convergence to the true value. It is right because averaging more independent draws makes sampling fluctuations shrink toward zero. The mean does not diverge - that is the opposite of convergence. It does not coincide with the median in general (only for symmetric distributions). Becoming normally distributed is the CLT's claim about shape, not the LLN's claim about location. And the variance of the sample mean shrinks (as variance over n), it does not grow.",
+      "definition": "The Law of Large Numbers states that as n grows the sample mean converges to the population mean; it is a statement about convergence to the true value. It is right because averaging more independent draws makes sampling fluctuations shrink toward zero. The mean does not diverge - that is the opposite of convergence. It does not coincide with the median in general (only for symmetric distributions). Becoming normally distributed is the [[CLT]]'s claim about shape, not the LLN's claim about location. And the variance of the sample mean shrinks (as variance over n), it does not grow.",
       "last_updated": "2026-06-29"
     },
     {
@@ -120,7 +127,7 @@
       ],
       "answer": 3,
       "type": "mcq",
-      "definition": "An estimator is unbiased if its expected value equals the true parameter - it is right on average over repeated samples. That is the literal definition, independent of sample size. Converging in probability to the truth as n grows is consistency, a distinct asymptotic property; an estimator can be one without the other. Having a normal sampling distribution describes its shape, not its centering. Being obtained by maximum likelihood is a method, not a guarantee of unbiasedness (MLEs are often biased in finite samples). Attaining the smallest possible variance is efficiency, which concerns precision, not centering.",
+      "definition": "An estimator is unbiased if its expected value equals the true parameter - it is right on average over repeated samples. That is the literal definition, independent of sample size. Converging in probability to the truth as n grows is consistency, a distinct asymptotic property; an estimator can be one without the other. Having a normal sampling distribution describes its shape, not its centering. Being obtained by maximum likelihood is a method, not a guarantee of unbiasedness ([[MLE]]s are often biased in finite samples). Attaining the smallest possible variance is efficiency, which concerns precision, not centering.",
       "last_updated": "2026-06-29"
     },
     {
@@ -232,7 +239,7 @@
       ],
       "answer": 3,
       "type": "mcq",
-      "definition": "The Jarque-Bera test assesses whether a series is normally distributed, using the sample skewness and kurtosis. It is right because JB combines those two moments and compares them against the normal benchmarks of 0 skewness and 3 kurtosis, rejecting when the data depart from normality. Freedom from autocorrelation is tested by Ljung-Box or Durbin-Watson, not JB. Heteroskedasticity is tested by Breusch-Pagan or White. Cointegration is tested by Engle-Granger or Johansen. Stationarity is tested by unit-root tests such as ADF or KPSS - all different hypotheses about different properties.",
+      "definition": "The Jarque-Bera test assesses whether a series is normally distributed, using the sample skewness and kurtosis. It is right because JB combines those two moments and compares them against the normal benchmarks of 0 skewness and 3 kurtosis, rejecting when the data depart from normality. Freedom from autocorrelation is tested by Ljung-Box or Durbin-Watson, not JB. Heteroskedasticity is tested by Breusch-Pagan or White. Cointegration is tested by Engle-Granger or Johansen. Stationarity is tested by unit-root tests such as [[ADF]] or [[KPSS]] - all different hypotheses about different properties.",
       "last_updated": "2026-06-29"
     },
     {
@@ -260,7 +267,7 @@
       ],
       "answer": 0,
       "type": "mcq",
-      "definition": "The bootstrap estimates the sampling distribution of a statistic by resampling the data with replacement, then recomputing the statistic on each resample. It is right because the empirical resampling distribution approximates the true sampling distribution, giving standard errors and confidence intervals without strong distributional assumptions. It does not test for a unit root (that is ADF/KPSS). It does not eliminate omitted variable bias - resampling cannot recover information missing from the data. It does not remove heteroskedasticity (though it can be adapted to be robust to it), and it does not force normality; in fact it avoids assuming any particular distribution.",
+      "definition": "The bootstrap estimates the sampling distribution of a statistic by resampling the data with replacement, then recomputing the statistic on each resample. It is right because the empirical resampling distribution approximates the true sampling distribution, giving standard errors and confidence intervals without strong distributional assumptions. It does not test for a unit root (that is [[ADF]]/[[KPSS]]). It does not eliminate omitted variable bias - resampling cannot recover information missing from the data. It does not remove heteroskedasticity (though it can be adapted to be robust to it), and it does not force normality; in fact it avoids assuming any particular distribution.",
       "last_updated": "2026-06-29"
     },
     {
@@ -330,7 +337,7 @@
       ],
       "answer": 1,
       "type": "mcq",
-      "definition": "A consistent but biased estimator may be off on average in small samples but converges to the truth as n grows; bias and consistency are distinct properties. It is right because consistency is an asymptotic (large-n) statement while bias is a finite-sample one, and the bias of such an estimator vanishes as n increases. Zero variance is neither implied nor typical. Right on average yet never converging describes an unbiased-yet-inconsistent estimator, the opposite combination. It is certainly usable in practice - many standard estimators (e.g. MLE variance estimates) are consistent but finite-sample biased. Always equalling the parameter would mean a perfect estimator, not a biased one.",
+      "definition": "A consistent but biased estimator may be off on average in small samples but converges to the truth as n grows; bias and consistency are distinct properties. It is right because consistency is an asymptotic (large-n) statement while bias is a finite-sample one, and the bias of such an estimator vanishes as n increases. Zero variance is neither implied nor typical. Right on average yet never converging describes an unbiased-yet-inconsistent estimator, the opposite combination. It is certainly usable in practice - many standard estimators (e.g. [[MLE]] variance estimates) are consistent but finite-sample biased. Always equalling the parameter would mean a perfect estimator, not a biased one.",
       "last_updated": "2026-06-29"
     },
     {

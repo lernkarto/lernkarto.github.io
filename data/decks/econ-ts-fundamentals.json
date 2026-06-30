@@ -10,6 +10,18 @@
   ],
   "primerTitle": "Time series — fundamentals",
   "primer": "## Time series — fundamentals\n**Weak stationarity** = constant mean/variance and autocovariance depending only on the lag — required for ARMA modelling. **White noise** (zero mean, constant variance, no autocorrelation) is the building block; a **random walk** has a unit root (non-stationary, permanent shocks, variance growing without bound). Test stationarity with **ADF** (H₀: unit root) and **KPSS** (H₀: stationary); difference d times for I(d). Identify orders: AR(p) → PACF cuts off at p, ACF decays; MA(q) → ACF cuts off at q, PACF decays. Use AIC/BIC and check residuals are white noise.",
+  "glossary": {
+    "ARMA": "Autoregressive Moving-Average model — a class of linear parametric time-series models",
+    "AR": "Autoregressive model — current value depends linearly on p past values of the series",
+    "MA": "Moving-Average model — current value depends linearly on q past error (innovation) terms",
+    "ADF": "Augmented Dickey-Fuller test — a unit-root hypothesis test for time-series data",
+    "KPSS": "Kwiatkowski–Phillips–Schmidt–Shin test — a hypothesis test for time-series stationarity",
+    "ACF": "Autocorrelation Function — measures linear dependence between a series and its lagged values",
+    "PACF": "Partial Autocorrelation Function — correlation at lag k controlling for the effect of shorter lags",
+    "AIC": "Akaike Information Criterion — model selection metric balancing in-sample fit and complexity",
+    "BIC": "Bayesian Information Criterion — model selection metric with a stricter complexity penalty than AIC",
+    "OLS": "Ordinary Least Squares — linear regression estimator"
+  },
   "cards": [
     {
       "term": "A time series is (weakly / covariance) stationary if:",
@@ -26,7 +38,7 @@
       "last_updated": "2026-06-29"
     },
     {
-      "term": "Most standard time-series models (ARMA) assume the series is:",
+      "term": "Most standard time-series models ([[ARMA]]) assume the series is:",
       "choices": [
         "Cointegrated with another series",
         "Normally distributed only",
@@ -96,7 +108,7 @@
       "last_updated": "2026-06-29"
     },
     {
-      "term": "The null hypothesis of the Augmented Dickey-Fuller (ADF) test is:",
+      "term": "The null hypothesis of the Augmented Dickey-Fuller ([[ADF]]) test is:",
       "choices": [
         "The two series are not cointegrated",
         "The series is stationary around its mean",
@@ -110,7 +122,7 @@
       "last_updated": "2026-06-29"
     },
     {
-      "term": "The KPSS test differs from the ADF test in that its null hypothesis is:",
+      "term": "The [[KPSS]] test differs from the [[ADF]] test in that its null hypothesis is:",
       "choices": [
         "A unit root, exactly matching ADF's null",
         "Normality of the model residuals",

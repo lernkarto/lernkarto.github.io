@@ -4,6 +4,19 @@
   "color": "#9bff66",
   "description": "The statistics and stochastic toolkit behind every risk model.",
   "primerTitle": "Quantitative methods — quick recap",
+  "glossary": {
+    "MLE": "Maximum Likelihood Estimation — a method choosing parameter values that maximise the probability of the observed data under a model",
+    "EVT": "Extreme Value Theory — the branch of statistics modelling the tail behaviour of extremes directly",
+    "GEV": "Generalised Extreme Value — the limiting distribution for block maxima in EVT",
+    "GPD": "Generalised Pareto Distribution — the limiting distribution for threshold exceedances in EVT's peaks-over-threshold method",
+    "PCA": "Principal Component Analysis — a technique decomposing correlated variables into orthogonal components ranked by variance explained",
+    "EWMA": "Exponentially Weighted Moving Average — a volatility estimator weighting recent observations more heavily via a decay factor",
+    "GARCH": "Generalised Autoregressive Conditional Heteroskedasticity — a time-series model for time-varying conditional variance",
+    "OU": "Ornstein-Uhlenbeck process — a continuous-time mean-reverting stochastic process",
+    "VaR": "Value at Risk — a quantile-based loss threshold measure at a stated confidence level",
+    "ES": "Expected Shortfall — a coherent risk measure averaging losses beyond the VaR threshold",
+    "CDO": "Collateralised Debt Obligation — a securitisation of a pool of debt sold as rated tranches"
+  },
   "primer": "## Distributions\\n\\n- A **probability distribution** assigns probabilities to a random variable's values; $\\\\int f(x)\\\\,dx=1$, $F(x)=P(X\\\\le x)$.\\n- **Normal**: symmetric bell from mean+variance, $f(x)=\\\\frac{1}{\\\\sigma\\\\sqrt{2\\\\pi}}e^{-(x-\\\\mu)^2/2\\\\sigma^2}$; **thin tails** make it dangerous in risk. **Log-normal**: $\\\\ln X\\\\sim N$, strictly positive, right-skewed — used for prices (Black–Scholes). **Student-t**: symmetric, **fatter tails** tuned by degrees of freedom; $\\\\to$ normal as d.o.f.$\\\\to\\\\infty$.\\n\\n## Shape (moments)\\n\\n- **Moments** $m_k=E[(X-\\\\mu)^k]$: mean (location), variance (spread), **skewness** (3rd, asymmetry — negative skew = rare big losses), **kurtosis** (4th, tails). **Excess kurtosis = kurtosis − 3**; $>0$ signals **fat tails**.\\n- **Fat tails (leptokurtosis)**: extremes far more often than Gaussian implies — the key stylised fact; Gaussian VaR under-reserves. Motivates ES, EVT, t-distributions.\\n- **Quantile** $q_\\\\alpha=F^{-1}(\\\\alpha)$ — VaR *is* a quantile of the loss distribution.\\n\\n## Estimation & inference\\n\\n- **Empirical distribution** $\\\\hat F_n$: equal mass per data point (historical-simulation VaR, bootstrap), no parametric assumption.\\n- **MLE**: pick parameters maximising the (log-)likelihood $\\\\sum\\\\ln f(x_i;\\\\theta)$ — the default, most efficient. **Method of moments**: equate sample to theoretical moments — simpler, more robust, but **less efficient**; often seeds MLE.\\n- **Confidence interval** $\\\\hat\\\\theta\\\\pm z_{1-\\\\alpha/2}\\\\,\\\\operatorname{se}$: contains the true parameter a stated fraction of the time under repeated sampling. **Hypothesis test / p-value**: $p=P(\\\\text{data this extreme}\\\\mid H_0)$; small $p$ rejects $H_0$ but is *not* $P(H_0\\\\text{ true})$. Backtests (Kupiec, Christoffersen) are hypothesis tests.\\n- **Bootstrapping**: resample data with replacement to get sampling distributions and CIs; block bootstrap preserves autocorrelation.\\n\\n## Dependence\\n\\n- **Correlation** measures only *linear* co-movement; **zero correlation ⇏ independence** outside the Gaussian/elliptical world.\\n- **Covariance matrix** $\\\\Sigma_{ij}=\\\\operatorname{Cov}(r_i,r_j)$, $\\\\sigma_P^2=\\\\mathbf{w}^\\\\top\\\\Sigma\\\\mathbf{w}$; must be PSD; noisy in high dimensions (Ledoit–Wolf shrinkage).\\n- **Copula**: joins marginals into a joint distribution, $F(x,y)=C(F_X(x),F_Y(y))$ (Sklar) — separates dependence from marginals. **Gaussian copula** has **zero tail dependence** (joint extremes look vanishingly rare — its CDO-era failure). **Tail dependence** $\\\\lambda_U$ = limiting prob both extreme together; t-copula has it, Gaussian doesn't.\\n\\n## Tails (EVT)\\n\\n- **EVT** models the tail directly. Two routes: **block maxima → GEV** $H(x)=\\\\exp\\\\{-(1+\\\\xi\\\\frac{x-\\\\mu}{\\\\sigma})^{-1/\\\\xi}\\\\}$ (worst-per-period); **peaks-over-threshold → GPD** $G(x)=1-(1+\\\\xi x/\\\\beta)^{-1/\\\\xi}$ (exceedances). The **shape parameter $\\\\xi$** governs tail heaviness; $\\\\xi>0$ = fat power-law tail.\\n\\n## Simulation\\n\\n- **Monte Carlo**: average $g(X_i)$ over $N$ draws; **error $\\\\propto 1/\\\\sqrt{N}$** (inverse square root — halving needs $4\\\\times$ paths). **Variance reduction** (antithetic, control variates, importance sampling, stratification) cuts error without raising $N$.\\n- **Cholesky**: $\\\\Sigma=LL^\\\\top$, then $\\\\mathbf{r}=L\\\\mathbf{z}$ turns independent normals into correlated ones.\\n\\n## Time series & continuous time\\n\\n- **EWMA** (RiskMetrics): $\\\\sigma_t^2=\\\\lambda\\\\sigma_{t-1}^2+(1-\\\\lambda)r_{t-1}^2$, daily decay $\\\\lambda\\\\approx0.94$. **GARCH(1,1)**: $\\\\sigma_t^2=\\\\omega+\\\\alpha r_{t-1}^2+\\\\beta\\\\sigma_{t-1}^2$, captures vol clustering; persistence $\\\\alpha+\\\\beta$ near 1 = slow decay.\\n- **Mean reversion (Ornstein–Uhlenbeck)**: $dx_t=\\\\theta(\\\\mu-x_t)dt+\\\\sigma dW_t$. **Brownian motion (Wiener)**: independent normal increments, $W_t-W_s\\\\sim N(0,t-s)$ — variance grows **linearly** with time. **Itô's lemma** $df=(f_t+\\\\mu f_x+\\\\tfrac12\\\\sigma^2 f_{xx})dt+\\\\sigma f_x dW$ — chain rule with an extra second-order term; yields Black–Scholes.\\n- **PCA**: eigen-decompose the covariance into orthogonal components by variance; for yield curves the first three are **level, slope, curvature**.\\n- **Stationarity**: mean/variance/autocovariance constant over time; returns are roughly stationary, prices are not — so we model returns.",
   "cards": [
     {
@@ -16,36 +29,36 @@
     {
       "term": "Normal distribution",
       "sub": "Gaussian",
-      "definition": "The bell-shaped, symmetric distribution defined by its mean and variance, central to finance via the CLT and tractable algebra. Its thin tails make it dangerous for risk: it assigns negligible probability to the large moves markets actually produce.",
+      "definition": "The bell-shaped, symmetric distribution defined by its mean and variance, central to finance via the CLT and tractable algebra. Its thin tails make it dangerous for risk: it assigns negligible probability to the large moves markets actually produce, causing [[VaR]] to systematically under-reserve in practice.",
       "formula": "$f(x)=\\dfrac{1}{\\sigma\\sqrt{2\\pi}}\\,e^{-\\frac{(x-\\mu)^2}{2\\sigma^2}}$",
-      "note": "A daily 5σ move 'shouldn't' happen in millennia, yet markets deliver them regularly.",
+      "note": "A daily 5σ move 'shouldn't' happen in millennia, yet markets deliver them regularly. Parameters can be estimated by [[MLE]] or method of moments; [[EVT]] is designed precisely to handle what the normal cannot.",
       "last_updated": "2026-06-29",
       "stale": true
     },
     {
       "term": "Log-normal distribution",
-      "definition": "The distribution of a variable whose logarithm is normal — strictly positive and right-skewed. Used for asset prices (so prices stay positive) and underpinning Black–Scholes, where returns, not prices, are normal.",
+      "definition": "The distribution of a variable whose logarithm is normal — strictly positive and right-skewed. Used for asset prices (so prices stay positive) and underpinning Black–Scholes, where returns, not prices, are normal. Parameters are typically estimated by [[MLE]] applied to the log-transformed data.",
       "formula": "$\\ln X \\sim N(\\mu,\\sigma^2)\\;\\Rightarrow\\; X>0$",
       "last_updated": "2026-06-29",
       "stale": true
     },
     {
       "term": "Student's t distribution",
-      "definition": "A symmetric, bell-shaped distribution with heavier tails than the normal, governed by a degrees-of-freedom parameter that tunes tail thickness. A standard fat-tailed replacement for the normal in VaR and return modelling.",
+      "definition": "A symmetric, bell-shaped distribution with heavier tails than the normal, governed by a degrees-of-freedom parameter that tunes tail thickness. A standard fat-tailed replacement for the normal in [[VaR]] and return modelling, with degrees of freedom estimated by [[MLE]].",
       "note": "As degrees of freedom $\\to\\infty$ it converges to the normal; low values give very fat tails.",
       "last_updated": "2026-06-29",
       "stale": true
     },
     {
       "term": "Skewness",
-      "definition": "The third standardised moment, measuring asymmetry of a distribution. Negative skew — common in equity returns — means occasional large losses with frequent small gains, exactly the shape risk managers fear.",
+      "definition": "The third standardised moment, measuring asymmetry of a distribution. Negative skew — common in equity returns — means occasional large losses with frequent small gains, exactly the shape risk managers fear; it causes [[VaR]] to understate true risk and makes [[ES]] a more informative complement.",
       "formula": "$\\operatorname{Skew}=E\\!\\left[\\left(\\dfrac{X-\\mu}{\\sigma}\\right)^{3}\\right]$",
       "last_updated": "2026-06-29",
       "stale": true
     },
     {
       "term": "Excess kurtosis is defined as kurtosis minus {{3}}, with positive values signalling fat tails.",
-      "definition": "The fourth standardised moment, measuring tail heaviness and peakedness relative to the normal. Excess kurtosis (kurtosis minus 3) above zero signals fat tails — more extreme events than a Gaussian predicts.",
+      "definition": "The fourth standardised moment, measuring tail heaviness and peakedness relative to the normal. Excess kurtosis (kurtosis minus 3) above zero signals fat tails — more extreme events than a Gaussian predicts, causing [[VaR]] estimates to under-reserve and motivating [[EVT]] approaches.",
       "formula": "$\\operatorname{Kurt}=E\\!\\left[\\left(\\dfrac{X-\\mu}{\\sigma}\\right)^{4}\\right],\\quad \\text{excess}=\\operatorname{Kurt}-3$",
       "type": "cloze",
       "last_updated": "2026-06-29",
@@ -55,7 +68,7 @@
       "term": "Fat tails",
       "sub": "leptokurtosis",
       "definition": "The empirical property that extreme returns occur far more often than a normal distribution implies, so probability mass sits in the tails rather than the centre. The single most important stylised fact for risk measurement.",
-      "note": "Why ES, EVT and t-distributions exist; Gaussian VaR systematically under-reserves.",
+      "note": "Why [[ES]], [[EVT]] and t-distributions exist; Gaussian [[VaR]] systematically under-reserves.",
       "last_updated": "2026-06-29",
       "stale": true
     },
@@ -83,14 +96,14 @@
     {
       "term": "Maximum likelihood estimation",
       "sub": "MLE",
-      "definition": "Choosing parameter values that make the observed data most probable under the assumed model, by maximising the (log-)likelihood. The default estimation method for distributional and time-series risk models.",
+      "definition": "Choosing parameter values that make the observed data most probable under the assumed model, by maximising the (log-)likelihood. The default estimation method for distributional and time-series risk models, including [[GARCH]] and [[EWMA]]-family specifications.",
       "formula": "$\\hat{\\theta}=\\arg\\max_{\\theta}\\sum_{i=1}^{n}\\ln f(x_i;\\theta)$",
       "last_updated": "2026-06-29",
       "stale": true
     },
     {
       "term": "Method of moments",
-      "definition": "False. Estimating parameters by equating sample moments to their theoretical expressions is simpler and more robust than maximum likelihood, but generally less efficient. It is often used merely to seed MLE optimisers with starting values.",
+      "definition": "False. Estimating parameters by equating sample moments to their theoretical expressions is simpler and more robust than [[MLE]], but generally less efficient. It is often used merely to seed [[MLE]] optimisers with starting values.",
       "note": "Often used to seed MLE optimisers with starting values.",
       "type": "truefalse",
       "answer": false,
@@ -100,7 +113,7 @@
     },
     {
       "term": "Confidence interval",
-      "definition": "A range that would contain the true parameter a stated proportion of the time under repeated sampling, quantifying estimation uncertainty. Risk estimates without intervals overstate how precisely the tail is known.",
+      "definition": "A range that would contain the true parameter a stated proportion of the time under repeated sampling, quantifying estimation uncertainty. Risk estimates without intervals overstate how precisely the tail is known; [[VaR]] backtests use hypothesis-testing logic rooted in the same idea.",
       "formula": "$\\hat{\\theta}\\pm z_{1-\\alpha/2}\\,\\operatorname{se}(\\hat{\\theta})$",
       "last_updated": "2026-06-29",
       "stale": true
@@ -108,14 +121,14 @@
     {
       "term": "Hypothesis test",
       "sub": "p-value",
-      "definition": "A procedure for assessing evidence against a null hypothesis; the p-value is the probability of data at least as extreme as observed if the null were true. Backtesting (Kupiec, Christoffersen) is hypothesis testing applied to risk models.",
+      "definition": "A procedure for assessing evidence against a null hypothesis; the p-value is the probability of data at least as extreme as observed if the null were true. Backtesting [[VaR]] models (Kupiec, Christoffersen) is hypothesis testing applied to risk models, where [[MLE]] often supplies the parameter estimates under the null.",
       "note": "A small p-value rejects the null; it is not the probability the null is true.",
       "last_updated": "2026-06-29",
       "stale": true
     },
     {
       "term": "Correlation",
-      "definition": "False. Correlation measures only linear co-movement. Outside the Gaussian/elliptical world, two variables can have zero correlation yet still be dependent through nonlinear or tail relationships.",
+      "definition": "False. Correlation measures only linear co-movement. Outside the Gaussian/elliptical world, two variables can have zero correlation yet still be dependent through nonlinear or tail relationships — which is why [[VaR]] models based on correlation alone miss crisis co-movements.",
       "note": "Zero correlation does not imply independence outside the Gaussian world.",
       "type": "truefalse",
       "answer": false,
@@ -133,14 +146,14 @@
     },
     {
       "term": "Copula",
-      "definition": "A function that joins marginal distributions into a joint distribution, isolating dependence structure from the individual behaviours (Sklar's theorem). It lets a modeller mix arbitrary marginals with a chosen dependence pattern.",
+      "definition": "A function that joins marginal distributions into a joint distribution, isolating dependence structure from the individual behaviours (Sklar's theorem). It lets a modeller mix arbitrary marginals with a chosen dependence pattern, and is widely used to compute portfolio [[VaR]] and to model correlated defaults in [[CDO]] structures.",
       "formula": "$F(x,y)=C\\big(F_X(x),\\,F_Y(y)\\big)$",
       "last_updated": "2026-06-29",
       "stale": true
     },
     {
       "term": "Gaussian copula",
-      "definition": "True. The Gaussian copula's fatal flaw is its zero tail dependence: it assumes joint extremes are vanishingly rare, so defaults appear far less correlated in crisis than they actually are. This was central to its role in pricing CDOs before 2008.",
+      "definition": "True. The Gaussian copula's fatal flaw is its zero tail dependence: it assumes joint extremes are vanishingly rare, so defaults appear far less correlated in crisis than they actually are. This was central to its role in mispricing [[CDO]]s before 2008, and exposes [[VaR]] models using it to severe underestimation of joint tail losses.",
       "note": "The model didn't fail silently — its zero tail dependence was the failure.",
       "type": "truefalse",
       "answer": true,
@@ -150,7 +163,7 @@
     },
     {
       "term": "Tail dependence",
-      "definition": "The probability that one variable is extreme given another is extreme — whether crashes coincide. Distributions with positive tail dependence (e.g. t-copula) capture the crisis clustering the Gaussian copula misses.",
+      "definition": "The probability that one variable is extreme given another is extreme — whether crashes coincide. Distributions with positive tail dependence (e.g. t-copula) capture the crisis clustering the Gaussian copula misses, and matter directly for multi-asset [[VaR]], [[ES]], and [[CDO]] tranche loss modelling.",
       "formula": "$\\lambda_U=\\lim_{u\\to1}P\\big(X>F_X^{-1}(u)\\mid Y>F_Y^{-1}(u)\\big)$",
       "last_updated": "2026-06-29",
       "stale": true
@@ -158,15 +171,15 @@
     {
       "term": "Extreme value theory",
       "sub": "EVT",
-      "definition": "The branch of statistics describing the asymptotic behaviour of extremes, letting one model the tail directly rather than extrapolating a central-fit distribution. The rigorous foundation for estimating very high quantiles from limited tail data.",
-      "note": "Two approaches: block maxima (GEV) and peaks-over-threshold (GPD).",
+      "definition": "The branch of statistics describing the asymptotic behaviour of extremes, letting one model the tail directly rather than extrapolating a central-fit distribution. The rigorous foundation for estimating very high quantiles from limited tail data, yielding [[VaR]] and ES estimates far into the tail via the [[GEV]] (block maxima) and [[GPD]] (peaks-over-threshold) families.",
+      "note": "Two approaches: block maxima ([[GEV]]) and peaks-over-threshold ([[GPD]]).",
       "last_updated": "2026-06-29",
       "stale": true
     },
     {
       "term": "In the Generalised Pareto distribution, the parameter governing tail heaviness is the {{shape}} parameter ξ.",
       "sub": "GPD / POT",
-      "definition": "The limiting distribution of exceedances over a high threshold, used in the peaks-over-threshold method to model the tail. Its shape parameter ξ governs tail heaviness; ξ > 0 means a fat, power-law tail.",
+      "definition": "The limiting distribution of exceedances over a high threshold, used in the [[EVT]] peaks-over-threshold method to model the tail directly. Its shape parameter ξ governs tail heaviness; ξ > 0 means a fat, power-law tail, enabling reliable [[VaR]] and [[ES]] estimation far into the tail.",
       "formula": "$G(x)=1-\\Big(1+\\dfrac{\\xi x}{\\beta}\\Big)^{-1/\\xi}$",
       "type": "cloze",
       "last_updated": "2026-06-29",
@@ -175,14 +188,14 @@
     {
       "term": "Generalised extreme value",
       "sub": "GEV",
-      "definition": "The single distribution family (Gumbel, Fréchet, Weibull) to which the maxima of large blocks of data converge. The block-maxima route of EVT, used for worst-case-per-period modelling such as annual maximum loss.",
+      "definition": "The single distribution family (Gumbel, Fréchet, Weibull) to which the maxima of large blocks of data converge under [[EVT]]. The block-maxima route of EVT, complementing the [[GPD]] peaks-over-threshold approach, used for worst-case-per-period modelling such as annual maximum loss.",
       "formula": "$H(x)=\\exp\\!\\left\\{-\\big(1+\\xi\\tfrac{x-\\mu}{\\sigma}\\big)^{-1/\\xi}\\right\\}$",
       "last_updated": "2026-06-29",
       "stale": true
     },
     {
       "term": "Monte Carlo error shrinks as the inverse {{square root}} of the number of paths.",
-      "definition": "Estimating quantities by averaging over many random scenarios drawn from a model — the universal tool when closed forms fail. Its error shrinks slowly, as the inverse square root of the number of paths.",
+      "definition": "Estimating quantities by averaging over many random scenarios drawn from a model — the universal tool when closed forms fail. Its error shrinks slowly, as the inverse square root of the number of paths; this inefficiency is why variance reduction matters for tail-sensitive [[VaR]] and [[ES]] calculations.",
       "formula": "$\\hat{\\mu}=\\dfrac{1}{N}\\sum_{i=1}^{N} g(X_i),\\quad \\text{error}\\propto \\dfrac{1}{\\sqrt{N}}$",
       "type": "cloze",
       "last_updated": "2026-06-29",
@@ -190,7 +203,7 @@
     },
     {
       "term": "Variance reduction",
-      "definition": "Techniques — antithetic variates, control variates, importance sampling, stratification — that cut Monte Carlo error without raising path count. Importance sampling is especially valuable in risk, oversampling the rare tail that matters.",
+      "definition": "Techniques — antithetic variates, control variates, importance sampling, stratification — that cut Monte Carlo error without raising path count. Importance sampling is especially valuable in risk, oversampling the rare tail events that drive [[VaR]] and [[ES]] estimates.",
       "note": "Halving the standard error otherwise needs four times the simulations.",
       "last_updated": "2026-06-29",
       "stale": true
@@ -212,7 +225,7 @@
     {
       "term": "RiskMetrics popularised EWMA with a daily decay factor of about {{0.94}}.",
       "sub": "exponentially weighted moving average",
-      "definition": "A volatility estimator that weights recent squared returns more heavily via a decay factor λ, so the estimate adapts quickly to changing markets. RiskMetrics popularised it with λ ≈ 0.94 for daily data.",
+      "definition": "A volatility estimator that weights recent squared returns more heavily via a decay factor λ, so the estimate adapts quickly to changing markets. RiskMetrics popularised it with λ ≈ 0.94 for daily data; unlike [[GARCH]] it has no intercept term and feeds directly into [[VaR]] calculations.",
       "formula": "$\\sigma_t^2=\\lambda\\,\\sigma_{t-1}^2+(1-\\lambda)\\,r_{t-1}^2$",
       "type": "cloze",
       "last_updated": "2026-06-29",
@@ -220,7 +233,7 @@
     },
     {
       "term": "GARCH",
-      "definition": "A time-series model in which today's variance depends on past variances and past squared shocks, capturing volatility clustering and mean reversion of volatility. GARCH(1,1) is the workhorse for conditional-volatility forecasting.",
+      "definition": "A time-series model in which today's variance depends on past variances and past squared shocks, capturing volatility clustering and mean reversion of volatility. GARCH(1,1) is the workhorse for conditional-volatility forecasting and feeds directly into [[VaR]] estimates; it generalises [[EWMA]] by adding a long-run variance intercept.",
       "formula": "$\\sigma_t^2=\\omega+\\alpha\\,r_{t-1}^2+\\beta\\,\\sigma_{t-1}^2$",
       "note": "Persistence $\\alpha+\\beta$ near 1 means shocks to volatility decay slowly.",
       "last_updated": "2026-06-29",
@@ -229,7 +242,7 @@
     {
       "term": "Mean reversion",
       "sub": "Ornstein–Uhlenbeck",
-      "definition": "The tendency of a variable to drift back toward a long-run level, pulling harder the further it strays. The OU process models mean-reverting rates, spreads and volatilities in continuous time.",
+      "definition": "The tendency of a variable to drift back toward a long-run level, pulling harder the further it strays. The OU process models mean-reverting rates, spreads and volatilities in continuous time; it contrasts with [[GARCH]] and [[EWMA]], which capture volatility clustering rather than level reversion.",
       "formula": "$dx_t=\\theta(\\mu-x_t)\\,dt+\\sigma\\,dW_t$",
       "last_updated": "2026-06-29",
       "stale": true
@@ -237,7 +250,7 @@
     {
       "term": "For yield curves, the first three principal components are recognisably level, slope and {{curvature}}.",
       "sub": "PCA",
-      "definition": "An eigen-decomposition of the covariance matrix that re-expresses correlated factors as a few orthogonal components ranked by variance explained. For yield curves the first three components are recognisably level, slope and curvature.",
+      "definition": "An eigen-decomposition of the covariance matrix that re-expresses correlated factors as a few orthogonal components ranked by variance explained. For yield curves the first three components are recognisably level, slope and curvature; the resulting factor [[VaR]] is far more tractable than full-dimension [[EWMA]] covariance estimates.",
       "note": "Reduces dimensionality and reveals the dominant drivers of a risk factor set.",
       "type": "cloze",
       "last_updated": "2026-06-29",
@@ -246,7 +259,7 @@
     {
       "term": "For Brownian motion, the variance of the process grows {{linearly}} with time.",
       "sub": "Wiener process",
-      "definition": "The continuous-time random walk with independent, normally distributed increments and continuous paths — the basic building block of financial stochastic models. Its variance grows linearly with time.",
+      "definition": "The continuous-time random walk with independent, normally distributed increments and continuous paths — the basic building block of financial stochastic models. Its variance grows linearly with time, in contrast to [[GARCH]] processes where conditional variance can cluster, and it is the driving noise in the [[OU]] mean-reversion model.",
       "formula": "$W_t-W_s\\sim N(0,\\,t-s),\\quad W_0=0$",
       "type": "cloze",
       "last_updated": "2026-06-29",
@@ -261,7 +274,7 @@
     },
     {
       "term": "Stationarity",
-      "definition": "The property that a time series' statistical behaviour (mean, variance, autocovariance) does not change over time. Most estimation and inference assume it; returns are roughly stationary, prices are not, which is why we model returns.",
+      "definition": "The property that a time series' statistical behaviour (mean, variance, autocovariance) does not change over time. Most estimation and inference assume it; returns are roughly stationary, prices are not, which is why we model returns. [[GARCH]] and [[EWMA]] are stationary variance models (provided persistence < 1); [[VaR]] estimates built on non-stationary series are unreliable.",
       "note": "Non-stationarity invalidates naive use of historical estimates — test before trusting.",
       "last_updated": "2026-06-29",
       "stale": true

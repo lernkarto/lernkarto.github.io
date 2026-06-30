@@ -4,6 +4,22 @@
   "color": "#ff6b6b",
   "description": "Loss from borrowers and issuers failing to pay: parameters, models, products.",
   "primerTitle": "PD/LGD/EAD, models & products",
+  "glossary": {
+    "PD": "Probability of Default — the likelihood a borrower defaults over a stated horizon",
+    "LGD": "Loss Given Default — the fraction of exposure lost if default occurs, after recoveries",
+    "EAD": "Exposure at Default — the expected amount owed at the moment of default",
+    "EL": "Expected Loss — the product of PD, LGD and EAD, representing the average credit loss",
+    "CCF": "Credit Conversion Factor — the fraction of an undrawn commitment assumed to be drawn by the time of default",
+    "CDS": "Credit Default Swap — a contract paying out on a reference entity's default event in exchange for periodic premium payments",
+    "ECL": "Expected Credit Loss — the forward-looking accounting provisioning measure under IFRS 9",
+    "NPL": "Non-Performing Loan — a loan that is 90+ days past due or unlikely to be repaid in full",
+    "IRB": "Internal Ratings-Based approach — a Basel framework allowing approved banks to use their own credit risk parameter estimates",
+    "CDO": "Collateralised Debt Obligation — a securitisation of a pool of debt (bonds, loans) sold as rated tranches",
+    "CRM": "Credit Risk Mitigation — techniques reducing credit exposure (collateral, guarantees, netting) recognised in capital rules",
+    "TTC": "Through-the-Cycle — a PD estimation approach averaging over the full economic cycle for stability",
+    "PIT": "Point-in-Time — a PD estimation approach reflecting current economic conditions",
+    "ASRF": "Asymptotic Single-Risk-Factor model — the single-factor, infinite-granularity credit portfolio model underlying the Basel IRB capital formula"
+  },
   "primer": "**Credit risk** is loss when a borrower/counterparty fails to pay — the largest risk for most banks. It decomposes into **expected loss** $\\\\mathrm{EL}=\\\\mathrm{PD}\\\\times\\\\mathrm{LGD}\\\\times\\\\mathrm{EAD}$.\n\n**Default** (Basel, for capital): **90+** days past due *or* 'unlikely to pay'. The precise definition drives every PD model — a softer one lowers measured PD. **PD** = probability of default over a horizon (usually 1yr). **LGD** = fraction lost if default occurs $=1-\\\\text{recovery rate}$; downturn (stressed) LGD is used for capital. **Recovery rate** depends on seniority and cycle (senior secured >> subordinated unsecured). **EAD** = amount owed at default; for a revolving facility $\\\\mathrm{EAD}=\\\\text{drawn}+\\\\mathrm{CCF}\\\\times\\\\text{undrawn}$, where the **CCF** (credit conversion factor) is the fraction of the undrawn commitment assumed drawn (distressed borrowers draw down, so CCF is well above zero). An **obligor rating** captures PD; a **facility rating** captures LGD — so two facilities to one obligor share a PD but can differ in LGD.\n\n**Ratings** (AAA…D) map to PD. The *investment-grade vs high-yield* boundary is **BBB−**. Ratings are *through-the-cycle* (stable, lag market signals). **TTC** PD averages over the cycle (stable capital); **PIT** PD reflects current conditions (pricing, IFRS 9). A **migration/transition matrix** $P_{ij}=\\\\Pr(j\\\\text{ at }t{+}1\\\\mid i\\\\text{ at }t)$ drives credit VaR and mark-to-market rating drift.\n\n**Market signals.** *Credit spread* $\\\\approx\\\\mathrm{PD}\\\\times\\\\mathrm{LGD}+$ risk & liquidity premium. A *CDS* pays out on a credit event for a premium; its spread is a clean read on PD×LGD. The *CDS–bond basis* = CDS spread − bond Z-spread (funding, repo, cheapest-to-deliver).\n\n**Models.** *Hazard rate* $\\\\lambda$ = instantaneous default rate given survival; $\\\\Pr(\\\\tau>t)=e^{-\\\\int_0^t\\\\lambda\\\\,ds}$, constant $\\\\lambda\\\\Rightarrow\\\\mathrm{PD}(t)=1-e^{-\\\\lambda t}$. *Merton structural*: equity is a call on assets struck at debt; default if $V_T<D$; **distance to default** $\\\\mathrm{DD}=\\\\frac{\\\\ln(V/D)+(\\\\mu-\\\\frac12\\\\sigma^2)T}{\\\\sigma\\\\sqrt T}$ converts to PD via the **normal CDF**, $\\\\mathrm{PD}=N(-\\\\mathrm{DD})$. *Reduced-form*: default is a jump at a market-calibrated hazard rate (no balance sheet) — standard for pricing. *Credit VaR* is the loss quantile (e.g. 99.9%, 1yr); the distribution is skewed and fat-tailed (CreditMetrics/CreditRisk+/KMV).\n\n**Portfolio.** *Default correlation* (shared exposure to the economy) is the dominant, hardest-to-estimate driver of tail risk — underestimating it drove 2008 losses. *Gaussian copula*: $X_i=\\\\sqrt{\\\\rho}M+\\\\sqrt{1-\\\\rho}\\\\varepsilon_i$, default if $X_i<N^{-1}(\\\\mathrm{PD}_i)$ (thin tails understate joint defaults). *Vasicek ASRF* (one factor, infinite granularity) gives a portfolio-invariant closed-form tail loss — the basis of the Basel IRB formula. *Concentration/single-name risk* is assumed away by ASRF, so Pillar 2 adds it back.\n\n**Accounting & products.** *IFRS 9 ECL*: forward-looking, probability-weighted across scenarios, $\\\\mathrm{ECL}=\\\\sum_s p_s(\\\\mathrm{PD}_s\\\\mathrm{LGD}_s\\\\mathrm{EAD}_s)$; *staging* — Stage 1 (12-month ECL), Stage 2 (SICR → lifetime ECL), Stage 3 (impaired). An **NPL** is **90+** days past due or unlikely to be repaid; NPL ratio = NPLs/total loans. *Provisions* absorb **expected** loss; **capital** absorbs unexpected loss. *Securitisation* pools loans into tradable securities; *tranching/subordination* slices losses into a waterfall (junior/equity first, senior last) — credit enhancement makes senior tranches highly rated. A *CDO* securitises debt into rated tranches, exquisitely sensitive to default correlation. *Credit enhancement*: subordination, overcollateralisation, excess spread, guarantees. *Sovereign risk*: government default/restructuring (sovereign-bank doom loop). *Settlement (Herstatt) risk*: one leg delivers, the other fails — **PvP** systems (CLS) neutralise it by simultaneous legs. *Credit risk mitigation (CRM)*: collateral, guarantees, derivatives, netting — lowers LGD or EAD, and thus capital.",
   "cards": [
     {
@@ -14,8 +30,8 @@
     },
     {
       "term": "Under the Basel default definition, an exposure is treated as in default once it is {{90}} days past due (or 'unlikely to pay').",
-      "definition": "The credit event of failing to pay, breaching covenants, or entering bankruptcy or restructuring. Basel defines it for capital purposes as 90+ days past due or 'unlikely to pay', which standardises PD estimation.",
-      "note": "The precise definition drives every PD model — a softer definition lowers measured PD.",
+      "definition": "The credit event of failing to pay, breaching covenants, or entering bankruptcy or restructuring. Basel defines it for capital purposes as 90+ days past due or 'unlikely to pay', which standardises [[PD]] estimation.",
+      "note": "The precise definition drives every [[PD]] model — a softer definition lowers measured [[PD]].",
       "type": "cloze",
       "last_updated": "2026-06-29",
       "stale": true
@@ -23,7 +39,7 @@
     {
       "term": "Probability of default",
       "sub": "PD",
-      "definition": "The likelihood that an obligor defaults over a stated horizon, usually one year. It is estimated from ratings, financial ratios or market signals and is the first input to expected loss.",
+      "definition": "The likelihood that an obligor defaults over a stated horizon, usually one year. It is estimated from ratings, financial ratios or market signals and is the first input to expected loss, alongside [[LGD]] and [[EAD]], to give [[EL]].",
       "formula": "$\\mathrm{EL} = \\mathrm{PD}\\times\\mathrm{LGD}\\times\\mathrm{EAD}$",
       "last_updated": "2026-06-29",
       "stale": true
@@ -31,7 +47,7 @@
     {
       "term": "Loss given default equals one minus the {{recovery rate}}.",
       "sub": "LGD",
-      "definition": "The fraction of exposure actually lost if default occurs, after recoveries from collateral, guarantees and workout — the complement of the recovery rate. Downturn LGD (stressed) is used for capital because recoveries fall in recessions.",
+      "definition": "The fraction of exposure actually lost if default occurs, after recoveries from collateral, guarantees and workout — the complement of the recovery rate. Downturn LGD (stressed) is used for capital because recoveries fall in recessions. Works together with [[PD]] and [[EAD]] to determine expected loss.",
       "formula": "$\\mathrm{LGD} = 1 - \\text{recovery rate}$",
       "type": "cloze",
       "last_updated": "2026-06-29",
@@ -40,7 +56,7 @@
     {
       "term": "For a revolving facility, EAD is estimated as the drawn balance plus the {{CCF}} times the undrawn commitment.",
       "sub": "EAD",
-      "definition": "The expected amount owed at the moment of default, including likely drawdowns on committed but unused lines. For loans it is the drawn balance plus a fraction of the undrawn commitment.",
+      "definition": "The expected amount owed at the moment of default, including likely drawdowns on committed but unused lines. For loans it is the drawn balance plus a fraction of the undrawn commitment. Used alongside [[PD]] and [[LGD]] to calculate expected loss.",
       "formula": "$\\mathrm{EAD} = \\text{drawn} + \\mathrm{CCF}\\times\\text{undrawn}$",
       "type": "cloze",
       "last_updated": "2026-06-29",
@@ -48,7 +64,7 @@
     },
     {
       "term": "Recovery rate",
-      "definition": "The proportion of a defaulted exposure ultimately recovered through the workout or asset sale. It depends on seniority, collateral and the economic cycle, and is the empirical input behind LGD.",
+      "definition": "The proportion of a defaulted exposure ultimately recovered through the workout or asset sale. It depends on seniority, collateral and the economic cycle, and is the empirical input behind [[LGD]].",
       "note": "Senior secured recovers far more than subordinated unsecured — seniority is decisive.",
       "last_updated": "2026-06-29",
       "stale": true
@@ -57,13 +73,13 @@
       "term": "Credit conversion factor",
       "sub": "CCF",
       "definition": "The fraction of an undrawn commitment assumed to be drawn by the time of default, converting off-balance-sheet exposure into a loan-equivalent. Borrowers in distress tend to draw down lines, so CCFs are well above zero.",
-      "note": "A key, and easily understated, driver of EAD for revolving facilities.",
+      "note": "A key, and easily understated, driver of [[EAD]] for revolving facilities.",
       "last_updated": "2026-06-29",
       "stale": true
     },
     {
-      "term": "An obligor rating captures PD while a facility rating captures LGD, so two facilities to the same obligor share a PD but can differ in LGD.",
-      "definition": "True. An obligor (borrower) rating captures PD — the chance the entity defaults; a facility rating captures LGD — how much is lost on a specific loan given its collateral and seniority. Two facilities to the same obligor share a PD but differ in LGD.",
+      "term": "An obligor rating captures [[PD]] while a facility rating captures [[LGD]], so two facilities to the same obligor share a [[PD]] but can differ in [[LGD]].",
+      "definition": "True. An obligor (borrower) rating captures [[PD]] — the chance the entity defaults; a facility rating captures [[LGD]] — how much is lost on a specific loan given its collateral and seniority. Two facilities to the same obligor share a [[PD]] but differ in [[LGD]].",
       "type": "truefalse",
       "answer": true,
       "summary": "True — the obligor rating reflects default probability; the facility rating reflects loss severity given the collateral and seniority of that specific loan.",
@@ -72,7 +88,7 @@
     },
     {
       "term": "The investment-grade versus high-yield boundary sits at a rating of {{BBB-}}.",
-      "definition": "An ordinal assessment of creditworthiness (e.g. AAA to D) mapped to a PD, produced by agencies or internal models. Investment grade (≥BBB−) versus high yield is a critical threshold for mandates and capital.",
+      "definition": "An ordinal assessment of creditworthiness (e.g. AAA to D) mapped to a [[PD]], produced by agencies or internal models. Investment grade (≥BBB−) versus high yield is a critical threshold for mandates and capital. Market signals such as [[CDS]] spreads are more timely but volatile.",
       "note": "Ratings are 'through-the-cycle': deliberately stable, so they lag fast-moving market signals.",
       "type": "cloze",
       "last_updated": "2026-06-29",
@@ -80,7 +96,7 @@
     },
     {
       "term": "Through-the-cycle vs point-in-time",
-      "definition": "TTC PD averages over the economic cycle for stability (used to avoid procyclical capital); PIT PD reflects current conditions and moves with the cycle (used for pricing and IFRS 9). The choice shapes how volatile capital and provisions become.",
+      "definition": "[[TTC]] [[PD]] averages over the economic cycle for stability (used to avoid procyclical capital in [[IRB]] models); [[PIT]] [[PD]] reflects current conditions and moves with the cycle (used for pricing and IFRS 9). The choice shapes how volatile capital and provisions become.",
       "note": "Mixing them up causes either understated risk in booms or violent capital swings.",
       "last_updated": "2026-06-29",
       "stale": true
@@ -88,14 +104,14 @@
     {
       "term": "Credit migration matrix",
       "sub": "transition matrix",
-      "definition": "A table of probabilities that an obligor moves from one rating to another (including default) over a period. It drives credit VaR models and the mark-to-market value change from rating drift, not just outright default.",
+      "definition": "A table of probabilities that an obligor moves from one rating to another (including default) over a period. It drives credit VaR models and the mark-to-market value change from rating drift, not just outright default. Market-implied [[PD]] and [[CDS]] spreads complement the matrix for real-time signals.",
       "formula": "$P_{ij} = \\Pr(\\text{rating } j \\text{ at } t{+}1 \\mid \\text{rating } i \\text{ at } t)$",
       "last_updated": "2026-06-29",
       "stale": true
     },
     {
       "term": "Credit spread",
-      "definition": "The yield premium of a risky bond over the risk-free rate, compensating for expected loss plus a risk premium and liquidity. Its widening is the market's real-time signal of deteriorating credit.",
+      "definition": "The yield premium of a risky bond over the risk-free rate, compensating for expected loss plus a risk premium and liquidity. Its widening is the market's real-time signal of deteriorating credit. A [[CDS]] spread offers a cleaner read on [[PD]]×[[LGD]] without cash-bond funding effects.",
       "formula": "$\\text{spread} \\approx \\mathrm{PD}\\times\\mathrm{LGD} + \\text{risk \\& liquidity premium}$",
       "last_updated": "2026-06-29",
       "stale": true
@@ -103,14 +119,14 @@
     {
       "term": "Credit default swap",
       "sub": "CDS",
-      "definition": "A contract that pays out on a reference entity's credit event in exchange for periodic premium payments — insurance against default, or a way to take credit risk synthetically. The CDS spread is a clean market read on PD×LGD.",
+      "definition": "A contract that pays out on a reference entity's credit event in exchange for periodic premium payments — insurance against default, or a way to take credit risk synthetically. The CDS spread is a clean market read on [[PD]]×[[LGD]].",
       "formula": "premium leg $=$ protection leg at inception (fair spread)",
       "last_updated": "2026-06-29",
       "stale": true
     },
     {
       "term": "CDS–bond basis",
-      "definition": "The difference between a name's CDS spread and the credit spread of its cash bond. Persistent non-zero basis reflects funding costs, repo specialness and the cheapest-to-deliver option, and is a classic relative-value (and crisis-stress) signal.",
+      "definition": "The difference between a name's [[CDS]] spread and the credit spread of its cash bond. Persistent non-zero basis reflects funding costs, repo specialness and the cheapest-to-deliver option, and is a classic relative-value (and crisis-stress) signal.",
       "formula": "$\\text{basis} = \\text{CDS spread} - \\text{bond Z-spread}$",
       "last_updated": "2026-06-29",
       "stale": true
@@ -118,22 +134,22 @@
     {
       "term": "Hazard rate",
       "sub": "default intensity",
-      "definition": "The instantaneous conditional rate of default given survival so far — the parameter of reduced-form models. A constant hazard gives an exponential survival curve.",
+      "definition": "The instantaneous conditional rate of default given survival so far — the parameter of reduced-form models. A constant hazard gives an exponential survival curve, and the cumulative [[PD]] over a horizon follows directly.",
       "formula": "$\\Pr(\\tau > t) = e^{-\\int_0^t \\lambda(s)\\,ds},\\quad \\mathrm{PD}(t)=1-e^{-\\lambda t}$",
       "last_updated": "2026-06-29",
       "stale": true
     },
     {
       "term": "Merton structural model",
-      "definition": "Models a firm's equity as a call option on its assets struck at the face value of its debt: default happens if asset value falls below debt at maturity. It links credit risk to equity volatility and leverage, the basis of KMV/Moody's distance-to-default.",
+      "definition": "Models a firm's equity as a call option on its assets struck at the face value of its debt: default happens if asset value falls below debt at maturity. It links credit risk to equity volatility and leverage, the basis of KMV/Moody's distance-to-default. Outputs a structural [[PD]] and implies a market-consistent [[LGD]].",
       "formula": "$E = V\\,N(d_1) - D\\,e^{-rT}N(d_2)$; default if $V_T < D$",
       "last_updated": "2026-06-29",
       "stale": true
     },
     {
-      "term": "In the Merton framework, a firm's distance to default is converted into a PD by applying the {{normal CDF}} to the negative distance to default.",
+      "term": "In the Merton framework, a firm's distance to default is converted into a [[PD]] by applying the {{normal CDF}} to the negative distance to default.",
       "sub": "DD",
-      "definition": "The number of asset-value standard deviations between a firm's current asset value and its default point. It converts the Merton model into a PD via the normal CDF and is intuitive for ranking credit quality.",
+      "definition": "The number of asset-value standard deviations between a firm's current asset value and its default point. It converts the Merton model into a [[PD]] via the normal CDF and is intuitive for ranking credit quality. [[IRB]] models use analogous distance metrics.",
       "formula": "$\\mathrm{DD} = \\dfrac{\\ln(V/D) + (\\mu - \\tfrac{1}{2}\\sigma^2)T}{\\sigma\\sqrt{T}},\\quad \\mathrm{PD}=N(-\\mathrm{DD})$",
       "type": "cloze",
       "last_updated": "2026-06-29",
@@ -141,28 +157,28 @@
     },
     {
       "term": "Reduced-form model",
-      "definition": "Models default as an unpredictable jump governed by a hazard rate calibrated to market prices (CDS, bonds), without modelling the firm's balance sheet. It fits market spreads well and is the standard for pricing credit derivatives.",
+      "definition": "Models default as an unpredictable jump governed by a hazard rate calibrated to market prices ([[CDS]], bonds), without modelling the firm's balance sheet. It fits market spreads well and is the standard for pricing credit derivatives. The hazard rate encodes the market-implied [[PD]].",
       "note": "Structural models explain why default happens; reduced-form models fit when it is priced to happen.",
       "last_updated": "2026-06-29",
       "stale": true
     },
     {
       "term": "Credit VaR",
-      "definition": "The quantile of a credit portfolio's loss distribution over a horizon (e.g. one year at 99.9%), capturing default and migration losses. Its distribution is sharply skewed and fat-tailed, so mean and tail diverge far more than in market risk.",
+      "definition": "The quantile of a credit portfolio's loss distribution over a horizon (e.g. one year at 99.9%), capturing default and migration losses. Its distribution is sharply skewed and fat-tailed, so mean and tail diverge far more than in market risk. Inputs include [[PD]], [[LGD]] and correlation; the [[IRB]] formula targets 99.9% Credit VaR.",
       "note": "Frameworks: CreditMetrics (migration), CreditRisk+ (actuarial), KMV (structural).",
       "last_updated": "2026-06-29",
       "stale": true
     },
     {
       "term": "Default correlation",
-      "definition": "The tendency of obligors to default together, driven by shared exposure to the economy. It is the single most important — and hardest to estimate — driver of credit portfolio tail risk; small changes move the tail enormously.",
+      "definition": "The tendency of obligors to default together, driven by shared exposure to the economy. It is the single most important — and hardest to estimate — driver of credit portfolio tail risk; small changes move the tail enormously. Enters models via joint [[PD]] distributions and [[LGD]] co-movement.",
       "note": "Underestimating it was central to the 2008 structured-credit losses.",
       "last_updated": "2026-06-29",
       "stale": true
     },
     {
       "term": "Gaussian copula model",
-      "definition": "Links each obligor's default to a latent variable split into a common factor and idiosyncratic noise, inducing correlated defaults through the shared factor. Tractable and industry-standard, but its thin tails understate joint extreme defaults.",
+      "definition": "Links each obligor's default to a latent variable split into a common factor and idiosyncratic noise, inducing correlated defaults through the shared factor. Tractable and industry-standard, but its thin tails understate joint extreme defaults. The [[ASRF]] model is its portfolio-level closed-form limit for a single common [[PD]].",
       "formula": "$X_i = \\sqrt{\\rho}\\,M + \\sqrt{1-\\rho}\\,\\varepsilon_i$; default if $X_i < N^{-1}(\\mathrm{PD}_i)$",
       "last_updated": "2026-06-29",
       "stale": true
@@ -170,7 +186,7 @@
     {
       "term": "Vasicek ASRF model",
       "sub": "asymptotic single-risk-factor",
-      "definition": "Assumes one systematic factor and an infinitely granular portfolio, yielding a closed-form tail loss that is portfolio-invariant — the theoretical basis of the Basel IRB capital formula. Conditional on a bad factor draw, PD rises sharply.",
+      "definition": "Assumes one systematic factor and an infinitely granular portfolio, yielding a closed-form tail loss that is portfolio-invariant — the theoretical basis of the Basel [[IRB]] capital formula. Conditional on a bad factor draw, [[PD]] rises sharply.",
       "formula": "$\\mathrm{PD}(M) = N\\!\\left(\\dfrac{N^{-1}(\\mathrm{PD}) - \\sqrt{\\rho}\\,M}{\\sqrt{1-\\rho}}\\right)$",
       "last_updated": "2026-06-29",
       "stale": true
@@ -185,22 +201,22 @@
     {
       "term": "IFRS 9 expected credit loss",
       "sub": "ECL",
-      "definition": "The accounting provisioning model requiring banks to book forward-looking expected losses on loans, not just incurred ones. It is probability-weighted across macro scenarios and discounted to present value.",
+      "definition": "The accounting provisioning model requiring banks to book forward-looking expected losses on loans, not just incurred ones. It is probability-weighted across macro scenarios and discounted to present value. Each scenario [[PD]] is combined with [[LGD]] and [[EAD]] to produce a scenario loss.",
       "formula": "$\\mathrm{ECL} = \\sum_{\\text{scenarios}} p_s\\,(\\mathrm{PD}_s\\times\\mathrm{LGD}_s\\times\\mathrm{EAD}_s)$",
       "last_updated": "2026-06-29",
       "stale": true
     },
     {
       "term": "IFRS 9 staging",
-      "definition": "Loans sit in Stage 1 (performing, 12-month ECL), Stage 2 (significant increase in credit risk, lifetime ECL), or Stage 3 (credit-impaired, lifetime ECL with interest on net balance). The Stage 1→2 trigger is judgmental and provision-defining.",
-      "note": "Lifetime vs 12-month ECL is a step change in provisions at the SICR boundary.",
+      "definition": "Loans sit in Stage 1 (performing, 12-month [[ECL]]), Stage 2 (significant increase in credit risk, lifetime [[ECL]]), or Stage 3 (credit-impaired, lifetime [[ECL]] with interest on net balance). The Stage 1→2 trigger is judgmental and provision-defining.",
+      "note": "Lifetime vs 12-month [[ECL]] is a step change in provisions at the SICR boundary.",
       "last_updated": "2026-06-29",
       "stale": true
     },
     {
       "term": "A loan is classed as non-performing once it is typically {{90}}+ days past due or unlikely to be repaid in full.",
       "sub": "NPL",
-      "definition": "A loan in or near default, typically 90+ days past due or unlikely to be repaid in full. The NPL ratio is a headline indicator of asset quality and a focus of supervisory pressure to provision and resolve.",
+      "definition": "A loan in or near default, typically 90+ days past due or unlikely to be repaid in full. The NPL ratio is a headline indicator of asset quality and a focus of supervisory pressure to provision and resolve. Provisioning draws on [[PD]] and [[LGD]] estimates.",
       "formula": "$\\text{NPL ratio} = \\dfrac{\\text{non-performing loans}}{\\text{total loans}}$",
       "type": "cloze",
       "last_updated": "2026-06-29",
@@ -208,7 +224,7 @@
     },
     {
       "term": "Loan loss provisions are the capital buffer that absorbs unexpected credit losses.",
-      "definition": "False. Provisions are a reserve set aside against expected credit losses, reducing reported profit and equity in anticipation of defaults; unexpected loss is absorbed by capital. The coverage ratio (provisions/NPLs) shows how well expected losses are pre-funded.",
+      "definition": "False. Provisions are a reserve set aside against [[EL|expected credit losses]], reducing reported profit and equity in anticipation of defaults; unexpected loss is absorbed by capital. The coverage ratio (provisions/NPLs) shows how well expected losses are pre-funded.",
       "note": "Provisions absorb expected loss; capital absorbs unexpected loss — different layers.",
       "type": "truefalse",
       "answer": false,
@@ -218,7 +234,7 @@
     },
     {
       "term": "Securitisation",
-      "definition": "Pooling loans and issuing tradable securities backed by their cash flows, transferring credit risk to investors and freeing balance-sheet capacity. It distributes risk but can obscure where it ends up, as 2008 showed.",
+      "definition": "Pooling loans and issuing tradable securities backed by their cash flows, transferring credit risk to investors and freeing balance-sheet capacity. It distributes risk but can obscure where it ends up, as 2008 showed. A [[CDO]] is a securitisation of debt tranches; [[CRM]] techniques can reduce the exposures being securitised.",
       "note": "True risk transfer requires the originator not to retain or re-absorb the risk.",
       "last_updated": "2026-06-29",
       "stale": true
@@ -233,20 +249,20 @@
     {
       "term": "Collateralised debt obligation",
       "sub": "CDO",
-      "definition": "A securitisation of a pool of debt (bonds, loans or other CDOs) sold as rated tranches. Tranche risk is exquisitely sensitive to default correlation — correlation, not just average PD, determines who loses.",
+      "definition": "A securitisation of a pool of debt (bonds, loans or other CDOs) sold as rated tranches. Tranche risk is exquisitely sensitive to default correlation — correlation, not just average [[PD]], determines who loses; and [[LGD]] assumptions on the underlying pool drive tranche severity.",
       "note": "CDO-squared layered tranching multiplied correlation sensitivity and opacity catastrophically.",
       "last_updated": "2026-06-29",
       "stale": true
     },
     {
       "term": "Credit enhancement",
-      "definition": "Mechanisms that improve a structure's credit quality — subordination, overcollateralisation, excess spread, reserve accounts or third-party guarantees. They protect senior investors by giving losses something to eat through first.",
+      "definition": "Mechanisms that improve a structure's credit quality — subordination, overcollateralisation, excess spread, reserve accounts or third-party guarantees. They protect senior investors by giving losses something to eat through first, in effect reducing [[LGD]] for senior noteholders and [[EAD]] at the senior tranche level.",
       "last_updated": "2026-06-29",
       "stale": true
     },
     {
       "term": "Sovereign risk",
-      "definition": "The risk that a government defaults on or restructures its debt, or imposes transfer/convertibility restrictions. It is a floor and a contagion source for all domestic credit, and the 'risk-free' assumption applied to sovereigns is itself a risk.",
+      "definition": "The risk that a government defaults on or restructures its debt, or imposes transfer/convertibility restrictions. It is a floor and a contagion source for all domestic credit, and the 'risk-free' assumption applied to sovereigns is itself a risk. [[PD]] for sovereigns is observable through [[CDS]] spreads.",
       "note": "Sovereign-bank 'doom loop': banks hold sovereign debt, sovereigns backstop banks.",
       "last_updated": "2026-06-29",
       "stale": true
@@ -265,7 +281,7 @@
     {
       "term": "Credit risk mitigation",
       "sub": "CRM",
-      "definition": "Techniques that reduce credit exposure — eligible collateral, guarantees, credit derivatives and netting — recognised in capital rules through substitution or haircut approaches. Effective CRM lowers LGD or EAD, and thus capital.",
+      "definition": "Techniques that reduce credit exposure — eligible collateral, guarantees, credit derivatives and netting — recognised in capital rules through substitution or haircut approaches. Effective CRM lowers [[LGD]] or [[EAD]], and thus capital.",
       "note": "Recognition requires legal certainty and, for collateral, valuation haircuts.",
       "last_updated": "2026-06-29",
       "stale": true

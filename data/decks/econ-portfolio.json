@@ -9,6 +9,15 @@
     "mcq"
   ],
   "primerTitle": "Portfolio & asset pricing",
+  "glossary": {
+    "CAPM": "Capital Asset Pricing Model — a model relating an asset's expected return to its systematic risk (beta) relative to the market",
+    "APT": "Arbitrage Pricing Theory — a multi-factor asset pricing model relating expected returns to several systematic risk factors",
+    "MPT": "Modern Portfolio Theory — the framework for constructing portfolios by trading off expected return against variance",
+    "EMH": "Efficient Market Hypothesis — the theory that asset prices fully reflect available information, making systematic excess returns impossible",
+    "CML": "Capital Market Line — the efficient frontier combining the risk-free asset with the risky market portfolio",
+    "SML": "Security Market Line — a line in expected-return vs. beta space representing CAPM's equilibrium relationship",
+    "BSM": "Black-Scholes-Merton model — a closed-form option pricing formula under geometric Brownian motion assumptions"
+  },
   "primer": "## Portfolio & asset pricing\n**CAPM**: E[R] = R_f + β·(E[R_m] − R_f); only **systematic** risk (β = Cov(asset,market)/Var(market)) is rewarded — idiosyncratic risk diversifies away. Performance: **Sharpe** (excess return / total volatility), **Treynor** (per unit β), **Sortino** (downside deviation), **alpha** (return beyond the model). The **efficient frontier** holds the best return per risk; adding the risk-free asset gives the **Capital Market Line** tangent at the market portfolio. Know put–call parity (C − P = S − Ke^{−rT}), forward pricing (F = Se^{rT}), and that Black–Scholes uses volatility, not drift.",
   "cards": [
     {
@@ -37,7 +46,7 @@
       ],
       "answer": 2,
       "type": "mcq",
-      "definition": "Beta = Cov(asset, market) / Var(market), so it measures how strongly an asset co-moves with the overall market, i.e. its systematic risk; beta above 1 amplifies market swings and below 1 dampens them. It is not total return volatility, which also includes firm-specific (idiosyncratic) risk that beta deliberately excludes. It is not diversifiable firm-specific risk, which is exactly the part beta leaves out. Excess return per unit of volatility is the Sharpe ratio, and expected return is a downstream output of beta via CAPM, not beta itself.",
+      "definition": "Beta = Cov(asset, market) / Var(market), so it measures how strongly an asset co-moves with the overall market, i.e. its systematic risk; beta above 1 amplifies market swings and below 1 dampens them. It is not total return volatility, which also includes firm-specific (idiosyncratic) risk that beta deliberately excludes. It is not diversifiable firm-specific risk, which is exactly the part beta leaves out. Excess return per unit of volatility is the Sharpe ratio, and expected return is a downstream output of beta via [[CAPM]], not beta itself.",
       "last_updated": "2026-06-29",
       "stale": true
     },
@@ -67,7 +76,7 @@
       ],
       "answer": 1,
       "type": "mcq",
-      "definition": "Diversification removes idiosyncratic (firm-specific) risk because independent shocks across many holdings partially cancel, leaving the portfolio exposed only to common factors. It cannot eliminate systematic market-wide risk, which hits all assets together and is the only risk CAPM rewards, so that option is exactly backwards. It does not drive all risk to zero, since the systematic component remains no matter how many names you add. Interest-rate and inflation risk are largely systematic, so singling either out as the thing diversification removes is wrong.",
+      "definition": "Diversification removes idiosyncratic (firm-specific) risk because independent shocks across many holdings partially cancel, leaving the portfolio exposed only to common factors. It cannot eliminate systematic market-wide risk, which hits all assets together and is the only risk [[CAPM]] rewards, so that option is exactly backwards. It does not drive all risk to zero, since the systematic component remains no matter how many names you add. Interest-rate and inflation risk are largely systematic, so singling either out as the thing diversification removes is wrong.",
       "last_updated": "2026-06-29",
       "stale": true
     },
@@ -172,7 +181,7 @@
       ],
       "answer": 2,
       "type": "mcq",
-      "definition": "Adding the risk-free asset produces the Capital Market Line, a straight line from Rf tangent to the efficient frontier at the market (tangency) portfolio; combining cash with that one portfolio dominates the curved all-risky frontier. The Security Market Line plots expected return against beta for individual assets, a different axis entirely. The characteristic line regresses an asset on the market to estimate beta. The yield curve plots rates by maturity and indifference curves capture investor preferences, neither being the cash-plus-risky combination line.",
+      "definition": "Adding the risk-free asset produces the Capital Market Line, a straight line from Rf tangent to the efficient frontier at the market (tangency) portfolio; combining cash with that one portfolio dominates the curved all-risky frontier. The [[SML]] plots expected return against beta for individual assets, a different axis entirely. The characteristic line regresses an asset on the market to estimate beta. The yield curve plots rates by maturity and indifference curves capture investor preferences, neither being the cash-plus-risky combination line.",
       "last_updated": "2026-06-29",
       "stale": true
     },
@@ -187,12 +196,12 @@
       ],
       "answer": 4,
       "type": "mcq",
-      "definition": "Alpha is the return earned beyond what a model like CAPM predicts for the risk (beta) taken; positive alpha signals genuine outperformance, not mere compensation for exposure. It is not the market return or the risk-free rate, which are inputs to the predicted benchmark, not the excess over it. It is not total volatility or systematic risk (beta), which are risk measures rather than a performance residual. Alpha is specifically the gap between realised return and the model's required return.",
+      "definition": "Alpha is the return earned beyond what a model like [[CAPM]] predicts for the risk (beta) taken; positive alpha signals genuine outperformance, not mere compensation for exposure. It is not the market return or the risk-free rate, which are inputs to the predicted benchmark, not the excess over it. It is not total volatility or systematic risk (beta), which are risk measures rather than a performance residual. Alpha is specifically the gap between realised return and the model's required return.",
       "last_updated": "2026-06-29",
       "stale": true
     },
     {
-      "term": "The Efficient Market Hypothesis (semi-strong form) asserts that prices reflect:",
+      "term": "The [[EMH|Efficient Market Hypothesis]] (semi-strong form) asserts that prices reflect:",
       "choices": [
         "Only published accounting statements",
         "All publicly available information",
@@ -202,12 +211,12 @@
       ],
       "answer": 1,
       "type": "mcq",
-      "definition": "Semi-strong-form EMH says prices already reflect all publicly available information, so fundamental analysis of public data cannot consistently beat the market. Only the history of past prices is the weak form, a strictly narrower claim. All information including private insider data is the strong form, which goes further than semi-strong. Only published accounting statements is too narrow (public info includes news, filings, analyst data, and more), and essentially no information would describe an entirely inefficient market.",
+      "definition": "Semi-strong-form [[EMH]] says prices already reflect all publicly available information, so fundamental analysis of public data cannot consistently beat the market. Only the history of past prices is the weak form, a strictly narrower claim. All information including private insider data is the strong form, which goes further than semi-strong. Only published accounting statements is too narrow (public info includes news, filings, analyst data, and more), and essentially no information would describe an entirely inefficient market.",
       "last_updated": "2026-06-29",
       "stale": true
     },
     {
-      "term": "Arbitrage Pricing Theory (APT) differs from CAPM by:",
+      "term": "Arbitrage Pricing Theory (APT) differs from [[CAPM]] by:",
       "choices": [
         "Allowing several systematic risk factors",
         "Applying only to fixed-income bond markets",
@@ -217,7 +226,7 @@
       ],
       "answer": 0,
       "type": "mcq",
-      "definition": "APT generalises CAPM by allowing several systematic risk factors (e.g. inflation, GDP, term spreads), each with its own beta, instead of a single market factor. It applies broadly across asset classes, not only fixed-income bonds. It is built on no-arbitrage and does not require returns to be normally distributed. Far from using no risk factors or ignoring systematic risk, its entire structure is multiple priced systematic factors, which is precisely what distinguishes it from CAPM's one-beta model.",
+      "definition": "[[APT]] generalises [[CAPM]] by allowing several systematic risk factors (e.g. inflation, GDP, term spreads), each with its own beta, instead of a single market factor. It applies broadly across asset classes, not only fixed-income bonds. It is built on no-arbitrage and does not require returns to be normally distributed. Far from using no risk factors or ignoring systematic risk, its entire structure is multiple priced systematic factors, which is precisely what distinguishes it from [[CAPM]]'s one-beta model.",
       "last_updated": "2026-06-29",
       "stale": true
     },
@@ -252,7 +261,7 @@
       "stale": true
     },
     {
-      "term": "In the Black-Scholes framework, an option's value depends on the underlying's volatility but NOT on:",
+      "term": "In the [[BSM|Black-Scholes]] framework, an option's value depends on the underlying's volatility but NOT on:",
       "choices": [
         "The option's strike (exercise) price",
         "The continuously compounded risk-free rate",
@@ -262,7 +271,7 @@
       ],
       "answer": 4,
       "type": "mcq",
-      "definition": "Under Black-Scholes risk-neutral pricing the underlying's real-world drift (expected return) cancels out, so the option value depends on volatility but not on the asset's expected return. The strike price, current underlying price, time to expiry, and risk-free rate all enter the formula directly and change the price. The key insight is that hedging replaces drift with the risk-free rate, leaving volatility as the crucial unknown; that is why two analysts disagreeing on drift but agreeing on volatility price the option identically.",
+      "definition": "Under [[BSM]] risk-neutral pricing the underlying's real-world drift (expected return) cancels out, so the option value depends on volatility but not on the asset's expected return. The strike price, current underlying price, time to expiry, and risk-free rate all enter the formula directly and change the price. The key insight is that hedging replaces drift with the risk-free rate, leaving volatility as the crucial unknown; that is why two analysts disagreeing on drift but agreeing on volatility price the option identically.",
       "last_updated": "2026-06-29",
       "stale": true
     },

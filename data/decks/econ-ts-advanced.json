@@ -9,6 +9,17 @@
     "mcq"
   ],
   "primerTitle": "Time series — advanced",
+  "glossary": {
+    "VAR": "Vector Autoregression — a multivariate time-series model in which each variable depends on its own lags and the lags of all other variables",
+    "VECM": "Vector Error Correction Model — a VAR extended with an error-correction term to model cointegrated non-stationary series",
+    "ARCH": "Autoregressive Conditional Heteroskedasticity — a class of time-series models that allow the conditional variance to depend on past shocks",
+    "GARCH": "Generalised ARCH — an extension of ARCH that also allows conditional variance to depend on its own past values",
+    "ECM": "Error Correction Model — a time-series model linking short-run dynamics to a long-run equilibrium relationship",
+    "EGARCH": "Exponential GARCH — a variant of GARCH that models the log of conditional variance, capturing asymmetric volatility responses",
+    "EWMA": "Exponentially Weighted Moving Average — a volatility estimator that gives more weight to recent observations using a decay factor",
+    "ADF": "Augmented Dickey-Fuller test — a unit-root hypothesis test for time-series stationarity",
+    "IRF": "Impulse Response Function — a tool in VAR analysis tracing how variables respond over time to a one-time shock in one variable"
+  },
   "primer": "## Time series — advanced\n**Cointegration**: non-stationary series whose linear combination is I(0) share a long-run equilibrium — the basis for pairs trading; model with an **error-correction model** (negative loading = convergence). Regressing unrelated trending series gives a **spurious regression** (high R², autocorrelated residuals). **VARs** treat all variables as endogenous; impulse responses trace shocks; **Granger causality** is predictive, not structural. Volatility clustering (uncorrelated returns, correlated squared returns) calls for **ARCH/GARCH**: σ²ₜ = ω + α·ε²ₜ₋₁ + β·σ²ₜ₋₁, with α+β<1 for stationarity and persistence near 1.",
   "cards": [
     {
@@ -40,7 +51,7 @@
       "last_updated": "2026-06-29"
     },
     {
-      "term": "An Error Correction Model (ECM) is used when variables are:",
+      "term": "An Error Correction Model ([[ECM]]) is used when variables are:",
       "choices": [
         "All of them are individually white noise",
         "Stationary, so OLS in levels already works",
@@ -50,7 +61,7 @@
       ],
       "answer": 3,
       "type": "mcq",
-      "definition": "An ECM applies to cointegrated I(1) variables: it regresses the change in Y on lagged changes plus an error-correction term that pulls the system back toward its long-run equilibrium. White-noise or already-stationary series need no correction; truly unrelated series, or ones integrated to different orders, share no equilibrium to correct toward.",
+      "definition": "An [[ECM]] applies to cointegrated I(1) variables: it regresses the change in Y on lagged changes plus an error-correction term that pulls the system back toward its long-run equilibrium. White-noise or already-stationary series need no correction; truly unrelated series, or ones integrated to different orders, share no equilibrium to correct toward.",
       "last_updated": "2026-06-29"
     },
     {
@@ -78,7 +89,7 @@
       ],
       "answer": 1,
       "type": "mcq",
-      "definition": "The Engle-Granger test has a null of NO cointegration: you run the cointegrating regression, then apply a unit-root (ADF-type) test to its residuals, and rejecting the unit root null means the residual is stationary, supporting cointegration. So the working null is that the residual has a unit root and the series do not cointegrate. Normality of residuals and no autocorrelation are assumptions of other diagnostics, not what this test targets. Stationarity of each series is false by construction - the inputs are I(1). Cointegration exists is the alternative, not the null; you only conclude it by rejecting the null.",
+      "definition": "The Engle-Granger test has a null of NO cointegration: you run the cointegrating regression, then apply a unit-root ([[ADF]]-type) test to its residuals, and rejecting the unit root null means the residual is stationary, supporting cointegration. So the working null is that the residual has a unit root and the series do not cointegrate. Normality of residuals and no autocorrelation are assumptions of other diagnostics, not what this test targets. Stationarity of each series is false by construction - the inputs are I(1). Cointegration exists is the alternative, not the null; you only conclude it by rejecting the null.",
       "last_updated": "2026-06-29"
     },
     {
@@ -92,7 +103,7 @@
       ],
       "answer": 3,
       "type": "mcq",
-      "definition": "Johansen handles a system of several variables and can detect more than one cointegrating vector, estimating them jointly in a VECM. Engle-Granger is a two-step residual test limited to a single relationship. The other options misstate its purpose: it is not a heteroskedasticity test, it needs non-stationary time series, and it is not restricted to two series.",
+      "definition": "Johansen handles a system of several variables and can detect more than one cointegrating vector, estimating them jointly in a [[VECM]]. Engle-Granger is a two-step residual test limited to a single relationship. The other options misstate its purpose: it is not a heteroskedasticity test, it needs non-stationary time series, and it is not restricted to two series.",
       "last_updated": "2026-06-29"
     },
     {
@@ -120,7 +131,7 @@
       ],
       "answer": 4,
       "type": "mcq",
-      "definition": "A VAR treats every variable as endogenous, regressing each on lags of itself and of all the others, so it captures their joint dynamics without imposing a direction a priori. Treating variables as cross-sectional, a single series, or one-dependent-rest-fixed all impose structure a VAR avoids; it also admits non-stationary forms such as a VECM.",
+      "definition": "A [[VAR]] treats every variable as endogenous, regressing each on lags of itself and of all the others, so it captures their joint dynamics without imposing a direction a priori. Treating variables as cross-sectional, a single series, or one-dependent-rest-fixed all impose structure a [[VAR]] avoids; it also admits non-stationary forms such as a [[VECM]].",
       "last_updated": "2026-06-29"
     },
     {
@@ -134,7 +145,7 @@
       ],
       "answer": 3,
       "type": "mcq",
-      "definition": "Volatility clustering - large changes tending to follow large changes, calm following calm - motivates ARCH/GARCH, which model the conditional variance as time-varying: sigma^2_t = omega + alpha*e^2_{t-1} + beta*sigma^2_{t-1}, so today's variance rises after recent large shocks. Ordinary AR models describe the conditional mean and assume constant variance, so they cannot reproduce clustering. A linear probability model is for binary outcomes, and fixed-effects panel models address cross-unit heterogeneity - neither targets time-varying volatility. Cointegration concerns long-run relationships among levels of series, not the dynamics of variance.",
+      "definition": "Volatility clustering - large changes tending to follow large changes, calm following calm - motivates [[ARCH]]/[[GARCH]], which model the conditional variance as time-varying: sigma^2_t = omega + alpha*e^2_{t-1} + beta*sigma^2_{t-1}, so today's variance rises after recent large shocks. Ordinary AR models describe the conditional mean and assume constant variance, so they cannot reproduce clustering. A linear probability model is for binary outcomes, and fixed-effects panel models address cross-unit heterogeneity - neither targets time-varying volatility. Cointegration concerns long-run relationships among levels of series, not the dynamics of variance.",
       "last_updated": "2026-06-29"
     },
     {
@@ -148,7 +159,7 @@
       ],
       "answer": 4,
       "type": "mcq",
-      "definition": "GARCH(1,1) sets sigma^2_t = omega + alpha*e^2_{t-1} + beta*sigma^2_{t-1}: today's conditional variance is a constant plus the most recent squared shock (ARCH term) and the most recent conditional variance (GARCH term). It depends on neither the series level nor a time trend, and using only the constant or only the squared return drops the persistence GARCH exists to capture.",
+      "definition": "GARCH(1,1) sets sigma^2_t = omega + alpha*e^2_{t-1} + beta*sigma^2_{t-1}: today's conditional variance is a constant plus the most recent squared shock ([[ARCH]] term) and the most recent conditional variance ([[GARCH]] term). It depends on neither the series level nor a time trend, and using only the constant or only the squared return drops the persistence [[GARCH]] exists to capture.",
       "last_updated": "2026-06-29"
     },
     {
@@ -176,7 +187,7 @@
       ],
       "answer": 1,
       "type": "mcq",
-      "definition": "ARCH and GARCH are estimated by maximum likelihood: the conditional variance enters the likelihood nonlinearly (each period's density depends on a recursively computed sigma^2_t), so the log-likelihood is maximized numerically, usually assuming conditionally normal or t-distributed errors. Ordinary least squares cannot be applied directly because the variance, not just the mean, is parameterized and time-varying. The Johansen procedure tests cointegration rank - a completely different problem. Two-stage least squares addresses endogeneity/instrumental variables, not conditional heteroskedasticity. Differencing removes unit roots from the mean; it does nothing to estimate a variance equation.",
+      "definition": "[[ARCH]] and [[GARCH]] are estimated by maximum likelihood: the conditional variance enters the likelihood nonlinearly (each period's density depends on a recursively computed sigma^2_t), so the log-likelihood is maximized numerically, usually assuming conditionally normal or t-distributed errors. Ordinary least squares cannot be applied directly because the variance, not just the mean, is parameterized and time-varying. The Johansen procedure tests cointegration rank - a completely different problem. Two-stage least squares addresses endogeneity/instrumental variables, not conditional heteroskedasticity. Differencing removes unit roots from the mean; it does nothing to estimate a variance equation.",
       "last_updated": "2026-06-29"
     },
     {
@@ -190,7 +201,7 @@
       ],
       "answer": 3,
       "type": "mcq",
-      "definition": "The leverage effect is the asymmetry that bad news (negative returns) raises future volatility more than good news of the same size - captured by EGARCH/GJR-GARCH. It is the opposite of the positive-shock option, contradicts constant volatility, is not a unit root in variance, and is unrelated to balance-sheet leverage despite the name.",
+      "definition": "The leverage effect is the asymmetry that bad news (negative returns) raises future volatility more than good news of the same size - captured by [[EGARCH]]/GJR-[[GARCH]]. It is the opposite of the positive-shock option, contradicts constant volatility, is not a unit root in variance, and is unrelated to balance-sheet leverage despite the name.",
       "last_updated": "2026-06-29"
     },
     {
@@ -204,7 +215,7 @@
       ],
       "answer": 2,
       "type": "mcq",
-      "definition": "Because GARCH volatility is mean-reverting, multi-step forecasts converge toward the unconditional (long-run) variance omega/(1 - alpha - beta) as the horizon grows - the conditional forecast decays geometrically at rate (alpha+beta) from today's level toward that anchor. Dropping to zero or diverging to infinity would require non-stationary or degenerate parameters, not a standard stationary GARCH. Staying equal to yesterday's volatility forever describes a random walk in variance (IGARCH/EWMA, where alpha+beta=1), not the mean-reverting case. Equaling the squared mean return confuses the variance with the level of returns - they are unrelated quantities.",
+      "definition": "Because [[GARCH]] volatility is mean-reverting, multi-step forecasts converge toward the unconditional (long-run) variance omega/(1 - alpha - beta) as the horizon grows - the conditional forecast decays geometrically at rate (alpha+beta) from today's level toward that anchor. Dropping to zero or diverging to infinity would require non-stationary or degenerate parameters, not a standard stationary [[GARCH]]. Staying equal to yesterday's volatility forever describes a random walk in variance (IGARCH/[[EWMA]], where alpha+beta=1), not the mean-reverting case. Equaling the squared mean return confuses the variance with the level of returns - they are unrelated quantities.",
       "last_updated": "2026-06-29"
     },
     {
@@ -232,7 +243,7 @@
       ],
       "answer": 1,
       "type": "mcq",
-      "definition": "RiskMetrics EWMA is GARCH(1,1) with omega=0 and alpha+beta=1: sigma^2_t = (1-lambda)*r^2_{t-1} + lambda*sigma^2_{t-1}, so volatility is an exponentially weighted average of past squared returns with a decay like lambda=0.94 giving recent data more weight. It is not driven by only the last return, has full persistence (not none), does not weight all observations equally, and models variance not the mean.",
+      "definition": "RiskMetrics [[EWMA]] is [[GARCH]](1,1) with omega=0 and alpha+beta=1: sigma^2_t = (1-lambda)*r^2_{t-1} + lambda*sigma^2_{t-1}, so volatility is an exponentially weighted average of past squared returns with a decay like lambda=0.94 giving recent data more weight. It is not driven by only the last return, has full persistence (not none), does not weight all observations equally, and models variance not the mean.",
       "last_updated": "2026-06-29"
     },
     {
@@ -246,7 +257,7 @@
       ],
       "answer": 1,
       "type": "mcq",
-      "definition": "An impulse response function traces how each variable in a VAR reacts over subsequent periods to a one-time unit shock in one variable, showing how shocks propagate through the system. It is not a mean, a unit-root statistic, a seasonal pattern, or the cointegrating vector.",
+      "definition": "An [[IRF]] traces how each variable in a [[VAR]] reacts over subsequent periods to a one-time unit shock in one variable, showing how shocks propagate through the system. It is not a mean, a unit-root statistic, a seasonal pattern, or the cointegrating vector.",
       "last_updated": "2026-06-29"
     },
     {
@@ -260,7 +271,7 @@
       ],
       "answer": 2,
       "type": "mcq",
-      "definition": "Returns that are serially uncorrelated yet have strongly autocorrelated SQUARES show volatility clustering - calm and turbulent periods bunch together - i.e. conditional heteroskedasticity, the signature GARCH models capture. It is not market efficiency with constant variance, a deterministic or predictable mean, or a unit root in returns.",
+      "definition": "Returns that are serially uncorrelated yet have strongly autocorrelated SQUARES show volatility clustering - calm and turbulent periods bunch together - i.e. conditional heteroskedasticity, the signature [[GARCH]] models capture. It is not market efficiency with constant variance, a deterministic or predictable mean, or a unit root in returns.",
       "last_updated": "2026-06-29"
     },
     {
@@ -274,7 +285,7 @@
       ],
       "answer": 3,
       "type": "mcq",
-      "definition": "An unmodeled structural break biases standard ADF tests toward NOT rejecting the unit-root null - they lose power and wrongly call a broken-but-stationary series non-stationary; break-aware tests (e.g. Zivot-Andrews) fix this. The break does not make ADF exact, help detect cointegration, remove seasonality, or force rejection.",
+      "definition": "An unmodeled structural break biases standard [[ADF]] tests toward NOT rejecting the unit-root null - they lose power and wrongly call a broken-but-stationary series non-stationary; break-aware tests (e.g. Zivot-Andrews) fix this. The break does not make [[ADF]] exact, help detect cointegration, remove seasonality, or force rejection.",
       "last_updated": "2026-06-29"
     },
     {

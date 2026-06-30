@@ -806,16 +806,17 @@ function imageHtml(src, alt) {
 }
 
 /* the answer block: one-liner + optional "more" + answer image + formula + note */
-function explanationBlock(card) {
+function explanationBlock(card, glFn) {
+  const esc = glFn || escapeHtml;
   const parts = splitLead(card);
-  let html = `<div class="lead">${linkify(escapeHtml(parts.lead))}</div>`;
+  let html = `<div class="lead">${linkify(esc(parts.lead))}</div>`;
   if (parts.rest) {
     html += `<button type="button" class="more-toggle">more ›</button>`
-      + `<div class="more" hidden>${linkify(escapeHtml(parts.rest))}</div>`;
+      + `<div class="more" hidden>${linkify(esc(parts.rest))}</div>`;
   }
   if (card.answerImage) html += imageHtml(card.answerImage, card.term);
   if (card.formula) html += `<div class="formula">${escapeHtml(card.formula)}</div>`;
-  if (card.note) html += `<div class="note"><span class="mk">→</span><span>${linkify(escapeHtml(card.note))}</span></div>`;
+  if (card.note) html += `<div class="note"><span class="mk">→</span><span>${linkify(esc(card.note))}</span></div>`;
   return html;
 }
 
@@ -857,11 +858,12 @@ function speakCard(card) {
   speakTTS(card);
 }
 /* reverse answer: the NAME (term) is the answer to a description prompt */
-function answerBlockReverse(card) {
-  let html = `<div class="lead name-answer">${linkify(escapeHtml(card.term))}</div>`;
+function answerBlockReverse(card, glFn) {
+  const esc = glFn || escapeHtml;
+  let html = `<div class="lead name-answer">${linkify(esc(card.term))}</div>`;
   if (card.answerImage) html += imageHtml(card.answerImage, card.term);
   if (card.formula) html += `<div class="formula">${escapeHtml(card.formula)}</div>`;
-  if (card.note) html += `<div class="note"><span class="mk">→</span><span>${linkify(escapeHtml(card.note))}</span></div>`;
+  if (card.note) html += `<div class="note"><span class="mk">→</span><span>${linkify(esc(card.note))}</span></div>`;
   return html;
 }
 function wireExplanation(container) {
@@ -928,12 +930,21 @@ function renderCard() {
     ? `<span class="cdot"></span><span class="cat-label">${escapeHtml(meta.label)}</span>` : "";
 
   let frontExtra, termText = card.term, kindClass = "", answerHtml = null;
+
+  const gl = (currentDeck && currentDeck.glossary) || {};
+  const glossRefs = new Map();
+  const glApply = (text) => {
+    const { html, refs } = applyGlossary(text, gl);
+    refs.forEach(({ term, def }) => { if (!glossRefs.has(term)) glossRefs.set(term, def); });
+    return html;
+  };
+
   // each button keeps its TRUE index in data-index; the label/position follow the
   // (optionally shuffled) display order, so option order can be randomised per render.
   const optButtons = (choices, order, keyFn) => order.map((trueIdx, disp) =>
     `<button type="button" class="mcq-opt" data-index="${trueIdx}">`
     + `<span class="mcq-key">${keyFn(disp)}</span>`
-    + `<span class="mcq-text">${linkify(escapeHtml(choices[trueIdx]))}</span></button>`).join("");
+    + `<span class="mcq-text">${linkify(glApply(choices[trueIdx]))}</span></button>`).join("");
   const shuffledOrder = (n) => {
     const a = Array.from({ length: n }, (_, i) => i);
     for (let i = n - 1; i > 0; i--) { const j = Math.floor(Math.random() * (i + 1)); const t = a[i]; a[i] = a[j]; a[j] = t; }
@@ -970,7 +981,7 @@ function renderCard() {
   } else if (q && q.kind === "cloze") {
     kindClass = " mcq cloze";
     termText = "";
-    frontExtra = `<div class="cloze-sentence">${linkify(escapeHtml(q.display)).replace("____", '<span class="cloze-blank">____</span>')}</div>`
+    frontExtra = `<div class="cloze-sentence">${linkify(glApply(q.display)).replace("____", '<span class="cloze-blank">____</span>')}</div>`
       + `<input type="text" class="cloze-input" id="clozeInput" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="type the missing term">`
       + `<button type="button" class="solid-btn mcq-check" id="clozeCheck">check</button>`
       + `<div class="hint" id="qHint">fill the blank · enter to check</div>`;
@@ -978,7 +989,7 @@ function renderCard() {
     kindClass = " mcq typecard";
     termText = activeType.wantTerm ? "" : card.term;
     if (!activeType.wantTerm && card.term.trim().length <= 6) kindClass += " quizglyph";
-    frontExtra = (activeType.wantTerm ? `<div class="prompt-desc">${linkify(escapeHtml(card.definition))}</div>` : "")
+    frontExtra = (activeType.wantTerm ? `<div class="prompt-desc">${linkify(glApply(card.definition))}</div>` : "")
       + `<input type="text" class="cloze-input" id="typeInput" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="type the answer">`
       + `<button type="button" class="solid-btn mcq-check" id="typeCheck">check</button>`
       + `<div class="hint" id="qHint">type the ${activeType.wantTerm ? "symbol" : "answer"} · enter to check</div>`;
@@ -987,21 +998,21 @@ function renderCard() {
     if (dir === "reverse") {
       kindClass = " reverse";
       termText = "";
-      frontExtra = `<div class="prompt-desc">${linkify(escapeHtml(card.definition))}</div>`
+      frontExtra = `<div class="prompt-desc">${linkify(glApply(card.definition))}</div>`
         + `<div class="hint">name it · space to reveal</div>`;
-      answerHtml = answerBlockReverse(card);
+      answerHtml = answerBlockReverse(card, glApply);
     } else {
       const subMarkup = card.sub ? `<div class="sub">${escapeHtml(card.sub)}</div>` : "";
       frontExtra = `${subMarkup}<div class="hint">tap to reveal · space</div>`;
     }
   }
 
-  if (answerHtml === null) answerHtml = explanationBlock(card);
+  if (answerHtml === null) answerHtml = explanationBlock(card, glApply);
   const frontImage = card.image ? imageHtml(card.image, card.term) : "";
   if (frontImage) kindClass += " has-image";   // compact the prompt, give the image room
   // short-symbol cards (alphabets, single glyphs) render big & centered, identically both directions
   if (!q && !activeType && !frontImage && card.term.trim().length <= 6) kindClass += " glyphcard";
-  const termMarkup = termText ? `<div class="term">${escapeHtml(termText)}</div>` : "";
+  const termMarkup = termText ? `<div class="term">${glApply(termText)}</div>` : "";
   const speakMarkup = (speakable && !activeQuiz)   // quiz/listen has its own audio affordance
     ? `<button type="button" class="speak-btn" id="speakBtn" title="play pronunciation" aria-label="play pronunciation">🔊</button>` : "";
 
@@ -1024,6 +1035,18 @@ function renderCard() {
         </div>
       </div>
     </div>`;
+
+  if (glossRefs.size > 0) {
+    const panel = document.createElement("div");
+    panel.className = "gloss-panel";
+    glossRefs.forEach((def, term) => {
+      const span = document.createElement("span");
+      span.className = "gloss-entry";
+      span.innerHTML = `<b>${escapeHtml(term)}</b> — ${escapeHtml(def)}`;
+      panel.appendChild(span);
+    });
+    host.appendChild(panel);
+  }
 
   const cardElement = $("card");
   if (!q && !activeType) {
@@ -1648,16 +1671,14 @@ function showTab(name) {
   $("settingsView").hidden = name !== "settings";
   $("reviewView").hidden = name !== "review";
   $("libraryView").hidden = name !== "library";
-  $("buildView").hidden = name !== "build";
   document.body.classList.toggle("building", name !== "study");   // hide deck switcher / settings / import off the study tab
-  // the nav highlights study/review/library/build; settings is reached via the gear
-  document.querySelectorAll("#tabs .tab").forEach((t) => t.classList.toggle("active", t.dataset.tab === name));
+  // the nav highlights study/review/library; settings is reached via the gear; build is its own page
+  document.querySelectorAll("#tabs .tab[data-tab]").forEach((t) => t.classList.toggle("active", t.dataset.tab === name));
   if (name === "settings") syncSettings();
-  if (name === "build" && !$("bCards").children.length) bAddCard();   // start with one card
   if (name === "library") renderLibrary();
   if (name === "review") renderReview();
 }
-document.querySelectorAll("#tabs .tab").forEach((t) => { t.onclick = () => showTab(t.dataset.tab); });
+document.querySelectorAll("#tabs .tab[data-tab]").forEach((t) => { t.onclick = () => showTab(t.dataset.tab); });
 if ($("libSearch")) $("libSearch").addEventListener("input", (e) => { librarySearch = e.target.value; renderLibrary(); });
 
 /* ----------------------------- review -------------------------- */
@@ -2626,214 +2647,17 @@ $("bundleFile").onchange = (event) => {
   event.target.value = "";
 };
 
-/* --------------------------- set builder ----------------------- */
-function bLines(text) { return String(text).split("\n").map((s) => s.trim()).filter(Boolean); }
-function bParseCorrect(str, len) {
-  return String(str || "").split(/[,\s]+/).map((t) => {
-    t = t.trim(); if (!t) return -1;
-    return /^\d+$/.test(t) ? parseInt(t, 10) - 1 : letterToIndex(t);   // 1-based number or A/B/C…
-  }).filter((i) => i >= 0 && i < len);
-}
-
-const B_FIELDS = {
-  flip: '<label class="bfield"><span>one-liner (optional)</span><input class="bSummary" type="text" placeholder="concept in one line"></label>'
-      + '<label class="bfield"><span>answer / explanation</span><textarea class="bDef" rows="3"></textarea></label>',
-  mcq: '<label class="bfield"><span>choices (one per line)</span><textarea class="bChoices" rows="4"></textarea></label>'
-      + '<label class="bfield"><span>correct (e.g. B or 2)</span><input class="bCorrect" type="text" placeholder="B"></label>'
-      + '<label class="bfield"><span>one-liner (optional)</span><input class="bSummary" type="text"></label>'
-      + '<label class="bfield"><span>explanation</span><textarea class="bDef" rows="2"></textarea></label>',
-  truefalse: '<label class="bfield"><span>answer</span><select class="bBool"><option value="true">True</option><option value="false">False</option></select></label>'
-      + '<label class="bfield"><span>one-liner (optional)</span><input class="bSummary" type="text"></label>'
-      + '<label class="bfield"><span>explanation</span><textarea class="bDef" rows="2"></textarea></label>',
-  multi: '<label class="bfield"><span>choices (one per line)</span><textarea class="bChoices" rows="4"></textarea></label>'
-      + '<label class="bfield"><span>correct — all that apply (e.g. A,C,D)</span><input class="bCorrect" type="text" placeholder="A,C"></label>'
-      + '<label class="bfield"><span>one-liner (optional)</span><input class="bSummary" type="text"></label>'
-      + '<label class="bfield"><span>explanation</span><textarea class="bDef" rows="2"></textarea></label>',
-  cloze: '<label class="bfield"><span>one-liner (optional)</span><input class="bSummary" type="text"></label>'
-      + '<label class="bfield"><span>explanation</span><textarea class="bDef" rows="2"></textarea></label>',
-};
-const B_TERM_PLACEHOLDER = {
-  flip: "term / front", mcq: "question", truefalse: "a statement that is true or false",
-  multi: "question (select all that apply)", cloze: "sentence with the answer wrapped as {{answer}}",
-};
-
-function bRenderFields(row) {
-  const type = row.querySelector(".bType").value;
-  row.querySelector(".bfields").innerHTML = B_FIELDS[type];
-  row.querySelector(".bTerm").placeholder = B_TERM_PLACEHOLDER[type];
-}
-
-function bAddCard() {
-  const row = document.createElement("div");
-  row.className = "bcard";
-  row.innerHTML =
-    '<div class="bcard-head">'
-    + '<select class="bType"><option value="flip">Flip</option><option value="mcq">Multiple choice</option>'
-    + '<option value="truefalse">True / False</option><option value="multi">Multi-select</option>'
-    + '<option value="cloze">Cloze (fill-the-blank)</option></select>'
-    + '<button type="button" class="bRemove" title="remove card">✕</button></div>'
-    + '<textarea class="bTerm" rows="2"></textarea>'
-    + '<div class="bfields"></div>'
-    + '<div class="brow"><input class="bCat" type="text" placeholder="category (optional)">'
-    + '<input class="bNote" type="text" placeholder="note / source (optional)"></div>';
-  $("bCards").appendChild(row);
-  row.querySelector(".bType").onchange = () => { bRenderFields(row); bSync(); };
-  row.querySelector(".bRemove").onclick = () => { row.remove(); bSync(); };
-  bRenderFields(row);
-  bSync();
-  return row;
-}
-
-/* populate the builder from an existing card object (reverse of bDeckObject) */
-function bAddCardFrom(card) {
-  const row = bAddCard();
-  const norm = {
-    term: String((card.term || card.front) || "").trim(),
-    definition: String((card.definition || card.back) || "").trim(),
-    sub: String(card.sub || "").trim(),
-  };
-  const q = parseInteractive(norm, card);
-  const kind = q ? q.kind : "flip";
-  const sel = row.querySelector(".bType");
-  sel.value = (kind === "boolean") ? "truefalse" : kind;
-  bRenderFields(row);
-  const set = (s, v) => { const el = row.querySelector(s); if (el && v != null) el.value = v; };
-  set(".bTerm", norm.term);
-  if (card.summary || card.tldr) set(".bSummary", card.summary || card.tldr);
-  set(".bDef", norm.definition);
-  if (kind === "mcq") { set(".bChoices", q.choices.join("\n")); set(".bCorrect", String(q.answer + 1)); }
-  else if (kind === "multi") { set(".bChoices", q.choices.join("\n")); set(".bCorrect", q.answers.map((i) => i + 1).join(",")); }
-  else if (kind === "boolean") { set(".bBool", String(q.answer)); }
-  set(".bCat", card.category || "");
-  set(".bNote", card.note || card.hint || "");
-  return row;
-}
-
-/* load an existing deck (or set's first deck) JSON into the builder for editing */
-let bMeta = {};   // deck-level source/license/attribution carried through the builder
-
-function bLoadIntoEditor(raw) {
-  let d = raw;
-  if (raw && Array.isArray(raw.decks)) d = raw.decks.find((x) => x && Array.isArray(x.cards));
-  if (!d || !Array.isArray(d.cards)) { $("bError").textContent = "That file has no deck with cards."; return; }
-  $("bDeckName").value = d.name || "";
-  $("bDeckDesc").value = d.description || "";
-  bMeta = { source: d.source || "", license: d.license || "", attribution: d.attribution || "" };
-  $("bCards").innerHTML = "";
-  d.cards.forEach((card) => bAddCardFrom(card));
-  if (!$("bCards").children.length) bAddCard();
-  $("bError").textContent = "";
-  bSync();
-}
-
-function bDeckObject() {
-  const deck = { name: ($("bDeckName").value.trim() || "Untitled deck") };
-  const desc = $("bDeckDesc").value.trim();
-  if (desc) deck.description = desc;
-  if (bMeta.source) deck.source = bMeta.source;
-  if (bMeta.license) deck.license = bMeta.license;
-  if (bMeta.attribution) deck.attribution = bMeta.attribution;
-  deck.cards = [];
-  $("bCards").querySelectorAll(".bcard").forEach((row) => {
-    const type = row.querySelector(".bType").value;
-    const term = row.querySelector(".bTerm").value.trim();
-    if (!term) return;
-    const q = (sel) => { const el = row.querySelector(sel); return el ? el.value.trim() : ""; };
-    const card = {};
-    if (type !== "flip") card.type = type;
-    card.term = term;
-    if (type === "mcq") {
-      card.choices = bLines(q(".bChoices"));
-      const correctIdx = bParseCorrect(q(".bCorrect"), card.choices.length);
-      card.answer = correctIdx.length ? correctIdx[0] : 0;   // [] (no/invalid pick) → default A, not coerced from a real 0
-    } else if (type === "multi") {
-      card.choices = bLines(q(".bChoices"));
-      card.answers = bParseCorrect(q(".bCorrect"), card.choices.length);
-    } else if (type === "truefalse") {
-      card.answer = q(".bBool") === "true";
-    }
-    const summary = q(".bSummary");
-    if (summary) card.summary = summary;
-    card.definition = q(".bDef");
-    const cat = q(".bCat");
-    if (cat) card.category = cat;
-    const note = q(".bNote");
-    if (note) card.note = note;
-    deck.cards.push(card);
-  });
-  return deck;
-}
-
-function bSync() { $("bJson").value = JSON.stringify(bDeckObject(), null, 2); }
-
-/* ---- Wikipedia → deck draft (v0: fetch + auto-attribution; LLM card generation
-   is the planned next layer — see ROADMAP) ---- */
-function wikiTitleFrom(input) {
-  const m = String(input).match(/wikipedia\.org\/wiki\/([^?#]+)/i);
-  return (m ? decodeURIComponent(m[1]) : String(input)).replace(/_/g, " ").trim();
-}
-async function wikiFetch() {
-  const input = $("bWikiUrl").value.trim();
-  if (!input) return;
-  const title = wikiTitleFrom(input);
-  const status = $("bWikiStatus");
-  status.textContent = "fetching “" + title + "” …";
+/* --------------------------- go ----------------------------- */
+/* import a deck queued by build.html via localStorage */
+const PENDING_BUILD_KEY = PREFIX + "pending-build";
+function loadPendingBuild() {
   try {
-    const res = await fetch("https://en.wikipedia.org/api/rest_v1/page/summary/" + encodeURIComponent(title), { headers: { accept: "application/json" } });
-    if (!res.ok) throw new Error(String(res.status));
-    const s = await res.json();
-    const pageUrl = (s.content_urls && s.content_urls.desktop && s.content_urls.desktop.page) || ("https://en.wikipedia.org/wiki/" + encodeURIComponent(title));
-    const rev = s.revision ? (", revision " + s.revision) : "";
-    bLoadIntoEditor({
-      name: s.title || title,
-      description: "Draft from Wikipedia — review and expand before sharing.",
-      source: pageUrl,
-      license: "CC BY-SA 4.0",
-      attribution: "“" + (s.title || title) + "” on Wikipedia, by Wikipedia contributors" + rev + " — " + pageUrl + " (CC BY-SA 4.0).",
-      cards: [{ term: s.title || title, definition: s.extract || "", note: "Source: " + pageUrl }],
-    });
-    status.innerHTML = "drafted from <b>" + escapeHtml(s.title || title) + "</b> · CC BY-SA attribution auto-filled. "
-      + "Expand the cards below — an in-app LLM step (planned) will generate the full deck.";
-  } catch (e) {
-    status.textContent = "couldn't fetch that article — check the title/URL (needs internet; CORS-permitted Wikipedia API).";
-  }
+    const raw = localStorage.getItem(PENDING_BUILD_KEY);
+    if (!raw) return;
+    localStorage.removeItem(PENDING_BUILD_KEY);
+    importFromText(raw);
+  } catch (e) { /* storage unavailable */ }
 }
-$("bWikiFetch").onclick = wikiFetch;
 
-$("bAddCard").onclick = bAddCard;
-$("bFile").onchange = (event) => {
-  const file = event.target.files && event.target.files[0];
-  if (!file) return;
-  const reader = new FileReader();
-  reader.onload = () => { try { bLoadIntoEditor(JSON.parse(String(reader.result))); } catch (e) { $("bError").textContent = "That isn't valid JSON."; } };
-  reader.onerror = () => { $("bError").textContent = "Could not read that file."; };
-  reader.readAsText(file);
-  event.target.value = "";
-};
-$("buildView").addEventListener("input", bSync);
-$("bDeckName").addEventListener("input", bSync);
-$("bCopy").onclick = () => {
-  if (navigator.clipboard) navigator.clipboard.writeText($("bJson").value);
-  $("bError").textContent = "copied to clipboard";
-  setTimeout(() => { $("bError").textContent = ""; }, 1500);
-};
-$("bDownload").onclick = () => {
-  const obj = bDeckObject();
-  const blob = new Blob([JSON.stringify(obj, null, 2)], { type: "application/json" });
-  const url = URL.createObjectURL(blob);
-  const a = document.createElement("a");
-  a.href = url; a.download = slugify(obj.name) + ".json";
-  document.body.appendChild(a); a.click(); a.remove();
-  URL.revokeObjectURL(url);
-};
-$("bLoad").onclick = () => {
-  const obj = bDeckObject();
-  const usable = obj.cards.filter((c) => c.term && c.definition);
-  if (!usable.length) { $("bError").textContent = "Each card needs a term and an answer/explanation."; return; }
-  $("bError").textContent = "";
-  importFromText(JSON.stringify(obj));   // dedups, persists, selects it
-  showTab("study");
-};
 
-/* ------------------------------- go ----------------------------- */
-loadLibrary();
+loadLibrary().then(loadPendingBuild);
