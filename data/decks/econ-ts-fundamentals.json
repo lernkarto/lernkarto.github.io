@@ -54,7 +54,7 @@
       "last_updated": "2026-06-29"
     },
     {
-      "term": "A random walk, y_t = y_{t-1} + e_t, is:",
+      "term": "A random walk, $y_t = y_{t-1} + e_t$, is:",
       "choices": [
         "Stationary with constant, bounded variance",
         "Trend-stationary once a line is removed",
@@ -176,17 +176,17 @@
       ],
       "answer": 3,
       "type": "mcq",
-      "definition": "ARIMA(0,1,0) has no AR or MA terms and one difference (d=1), so the differenced series is white noise - i.e. the level is a random walk, y_t = y_{t-1} + e_t. It is not an AR(1) or MA(1) (those set p=1 or q=1), not undifferenced white noise (d=0), and not a deterministic trend (a random walk's trend is stochastic).",
+      "definition": "ARIMA(0,1,0) has no AR or MA terms and one difference (d=1), so the differenced series is white noise - i.e. the level is a random walk, $y_t = y_{t-1} + e_t$. It is not an AR(1) or MA(1) (those set p=1 or q=1), not undifferenced white noise (d=0), and not a deterministic trend (a random walk's trend is stochastic).",
       "last_updated": "2026-06-29"
     },
     {
-      "term": "For a stationary AR(1) process y_t = phi*y_{t-1} + e_t, stationarity requires:",
+      "term": "For a stationary AR(1) process $y_t = \\phi y_{t-1} + e_t$, stationarity requires:",
       "choices": [
-        "phi strictly greater than one",
-        "phi somewhere between one and two",
-        "phi equal to exactly zero only",
-        "phi equal to exactly one (a unit root)",
-        "the absolute value of phi to be below one"
+        "$\\phi$ strictly greater than one",
+        "$\\phi$ somewhere between one and two",
+        "$\\phi$ equal to exactly zero only",
+        "$\\phi$ equal to exactly one (a unit root)",
+        "the absolute value of $\\phi$ to be below one"
       ],
       "answer": 4,
       "type": "mcq",
@@ -264,7 +264,7 @@
       "last_updated": "2026-06-29"
     },
     {
-      "term": "The partial autocorrelation at lag k measures the correlation between y_t and y_{t-k}:",
+      "term": "The partial autocorrelation at lag k measures the correlation between $y_t$ and $y_{t-k}$:",
       "choices": [
         "Including all the intervening lags",
         "After removing the effect of the intervening lags",
@@ -320,7 +320,7 @@
       "last_updated": "2026-06-29"
     },
     {
-      "term": "An AR(1) process with phi = 0.95 is best described as:",
+      "term": "An AR(1) process with $\\phi = 0.95$ is best described as:",
       "choices": [
         "White noise with no persistence",
         "Stationary but highly persistent (slow mean reversion)",
@@ -350,15 +350,15 @@
     {
       "term": "The lag operator L applied to a series satisfies:",
       "choices": [
-        "L*y_t equals the mean of y",
-        "L*y_t = y_{t-1}",
-        "L*y_t equals the first difference of y",
-        "L*y_t = y_{t+1}",
-        "L*y_t equals y_t squared"
+        "$Ly_t$ equals the mean of $y$",
+        "$Ly_t = y_{t-1}$",
+        "$Ly_t$ equals the first difference of $y$",
+        "$Ly_t = y_{t+1}$",
+        "$Ly_t$ equals $y_t$ squared"
       ],
       "answer": 1,
       "type": "mcq",
-      "definition": "The lag (backshift) operator L maps a series to its value one period earlier, so L times y_t equals y_{t-1}; this underlies compact ARIMA polynomial notation. It does not return the mean of y, which is a summary statistic, not a shift. It does not give the first difference - that is (1 minus L) times y_t, a combination involving L, not L itself. It does not shift forward to y_{t+1}; that would be the lead operator. And it does not square the series, which is a nonlinear transformation rather than a time shift.",
+      "definition": "The lag (backshift) operator $L$ maps a series to its value one period earlier, so $Ly_t = y_{t-1}$; this underlies compact ARIMA polynomial notation. It does not return the mean of y, which is a summary statistic, not a shift. It does not give the first difference - that is (1 minus L) times y_t, a combination involving L, not L itself. It does not shift forward to y_{t+1}; that would be the lead operator. And it does not square the series, which is a nonlinear transformation rather than a time shift.",
       "last_updated": "2026-06-29"
     }
   ]
