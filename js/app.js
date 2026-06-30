@@ -114,6 +114,7 @@ let libSubj = null;        // selected subject in the library shell (master-deta
 let libTopic = null;       // selected topic in the library shell
 let libPane = "nav";       // narrow-screen pane: "nav" (master) | "main" (detail)
 let pickerOpen = new Set(); // expanded node ids in the study-selector working set
+let topicToFile = {};      // topic name → topic filename (for lazy primer loading)
 let courseSelection = [];          // ordered course items [{type,ref}] selected while building
 let courseView = null;     // {type:'subject'|'course', key} while showing a gated ordered path
 let studyDays = [];        // YYYY-MM-DD dates with study activity (for the streak)
@@ -182,6 +183,39 @@ function addDeck(normalized, options) {
   return deck;   // a deck's primer is ITS OWN (raw.primer) only — topics/subjects never push theirs onto decks
 }
 
+// card count for display — works on both fully-loaded decks and lightweight catalogue stubs
+const deckCount = (d) => d.count != null ? d.count : (d.cards ? d.cards.length : 0);
+
+// fetch and populate cards for a catalogue stub (no-op if already loaded or imported)
+async function ensureCards(d) {
+  if (!d || d.cards !== null || d.imported) return;
+  try {
+    const res = await fetch("data/decks/" + d.id + ".json");
+    if (!res.ok) { d.cards = []; d.categories = {}; return; }
+    const full = normalizeDeck(await res.json(), d.id + ".json");
+    // preserve topic/subject hierarchy from the catalogue (source of truth)
+    const { topic, topics, subject, subjects } = d;
+    Object.assign(d, full);
+    if (topic) d.topic = topic;
+    if (topics && topics.length) d.topics = topics;
+    if (subject) d.subject = subject;
+    if (subjects && subjects.length) d.subjects = subjects;
+    d.count = d.cards.length;
+  } catch (e) { d.cards = []; d.categories = {}; }
+}
+
+// fetch a topic's primer text lazily — only called when entering a virtual "study all" session
+async function loadTopicPrimer(topicName) {
+  if (topicPrimers[topicName] || !topicToFile[topicName]) return;
+  try {
+    const res = await fetch("data/topics/" + topicToFile[topicName]);
+    if (!res.ok) return;
+    const t = await res.json();
+    const name = t.topic || t.set || t.name;
+    if (name && t.primer) topicPrimers[name] = { body: String(t.primer), title: t.primerTitle || null };
+  } catch (e) { /* primer unavailable — study continues without it */ }
+}
+
 async function loadTopic(topicObject, baseDir) {
   baseDir = baseDir || "data/decks/";
   const topicName = topicObject.topic || topicObject.set || topicObject.name || null;
@@ -237,14 +271,34 @@ async function loadLibrary() {
     const manifest = await manifestResponse.json();
     if (manifest && manifest.brand && typeof manifest.brand === "object") appBrand = manifest.brand;
 
-    // topics
-    const topicFiles = Array.isArray(manifest.topics || manifest.sets) ? (manifest.topics || manifest.sets) : [];
-    for (const topicFile of topicFiles) {
-      try {
-        const topicResponse = await fetch("data/topics/" + topicFile, { cache: "no-store" });
-        if (!topicResponse.ok) throw new Error(String(topicResponse.status));
-        await loadTopic(await topicResponse.json());
-      } catch (error) { console.warn("could not load topic", topicFile, error); }
+    // catalogue: lightweight stub for every deck (no cards — loaded lazily on selectDeck)
+    const catRes = await fetch("data/catalogue.json", { cache: "no-store" });
+    if (!catRes.ok) throw new Error("catalogue " + catRes.status);
+    const cat = await catRes.json();
+    topicToFile = cat.topicToFile || {};
+    for (const e of (cat.decks || [])) {
+      const stub = {
+        id: e.id, name: e.name, slug: e.id,
+        accent: e.color || DEFAULT_ACCENT,
+        description: e.description || "",
+        count: e.count || 0,
+        tags: e.tags || [],
+        lang: e.lang || null,
+        dual: !!e.dual,
+        primerTitle: e.primerTitle || null,
+        hasPrimer: !!e.hasPrimer,
+        source: e.source || null, license: e.license || null, attribution: e.attribution || null,
+        topic: (e.topics && e.topics[0]) || null,
+        topics: e.topics || [],
+        subject: (e.subjects && e.subjects[0]) || null,
+        subjects: e.subjects || [],
+        imported: false, cards: null, categories: null, primer: null,
+      };
+      library.push(stub);
+      if (e.topics) e.topics.forEach((tn, i) => {
+        topicSubjects[tn] = topicSubjects[tn] || new Set();
+        (e.subjects || []).forEach((s) => topicSubjects[tn].add(s));
+      });
     }
 
     // subject registry: first-class subjects that OWN a list of topics (+ their primer)
@@ -304,6 +358,7 @@ async function loadLibrary() {
 async function selectDeck(id) {
   const chosen = library.find((d) => d.id === id);
   if (!chosen) return;
+  await ensureCards(chosen);
   currentDeck = chosen;
   Store.set(PREFIX + "lastDeck", id);
   Store.set(PREFIX + "lastSel", JSON.stringify({ kind: "deck", ref: id }));
@@ -477,7 +532,7 @@ function renderDeckPicker() {
     const main = document.createElement("button"); main.type = "button"; main.className = "pick-main";
     main.innerHTML = `<span class="pick-tw">${o.expandable ? (o.open ? "▾" : "▸") : ""}</span><span class="pick-lab">${escapeHtml(o.label)}</span>`
       + (o.count != null ? `<span class="browse-n">${o.count}</span>` : "");
-    main.onclick = o.onPick ? () => pick(o.onPick) : o.onToggle;
+    main.onclick = o.onPick ? () => pick(o.onPick) : (e) => { e.stopPropagation(); o.onToggle(); };
     row.appendChild(main);
     (o.actions || []).forEach((a) => {
       const x = document.createElement("button"); x.type = "button"; x.className = "pick-act"; x.title = a.title; x.textContent = a.icon;
@@ -509,7 +564,7 @@ function renderDeckPicker() {
             pickerNode({ indent: 1, label: t, expandable: true, open: topen, onToggle: () => { topen ? pickerOpen.delete(tid) : pickerOpen.add(tid); renderDeckPicker(); },
               actions: [{ icon: "▶", title: "Shuffle this topic", go: () => studyVirtual(t, false) }] });
             if (topen) sdecks.filter((d) => ((d.topics && d.topics.length) ? d.topics : [d.topic]).indexOf(t) >= 0)
-              .forEach((d) => pickerNode({ indent: 2, label: d.name, count: d.cards.length, onPick: () => selectDeck(d.id) }));
+              .forEach((d) => pickerNode({ indent: 2, label: d.name, count: deckCount(d), onPick: () => selectDeck(d.id) }));
           });
         }
         return;
@@ -518,7 +573,7 @@ function renderDeckPicker() {
       const nid = "T:" + c.ref, open = pickerOpen.has(nid);
       pickerNode({ label: c.ref, expandable: true, open, onToggle: () => { open ? pickerOpen.delete(nid) : pickerOpen.add(nid); renderDeckPicker(); },
         actions: [{ icon: "▶", title: "Shuffle this topic", go: () => studyVirtual(c.ref, false) }] });
-      if (open) topicDecksOf(c.ref).forEach((d) => pickerNode({ indent: 1, label: d.name, count: d.cards.length, onPick: () => selectDeck(d.id) }));
+      if (open) topicDecksOf(c.ref).forEach((d) => pickerNode({ indent: 1, label: d.name, count: deckCount(d), onPick: () => selectDeck(d.id) }));
     });
   };
   renderWorkingSet("Currently studying", [...studyingColl]);
@@ -560,7 +615,7 @@ function renderDeckPicker() {
           const item = document.createElement("button");
           item.type = "button";
           item.className = "browse-deck" + (currentDeck && d.id === currentDeck.id ? " current" : "");
-          item.innerHTML = `<span>${escapeHtml(d.name)}</span><span class="browse-n">${d.cards.length}</span>`;
+          item.innerHTML = `<span>${escapeHtml(d.name)}</span><span class="browse-n">${deckCount(d)}</span>`;
           item.onclick = () => pick(() => selectDeck(d.id));
           frag.appendChild(item);
         });
@@ -1618,9 +1673,9 @@ async function renderReview() {
     let m = {};
     try { m = JSON.parse((await Store.get(PREFIX + "marks:" + d.id)) || "{}") || {}; } catch (e) { m = {}; }
     let k = 0, l = 0;
-    d.cards.forEach((c) => { const s = m[c.fp]; if (s === "known") k++; else if (s === "learning") l++; });
-    known += k; learning += l; totalCards += d.cards.length;
-    if (k + l > 0) mastery.push({ name: d.name, pct: Math.round(100 * k / d.cards.length) });
+    if (d.cards) d.cards.forEach((c) => { const s = m[c.fp]; if (s === "known") k++; else if (s === "learning") l++; });
+    known += k; learning += l; totalCards += deckCount(d);
+    if (k + l > 0) mastery.push({ name: d.name, pct: Math.round(100 * k / deckCount(d)) });
   }
   const streak = computeStreak();
   const pct = totalCards ? Math.round(100 * known / totalCards) : 0;
@@ -1643,6 +1698,7 @@ async function renderReview() {
   const rows = [];
   for (const d of library) {
     if ((await Store.get(PREFIX + "sr-on:" + d.id)) !== "1") continue;
+    if (!d.cards) continue;  // stub not yet loaded — SR state requires card fingerprints
     let state = {};
     try { state = JSON.parse((await Store.get(PREFIX + "sr:" + d.id)) || "{}") || {}; } catch (e) { state = {}; }
     let due = 0;
@@ -1762,7 +1818,15 @@ async function enterVirtual(vdeck) {
   rebuildDeck(true);
   showTab("study");
 }
-async function studyVirtual(key, isSubject) { markStudying(isSubject ? "subject" : "topic", key); Store.set(PREFIX + "lastSel", JSON.stringify({ kind: isSubject ? "subject" : "topic", ref: key })); await enterVirtual(buildVirtualDeck(key, isSubject)); }
+async function studyVirtual(key, isSubject) {
+  markStudying(isSubject ? "subject" : "topic", key);
+  Store.set(PREFIX + "lastSel", JSON.stringify({ kind: isSubject ? "subject" : "topic", ref: key }));
+  const members = library.filter((d) => isSubject ? deckInSubject(d, key)
+    : (d.topics && d.topics.length ? d.topics : [d.topic]).indexOf(key) >= 0);
+  await Promise.all(members.map(ensureCards));
+  if (!isSubject) await loadTopicPrimer(key);
+  await enterVirtual(buildVirtualDeck(key, isSubject));
+}
 /* a COURSE is an ordered PLAYLIST referencing any level (deck / topic / subject); it is
    NOT a containment level. Expand its items to ordered, de-duplicated decks. */
 function courseItems(course) { return course.items || []; }
@@ -1807,6 +1871,7 @@ function deckInSubject(deck, subject) { return deckSubjects(deck).has(subject); 
 async function studyCourse(course) {
   const members = expandCourse(course);
   if (!members.length) return;
+  await Promise.all(members.map(ensureCards));
   markStudying("course", course.id);
   Store.set(PREFIX + "lastSel", JSON.stringify({ kind: "course", ref: course.id }));
   await enterVirtual(virtualFromDecks(members, "course:" + course.id, course.name, course.subject || "Courses", course.name));
@@ -2032,6 +2097,7 @@ function renderSearchCards(box, query) {
   const textToks = toks.filter((t) => tagToks.indexOf(t) < 0);
   const results = [], seen = new Set();
   for (const d of library) {
+    if (!d.cards) continue;  // stub not yet loaded — only loaded decks are card-searchable
     if (searchLang && d.lang !== searchLang) continue;
     const tags = deckTags(d);
     if (tagToks.length && !tagToks.every((tt) => [...tags].some((tag) => tag === tt || tag.indexOf(tt) >= 0))) continue;
@@ -2087,18 +2153,19 @@ async function renderCoursePath() {
   const note = document.createElement("p"); note.className = "lib-desc";
   note.textContent = "Master each deck (all cards ✓) to unlock the next. Use ▶ study all in the library for a mixed review across levels.";
   box.appendChild(note);
+  await Promise.all(members.map(ensureCards));
   let priorComplete = true;
   for (const d of members) {
     let m = {};
     try { m = JSON.parse((await Store.get(PREFIX + "marks:" + d.id)) || "{}") || {}; } catch (e) { m = {}; }
-    const known = d.cards.filter((c) => m[c.fp] === "known").length;
-    const complete = d.cards.length > 0 && known === d.cards.length;
+    const known = (d.cards || []).filter((c) => m[c.fp] === "known").length;
+    const complete = deckCount(d) > 0 && known === deckCount(d);
     const unlocked = priorComplete;
     const status = complete ? "done" : (unlocked ? "current" : "locked");
     const row = document.createElement("button");
     row.type = "button"; row.className = "course-step " + status;
     row.innerHTML = `<span class="course-ico">${complete ? "✓" : (unlocked ? "▶" : "🔒")}</span>`
-      + `<span class="course-deck">${escapeHtml(d.name)}</span><span class="course-prog">${known}/${d.cards.length}</span>`;
+      + `<span class="course-deck">${escapeHtml(d.name)}</span><span class="course-prog">${known}/${deckCount(d)}</span>`;
     if (unlocked) row.onclick = () => { if (studyKind) markStudying(studyKind, studyKey); selectDeck(d.id); showTab("study"); }; else row.disabled = true;
     box.appendChild(row);
     if (!complete) priorComplete = false;
@@ -2279,7 +2346,7 @@ function renderLibShell(box) {
   }
 }
 function libGridCard(d) {
-  const n = d.cards.length;
+  const n = deckCount(d);
   const c = document.createElement("button"); c.type = "button"; c.className = "lib-gcard";
   c.innerHTML = `<span class="gc-nm">🃏 ${escapeHtml(d.name)}</span><span class="gc-mt">${n} card${n === 1 ? "" : "s"}${myLib.has(d.id) ? " · ⭐" : ""}${learningSet.has(d.id) ? " · 🎓" : ""}</span>`;
   c.onclick = () => { selectDeck(d.id); showTab("study"); };
@@ -2326,7 +2393,7 @@ function deckMatchesTag(d, tag) { return !tag || [...deckTags(d)].some((t) => t 
 
 /* one deck card: a selectable chip in build mode, else a card + ⭐/🎓 actions */
 function libDeckRow(d) {
-  const n = d.cards.length, cats = Object.keys(d.categories).length;
+  const n = deckCount(d), cats = d.categories ? Object.keys(d.categories).length : 0;
   const also = (d.topics && d.topics.length > 1) ? " · in " + d.topics.length + " topics" : "";
   const badges = (myLib.has(d.id) ? " · ⭐" : "") + (learningSet.has(d.id) ? " · 🎓" : "");
   const item = document.createElement("button");
