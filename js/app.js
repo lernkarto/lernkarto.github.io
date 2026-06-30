@@ -13,6 +13,38 @@
 
 const PREFIX = "lernkarto:";
 
+/* ---- glossary tooltip — viewport-aware singleton ---- */
+let _glTip = null;
+function _ensureGlossTip() {
+  if (!_glTip) {
+    _glTip = document.createElement("div");
+    _glTip.className = "gloss-tip";
+    _glTip.setAttribute("aria-hidden", "true");
+    _glTip.hidden = true;
+    document.body.appendChild(_glTip);
+  }
+  return _glTip;
+}
+function _showGlossTip(el) {
+  const text = el.dataset.gloss;
+  if (!text) return;
+  const tip = _ensureGlossTip();
+  tip.textContent = text;
+  tip.hidden = false;
+  const r = el.getBoundingClientRect(), m = 8;
+  const tw = tip.offsetWidth, th = tip.offsetHeight;
+  let left = r.left + r.width / 2 - tw / 2;
+  left = Math.max(m, Math.min(left, window.innerWidth - tw - m));
+  let top = r.top - th - 8;
+  if (top < m) top = r.bottom + 8;
+  tip.style.left = left + "px";
+  tip.style.top = top + "px";
+}
+function _hideGlossTip() { if (_glTip) _glTip.hidden = true; }
+document.addEventListener("mouseover", (e) => { const t = e.target.closest(".gloss-term"); if (t) _showGlossTip(t); });
+document.addEventListener("mouseout", (e) => { if (!e.relatedTarget || !e.relatedTarget.closest(".gloss-term")) _hideGlossTip(); });
+document.addEventListener("click", (e) => { const t = e.target.closest(".gloss-term"); if (t) { _showGlossTip(t); e.stopPropagation(); } else _hideGlossTip(); });
+
 /* PALETTE, DEFAULT_ACCENT, DEFAULT_BRAND, and text helpers live in schema.js (loaded first) */
 let appBrand = DEFAULT_BRAND;        // app-wide brand (from manifest / offline bundle)
 let currentBrandName = DEFAULT_BRAND.name;

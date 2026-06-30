@@ -165,17 +165,15 @@ h1{ font-family:var(--mono); font-weight:700; font-size:clamp(24px,4.8vw,34px); 
 .card-link:hover,.card-link:focus-visible{ background:rgba(0,255,136,.12); outline:none; }
 
 /* glossary markup — author-placed [[term]] in card text */
-.gloss-term{ text-decoration:underline dotted; text-underline-offset:2px; cursor:help; position:relative; }
-.gloss-term::after{
-  content:attr(data-gloss); position:absolute; bottom:calc(100% + 6px); left:50%;
-  transform:translateX(-50%); background:#1e211e; color:var(--text);
-  border:1px solid var(--line-2); padding:6px 10px; border-radius:6px;
+.gloss-term{ text-decoration:underline dotted; text-underline-offset:2px; cursor:help; }
+.gloss-tip{
+  position:fixed; z-index:200; pointer-events:none;
+  background:#1e211e; color:var(--text); border:1px solid var(--line-2);
+  padding:6px 10px; border-radius:6px;
   font-size:12px; font-family:var(--mono); font-weight:normal; letter-spacing:normal;
-  text-transform:none; line-height:1.4; max-width:min(220px,80vw); width:max-content;
-  text-align:left; z-index:100; pointer-events:none;
-  opacity:0; visibility:hidden; transition:opacity .15s,visibility .15s;
+  text-transform:none; line-height:1.4; max-width:min(220px,80vw);
+  white-space:normal; text-align:left;
 }
-.gloss-term:hover::after{ opacity:1; visibility:visible; }
 .gloss-panel{
   margin-top:10px; padding:10px 14px; background:var(--surface);
   border:1px solid var(--line-2); border-radius:8px;
