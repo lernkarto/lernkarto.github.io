@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>quiz builder — lernkarto</title>
+<meta name="description" content="Build a timed quiz link and send results by email.">
+<link rel="icon" href="icon.svg">
+<link rel="apple-touch-icon" href="icon.svg">
+<link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+<div class="wrap">
+
+  <header>
+    <div class="topbar">
+      <div class="brand">
+        <span class="brand-mark" aria-hidden="true">
+          <svg width="46" height="42" viewBox="0 0 46 42">
+            <rect x="11" y="5" width="26" height="19" rx="3" fill="none" stroke="#00ff88" stroke-width="2" opacity=".4"/>
+            <rect x="6" y="13" width="30" height="23" rx="3" fill="#0e120e" stroke="#00ff88" stroke-width="2"/>
+            <line x1="12" y1="23" x2="30" y2="23" stroke="#00ff88" stroke-width="2" stroke-linecap="round"/>
+            <line x1="12" y1="29" x2="24" y2="29" stroke="#00ff88" stroke-width="2" stroke-linecap="round" opacity=".55"/>
+          </svg>
+        </span>
+        <span class="brand-name">
+          <span>lernkarto</span>
+          <span class="brand-sub">flashcards</span>
+          <span class="brand-ver" id="appVersion"></span>
+        </span>
+      </div>
+    </div>
+  </header>
+
+  <nav class="tabs">
+    <a href="./" class="tab">study</a>
+    <a href="./" class="tab">review</a>
+    <a href="./" class="tab">library</a>
+    <a href="./build.html" class="tab">build a deck</a>
+    <span class="tab active">quiz</span>
+  </nav>
+
+  <div style="max-width:640px">
+    <p class="eyebrow">// quiz builder</p>
+
+    <!-- title -->
+    <label class="bfield">
+      <span>quiz title</span>
+      <input id="qbTitle" type="text" placeholder="e.g. Economics screening — Q1 2026">
+    </label>
+
+    <!-- decks -->
+    <p class="qb-section">questions</p>
+    <div class="qb-deck-list" id="qbDeckList"></div>
+    <button class="ghost-btn" id="qbAddDeck" style="margin-bottom:18px">+ add deck</button>
+
+    <div class="qb-row2" style="margin-bottom:4px">
+      <label class="bfield">
+        <span>total questions</span>
+        <input id="qbCount" type="number" min="1" max="500" value="20" placeholder="20">
+      </label>
+      <label class="bfield">
+        <span>time limit (minutes)</span>
+        <input id="qbTime" type="number" min="1" max="240" value="30" placeholder="30">
+      </label>
+    </div>
+
+    <!-- options -->
+    <p class="qb-section">options</p>
+    <label class="qb-chk">
+      <input type="checkbox" id="qbShuffle" checked>
+      <span>shuffle cards (random order)</span>
+    </label>
+    <label class="qb-chk">
+      <input type="checkbox" id="qbNoBack">
+      <span>no going back — students cannot revisit previous questions</span>
+    </label>
+    <label class="qb-chk" id="qbShowWtWrap">
+      <input type="checkbox" id="qbShowWt">
+      <span>show question weight to students</span>
+    </label>
+
+    <!-- extra student fields -->
+    <p class="qb-section">extra student fields</p>
+    <p class="qb-hint" style="margin-bottom:12px">Name, surname and email are always collected. Add optional extra fields below.</p>
+    <div class="qb-field-list" id="qbFieldList"></div>
+    <button class="ghost-btn" id="qbAddField" style="margin-bottom:4px">+ add field</button>
+
+    <!-- email delivery -->
+    <p class="qb-section">results delivery</p>
+    <label class="bfield">
+      <span>organizer email (receives results)</span>
+      <input id="qbMailto" type="email" placeholder="you@company.com">
+    </label>
+
+    <!-- emailjs -->
+    <details style="margin-top:8px">
+      <summary style="font-family:var(--mono);font-size:12px;color:var(--text-soft);cursor:pointer;margin-bottom:12px">
+        EmailJS settings (required for automatic email delivery)
+      </summary>
+      <div class="qb-ejs-grid" style="margin-bottom:8px">
+        <label class="bfield" style="margin:0">
+          <span>service ID</span>
+          <input id="qbEjsSvc" type="text" placeholder="service_xxxxxx">
+        </label>
+        <label class="bfield" style="margin:0">
+          <span>template ID</span>
+          <input id="qbEjsTpl" type="text" placeholder="template_xxxxxx">
+        </label>
+      </div>
+      <label class="bfield">
+        <span>public key</span>
+        <input id="qbEjsKey" type="text" placeholder="xxxxxxxxxxxxxxxxxxxxxxx">
+      </label>
+      <p class="qb-hint">
+        Create a free account at emailjs.com. In your template set the <b>To Email</b> field to
+        <code style="font-size:10.5px;background:#0a0b0a;border:1px solid var(--line);padding:1px 5px;border-radius:3px">{{to_email}}</code>
+        and place <code style="font-size:10.5px;background:#0a0b0a;border:1px solid var(--line);padding:1px 5px;border-radius:3px">{{{message}}}</code>
+        (triple braces) in the HTML body to receive the full results table.
+        Available variables: <code style="font-size:10.5px;background:#0a0b0a;border:1px solid var(--line);padding:1px 5px;border-radius:3px">quiz_title</code>,
+        <code style="font-size:10.5px;background:#0a0b0a;border:1px solid var(--line);padding:1px 5px;border-radius:3px">student_name</code>,
+        <code style="font-size:10.5px;background:#0a0b0a;border:1px solid var(--line);padding:1px 5px;border-radius:3px">student_email</code>,
+        <code style="font-size:10.5px;background:#0a0b0a;border:1px solid var(--line);padding:1px 5px;border-radius:3px">score</code>,
+        <code style="font-size:10.5px;background:#0a0b0a;border:1px solid var(--line);padding:1px 5px;border-radius:3px">time_taken</code>.
+      </p>
+    </details>
+
+    <!-- generate -->
+    <div style="margin-top:28px;padding-top:20px;border-top:1px solid var(--line)">
+      <button class="solid-btn" id="qbGenerate">generate quiz link</button>
+      <span class="import-error" id="qbErr" style="margin-left:12px"></span>
+    </div>
+
+    <div id="qbOut" style="margin-top:18px;display:none">
+      <p class="eyebrow" style="margin-bottom:8px">// quiz link</p>
+      <textarea id="qbUrl" class="qb-url-out" rows="4" readonly spellcheck="false"></textarea>
+      <div class="qb-url-row">
+        <button class="solid-btn" id="qbCopy">copy link</button>
+        <a id="qbOpen" href="#" target="_blank" class="ghost-btn">open quiz</a>
+        <span id="qbCopyMsg" style="font-size:12px;color:var(--accent)"></span>
+      </div>
+    </div>
+
+  </div>
+
+</div>
+<script src="js/schema.js"></script>
+<script src="js/quiz-build.js"></script>
+</body>
+</html>

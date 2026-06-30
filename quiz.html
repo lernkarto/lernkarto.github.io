@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>quiz — lernkarto</title>
+<meta name="description" content="timed flashcard quiz">
+<link rel="icon" href="icon.svg">
+<link rel="apple-touch-icon" href="icon.svg">
+<link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+<div class="wrap">
+
+  <header>
+    <div class="topbar">
+      <div class="brand">
+        <span class="brand-mark" aria-hidden="true">
+          <svg width="46" height="42" viewBox="0 0 46 42">
+            <rect x="11" y="5" width="26" height="19" rx="3" fill="none" stroke="#00ff88" stroke-width="2" opacity=".4"/>
+            <rect x="6" y="13" width="30" height="23" rx="3" fill="#0e120e" stroke="#00ff88" stroke-width="2"/>
+            <line x1="12" y1="23" x2="30" y2="23" stroke="#00ff88" stroke-width="2" stroke-linecap="round"/>
+            <line x1="12" y1="29" x2="24" y2="29" stroke="#00ff88" stroke-width="2" stroke-linecap="round" opacity=".55"/>
+          </svg>
+        </span>
+        <span class="brand-name">
+          <span>lernkarto</span>
+          <span class="brand-sub">quiz</span>
+          <span class="brand-ver" id="appVersion"></span>
+        </span>
+      </div>
+    </div>
+  </header>
+
+  <!-- loading -->
+  <div id="qzLoading">
+    <p class="qz-loading eyebrow">// loading quiz…</p>
+  </div>
+
+  <!-- error -->
+  <div id="qzErr" class="qz-err" hidden>
+    <p class="eyebrow">// error</p>
+    <p id="qzErrMsg"></p>
+  </div>
+
+  <!-- registration -->
+  <div id="qzReg" hidden>
+    <h1 class="qz-title" id="qzTitle"></h1>
+    <p class="qz-sub" id="qzSubtitle"></p>
+    <form id="qzRegForm" class="qz-form" novalidate>
+      <label class="bfield">
+        <span>first name *</span>
+        <input id="qzFirst" type="text" required autocomplete="given-name">
+      </label>
+      <label class="bfield">
+        <span>last name *</span>
+        <input id="qzLast" type="text" required autocomplete="family-name">
+      </label>
+      <label class="bfield">
+        <span>email *</span>
+        <input id="qzMail" type="email" required autocomplete="email">
+      </label>
+      <div id="qzExtra"></div>
+      <div class="qz-warn">
+        <p>Once you start the timer cannot be paused. Do not close or refresh this page.</p>
+      </div>
+      <div style="margin-top:4px">
+        <button type="submit" class="solid-btn">start quiz</button>
+      </div>
+      <p id="qzRegErr" style="color:var(--danger);font-size:12px;margin:10px 0 0;display:none"></p>
+    </form>
+  </div>
+
+  <!-- quiz -->
+  <div id="qzQuiz" hidden>
+    <div class="qz-hd">
+      <div class="qz-ptext">question <b id="qzCurrNum">1</b> / <b id="qzTotNum">1</b></div>
+      <div class="qz-timer" id="qzTimer">00:00</div>
+    </div>
+    <div class="bar" style="margin-bottom:22px">
+      <span id="qzPBar" class="seg-known" style="width:0%"></span>
+    </div>
+    <div id="qzQ" class="qz-q"></div>
+    <div id="qzAns" class="qz-ans"></div>
+    <div class="qz-nav">
+      <button class="ghost-btn" id="qzPrev">← prev</button>
+      <span class="sp"></span>
+      <button class="ghost-btn" id="qzNext">next →</button>
+      <button class="solid-btn" id="qzSubmit" hidden>submit quiz</button>
+    </div>
+  </div>
+
+  <!-- done -->
+  <div id="qzDone" hidden>
+    <p class="eyebrow">// quiz complete</p>
+    <h1 class="qz-title">answers submitted</h1>
+    <p style="color:var(--text-soft);font-size:14px;line-height:1.65;margin-top:14px">
+      Thank you. Your answers have been recorded and sent to the quiz organizer.
+      You will be contacted if you advance to the next stage.
+    </p>
+  </div>
+
+</div>
+<script src="js/schema.js"></script>
+<script src="js/quiz.js"></script>
+</body>
+</html>
