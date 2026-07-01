@@ -1,10 +1,12 @@
 /* lernkarto service worker — makes the hosted app installable + offline.
    App shell is precached; decks, topics, subjects, courses and KaTeX fonts are cached at runtime
    (stale-while-revalidate). Bump CACHE to ship a new shell. */
-const CACHE = "lernkarto-v44";
+const CACHE = "lernkarto-v45";
 const CORE = [
   "./",
   "./index.html",
+  "./library.html",
+  "./review.html",
   "./css/styles.css",
   "./js/app.js",
   "./manifest.webmanifest",

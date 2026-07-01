@@ -324,3 +324,39 @@ function deckToObject(deck) {
   });
   return result;
 }
+
+/* ── theme toggle (auto ↔ light ↔ dark, persisted in localStorage) ── */
+const THEME_KEY = "lk-theme";
+const THEME_ICONS = { auto: "◐", light: "☀", dark: "☾" };
+const THEME_CYCLE = { auto: "light", light: "dark", dark: "auto" };
+
+function _applyTheme(t) {
+  if (t === "auto") document.documentElement.removeAttribute("data-theme");
+  else document.documentElement.setAttribute("data-theme", t);
+}
+
+function _updateThemeBtn() {
+  const btn = document.getElementById("themeToggle");
+  if (!btn) return;
+  const t = localStorage.getItem(THEME_KEY) || "auto";
+  btn.textContent = THEME_ICONS[t] || THEME_ICONS.auto;
+  btn.title = "Theme: " + t + " — click to cycle";
+}
+
+function cycleTheme() {
+  const cur = localStorage.getItem(THEME_KEY) || "auto";
+  const next = THEME_CYCLE[cur] || "auto";
+  if (next === "auto") localStorage.removeItem(THEME_KEY);
+  else localStorage.setItem(THEME_KEY, next);
+  _applyTheme(next);
+  _updateThemeBtn();
+}
+
+/* apply saved preference immediately (before first paint) */
+_applyTheme(localStorage.getItem(THEME_KEY) || "auto");
+
+/* wire the button once the DOM is ready */
+document.addEventListener("DOMContentLoaded", () => {
+  const btn = document.getElementById("themeToggle");
+  if (btn) { _updateThemeBtn(); btn.addEventListener("click", cycleTheme); }
+});

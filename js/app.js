@@ -367,6 +367,9 @@ async function loadLibrary() {
   renderNotice();
   renderDeckPicker();
 
+  const _pg = document.body.dataset.page;
+  if (_pg === "library" || _pg === "review") { showTab(_pg); return; }
+
   // resume the last thing studied — a deck, or a whole subject/topic/course session (not a random catalog deck)
   let resumed = false;
   try {
@@ -383,7 +386,7 @@ async function loadLibrary() {
     const lastId = await Store.get(PREFIX + "lastDeck");
     const start = library.find((d) => d.id === lastId);   // an explicit last deck, if any — never an arbitrary catalog deck
     if (start) selectDeck(start.id);
-    else { renderNoDecks(); if (library.length) showTab("library"); }   // nothing to resume: land on the library, don't force a deck
+    else { renderNoDecks(); }
   }
 }
 
@@ -1700,12 +1703,15 @@ document.addEventListener("keydown", (event) => {
 
 /* ------------------------------ tabs --------------------------- */
 function showTab(name) {
+  const page = document.body.dataset.page || "study";
+  if (name === "study" && page !== "study") { location.href = "./"; return; }
+  if (name === "library" && page !== "library") { location.href = "./library.html"; return; }
+  if (name === "review" && page !== "review") { location.href = "./review.html"; return; }
   $("studyView").hidden = name !== "study";
   $("settingsView").hidden = name !== "settings";
   $("reviewView").hidden = name !== "review";
   $("libraryView").hidden = name !== "library";
-  document.body.classList.toggle("building", name !== "study");   // hide deck switcher / settings / import off the study tab
-  // the nav highlights study/review/library; settings is reached via the gear; build is its own page
+  document.body.classList.toggle("building", name !== "study");
   document.querySelectorAll("#tabs .tab[data-tab]").forEach((t) => t.classList.toggle("active", t.dataset.tab === name));
   if (name === "settings") syncSettings();
   if (name === "library") renderLibrary();

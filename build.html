@@ -8,6 +8,7 @@
 <link rel="icon" href="icon.svg">
 <link rel="apple-touch-icon" href="icon.svg">
 <link rel="stylesheet" href="css/styles.css">
+<script>(function(){var t=localStorage.getItem("lk-theme");if(t==="light"||t==="dark")document.documentElement.setAttribute("data-theme",t);})();</script>
 </head>
 <body>
 <div class="wrap">
@@ -18,22 +19,25 @@
         <span class="brand-mark" aria-hidden="true">
           <svg width="46" height="42" viewBox="0 0 46 42">
             <rect x="11" y="5" width="26" height="19" rx="3" fill="none" stroke="#00ff88" stroke-width="2" opacity=".4"/>
-            <rect x="6" y="13" width="30" height="23" rx="3" fill="#0e120e" stroke="#00ff88" stroke-width="2"/>
+            <rect x="6" y="13" width="30" height="23" rx="3" class="bm-card" stroke="#00ff88" stroke-width="2"/>
             <line x1="12" y1="23" x2="30" y2="23" stroke="#00ff88" stroke-width="2" stroke-linecap="round"/>
             <line x1="12" y1="29" x2="24" y2="29" stroke="#00ff88" stroke-width="2" stroke-linecap="round" opacity=".55"/>
           </svg>
         </span>
         <span class="brand-name"><span>lernkarto</span><span class="brand-sub">flashcards</span><span class="brand-ver" id="appVersion"></span></span>
       </div>
+      <div class="topbar-actions">
+        <button class="ghost-btn" id="themeToggle" title="Theme: auto — click to cycle">◐</button>
+      </div>
     </div>
   </header>
 
   <nav class="tabs">
     <a href="./" class="tab">study</a>
-    <a href="./" class="tab">review</a>
-    <a href="./" class="tab">library</a>
+    <a href="./review.html" class="tab">review</a>
+    <a href="./library.html" class="tab">library</a>
     <span class="tab active">build a deck</span>
-    <a href="./quiz-build.html" class="tab">quiz ↗</a>
+    <a href="./quiz-build.html" class="tab">quiz</a>
   </nav>
 
   <div class="build-grid">

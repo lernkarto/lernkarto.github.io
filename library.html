@@ -3,9 +3,8 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>lernkarto — flashcards</title>
-<meta name="description" content="A self-hostable, offline-capable, LaTeX-aware flashcard engine. Bring your own decks and topics; branding adapts to the loaded content.">
-<!-- PWA: installable + offline -->
+<title>library — lernkarto</title>
+<meta name="description" content="Browse and manage your flashcard decks by subject and topic.">
 <link rel="manifest" href="manifest.webmanifest">
 <meta name="theme-color" content="#00ff88" media="(prefers-color-scheme: dark)">
 <meta name="theme-color" content="#00a855" media="(prefers-color-scheme: light)">
@@ -14,21 +13,19 @@
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <meta name="apple-mobile-web-app-title" content="lernkarto">
-<!-- KaTeX, vendored locally so math renders fully offline -->
 <link rel="stylesheet" href="vendor/katex/katex.min.css">
 <script defer src="vendor/katex/katex.min.js"></script>
 <script defer src="vendor/katex/contrib/auto-render.min.js"></script>
 <link rel="stylesheet" href="css/styles.css">
 <script>(function(){var t=localStorage.getItem("lk-theme");if(t==="light"||t==="dark")document.documentElement.setAttribute("data-theme",t);})();</script>
 </head>
-<body data-page="study">
+<body data-page="library">
 <div class="wrap">
 
   <!-- ───────── header ───────── -->
   <header>
     <div class="topbar">
       <div class="brand">
-        <!-- generic default mark (stacked cards); the loaded content's brand can replace it -->
         <span class="brand-mark" id="brandMark" aria-hidden="true">
           <svg width="46" height="42" viewBox="0 0 46 42">
             <rect x="11" y="5" width="26" height="19" rx="3" fill="none" stroke="#00ff88" stroke-width="2" opacity=".4"/>
@@ -47,9 +44,9 @@
     </div>
 
   <nav class="tabs" id="tabs">
-    <span class="tab active">study</span>
+    <a href="./" class="tab">study</a>
     <a href="./review.html" class="tab">review</a>
-    <a href="./library.html" class="tab">library</a>
+    <span class="tab active">library</span>
     <a href="./build.html" class="tab">build a deck</a>
     <a href="./quiz-build.html" class="tab">quiz</a>
   </nav>
@@ -92,7 +89,7 @@
     </div>
   </header>
 
-  <div id="studyView">
+  <div id="studyView" hidden>
   <div class="notice" id="notice" hidden></div>
   <div class="sr-prompt" id="srPrompt" hidden>
     <span id="srPromptText">Add this deck to your spaced-repetition reviews?</span>
@@ -101,8 +98,6 @@
       <button class="link" id="srPromptNo">not now</button>
     </span>
   </div>
-
-  <!-- ───────── primer offer (first open, like the SR prompt) ───────── -->
   <div class="sr-prompt" id="primerPrompt" hidden>
     <span id="primerPromptText">New here? Read the quick recap before you start?</span>
     <span class="sr-prompt-actions">
@@ -110,8 +105,6 @@
       <button class="link" id="primerPromptNo">not now</button>
     </span>
   </div>
-
-  <!-- ───────── primer (skippable one-pager recap) ───────── -->
   <section class="primer" id="primerPanel" hidden>
     <div class="primer-head">
       <h2 id="primerTitle">Before you start</h2>
@@ -120,8 +113,6 @@
     <div class="primer-body" id="primerBody"></div>
     <button class="solid-btn primer-start" id="primerStart">start studying →</button>
   </section>
-
-  <!-- ───────── progress ───────── -->
   <div class="progress" id="progressWrap">
     <div class="bar">
       <span class="seg-known" id="segKnown" style="width:0%"></span>
@@ -133,11 +124,7 @@
       <span><i class="dot" style="background:#33392f"></i><b id="cntNew">0</b>&nbsp;new</span>
     </div>
   </div>
-
-  <!-- ───────── card stage ───────── -->
   <div id="stageHost"></div>
-
-  <!-- ───────── controls ───────── -->
   <div class="controls" id="controls">
     <button class="btn" id="prev">‹ prev</button>
     <button class="btn btn-flip" id="flip">flip <span class="k">space</span></button>
@@ -147,11 +134,7 @@
     <button class="mark" id="markLearn">↻ still learning <span class="kk">1</span></button>
     <button class="mark" id="markKnown">✓ got it <span class="kk">2</span></button>
   </div>
-
-  <!-- ───────── filters ───────── -->
   <div class="filters" id="filters"></div>
-
-  <!-- ───────── footer ───────── -->
   <footer>
     <div class="keys" id="footerKeys">
       <span><b>← →</b> move</span><span><b>space</b> flip</span><span><b>1 / 2</b> mark</span><span><b>s</b> shuffle</span>
@@ -166,7 +149,6 @@
   </footer>
   </div><!-- /studyView -->
 
-  <!-- ───────── settings (per-deck, this device) ───────── -->
   <section id="settingsView" hidden>
     <p class="eyebrow">// settings</p>
     <h2 class="set-title">Deck settings — <span id="setDeckName">this deck</span></h2>
@@ -187,7 +169,6 @@
     <p class="set-about">lernkarto — open-source flashcard engine · <a href="https://lernkarto.github.io/" target="_blank" rel="noopener">lernkarto.github.io</a></p>
   </section>
 
-  <!-- ───────── review ───────── -->
   <section id="reviewView" hidden>
     <p class="eyebrow">// review</p>
     <p class="lib-intro">Decks with <b>spaced repetition</b> on, and how many cards are due now.
@@ -212,15 +193,6 @@
 
 
 </div>
-<script>
-  /* register the service worker only when served over http(s); a no-op for the
-     file:// offline single-file build */
-  if (location.protocol.indexOf("http") === 0 && "serviceWorker" in navigator) {
-    window.addEventListener("load", function () {
-      navigator.serviceWorker.register("sw.js").catch(function () {});
-    });
-  }
-</script>
 <script src="js/schema.js"></script>
 <script src="js/graphs.js"></script>
 <script src="js/app.js"></script>
