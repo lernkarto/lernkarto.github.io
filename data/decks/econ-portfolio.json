@@ -33,7 +33,7 @@
       "type": "mcq",
       "definition": "CAPM states E[R] = Rf + beta*(E[Rm] - Rf): you earn the risk-free rate plus a premium scaled by how much systematic risk (beta) you bear. Beta times the expected market return alone omits the risk-free anchor and mis-scales the market term. Market return minus the risk-free rate ignores beta, so every asset would price identically regardless of risk. Risk-free rate times beta is dimensionally meaningless, and risk-free rate plus the standard deviation prices total (including diversifiable) risk, which CAPM never rewards.",
       "last_updated": "2026-06-29",
-      "stale": true
+      "crosschecked": false
     },
     {
       "term": "An asset's beta measures:",
@@ -48,7 +48,7 @@
       "type": "mcq",
       "definition": "Beta = Cov(asset, market) / Var(market), so it measures how strongly an asset co-moves with the overall market, i.e. its systematic risk; beta above 1 amplifies market swings and below 1 dampens them. It is not total return volatility, which also includes firm-specific (idiosyncratic) risk that beta deliberately excludes. It is not diversifiable firm-specific risk, which is exactly the part beta leaves out. Excess return per unit of volatility is the Sharpe ratio, and expected return is a downstream output of beta via [[CAPM]], not beta itself.",
       "last_updated": "2026-06-29",
-      "stale": true
+      "crosschecked": false
     },
     {
       "term": "With risk-free rate 3%, beta 1.5, and a market risk premium of 5%, CAPM expected return is:",
@@ -63,7 +63,7 @@
       "type": "mcq",
       "definition": "Apply CAPM directly: E[R] = Rf + beta*(market risk premium) = 3% + 1.5*5% = 3% + 7.5% = 10.5%. The 7.5% figure is just the premium term beta*5% before adding the risk-free rate, so it forgets the Rf base. 12% would come from adding beta to the rate wrongly or using a 6% premium; 8% understates by treating beta as roughly 1. 4.5% mistakenly multiplies the risk-free rate by beta (3%*1.5) instead of applying beta to the market premium.",
       "last_updated": "2026-06-29",
-      "stale": true
+      "crosschecked": false
     },
     {
       "term": "Diversification reduces which type of risk?",
@@ -78,7 +78,7 @@
       "type": "mcq",
       "definition": "Diversification removes idiosyncratic (firm-specific) risk because independent shocks across many holdings partially cancel, leaving the portfolio exposed only to common factors. It cannot eliminate systematic market-wide risk, which hits all assets together and is the only risk [[CAPM]] rewards, so that option is exactly backwards. It does not drive all risk to zero, since the systematic component remains no matter how many names you add. Interest-rate and inflation risk are largely systematic, so singling either out as the thing diversification removes is wrong.",
       "last_updated": "2026-06-29",
-      "stale": true
+      "crosschecked": false
     },
     {
       "term": "The Sharpe ratio is defined as:",
@@ -93,7 +93,7 @@
       "type": "mcq",
       "definition": "Sharpe = (R - Rf) / sigma: excess return over the risk-free rate per unit of total volatility (standard deviation). Excess return divided by beta is the Treynor ratio, which uses systematic risk, not total risk. Alpha divided by beta and total return divided by beta both misplace the numerator or denominator and ignore the risk-free benchmark. Total return divided by Value-at-Risk is a different tail-based measure, not Sharpe, and using raw return rather than excess return omits the risk-free subtraction central to Sharpe.",
       "last_updated": "2026-06-29",
-      "stale": true
+      "crosschecked": false
     },
     {
       "term": "A portfolio with return 12%, risk-free rate 2%, and volatility 20% has a Sharpe ratio of:",
@@ -108,7 +108,7 @@
       "type": "mcq",
       "definition": "Sharpe = (R - Rf) / sigma = (12% - 2%) / 20% = 10% / 20% = 0.5. The 0.6 trap divides raw return-ish figures or forgets to subtract Rf (12%/20% = 0.6), so it skips the excess-return step. 2.0 inverts or mis-scales (20%/10%), and 0.1 divides excess return by 100 or confuses units. 1.0 would require excess return equal to volatility (20%), which is not the case here.",
       "last_updated": "2026-06-29",
-      "stale": true
+      "crosschecked": false
     },
     {
       "term": "The Treynor ratio differs from the Sharpe ratio by using, in the denominator:",
@@ -123,7 +123,7 @@
       "type": "mcq",
       "definition": "Treynor = (R - Rf) / beta: it divides excess return by systematic risk (beta) rather than total standard deviation, making it the right yardstick for a well-diversified portfolio whose idiosyncratic risk is already gone. Total volatility in the denominator is the Sharpe ratio, not Treynor. Total variance is the squared volatility and is used by neither ratio as stated. Tracking error is the basis of the information ratio, downside deviation belongs to the Sortino ratio, and Value-at-Risk belongs to tail-risk measures, so none of those is the Sharpe-to-Treynor distinction.",
       "last_updated": "2026-06-29",
-      "stale": true
+      "crosschecked": false
     },
     {
       "term": "The Sortino ratio modifies the Sharpe ratio by:",
@@ -138,7 +138,7 @@
       "type": "mcq",
       "definition": "Sortino replaces total volatility with downside deviation, penalising only returns below a target (harmful volatility) on the logic that investors welcome upside surprises. It still uses the risk-free (or target) rate in the numerator, so dropping that term is wrong. Using beta would make it a Treynor-style measure, and using total variance just reproduces a Sharpe-like denominator. Maximum drawdown is the basis of the Calmar ratio, not Sortino, so that option names the wrong risk metric.",
       "last_updated": "2026-06-29",
-      "stale": true
+      "crosschecked": false
     },
     {
       "term": "Total risk of a security can be decomposed into:",
@@ -153,7 +153,7 @@
       "type": "mcq",
       "definition": "Total risk decomposes into systematic (market) risk plus idiosyncratic (firm-specific) risk; in variance terms, Var(total) = beta^2*Var(market) + Var(residual). Claiming idiosyncratic risk alone or systematic risk alone ignores half the decomposition. Interest-rate risk plus credit risk are specific factor exposures, not the full systematic-plus-idiosyncratic split. Duration and convexity are bond price sensitivities to yield, not a decomposition of equity total risk, so that option is from a different toolkit entirely.",
       "last_updated": "2026-06-29",
-      "stale": true
+      "crosschecked": false
     },
     {
       "term": "The efficient frontier represents:",
@@ -168,7 +168,7 @@
       "type": "mcq",
       "definition": "The efficient frontier is the set of portfolios delivering the highest expected return for each level of risk; rational mean-variance investors hold only these, since anything below is dominated. It is not a single highest-return portfolio, because the frontier is a whole curve trading return against risk. Zero-risk portfolios or the risk-free asset combined with cash are not on the risky-asset frontier and offer no return-maximisation across risk levels. Every feasible portfolio includes the dominated interior points, whereas the frontier is precisely the optimal upper edge of that set.",
       "last_updated": "2026-06-29",
-      "stale": true
+      "crosschecked": false
     },
     {
       "term": "Adding the risk-free asset to the set of risky portfolios gives the:",
@@ -183,7 +183,7 @@
       "type": "mcq",
       "definition": "Adding the risk-free asset produces the Capital Market Line, a straight line from Rf tangent to the efficient frontier at the market (tangency) portfolio; combining cash with that one portfolio dominates the curved all-risky frontier. The [[SML]] plots expected return against beta for individual assets, a different axis entirely. The characteristic line regresses an asset on the market to estimate beta. The yield curve plots rates by maturity and indifference curves capture investor preferences, neither being the cash-plus-risky combination line.",
       "last_updated": "2026-06-29",
-      "stale": true
+      "crosschecked": false
     },
     {
       "term": "Alpha in performance evaluation represents:",
@@ -198,7 +198,7 @@
       "type": "mcq",
       "definition": "Alpha is the return earned beyond what a model like [[CAPM]] predicts for the risk (beta) taken; positive alpha signals genuine outperformance, not mere compensation for exposure. It is not the market return or the risk-free rate, which are inputs to the predicted benchmark, not the excess over it. It is not total volatility or systematic risk (beta), which are risk measures rather than a performance residual. Alpha is specifically the gap between realised return and the model's required return.",
       "last_updated": "2026-06-29",
-      "stale": true
+      "crosschecked": false
     },
     {
       "term": "The [[EMH|Efficient Market Hypothesis]] (semi-strong form) asserts that prices reflect:",
@@ -213,7 +213,7 @@
       "type": "mcq",
       "definition": "Semi-strong-form [[EMH]] says prices already reflect all publicly available information, so fundamental analysis of public data cannot consistently beat the market. Only the history of past prices is the weak form, a strictly narrower claim. All information including private insider data is the strong form, which goes further than semi-strong. Only published accounting statements is too narrow (public info includes news, filings, analyst data, and more), and essentially no information would describe an entirely inefficient market.",
       "last_updated": "2026-06-29",
-      "stale": true
+      "crosschecked": false
     },
     {
       "term": "Arbitrage Pricing Theory (APT) differs from [[CAPM]] by:",
@@ -228,7 +228,7 @@
       "type": "mcq",
       "definition": "[[APT]] generalises [[CAPM]] by allowing several systematic risk factors (e.g. inflation, GDP, term spreads), each with its own beta, instead of a single market factor. It applies broadly across asset classes, not only fixed-income bonds. It is built on no-arbitrage and does not require returns to be normally distributed. Far from using no risk factors or ignoring systematic risk, its entire structure is multiple priced systematic factors, which is precisely what distinguishes it from [[CAPM]]'s one-beta model.",
       "last_updated": "2026-06-29",
-      "stale": true
+      "crosschecked": false
     },
     {
       "term": "Put-call parity links the prices of a European call and put (same strike and expiry) by:",
@@ -243,7 +243,7 @@
       "type": "mcq",
       "definition": "Put-call parity is C - P = S - K*e^(-rT): a call minus a put (same strike and expiry) equals the spot minus the present value of the strike, because both sides replicate the same payoff. Call equals put for every strike ignores the forward/discount terms and only holds in special cases. Call minus put equals strike minus spot has the sign and discounting wrong. Call plus put equals spot and call times put equals spot are not arbitrage relations at all; any deviation from the correct parity equation creates a risk-free arbitrage via the replicating portfolio.",
       "last_updated": "2026-06-29",
-      "stale": true
+      "crosschecked": false
     },
     {
       "term": "By no-arbitrage, the forward price of a non-dividend-paying stock is:",
@@ -258,7 +258,7 @@
       "type": "mcq",
       "definition": "By no-arbitrage, F = S*e^(rT): the forward price is the spot compounded at the risk-free rate, because buying spot and carrying it must cost the same as the forward. Leaving spot unchanged or discounting it reverses the direction of carry (you fund the position, so the forward sits above spot). The strike price is irrelevant to a forward, which has no strike. The expected future spot price is a real-world quantity that drops out under no-arbitrage pricing; deviations from S*e^(rT) enable a cash-and-carry arbitrage.",
       "last_updated": "2026-06-29",
-      "stale": true
+      "crosschecked": false
     },
     {
       "term": "In the [[BSM|Black-Scholes]] framework, an option's value depends on the underlying's volatility but NOT on:",
@@ -273,7 +273,7 @@
       "type": "mcq",
       "definition": "Under [[BSM]] risk-neutral pricing the underlying's real-world drift (expected return) cancels out, so the option value depends on volatility but not on the asset's expected return. The strike price, current underlying price, time to expiry, and risk-free rate all enter the formula directly and change the price. The key insight is that hedging replaces drift with the risk-free rate, leaving volatility as the crucial unknown; that is why two analysts disagreeing on drift but agreeing on volatility price the option identically.",
       "last_updated": "2026-06-29",
-      "stale": true
+      "crosschecked": false
     },
     {
       "term": "Implied volatility is:",
@@ -288,7 +288,7 @@
       "type": "mcq",
       "definition": "Implied volatility is the volatility that, when input to the pricing model, reproduces the observed market option price; it is the market's forward-looking volatility estimate backed out from quotes. Historical (realised) volatility measures past return dispersion and generally differs from implied, so equating the two or calling implied the historical figure is wrong. It is not the volatility of the risk-free rate, which is a separate quantity. Realised intraday volatility is also backward-looking, whereas implied is inferred from current prices about the future.",
       "last_updated": "2026-06-29",
-      "stale": true
+      "crosschecked": false
     },
     {
       "term": "Two assets with returns that are perfectly negatively correlated allow a portfolio with:",
@@ -303,7 +303,7 @@
       "type": "mcq",
       "definition": "With perfect negative correlation (rho = -1), the two assets' moves are exact mirror images, so with the right weights their fluctuations cancel and portfolio risk can in principle be driven to zero. This is the strongest possible diversification, not no diversification benefit, so that option is the opposite of the truth. Risk equal to or higher than each asset would require positive or zero correlation, not -1. A guaranteed positive return is not implied; correlation governs risk, not the level of return.",
       "last_updated": "2026-06-29",
-      "stale": true
+      "crosschecked": false
     },
     {
       "term": "Adding two assets that are uncorrelated, each with 10% volatility, in equal weights gives a portfolio volatility of about:",
@@ -318,7 +318,7 @@
       "type": "mcq",
       "definition": "For equal-weight uncorrelated assets, portfolio variance = 0.5^2*0.1^2 + 0.5^2*0.1^2 = 0.005, so volatility = sqrt(0.005) = 7.07%; independence cuts volatility by a factor of sqrt(2) versus a single asset. Keeping 10% would require perfect positive correlation, where no diversification occurs. 14.1% (10%*sqrt(2)) adds risks as if correlation were +1 and weights summed wrongly. 5% would need perfect negative correlation, and 0% is impossible for merely uncorrelated (not perfectly negatively correlated) assets.",
       "last_updated": "2026-06-29",
-      "stale": true
+      "crosschecked": false
     }
   ]
 }

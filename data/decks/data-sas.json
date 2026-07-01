@@ -18,7 +18,7 @@
       "formula": "data work.clean; set raw; run;\nproc means data=work.clean; run;",
       "note": "[1] SAS Documentation — https://documentation.sas.com/",
       "last_updated": "2026-06-29",
-      "stale": true
+      "crosschecked": false
     },
     {
       "term": "SAS: what does the DATA step do, row by row?",
@@ -26,7 +26,7 @@
       "formula": "data scored; set loans; pd = 1/(1+exp(-xb)); run;",
       "note": "[1] SAS Documentation — https://documentation.sas.com/",
       "last_updated": "2026-06-29",
-      "stale": true
+      "crosschecked": false
     },
     {
       "term": "SAS: what does LIBNAME do, and what is a two-level name?",
@@ -34,7 +34,7 @@
       "formula": "libname mylib '/data/risk'; data mylib.out; set work.in; run;",
       "note": "[1] SAS Documentation — https://documentation.sas.com/",
       "last_updated": "2026-06-29",
-      "stale": true
+      "crosschecked": false
     },
     {
       "term": "SAS: how do you bring an external file (CSV, Excel) into SAS?",
@@ -42,7 +42,7 @@
       "formula": "proc import datafile='loans.csv' out=loans dbms=csv replace; run;",
       "note": "[1] SAS Documentation — https://documentation.sas.com/",
       "last_updated": "2026-06-29",
-      "stale": true
+      "crosschecked": false
     },
     {
       "term": "SAS: how do you get numeric summaries, optionally by group?",
@@ -50,7 +50,7 @@
       "formula": "proc means data=loans n mean std; class grade; var default; run;",
       "note": "[1] SAS Documentation — https://documentation.sas.com/",
       "last_updated": "2026-06-29",
-      "stale": true
+      "crosschecked": false
     },
     {
       "term": "SAS: how do you build frequency tables and test for association?",
@@ -58,7 +58,7 @@
       "formula": "proc freq data=loans; tables grade*default / chisq; run;",
       "note": "[1] SAS Documentation — https://documentation.sas.com/",
       "last_updated": "2026-06-29",
-      "stale": true
+      "crosschecked": false
     },
     {
       "term": "SAS: how do you fit a linear regression in SAS?",
@@ -66,7 +66,7 @@
       "formula": "proc reg data=d; model y = x1 x2; run;",
       "note": "[1] SAS Documentation — https://documentation.sas.com/",
       "last_updated": "2026-06-29",
-      "stale": true
+      "crosschecked": false
     },
     {
       "term": "SAS: how do you fit a logistic regression for a binary target?",
@@ -74,7 +74,7 @@
       "formula": "proc logistic data=d; model default(event='1') = x1 x2; run;",
       "note": "[1] SAS Documentation — https://documentation.sas.com/",
       "last_updated": "2026-06-29",
-      "stale": true
+      "crosschecked": false
     },
     {
       "term": "SAS: how do you run SQL inside SAS?",
@@ -82,7 +82,7 @@
       "formula": "proc sql; create table r as select grade, mean(default) as rate from d group by grade; quit;",
       "note": "[1] SAS Documentation — https://documentation.sas.com/",
       "last_updated": "2026-06-29",
-      "stale": true
+      "crosschecked": false
     },
     {
       "term": "SAS: how do you create a variable with conditional logic?",
@@ -90,7 +90,7 @@
       "formula": "data d2; set d; if score < 500 then band='low'; else band='high'; run;",
       "note": "[1] SAS Documentation — https://documentation.sas.com/",
       "last_updated": "2026-06-29",
-      "stale": true
+      "crosschecked": false
     },
     {
       "term": "SAS: how do you join two datasets with MERGE?",
@@ -98,7 +98,7 @@
       "formula": "proc sort data=a; by id; run;\ndata both; merge a b; by id; run;",
       "note": "[1] SAS Documentation — https://documentation.sas.com/",
       "last_updated": "2026-06-29",
-      "stale": true
+      "crosschecked": false
     },
     {
       "term": "SAS: what are macro variables and how do you use them?",
@@ -106,7 +106,7 @@
       "formula": "%let cutoff=500; data d; set raw; if score>&cutoff then flag=1; run;",
       "note": "[1] SAS Documentation — https://documentation.sas.com/",
       "last_updated": "2026-06-29",
-      "stale": true
+      "crosschecked": false
     },
     {
       "term": "In SAS, the procedure that lets you write standard SQL (SELECT, JOIN, WHERE) against your datasets is:",
@@ -121,7 +121,7 @@
       "type": "mcq",
       "definition": "PROC SQL embeds standard SQL (SELECT/JOIN/WHERE/GROUP BY) over SAS datasets. PROC MEANS and FREQ summarise, PROC SORT orders, PROC PRINT just displays — none of them run SQL.",
       "last_updated": "2026-06-29",
-      "stale": true
+      "crosschecked": false
     },
     {
       "term": "In a SAS DATA step, to combine two datasets by a key variable (a match-merge), you use:",
@@ -136,7 +136,7 @@
       "type": "mcq",
       "definition": "MERGE with a BY statement match-merges observations by key in the DATA step — and both inputs must be sorted by that key first (PROC SORT). SET stacks (concatenates) datasets rather than matching them; there is no DATA-step JOIN statement (that is PROC SQL); UPDATE applies a transaction dataset to a master rather than joining two equals; and APPEND is a PROC, not a DATA-step statement.",
       "last_updated": "2026-06-29",
-      "stale": true
+      "crosschecked": false
     }
   ]
 }

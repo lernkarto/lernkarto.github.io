@@ -18,7 +18,7 @@
       "formula": "x = 5; rate = 0.03; name = 'loan'; ok = True",
       "note": "[1] NumPy docs — https://numpy.org/doc/stable/",
       "last_updated": "2026-06-29",
-      "stale": true
+      "crosschecked": false
     },
     {
       "term": "Python: how do list, tuple and dict differ, and when do you pick each?",
@@ -26,7 +26,7 @@
       "formula": "xs = [1, 2, 3]; pt = (0, 1); d = {'pd': 0.02, 'lgd': 0.4}",
       "note": "[1] NumPy docs — https://numpy.org/doc/stable/",
       "last_updated": "2026-06-29",
-      "stale": true
+      "crosschecked": false
     },
     {
       "term": "Python: what is a pandas DataFrame, and how do you build one?",
@@ -34,7 +34,7 @@
       "formula": "import pandas as pd; df = pd.DataFrame({'grade': ['A','B'], 'default': [0, 1]})",
       "note": "[1] pandas docs — https://pandas.pydata.org/docs/",
       "last_updated": "2026-06-29",
-      "stale": true
+      "crosschecked": false
     },
     {
       "term": "Python: how do you load a CSV file into a DataFrame?",
@@ -42,7 +42,7 @@
       "formula": "df = pd.read_csv('loans.csv', parse_dates=['origination'])",
       "note": "[1] pandas docs — https://pandas.pydata.org/docs/",
       "last_updated": "2026-06-29",
-      "stale": true
+      "crosschecked": false
     },
     {
       "term": "Python: how do you select rows by a condition and pick specific columns?",
@@ -50,7 +50,7 @@
       "formula": "df.loc[df['x'] > 0, ['id', 'default']]",
       "note": "[1] pandas docs — https://pandas.pydata.org/docs/",
       "last_updated": "2026-06-29",
-      "stale": true
+      "crosschecked": false
     },
     {
       "term": "Python: what does groupby do, and how do you get a rate per group?",
@@ -58,7 +58,7 @@
       "formula": "df.groupby('grade')['default'].mean()",
       "note": "[1] pandas — groupby — https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.groupby.html",
       "last_updated": "2026-06-29",
-      "stale": true
+      "crosschecked": false
     },
     {
       "term": "Python: how do you join two DataFrames, and what is the default join type?",
@@ -66,7 +66,7 @@
       "formula": "pd.merge(loans, bureau, on='customer_id', how='left')",
       "note": "[1] pandas docs — https://pandas.pydata.org/docs/",
       "last_updated": "2026-06-29",
-      "stale": true
+      "crosschecked": false
     },
     {
       "term": "Python: how do you detect, drop and impute missing values without leakage?",
@@ -74,7 +74,7 @@
       "formula": "df.isna().sum(); df['income'] = df['income'].fillna(df['income'].median())",
       "note": "[1] pandas docs — https://pandas.pydata.org/docs/",
       "last_updated": "2026-06-29",
-      "stale": true
+      "crosschecked": false
     },
     {
       "term": "Python: why are NumPy arrays faster than Python loops for math?",
@@ -82,7 +82,7 @@
       "formula": "import numpy as np; r = np.array([0.01, -0.02, 0.03]); r.mean()",
       "note": "[1] NumPy docs — https://numpy.org/doc/stable/",
       "last_updated": "2026-06-29",
-      "stale": true
+      "crosschecked": false
     },
     {
       "term": "Python: how do you define a function and write a list comprehension?",
@@ -90,7 +90,7 @@
       "formula": "def ann(m): return (1 + m) ** 12 - 1\nsq = [v * v for v in range(5)]",
       "note": "[1] NumPy docs — https://numpy.org/doc/stable/",
       "last_updated": "2026-06-29",
-      "stale": true
+      "crosschecked": false
     },
     {
       "term": "Python: what is the scikit-learn estimator API for training and scoring?",
@@ -98,7 +98,7 @@
       "formula": "from sklearn.linear_model import LogisticRegression\nm = LogisticRegression().fit(X, y); p = m.predict_proba(X)[:, 1]",
       "note": "[1] scikit-learn — linear models — https://scikit-learn.org/stable/modules/linear_model.html",
       "last_updated": "2026-06-29",
-      "stale": true
+      "crosschecked": false
     },
     {
       "term": "Python: how do you fit an OLS regression with statsmodels, and what's the gotcha?",
@@ -106,7 +106,7 @@
       "formula": "import statsmodels.api as sm\nm = sm.OLS(y, sm.add_constant(X)).fit(); print(m.summary())",
       "note": "[1] statsmodels — https://www.statsmodels.org/stable/",
       "last_updated": "2026-06-29",
-      "stale": true
+      "crosschecked": false
     },
     {
       "term": "In Python's pandas, to combine two DataFrames on a shared key column (like a SQL join or a VLOOKUP), the idiomatic function is:",
@@ -121,7 +121,7 @@
       "type": "mcq",
       "definition": "pd.merge(df1, df2, on='key') joins on COLUMNS with how='left'/'inner'/'outer' (default inner), the SQL-style join. df.join exists but defaults to joining on the INDEX, not a column key, and takes no on= positional like that; append/concat just STACK rows rather than match keys; df1.lookup is not a join method.",
       "last_updated": "2026-06-29",
-      "stale": true
+      "crosschecked": false
     },
     {
       "term": "In pandas, to run a SQL query against a database connection and return a DataFrame, you use:",
@@ -136,7 +136,7 @@
       "type": "mcq",
       "definition": "pd.read_sql(query, connection) executes the SQL through a DBAPI/SQLAlchemy connection and returns a DataFrame. to_sql does the REVERSE — it writes a DataFrame out to a table. read_csv reads delimited files, not databases; pd.from_sql and pd.query are not real pandas functions.",
       "last_updated": "2026-06-29",
-      "stale": true
+      "crosschecked": false
     },
     {
       "term": "In pandas, the idiomatic way to keep only rows where column 'age' exceeds 30 is:",
@@ -151,7 +151,7 @@
       "type": "mcq",
       "definition": "df[df['age'] > 30] is boolean indexing — the mask keeps only rows where the condition is True (df.query('age > 30') is the equivalent string form). df.where keeps the shape and blanks out non-matches with NaN rather than dropping rows, and it takes a Series, not 'age' > 30. df.filter selects by LABEL (column/index names), not by a row condition; df.loc takes labels or a boolean mask, not a (col, value) call; df.select isn't a pandas method.",
       "last_updated": "2026-06-29",
-      "stale": true
+      "crosschecked": false
     },
     {
       "term": "In pandas, to compute the total of 'sales' for each 'region', you would write:",
@@ -166,7 +166,7 @@
       "type": "mcq",
       "definition": "df.groupby('region')['sales'].sum() splits rows by the key, then sums 'sales' within each group. The others aren't valid: df.sum and Series.sum take an axis, not a groupby= grouping key; df.agg needs an aggregation func and likewise has no groupby= argument; df.pivot needs index/columns/values and has no .total() — it doesn't aggregate.",
       "last_updated": "2026-06-29",
-      "stale": true
+      "crosschecked": false
     },
     {
       "term": "In pandas, to translate the values of a column using a Python dictionary (a value lookup), you use:",
@@ -181,7 +181,7 @@
       "type": "mcq",
       "definition": "Series.map(lookup_dict) applies an element-wise mapping from a dict, swapping each value for its dict entry (unmatched values become NaN). Series.replace does substitute values from a dict but leaves unmatched values untouched and isn't the idiomatic value-lookup translate. .lookup is deprecated and does something different; .translate and .recode aren't pandas Series methods.",
       "last_updated": "2026-06-29",
-      "stale": true
+      "crosschecked": false
     },
     {
       "term": "To test whether each value of a vector/column belongs to a given set of allowed values, the operator is %in% in R and the method is:",
@@ -196,7 +196,7 @@
       "type": "mcq",
       "definition": "pandas .isin([...]) returns a boolean mask for set membership, mirroring R's %in%. Don't confuse it with .str.contains, which does SUBSTRING matching on text — a different test. Series.match isn't a membership method (and pandas uses .str.match for regex on text); .member and .in_set aren't pandas methods.",
       "last_updated": "2026-06-29",
-      "stale": true
+      "crosschecked": false
     }
   ]
 }

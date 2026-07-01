@@ -22,7 +22,7 @@
       "term": "Market risk",
       "definition": "The risk of loss from movements in market prices and rates — interest rates, FX, equity, commodities and credit spreads. It is the dominant risk of a trading book and the original target of the Basel internal-models regime.",
       "last_updated": "2026-06-29",
-      "stale": true
+      "crosschecked": false
     },
     {
       "term": "Value at Risk",
@@ -31,7 +31,7 @@
       "formula": "$\\mathrm{VaR}_\\alpha(L) = \\inf\\{\\,l : P(L > l) \\le 1-\\alpha\\,\\}$",
       "note": "Not subadditive in general, so it is not a coherent risk measure — diversification can appear to increase it.",
       "last_updated": "2026-06-29",
-      "stale": true
+      "crosschecked": false
     },
     {
       "term": "Basel's [[FRTB]] replaced 99% [[VaR]] with expected shortfall measured at the {{97.5}}% confidence level.",
@@ -41,14 +41,14 @@
       "note": "Always $\\mathrm{ES}_\\alpha \\ge \\mathrm{VaR}_\\alpha$; ES captures tail shape, VaR ignores it.",
       "type": "cloze",
       "last_updated": "2026-06-29",
-      "stale": true
+      "crosschecked": false
     },
     {
       "term": "Coherent risk measure",
       "definition": "A measure $\\rho$ satisfying four axioms (Artzner et al., 1999): monotonicity, translation invariance, positive homogeneity and subadditivity. Coherence formalises the intuition that diversification should never be penalised.",
       "note": "[[ES]] is coherent; [[VaR]] fails subadditivity except under elliptical (e.g. normal) distributions.",
       "last_updated": "2026-06-29",
-      "stale": true
+      "crosschecked": false
     },
     {
       "term": "[[VaR]] is always subadditive — the risk of a merged portfolio can never exceed the sum of the two books' individual [[VaR]] figures.",
@@ -58,7 +58,7 @@
       "answer": false,
       "summary": "False — [[VaR]] is not subadditive in general, which is exactly why it fails to be a coherent risk measure.",
       "last_updated": "2026-06-29",
-      "stale": true,
+      "crosschecked": false,
       "note": "[1] Artzner, Delbaen, Eber, Heath (1999) 'Coherent Measures of Risk', Mathematical Finance 9(3). [2] VaR (Wikipedia) — https://en.wikipedia.org/wiki/Value_at_risk"
     },
     {
@@ -67,7 +67,7 @@
       "definition": "[[VaR]] computed by assuming returns are jointly normal (or elliptical) and reading the quantile off portfolio volatility. Fast and analytic, but it systematically understates losses when real returns are fat-tailed. [[EWMA]] or [[GARCH]] estimates are often used for the volatility input; [[FRTB]] replaced this as the regulatory benchmark.",
       "formula": "$\\mathrm{VaR}_\\alpha = z_\\alpha\\,\\sigma_P\\sqrt{h}$,  $\\;\\sigma_P=\\sqrt{\\mathbf{w}^\\top \\Sigma\\, \\mathbf{w}}$",
       "last_updated": "2026-06-29",
-      "stale": true
+      "crosschecked": false
     },
     {
       "term": "Historical-simulation [[VaR]] makes no parametric assumption about the return distribution.",
@@ -77,14 +77,14 @@
       "answer": true,
       "summary": "True — historical simulation re-prices under actual past moves and takes the empirical quantile, assuming no distributional form.",
       "last_updated": "2026-06-29",
-      "stale": true
+      "crosschecked": false
     },
     {
       "term": "Monte Carlo [[VaR]]",
       "definition": "[[VaR]] from many simulated market scenarios drawn from a chosen stochastic model, with full revaluation of nonlinear positions. The most flexible method for optionality and path dependence, at high computational cost.",
       "formula": "draw $\\mathbf{r}^{(1)},\\dots,\\mathbf{r}^{(N)}$, revalue, take the empirical $\\alpha$-quantile of losses",
       "last_updated": "2026-06-29",
-      "stale": true
+      "crosschecked": false
     },
     {
       "term": "Regulatory market-risk capital traditionally measured [[VaR]] at 99% confidence over a {{10}}-day holding period.",
@@ -92,7 +92,7 @@
       "note": "Always quote both — '€1M VaR' is meaningless without them.",
       "type": "cloze",
       "last_updated": "2026-06-29",
-      "stale": true
+      "crosschecked": false
     },
     {
       "term": "Scaling [[VaR]] from one horizon to another by the {{square root of time}} is valid only when returns are i.i.d. with no autocorrelation.",
@@ -100,14 +100,14 @@
       "formula": "$\\mathrm{VaR}(h) = \\mathrm{VaR}(1)\\,\\sqrt{h}$",
       "type": "cloze",
       "last_updated": "2026-06-29",
-      "stale": true
+      "crosschecked": false
     },
     {
       "term": "Backtesting",
       "definition": "Validating a [[VaR]] model by comparing realised P&L against the predicted quantile and counting exceptions (days the loss exceeded [[VaR]]). The exception rate should match the model's tail probability over time. [[ES]] is harder to backtest directly because it depends on the full tail, not just the breach count.",
       "formula": "expected exceptions $= (1-\\alpha)\\times$ number of days",
       "last_updated": "2026-06-29",
-      "stale": true
+      "crosschecked": false
     },
     {
       "term": "[[VaR]] exception",
@@ -115,21 +115,21 @@
       "definition": "A day on which the actual loss exceeds the day's [[VaR]] estimate. Too many exceptions signals an understated model; clustered exceptions signal it fails to react to changing volatility. Under [[FRTB]] the traffic-light framework was updated, with [[ES]] replacing [[VaR]] as the primary capital metric.",
       "note": "Basel's traffic-light test maps the count over 250 days to green/amber/red multiplier zones.",
       "last_updated": "2026-06-29",
-      "stale": true
+      "crosschecked": false
     },
     {
       "term": "Kupiec POF test",
       "definition": "A likelihood-ratio test of whether the observed number of [[VaR]] exceptions is consistent with the model's stated coverage — testing unconditional coverage only. It has low power with the short samples typically available.",
       "formula": "$\\mathrm{LR}_{uc} = -2\\ln\\dfrac{(1-p)^{T-x}p^{x}}{(1-\\hat{p})^{T-x}\\hat{p}^{x}}\\sim\\chi^2_1$",
       "last_updated": "2026-06-29",
-      "stale": true
+      "crosschecked": false
     },
     {
       "term": "Christoffersen test",
       "definition": "An extension of Kupiec that jointly tests correct coverage and independence of [[VaR]] exceptions, catching models whose breaches cluster in time. Independence matters because clustered losses are what threaten solvency. Useful complement to [[ES]]-based backtests.",
       "note": "Combines unconditional coverage with a test that today's exception doesn't predict tomorrow's.",
       "last_updated": "2026-06-29",
-      "stale": true
+      "crosschecked": false
     },
     {
       "term": "[[sVaR]] is calibrated to a continuous {{12-month}} period of significant financial stress rather than recent data.",
@@ -138,21 +138,21 @@
       "formula": "capital $\\propto \\mathrm{VaR} + \\mathrm{sVaR}$ (with multipliers)",
       "type": "cloze",
       "last_updated": "2026-06-29",
-      "stale": true
+      "crosschecked": false
     },
     {
       "term": "Volatility",
       "definition": "The standard deviation of returns — the primary scale of market risk. It is unobservable and must be estimated; annualisation assumes independence across periods. Common estimators include [[EWMA]] and [[GARCH]], both of which feed directly into parametric [[VaR]].",
       "formula": "$\\sigma_{\\text{ann}} = \\sigma_{\\text{daily}}\\sqrt{252}$",
       "last_updated": "2026-06-29",
-      "stale": true
+      "crosschecked": false
     },
     {
       "term": "Volatility clustering",
       "definition": "The empirical regularity that large moves tend to follow large moves and calm follows calm, so volatility is persistent and predictable in magnitude. It motivates time-varying models ([[EWMA]], [[GARCH]]) over constant-variance assumptions.",
       "note": "A direct violation of the i.i.d. assumption behind simple [[VaR]] scaling.",
       "last_updated": "2026-06-29",
-      "stale": true
+      "crosschecked": false
     },
     {
       "term": "Implied volatility typically exceeds realised volatility on average.",
@@ -162,42 +162,42 @@
       "answer": true,
       "summary": "True — implied vol embeds a variance risk premium, so it tends to sit above subsequently realised vol.",
       "last_updated": "2026-06-29",
-      "stale": true
+      "crosschecked": false
     },
     {
       "term": "Delta–gamma approximation",
       "definition": "A second-order Taylor expansion approximating an option's value change from a move in the underlying, capturing curvature that a linear (delta-only) approximation misses. It underlies fast [[VaR]] for option books.",
       "formula": "$\\Delta V \\approx \\delta\\,\\Delta S + \\tfrac{1}{2}\\,\\gamma\\,(\\Delta S)^2$",
       "last_updated": "2026-06-29",
-      "stale": true
+      "crosschecked": false
     },
     {
       "term": "The Greeks",
       "definition": "Sensitivities of a derivative's value to its risk factors, the language of options risk: delta to spot, gamma to delta, vega to volatility, theta to time decay, and rho to rates. Aggregating Greeks across a book is the first step in parametric [[VaR]].",
       "formula": "$\\delta=\\frac{\\partial V}{\\partial S},\\;\\gamma=\\frac{\\partial^2 V}{\\partial S^2},\\;\\nu=\\frac{\\partial V}{\\partial \\sigma},\\;\\Theta=\\frac{\\partial V}{\\partial t}$",
       "last_updated": "2026-06-29",
-      "stale": true
+      "crosschecked": false
     },
     {
       "term": "[[DV01]] / [[PV01]]",
       "definition": "The change in a position's value for a one-basis-point move in interest rates — the workhorse measure of rate sensitivity for fixed-income desks. Aggregated across the curve it gives the book's rate exposure by tenor. It feeds directly into interest-rate [[VaR]] calculations.",
       "formula": "$\\mathrm{DV01} = -\\dfrac{\\partial V}{\\partial y}\\times 10^{-4}$",
       "last_updated": "2026-06-29",
-      "stale": true
+      "crosschecked": false
     },
     {
       "term": "Convexity",
       "definition": "The second-order sensitivity of a bond's price to yield: price rises more when yields fall than it drops when yields rise by the same amount. Positive convexity is valuable to a holder and must be hedged in delta-neutral books. A [[DV01]]-hedged position may still carry convexity risk, which shows up in [[VaR]] under large yield moves.",
       "formula": "$\\dfrac{\\Delta P}{P} \\approx -D\\,\\Delta y + \\tfrac{1}{2}\\,C\\,(\\Delta y)^2$",
       "last_updated": "2026-06-29",
-      "stale": true
+      "crosschecked": false
     },
     {
       "term": "Basis risk",
       "definition": "The residual risk that a hedge and the exposure it hedges do not move in lockstep, because they reference different but related underlyings, maturities or locations. It is what remains after an imperfect hedge.",
       "note": "Example: hedging jet fuel with crude futures leaves crack-spread basis risk.",
       "last_updated": "2026-06-29",
-      "stale": true
+      "crosschecked": false
     },
     {
       "term": "Beta",
@@ -205,21 +205,21 @@
       "definition": "The sensitivity of an asset's return to the return of the market portfolio — its systematic, undiversifiable risk under the CAPM. Beta above one amplifies market moves; below one dampens them. It enters equity [[VaR]] directly; [[GARCH]]-based beta estimates allow for time-varying systematic risk.",
       "formula": "$\\beta_i = \\dfrac{\\operatorname{Cov}(r_i, r_m)}{\\operatorname{Var}(r_m)}$",
       "last_updated": "2026-06-29",
-      "stale": true
+      "crosschecked": false
     },
     {
       "term": "Tracking error",
       "definition": "The volatility of the difference between a portfolio's return and its benchmark — the measure of active risk for an index-relative mandate. Low tracking error means the portfolio hugs its benchmark.",
       "formula": "$\\mathrm{TE} = \\sqrt{\\operatorname{Var}(r_p - r_b)}$",
       "last_updated": "2026-06-29",
-      "stale": true
+      "crosschecked": false
     },
     {
       "term": "Marginal VaR",
       "definition": "The change in portfolio [[VaR]] per unit increase in a position — the partial derivative of [[VaR]] with respect to that holding. It identifies which positions add or hedge risk at the margin.",
       "formula": "$\\mathrm{MVaR}_i = \\dfrac{\\partial\\,\\mathrm{VaR}}{\\partial w_i}$",
       "last_updated": "2026-06-29",
-      "stale": true
+      "crosschecked": false
     },
     {
       "term": "Component [[VaR]]s sum exactly to total portfolio [[VaR]] under the {{Euler}} allocation.",
@@ -227,21 +227,21 @@
       "formula": "$\\mathrm{CVaR}_i = w_i\\,\\dfrac{\\partial\\,\\mathrm{VaR}}{\\partial w_i},\\quad \\sum_i \\mathrm{CVaR}_i = \\mathrm{VaR}$",
       "type": "cloze",
       "last_updated": "2026-06-29",
-      "stale": true
+      "crosschecked": false
     },
     {
       "term": "Incremental VaR",
       "definition": "The change in total portfolio [[VaR]] from adding or removing an entire position or trade — what a new trade actually costs in risk terms. Unlike marginal [[VaR]] it is a discrete, not infinitesimal, difference.",
       "formula": "$\\mathrm{IVaR} = \\mathrm{VaR}_{\\text{with}} - \\mathrm{VaR}_{\\text{without}}$",
       "last_updated": "2026-06-29",
-      "stale": true
+      "crosschecked": false
     },
     {
       "term": "Spectral risk measure",
       "definition": "A coherent family that averages quantiles of the loss distribution weighted by a non-decreasing risk-aversion function, putting more weight on worse outcomes. [[ES]] is the special case with uniform weight over the tail; [[VaR]] is not a spectral measure because it assigns all weight to a single quantile.",
       "formula": "$\\rho_\\phi(L) = \\displaystyle\\int_0^1 \\phi(u)\\,\\mathrm{VaR}_u(L)\\,du$",
       "last_updated": "2026-06-29",
-      "stale": true
+      "crosschecked": false
     },
     {
       "term": "[[FRTB]] liquidity horizons range from 10 to {{120}} days depending on the risk-factor class.",
@@ -249,7 +249,7 @@
       "note": "Replaces the uniform 10-day [[VaR]] assumption with risk-factor-specific holding periods.",
       "type": "cloze",
       "last_updated": "2026-06-29",
-      "stale": true
+      "crosschecked": false
     },
     {
       "term": "On this loss/return distribution, which measure is the average loss in the shaded tail beyond the cutoff?",
@@ -258,7 +258,7 @@
       "summary": "Expected Shortfall ([[ES]]/[[CVaR]]) — the average loss in the tail past the [[VaR]] cutoff.",
       "note": "[1] EBA — https://www.eba.europa.eu/",
       "last_updated": "2026-06-29",
-      "stale": true
+      "crosschecked": false
     }
   ]
 }

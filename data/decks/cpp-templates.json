@@ -26,7 +26,7 @@
       "summary": "A pattern the compiler instantiates into a function per type.",
       "category": "core",
       "last_updated": "2026-06-29",
-      "stale": true
+      "crosschecked": false
     },
     {
       "term": "What does `template <typename T>` mean, and is `class` different?",
@@ -34,7 +34,7 @@
       "summary": "Declares a type parameter; `typename` and `class` are synonyms here.",
       "category": "core",
       "last_updated": "2026-06-29",
-      "stale": true
+      "crosschecked": false
     },
     {
       "term": "What is a class template?",
@@ -42,7 +42,7 @@
       "summary": "A class parameterised by type, e.g. Box<T>.",
       "category": "core",
       "last_updated": "2026-06-29",
-      "stale": true
+      "crosschecked": false
     },
     {
       "term": "What is template argument deduction?",
@@ -50,7 +50,7 @@
       "summary": "Compiler infers T from the arguments; no explicit <T> needed.",
       "category": "core",
       "last_updated": "2026-06-29",
-      "stale": true
+      "crosschecked": false
     },
     {
       "term": "What is template specialisation?",
@@ -58,7 +58,7 @@
       "definition": "Correct: A) providing a distinct implementation for a specific type argument. `template <> class Box<bool> { ... };` is a full specialisation giving `bool` its own definition. It lets you optimise or correct behaviour for particular types while the general template covers the rest.",
       "category": "advanced",
       "last_updated": "2026-06-29",
-      "stale": true
+      "crosschecked": false
     },
     {
       "term": "What is partial specialisation?",
@@ -66,7 +66,7 @@
       "summary": "Specialise for a pattern of arguments (e.g. all T*).",
       "category": "advanced",
       "last_updated": "2026-06-29",
-      "stale": true
+      "crosschecked": false
     },
     {
       "term": "What is a non-type template parameter?",
@@ -74,7 +74,7 @@
       "summary": "A compile-time value parameter, e.g. the N in array<T,N>.",
       "category": "advanced",
       "last_updated": "2026-06-29",
-      "stale": true
+      "crosschecked": false
     },
     {
       "type": "truefalse",
@@ -84,7 +84,7 @@
       "summary": "True — the compiler needs the full definition at each instantiation.",
       "definition": "True. A template is only compiled when instantiated with concrete arguments, and the compiler must see its full definition at that point. So template code generally goes in headers; putting it in a .cpp leads to 'undefined reference' link errors unless you explicitly instantiate.",
       "last_updated": "2026-06-29",
-      "stale": true
+      "crosschecked": false
     },
     {
       "term": "What does `auto` deduce when returning, and what is a generic lambda's link to templates?",
@@ -92,7 +92,7 @@
       "summary": "auto return deduces the type; a generic lambda is a templated call operator.",
       "category": "advanced",
       "last_updated": "2026-06-29",
-      "stale": true
+      "crosschecked": false
     },
     {
       "type": "cloze",
@@ -101,7 +101,7 @@
       "summary": "Instantiation = the concrete function/class generated for given arguments.",
       "definition": "`max<int>` and `max<double>` are two instantiations of the one template, each compiled to its own machine code. This is why heavy template use can grow binary size (code bloat).",
       "last_updated": "2026-06-29",
-      "stale": true
+      "crosschecked": false
     },
     {
       "term": "What is the trade-off of templates vs runtime polymorphism?",
@@ -109,7 +109,7 @@
       "summary": "Templates: compile-time, fast, bloated. Virtuals: runtime, one impl.",
       "category": "use",
       "last_updated": "2026-06-29",
-      "stale": true
+      "crosschecked": false
     },
     {
       "type": "truefalse",
@@ -119,7 +119,7 @@
       "summary": "False — errors surface at instantiation, when you use it with a concrete type.",
       "definition": "False. Much of a template's body is only checked when instantiated with concrete arguments, so type errors often appear at the point of use, not at the definition — hence the famously long template error messages. (C++20 concepts move many of these checks earlier.)",
       "last_updated": "2026-06-29",
-      "stale": true
+      "crosschecked": false
     },
     {
       "term": "What does a template let you avoid compared with overloading by hand?",
@@ -127,7 +127,7 @@
       "summary": "One generic definition instead of many near-identical overloads.",
       "category": "core",
       "last_updated": "2026-06-29",
-      "stale": true
+      "crosschecked": false
     },
     {
       "term": "Exercise: write a generic `min` function template.",
@@ -136,7 +136,7 @@
       "summary": "`template<typename T> T min(T a,T b){return a<b?a:b;}`",
       "category": "use",
       "last_updated": "2026-06-29",
-      "stale": true
+      "crosschecked": false
     },
     {
       "term": "Exercise: why does `max(3, 4.0)` fail to compile, and how do you fix it?",
@@ -145,7 +145,7 @@
       "summary": "One T can't be both int and double; force T or use two type params.",
       "category": "use",
       "last_updated": "2026-06-29",
-      "stale": true
+      "crosschecked": false
     }
   ]
 }

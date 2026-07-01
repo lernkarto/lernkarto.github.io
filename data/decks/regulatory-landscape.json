@@ -43,7 +43,7 @@
       "note": "[1] ECB Banking Supervision — https://www.bankingsupervision.europa.eu/",
       "category": "eu",
       "last_updated": "2026-06-29",
-      "stale": true
+      "crosschecked": false
     },
     {
       "term": "[EU] The EBA's main role is to:",
@@ -52,7 +52,7 @@
       "note": "[1] EBA — https://www.eba.europa.eu/",
       "category": "eu",
       "last_updated": "2026-06-29",
-      "stale": true
+      "crosschecked": false
     },
     {
       "term": "[EU] Basel standards enter EU law mainly through:",
@@ -61,7 +61,7 @@
       "note": "[1] EUR-Lex (CRR/CRD) — https://eur-lex.europa.eu/",
       "category": "eu",
       "last_updated": "2026-06-29",
-      "stale": true
+      "crosschecked": false
     },
     {
       "term": "[EU] The Basel III 'output floor' introduced by CRR3:",
@@ -70,7 +70,7 @@
       "note": "[1] EBA — https://www.eba.europa.eu/",
       "category": "eu",
       "last_updated": "2026-06-29",
-      "stale": true
+      "crosschecked": false
     },
     {
       "term": "[EU] Insurance and pensions across the EU are overseen by:",
@@ -79,7 +79,7 @@
       "note": "[1] EIOPA — https://www.eiopa.europa.eu/",
       "category": "eu",
       "last_updated": "2026-06-29",
-      "stale": true
+      "crosschecked": false
     },
     {
       "term": "[EU] MiFID II / MiFIR (securities markets, investor protection) sit with:",
@@ -88,7 +88,7 @@
       "note": "[1] ESMA — https://www.esma.europa.eu/",
       "category": "eu",
       "last_updated": "2026-06-29",
-      "stale": true
+      "crosschecked": false
     },
     {
       "term": "[EU] The ECB's SREP produces, for each bank, a:",
@@ -97,7 +97,7 @@
       "note": "[1] ECB Banking Supervision — https://www.bankingsupervision.europa.eu/",
       "category": "eu",
       "last_updated": "2026-06-29",
-      "stale": true
+      "crosschecked": false
     },
     {
       "term": "[EU] The body running the Single Resolution Mechanism is the:",
@@ -106,7 +106,7 @@
       "note": "[1] Single Resolution Board — https://www.srb.europa.eu/",
       "category": "eu",
       "last_updated": "2026-06-29",
-      "stale": true
+      "crosschecked": false
     },
     {
       "term": "[EU] The harmonised EU deposit guarantee covers, per depositor per bank:",
@@ -115,7 +115,7 @@
       "note": "[1] EUR-Lex (CRR/CRD) — https://eur-lex.europa.eu/",
       "category": "eu",
       "last_updated": "2026-06-29",
-      "stale": true
+      "crosschecked": false
     },
     {
       "term": "[EU] IFRS 9 measures loan loss provisions using:",
@@ -124,7 +124,7 @@
       "note": "[1] EUR-Lex (CRR/CRD) — https://eur-lex.europa.eu/",
       "category": "eu",
       "last_updated": "2026-06-29",
-      "stale": true
+      "crosschecked": false
     },
     {
       "term": "[EU] AnaCredit is:",
@@ -133,7 +133,7 @@
       "note": "[1] ECB Banking Supervision — https://www.bankingsupervision.europa.eu/",
       "category": "eu",
       "last_updated": "2026-06-29",
-      "stale": true
+      "crosschecked": false
     },
     {
       "term": "[EU] The Basel/CRR leverage-ratio minimum is:",
@@ -142,7 +142,7 @@
       "note": "[1] EUR-Lex (CRR/CRD) — https://eur-lex.europa.eu/",
       "category": "eu",
       "last_updated": "2026-06-29",
-      "stale": true
+      "crosschecked": false
     },
     {
       "term": "[Italy] Italy's central bank and national banking supervisor is:",
@@ -151,7 +151,7 @@
       "note": "[1] Banca d'Italia — https://www.bancaditalia.it/",
       "category": "italy",
       "last_updated": "2026-06-29",
-      "stale": true
+      "crosschecked": false
     },
     {
       "term": "[Italy] Italy's largest banks (e.g. Intesa Sanpaolo, UniCredit) are directly supervised by:",
@@ -160,7 +160,7 @@
       "note": "[1] ECB Banking Supervision — https://www.bankingsupervision.europa.eu/",
       "category": "italy",
       "last_updated": "2026-06-29",
-      "stale": true
+      "crosschecked": false
     },
     {
       "term": "[Italy] The Italian insurance supervisor is:",
@@ -169,7 +169,7 @@
       "note": "[1] IVASS — https://www.ivass.it/",
       "category": "italy",
       "last_updated": "2026-06-29",
-      "stale": true
+      "crosschecked": false
     },
     {
       "term": "[Italy] CONSOB is responsible for:",
@@ -178,7 +178,7 @@
       "note": "[1] CONSOB — https://www.consob.it/",
       "category": "italy",
       "last_updated": "2026-06-29",
-      "stale": true
+      "crosschecked": false
     },
     {
       "term": "[Italy] Supplementary (private) pension funds in Italy are supervised by:",
@@ -187,7 +187,7 @@
       "note": "[1] COVIP — https://www.covip.it/",
       "category": "italy",
       "last_updated": "2026-06-29",
-      "stale": true
+      "crosschecked": false
     },
     {
       "term": "[Italy] The consolidated law governing Italian banking is the:",
@@ -196,7 +196,7 @@
       "note": "[1] Banca d'Italia — https://www.bancaditalia.it/",
       "category": "italy",
       "last_updated": "2026-06-29",
-      "stale": true
+      "crosschecked": false
     },
     {
       "term": "[Italy] 'GACS' refers to:",
@@ -205,7 +205,7 @@
       "note": "[1] Banca d'Italia — https://www.bancaditalia.it/",
       "category": "italy",
       "last_updated": "2026-06-29",
-      "stale": true
+      "crosschecked": false
     },
     {
       "term": "[Italy] Banca d'Italia's 'Centrale dei Rischi' is:",
@@ -214,7 +214,7 @@
       "note": "[1] Banca d'Italia — https://www.bancaditalia.it/",
       "category": "italy",
       "last_updated": "2026-06-29",
-      "stale": true
+      "crosschecked": false
     },
     {
       "term": "[Italy] A defining feature of the Italian banking system in the 2010s was:",
@@ -223,7 +223,7 @@
       "note": "[1] ECB Banking Supervision — https://www.bankingsupervision.europa.eu/",
       "category": "italy",
       "last_updated": "2026-06-29",
-      "stale": true
+      "crosschecked": false
     },
     {
       "term": "[Italy] The 2015–16 reforms reorganised Italy's small mutual banks (BCC) into:",
@@ -232,7 +232,7 @@
       "note": "[1] Banca d'Italia — https://www.bancaditalia.it/",
       "category": "italy",
       "last_updated": "2026-06-29",
-      "stale": true
+      "crosschecked": false
     },
     {
       "term": "[Italy] Italy's anti-usury regime works by periodically publishing:",
@@ -241,7 +241,7 @@
       "note": "[1] Banca d'Italia — https://www.bancaditalia.it/",
       "category": "italy",
       "last_updated": "2026-06-29",
-      "stale": true
+      "crosschecked": false
     },
     {
       "term": "[Gulf] SAMA is the central bank and regulator of:",
@@ -250,7 +250,7 @@
       "note": "[1] Saudi Central Bank (SAMA) — https://www.sama.gov.sa/",
       "category": "gulf",
       "last_updated": "2026-06-29",
-      "stale": true
+      "crosschecked": false
     },
     {
       "term": "[Gulf] Onshore banks in the UAE are supervised by:",
@@ -259,7 +259,7 @@
       "note": "[1] Central Bank of the UAE — https://www.centralbank.ae/",
       "category": "gulf",
       "last_updated": "2026-06-29",
-      "stale": true
+      "crosschecked": false
     },
     {
       "term": "[Gulf] The DFSA regulates:",
@@ -268,7 +268,7 @@
       "note": "[1] DFSA — https://www.dfsa.ae/",
       "category": "gulf",
       "last_updated": "2026-06-29",
-      "stale": true
+      "crosschecked": false
     },
     {
       "term": "[Gulf] Firms in Abu Dhabi Global Market are regulated by the:",
@@ -277,7 +277,7 @@
       "note": "[1] ADGM FSRA — https://www.adgm.com/",
       "category": "gulf",
       "last_updated": "2026-06-29",
-      "stale": true
+      "crosschecked": false
     },
     {
       "term": "[Gulf] Bahrain's single integrated financial regulator is the:",
@@ -286,7 +286,7 @@
       "note": "[1] Central Bank of Bahrain — https://www.cbb.gov.bh/",
       "category": "gulf",
       "last_updated": "2026-06-29",
-      "stale": true
+      "crosschecked": false
     },
     {
       "term": "[Gulf] Qatar's onshore regulator is the QCB; the Qatar Financial Centre is regulated by the:",
@@ -295,7 +295,7 @@
       "note": "[1] QFCRA — https://www.qfcra.com/",
       "category": "gulf",
       "last_updated": "2026-06-29",
-      "stale": true
+      "crosschecked": false
     },
     {
       "term": "[Gulf] On Basel adoption, GCC regulators have broadly:",
@@ -304,7 +304,7 @@
       "note": "[1] Central Bank of the UAE — https://www.centralbank.ae/",
       "category": "gulf",
       "last_updated": "2026-06-29",
-      "stale": true
+      "crosschecked": false
     },
     {
       "term": "[Gulf] The IFSB sets:",
@@ -313,7 +313,7 @@
       "note": "[1] Islamic Financial Services Board — https://www.ifsb.org/",
       "category": "gulf",
       "last_updated": "2026-06-29",
-      "stale": true
+      "crosschecked": false
     },
     {
       "term": "[Gulf] AAOIFI, based in Bahrain, issues:",
@@ -322,7 +322,7 @@
       "note": "[1] AAOIFI — https://aaoifi.com/",
       "category": "gulf",
       "last_updated": "2026-06-29",
-      "stale": true
+      "crosschecked": false
     },
     {
       "term": "[Gulf] 'Riba', which Islamic finance prohibits, refers to:",
@@ -331,7 +331,7 @@
       "note": "[1] Islamic Financial Services Board — https://www.ifsb.org/",
       "category": "gulf",
       "last_updated": "2026-06-29",
-      "stale": true
+      "crosschecked": false
     },
     {
       "term": "[Gulf] A sukuk is best described as:",
@@ -340,7 +340,7 @@
       "note": "[1] AAOIFI — https://aaoifi.com/",
       "category": "gulf",
       "last_updated": "2026-06-29",
-      "stale": true
+      "crosschecked": false
     },
     {
       "term": "[Gulf] A profit-sharing investment account (PSIA) is typically structured as a:",
@@ -349,7 +349,7 @@
       "note": "[1] Islamic Financial Services Board — https://www.ifsb.org/",
       "category": "gulf",
       "last_updated": "2026-06-29",
-      "stale": true
+      "crosschecked": false
     },
     {
       "term": "[Gulf] Under IFSB capital rules, assets funded by unrestricted PSIA are:",
@@ -358,7 +358,7 @@
       "note": "[1] Islamic Financial Services Board — https://www.ifsb.org/",
       "category": "gulf",
       "last_updated": "2026-06-29",
-      "stale": true
+      "crosschecked": false
     },
     {
       "term": "[Italy] You must validate the IRB credit-risk model of a mid-sized Italian bank that still carries a legacy non-performing-loan (NPL) book. Outline your approach and what is specific to the Italian/EU context.",
@@ -367,7 +367,7 @@
       "note": "[1] Banca d'Italia — https://www.bancaditalia.it/ · [2] ECB internal models — https://www.bankingsupervision.europa.eu/",
       "category": "italy",
       "last_updated": "2026-06-29",
-      "stale": true
+      "crosschecked": false
     },
     {
       "term": "[Gulf] Design the capital-adequacy treatment for an Islamic bank funded largely by profit-sharing investment accounts (PSIA). How does it differ from a conventional bank?",
@@ -376,7 +376,7 @@
       "note": "[1] Islamic Financial Services Board — https://www.ifsb.org/ · [2] AAOIFI — https://aaoifi.com/",
       "category": "gulf",
       "last_updated": "2026-06-29",
-      "stale": true
+      "crosschecked": false
     },
     {
       "term": "[EU] A significant euro-area bank comes out badly in the EBA adverse stress-test scenario. Walk through what actually happens next.",
@@ -385,7 +385,7 @@
       "note": "[1] EBA stress testing — https://www.eba.europa.eu/ · [2] ECB Banking Supervision — https://www.bankingsupervision.europa.eu/",
       "category": "eu",
       "last_updated": "2026-06-29",
-      "stale": true
+      "crosschecked": false
     },
     {
       "term": "[Gulf] A Gulf bank wants to expand into the EU. Compare how it would be regulated there versus at home, and the choices it faces.",
@@ -394,7 +394,7 @@
       "note": "[1] ECB Banking Supervision — https://www.bankingsupervision.europa.eu/ · [2] Central Bank of the UAE — https://www.centralbank.ae/",
       "category": "gulf",
       "last_updated": "2026-06-29",
-      "stale": true
+      "crosschecked": false
     },
     {
       "type": "truefalse",
@@ -405,7 +405,7 @@
       "definition": "False — the [[ECB]] directly supervises significant institutions through the [[SSM]]. The [[EBA]] writes the single rulebook and runs the EU-wide stress test under the [[CRR]]/[[CRD]] framework, but it does not supervise individual banks.",
       "note": "[1] ECB Banking Supervision — https://www.bankingsupervision.europa.eu/",
       "last_updated": "2026-06-29",
-      "stale": true
+      "crosschecked": false
     },
     {
       "type": "truefalse",
@@ -416,7 +416,7 @@
       "definition": "True. Expected Shortfall is the mean loss in the tail beyond the VaR threshold, so by construction ES ≥ VaR at the same confidence — which is why it captures tail severity that VaR ignores.",
       "note": "[1] EBA — https://www.eba.europa.eu/",
       "last_updated": "2026-06-29",
-      "stale": true
+      "crosschecked": false
     },
     {
       "type": "truefalse",
@@ -427,7 +427,7 @@
       "definition": "False. Sukuk are Sharia-compliant certificates of ownership in an underlying asset or venture; their returns are generated by those real assets, not by interest (riba), which is prohibited. Holders therefore bear asset/ownership risk. [[AAOIFI]] and [[IFSB]] standards govern their structure and prudential treatment.",
       "note": "[1] AAOIFI — https://aaoifi.com/",
       "last_updated": "2026-06-29",
-      "stale": true
+      "crosschecked": false
     },
     {
       "type": "multi",
@@ -448,7 +448,7 @@
       "definition": "The [[EBA]] (banks/rulebook), the [[ECB]] ([[SSM]] supervision) and [[EIOPA]] (insurance & pensions) are EU authorities. SAMA is the Saudi Central Bank, not an EU body.",
       "note": "[1] EU supervision — https://www.bankingsupervision.europa.eu/",
       "last_updated": "2026-06-29",
-      "stale": true
+      "crosschecked": false
     },
     {
       "type": "multi",
@@ -469,7 +469,7 @@
       "definition": "Islamic finance prohibits riba (interest) and gharar (excessive uncertainty) and requires real asset-backing and risk-sharing. Guaranteed fixed returns are not permitted, since the provider of capital must share in risk. These principles underpin [[IFSB]] and [[AAOIFI]] standards.",
       "note": "[1] IFSB — https://www.ifsb.org/",
       "last_updated": "2026-06-29",
-      "stale": true
+      "crosschecked": false
     },
     {
       "type": "cloze",
@@ -479,7 +479,7 @@
       "definition": "The leverage ratio requires Tier 1 capital of at least 3% of total exposure, a simple backstop that does not depend on risk weights.",
       "note": "[1] EUR-Lex (CRR) — https://eur-lex.europa.eu/",
       "last_updated": "2026-06-29",
-      "stale": true
+      "crosschecked": false
     },
     {
       "type": "cloze",
@@ -489,7 +489,7 @@
       "definition": "Under a mudarabah the account holder provides capital and the bank acts as manager; returns depend on the actual profit earned, and the holder bears investment losses absent misconduct. This risk-sharing is why PSIA-funded assets get special capital treatment under IFSB rules.",
       "note": "[1] IFSB — https://www.ifsb.org/",
       "last_updated": "2026-06-29",
-      "stale": true
+      "crosschecked": false
     }
   ]
 }

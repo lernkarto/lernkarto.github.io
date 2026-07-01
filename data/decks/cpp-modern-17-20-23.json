@@ -26,7 +26,7 @@
       "summary": "`auto [a, b] = pair;` — destructure into named variables.",
       "category": "cpp17",
       "last_updated": "2026-06-29",
-      "stale": true
+      "crosschecked": false
     },
     {
       "term": "What problem does `std::optional` (C++17) solve?",
@@ -34,7 +34,7 @@
       "definition": "Correct: A) it represents a value that may or may not be present, without sentinels or pointers. `std::optional<int> find(...)` clearly says 'maybe an int', checked with `if (result)` and read via `*result`. It replaces error-prone conventions like returning `-1`, a magic value, or a nullable pointer.",
       "category": "cpp17",
       "last_updated": "2026-06-29",
-      "stale": true
+      "crosschecked": false
     },
     {
       "term": "What is `std::variant` (C++17)?",
@@ -42,7 +42,7 @@
       "summary": "Type-safe union holding one of several types; track the active one.",
       "category": "cpp17",
       "last_updated": "2026-06-29",
-      "stale": true
+      "crosschecked": false
     },
     {
       "term": "What does `if constexpr` (C++17) enable?",
@@ -50,7 +50,7 @@
       "summary": "Compile-time if; only the taken branch is compiled.",
       "category": "cpp17",
       "last_updated": "2026-06-29",
-      "stale": true
+      "crosschecked": false
     },
     {
       "term": "What did `std::filesystem` (C++17) standardise?",
@@ -58,7 +58,7 @@
       "summary": "Portable standard API for paths and the file system.",
       "category": "cpp17",
       "last_updated": "2026-06-29",
-      "stale": true
+      "crosschecked": false
     },
     {
       "term": "What are concepts (C++20)?",
@@ -66,7 +66,7 @@
       "summary": "Named constraints on template parameters; clearer errors than SFINAE.",
       "category": "cpp20",
       "last_updated": "2026-06-29",
-      "stale": true
+      "crosschecked": false
     },
     {
       "term": "What are ranges (C++20)?",
@@ -74,7 +74,7 @@
       "summary": "Composable, lazy view pipelines over whole ranges (the | syntax).",
       "category": "cpp20",
       "last_updated": "2026-06-29",
-      "stale": true
+      "crosschecked": false
     },
     {
       "term": "What is the spaceship operator `<=>` (C++20)?",
@@ -82,7 +82,7 @@
       "definition": "Correct: A) a single three-way comparison the compiler can use to generate all six relational operators. Declaring `auto operator<=>(const T&) const = default;` gives you `<`, `<=`, `>`, `>=`, `==`, `!=` at once, instead of hand-writing each — far less boilerplate and fewer inconsistencies.",
       "category": "cpp20",
       "last_updated": "2026-06-29",
-      "stale": true
+      "crosschecked": false
     },
     {
       "term": "What are coroutines (C++20)?",
@@ -90,7 +90,7 @@
       "summary": "Suspendable/resumable functions (co_await/co_yield) for async & generators.",
       "category": "cpp20",
       "last_updated": "2026-06-29",
-      "stale": true
+      "crosschecked": false
     },
     {
       "term": "What problem do modules (C++20) address?",
@@ -98,7 +98,7 @@
       "summary": "import instead of #include — faster builds, no macro leakage.",
       "category": "cpp20",
       "last_updated": "2026-06-29",
-      "stale": true
+      "crosschecked": false
     },
     {
       "type": "truefalse",
@@ -108,7 +108,7 @@
       "summary": "True — a failed concept names the unmet requirement instead of a wall of template noise.",
       "definition": "True. When a type fails a concept, the compiler reports which named requirement was not met, rather than the deep, cryptic instantiation backtraces that SFINAE produced. That readability is a main reason concepts were added.",
       "last_updated": "2026-06-29",
-      "stale": true
+      "crosschecked": false
     },
     {
       "type": "cloze",
@@ -117,7 +117,7 @@
       "summary": "consteval = must be evaluated at compile time (immediate function).",
       "definition": "Where `constexpr` *may* run at compile time, `consteval` *must*: every call is evaluated during compilation or it is an error. Useful for compile-time-only factories and checks.",
       "last_updated": "2026-06-29",
-      "stale": true
+      "crosschecked": false
     },
     {
       "term": "Name a few C++23 highlights.",
@@ -125,7 +125,7 @@
       "summary": "std::expected, std::print, mdspan, deducing this, import std.",
       "category": "cpp23",
       "last_updated": "2026-06-29",
-      "stale": true
+      "crosschecked": false
     },
     {
       "term": "What does `std::expected<T,E>` (C++23) improve over `std::optional`?",
@@ -133,7 +133,7 @@
       "definition": "Correct: A) it carries an error value on failure, not just 'empty'. `std::optional` only tells you a value is missing; `std::expected<T,E>` holds either the result `T` or an explanatory error `E`, giving a lightweight, exception-free way to return success-or-reason-for-failure.",
       "category": "cpp23",
       "last_updated": "2026-06-29",
-      "stale": true
+      "crosschecked": false
     },
     {
       "term": "Exercise: which standard's feature replaces each old pattern? (a) returning -1 to mean 'not found'; (b) hand-writing operator< and operator== separately; (c) `std::get<0>(t)`, `std::get<1>(t)`.",
@@ -142,7 +142,7 @@
       "summary": "(a) optional/C++17; (b) <=>/C++20; (c) structured bindings/C++17.",
       "category": "cpp23",
       "last_updated": "2026-06-29",
-      "stale": true
+      "crosschecked": false
     }
   ]
 }

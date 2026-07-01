@@ -35,7 +35,7 @@
       "definition": "The purest, most loss-absorbing layer of regulatory capital, made up of paid-in common shares, share premium, retained earnings and disclosed reserves, net of deductions (goodwill, intangibles, deferred tax assets). It absorbs losses on a going-concern basis while the bank keeps operating. The Pillar 1 minimum is $4.5\\\\%$ of [[RWA]], before buffers and Pillar 2 add-ons stack on top.",
       "note": "It is also the capital that fills the combined buffer and counts toward [[MDA]] restrictions.",
       "last_updated": "2026-06-29",
-      "stale": true
+      "crosschecked": false
     },
     {
       "term": "Additional Tier 1 (AT1)",
@@ -43,7 +43,7 @@
       "definition": "The second going-concern layer, made up of deeply subordinated, perpetual instruments with fully discretionary, non-cumulative coupons — typically contingent convertibles ('CoCos'). When [[CET1]] falls below a contractual trigger (commonly $5.125\\\\%$ or $7\\\\%$), AT1 either converts to equity or is written down, recapitalising the bank without it failing. [[CET1]] plus AT1 must be at least $6\\\\%$ of [[RWA]].",
       "note": "Coupons can be cancelled at any time, and AT1 ranks above CET1 but below Tier 2.",
       "last_updated": "2026-06-29",
-      "stale": true
+      "crosschecked": false
     },
     {
       "term": "Tier 2 capital (T2)",
@@ -51,21 +51,21 @@
       "definition": "Supplementary, lower-quality capital — mainly dated subordinated debt with an original maturity of at least five years — that absorbs losses only on a gone-concern basis, i.e. once the bank is in liquidation or resolution. It protects depositors and senior creditors but does not keep the bank alive. Total capital (Tier 1 + Tier 2) must be at least $8\\\\%$ of [[RWA]].",
       "note": "In its last five years to maturity its regulatory value is amortised straight-line.",
       "last_updated": "2026-06-29",
-      "stale": true
+      "crosschecked": false
     },
     {
       "term": "Going-concern vs gone-concern capital",
       "definition": "Going-concern capital ([[CET1]] and [[AT1]]) absorbs losses while the bank continues to operate, so depleting it does not by itself trigger failure. Gone-concern capital (Tier 2, plus bail-inable senior debt under [[MREL]]/[[TLAC]]) absorbs losses only once the bank has failed and is being liquidated or resolved. The distinction defines the quality ladder: higher tiers must be loss-absorbing before the bank is ever declared non-viable.",
       "note": "The 'point of non-viability' is the line where gone-concern instruments are written down or converted.",
       "last_updated": "2026-06-29",
-      "stale": true
+      "crosschecked": false
     },
     {
       "term": "Capital ratios (CET1 / Tier 1 / Total)",
       "definition": "The three nested risk-based solvency ratios, each dividing a capital tier by the same [[RWA]]. The CET1 ratio (min $4.5\\\\%$) measures highest-quality capital; the Tier 1 ratio (min $6\\\\%$) adds [[AT1]]; the Total capital ratio (min $8\\\\%$) adds Tier 2. Buffers and Pillar 2 requirements raise the effective hurdles well above these Pillar 1 floors.",
       "note": "$\\\\tfrac{\\\\mathrm{CET1}}{\\\\mathrm{RWA}}\\\\ge4.5\\\\%,\\\\;\\\\tfrac{\\\\mathrm{T1}}{\\\\mathrm{RWA}}\\\\ge6\\\\%,\\\\;\\\\tfrac{\\\\mathrm{T1+T2}}{\\\\mathrm{RWA}}\\\\ge8\\\\%$",
       "last_updated": "2026-06-29",
-      "stale": true
+      "crosschecked": false
     },
     {
       "term": "Leverage ratio",
@@ -73,14 +73,14 @@
       "definition": "A simple backstop dividing Tier 1 capital by a total exposure measure (on- and off-balance-sheet, plus derivative and SFT add-ons) that ignores risk weights entirely. The minimum is $3\\\\%$, with an extra G-SIB leverage buffer (half the risk-based G-SIB surcharge) for the largest banks. It binds when [[RWA]]-based requirements look deceptively low, guarding against model error and risk-weight gaming.",
       "note": "$\\\\tfrac{\\\\text{Tier 1}}{\\\\text{exposure measure}}\\\\ge3\\\\%$ — deliberately crude so it cannot be optimised away.",
       "last_updated": "2026-06-29",
-      "stale": true
+      "crosschecked": false
     },
     {
       "term": "Capital conservation buffer (CCB)",
       "definition": "A fixed buffer of $2.5\\\\%$ [[CET1]] sitting above the Pillar 1 minimums that a bank may draw down in stress — but only at the cost of automatic restrictions on dividends, buy-backs and discretionary bonuses (the [[MDA]] mechanism). It forces banks to build usable capital in good times rather than maintaining payouts into a downturn. It is the base layer of the combined buffer requirement.",
       "note": "Breaching it does not fail the bank; it throttles distributions to rebuild capital.",
       "last_updated": "2026-06-29",
-      "stale": true
+      "crosschecked": false
     },
     {
       "term": "Countercyclical capital buffer (CCyB)",
@@ -88,7 +88,7 @@
       "definition": "A time-varying [[CET1]] buffer (typically 0–2.5%, but uncapped) that national macroprudential authorities raise when system-wide credit growth signals building risk, and release in downturns to keep banks lending. A bank's institution-specific rate is the exposure-weighted average of the rates set in each country where it lends. It explicitly leans against the procyclicality of the financial cycle.",
       "note": "Set per jurisdiction on domestic credit exposures, then blended across a bank's geographic mix.",
       "last_updated": "2026-06-29",
-      "stale": true
+      "crosschecked": false
     },
     {
       "term": "G-SII / O-SII buffers",
@@ -96,28 +96,28 @@
       "definition": "Additional [[CET1]] buffers for systemically important banks. The G-SII (globally systemically important institution, the EU term for a G-SIB) buffer scales 1.0–3.5% with a bank's systemic footprint (size, interconnectedness, complexity, cross-jurisdictional activity, substitutability). The O-SII (other systemically important institution) buffer, up to 3%, applies to banks important at national or EU level. They internalise the externality a large failure imposes on the system.",
       "note": "Where both apply, generally the higher of the two binds (plus the systemic risk buffer, which is additive).",
       "last_updated": "2026-06-29",
-      "stale": true
+      "crosschecked": false
     },
     {
       "term": "Systemic risk buffer (SyRB)",
       "definition": "A flexible [[CET1]] buffer that national authorities can impose to address long-term, non-cyclical systemic or macroprudential risks not covered by the [[CCyB]] or the G-SII/O-SII buffers — for example sectoral concentrations (a specific 'sectoral SyRB' can target, say, residential mortgage exposures). Unlike the systemic-importance buffers it is additive to them and can apply to all banks or a subset.",
       "note": "The catch-all macroprudential tool in [[CRD]] for structural risks.",
       "last_updated": "2026-06-29",
-      "stale": true
+      "crosschecked": false
     },
     {
       "term": "Combined buffer requirement (CBR)",
       "definition": "The sum of all [[CET1]] buffers a bank must hold on top of its Pillar 1 and Pillar 2 requirements: the capital conservation buffer, the bank-specific countercyclical buffer ([[CCyB]]), and the higher/additive systemic buffers (G-SII, O-SII, SyRB). Falling into the CBR triggers the [[MDA]] restrictions on dividends, [[AT1]] coupons and bonuses, scaled by how deep the shortfall is.",
       "note": "The 'stacking order' matters: [[P2R]] sits below the buffers, [[P2G]] above them.",
       "last_updated": "2026-06-29",
-      "stale": true
+      "crosschecked": false
     },
     {
       "term": "Maximum Distributable Amount (MDA)",
       "definition": "The automatic cap on dividends, share buy-backs, discretionary bonuses and [[AT1]] coupon payments that bites when a bank's [[CET1]] falls into its combined buffer requirement. The deeper into the buffer, the larger the proportion of profits that must be retained — from 40% restricted in the top quartile to 100% at the bottom (conservation ratios by quartile: 40% → 60% → 80% → 100%). The [[CET1]] distance to the MDA trigger is a closely watched market metric.",
       "note": "It makes the buffers self-enforcing without the supervisor issuing an order. [1] Basel III (BIS, Dec 2010, §129–141) — https://www.bis.org/publ/bcbs189.pdf · [2] CRR3 (EU) 2024/1623 Art. 141–142 — https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:32024R1623",
       "last_updated": "2026-06-29",
-      "stale": true
+      "crosschecked": false
     },
     {
       "term": "Pillar 1",
@@ -125,7 +125,7 @@
       "definition": "The first pillar of the Basel framework: the minimum own-funds requirements computed by formula for credit, market and operational risk, expressed as fixed percentages of [[RWA]] ($4.5\\\\%$ [[CET1]], $6\\\\%$ Tier 1, $8\\\\%$ total), plus the leverage and liquidity floors. It is the harmonised, mechanical baseline that applies to every bank identically.",
       "note": "The floor that Pillars 2 and 3 build on — what the formulas can capture.",
       "last_updated": "2026-06-29",
-      "stale": true
+      "crosschecked": false
     },
     {
       "term": "Pillar 2",
@@ -133,7 +133,7 @@
       "definition": "The supervisory-review pillar covering risks Pillar 1 under- or omits — concentration, interest-rate risk in the banking book (IRRBB), model risk, business-model risk. The bank self-assesses via its ICAAP/ILAAP; the supervisor evaluates and challenges it through the [[SREP]], then imposes bank-specific add-ons ([[P2R]]) and guidance ([[P2G]]). It is where judgement-based, idiosyncratic capital is set.",
       "note": "Turns the one-size-fits-all Pillar 1 floor into a bank-specific requirement.",
       "last_updated": "2026-06-29",
-      "stale": true
+      "crosschecked": false
     },
     {
       "term": "Pillar 3",
@@ -141,21 +141,21 @@
       "definition": "The disclosure pillar requiring banks to publish standardised, comparable information on their capital, [[RWA]], leverage, liquidity and risk profile, so investors, counterparties and depositors can assess and price the bank. Transparency is meant to reward prudence and penalise opacity, enlisting the market as a supplementary discipline alongside supervision.",
       "note": "Fixed templates make cross-bank comparison the explicit design goal.",
       "last_updated": "2026-06-29",
-      "stale": true
+      "crosschecked": false
     },
     {
       "term": "Pillar 2 Requirement (P2R)",
       "definition": "A binding, bank-specific capital add-on set by the supervisor through the [[SREP]] to cover risks not (fully) captured by Pillar 1. Since 2021 it can be partly met with [[AT1]] and Tier 2 rather than entirely CET1. It sits above Pillar 1 but below the combined buffer in the capital stack, so breaching it is a hard breach that brings supervisory measures.",
       "note": "Binding — distinct from the non-binding [[P2G]] that sits above the buffers.",
       "last_updated": "2026-06-29",
-      "stale": true
+      "crosschecked": false
     },
     {
       "term": "Pillar 2 Guidance (P2G)",
       "definition": "A non-binding capital expectation set in the [[SREP]], calibrated largely off the supervisory stress-test result, that a bank should hold above its binding requirements and combined buffer to withstand stress. Missing it triggers supervisory dialogue and a remediation expectation rather than the automatic [[MDA]] restrictions that a buffer breach causes. It sits at the very top of the capital stack.",
       "note": "Stress-test driven; non-binding, so it does not feed the [[MDA]] trigger.",
       "last_updated": "2026-06-29",
-      "stale": true
+      "crosschecked": false
     },
     {
       "term": "SREP",
@@ -163,7 +163,7 @@
       "definition": "The annual supervisory cycle in which the ECB/NCA scores a bank across four areas — business model, internal governance and risk management, capital risks, and liquidity risks — and turns those scores into bank-specific outcomes: the binding [[P2R]], the non-binding [[P2G]], and any qualitative measures. It is the supervisory counterpart to the bank's own ICAAP/ILAAP and the operational heart of Pillar 2.",
       "note": "Overall capital requirement = Pillar 1 + [[P2R]] + combined buffers (+ [[P2G]]).",
       "last_updated": "2026-06-29",
-      "stale": true
+      "crosschecked": false
     },
     {
       "term": "Output floor (72.5%)",
@@ -171,14 +171,14 @@
       "definition": "The headline 'Basel IV' constraint: a bank's total [[RWA]] computed with internal models cannot fall below $72.5\\\\%$ of the [[RWA]] the standardised approaches would produce. It caps how much capital internal models can save versus the standardised benchmark, limiting unwarranted [[RWA]] variability and model gaming across banks. In the EU ([[CRR]]3) it phases in from 1 January 2025, rising from 50% to the full 72.5% by 2030.",
       "note": "$\\\\mathrm{RWA}\\\\ge72.5\\\\%\\\\times\\\\mathrm{RWA}_{\\\\text{standardised}}$ — a floor on the aggregate, not per portfolio.",
       "last_updated": "2026-06-29",
-      "stale": true
+      "crosschecked": false
     },
     {
       "term": "Basel III / Basel IV",
       "definition": "Basel III (2010 onward) is the post-2008 overhaul: more and higher-quality capital, the leverage ratio, liquidity standards (LCR, NSFR), capital buffers and systemic surcharges. 'Basel IV' is the informal name for its 2017 finalisation package — the output floor, the revised standardised and IRB credit-risk approaches, FRTB market risk, the new standardised operational-risk approach (SMA) and the CVA framework — so large it is treated as a separate generation.",
       "note": "Regulators insist it is still 'Basel III finalisation'; the industry calls it Basel IV for its impact.",
       "last_updated": "2026-06-29",
-      "stale": true
+      "crosschecked": false
     },
     {
       "term": "CRR / CRD",
@@ -186,7 +186,7 @@
       "definition": "The two EU instruments that turn the Basel standards into binding law. The Capital Requirements Regulation (CRR) is directly applicable in every member state and carries the quantitative single-rulebook rules — own-funds definitions, [[RWA]] approaches, IRB permission conditions, leverage and liquidity ratios. The Capital Requirements Directive (CRD) is transposed into national law and grants supervisory powers, governance and remuneration rules and the Pillar 2 framework.",
       "note": "Regulation = uniform and direct; Directive = national transposition with some discretion.",
       "last_updated": "2026-06-29",
-      "stale": true
+      "crosschecked": false
     },
     {
       "term": "CRR3 / CRD6",
@@ -194,7 +194,7 @@
       "definition": "The 2024 EU package implementing the Basel III finalisation ('Basel IV'). CRR3 introduces the output floor (phasing in from 1 January 2025), the revised credit-, market- (FRTB) and operational-risk approaches and a hardened CVA framework; CRD6 updates supervisory powers, third-country branch rules, ESG-risk management and fit-and-proper requirements. Together they are the EU's largest prudential reform since the original [[CRR]].",
       "note": "FRTB applies for reporting; its binding own-funds use in the EU was deferred to 2027 (second postponement: Delegated Regulation (EU) 2025/1496, June 2025). [1] CRR3 (EU) 2024/1623 — https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:32024R1623",
       "last_updated": "2026-06-29",
-      "stale": true
+      "crosschecked": false
     },
     {
       "term": "MREL / TLAC",
@@ -202,14 +202,14 @@
       "definition": "Minimum loss-absorbing and recapitalisation capacity: a stack of own funds plus bail-inable subordinated and senior debt that can be written down or converted to recapitalise a failing bank without taxpayer money. TLAC is the FSB's global standard for G-SIBs (a Pillar 1 minimum of the greater of 18% of [[RWA]] or 6.75% leverage exposure); MREL is the broader EU equivalent set bank-by-bank by the resolution authority under the BRRD/SRMR. They make bail-in, not bailout, the default failure path.",
       "note": "TLAC applies to G-SIBs only; MREL applies to all EU banks, calibrated to the resolution strategy.",
       "last_updated": "2026-06-29",
-      "stale": true
+      "crosschecked": false
     },
     {
       "term": "Deposit Guarantee Scheme (DGS)",
       "definition": "A national fund, financed by levies on banks, that reimburses insured depositors up to a harmonised €100,000 per depositor per institution if a bank fails, preserving confidence and pre-empting runs. In the EU it is set by the Deposit Guarantee Schemes Directive (DGSD); a pan-European EDIS (European Deposit Insurance Scheme) — the missing third pillar of Banking Union — remains under negotiation.",
       "note": "Distinct from resolution: the DGS protects small depositors; [[MREL]]/SRB handles failing-bank recapitalisation.",
       "last_updated": "2026-06-29",
-      "stale": true
+      "crosschecked": false
     },
     {
       "term": "ECB / SSM",
@@ -217,35 +217,35 @@
       "definition": "The euro-area prudential supervisor since November 2014. The ECB directly supervises the ~110 significant institutions (assets > €30bn, > 20% of national GDP, or top-three in a country) through Joint Supervisory Teams of ECB and national staff; less-significant banks are supervised by national authorities under ECB oversight. It runs the [[SREP]], approves internal models, conducts on-site inspections and can demand capital add-ons or remediation.",
       "note": "Microprudential bank supervision — separate from the ECB's monetary-policy mandate.",
       "last_updated": "2026-06-29",
-      "stale": true
+      "crosschecked": false
     },
     {
       "term": "European Banking Authority (EBA)",
       "definition": "The EU agency that writes the single rulebook — binding technical standards, guidelines and Q&As implementing the [[CRR]]/[[CRD]] — and coordinates the biennial EU-wide stress test. It also runs supervisory benchmarking (Art. 78 [[CRD]]), maintains the IRB-repair guidelines and harmonises definitions such as default. Crucially it is a standard-setter, not a day-to-day supervisor of individual banks.",
       "note": "Rules and stress tests, not supervision: the rulebook author, not the inspector.",
       "last_updated": "2026-06-29",
-      "stale": true
+      "crosschecked": false
     },
     {
       "term": "European Systemic Risk Board (ESRB)",
       "definition": "The EU's macroprudential watchdog, chaired by the ECB President, responsible for monitoring system-wide financial stability across banking, insurance and markets. It issues warnings and (non-binding) recommendations — for example on [[CCyB]] or sectoral buffers, real-estate vulnerabilities or NBFI risks — that national authorities must 'act or explain'. It oversees the big picture, leaving firm-level supervision to the ECB, [[EBA]] and national bodies.",
       "note": "Macroprudential and EU-wide; soft-law 'comply or explain' powers, not direct supervision.",
       "last_updated": "2026-06-29",
-      "stale": true
+      "crosschecked": false
     },
     {
       "term": "National competent / designated authorities",
       "definition": "Member-state bodies that supervise less-significant banks under SSM oversight and set national macroprudential measures. The competent authority handles microprudential supervision and SSM cooperation; the designated authority activates buffers such as the [[CCyB]], O-SII and systemic risk buffers. In many countries (e.g. Italy, Germany) the central bank holds both roles.",
       "note": "The local layer of the SSM — the 'NCA' in every Joint Supervisory Team.",
       "last_updated": "2026-06-29",
-      "stale": true
+      "crosschecked": false
     },
     {
       "term": "Banca d'Italia (Bank of Italy)",
       "definition": "Italy's central bank and national competent/designated authority. Within the SSM it leads supervision of less-significant Italian banks and joins the ECB's Joint Supervisory Teams for significant ones (Intesa Sanpaolo, UniCredit). It sets national macroprudential buffers, runs the Centrale dei Rischi credit register, and administers banking law under the Testo Unico Bancario (TUB).",
       "note": "Prudential banking supervisor; securities-market conduct sits with CONSOB.",
       "last_updated": "2026-06-29",
-      "stale": true
+      "crosschecked": false
     },
     {
       "term": "CONSOB",
@@ -253,7 +253,7 @@
       "definition": "Italy's securities-markets and investor-protection regulator — the national counterpart to ESMA. It supervises market conduct, listed issuers, prospectuses, MiFID-II investment services and transparency, while prudential bank supervision remains with Banca d'Italia and the ECB. Its remit is conduct and markets, not bank capital.",
       "note": "Markets and disclosure (TUF), not solvency: the conduct half of Italy's twin-peaks split.",
       "last_updated": "2026-06-29",
-      "stale": true
+      "crosschecked": false
     },
     {
       "term": "DFSA",
@@ -261,7 +261,7 @@
       "definition": "The independent regulator of the Dubai International Financial Centre (DIFC), a common-law financial free zone with its own courts and rulebook separate from onshore UAE law. It authorises and prudentially supervises banks, asset managers, insurers and market infrastructure inside the DIFC, broadly applying Basel-aligned standards. It does not regulate onshore UAE banks — that is the CBUAE.",
       "note": "DIFC only; a sister free-zone regulator to ADGM's FSRA.",
       "last_updated": "2026-06-29",
-      "stale": true
+      "crosschecked": false
     },
     {
       "term": "CBUAE",
@@ -269,7 +269,7 @@
       "definition": "The central bank and prudential supervisor of all onshore (mainland) UAE banks, finance companies and insurers, implementing Basel III with often high capital ratios. It runs monetary policy and the payments system and sets national prudential standards. The two common-law free zones — DIFC (DFSA) and ADGM (FSRA) — fall outside its remit.",
       "note": "Onshore UAE; the free zones are regulated separately.",
       "last_updated": "2026-06-29",
-      "stale": true
+      "crosschecked": false
     },
     {
       "term": "IFSB",
@@ -277,7 +277,7 @@
       "definition": "The Kuala Lumpur–based international standard-setter that issues prudential and supervisory standards for Islamic financial institutions — capital adequacy, risk management, governance and disclosure — adapting Basel to Sharia-compliant structures. Its capital-adequacy standard, for instance, prescribes how PSIA-funded assets and displaced commercial risk (the 'alpha') enter the denominator. Like Basel, its standards are guidance that national supervisors adopt.",
       "note": "The 'Basel Committee of Islamic finance' — prudential standards, not Sharia rulings.",
       "last_updated": "2026-06-29",
-      "stale": true
+      "crosschecked": false
     },
     {
       "term": "AAOIFI",
@@ -285,7 +285,7 @@
       "definition": "The Bahrain-based standard-setter that issues Sharia, accounting, auditing, ethics and governance standards for Islamic finance — defining, for example, the permissible structures of sukuk, murabaha and mudarabah. Where the IFSB covers prudential (capital/risk) standards, AAOIFI covers Sharia compliance and financial reporting. Its standards are mandatory in some jurisdictions and influential globally.",
       "note": "Sharia and accounting standards; complements the IFSB's prudential remit.",
       "last_updated": "2026-06-29",
-      "stale": true
+      "crosschecked": false
     },
     {
       "term": "Sukuk",
@@ -293,7 +293,7 @@
       "definition": "Sharia-compliant certificates representing undivided beneficial ownership in an underlying tangible asset, usufruct or venture. Returns flow from the real economic performance of those assets (rentals, profit shares) rather than from interest (riba), so holders bear genuine asset/ownership risk unlike conventional bondholders. Common structures include ijara (lease), mudarabah and murabaha-backed sukuk.",
       "note": "Asset-backed and risk-bearing — economically closer to a trust certificate than a debt security.",
       "last_updated": "2026-06-29",
-      "stale": true
+      "crosschecked": false
     },
     {
       "term": "Mudarabah",
@@ -301,7 +301,7 @@
       "definition": "A Sharia-compliant partnership in which one party (rabb-al-mal) supplies the capital and the other (mudarib) supplies management and expertise. Profits are shared in a pre-agreed ratio, but financial losses fall on the capital provider alone (the manager loses only effort), absent misconduct or negligence. It is the standard structure for profit-sharing investment accounts (PSIA).",
       "note": "Risk-sharing, not interest: the capital provider bears the downside.",
       "last_updated": "2026-06-29",
-      "stale": true
+      "crosschecked": false
     },
     {
       "term": "Murabaha",
@@ -309,21 +309,21 @@
       "definition": "A Sharia-compliant cost-plus-profit sale: the bank buys an asset and resells it to the client at a disclosed mark-up, payable in instalments. The return is a trading profit on a real asset, not interest, which makes it permissible — though its fixed, debt-like cash flows make it the most common (and most debated) Islamic financing instrument. The bank must genuinely own the asset, however briefly, for the structure to be valid.",
       "note": "Economically resembles a loan but is structured as a deferred-payment sale of goods.",
       "last_updated": "2026-06-29",
-      "stale": true
+      "crosschecked": false
     },
     {
       "term": "Profit-sharing investment account (PSIA)",
       "definition": "An Islamic-bank funding account, usually structured as a mudarabah, where the holder supplies capital the bank invests and both share the profit — and the holder bears investment losses, absent bank misconduct. Because the holder absorbs asset risk like an investor rather than a creditor, assets funded by unrestricted PSIA are largely removed from the bank's [[RWA]], with only an 'alpha' fraction retained for displaced commercial risk.",
       "note": "Unrestricted PSIA leaves asset choice to the bank; restricted PSIA constrains it.",
       "last_updated": "2026-06-29",
-      "stale": true
+      "crosschecked": false
     },
     {
       "term": "Displaced commercial risk (DCR)",
       "definition": "The risk that an Islamic bank, to retain PSIA holders who could in theory absorb investment losses, instead smooths their returns — forgoing its own profit share or dipping into reserves to match market deposit rates — thereby effectively bearing risk that contractually belongs to the account holders. Because the bank absorbs this risk in practice, supervisors keep an 'alpha' fraction of PSIA-funded assets in the capital denominator rather than excluding them fully.",
       "note": "The gap between theory (full risk transfer) and practice (the bank cushions payouts) — why 'alpha' exists.",
       "last_updated": "2026-06-29",
-      "stale": true
+      "crosschecked": false
     }
   ]
 }

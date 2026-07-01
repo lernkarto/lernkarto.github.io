@@ -27,7 +27,7 @@
       "definition": "The practice of protecting and creating economic value in a firm by managing its exposure to financial risk. As a discipline it means identifying the sources of risk, measuring them, and crafting plans to mitigate them — an ongoing process, not a single metric.",
       "note": "It is the overview/process layer; the detailed measures (VaR, PD/LGD/EAD) belong to the specialist risk functions.",
       "last_updated": "2026-06-29",
-      "stale": true
+      "crosschecked": false
     },
     {
       "category": "core",
@@ -36,7 +36,7 @@
       "type": "cloze",
       "note": "The slot is the wrong word on purpose: the goal is to *manage*, not eliminate.",
       "last_updated": "2026-06-29",
-      "stale": true
+      "crosschecked": false
     },
     {
       "category": "core",
@@ -45,7 +45,7 @@
       "definition": "Correct: C) Operational risk. In financial institutions, market and credit risk are taken intentionally to earn returns, while operational risk is a byproduct to be controlled. Liquidity risk is also managed rather than sought, but the article frames operational risk as the byproduct.",
       "type": "mcq",
       "last_updated": "2026-06-29",
-      "stale": true
+      "crosschecked": false
     },
     {
       "category": "core",
@@ -55,7 +55,7 @@
       "answer": false,
       "summary": "False — corporates focus on business risks (revenue, cost, cash flow); market/credit risk are secondary and usually hedged, not sought.",
       "last_updated": "2026-06-29",
-      "stale": true
+      "crosschecked": false
     },
     {
       "category": "core",
@@ -63,7 +63,7 @@
       "definition": "Banks and fund managers take market and credit risk intentionally as their source of return, controlling operational risk as a byproduct. Non-financial corporates instead focus on the risks of their business — revenue, costs and cash flow — treating market and credit risk as secondary and managing them so they do not disrupt operations.",
       "note": "Same toolkit, opposite stance: institutions seek market/credit risk; corporates hedge it away.",
       "last_updated": "2026-06-29",
-      "stale": true
+      "crosschecked": false
     },
     {
       "category": "core",
@@ -71,7 +71,7 @@
       "definition": "FRM covers the whole firm-level taxonomy: market risk (rates, FX, equity, commodity, inflation), credit risk (default, concentration, settlement, sovereign), liquidity risk (funding and market liquidity), and the fourth — covering people, process, systems, legal and reputational failures.",
       "type": "cloze",
       "last_updated": "2026-06-29",
-      "stale": true
+      "crosschecked": false
     },
     {
       "category": "theorems",
@@ -79,7 +79,7 @@
       "definition": "Under Modigliani–Miller in a perfect market, corporate hedging is irrelevant to firm value: a firm cannot create value by bearing a risk internally when the price of bearing it inside the firm equals the price of bearing it outside. Diversified shareholders are assumed not to care about firm-specific risk, since they can diversify it themselves.",
       "note": "It is a benchmark, not a recommendation — it pins down exactly which assumptions must fail for hedging to add value.",
       "last_updated": "2026-06-29",
-      "stale": true
+      "crosschecked": false
     },
     {
       "category": "theorems",
@@ -88,7 +88,7 @@
       "definition": "Correct: B) Diversified shareholders can diversify firm-specific risk themselves. In a perfect market they are assumed not to care about firm-specific risk, and the firm cannot add value by bearing a risk internally when its price inside equals its price outside. Cost, access and regulation are not the MM argument.",
       "type": "mcq",
       "last_updated": "2026-06-29",
-      "stale": true
+      "crosschecked": false
     },
     {
       "category": "theorems",
@@ -96,7 +96,7 @@
       "definition": "Because real markets are not perfect, and the frictions make hedging value-creating: it reduces the probability and deadweight costs of financial distress, lowers expected bankruptcy costs, smooths taxes under a convex tax schedule, secures internal funds so good investments are not passed up, and protects firm-specific risks shareholders cannot cheaply diversify. FRM creates value in the gap between MM's assumptions and reality.",
       "note": "Hedging adds value through market imperfections — not against MM, but in the space its assumptions leave open.",
       "last_updated": "2026-06-29",
-      "stale": true
+      "crosschecked": false
     },
     {
       "category": "theorems",
@@ -104,7 +104,7 @@
       "definition": "In imperfect markets, lowering cash-flow volatility cuts the chance of hitting distress and bearing its deadweight costs — lost customers and suppliers, fire-sale asset values and costly distressed financing. This is the central practical reason hedging adds value despite the Modigliani–Miller irrelevance result.",
       "type": "cloze",
       "last_updated": "2026-06-29",
-      "stale": true
+      "crosschecked": false
     },
     {
       "category": "use",
@@ -113,7 +113,7 @@
       "definition": "Correct: D) Letting shareholders avoid diversifying their own portfolios. Value comes from frictions — distress costs, convex taxes, and protecting internal funds for investment. Shareholders' own diversification is the Modigliani–Miller reason hedging would be irrelevant, not a reason it creates value.",
       "type": "mcq",
       "last_updated": "2026-06-29",
-      "stale": true
+      "crosschecked": false
     },
     {
       "category": "use",
@@ -123,7 +123,7 @@
       "answer": true,
       "summary": "True — corporates hedge market/credit risk to protect the operating business; only financial institutions take it intentionally for return.",
       "last_updated": "2026-06-29",
-      "stale": true
+      "crosschecked": false
     },
     {
       "category": "use",
@@ -131,7 +131,7 @@
       "definition": "MM assumes no financial-distress or bankruptcy costs, no taxes (or linear ones), free and symmetric information, and costless access to external capital. Reality violates all of these — distress is costly, taxes are convex, information is asymmetric and external funds are dear — which is precisely why managing risk can raise firm value.",
       "note": "Naming the broken assumption is the same as naming the channel through which hedging pays.",
       "last_updated": "2026-06-29",
-      "stale": true
+      "crosschecked": false
     },
     {
       "category": "exercise",
@@ -140,7 +140,7 @@
       "definition": "Under Modigliani–Miller the hedge looks irrelevant (diversified shareholders could diversify fuel-price risk themselves). But markets are imperfect: stabilising fuel cost stabilises cash flow, reducing the chance of financial distress and its deadweight costs, smoothing taxes, and keeping internal funds available to invest. Any one of these market frictions is a valid reason the hedge adds value.",
       "note": "Derives directly from the primer's distress / tax / internal-funds channels.",
       "last_updated": "2026-06-29",
-      "stale": true
+      "crosschecked": false
     },
     {
       "category": "exercise",
@@ -149,7 +149,7 @@
       "definition": "For the bank, market risk such as FX can be taken intentionally as a source of return within limits and capital, so a deliberate open euro position is part of the business. For the manufacturer, FX is a secondary risk whose only effect is to disturb revenue, costs and cash flow, so the value-maximising choice is to hedge it away and protect the operating business.",
       "note": "Applies the banking-vs-corporate stance distinction from the primer.",
       "last_updated": "2026-06-29",
-      "stale": true
+      "crosschecked": false
     }
   ]
 }

@@ -26,7 +26,7 @@
       "summary": "First big modern revision: moves, auto, lambdas, smart pointers, threads.",
       "category": "cpp11",
       "last_updated": "2026-06-29",
-      "stale": true
+      "crosschecked": false
     },
     {
       "term": "What did `auto` change versus the old way (C++11)?",
@@ -34,7 +34,7 @@
       "summary": "Deduces the type, replacing verbose explicit type names.",
       "category": "cpp11",
       "last_updated": "2026-06-29",
-      "stale": true
+      "crosschecked": false
     },
     {
       "term": "What did the range-based for loop replace (C++11)?",
@@ -42,7 +42,7 @@
       "summary": "`for (const auto& x : v)` replaces index/iterator loops.",
       "category": "cpp11",
       "last_updated": "2026-06-29",
-      "stale": true
+      "crosschecked": false
     },
     {
       "term": "What did move semantics (C++11) add over copying?",
@@ -50,7 +50,7 @@
       "definition": "Correct: A) the ability to transfer a resource cheaply instead of deep-copying it. Rvalue references (`T&&`) and move constructors let returning a big `vector` or storing a `unique_ptr` steal the internal buffer/ownership rather than duplicate it — a large performance win and what enables move-only types.",
       "category": "cpp11",
       "last_updated": "2026-06-29",
-      "stale": true
+      "crosschecked": false
     },
     {
       "term": "Why `nullptr` instead of `NULL` or `0` (C++11)?",
@@ -58,7 +58,7 @@
       "summary": "Type-safe null that can't be mistaken for the integer 0.",
       "category": "cpp11",
       "last_updated": "2026-06-29",
-      "stale": true
+      "crosschecked": false
     },
     {
       "term": "What smart pointers did C++11 standardise, and what did they replace?",
@@ -66,7 +66,7 @@
       "summary": "unique_ptr/shared_ptr/weak_ptr replaced raw new/delete and auto_ptr.",
       "category": "cpp11",
       "last_updated": "2026-06-29",
-      "stale": true
+      "crosschecked": false
     },
     {
       "term": "What does `constexpr` (C++11) do?",
@@ -74,7 +74,7 @@
       "summary": "Compile-time evaluation of constants and functions.",
       "category": "cpp11",
       "last_updated": "2026-06-29",
-      "stale": true
+      "crosschecked": false
     },
     {
       "term": "What threading support did C++11 add?",
@@ -82,7 +82,7 @@
       "summary": "std::thread, mutex, atomic, future/async + a memory model.",
       "category": "cpp11",
       "last_updated": "2026-06-29",
-      "stale": true
+      "crosschecked": false
     },
     {
       "type": "cloze",
@@ -91,7 +91,7 @@
       "summary": "= default keeps the compiler version; = delete forbids the function.",
       "definition": "`Type(const Type&) = delete;` makes copying a compile error — the modern, clear way to express non-copyable, replacing the old trick of declaring a private copy constructor with no body.",
       "last_updated": "2026-06-29",
-      "stale": true
+      "crosschecked": false
     },
     {
       "type": "truefalse",
@@ -101,7 +101,7 @@
       "summary": "True — before, you wrote separate function objects (functors) or free functions.",
       "definition": "True. Pre-C++11 you passed a hand-written functor struct or a free function to `std::sort`'s comparator. C++11 lambdas let you write the callable inline at the call site, capturing local state, which made `<algorithm>` far more pleasant to use.",
       "last_updated": "2026-06-29",
-      "stale": true
+      "crosschecked": false
     },
     {
       "term": "What was the headline addition in C++14 for smart pointers?",
@@ -109,7 +109,7 @@
       "summary": "std::make_unique — the missing factory for unique_ptr.",
       "category": "cpp14",
       "last_updated": "2026-06-29",
-      "stale": true
+      "crosschecked": false
     },
     {
       "term": "What are generic lambdas (C++14)?",
@@ -117,7 +117,7 @@
       "definition": "Correct: A) lambdas whose parameters use `auto`, making them templated callables. `[](auto a, auto b){ return a + b; }` works for any types supporting `+`, deducing each independently. Before C++14 a lambda's parameter types had to be spelled out concretely.",
       "category": "cpp14",
       "last_updated": "2026-06-29",
-      "stale": true
+      "crosschecked": false
     },
     {
       "term": "What did C++14 relax about constexpr functions?",
@@ -125,7 +125,7 @@
       "summary": "constexpr functions gained loops, locals and multiple statements.",
       "category": "cpp14",
       "last_updated": "2026-06-29",
-      "stale": true
+      "crosschecked": false
     },
     {
       "term": "Exercise: modernise this C++03 loop.\n`for (std::vector<int>::iterator it = v.begin(); it != v.end(); ++it) { std::cout << *it; }`",
@@ -134,7 +134,7 @@
       "summary": "`for (const auto& x : v) std::cout << x;` — range-for + auto.",
       "category": "use",
       "last_updated": "2026-06-29",
-      "stale": true
+      "crosschecked": false
     },
     {
       "term": "Exercise: replace this raw allocation with the modern C++14 idiom.\n`Widget* w = new Widget(1, 2); ... delete w;`",
@@ -143,7 +143,7 @@
       "summary": "`auto w = std::make_unique<Widget>(1, 2);` — no new/delete.",
       "category": "use",
       "last_updated": "2026-06-29",
-      "stale": true
+      "crosschecked": false
     }
   ]
 }

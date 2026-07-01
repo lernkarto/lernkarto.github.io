@@ -30,7 +30,7 @@
       "summary": "git add -A",
       "category": "basics",
       "last_updated": "2026-06-29",
-      "stale": true
+      "crosschecked": false
     },
     {
       "term": "Record the staged changes as a commit with a message",
@@ -38,7 +38,7 @@
       "summary": "git commit -m \"message\"",
       "category": "basics",
       "last_updated": "2026-06-29",
-      "stale": true
+      "crosschecked": false
     },
     {
       "term": "Undo the last commit but keep the changes staged",
@@ -46,7 +46,7 @@
       "summary": "git reset --soft HEAD~1",
       "category": "undo",
       "last_updated": "2026-06-29",
-      "stale": true
+      "crosschecked": false
     },
     {
       "term": "Undo the last commit and discard its changes entirely",
@@ -54,7 +54,7 @@
       "summary": "git reset --hard HEAD~1",
       "category": "undo",
       "last_updated": "2026-06-29",
-      "stale": true
+      "crosschecked": false
     },
     {
       "term": "Amend the most recent commit (message or contents)",
@@ -62,7 +62,7 @@
       "summary": "git commit --amend",
       "category": "basics",
       "last_updated": "2026-06-29",
-      "stale": true
+      "crosschecked": false
     },
     {
       "term": "Discard uncommitted changes to a tracked file",
@@ -70,7 +70,7 @@
       "summary": "git restore <file>",
       "category": "undo",
       "last_updated": "2026-06-29",
-      "stale": true
+      "crosschecked": false
     },
     {
       "term": "Unstage a file but keep its changes",
@@ -78,7 +78,7 @@
       "summary": "git restore --staged <file>",
       "category": "undo",
       "last_updated": "2026-06-29",
-      "stale": true
+      "crosschecked": false
     },
     {
       "term": "Create a new branch and switch to it",
@@ -86,7 +86,7 @@
       "summary": "git switch -c <name>",
       "category": "branch",
       "last_updated": "2026-06-29",
-      "stale": true
+      "crosschecked": false
     },
     {
       "term": "Switch to an existing branch",
@@ -94,7 +94,7 @@
       "summary": "git switch <name>",
       "category": "branch",
       "last_updated": "2026-06-29",
-      "stale": true
+      "crosschecked": false
     },
     {
       "term": "Merge another branch into the current one",
@@ -102,7 +102,7 @@
       "summary": "git merge <branch>",
       "category": "branch",
       "last_updated": "2026-06-29",
-      "stale": true
+      "crosschecked": false
     },
     {
       "term": "Replay your commits on top of another branch (linear history)",
@@ -110,7 +110,7 @@
       "summary": "git rebase <branch>",
       "category": "branch",
       "last_updated": "2026-06-29",
-      "stale": true
+      "crosschecked": false
     },
     {
       "term": "Delete a local branch that is already merged",
@@ -118,7 +118,7 @@
       "summary": "git branch -d <name>",
       "category": "branch",
       "last_updated": "2026-06-29",
-      "stale": true
+      "crosschecked": false
     },
     {
       "term": "Show the commit history compactly, one line each",
@@ -126,7 +126,7 @@
       "summary": "git log --oneline",
       "category": "undo",
       "last_updated": "2026-06-29",
-      "stale": true
+      "crosschecked": false
     },
     {
       "term": "Show what has changed but is not yet staged",
@@ -134,7 +134,7 @@
       "summary": "git diff",
       "category": "undo",
       "last_updated": "2026-06-29",
-      "stale": true
+      "crosschecked": false
     },
     {
       "term": "Show the current state of the working tree and index",
@@ -142,7 +142,7 @@
       "summary": "git status",
       "category": "undo",
       "last_updated": "2026-06-29",
-      "stale": true
+      "crosschecked": false
     },
     {
       "term": "Temporarily shelve uncommitted changes",
@@ -150,7 +150,7 @@
       "summary": "git stash",
       "category": "undo",
       "last_updated": "2026-06-29",
-      "stale": true
+      "crosschecked": false
     },
     {
       "term": "Reapply the most recently stashed changes",
@@ -158,7 +158,7 @@
       "summary": "git stash pop",
       "category": "undo",
       "last_updated": "2026-06-29",
-      "stale": true
+      "crosschecked": false
     },
     {
       "term": "Create a new commit that reverses a given commit",
@@ -166,7 +166,7 @@
       "summary": "git revert <commit>",
       "category": "undo",
       "last_updated": "2026-06-29",
-      "stale": true
+      "crosschecked": false
     },
     {
       "term": "Download new commits from the remote without merging",
@@ -174,7 +174,7 @@
       "summary": "git fetch",
       "category": "remote",
       "last_updated": "2026-06-29",
-      "stale": true
+      "crosschecked": false
     },
     {
       "term": "Fetch from the remote and integrate into the current branch",
@@ -182,7 +182,7 @@
       "summary": "git pull",
       "category": "remote",
       "last_updated": "2026-06-29",
-      "stale": true
+      "crosschecked": false
     },
     {
       "term": "Send your local commits to the remote",
@@ -190,7 +190,7 @@
       "summary": "git push",
       "category": "remote",
       "last_updated": "2026-06-29",
-      "stale": true
+      "crosschecked": false
     },
     {
       "term": "Copy a remote repository to your machine",
@@ -198,7 +198,7 @@
       "summary": "git clone <url>",
       "category": "remote",
       "last_updated": "2026-06-29",
-      "stale": true
+      "crosschecked": false
     },
     {
       "term": "git cherry-pick <commit>",
@@ -206,7 +206,7 @@
       "summary": "Apply one commit's changes onto the current branch.",
       "category": "branch",
       "last_updated": "2026-06-29",
-      "stale": true
+      "crosschecked": false
     },
     {
       "term": "git reflog",
@@ -214,7 +214,7 @@
       "summary": "Log of HEAD movements; recover lost commits.",
       "category": "undo",
       "last_updated": "2026-06-29",
-      "stale": true
+      "crosschecked": false
     }
   ]
 }

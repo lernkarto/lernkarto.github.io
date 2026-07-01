@@ -26,7 +26,7 @@
       "summary": "Tie a resource's lifetime to an object; destructor frees it automatically.",
       "category": "core",
       "last_updated": "2026-06-29",
-      "stale": true
+      "crosschecked": false
     },
     {
       "term": "Why does RAII make exceptions safe?",
@@ -34,7 +34,7 @@
       "summary": "Stack unwinding runs destructors, so RAII releases resources even on throw.",
       "category": "core",
       "last_updated": "2026-06-29",
-      "stale": true
+      "crosschecked": false
     },
     {
       "term": "What is `std::unique_ptr`?",
@@ -42,7 +42,7 @@
       "summary": "Sole-ownership smart pointer; move-only; frees on destruction.",
       "category": "smart",
       "last_updated": "2026-06-29",
-      "stale": true
+      "crosschecked": false
     },
     {
       "type": "cloze",
@@ -51,7 +51,7 @@
       "summary": "std::make_unique<T>(args) builds a unique_ptr without a raw new.",
       "definition": "`std::make_unique<T>(args)` allocates a `T`, forwards the constructor arguments, and returns a `unique_ptr<T>` — no visible `new`, and exception-safe. It was added in C++14.",
       "last_updated": "2026-06-29",
-      "stale": true
+      "crosschecked": false
     },
     {
       "term": "What is `std::shared_ptr`?",
@@ -59,7 +59,7 @@
       "summary": "Reference-counted shared ownership; frees when the last owner dies.",
       "category": "smart",
       "last_updated": "2026-06-29",
-      "stale": true
+      "crosschecked": false
     },
     {
       "term": "unique_ptr vs shared_ptr — which should you reach for first?",
@@ -67,7 +67,7 @@
       "definition": "Correct: A) prefer unique_ptr; use shared_ptr only when ownership is genuinely shared. `unique_ptr` is cheaper (no atomic ref-count) and expresses clear single ownership. Reach for `shared_ptr` only when multiple owners must keep an object alive — shared ownership is harder to reason about.",
       "category": "smart",
       "last_updated": "2026-06-29",
-      "stale": true
+      "crosschecked": false
     },
     {
       "term": "What problem does `std::weak_ptr` solve?",
@@ -75,7 +75,7 @@
       "summary": "A non-owning observer that breaks shared_ptr reference cycles.",
       "category": "smart",
       "last_updated": "2026-06-29",
-      "stale": true
+      "crosschecked": false
     },
     {
       "type": "truefalse",
@@ -85,7 +85,7 @@
       "summary": "True — a reference cycle keeps both counts above 0; make one a weak_ptr.",
       "definition": "True. In a cycle each `shared_ptr` keeps the other alive, so neither count drops to zero and both objects leak. Making one of the links a `weak_ptr` removes its contribution to the count, allowing the cycle to be reclaimed.",
       "last_updated": "2026-06-29",
-      "stale": true
+      "crosschecked": false
     },
     {
       "term": "What does std::move actually do?",
@@ -93,7 +93,7 @@
       "summary": "A cast to rvalue that permits stealing resources instead of copying.",
       "category": "core",
       "last_updated": "2026-06-29",
-      "stale": true
+      "crosschecked": false
     },
     {
       "term": "What is the point of move semantics?",
@@ -101,7 +101,7 @@
       "summary": "Transfer resources cheaply instead of deep-copying them.",
       "category": "core",
       "last_updated": "2026-06-29",
-      "stale": true
+      "crosschecked": false
     },
     {
       "type": "cloze",
@@ -110,7 +110,7 @@
       "summary": "unique_ptr is move-only — transfer ownership with std::move.",
       "definition": "`sink(std::move(p));` transfers ownership; afterwards `p` is null. Without `std::move` the compiler rejects the copy, which is exactly the safety guarantee that keeps ownership unique.",
       "last_updated": "2026-06-29",
-      "stale": true
+      "crosschecked": false
     },
     {
       "term": "How do you transfer ownership out of a function?",
@@ -118,7 +118,7 @@
       "summary": "Return a unique_ptr by value — the move transfers ownership.",
       "category": "smart",
       "last_updated": "2026-06-29",
-      "stale": true
+      "crosschecked": false
     },
     {
       "type": "truefalse",
@@ -128,7 +128,7 @@
       "summary": "False — two control blocks both delete it → double free; use make_shared.",
       "definition": "False. Constructing two independent `shared_ptr`s from one raw pointer gives each its own reference count, so both will eventually delete the object — a double free. Create the `shared_ptr` once (ideally via `make_shared`) and copy that.",
       "last_updated": "2026-06-29",
-      "stale": true
+      "crosschecked": false
     },
     {
       "term": "Why prefer `make_shared` over `shared_ptr<T>(new T)`?",
@@ -136,7 +136,7 @@
       "summary": "One allocation, exception-safe, no raw new.",
       "category": "smart",
       "last_updated": "2026-06-29",
-      "stale": true
+      "crosschecked": false
     },
     {
       "term": "Exercise: rewrite this leak-prone code with a smart pointer. `Widget* w = new Widget(); w->run(); delete w;`",
@@ -145,7 +145,7 @@
       "summary": "`auto w = std::make_unique<Widget>(); w->run();` — auto-frees, no delete.",
       "category": "use",
       "last_updated": "2026-06-29",
-      "stale": true
+      "crosschecked": false
     },
     {
       "term": "Exercise: a parent node holds `shared_ptr<Node>` children and each child holds a `shared_ptr<Node>` back to its parent. What's wrong and how do you fix it?",
@@ -154,7 +154,7 @@
       "summary": "Cycle leaks; make the parent back-pointer a weak_ptr.",
       "category": "use",
       "last_updated": "2026-06-29",
-      "stale": true
+      "crosschecked": false
     }
   ]
 }

@@ -18,7 +18,7 @@
       "definition": "The trading book holds positions held with intent to trade or to hedge trading positions, marked to market and capitalised for market risk; the banking book holds positions intended to be held to maturity (loans, deposits) and is capitalised for credit and interest-rate-risk-in-the-banking-book (IRRBB). The boundary determines which capital regime applies, so it is policed to stop banks parking positions on the cheaper side. FRTB hardened the boundary with presumptive assignments and strict limits on re-designation to curb regulatory arbitrage.",
       "note": "Internal risk transfers between the books are tightly constrained under FRTB.",
       "last_updated": "2026-06-29",
-      "stale": true
+      "crosschecked": false
     },
     {
       "term": "Delta",
@@ -26,7 +26,7 @@
       "definition": "The first-order sensitivity of a position's value to a small move in the underlying price — the slope of value against spot. It is the hedge ratio: holding $-\\\\Delta$ units of the underlying per option neutralises first-order exposure. A call's delta runs $0\\\\to+1$, a put's $-1\\\\to 0$.",
       "note": "Delta is local; it drifts as spot moves, and that drift is gamma.",
       "last_updated": "2026-06-29",
-      "stale": true
+      "crosschecked": false
     },
     {
       "term": "Gamma",
@@ -34,7 +34,7 @@
       "definition": "The second-order sensitivity of value to the underlying — the curvature of the value curve and the rate of change of delta. It is positive for any long option, largest at-the-money near expiry, and measures how fast a delta hedge goes stale. High gamma means frequent, costly rehedging.",
       "note": "A delta-neutral but gamma-positive book profits from large moves in either direction (paying theta for it).",
       "last_updated": "2026-06-29",
-      "stale": true
+      "crosschecked": false
     },
     {
       "term": "Vega",
@@ -42,7 +42,7 @@
       "definition": "The sensitivity of an option's value to a change in (implied) volatility — positive for long calls and puts, since more volatility raises the chance of finishing deep in-the-money. It is largest for at-the-money options with long maturity. Despite the name it is not a Greek letter, but it is treated as one.",
       "note": "Vega risk is bucketed across the volatility surface (level, skew, term) in real books.",
       "last_updated": "2026-06-29",
-      "stale": true
+      "crosschecked": false
     },
     {
       "term": "Theta",
@@ -50,7 +50,7 @@
       "definition": "The sensitivity of an option's value to the passage of time — time decay, usually negative for long options because there is progressively less time for favourable moves. It is fastest for at-the-money options near expiry. Theta is the price paid for holding positive gamma.",
       "note": "A long-option book typically bleeds theta daily while waiting for the moves its gamma profits from.",
       "last_updated": "2026-06-29",
-      "stale": true
+      "crosschecked": false
     },
     {
       "term": "Rho",
@@ -58,7 +58,7 @@
       "definition": "The sensitivity of an option's value to a change in the risk-free interest rate — positive for calls and negative for puts. A higher rate lowers the present value of the strike paid later, helping a call (pays $K$ in future) and hurting a put (receives $K$). This sign pattern is consistent with put–call parity $C-P=S-Ke^{-rT}$.",
       "note": "Usually the smallest Greek for short-dated equity options, but material for long-dated and rate products.",
       "last_updated": "2026-06-29",
-      "stale": true
+      "crosschecked": false
     },
     {
       "term": "DV01 / PV01",
@@ -67,14 +67,14 @@
       "formula": "$\\\\mathrm{DV01} = -\\\\dfrac{\\\\partial V}{\\\\partial y}\\\\times 10^{-4}$",
       "note": "A close cousin is DVCS / CR01 — value change per 1bp of credit spread.",
       "last_updated": "2026-06-29",
-      "stale": true
+      "crosschecked": false
     },
     {
       "term": "Basis risk",
       "definition": "The residual risk that a hedge and the exposure it hedges do not move in lockstep, because they reference different but related underlyings, maturities, locations or rate indices. It is precisely what remains after an imperfect hedge — the hedge removes the common factor but leaves the spread between the two legs. Basis can stay quiet for long periods and then gap violently when the relationship breaks down.",
       "note": "Examples: hedging jet fuel with crude futures (crack-spread basis); funding at one rate index while hedging with another (index basis).",
       "last_updated": "2026-06-29",
-      "stale": true
+      "crosschecked": false
     },
     {
       "term": "FRTB",
@@ -82,7 +82,7 @@
       "definition": "The Basel Committee's overhaul of market-risk capital, designed after the 2008 crisis to fix the weaknesses of Basel 2.5. It hardens the trading/banking-book boundary, replaces 99% VaR with 97.5% Expected Shortfall calibrated to a stress period, introduces liquidity horizons of 10–120 days, and offers two approaches: a revised standardised approach (SBM-based) and a stricter internal models approach (IMA) with a desk-level approval test.",
       "note": "Also known as the minimum capital requirements for market risk (MAR).",
       "last_updated": "2026-06-29",
-      "stale": true
+      "crosschecked": false
     },
     {
       "term": "SBM",
@@ -91,7 +91,7 @@
       "formula": "capital $=$ delta $+$ vega $+$ curvature charges, aggregated with prescribed correlations",
       "note": "Computed under three correlation scenarios (high/medium/low); the worst is taken.",
       "last_updated": "2026-06-29",
-      "stale": true
+      "crosschecked": false
     },
     {
       "term": "IMA",
@@ -99,7 +99,7 @@
       "definition": "FRTB's model-based capital route, where a bank uses its own Expected Shortfall model (at 97.5%, with stress calibration and liquidity-horizon scaling) instead of the standardised formulas. Approval is granted desk by desk and is conditional on passing both a P&L attribution test and exception backtesting; failing desks fall back to the standardised approach. Capital also includes a separate default risk charge and a capital add-on for non-modellable risk factors.",
       "note": "The bar for IMA is deliberately high, so many banks run SBM as the floor and fallback.",
       "last_updated": "2026-06-29",
-      "stale": true
+      "crosschecked": false
     },
     {
       "term": "DRC",
@@ -107,7 +107,7 @@
       "definition": "The FRTB capital component for the jump-to-default risk of trading-book positions — the loss if an issuer suddenly defaults, which a continuous ES/VaR model on spreads does not capture. It replaces the older incremental risk charge (IRC) and covers credit and equity issuer default. It is computed separately from the spread-risk sensitivities and added on top.",
       "note": "Default is a discontinuous event; gradual spread widening (caught by SBM/IMA) is a different risk.",
       "last_updated": "2026-06-29",
-      "stale": true
+      "crosschecked": false
     },
     {
       "term": "NMRF",
@@ -115,7 +115,7 @@
       "definition": "Risk factors that fail FRTB's risk-factor eligibility test — broadly, those lacking enough real, verifiable price observations to be modelled robustly in the ES engine. Each NMRF attracts a separate stressed capital add-on (a stress scenario per factor), which is typically punitive to incentivise banks to source better data. NMRF capital can dominate IMA charges for illiquid or sparsely-traded factors.",
       "note": "Eligibility hinges on the real-price-observation count (e.g. ≥24 prices/year, no 90-day gap).",
       "last_updated": "2026-06-29",
-      "stale": true
+      "crosschecked": false
     },
     {
       "term": "P&L attribution test",
@@ -123,7 +123,7 @@
       "definition": "An FRTB diagnostic that checks whether a desk's risk-management P&L (from the risk model's sensitivities) tracks its hypothetical P&L (full front-office revaluation). Large unexplained gaps mean the risk model omits material factors, so the desk loses internal-model approval. It uses two statistical metrics — the Spearman correlation and the Kolmogorov–Smirnov test — mapped to green/amber/red zones.",
       "note": "PLA failure pushes a desk to the standardised approach, usually at higher capital.",
       "last_updated": "2026-06-29",
-      "stale": true
+      "crosschecked": false
     },
     {
       "term": "Component VaR",
@@ -131,28 +131,28 @@
       "formula": "$\\\\mathrm{CVaR}_i = w_i\\\\,\\\\dfrac{\\\\partial\\\\,\\\\mathrm{VaR}}{\\\\partial w_i},\\\\quad \\\\sum_i \\\\mathrm{CVaR}_i = \\\\mathrm{VaR}$",
       "note": "A negative component VaR identifies a genuine hedge — a position that reduces total risk.",
       "last_updated": "2026-06-29",
-      "stale": true
+      "crosschecked": false
     },
     {
       "term": "Marginal VaR",
       "definition": "The change in total portfolio VaR per unit increase in a position — the partial derivative of VaR with respect to that holding. It tells you whether adding a little more of a position raises or lowers risk at the margin, and so guides trade sizing and hedge selection. Marginal VaR is the per-unit building block from which component VaR is formed.",
       "formula": "$\\\\mathrm{MVaR}_i = \\\\dfrac{\\\\partial\\\\,\\\\mathrm{VaR}}{\\\\partial w_i}$",
       "last_updated": "2026-06-29",
-      "stale": true
+      "crosschecked": false
     },
     {
       "term": "Incremental VaR",
       "definition": "The change in total portfolio VaR from adding or removing an entire position or trade — what a new trade actually costs, or saves, in risk terms. Unlike marginal VaR it is a discrete (finite) difference, not an infinitesimal derivative, so it captures the full diversification effect of the whole trade. It is the natural pre-trade check for a desk.",
       "formula": "$\\\\mathrm{IVaR} = \\\\mathrm{VaR}_{\\\\text{with}} - \\\\mathrm{VaR}_{\\\\text{without}}$",
       "last_updated": "2026-06-29",
-      "stale": true
+      "crosschecked": false
     },
     {
       "term": "Historical-simulation VaR",
       "definition": "VaR obtained by re-pricing today's portfolio under each of the actual market moves observed in a historical look-back window, then reading off the empirical quantile of the resulting P&L distribution. It makes no distributional assumption and naturally captures fat tails and correlations present in the data, but is only as rich as its sample period and reacts slowly to regime change. It also suffers ghost effects, where a large past move jumps the estimate when it enters or leaves the window.",
       "note": "Most common method in practice; can be volatility-weighted (e.g. Hull–White) to react faster.",
       "last_updated": "2026-06-29",
-      "stale": true
+      "crosschecked": false
     },
     {
       "term": "Parametric VaR",
@@ -160,7 +160,7 @@
       "definition": "VaR computed by assuming returns are jointly normal (or elliptical) and reading the quantile directly off portfolio volatility built from a covariance matrix. It is fast and analytic, making it attractive for large linear books, but it systematically understates losses when real returns are fat-tailed and handles option nonlinearity poorly (delta-normal) unless extended to delta-gamma.",
       "formula": "$\\\\mathrm{VaR}_\\\\alpha = z_\\\\alpha\\\\,\\\\sigma_P\\\\sqrt{h},\\\\;\\\\sigma_P=\\\\sqrt{\\\\mathbf{w}^\\\\top \\\\Sigma\\\\,\\\\mathbf{w}}$",
       "last_updated": "2026-06-29",
-      "stale": true
+      "crosschecked": false
     },
     {
       "term": "Monte-Carlo VaR",
@@ -168,7 +168,7 @@
       "formula": "draw $\\\\mathbf{r}^{(1)},\\\\dots,\\\\mathbf{r}^{(N)}$, revalue, take the empirical $\\\\alpha$-quantile of losses",
       "note": "Variance-reduction (antithetic, control variates) and proxy revaluation cut the cost.",
       "last_updated": "2026-06-29",
-      "stale": true
+      "crosschecked": false
     },
     {
       "term": "Implied vs realised volatility",
@@ -176,14 +176,14 @@
       "formula": "$\\\\sigma_{\\\\text{realised}}=\\\\sqrt{\\\\tfrac{252}{n}\\\\sum r_t^2}$ vs $\\\\sigma_{\\\\text{implied}}$ from inverting Black–Scholes",
       "note": "Variance swaps and the VIX trade this difference directly.",
       "last_updated": "2026-06-29",
-      "stale": true
+      "crosschecked": false
     },
     {
       "term": "Volatility smile / surface",
       "definition": "Plotting implied volatility against strike gives a smile (or, in equities, a downward skew) rather than a flat line, directly contradicting Black–Scholes' single constant volatility — the market charges more for out-of-the-money protection against fat tails and crashes. Extending this across maturities as well as strikes gives the volatility surface, the full object desks quote and risk-manage. A self-consistent surface must be free of static arbitrage (calendar and butterfly).",
       "note": "Equity skew steepened permanently after the 1987 crash; surface moves (level, skew, term) are vega-bucketed risk factors.",
       "last_updated": "2026-06-29",
-      "stale": true
+      "crosschecked": false
     }
   ]
 }

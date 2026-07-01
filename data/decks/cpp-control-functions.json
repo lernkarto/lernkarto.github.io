@@ -26,7 +26,7 @@
       "summary": "for, while, do-while, and the range-based for.",
       "category": "core",
       "last_updated": "2026-06-29",
-      "stale": true
+      "crosschecked": false
     },
     {
       "term": "What is a range-based for loop?",
@@ -35,7 +35,7 @@
       "note": "Use & to modify or to avoid copying; const& to read cheaply.",
       "category": "core",
       "last_updated": "2026-06-29",
-      "stale": true
+      "crosschecked": false
     },
     {
       "type": "truefalse",
@@ -45,7 +45,7 @@
       "summary": "False — without `break`, control falls through to the next case.",
       "definition": "False. A `case` falls through into the following one unless you write `break` (or `return`). This fall-through is occasionally useful but is a classic source of bugs, so always `break` unless you mean to fall through.",
       "last_updated": "2026-06-29",
-      "stale": true
+      "crosschecked": false
     },
     {
       "term": "What is the difference between a declaration and a definition of a function?",
@@ -53,7 +53,7 @@
       "summary": "Declaration = signature only; definition = signature + body.",
       "category": "functions",
       "last_updated": "2026-06-29",
-      "stale": true
+      "crosschecked": false
     },
     {
       "term": "Pass-by-value vs pass-by-reference?",
@@ -61,7 +61,7 @@
       "definition": "Correct: A) by value copies the argument; by reference (`T&`) aliases the caller's object so changes are visible. Pass by value for small, cheap types when you want a private copy; pass by reference to mutate the caller's object or to avoid copying large ones.",
       "category": "functions",
       "last_updated": "2026-06-29",
-      "stale": true
+      "crosschecked": false
     },
     {
       "term": "Why pass a large object as `const T&`?",
@@ -69,7 +69,7 @@
       "summary": "Avoids a copy (reference) and guarantees read-only (const).",
       "category": "functions",
       "last_updated": "2026-06-29",
-      "stale": true
+      "crosschecked": false
     },
     {
       "term": "What is a default argument?",
@@ -77,7 +77,7 @@
       "summary": "A fallback value used when the caller omits that argument.",
       "category": "functions",
       "last_updated": "2026-06-29",
-      "stale": true
+      "crosschecked": false
     },
     {
       "term": "What is function overloading?",
@@ -85,7 +85,7 @@
       "summary": "Same name, different parameter lists; resolved by arguments.",
       "category": "functions",
       "last_updated": "2026-06-29",
-      "stale": true
+      "crosschecked": false
     },
     {
       "type": "cloze",
@@ -94,7 +94,7 @@
       "summary": "void = returns nothing.",
       "definition": "`void log(const std::string& m);` performs an action (printing, mutating) but produces no result. A bare `return;` exits it early; you cannot return a value from it.",
       "last_updated": "2026-06-29",
-      "stale": true
+      "crosschecked": false
     },
     {
       "type": "truefalse",
@@ -104,7 +104,7 @@
       "summary": "True — the local is destroyed when the function returns, leaving a dangling reference.",
       "definition": "True. A local object's lifetime ends when the function returns, so a reference or pointer to it dangles and using it is undefined behaviour. Return by value instead, or return something whose lifetime outlives the call.",
       "last_updated": "2026-06-29",
-      "stale": true
+      "crosschecked": false
     },
     {
       "term": "What is variable scope?",
@@ -112,7 +112,7 @@
       "summary": "The block in which a name is visible and alive.",
       "category": "core",
       "last_updated": "2026-06-29",
-      "stale": true
+      "crosschecked": false
     },
     {
       "term": "What is recursion, and what does a recursive function need?",
@@ -120,7 +120,7 @@
       "summary": "Self-calling function; needs a base case + a step toward it.",
       "category": "functions",
       "last_updated": "2026-06-29",
-      "stale": true
+      "crosschecked": false
     },
     {
       "term": "What does `break` vs `continue` do inside a loop?",
@@ -128,7 +128,7 @@
       "definition": "Correct: A) `break` exits the loop entirely; `continue` skips to the next iteration. `break` jumps past the end of the nearest enclosing loop or switch; `continue` abandons the rest of the current iteration and re-evaluates the loop condition.",
       "category": "core",
       "last_updated": "2026-06-29",
-      "stale": true
+      "crosschecked": false
     },
     {
       "type": "cloze",
@@ -137,7 +137,7 @@
       "summary": "cond ? whenTrue : whenFalse — an expression form of if/else.",
       "definition": "`cond ? x : y` evaluates to `x` if `cond` is true, otherwise `y`. It is an expression, so it can appear inside an initialiser or argument, unlike a statement-level `if`.",
       "last_updated": "2026-06-29",
-      "stale": true
+      "crosschecked": false
     },
     {
       "term": "Exercise: write a function that returns whether an integer is even, taking the argument the idiomatic way.",
@@ -146,7 +146,7 @@
       "summary": "`bool is_even(int n){ return n%2==0; }` — by value for a cheap type.",
       "category": "use",
       "last_updated": "2026-06-29",
-      "stale": true
+      "crosschecked": false
     },
     {
       "term": "Exercise: this loop never ends — why? `for (unsigned i = 5; i >= 0; --i) { ... }`",
@@ -155,7 +155,7 @@
       "summary": "Unsigned wraps below 0, so `i >= 0` is always true.",
       "category": "use",
       "last_updated": "2026-06-29",
-      "stale": true
+      "crosschecked": false
     }
   ]
 }

@@ -1,0 +1,170 @@
+{
+  "id": "causal-traps",
+  "name": "Causal traps & statistical paradoxes",
+  "color": "#FF6B6B",
+  "description": "Regression to the mean, Goodhart's Law, Berkson's paradox, and collider bias — the four structural reasons a signal can deceive you. Each card presents a realistic scenario; the back explains the full reasoning and names the fallacy.",
+  "categories": {
+    "regression": {
+      "label": "Regression to the mean",
+      "color": "#AFDBF5"
+    },
+    "goodhart": {
+      "label": "Goodhart's Law",
+      "color": "#FF6B6B"
+    },
+    "berkson": {
+      "label": "Berkson's paradox",
+      "color": "#0BDA51"
+    },
+    "collider": {
+      "label": "Collider bias",
+      "color": "#9B8E8E"
+    }
+  },
+  "cards": [
+    {
+      "term": "[Regression to the mean] A fund manager beats the market by 15% in year one. In year two they match the market exactly. Did something go wrong, or is this exactly what you would expect?",
+      "sub": "Open-ended exercise — state the mechanism, name the fallacy, and explain why it is a live trap in risk and investment work.",
+      "definition": "Exactly what you would expect, in expectation. Any extreme outcome — positive or negative — is a mixture of persistent skill and transient luck. Luck, by definition, is independent across periods and does not repeat. So extreme performance in period one predicts a result closer to the mean in period two, not because the manager declined but simply because the unusually favourable luck draw is unlikely to recur. The fund was not worse in year two; it was more representative. The Sports Illustrated cover jinx is the canonical illustration: athletes appear on the cover after exceptional seasons, and the following season looks like a drop — but it is just the luck component reverting, not a jinx and not a performance collapse. The trap in risk and investment work is to read mean-reversion as a signal of decay — cutting a manager who simply had one great year, or attributing a bad year to a structural deterioration when the prior good year was the outlier. The corrective is to ask: how much of the extreme observation was the kind of thing that genuinely repeats (edge, process, systematic advantage) versus the kind of thing that was a one-off favourable draw?",
+      "note": "[1] Regression toward the mean (Wikipedia) — https://en.wikipedia.org/wiki/Regression_toward_the_mean",
+      "category": "regression",
+      "last_updated": "2026-06-30",
+      "crosschecked": false
+    },
+    {
+      "term": "[Regression to the mean] A factory has its worst month for accidents ever. Management immediately launches a safety campaign. The following month, accidents drop sharply. The safety committee claims the campaign worked and plans to mandate it firm-wide. Should they be confident?",
+      "sub": "Open-ended exercise — identify the confounding mechanism and explain what evidence would actually establish causation.",
+      "definition": "They should be cautious, because regression to the mean is the most likely rival explanation and it has not been ruled out. The intervention was triggered by an extreme month — an unusually bad outcome. Even with no intervention at all, the next month would most likely have been better, because extreme events are by definition unlikely to repeat. The selection rule 'we acted after the worst month' guarantees that the baseline for comparison is an outlier, so almost any subsequent reading will look like an improvement. This is one of the most dangerous fallacies in policy evaluation precisely because the intervention impulse and the regression opportunity are perfectly correlated: we always intervene at extremes, and extremes always tend back toward the mean. The only clean way to separate the campaign's effect from mean-reversion is a control condition — either a site that did not run the campaign over the same period, or a pre-registered experiment that predicts the counterfactual. Absent that, 'it went down after we acted' is not evidence the action caused the drop.",
+      "note": "[1] Regression toward the mean (Wikipedia) — https://en.wikipedia.org/wiki/Regression_toward_the_mean",
+      "category": "regression",
+      "last_updated": "2026-06-30",
+      "crosschecked": false
+    },
+    {
+      "term": "[Regression to the mean] A company identifies its lowest-performing 10% of employees and sends them through a mandatory coaching programme. At the next review cycle the group's average performance has improved noticeably. HR concludes the programme worked and plans to scale it. What is the methodological problem?",
+      "sub": "Open-ended exercise — name the mechanism and explain what a valid evaluation design would require.",
+      "definition": "The group was selected specifically because they were at an extreme low in a given review cycle. Sustained underperformance explains part of that low, but transient factors — a bad quarter, a personal event, measurement noise — explain part of it too. The next measurement will likely show improvement regardless of any intervention, because the transient component is mean-reverting. By selecting the bottom 10% as the treatment group and comparing before versus after, HR has confounded the programme's effect with regression to the mean. A valid design requires a control condition: a group of equally low-performing employees who did not attend, measured over the same period. If both the treatment and control groups improve by similar amounts, the programme explains nothing. Only the difference-in-differences is attributable to the coaching. Without this, scaling the programme based on before-after improvement in a selected-extreme group is unwarranted.",
+      "note": "[1] Regression toward the mean (Wikipedia) — https://en.wikipedia.org/wiki/Regression_toward_the_mean",
+      "category": "regression",
+      "last_updated": "2026-06-30",
+      "crosschecked": false
+    },
+    {
+      "term": "[Regression to the mean] A sprinter records a personal best, makes the front page, and then runs slower in the next three races. A coach concludes the media attention disrupted focus and introduces a media-blackout policy. What should the coach have considered first?",
+      "sub": "Open-ended exercise — identify the null hypothesis before entertaining the causal story.",
+      "definition": "The personal best was itself an outlier — the rare alignment of peak form, ideal conditions, and a favourable luck draw. Regression to the mean predicts that subsequent performances will be closer to the athlete's true average level, regardless of media coverage or any other intervention. The coach's narrative — attention causes distraction causes slower times — is logically possible, but it is the more complex hypothesis. The null hypothesis, and the simpler explanation, is that the personal best was an extreme draw and the subsequent times reflect the athlete's actual distribution of performance. Before attributing the decline to a media effect, you would need to compare this sprinter's post-record decay pattern to other athletes who set personal bests without media coverage. If both groups show similar reversion to their prior average, media exposure adds no explanatory power. Acting on the causal story without ruling out the simpler one is how regression to the mean manufactures false theories about interventions, coaching decisions, and performance management.",
+      "note": "[1] Regression toward the mean (Wikipedia) — https://en.wikipedia.org/wiki/Regression_toward_the_mean",
+      "category": "regression",
+      "last_updated": "2026-06-30",
+      "crosschecked": false
+    },
+    {
+      "term": "[Goodhart's Law] A bank rewards collections agents based on number of calls completed per day. Six months later, call volume is up 40% but recovery rates have not moved. What happened, and what should the bank have measured instead?",
+      "sub": "Open-ended exercise — name the law, explain the mechanism, and connect it to what the metric was supposed to proxy.",
+      "definition": "Goodhart's Law: when a measure becomes a target, it ceases to be a good measure. The call count was a proxy for effective collections work — the real goal is recovering money from borrowers. Once agents were incentivised on the proxy, they optimised the proxy rather than the underlying goal. Calls became shorter, less focused on resolution, and possibly made to numbers that had already been exhausted. Call volume went up because that is what was rewarded; recovery rates did not move because quality of engagement is what drives recovery, and quality was never measured. The corrective is to incentivise closer to the actual outcome: recovery rate per agent, amount recovered per customer contacted, or resolution rate on first substantive engagement. These are harder to game because they are the outcome itself, not a proxy for it. The deeper lesson for risk work is that any metric used as a control or monitoring tool will, under sufficient pressure, be optimised as a target — the metric and the thing it was measuring decouple. This is endemic in regulated industries, where ratios that start as signals (capital ratios, LCR) become targets that are managed to their minimum.",
+      "note": "[1] Goodhart's Law (Wikipedia) — https://en.wikipedia.org/wiki/Goodhart%27s_law",
+      "category": "goodhart",
+      "last_updated": "2026-06-30",
+      "crosschecked": false
+    },
+    {
+      "term": "[Goodhart's Law] A national health service sets a target: 95% of emergency patients must be seen within 4 hours. Within a year, headline compliance hits the target. Simultaneously, staff report ambulances being held in car parks before handover, patients receiving a cursory initial contact that counts as 'seen', and minor cases being prioritised ahead of serious ones to clear the clock. What does this illustrate?",
+      "sub": "Open-ended exercise — explain how the 4-hour measure decoupled from the care outcome it was meant to track.",
+      "definition": "Goodhart's Law in a high-stakes public service setting. The 4-hour wait time was designed as a proxy for 'patients receive timely, high-quality care.' The moment it became a binding target — with consequences for trusts that missed it — it became an objective to be optimised rather than a signal to be read. Staff rationally found the boundary conditions of the definition and exploited them: an ambulance handover that has not happened cannot start the clock; a provisional contact satisfies the letter of 'seen' without delivering meaningful assessment; mild cases clear quickly and improve the headline number. The metric and the underlying care quality decoupled. This is the structural pattern of Goodhart across sectors: the measure is chosen because it correlates with the goal under normal conditions, but under optimisation pressure the correlation breaks because the cheapest way to hit the number is rarely the same as achieving the goal. The implication for monitoring design is that targets should either be impossible to game (i.e. the outcome itself), diversified across multiple dimensions so gaming one reveals itself in another, or continuously redesigned as gaming strategies emerge.",
+      "note": "[1] Goodhart's Law (Wikipedia) — https://en.wikipedia.org/wiki/Goodhart%27s_law",
+      "category": "goodhart",
+      "last_updated": "2026-06-30",
+      "crosschecked": false
+    },
+    {
+      "term": "[Goodhart's Law] An engineering manager measures developer productivity by lines of code written per sprint. Three sprints later, velocity numbers look impressive. Code reviews reveal verbose, redundant functions, padded boilerplate, and declining test coverage. What went wrong, and what is a better productivity signal?",
+      "sub": "Open-ended exercise — identify the proxy failure and propose a more outcome-proximate measure.",
+      "definition": "Lines of code is an almost perfectly invertible productivity proxy: skilled engineers often write less code, not more, because they identify simpler solutions, use existing abstractions, or delete dead paths. Once it became the target, developers rationally maximised it — long variable names, explicit loops over comprehensions, duplicated logic instead of shared functions — because that is what was rewarded. The metric optimised against the goal. Better proxies are closer to the actual outcome: working features shipped and validated by a product owner per sprint, defect rate on released code, test coverage maintained above a floor, or time-to-resolution on production incidents. These are still proxies and can also be gamed under sufficient pressure, but they are harder to game without doing real work, and gaming them leaves visible traces (a feature that 'ships' but breaks in QA, a test that passes trivially). The general lesson is that any productivity measure in knowledge work will decouple from actual productivity under target pressure — the gap between measuring outputs (lines, calls, reports) and measuring outcomes (working software, resolved debt, recovered money) is where Goodhart lives.",
+      "note": "[1] Goodhart's Law (Wikipedia) — https://en.wikipedia.org/wiki/Goodhart%27s_law",
+      "category": "goodhart",
+      "last_updated": "2026-06-30",
+      "crosschecked": false
+    },
+    {
+      "term": "[Goodhart's Law] Before 2008, credit rating agencies were paid by the issuers of the securities they rated, and issuers could approach multiple agencies and accept the most favourable rating. Over time, ratings on complex structured products drifted systematically high relative to realised default rates. What structural dynamic produced this?",
+      "sub": "Open-ended exercise — connect the incentive structure to the Goodhart failure and explain what broke.",
+      "definition": "Goodhart compounded by incentive misalignment. A credit rating was designed to be an independent signal of credit quality — a measure of the thing. But when the measure is sold commercially to the party being measured, two Goodhart pressures act simultaneously: the issuer shops for the best rating, so agencies face competitive pressure to be the most generous rater or lose the business; and the rating becomes a target for the issuer — structures are engineered to achieve a specific rating rather than to achieve a specific credit quality, and the two decouple. The measure stopped tracking the underlying risk. Agencies had an incentive to rate optimistically because conservative ratings meant lost mandates, and issuers had an incentive to structure to the model rather than to genuine quality. The result was systematic overrating of CDOs and similar instruments that carried far more tail risk than their labels implied. This is a systemic Goodhart failure: the rating was a measure, it became a target, and it stopped being a good measure — at scale, across an entire market, with systemic consequences. The corrective requires separating the payer from the rated party, which is why post-crisis reform explored investor-pay and random-assignment models.",
+      "note": "[1] Goodhart's Law (Wikipedia) — https://en.wikipedia.org/wiki/Goodhart%27s_law · [2] Credit rating agency (Wikipedia) — https://en.wikipedia.org/wiki/Credit_rating_agency",
+      "category": "goodhart",
+      "last_updated": "2026-06-30",
+      "crosschecked": false
+    },
+    {
+      "term": "[Berkson's paradox] Among hospitalised patients, clinicians notice that diabetics seem less likely to also have hypertension — even though in the general population the two conditions are positively correlated. What is going on?",
+      "sub": "Open-ended exercise — explain the selection mechanism and name the paradox.",
+      "definition": "Berkson's paradox: the apparent negative correlation is a sampling artefact introduced by conditioning on hospitalisation. To be hospitalised, a patient typically needs to reach some severity threshold. If you have neither diabetes nor hypertension you are unlikely to be admitted for either. But if you have severe diabetes alone, that may be sufficient for admission; if you have severe hypertension alone, same. Among the patients who are hospitalised, having one severe condition makes it less necessary to have the other as well — the two conditions are now in partial competition as explanations for why the patient is in the hospital at all. The correlation between them inverts within the selected sample even though in the unconditioned population it is positive. The broader lesson is that any analysis restricted to a selected subset — hospitalised patients, hired candidates, approved loans, successful products — will produce correlations that can differ dramatically from population-level correlations, because selection on a combined outcome induces dependencies between the inputs to that selection. Asking 'who is in my sample, and what determined whether they got in?' should be the first question before interpreting any correlation in a restricted dataset.",
+      "note": "[1] Berkson's paradox (Wikipedia) — https://en.wikipedia.org/wiki/Berkson%27s_paradox",
+      "category": "berkson",
+      "last_updated": "2026-06-30",
+      "crosschecked": false
+    },
+    {
+      "term": "[Berkson's paradox] During the early COVID-19 pandemic, several hospital studies reported that current smokers were underrepresented among severe hospitalised COVID cases compared to their share of the general population — the 'smoker's paradox.' Some researchers proposed that nicotine might be protective. What should they have checked first?",
+      "sub": "Open-ended exercise — identify the selection mechanism before entertaining the pharmacological hypothesis.",
+      "definition": "The first thing to check is who is in the sample. The studies were conducted among hospitalised COVID patients — and hospitalisation is itself a collider variable (caused by both COVID severity and other conditions). Smokers have substantially elevated baseline rates of respiratory and cardiovascular disease, which means they are hospitalised for non-COVID reasons at higher rates than non-smokers. When the denominator is 'all hospitalised patients,' the share of smokers who are hospitalised specifically for COVID may appear low simply because many of them are in hospital for other reasons. Additionally, smokers with severe underlying lung disease may have died before the study window or been excluded on other clinical grounds, further deflating their apparent share. The Berkson mechanism — selection into hospital as a collider — creates the apparent underrepresentation before any pharmacological explanation is needed. The corrective is to compare hospitalised COVID patients against a random sample of the general population, not against other hospitalised patients. This is exactly the type of spurious finding Berkson's paradox predicts whenever the sample is defined by a threshold on a composite health outcome.",
+      "note": "[1] Berkson's paradox (Wikipedia) — https://en.wikipedia.org/wiki/Berkson%27s_paradox",
+      "category": "berkson",
+      "last_updated": "2026-06-30",
+      "crosschecked": false
+    },
+    {
+      "term": "[Berkson's paradox] A recruiter at a highly selective firm notices that among shortlisted candidates, analytical test scores and interpersonal polish appear to be negatively correlated — the top scorers tend to be rougher in interviews, and the most polished candidates tend to score average on the test. Is this a genuine trade-off in the underlying population?",
+      "sub": "Open-ended exercise — explain why the negative correlation in the shortlist does not reflect the population relationship.",
+      "definition": "Berkson's paradox: the shortlist is a selected sample, and selection induces a spurious negative correlation between the two inputs to selection. To be shortlisted at a highly selective firm, a candidate must exceed some combined threshold — exceptional on at least one dimension, and adequate on the others. Among those who make the cut: the candidate who got in on raw analytical strength probably does not also have the highest interpersonal scores, because if they were exceptional on both they would be common in the shortlist (but they are not, because the population does not generate many such candidates). Meanwhile the polished interviewee who got in on presence tends to score closer to average on the test. Within the shortlist, the two traits appear to trade off. In the general population, both are likely positively correlated with general ability and conscientiousness, so the population relationship is probably positive or near-zero. The practical risk: a hiring committee that reviews shortlisted candidates will systematically observe this spurious trade-off and may start designing interview processes around it — incorrectly believing that analytical talent and interpersonal skill are genuinely in tension.",
+      "note": "[1] Berkson's paradox (Wikipedia) — https://en.wikipedia.org/wiki/Berkson%27s_paradox",
+      "category": "berkson",
+      "last_updated": "2026-06-30",
+      "crosschecked": false
+    },
+    {
+      "term": "[Berkson's paradox] An investor analysing highly rated apps on a major app store notices that top-rated apps tend to have fewer in-app purchase prompts, while highly monetised apps tend to have lower ratings. She concludes that aggressive monetisation structurally hurts product quality. How should this inference be qualified?",
+      "sub": "Open-ended exercise — identify the selection mechanism and explain what the correlation in the restricted sample actually reflects.",
+      "definition": "The sample is restricted to apps that achieved visibility — high ratings or strong revenue. Apps that are both poorly rated and generate little revenue never surface in a 'successful apps' dataset; they simply do not reach the analyst. This is Berkson's paradox applied to market success: to appear in the visible stratum of the market, an app must clear some success threshold, which it can reach by excelling on at least one dimension. Among visible apps, those that succeeded on ratings probably did not also achieve top monetisation (because most apps that are both highly rated and highly monetised are rare), and those that succeeded on revenue likely have ratings pulled down by aggressive prompts. The negative correlation between quality signals and monetisation is at least partly an artefact of who enters the sample. To test whether monetisation genuinely reduces product quality, you would need to compare apps at the same baseline quality level — before their monetisation strategy was set — and track outcomes. Cross-sectional analysis of selected survivors conflates survival strategy with quality trade-offs.",
+      "note": "[1] Berkson's paradox (Wikipedia) — https://en.wikipedia.org/wiki/Berkson%27s_paradox",
+      "category": "berkson",
+      "last_updated": "2026-06-30",
+      "crosschecked": false
+    },
+    {
+      "term": "[Collider bias] What is a collider in a causal graph, and why is conditioning on one dangerous? Contrast it with a confounder.",
+      "sub": "Conceptual — state the definition, give the direction of the bias, and name the contrast case.",
+      "definition": "A collider is a variable that is caused by two other variables — in a directed acyclic graph, two arrows point into it. The danger: if you condition on a collider — by controlling for it in a regression, filtering your sample on it, or selecting observations based on it — you open a non-causal path between its two parent variables and manufacture a spurious correlation between them that does not exist in the unconditioned population. The direction of the failure is: no correlation in the population becomes apparent correlation once you condition. A confounder is the opposite structural case: a variable that causes both the exposure and the outcome. Conditioning on a confounder removes spurious correlation — it is what we are trying to do in observational studies. Conditioning on a collider creates spurious correlation — it is a mistake that looks like careful modelling. The practical trap is that both corrections look similar in a regression: 'add a control variable.' Whether that is corrective or harmful depends on whether the added variable is a cause or a consequence of the other two. Berkson's paradox is the canonical example: hospitalisation is caused by the two conditions being studied, conditioning on it (restricting to hospitalised patients) induces a spurious negative correlation between them.",
+      "note": "[1] Collider (statistics) (Wikipedia) — https://en.wikipedia.org/wiki/Collider_(statistics) · [2] Berkson's paradox (Wikipedia) — https://en.wikipedia.org/wiki/Berkson%27s_paradox",
+      "category": "collider",
+      "last_updated": "2026-06-30",
+      "crosschecked": false
+    },
+    {
+      "term": "[Collider bias] Among actors who achieve major Hollywood careers, talent and physical attractiveness appear negatively correlated — technically accomplished actors tend not to be conventionally striking, and the biggest stars with conventional looks tend to receive more modest critical reviews. A journalist concludes there is a real trade-off between talent and looks in the acting profession. Is this a reliable inference?",
+      "sub": "Open-ended exercise — trace the selection mechanism and explain why the within-sample correlation does not reflect the population relationship.",
+      "definition": "Classic collider bias: achieving a major Hollywood career is a collider between talent and attractiveness. Reaching that level requires clearing a combined threshold — high enough on at least one dimension to break through. An exceptionally talented actor of modest conventional appearance can make it on craft alone. A highly attractive actor of moderate skill can make it on screen presence and commercial appeal. Among those who make it — the selected group — the two traits appear to trade off because you reached the threshold via one route or the other. In the general population, talent and attractiveness are probably uncorrelated or weakly positively correlated (both can reflect confidence, self-discipline, and practice). The journalist is reading a within-sample artifact as a population-level truth. The corrective would be to compare actors at an earlier career stage — before selection into major careers — and examine whether technical ability and attractiveness are negatively correlated in that population. They almost certainly are not. Any time you analyse a selected elite and observe a negative correlation between two inputs to selection, suspect this mechanism before concluding the trade-off is real.",
+      "note": "[1] Collider (statistics) (Wikipedia) — https://en.wikipedia.org/wiki/Collider_(statistics)",
+      "category": "collider",
+      "last_updated": "2026-06-30",
+      "crosschecked": false
+    },
+    {
+      "term": "[Collider bias] A clinical trial for a heart medication enrolls patients who were diagnosed at least six months ago and are still alive. The trial finds no statistically significant survival benefit. A critic argues this may not prove the drug is ineffective. What is the methodological concern?",
+      "sub": "Open-ended exercise — identify what the enrollment criterion conditions on and explain how this biases the comparison.",
+      "definition": "Conditioning on survival to enrollment is the problem. The enrollment criterion 'still alive six months after diagnosis' selects out the patients who died in the first six months — potentially the very patients with the most severe disease who would most benefit from an effective treatment. The enrolled population is therefore systematically healthier and longer-surviving than the full population of newly diagnosed patients. This is a form of collider stratification bias sometimes called immortal time bias: survival to enrollment is partly caused by disease severity (less severe patients survive longer) and partly by early treatment quality, and conditioning on it distorts the apparent treatment effect. If the drug is genuinely effective in severe early cases, its benefit would be invisible in a trial that enrolled only the survivors of the early high-risk window. The fix is either to start the clock at diagnosis — including all patients from that point — or to be explicit that the trial result applies only to the selected population of six-month survivors, which is a narrower and potentially unrepresentative claim.",
+      "note": "[1] Collider (statistics) (Wikipedia) — https://en.wikipedia.org/wiki/Collider_(statistics) · [2] Immortal time bias (Wikipedia) — https://en.wikipedia.org/wiki/Immortal_time_bias",
+      "category": "collider",
+      "last_updated": "2026-06-30",
+      "crosschecked": false
+    },
+    {
+      "term": "[Collider bias] In a regression model you generally want to control for confounders. A colleague suggests also controlling for a variable that appears to be caused by both the treatment and the outcome variable. What is the risk, and how does it differ from the confounder case?",
+      "sub": "Open-ended exercise — state the correct structural rule and explain what goes wrong if the rule is violated.",
+      "definition": "This is the fundamental contrast between confounders and colliders. A confounder causes both the exposure and the outcome — it creates a backdoor path that produces spurious association. Controlling for it closes that backdoor path and is correct. A variable caused by both the exposure and the outcome is a collider on the path between them — controlling for it opens a non-causal path and introduces bias that did not previously exist. The mechanism: once you condition on the collider (include it as a regressor), you induce a statistical dependency between its two causes — the treatment and the outcome — that is not a causal relationship. The practical rule before adding any control variable: draw the implied causal graph and ask whether the variable is a cause or a consequence. Controlling for consequences — mediators on the causal path, or variables downstream of both exposure and outcome — is one of the most common specification errors in applied regression and can produce sign reversals and spurious precision. The dangerous feature is that it looks like careful modelling (you added more controls) while introducing more bias. The Berkson case is the sampling equivalent: conditioning on hospitalisation, which is caused by both conditions being studied, manufactures a within-sample correlation that is not in the population.",
+      "note": "[1] Collider (statistics) (Wikipedia) — https://en.wikipedia.org/wiki/Collider_(statistics) · [2] Confounding (Wikipedia) — https://en.wikipedia.org/wiki/Confounding",
+      "category": "collider",
+      "last_updated": "2026-06-30",
+      "crosschecked": false
+    }
+  ]
+}

@@ -18,49 +18,49 @@
       "definition": "Paris",
       "category": "europe",
       "last_updated": "2026-06-29",
-      "stale": true
+      "crosschecked": false
     },
     {
       "term": "Germany",
       "definition": "Berlin",
       "category": "europe",
       "last_updated": "2026-06-29",
-      "stale": true
+      "crosschecked": false
     },
     {
       "term": "Spain",
       "definition": "Madrid",
       "category": "europe",
       "last_updated": "2026-06-29",
-      "stale": true
+      "crosschecked": false
     },
     {
       "term": "Italy",
       "definition": "Rome",
       "category": "europe",
       "last_updated": "2026-06-29",
-      "stale": true
+      "crosschecked": false
     },
     {
       "term": "United Kingdom",
       "definition": "London",
       "category": "europe",
       "last_updated": "2026-06-29",
-      "stale": true
+      "crosschecked": false
     },
     {
       "term": "Portugal",
       "definition": "Lisbon",
       "category": "europe",
       "last_updated": "2026-06-29",
-      "stale": true
+      "crosschecked": false
     },
     {
       "term": "Greece",
       "definition": "Athens",
       "category": "europe",
       "last_updated": "2026-06-29",
-      "stale": true
+      "crosschecked": false
     },
     {
       "term": "Russia",
@@ -68,14 +68,14 @@
       "category": "europe",
       "note": "Transcontinental, but its capital is in Europe.",
       "last_updated": "2026-06-29",
-      "stale": true
+      "crosschecked": false
     },
     {
       "term": "Poland",
       "definition": "Warsaw",
       "category": "europe",
       "last_updated": "2026-06-29",
-      "stale": true
+      "crosschecked": false
     },
     {
       "term": "Netherlands",
@@ -83,70 +83,70 @@
       "category": "europe",
       "note": "Amsterdam is the capital; the government sits in The Hague.",
       "last_updated": "2026-06-29",
-      "stale": true
+      "crosschecked": false
     },
     {
       "term": "Sweden",
       "definition": "Stockholm",
       "category": "europe",
       "last_updated": "2026-06-29",
-      "stale": true
+      "crosschecked": false
     },
     {
       "term": "Norway",
       "definition": "Oslo",
       "category": "europe",
       "last_updated": "2026-06-29",
-      "stale": true
+      "crosschecked": false
     },
     {
       "term": "China",
       "definition": "Beijing",
       "category": "asia",
       "last_updated": "2026-06-29",
-      "stale": true
+      "crosschecked": false
     },
     {
       "term": "Japan",
       "definition": "Tokyo",
       "category": "asia",
       "last_updated": "2026-06-29",
-      "stale": true
+      "crosschecked": false
     },
     {
       "term": "India",
       "definition": "New Delhi",
       "category": "asia",
       "last_updated": "2026-06-29",
-      "stale": true
+      "crosschecked": false
     },
     {
       "term": "South Korea",
       "definition": "Seoul",
       "category": "asia",
       "last_updated": "2026-06-29",
-      "stale": true
+      "crosschecked": false
     },
     {
       "term": "Indonesia",
       "definition": "Jakarta",
       "category": "asia",
       "last_updated": "2026-06-29",
-      "stale": true
+      "crosschecked": false
     },
     {
       "term": "Thailand",
       "definition": "Bangkok",
       "category": "asia",
       "last_updated": "2026-06-29",
-      "stale": true
+      "crosschecked": false
     },
     {
       "term": "Vietnam",
       "definition": "Hanoi",
       "category": "asia",
       "last_updated": "2026-06-29",
-      "stale": true
+      "crosschecked": false
     },
     {
       "term": "Turkey",
@@ -154,28 +154,28 @@
       "category": "asia",
       "note": "Ankara is the capital, not the larger city Istanbul.",
       "last_updated": "2026-06-29",
-      "stale": true
+      "crosschecked": false
     },
     {
       "term": "Saudi Arabia",
       "definition": "Riyadh",
       "category": "asia",
       "last_updated": "2026-06-29",
-      "stale": true
+      "crosschecked": false
     },
     {
       "term": "Iran",
       "definition": "Tehran",
       "category": "asia",
       "last_updated": "2026-06-29",
-      "stale": true
+      "crosschecked": false
     },
     {
       "term": "Egypt",
       "definition": "Cairo",
       "category": "africa",
       "last_updated": "2026-06-29",
-      "stale": true
+      "crosschecked": false
     },
     {
       "term": "Nigeria",
@@ -183,7 +183,7 @@
       "category": "africa",
       "note": "Abuja is the capital, not the larger city Lagos.",
       "last_updated": "2026-06-29",
-      "stale": true
+      "crosschecked": false
     },
     {
       "term": "South Africa",
@@ -191,56 +191,56 @@
       "category": "africa",
       "note": "Pretoria is the executive capital (also Cape Town and Bloemfontein).",
       "last_updated": "2026-06-29",
-      "stale": true
+      "crosschecked": false
     },
     {
       "term": "Kenya",
       "definition": "Nairobi",
       "category": "africa",
       "last_updated": "2026-06-29",
-      "stale": true
+      "crosschecked": false
     },
     {
       "term": "Ethiopia",
       "definition": "Addis Ababa",
       "category": "africa",
       "last_updated": "2026-06-29",
-      "stale": true
+      "crosschecked": false
     },
     {
       "term": "Morocco",
       "definition": "Rabat",
       "category": "africa",
       "last_updated": "2026-06-29",
-      "stale": true
+      "crosschecked": false
     },
     {
       "term": "Ghana",
       "definition": "Accra",
       "category": "africa",
       "last_updated": "2026-06-29",
-      "stale": true
+      "crosschecked": false
     },
     {
       "term": "United States",
       "definition": "Washington, D.C.",
       "category": "americas",
       "last_updated": "2026-06-29",
-      "stale": true
+      "crosschecked": false
     },
     {
       "term": "Canada",
       "definition": "Ottawa",
       "category": "americas",
       "last_updated": "2026-06-29",
-      "stale": true
+      "crosschecked": false
     },
     {
       "term": "Mexico",
       "definition": "Mexico City",
       "category": "americas",
       "last_updated": "2026-06-29",
-      "stale": true
+      "crosschecked": false
     },
     {
       "term": "Brazil",
@@ -248,35 +248,35 @@
       "category": "americas",
       "note": "Brasília is the capital, not Rio de Janeiro.",
       "last_updated": "2026-06-29",
-      "stale": true
+      "crosschecked": false
     },
     {
       "term": "Argentina",
       "definition": "Buenos Aires",
       "category": "americas",
       "last_updated": "2026-06-29",
-      "stale": true
+      "crosschecked": false
     },
     {
       "term": "Chile",
       "definition": "Santiago",
       "category": "americas",
       "last_updated": "2026-06-29",
-      "stale": true
+      "crosschecked": false
     },
     {
       "term": "Peru",
       "definition": "Lima",
       "category": "americas",
       "last_updated": "2026-06-29",
-      "stale": true
+      "crosschecked": false
     },
     {
       "term": "Colombia",
       "definition": "Bogotá",
       "category": "americas",
       "last_updated": "2026-06-29",
-      "stale": true
+      "crosschecked": false
     },
     {
       "term": "Australia",
@@ -284,21 +284,21 @@
       "category": "oceania",
       "note": "Canberra is the capital, not Sydney or Melbourne.",
       "last_updated": "2026-06-29",
-      "stale": true
+      "crosschecked": false
     },
     {
       "term": "New Zealand",
       "definition": "Wellington",
       "category": "oceania",
       "last_updated": "2026-06-29",
-      "stale": true
+      "crosschecked": false
     },
     {
       "term": "Fiji",
       "definition": "Suva",
       "category": "oceania",
       "last_updated": "2026-06-29",
-      "stale": true
+      "crosschecked": false
     }
   ]
 }

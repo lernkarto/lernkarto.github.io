@@ -34,7 +34,7 @@
       "type": "mcq",
       "definition": "Two non-stationary price series that both trend over time line up almost perfectly even when no economic relationship exists, producing a near-perfect R-squared with strongly autocorrelated residuals - the textbook signature of a spurious regression. The fix is to work in returns (which are stationary) or test whether the prices are cointegrated. Robust standard errors only patch heteroskedasticity and do nothing about the unit-root problem driving the false fit. Reading the high R-squared as a genuine causal link is exactly the trap. There is no sign of measurement error here, and multicollinearity cannot arise with a single regressor. Intuition: trending levels regressed on trending levels — [[OLS]] on non-stationary series means spurious regression — difference to returns or test cointegration.",
       "last_updated": "2026-06-29",
-      "stale": true
+      "crosschecked": false
     },
     {
       "term": "A risk team observes that a portfolio's daily losses have far more extreme days than a normal [[VaR]] model predicts. A sensible response is to:",
@@ -49,7 +49,7 @@
       "type": "mcq",
       "definition": "Far more extreme loss days than a normal [[VaR]] model predicts means the loss distribution is leptokurtic (fat-tailed), so the right move is to abandon normality: use historical simulation or an explicitly fat-tailed model, and prefer [[ES]], which averages losses beyond the [[VaR]] threshold and captures tail severity. Keeping the normal parametric [[VaR]], even with a wider window, ignores the mis-specification the data revealed. Merely raising the confidence level still relies on the thin-tailed normal shape and understates tail mass. Dropping the worst days as data errors throws away the most risk-relevant observations, and a higher-frequency normal model is still normal. Intuition: visible tail events beyond the model mean fatten the tails and measure beyond [[VaR]] with [[ES]].",
       "last_updated": "2026-06-29",
-      "stale": true
+      "crosschecked": false
     },
     {
       "term": "Modelling whether a borrower defaults (yes/no) as a function of financial ratios is best done with:",
@@ -64,7 +64,7 @@
       "type": "mcq",
       "definition": "A default outcome is binary (yes/no), so the model must map financial ratios to a probability bounded in [0,1] - logit or probit do exactly this via an S-shaped link, which is why they are the standard for credit scoring. A linear probability model can predict probabilities below 0 or above 1 and has heteroskedastic errors, so it is the wrong tool even though it superficially targets a probability. Cointegration tests, [[ARIMA]], and VAR are all time-series methods for stationarity or dynamics of continuous series; none model a single cross-sectional binary event. [[OLS]]-based approaches cannot bound the predicted probability in [0,1]. Intuition: binary dependent variable means use a bounded link (logit/probit), not a linear or time-series model.",
       "last_updated": "2026-06-29",
-      "stale": true
+      "crosschecked": false
     },
     {
       "term": "An analyst wants the causal effect of a job-training program on wages, but participants self-selected into it. The cleanest approaches include:",
@@ -79,7 +79,7 @@
       "type": "mcq",
       "definition": "When participants self-select, participation is correlated with unobserved drivers of wages (motivation, ability), so it is endogenous - a randomized trial breaks that correlation by design, and instrumental variables or difference-in-differences recover the causal effect by exploiting exogenous variation or pre/post comparisons against a control group. Plain [[OLS]] of wages on participation simply bakes the selection bias into the coefficient, and adding robust standard errors only fixes inference about the variance, not the biased point estimate. Adding controls until the result turns significant is specification-mining and cannot address unobserved confounders, and chasing the highest R-squared confuses fit with identification. Intuition: self-selection means endogeneity - randomize, or instrument / use DiD.",
       "last_updated": "2026-06-29",
-      "stale": true
+      "crosschecked": false
     },
     {
       "term": "Daily returns on an asset show little autocorrelation, but squared returns are highly autocorrelated. To forecast risk you should:",
@@ -94,7 +94,7 @@
       "type": "mcq",
       "definition": "Returns with negligible autocorrelation but strongly autocorrelated squared returns are the classic volatility-clustering signature: the mean is unpredictable but the conditional variance is persistent, so a GARCH-type model that lets variance depend on past shocks and past variance is the right forecasting tool. Assuming constant volatility ignores the clustering the squared returns reveal. Fitting an [[ARIMA]] model to the returns is pointless because the returns themselves show no autocorrelation to exploit. Differencing an already stationary series over-differences it and does nothing for variance dynamics, and a logit on the sign is for a binary outcome, not a continuous variance forecast. Intuition: quiet returns but clustered squared returns means model the time-varying conditional variance with GARCH.",
       "last_updated": "2026-06-29",
-      "stale": true
+      "crosschecked": false
     },
     {
       "term": "Two cointegrated futures contracts have a spread that has widened far above its historical average. A statistical-arbitrage view suggests:",
@@ -109,7 +109,7 @@
       "type": "mcq",
       "definition": "Cointegration means a stationary, mean-reverting linear combination of the two contracts, so when the spread widens far above its historical average it is statistically expected to revert - the stat-arb trade is to short the rich leg and long the cheap leg and profit as the spread closes. Ignoring the spread wastes the tradeable mean-reversion signal. Treating the series as independent random walks contradicts the cointegration that defines the relationship. Buying both legs in equal size takes directional market exposure rather than betting on the spread, and betting the spread keeps widening denies the mean reversion that cointegration guarantees. Intuition: cointegrated pair plus stretched spread means fade the deviation and bet on reversion.",
       "last_updated": "2026-06-29",
-      "stale": true
+      "crosschecked": false
     },
     {
       "term": "A trader computes a 99% one-day [[VaR]] and is breached on roughly 1 in 20 days over a long sample. This indicates the [[VaR]] model is:",
@@ -124,7 +124,7 @@
       "type": "mcq",
       "definition": "A 99% one-day [[VaR]] should be breached on about 1 day in 100; being breached roughly 1 day in 20 (about 5%) is far too many exceptions, which means the model systematically understates risk and must be recalibrated (fatter tails, higher volatility, or a different method). Calling it well calibrated misreads a fivefold excess of breaches as acceptable. Overestimating risk would show too few breaches, the opposite pattern. Multicollinearity is a regression-collinearity issue irrelevant to counting [[VaR]] exceptions, and an exception count is a [[VaR]] breach rate, not an [[ES]] measure. Intuition: exception rate well above 1-minus-confidence means the [[VaR]] is too low - recalibrate.",
       "last_updated": "2026-06-29",
-      "stale": true
+      "crosschecked": false
     },
     {
       "term": "An econometrician estimating the effect of class size on test scores worries that wealthier districts have both smaller classes and better outcomes. This is a problem of:",
@@ -139,7 +139,7 @@
       "type": "mcq",
       "definition": "District wealth drives both smaller classes and better test scores, so leaving it out of the regression loads its effect onto the class-size coefficient - this is omitted variable bias from a confounder correlated with both the regressor and the outcome. Heteroskedasticity concerns the error variance, not a biased coefficient. Multicollinearity is about correlation among regressors, not between a regressor and the outcome, so it is mislabeled here. A unit root is a stationarity problem for time series, irrelevant to this cross-section, and pure measurement error in scores would inflate noise rather than create this systematic confounding. Intuition: a variable affecting both X and Y that is left out means omitted variable bias - control for it or use a design that removes it.",
       "last_updated": "2026-06-29",
-      "stale": true
+      "crosschecked": false
     },
     {
       "term": "A portfolio manager reports a high return but also extreme volatility and deep drawdowns. To compare it fairly with peers you should look at:",
@@ -154,7 +154,7 @@
       "type": "mcq",
       "definition": "A high raw return earned with extreme volatility and deep drawdowns may simply reflect more risk taken, so a fair peer comparison must use risk-adjusted measures - the Sharpe ratio scales excess return by total volatility, and the Sortino ratio by downside deviation, revealing whether the return justified the risk. Looking at raw return alone is exactly what hides the risk being run. Gross exposure measures position size, not realized risk-adjusted performance. The single best-performing day is an outlier, not a performance metric, and the number of trades says nothing about return per unit of risk. Intuition: never compare raw returns - divide by the risk taken (Sharpe/Sortino).",
       "last_updated": "2026-06-29",
-      "stale": true
+      "crosschecked": false
     },
     {
       "term": "Before fitting an [[ARIMA]] model to a clearly trending price series, the essential first step is to:",
@@ -169,7 +169,7 @@
       "type": "mcq",
       "definition": "[[ARIMA]] assumes the series is stationary, so the essential first step on a clearly trending price is to test for a unit root (e.g., [[ADF]]) and difference the series if one is present - that differencing is the integrated 'I' term that renders the series stationary before AR and MA components are fit. Fitting the model directly to the trending levels violates the stationarity requirement and gives unreliable estimates. Adding AR lags to chase a high R-squared treats a symptom of the trend rather than removing it. A logit regression is for binary outcomes, and the Sharpe ratio is a performance metric - neither prepares a series for [[ARIMA]]. Intuition: trending series means establish stationarity first - test with [[ADF]], then difference.",
       "last_updated": "2026-06-29",
-      "stale": true
+      "crosschecked": false
     }
   ]
 }

@@ -26,7 +26,7 @@
       "type": "mcq",
       "definition": "Nominal ≈ real + inflation, so real ≈ 6% − 2% = 4%. Exactly, (1.06/1.02) − 1 ≈ 3.92%, which rounds to about 4%. '8%' wrongly ADDS inflation; '12%' multiplies the rates; '2%' and '3%' don't fit the subtraction.",
       "last_updated": "2026-06-29",
-      "stale": true
+      "crosschecked": false
     },
     {
       "term": "If real GDP grows 3% and the GDP deflator rises 4%, approximately what is the nominal GDP growth rate?",
@@ -41,7 +41,7 @@
       "type": "mcq",
       "definition": "Nominal ≈ real + inflation = 3% + 4% = 7% (exactly (1.03)(1.04) − 1 = 7.12%, the cross-term adding 0.12pp). The other options either subtract (−1%, 1%), average (3.5%), or multiply (12%) the rates.",
       "last_updated": "2026-06-29",
-      "stale": true
+      "crosschecked": false
     },
     {
       "term": "The exact relationship between nominal and real growth is (1 + nominal) = (1 + real)(1 + inflation). The familiar rule 'nominal = real + inflation' is:",
@@ -56,7 +56,7 @@
       "type": "mcq",
       "definition": "Expanding (1+real)(1+inflation) = 1 + real + inflation + real*inflation, so solving for nominal leaves the cross-product real*inflation that the additive rule drops. It is an approximation, not an exact identity; it is most accurate (not least) when rates are SMALL, and it holds for any sign of inflation and any level of real growth.",
       "last_updated": "2026-06-29",
-      "stale": true
+      "crosschecked": false
     },
     {
       "term": "By the Fisher equation, if the nominal interest rate is 5% and expected inflation is 3%, the real interest rate is approximately:",
@@ -71,7 +71,7 @@
       "type": "mcq",
       "definition": "The Fisher equation, nominal ≈ real + expected inflation, gives real ≈ 5% − 3% = 2% (exactly (1.05/1.03) − 1 ≈ 1.94%). It is the same decomposition as nominal/real GDP, applied to interest rates. '8%' adds; '−2%' flips the sign; '15%' multiplies.",
       "last_updated": "2026-06-29",
-      "stale": true
+      "crosschecked": false
     },
     {
       "term": "An investment earns a nominal return of 8% in a year when inflation is 3%. The approximate REAL return is:",
@@ -86,7 +86,7 @@
       "type": "mcq",
       "definition": "Real return ≈ nominal − inflation = 8% − 3% = 5% (exactly (1.08/1.03) − 1 ≈ 4.85%). '11%' adds inflation; '24%' multiplies; '8%' ignores inflation entirely; '2.7%' has no basis here.",
       "last_updated": "2026-06-29",
-      "stale": true
+      "crosschecked": false
     },
     {
       "term": "The GDP deflator is defined as:",
@@ -101,7 +101,7 @@
       "type": "mcq",
       "definition": "The deflator is (Nominal GDP / Real GDP) × 100 — the implied price level of all domestic output, the broadest economy-wide price measure. The inverted ratio (Real/Nominal) would fall when prices rise; the CPI is a different (fixed-basket consumer) index; a level is not a growth rate or a difference.",
       "last_updated": "2026-06-29",
-      "stale": true
+      "crosschecked": false
     },
     {
       "term": "A key difference between the Consumer Price Index (CPI) and the GDP deflator is that:",
@@ -116,7 +116,7 @@
       "type": "mcq",
       "definition": "The CPI tracks a FIXED basket of consumer goods and includes imports consumers buy; the GDP deflator covers EVERYTHING produced domestically (consumption, investment, government, net exports) and reweights its basket each period. They are not identical, the deflator does include services, the CPI omits business investment goods rather than uniquely counting them, and neither index is reliably larger.",
       "last_updated": "2026-06-29",
-      "stale": true
+      "crosschecked": false
     },
     {
       "term": "If nominal GDP is unchanged over a year but the price level rose about 3%, real GDP has:",
@@ -131,7 +131,7 @@
       "type": "mcq",
       "definition": "Real ≈ nominal − inflation = 0% − 3% = −3%, so real GDP fell by about 3% (exactly 1/1.03 − 1 ≈ −2.9%). With the same money value of output but higher prices, the physical quantity produced must have shrunk. Rising answers get the sign wrong; −6% double-counts.",
       "last_updated": "2026-06-29",
-      "stale": true
+      "crosschecked": false
     },
     {
       "term": "The distinction between a 'nominal' and a 'real' economic variable is that the real variable:",
@@ -146,7 +146,7 @@
       "type": "mcq",
       "definition": "A real variable strips out price changes, expressing values in constant purchasing power, so its movements reflect genuine quantity or purchasing-power changes rather than inflation. 'Current-period prices' describes the NOMINAL variable; real captures quantity changes rather than ignoring them; it is not always larger (with positive inflation it is smaller); and the concept applies far beyond interest rates.",
       "last_updated": "2026-06-29",
-      "stale": true
+      "crosschecked": false
     },
     {
       "term": "Nominal GDP can rise for two distinct reasons. They are:",
@@ -161,7 +161,7 @@
       "type": "mcq",
       "definition": "Nominal GDP = prices x quantities, so it rises from higher real output (more produced) and/or higher prices (inflation) - which is why nominal growth alone cannot tell you whether the economy actually grew. The single-channel options each ignore one of the two; the exchange rate and population are not direct components of nominal GDP.",
       "last_updated": "2026-06-29",
-      "stale": true
+      "crosschecked": false
     }
   ]
 }

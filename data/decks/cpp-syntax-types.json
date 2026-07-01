@@ -26,7 +26,7 @@
       "summary": "`int main()` is the entry point; return 0 = success.",
       "category": "core",
       "last_updated": "2026-06-29",
-      "stale": true
+      "crosschecked": false
     },
     {
       "term": "What does `#include <iostream>` do?",
@@ -34,7 +34,7 @@
       "summary": "Preprocessor pulls in a header so its declarations are visible.",
       "category": "core",
       "last_updated": "2026-06-29",
-      "stale": true
+      "crosschecked": false
     },
     {
       "type": "truefalse",
@@ -44,7 +44,7 @@
       "summary": "True — types are checked at compile time and code is compiled to machine code.",
       "definition": "True. Every variable has a type fixed at compile time (static typing), conversions are checked (strong typing), and the source is compiled ahead of time to native machine code rather than interpreted.",
       "last_updated": "2026-06-29",
-      "stale": true
+      "crosschecked": false
     },
     {
       "term": "Name the integer and floating-point fundamental types.",
@@ -52,7 +52,7 @@
       "summary": "int/short/long/long long, char, bool; float/double/long double.",
       "category": "types",
       "last_updated": "2026-06-29",
-      "stale": true
+      "crosschecked": false
     },
     {
       "term": "How do you declare and initialise a variable in modern C++?",
@@ -61,7 +61,7 @@
       "note": "Copy form `int x = 42;` and direct form `int x(42);` also work.",
       "category": "types",
       "last_updated": "2026-06-29",
-      "stale": true
+      "crosschecked": false
     },
     {
       "type": "cloze",
@@ -70,7 +70,7 @@
       "summary": "const = a value that cannot change after it is set.",
       "definition": "`const int n = 10;` declares a constant; assigning to `n` later is a compile error. Marking things `const` documents intent and lets the compiler catch accidental mutation.",
       "last_updated": "2026-06-29",
-      "stale": true
+      "crosschecked": false
     },
     {
       "term": "Difference between `const` and `constexpr`?",
@@ -78,7 +78,7 @@
       "definition": "Correct: A) `const` means run-time-immutable; `constexpr` means computable at compile time. A `const` value just cannot be reassigned, but may be set from a run-time value. A `constexpr` value must be a compile-time constant, so it can be used where the language demands one (array sizes, template arguments).",
       "category": "types",
       "last_updated": "2026-06-29",
-      "stale": true
+      "crosschecked": false
     },
     {
       "term": "What is a reference in C++?",
@@ -86,7 +86,7 @@
       "summary": "An alias for an existing object; bound once, never null.",
       "category": "core",
       "last_updated": "2026-06-29",
-      "stale": true
+      "crosschecked": false
     },
     {
       "term": "What does `auto` do?",
@@ -94,7 +94,7 @@
       "summary": "Compiler deduces the type from the initialiser.",
       "category": "types",
       "last_updated": "2026-06-29",
-      "stale": true
+      "crosschecked": false
     },
     {
       "type": "truefalse",
@@ -104,7 +104,7 @@
       "summary": "False — uninitialised locals hold indeterminate values; using them is undefined behaviour.",
       "definition": "False. A local variable of fundamental type that is not initialised holds an indeterminate value, and reading it is undefined behaviour. Always initialise — e.g. `int n{};` zero-initialises it.",
       "last_updated": "2026-06-29",
-      "stale": true
+      "crosschecked": false
     },
     {
       "term": "What does `std::cout << x;` do, and what is `<<`?",
@@ -112,7 +112,7 @@
       "summary": "`<<` inserts into the output stream; `>>` extracts from input.",
       "category": "core",
       "last_updated": "2026-06-29",
-      "stale": true
+      "crosschecked": false
     },
     {
       "term": "Why prefer `'\\n'` over `std::endl`?",
@@ -120,7 +120,7 @@
       "summary": "`std::endl` flushes (slow); `'\\n'` just writes a newline.",
       "category": "use",
       "last_updated": "2026-06-29",
-      "stale": true
+      "crosschecked": false
     },
     {
       "term": "What is the `std::` prefix and what is a namespace?",
@@ -128,7 +128,7 @@
       "summary": "Namespaces scope names; the standard library lives in `std`.",
       "category": "core",
       "last_updated": "2026-06-29",
-      "stale": true
+      "crosschecked": false
     },
     {
       "type": "cloze",
@@ -137,7 +137,7 @@
       "summary": "sizeof reports the byte size of a type/object at compile time.",
       "definition": "`sizeof(T)` is a compile-time constant giving the number of bytes an object of type `T` occupies. `sizeof(char)` is 1 by definition; other sizes are implementation-defined.",
       "last_updated": "2026-06-29",
-      "stale": true
+      "crosschecked": false
     },
     {
       "term": "What is the difference between `'a'` and `\"a\"`?",
@@ -145,7 +145,7 @@
       "definition": "Correct: A) `'a'` is a single `char`; `\"a\"` is a 2-element char array (the letter plus a null terminator). Single quotes make a character literal; double quotes make a C-string literal that includes a trailing `'\\0'`. Use `std::string` for real text handling.",
       "category": "types",
       "last_updated": "2026-06-29",
-      "stale": true
+      "crosschecked": false
     },
     {
       "term": "Exercise: what does this print?\n`int a{5}; int b{2}; std::cout << a / b << ' ' << a % b;`",
@@ -154,7 +154,7 @@
       "summary": "`2 1` — integer division truncates; `%` gives the remainder.",
       "category": "use",
       "last_updated": "2026-06-29",
-      "stale": true
+      "crosschecked": false
     },
     {
       "term": "Exercise: spot the bug. `double avg = (3 + 4) / 2;` — why is `avg` 3, not 3.5?",
@@ -163,7 +163,7 @@
       "summary": "All-int arithmetic truncates before the result is widened; use 2.0.",
       "category": "use",
       "last_updated": "2026-06-29",
-      "stale": true
+      "crosschecked": false
     }
   ]
 }

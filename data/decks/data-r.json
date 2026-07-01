@@ -18,7 +18,7 @@
       "formula": "x <- c(1, 2, 3); y <- x * 2; mean(x)",
       "note": "[1] The R Project — https://www.r-project.org/",
       "last_updated": "2026-06-29",
-      "stale": true
+      "crosschecked": false
     },
     {
       "term": "R: what is a data.frame, and how do you pull out a column?",
@@ -26,7 +26,7 @@
       "formula": "d <- data.frame(grade = c('A','B'), default = c(0, 1)); d[['default']]",
       "note": "[1] The R Project — https://www.r-project.org/",
       "last_updated": "2026-06-29",
-      "stale": true
+      "crosschecked": false
     },
     {
       "term": "R: what is a factor, and why does it matter for regression?",
@@ -34,7 +34,7 @@
       "formula": "g <- factor(c('A','B','A'), levels = c('A','B','C'))",
       "note": "[1] The R Project — https://www.r-project.org/",
       "last_updated": "2026-06-29",
-      "stale": true
+      "crosschecked": false
     },
     {
       "term": "R: how do you read a CSV file into a data.frame?",
@@ -42,7 +42,7 @@
       "formula": "d <- read.csv('loans.csv'); str(d)",
       "note": "[1] The R Project — https://www.r-project.org/",
       "last_updated": "2026-06-29",
-      "stale": true
+      "crosschecked": false
     },
     {
       "term": "R: how do you keep only the rows that meet a condition?",
@@ -50,7 +50,7 @@
       "formula": "subset(d, x > 0)            # base\nlibrary(dplyr); filter(d, x > 0)",
       "note": "[1] The R Project — https://www.r-project.org/",
       "last_updated": "2026-06-29",
-      "stale": true
+      "crosschecked": false
     },
     {
       "term": "R: what are the core dplyr verbs and the pipe?",
@@ -58,7 +58,7 @@
       "formula": "d %>% group_by(grade) %>% summarise(rate = mean(default))",
       "note": "[1] The R Project — https://www.r-project.org/",
       "last_updated": "2026-06-29",
-      "stale": true
+      "crosschecked": false
     },
     {
       "term": "R: how do you fit a linear regression, and where do the results live?",
@@ -66,7 +66,7 @@
       "formula": "m <- lm(y ~ x1 + x2, data = d); summary(m)",
       "note": "[1] R — lm() — https://stat.ethz.ch/R-manual/R-devel/library/stats/html/lm.html",
       "last_updated": "2026-06-29",
-      "stale": true
+      "crosschecked": false
     },
     {
       "term": "R: how do you fit a logistic regression for a 0/1 outcome?",
@@ -74,7 +74,7 @@
       "formula": "m <- glm(default ~ x1 + x2, family = binomial, data = d)",
       "note": "[1] R — glm() — https://stat.ethz.ch/R-manual/R-devel/library/stats/html/glm.html",
       "last_updated": "2026-06-29",
-      "stale": true
+      "crosschecked": false
     },
     {
       "term": "R: how do you read full model output versus just extract the coefficients?",
@@ -82,7 +82,7 @@
       "formula": "coef(m); confint(m)",
       "note": "[1] The R Project — https://www.r-project.org/",
       "last_updated": "2026-06-29",
-      "stale": true
+      "crosschecked": false
     },
     {
       "term": "R: when do you use apply versus sapply/lapply versus tapply?",
@@ -90,7 +90,7 @@
       "formula": "apply(M, 2, mean)   # column means\nsapply(d, class)    # type of each column",
       "note": "[1] The R Project — https://www.r-project.org/",
       "last_updated": "2026-06-29",
-      "stale": true
+      "crosschecked": false
     },
     {
       "term": "R: how do you compute a grouped summary in base R?",
@@ -98,7 +98,7 @@
       "formula": "aggregate(default ~ grade, data = d, FUN = mean)",
       "note": "[1] The R Project — https://www.r-project.org/",
       "last_updated": "2026-06-29",
-      "stale": true
+      "crosschecked": false
     },
     {
       "term": "R: how does ggplot2 build up a plot?",
@@ -106,7 +106,7 @@
       "formula": "library(ggplot2); ggplot(d, aes(score, default)) + geom_point()",
       "note": "[1] The R Project — https://www.r-project.org/",
       "last_updated": "2026-06-29",
-      "stale": true
+      "crosschecked": false
     },
     {
       "term": "In R using the dplyr package, to join two data frames keeping all rows from the left one, you use:",
@@ -121,7 +121,7 @@
       "type": "mcq",
       "definition": "left_join keeps every left-hand row, filling NA where the right has no match; the base-R equivalent is merge(df1, df2, all.x=TRUE). inner_join keeps only rows that match on the key; right_join keeps all right-hand rows instead; full_join keeps rows from both sides; semi_join filters the left frame to matches but adds no columns from the right.",
       "last_updated": "2026-06-29",
-      "stale": true
+      "crosschecked": false
     },
     {
       "term": "In R, to send a SQL query to a database and get the result as a data frame (using the DBI package), you use:",
@@ -136,7 +136,7 @@
       "type": "mcq",
       "definition": "dbGetQuery runs the statement and fetches the whole result as a data frame. dbWriteTable does the reverse, writing a data frame into a table; dbReadTable pulls a whole named table, not a query string; dbExecute runs a statement for its side effect and returns only a row count, not the rows; dbSendStatement is for non-SELECT statements and returns a result object, not the data.",
       "last_updated": "2026-06-29",
-      "stale": true
+      "crosschecked": false
     },
     {
       "term": "In R's dplyr, the verbs to (a) keep rows meeting a condition and (b) keep certain columns are, respectively:",
@@ -151,7 +151,7 @@
       "type": "mcq",
       "definition": "filter() subsets ROWS by a logical condition and select() chooses COLUMNS by name. Stating them as select()/filter() reverses the pair — the classic confusion (pandas adds to it, since pandas .filter is about columns). slice() picks rows by position not columns; where() and pick() are selection helpers used INSIDE select(), not standalone row/column verbs; keep() and discard() are not dplyr verbs at all.",
       "last_updated": "2026-06-29",
-      "stale": true
+      "crosschecked": false
     }
   ]
 }

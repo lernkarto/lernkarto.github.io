@@ -14,7 +14,7 @@
       "answer": true,
       "summary": "True — operational risk explicitly includes legal risk and excludes strategic and reputational risk.",
       "last_updated": "2026-06-29",
-      "stale": true
+      "crosschecked": false
     },
     {
       "term": "Basel classifies operational losses into {{seven}} standard event types, from internal fraud to execution, delivery & process management.",
@@ -22,7 +22,7 @@
       "note": "Standardising event types lets internal and external loss data be pooled and compared.",
       "type": "cloze",
       "last_updated": "2026-06-29",
-      "stale": true
+      "crosschecked": false
     },
     {
       "term": "Internal loss data",
@@ -30,28 +30,28 @@
       "definition": "A firm's own historical record of operational loss events above a collection threshold, with amounts, dates and causes. It anchors capital and risk measurement in the institution's actual experience.",
       "note": "Backward-looking and sparse in the tail — rare large events are under-sampled by construction.",
       "last_updated": "2026-06-29",
-      "stale": true
+      "crosschecked": false
     },
     {
       "term": "External loss data",
       "definition": "Operational losses experienced by other firms, sourced from consortia or public databases, used to enrich a firm's thin tail. It reveals plausible large events the firm hasn't suffered yet, but needs scaling for size and relevance.",
       "note": "Subject to reporting bias — large, public losses are over-represented.",
       "last_updated": "2026-06-29",
-      "stale": true
+      "crosschecked": false
     },
     {
       "term": "Scenario analysis",
       "definition": "Structured expert assessment of plausible severe operational events — their frequency and severity — to capture tail risks absent from historical data. It injects forward-looking judgement where loss data is silent.",
       "note": "Powerful but prone to bias; needs disciplined facilitation and challenge.",
       "last_updated": "2026-06-29",
-      "stale": true
+      "crosschecked": false
     },
     {
       "term": "RCSA",
       "sub": "risk & control self-assessment",
       "definition": "A bottom-up process in which business units identify their operational risks, assess inherent and residual severity, and evaluate control effectiveness. The cornerstone of qualitative operational-risk management.",
       "last_updated": "2026-06-29",
-      "stale": true
+      "crosschecked": false
     },
     {
       "term": "Basel's Standardised Measurement Approach (SMA) for operational-risk capital (BCBS baseline: January 2023) replaced both the older standardised approaches and banks' own {{AMA}} models.",
@@ -60,7 +60,7 @@
       "formula": "$\\text{ORC} = \\mathrm{BIC}\\times \\mathrm{ILM}$",
       "type": "cloze",
       "last_updated": "2026-06-29",
-      "stale": true,
+      "crosschecked": false,
       "note": "[1] BCBS d424 (Basel III finalisation, Dec 2017) — https://www.bis.org/bcbs/publ/d424.pdf · [2] CRR3 (EU) 2024/1623 Art. 312–315 — https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:32024R1623"
     },
     {
@@ -69,7 +69,7 @@
       "definition": "The size proxy in the SMA: a Business Indicator built from interest, services and financial statement items, scaled by progressive regulatory coefficients (the bigger the bank, the higher the marginal rate). It sets baseline operational-risk capital before loss adjustment.",
       "note": "Larger banks attract higher marginal coefficients on the BI buckets.",
       "last_updated": "2026-06-29",
-      "stale": true
+      "crosschecked": false
     },
     {
       "term": "Internal Loss Multiplier",
@@ -77,21 +77,21 @@
       "definition": "An SMA scalar that tilts capital up or down according to whether a bank's historical losses are high or low relative to its size. A bank with a clean loss history pays less; a loss-heavy one pays more.",
       "formula": "$\\mathrm{ILM} = \\ln\\!\\big(e^{1} - 1 + (\\mathrm{LC}/\\mathrm{BIC})^{0.8}\\big)$",
       "last_updated": "2026-06-29",
-      "stale": true
+      "crosschecked": false
     },
     {
       "term": "Model risk",
       "definition": "The risk of loss from decisions based on models that are wrong or misused — flawed assumptions, bad data, implementation errors, or application outside their valid domain. Pervasive wherever pricing, risk and capital depend on quantitative models.",
       "note": "Two sources: the model is fundamentally wrong, or a sound model is used incorrectly.",
       "last_updated": "2026-06-29",
-      "stale": true
+      "crosschecked": false
     },
     {
       "term": "Model validation",
       "definition": "Independent assessment of a model's conceptual soundness, data, implementation and ongoing performance before approval and periodically after. It is the second-line control that challenges the developers' choices.",
       "note": "Effective challenge requires validators with the standing and skill to disagree.",
       "last_updated": "2026-06-29",
-      "stale": true
+      "crosschecked": false
     },
     {
       "term": "The de facto global standard for managing model risk is the US supervisory guidance {{SR 11-7}}.",
@@ -100,34 +100,34 @@
       "note": "Treats model risk as a category to be managed like credit or market risk.",
       "type": "cloze",
       "last_updated": "2026-06-29",
-      "stale": true
+      "crosschecked": false
     },
     {
       "term": "Benchmarking",
       "definition": "Comparing a model's outputs against an alternative or challenger model, or against market consensus, to detect bias or error. A validation tool especially useful where direct backtesting is impossible (e.g. long-horizon credit models).",
       "last_updated": "2026-06-29",
-      "stale": true
+      "crosschecked": false
     },
     {
       "term": "Conduct risk",
       "definition": "The risk that a firm's behaviour — mis-selling, market abuse, unfair treatment of customers, conflicts of interest — harms clients or market integrity, drawing fines and redress. Culture and incentives are its root causes.",
       "note": "Post-2008 conduct fines have rivalled credit losses for some banks.",
       "last_updated": "2026-06-29",
-      "stale": true
+      "crosschecked": false
     },
     {
       "term": "Reputational risk",
       "definition": "The risk that damage to a firm's standing with customers, counterparties, investors or regulators reduces revenue or raises funding costs. Usually a second-order consequence of another risk crystallising, but capable of becoming existential.",
       "note": "Hard to capitalise directly; managed through the events that trigger it.",
       "last_updated": "2026-06-29",
-      "stale": true
+      "crosschecked": false
     },
     {
       "term": "Cyber risk",
       "definition": "The risk of loss from attacks on, or failures of, information systems — data breaches, ransomware, denial of service — threatening confidentiality, integrity and availability. A fast-growing operational risk with systemic potential through shared infrastructure.",
       "note": "Increasingly addressed by dedicated regimes (e.g. EU DORA) rather than generic op-risk rules.",
       "last_updated": "2026-06-29",
-      "stale": true
+      "crosschecked": false
     },
     {
       "term": "Outsourcing an activity to a third-party vendor also transfers the firm's accountability for it.",
@@ -137,7 +137,7 @@
       "answer": false,
       "summary": "False — outsourcing the activity does not outsource the accountability.",
       "last_updated": "2026-06-29",
-      "stale": true
+      "crosschecked": false
     },
     {
       "term": "Operational resilience is measured by an {{impact tolerance}}: the maximum tolerable disruption to a critical business service.",
@@ -145,7 +145,7 @@
       "note": "Measured by impact tolerance: the maximum tolerable disruption to a critical service.",
       "type": "cloze",
       "last_updated": "2026-06-29",
-      "stale": true
+      "crosschecked": false
     }
   ]
 }

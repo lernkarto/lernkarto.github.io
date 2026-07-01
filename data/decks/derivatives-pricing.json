@@ -21,14 +21,14 @@
       "definition": "A contract whose value derives from an underlying asset, rate or index — forwards, futures, swaps and options. Derivatives transfer specific risks between parties and can hedge, speculate or arbitrage, with exposure decoupled from notional.",
       "note": "Risk lives in the sensitivities, not the (often huge) notional.",
       "last_updated": "2026-06-29",
-      "stale": true
+      "crosschecked": false
     },
     {
       "term": "Forward contract",
       "definition": "An [[OTC]] agreement to buy or sell an asset at a fixed price on a future date, settled once at maturity. It locks in a price today but carries bilateral counterparty risk and no interim cash flows.",
       "formula": "$F_0 = S_0\\,e^{(r-q)T}$",
       "last_updated": "2026-06-29",
-      "stale": true
+      "crosschecked": false
     },
     {
       "term": "Daily marking-to-market makes a futures contract identical in value to an otherwise-equivalent forward, so their prices are always exactly equal.",
@@ -38,14 +38,14 @@
       "answer": false,
       "summary": "False — daily settlement creates a convexity (financing) difference, so futures and forward prices can differ.",
       "last_updated": "2026-06-29",
-      "stale": true
+      "crosschecked": false
     },
     {
       "term": "No-arbitrage principle",
       "definition": "The assumption that no riskless profit can be made from zero net investment — the cornerstone that pins down derivative prices. If two portfolios have identical payoffs they must have identical prices, or arbitrageurs trade the gap away.",
       "note": "Pricing is fundamentally relative: a derivative is valued by what replicates it.",
       "last_updated": "2026-06-29",
-      "stale": true
+      "crosschecked": false
     },
     {
       "term": "A futures curve where forward prices rise with maturity (carry dominates) is said to be in {{contango}}.",
@@ -53,21 +53,21 @@
       "formula": "$F_0 = S_0\\,e^{(r + u - q)T}$",
       "type": "cloze",
       "last_updated": "2026-06-29",
-      "stale": true
+      "crosschecked": false
     },
     {
       "term": "Option",
       "definition": "A contract granting the right, not the obligation, to buy (call) or sell (put) an underlying at a strike price. The asymmetry — capped loss, open-ended gain for the holder — is what makes options nonlinear and their risk management distinctive.",
       "formula": "call payoff $=\\max(S_T-K,\\,0)$;  put payoff $=\\max(K-S_T,\\,0)$",
       "last_updated": "2026-06-29",
-      "stale": true
+      "crosschecked": false
     },
     {
       "term": "Put–call parity",
       "definition": "A no-arbitrage identity linking European call and put prices on the same strike and maturity to the underlying and a bond. It lets one be priced from the other and exposes mispricing instantly.",
       "formula": "$C - P = S_0 - K\\,e^{-rT}$",
       "last_updated": "2026-06-29",
-      "stale": true
+      "crosschecked": false
     },
     {
       "term": "An option whose strike is approximately equal to the spot price is described as {{at-the-money}}.",
@@ -75,14 +75,14 @@
       "note": "[[ATM]] options carry the most gamma and time value.",
       "type": "cloze",
       "last_updated": "2026-06-29",
-      "stale": true
+      "crosschecked": false
     },
     {
       "term": "Intrinsic vs time value",
       "definition": "Intrinsic value is the payoff if exercised now; time value is the premium above that, reflecting the chance of finishing further in-the-money. Time value decays to zero at expiry, the source of theta.",
       "formula": "option price $=$ intrinsic value $+$ time value",
       "last_updated": "2026-06-29",
-      "stale": true
+      "crosschecked": false
     },
     {
       "term": "Black–Scholes–Merton",
@@ -90,14 +90,14 @@
       "definition": "The closed-form price of a European option under geometric Brownian motion and constant volatility, derived by constructing a riskless replicating portfolio. The foundational result of modern derivatives pricing.",
       "formula": "$C = S_0 N(d_1) - K e^{-rT} N(d_2),\\;\\; d_{1,2}=\\dfrac{\\ln(S_0/K)+(r\\pm\\tfrac12\\sigma^2)T}{\\sigma\\sqrt{T}}$",
       "last_updated": "2026-06-29",
-      "stale": true
+      "crosschecked": false
     },
     {
       "term": "Black–Scholes assumptions",
       "definition": "Constant volatility and rates, log-normal prices, no jumps, frictionless continuous trading, and no arbitrage. Each is violated in practice — the volatility smile is the market's direct repudiation of constant volatility.",
       "note": "The [[BSM]] model is a language for quoting prices (via implied vol) as much as a price itself.",
       "last_updated": "2026-06-29",
-      "stale": true
+      "crosschecked": false
     },
     {
       "term": "In risk-neutral valuation, every asset is assumed to earn the {{risk-free}} rate, and the payoff is discounted at that rate.",
@@ -105,7 +105,7 @@
       "formula": "$V_0 = e^{-rT}\\,\\mathbb{E}^{\\mathbb{Q}}\\!\\left[\\text{payoff}\\right]$",
       "type": "cloze",
       "last_updated": "2026-06-29",
-      "stale": true
+      "crosschecked": false
     },
     {
       "term": "Under the risk-neutral measure Q, discounted asset prices follow a drift-free process known as a {{martingale}}.",
@@ -114,7 +114,7 @@
       "note": "Fundamental theorem: no arbitrage ⇔ an equivalent martingale measure exists.",
       "type": "cloze",
       "last_updated": "2026-06-29",
-      "stale": true
+      "crosschecked": false
     },
     {
       "term": "In equity markets, implied volatility that is higher for out-of-the-money puts than for calls is called a volatility {{skew}}.",
@@ -122,35 +122,35 @@
       "note": "Equity skew steepened permanently after the 1987 crash.",
       "type": "cloze",
       "last_updated": "2026-06-29",
-      "stale": true
+      "crosschecked": false
     },
     {
       "term": "Volatility surface",
       "definition": "Implied volatility mapped across both strike and maturity, the full object traders quote and risk-manage. Its movements (level, skew, term structure) are themselves risk factors requiring vega bucketing.",
       "note": "A self-consistent surface must be free of static arbitrage (calendar and butterfly).",
       "last_updated": "2026-06-29",
-      "stale": true
+      "crosschecked": false
     },
     {
       "term": "Delta hedging",
       "definition": "Neutralising an option's first-order exposure to the underlying by holding an offsetting position of delta units, rebalanced as delta changes. The practical embodiment of [[BSM]] replication.",
       "formula": "hedge $= -\\,\\delta$ units of the underlying per option",
       "last_updated": "2026-06-29",
-      "stale": true
+      "crosschecked": false
     },
     {
       "term": "Dynamic replication",
       "definition": "Continuously rebalancing a portfolio of the underlying and cash to reproduce an option's payoff, which by no-arbitrage must cost the option's price. The [[BSM]] framework shows that discretisation, transaction costs and gaps make perfect replication impossible in practice.",
       "note": "Replication error grows with gamma and the coarseness of rebalancing.",
       "last_updated": "2026-06-29",
-      "stale": true
+      "crosschecked": false
     },
     {
       "term": "Binomial tree",
       "definition": "A discrete-time lattice in which the underlying moves up or down each step, priced by risk-neutral expectation rolled back from expiry. Intuitive, and it handles early exercise naturally, unlike the closed-form [[BSM]].",
       "formula": "$p=\\dfrac{e^{r\\Delta t}-d}{u-d}$",
       "last_updated": "2026-06-29",
-      "stale": true
+      "crosschecked": false
     },
     {
       "term": "Finite-difference methods",
@@ -158,7 +158,7 @@
       "definition": "Numerically solving the [[BSM]] partial differential equation on a grid of price and time, useful for path-independent and early-exercise products. The third pricing route alongside closed forms and Monte Carlo.",
       "formula": "$\\dfrac{\\partial V}{\\partial t}+\\tfrac12\\sigma^2 S^2\\dfrac{\\partial^2 V}{\\partial S^2}+rS\\dfrac{\\partial V}{\\partial S}-rV=0$",
       "last_updated": "2026-06-29",
-      "stale": true
+      "crosschecked": false
     },
     {
       "term": "An American call on a non-dividend-paying stock is optimally exercised early, so it is worth strictly more than the equivalent European call.",
@@ -168,14 +168,14 @@
       "answer": false,
       "summary": "False — early exercise is never optimal for an American call on a non-dividend stock, so it prices like a European call.",
       "last_updated": "2026-06-29",
-      "stale": true
+      "crosschecked": false
     },
     {
       "term": "Exotic options",
       "definition": "Options with non-standard payoffs — barriers (knock-in/out), Asians (average price), digitals, lookbacks, baskets. Their path dependence and discontinuities demand simulation or specialised models and create sharp, hard-to-hedge Greeks.",
       "note": "Barrier options can have unbounded gamma near the barrier — a hedging nightmare.",
       "last_updated": "2026-06-29",
-      "stale": true
+      "crosschecked": false
     },
     {
       "term": "Interest rate swap",
@@ -183,7 +183,7 @@
       "definition": "An agreement to exchange fixed for floating interest payments on a notional over time, the most traded [[OTC]] derivative. It transforms rate exposure and is valued as the difference between fixed- and floating-leg present values. A [[FRA]] is its single-period building block.",
       "formula": "value $=\\mathrm{PV}_{\\text{float}}-\\mathrm{PV}_{\\text{fixed}}$",
       "last_updated": "2026-06-29",
-      "stale": true
+      "crosschecked": false
     },
     {
       "term": "Forward rate agreement",
@@ -191,7 +191,7 @@
       "definition": "An [[OTC]] contract fixing an interest rate on a notional for a future period, cash-settled against the realised reference rate. The single-period building block from which [[IRS]] swaps are assembled.",
       "formula": "settlement $\\propto (\\text{reference} - \\text{FRA rate})\\times \\text{notional}\\times \\tau$",
       "last_updated": "2026-06-29",
-      "stale": true
+      "crosschecked": false
     },
     {
       "term": "A payer swaption gains value when interest rates rise, all else equal.",
@@ -201,14 +201,14 @@
       "answer": true,
       "summary": "True — a payer swaption locks in paying a fixed rate, so it benefits as rates rise above the strike.",
       "last_updated": "2026-06-29",
-      "stale": true
+      "crosschecked": false
     },
     {
       "term": "Cap / floor",
       "definition": "A strip of interest-rate options that caps (or floors) the rate paid (received) on a floating exposure, each period's option a caplet (floorlet). Each caplet is economically a [[FRA]] with optionality rather than obligation, used to bound funding cost or guarantee a minimum yield. Often employed alongside an [[IRS]] to hedge a floating exposure.",
       "formula": "caplet payoff $\\propto \\max(L-K,\\,0)\\times\\text{notional}\\times\\tau$",
       "last_updated": "2026-06-29",
-      "stale": true
+      "crosschecked": false
     },
     {
       "term": "OIS discounting",
@@ -216,7 +216,7 @@
       "definition": "Discounting collateralised derivative cash flows — including [[IRS]] legs — at the [[OIS]] rate rather than a term reference rate, with separate curves for forecasting and discounting. The post-2008 standard, reflecting that collateral earns the OIS rate.",
       "note": "The crisis broke the single-curve world; basis between curves is now a priced risk.",
       "last_updated": "2026-06-29",
-      "stale": true
+      "crosschecked": false
     }
   ]
 }

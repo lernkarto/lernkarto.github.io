@@ -30,7 +30,7 @@
       "definition": "The discipline of managing assets and liabilities together so the firm can meet obligations as they fall due. Its core concern is interest-rate risk in the banking book — yield-curve moves revalue assets and liabilities differently by duration and repricing date — together with the structural liquidity of the balance sheet.",
       "note": "For an insurer, ALM ensures investments align with the timing and size of expected claim payouts.",
       "last_updated": "2026-06-29",
-      "stale": true
+      "crosschecked": false
     },
     {
       "category": "core",
@@ -38,7 +38,7 @@
       "definition": "Changes in the yield curve move the value of, and income from, assets and liabilities by different amounts depending on their durations and repricing dates. Managing this mismatch — alongside structural liquidity — is the heart of ALM, executed by treasury.",
       "type": "cloze",
       "last_updated": "2026-06-29",
-      "stale": true
+      "crosschecked": false
     },
     {
       "category": "core",
@@ -47,7 +47,7 @@
       "definition": "Correct: A) The treasury. Treasury manages cash and liquidity, raises funding, runs firm-wide interest-rate and FX hedging, and operates the funds-transfer-pricing framework that charges each business for the funding and liquidity it uses. Audit assures, the desk takes positions, and validation checks models.",
       "type": "mcq",
       "last_updated": "2026-06-29",
-      "stale": true
+      "crosschecked": false
     },
     {
       "category": "core",
@@ -55,7 +55,7 @@
       "definition": "Because FRM relies on models (VaR, pricing, PD/LGD), an independent function validates the models each division uses and controls model risk — the risk of loss from a model being wrong or misused. For VaR, backtesting is especially employed: comparing predicted VaR with realised P&L and counting exceptions to confirm the model stays calibrated.",
       "note": "Validation is independent of the model's users by design.",
       "last_updated": "2026-06-29",
-      "stale": true
+      "crosschecked": false
     },
     {
       "category": "core",
@@ -64,7 +64,7 @@
       "definition": "Correct: B) sets standing policy on what, how much and with which instruments to hedge. A programme makes hedging systematic and governed — over a defined horizon — rather than discretionary. It is not inherently cheaper, does not remove basis risk, and is run by the firm.",
       "type": "mcq",
       "last_updated": "2026-06-29",
-      "stale": true
+      "crosschecked": false
     },
     {
       "category": "theorems",
@@ -72,7 +72,7 @@
       "definition": "Pillar 1 fixes the minimum capital for these principal quantifiable risks, computed against risk-weighted assets (RWA) using standardised or internal-model approaches. Risks not covered there are caught by Pillar 2.",
       "type": "cloze",
       "last_updated": "2026-06-29",
-      "stale": true
+      "crosschecked": false
     },
     {
       "category": "theorems",
@@ -80,7 +80,7 @@
       "definition": "Pillar 1 sets minimum regulatory capital for the principal quantifiable risks — credit, market and operational — against risk-weighted assets via standardised or internal-model approaches. Pillar 2 requires the bank's own ICAAP (Internal Capital Adequacy Assessment Process) to capture all material risks and hold enough economic capital for them, so it covers what Pillar 1 misses.",
       "note": "Pillar 1 = external minimum on named risks; Pillar 2 = the firm's own all-risks assessment.",
       "last_updated": "2026-06-29",
-      "stale": true
+      "crosschecked": false
     },
     {
       "category": "theorems",
@@ -89,7 +89,7 @@
       "definition": "Correct: B) NSFR. The Net Stable Funding Ratio addresses structural funding over a one-year horizon, while the LCR (Liquidity Coverage Ratio) covers short-term survival under stress. RWA is the capital denominator and ICAAP is the Pillar-2 self-assessment.",
       "type": "mcq",
       "last_updated": "2026-06-29",
-      "stale": true
+      "crosschecked": false
     },
     {
       "category": "use",
@@ -99,7 +99,7 @@
       "answer": false,
       "summary": "False — regulatory capital is a floor; the firm's own appetite and economic capital usually bind tighter.",
       "last_updated": "2026-06-29",
-      "stale": true
+      "crosschecked": false
     },
     {
       "category": "use",
@@ -107,7 +107,7 @@
       "definition": "To charge each business line for the funding and liquidity it actually consumes, so the cost (and risk) of funding is reflected in each unit's economics. Without FTP, businesses would treat funding as free, mis-stating profitability and encouraging excess liquidity risk. FTP aligns incentives with the firm's ALM and liquidity position.",
       "note": "FTP is how firm-level ALM costs are pushed down to the activities that create them.",
       "last_updated": "2026-06-29",
-      "stale": true
+      "crosschecked": false
     },
     {
       "category": "use",
@@ -116,7 +116,7 @@
       "definition": "Correct: A) Value at Risk (VaR). Backtesting compares predicted VaR against realised P&L and counts exceptions to check the model stays calibrated. FTP is a treasury pricing tool, and the leverage ratio and RWA are regulatory capital measures, not model-validation tests.",
       "type": "mcq",
       "last_updated": "2026-06-29",
-      "stale": true
+      "crosschecked": false
     },
     {
       "category": "exercise",
@@ -125,7 +125,7 @@
       "definition": "This is a classic ALM problem: long fixed assets funded by short floating liabilities means rising rates lift funding cost while mortgage income is fixed — interest-rate risk in the banking book, plus refinancing/liquidity risk. Treasury executes the fix: an interest-rate swap to convert the funding cost to fixed (or paying fixed on the asset side), and lengthening/diversifying funding to ease the liquidity mismatch.",
       "note": "Combines the ALM duration-mismatch and the interest-rate-swap mitigation from the primers.",
       "last_updated": "2026-06-29",
-      "stale": true
+      "crosschecked": false
     },
     {
       "category": "exercise",
@@ -134,7 +134,7 @@
       "definition": "Frequent VaR exceptions are a model-risk signal owned by independent model validation. Backtesting quantifies the over-breaching; the response is to investigate, recalibrate or replace the model, and in the interim hold a capital add-on so the understated risk is still covered. This is the monitor → identify loop feeding back into both model governance and capital.",
       "note": "Applies backtesting and model risk from the primer to a concrete VaR failure.",
       "last_updated": "2026-06-29",
-      "stale": true
+      "crosschecked": false
     }
   ]
 }

@@ -12,7 +12,7 @@
       "definition": "The risk to a bank's earnings and economic value from adverse interest-rate moves on non-traded assets and liabilities (loans, deposits). Unlike trading-book rate risk it is managed through ALM and capital under Pillar 2, not market-risk capital.",
       "note": "Measured both as earnings risk (ΔNII) and value risk (ΔEVE).",
       "last_updated": "2026-06-29",
-      "stale": true
+      "crosschecked": false
     },
     {
       "term": "A yield curve where long rates sit below short rates is called {{inverted}}, a classic recession signal.",
@@ -20,21 +20,21 @@
       "note": "PCA on curve moves recovers level, slope and curvature as the leading components.",
       "type": "cloze",
       "last_updated": "2026-06-29",
-      "stale": true
+      "crosschecked": false
     },
     {
       "term": "Spot vs forward rate",
       "definition": "A spot rate applies from today to a single future date; a forward rate is the rate, agreed today, for borrowing between two future dates. Forwards are implied by no-arbitrage from the spot curve.",
       "formula": "$(1+s_2)^2 = (1+s_1)(1+f_{1,2})$",
       "last_updated": "2026-06-29",
-      "stale": true
+      "crosschecked": false
     },
     {
       "term": "Bootstrapping",
       "definition": "Building the zero-coupon (spot) curve sequentially from the prices of coupon-bearing instruments, solving for each maturity's rate given shorter ones already known. It is the standard way to derive discount factors from market quotes.",
       "formula": "solve $P = \\sum_t C_t\\,D(t)$ for $D(t)$ tenor by tenor",
       "last_updated": "2026-06-29",
-      "stale": true
+      "crosschecked": false
     },
     {
       "term": "Macaulay duration is the cash-flow-weighted average time to receipt of a bond's payments, expressed in {{years}}.",
@@ -42,14 +42,14 @@
       "formula": "$D_{\\text{Mac}} = \\dfrac{1}{P}\\displaystyle\\sum_t t\\,\\dfrac{C_t}{(1+y)^t}$",
       "type": "cloze",
       "last_updated": "2026-06-29",
-      "stale": true
+      "crosschecked": false
     },
     {
       "term": "Modified duration",
       "definition": "The percentage price change of a bond for a small parallel change in yield — the first-order rate sensitivity used for hedging and risk. It assumes a flat, parallel shift and degrades for large moves (where convexity matters).",
       "formula": "$\\dfrac{\\Delta P}{P} \\approx -D_{\\text{mod}}\\,\\Delta y,\\quad D_{\\text{mod}} = \\dfrac{D_{\\text{Mac}}}{1 + y/k}$",
       "last_updated": "2026-06-29",
-      "stale": true
+      "crosschecked": false
     },
     {
       "term": "Key rate duration",
@@ -57,14 +57,14 @@
       "definition": "Sensitivity of value to a change in one specific point on the yield curve, holding the others fixed. The set of key rate durations captures exposure to non-parallel (twist and butterfly) curve moves that a single duration misses.",
       "note": "Summing all key rate durations recovers the overall effective duration.",
       "last_updated": "2026-06-29",
-      "stale": true
+      "crosschecked": false
     },
     {
       "term": "Negative convexity",
       "definition": "The property of instruments like callable bonds and MBS whose duration shortens as rates fall (issuers prepay) and lengthens as rates rise — the worst of both directions. Holders are short optionality and must be compensated for it.",
       "note": "Prepayment behaviour makes mortgage hedging path-dependent and unstable.",
       "last_updated": "2026-06-29",
-      "stale": true
+      "crosschecked": false
     },
     {
       "term": "With a positive repricing gap (more assets reprice than liabilities), a bank's net interest income rises when rates rise.",
@@ -74,14 +74,14 @@
       "answer": true,
       "summary": "True — assets reprice up faster than liabilities.",
       "last_updated": "2026-06-29",
-      "stale": true
+      "crosschecked": false
     },
     {
       "term": "Duration gap",
       "definition": "The duration-weighted mismatch between assets and liabilities, measuring the sensitivity of a bank's net worth (economic value of equity) to rate moves. A nonzero gap exposes capital to parallel shifts.",
       "formula": "$\\Delta E \\approx -\\big(D_A - \\tfrac{L}{A}\\,D_L\\big)\\,A\\,\\Delta y$",
       "last_updated": "2026-06-29",
-      "stale": true
+      "crosschecked": false
     },
     {
       "term": "Net interest income",
@@ -89,7 +89,7 @@
       "definition": "The difference between interest earned on assets and interest paid on liabilities — the core earnings of a bank. ΔNII under rate shocks is the earnings-based view of IRRBB over a one-to-three-year horizon.",
       "note": "Short-horizon, accrual-based; complements the value-based EVE view.",
       "last_updated": "2026-06-29",
-      "stale": true
+      "crosschecked": false
     },
     {
       "term": "Economic value of equity (EVE) is a short-horizon, accrual-based earnings measure of interest-rate risk.",
@@ -100,7 +100,7 @@
       "answer": false,
       "summary": "False — EVE is the long-run, present-value measure; NII is the short-horizon earnings one.",
       "last_updated": "2026-06-29",
-      "stale": true
+      "crosschecked": false
     },
     {
       "term": "Asset–liability management",
@@ -108,14 +108,14 @@
       "definition": "The coordinated management of a balance sheet's interest-rate, liquidity and funding mismatches to stabilise earnings and protect capital. The ALCO committee owns appetite, hedging and the funding plan.",
       "note": "Balances the NII (earnings) and EVE (value) objectives, which can conflict.",
       "last_updated": "2026-06-29",
-      "stale": true
+      "crosschecked": false
     },
     {
       "term": "Immunisation",
       "definition": "Structuring a portfolio so that its value is insensitive to rate moves over a horizon, classically by matching the duration of assets to that of liabilities. It locks in a return regardless of small parallel shifts but must be rebalanced as durations drift.",
       "formula": "set $D_A = D_L$ and PV(assets) $\\ge$ PV(liabilities)",
       "last_updated": "2026-06-29",
-      "stale": true
+      "crosschecked": false
     },
     {
       "term": "Funds transfer pricing",
@@ -123,14 +123,14 @@
       "definition": "The internal mechanism that charges lending units for funds and credits deposit-gathering units, transferring interest-rate and liquidity risk to a central treasury. It lets business lines be measured on credit spread, not on rate bets they shouldn't own.",
       "note": "A weak FTP framework hides where rate and liquidity risk actually sit.",
       "last_updated": "2026-06-29",
-      "stale": true
+      "crosschecked": false
     },
     {
       "term": "OIS / risk-free curve",
       "definition": "The overnight indexed swap curve, built on compounded overnight rates (e.g. €STR, SOFR), used as the near-risk-free discounting curve for collateralised derivatives. Its post-2008 adoption replaced LIBOR discounting (OIS discounting / multi-curve).",
       "note": "Multi-curve framework: discount on OIS, project forwards on the relevant index curve.",
       "last_updated": "2026-06-29",
-      "stale": true
+      "crosschecked": false
     },
     {
       "term": "The swap spread is the fixed swap rate minus the {{government bond yield}} of the same maturity.",
@@ -138,21 +138,21 @@
       "formula": "$\\text{swap spread} = \\text{swap rate} - \\text{government yield}$",
       "type": "cloze",
       "last_updated": "2026-06-29",
-      "stale": true
+      "crosschecked": false
     },
     {
       "term": "Carry and roll-down",
       "definition": "Carry is the return from holding a position if rates stay unchanged (coupon minus funding); roll-down is the price gain as a bond ages down a sloped curve toward lower yields. Together they are the 'do-nothing' return that a rate view must beat.",
       "note": "Positive carry can mask a position that loses badly if the curve shifts.",
       "last_updated": "2026-06-29",
-      "stale": true
+      "crosschecked": false
     },
     {
       "term": "Prepayment risk",
       "definition": "The risk that borrowers repay loans (especially mortgages) early when rates fall, forcing reinvestment at lower yields and shortening asset duration just when long duration is wanted. It is the source of MBS negative convexity.",
       "note": "Modelled with prepayment speed (CPR/PSA) curves that depend on the rate incentive.",
       "last_updated": "2026-06-29",
-      "stale": true
+      "crosschecked": false
     },
     {
       "term": "The share of a market rate move passed through to depositors is called the {{deposit beta}}.",
@@ -161,7 +161,7 @@
       "note": "Deposit beta = how much of a rate move is passed through to depositors.",
       "type": "cloze",
       "last_updated": "2026-06-29",
-      "stale": true
+      "crosschecked": false
     }
   ]
 }

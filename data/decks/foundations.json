@@ -11,7 +11,7 @@
       "definition": "The uncertainty of future outcomes — concretely, the potential for financial loss arising from an adverse event. Risk is measured, priced and capitalised rather than simply eliminated; a firm earns its return precisely by holding risks it can manage.",
       "note": "Distinguish risk (quantifiable probabilities) from Knightian uncertainty (probabilities unknown).",
       "last_updated": "2026-06-29",
-      "stale": true
+      "crosschecked": false
     },
     {
       "term": "Risk appetite — the aggregate amount and type of risk a firm is willing to take — is ultimately set by the {{board}}.",
@@ -19,13 +19,13 @@
       "note": "Appetite is a choice; capacity is the ceiling the balance sheet can bear.",
       "type": "cloze",
       "last_updated": "2026-06-29",
-      "stale": true
+      "crosschecked": false
     },
     {
       "term": "Risk tolerance",
       "definition": "The acceptable variation around a specific target or limit — the band within which a metric may move before action is required. Tolerances operationalise the broader appetite at the level of individual exposures.",
       "last_updated": "2026-06-29",
-      "stale": true
+      "crosschecked": false
     },
     {
       "term": "Risk appetite is always set strictly inside risk capacity.",
@@ -34,7 +34,7 @@
       "answer": true,
       "summary": "True — appetite is a chosen amount of risk set strictly below capacity, the maximum the firm can absorb.",
       "last_updated": "2026-06-29",
-      "stale": true
+      "crosschecked": false
     },
     {
       "term": "Capital is held against inherent risk, the exposure before any controls are applied.",
@@ -43,14 +43,14 @@
       "answer": false,
       "summary": "False — capital is held against residual risk, after controls and mitigants, not inherent risk.",
       "last_updated": "2026-06-29",
-      "stale": true
+      "crosschecked": false
     },
     {
       "term": "Risk–return trade-off",
       "definition": "The principle that higher expected return can only be obtained by accepting higher risk; rational investors demand compensation (a risk premium) for bearing undiversifiable risk.",
       "formula": "$\\text{required return} = r_f + \\text{risk premium}$",
       "last_updated": "2026-06-29",
-      "stale": true
+      "crosschecked": false
     },
     {
       "term": "Expected loss",
@@ -59,7 +59,7 @@
       "formula": "$\\mathrm{EL} = \\mathrm{PD}\\times\\mathrm{LGD}\\times\\mathrm{EAD}$",
       "note": "Covered by provisions/pricing; it is a cost of doing business, not a surprise.",
       "last_updated": "2026-06-29",
-      "stale": true
+      "crosschecked": false
     },
     {
       "term": "Unexpected loss",
@@ -67,14 +67,14 @@
       "definition": "The volatility of loss around its expected value — the deviation that capital, not provisions, must absorb. It is typically measured as a high quantile of the loss distribution minus the mean.",
       "formula": "$\\mathrm{UL} \\approx \\mathrm{VaR}_\\alpha(L) - \\mathrm{EL}$",
       "last_updated": "2026-06-29",
-      "stale": true
+      "crosschecked": false
     },
     {
       "term": "Hedging",
       "definition": "Taking an offsetting position whose value moves opposite to an existing exposure, reducing net sensitivity to a chosen risk factor. A perfect hedge removes the risk entirely; in practice basis risk remains.",
       "formula": "$\\text{hedged P\\&L} = \\Delta V_{\\text{asset}} + h\\,\\Delta V_{\\text{hedge}}$",
       "last_updated": "2026-06-29",
-      "stale": true
+      "crosschecked": false
     },
     {
       "term": "Diversification reduces a portfolio's expected loss.",
@@ -85,27 +85,27 @@
       "answer": false,
       "summary": "False — diversification lowers unexpected loss (volatility), but never reduces expected loss.",
       "last_updated": "2026-06-29",
-      "stale": true
+      "crosschecked": false
     },
     {
       "term": "Netting",
       "definition": "Offsetting mutual obligations between two parties so only the net amount is owed, shrinking gross exposure to a single figure. Close-out netting on default is the legal bedrock of derivative counterparty risk management.",
       "note": "Enforceable netting can cut counterparty exposure by an order of magnitude.",
       "last_updated": "2026-06-29",
-      "stale": true
+      "crosschecked": false
     },
     {
       "term": "Collateral / margin",
       "definition": "Assets pledged to secure an exposure, seized if the counterparty defaults. Initial margin covers potential future exposure; variation margin settles daily mark-to-market moves so exposure is reset toward zero.",
       "last_updated": "2026-06-29",
-      "stale": true
+      "crosschecked": false
     },
     {
       "term": "Notional",
       "definition": "The reference amount on which a contract's payments are computed — not the amount at risk. A large notional can carry small market risk; exposure depends on sensitivities, not face value.",
       "formula": "a €10M interest-rate swap exchanges payments on 10M; its risk is a few thousand €/bp",
       "last_updated": "2026-06-29",
-      "stale": true
+      "crosschecked": false
     },
     {
       "term": "Mark-to-market",
@@ -113,14 +113,14 @@
       "definition": "Valuing a position at its current market price rather than book or historical cost. MtM drives daily P&L, collateral calls and risk metrics; for illiquid positions it shades into mark-to-model.",
       "note": "Mark-to-model introduces model risk where observable prices are absent.",
       "last_updated": "2026-06-29",
-      "stale": true
+      "crosschecked": false
     },
     {
       "term": "P&L attribution",
       "definition": "Decomposing realised profit and loss into the risk factors that produced it (rates, spreads, FX, vol, carry, residual). Large unexplained residuals are a red flag that the risk model is missing a factor.",
       "note": "A core control linking the front-office model to actual outcomes.",
       "last_updated": "2026-06-29",
-      "stale": true
+      "crosschecked": false
     },
     {
       "term": "In the three-lines-of-defence model, the third line that objectively assures the whole framework is {{internal audit}}.",
@@ -128,20 +128,20 @@
       "note": "Independence of the second and third lines from revenue is the point.",
       "type": "cloze",
       "last_updated": "2026-06-29",
-      "stale": true
+      "crosschecked": false
     },
     {
       "term": "Risk register",
       "definition": "A maintained inventory of identified risks with their assessed likelihood, impact, owner, controls and mitigation status. It is the operational backbone of enterprise risk management.",
       "last_updated": "2026-06-29",
-      "stale": true
+      "crosschecked": false
     },
     {
       "term": "Key risk indicator",
       "sub": "KRI",
       "definition": "A measurable metric that signals changing risk levels and serves as an early warning ahead of losses — e.g. limit-breach frequency, trade-error rate, system downtime, or staff turnover on a critical desk.",
       "last_updated": "2026-06-29",
-      "stale": true
+      "crosschecked": false
     },
     {
       "term": "RAROC",
@@ -149,7 +149,7 @@
       "definition": "A profitability measure that charges each activity for the economic capital its risk consumes, enabling comparison across businesses with different risk profiles. Activities are value-creating when RAROC exceeds the cost of capital.",
       "formula": "$\\mathrm{RAROC} = \\dfrac{\\text{expected return} - \\mathrm{EL}}{\\text{economic capital}}$",
       "last_updated": "2026-06-29",
-      "stale": true
+      "crosschecked": false
     },
     {
       "term": "Economic capital is typically calibrated to a high loss quantile of {{99.9%}}, matching a target credit rating.",
@@ -157,33 +157,33 @@
       "note": "Contrast with regulatory capital, the externally imposed minimum.",
       "type": "cloze",
       "last_updated": "2026-06-29",
-      "stale": true
+      "crosschecked": false
     },
     {
       "term": "Tail risk",
       "definition": "The risk of rare, severe outcomes in the extreme tail of the loss distribution — events far from the mean that dominate solvency concerns. Fat-tailed distributions make these far likelier than a normal model implies.",
       "last_updated": "2026-06-29",
-      "stale": true
+      "crosschecked": false
     },
     {
       "term": "The concept of a high-impact, unforeseen event rationalised only after the fact was popularised by {{Taleb}}.",
       "definition": "A high-impact event that lies outside ordinary expectations and is rationalised only after the fact. The risk lesson is humility: models calibrated on benign history systematically understate the unprecedented.",
       "type": "cloze",
       "last_updated": "2026-06-29",
-      "stale": true
+      "crosschecked": false
     },
     {
       "term": "Procyclicality",
       "definition": "The tendency of risk measures and rules to amplify the cycle — risk looks low and leverage builds in booms, then measures spike and force deleveraging in busts. Countercyclical buffers exist to dampen this feedback.",
       "note": "VaR and margin models are inherently procyclical: low vol begets high leverage.",
       "last_updated": "2026-06-29",
-      "stale": true
+      "crosschecked": false
     },
     {
       "term": "Moral hazard",
       "definition": "The distortion in which a party insulated from a risk's consequences takes on more of it — e.g. a bank expecting a bailout. Much prudential regulation exists to counter the moral hazard of implicit guarantees.",
       "last_updated": "2026-06-29",
-      "stale": true
+      "crosschecked": false
     },
     {
       "term": "A common measure of portfolio concentration that rises toward 1 as exposure concentrates is the {{Herfindahl}} index.",
@@ -191,7 +191,7 @@
       "formula": "a Herfindahl index $\\mathrm{HHI}=\\sum_i w_i^2$ rises toward 1 as a portfolio concentrates",
       "type": "cloze",
       "last_updated": "2026-06-29",
-      "stale": true
+      "crosschecked": false
     }
   ]
 }

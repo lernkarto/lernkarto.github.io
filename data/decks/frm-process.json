@@ -28,7 +28,7 @@
       "definition": "A continuous loop applied to every exposure: identify the sources of risk, assess/measure them, prioritise by impact, mitigate (avoid, reduce, transfer or retain), then monitor against limits and re-measure. Because risk changes constantly the loop never stops — breaches feed straight back to identification.",
       "note": "It is a cycle, not a one-off project: monitoring continuously re-opens identification.",
       "last_updated": "2026-06-29",
-      "stale": true
+      "crosschecked": false
     },
     {
       "category": "core",
@@ -37,7 +37,7 @@
       "definition": "Correct: A) identify → assess → prioritise → mitigate → monitor. You must find a risk before you can measure it, rank it by impact before treating it, and only then monitor against limits — with monitoring feeding back into identification.",
       "type": "mcq",
       "last_updated": "2026-06-29",
-      "stale": true
+      "crosschecked": false
     },
     {
       "category": "core",
@@ -45,7 +45,7 @@
       "definition": "Avoid means not taking the exposure at all; reduce cuts its likelihood or severity; the third shifts the risk to a third party paid to bear it (hedging, insurance, sale); retain knowingly keeps the residual risk and holds capital against it.",
       "type": "cloze",
       "last_updated": "2026-06-29",
-      "stale": true
+      "crosschecked": false
     },
     {
       "category": "core",
@@ -54,7 +54,7 @@
       "definition": "Correct: C) Transfer. Both shift the risk to a third party paid to bear it — an insurer for a premium, or a counterparty via a derivative. Avoid means not taking the exposure, reduce means cutting its likelihood or severity, and retain means keeping it and holding capital.",
       "type": "mcq",
       "last_updated": "2026-06-29",
-      "stale": true
+      "crosschecked": false
     },
     {
       "category": "core",
@@ -64,7 +64,7 @@
       "answer": false,
       "summary": "False — retained risk is precisely what capital is held against; capital is the last line of defence for losses not avoided, reduced or transferred.",
       "last_updated": "2026-06-29",
-      "stale": true
+      "crosschecked": false
     },
     {
       "category": "core",
@@ -72,7 +72,7 @@
       "definition": "The board sets the firm's risk appetite — the amount of risk it is willing to bear — which is cascaded into concrete limits per desk, book and risk factor. On a trading book this means limit values for each Greek and sensitivity that traders must not exceed, plus a VaR limit; traders hedge, offset or reduce to stay inside.",
       "note": "Limits turn abstract appetite into daily discipline and define when monitoring must trigger action.",
       "last_updated": "2026-06-29",
-      "stale": true
+      "crosschecked": false
     },
     {
       "category": "core",
@@ -80,7 +80,7 @@
       "definition": "VaR limits are part of how appetite is enforced on a trading book: a loss bigger than the VaR figure is the exception the monitoring step counts and investigates. A run of them signals the model or limits need attention.",
       "type": "cloze",
       "last_updated": "2026-06-29",
-      "stale": true
+      "crosschecked": false
     },
     {
       "category": "theorems",
@@ -88,7 +88,7 @@
       "definition": "Diversification spreads exposure across imperfectly correlated assets so independent losses partly cancel — free, but only while correlations stay below 1 and only for diversifiable risk. Hedging takes an offsetting (usually derivative) position that cancels a chosen factor, leaving basis risk. Insurance pays a premium to transfer a defined loss to an insurer.",
       "note": "Diversification = spread; hedging = offset; insurance = pay to transfer.",
       "last_updated": "2026-06-29",
-      "stale": true
+      "crosschecked": false
     },
     {
       "category": "theorems",
@@ -97,7 +97,7 @@
       "definition": "Correct: B) Diversification. It spreads exposure across assets, sectors or regions whose returns are not perfectly correlated, so losses partly offset. Hedging takes a deliberate offsetting position, insurance transfers a loss for a premium, and retention simply keeps the risk.",
       "type": "mcq",
       "last_updated": "2026-06-29",
-      "stale": true
+      "crosschecked": false
     },
     {
       "category": "theorems",
@@ -105,7 +105,7 @@
       "definition": "Forwards and futures lock a future transaction price (currency forwards for FX, index futures for equity-market risk); swaps exchange one cash-flow stream for another (interest-rate swaps convert floating to fixed; credit default swaps transfer default risk); options grant the right but not the obligation to transact, so a bought put insures downside while keeping upside for the premium paid.",
       "note": "Futures/forwards/swaps give symmetric low-cost offsets; options give asymmetric premium-priced protection.",
       "last_updated": "2026-06-29",
-      "stale": true
+      "crosschecked": false
     },
     {
       "category": "theorems",
@@ -113,7 +113,7 @@
       "definition": "It exchanges one cash-flow stream for another — here, paying fixed and receiving floating offsets the floating coupons on the debt, leaving a net fixed cost. This is a transfer-type mitigation using a derivative, achieving the hedge without touching the underlying loan.",
       "type": "cloze",
       "last_updated": "2026-06-29",
-      "stale": true
+      "crosschecked": false
     },
     {
       "category": "use",
@@ -123,7 +123,7 @@
       "answer": false,
       "summary": "False — diversification removes only diversifiable risk and decays as correlations rise to 1; systematic market risk remains and needs hedging.",
       "last_updated": "2026-06-29",
-      "stale": true
+      "crosschecked": false
     },
     {
       "category": "use",
@@ -131,7 +131,7 @@
       "definition": "When the firm wants to cap the downside but keep the upside. Selling futures (a symmetric hedge) offsets losses but also gives up gains; buying a put pays a premium to floor the loss while leaving the upside intact. The premium is the cost of that asymmetry — appropriate when the upside is valuable and the firm will pay to keep it.",
       "note": "Symmetric offset (futures/swaps) is cheap but two-sided; option protection costs a premium but is one-sided.",
       "last_updated": "2026-06-29",
-      "stale": true
+      "crosschecked": false
     },
     {
       "category": "use",
@@ -141,7 +141,7 @@
       "answer": false,
       "summary": "False — imperfect co-movement leaves basis risk; hedges reduce but rarely fully remove exposure.",
       "last_updated": "2026-06-29",
-      "stale": true
+      "crosschecked": false
     },
     {
       "category": "exercise",
@@ -150,7 +150,7 @@
       "definition": "The monitor step compares the desk's measured sensitivity (delta) against the limit cascaded from risk appetite. A breach must trigger action: the trader hedges, offsets or reduces — e.g. sells index futures to cut net delta, or trims the underlying positions — until delta is back inside the limit. This is the reduce/transfer response, applied periodically (if not daily) as markets move.",
       "note": "Uses the appetite → limits → monitor → mitigate chain and the Greek-limit mechanism from the primer.",
       "last_updated": "2026-06-29",
-      "stale": true
+      "crosschecked": false
     },
     {
       "category": "exercise",
@@ -159,7 +159,7 @@
       "definition": "Because no market exists to hedge the flood, transfer takes the form of insurance — paying a premium to move a defined low-frequency, high-severity loss to an insurer. Avoid means not storing stock there at all; reduce means physical defences and controls that cut likelihood or severity; retain means accepting the residual and holding capital against it. The firm typically combines reduce + transfer + retain.",
       "note": "Applies the four responses and the insurance-vs-hedging distinction to an unhedgeable operational risk.",
       "last_updated": "2026-06-29",
-      "stale": true
+      "crosschecked": false
     }
   ]
 }

@@ -32,48 +32,48 @@
       "definition": "The structured classification of the distinct risk types a firm faces, so each can be owned, measured and capitalised separately. The canonical buckets are market risk (price/rate moves), credit risk (counterparty default), operational risk (failed processes, people, systems, external events), liquidity risk (funding and market liquidity) and business/strategic risk; secondary types include model, reputational, legal, conduct and concentration risk. A clean taxonomy prevents both gaps (an unowned risk) and double-counting (one loss capitalised twice).",
       "note": "Boundaries are conventions, not laws — e.g. counterparty credit risk straddles market and credit.",
       "last_updated": "2026-06-29",
-      "stale": true
+      "crosschecked": false
     },
     {
       "term": "Market risk",
       "definition": "The risk of loss from adverse movements in market prices and rates — interest rates, FX, equity, commodities and credit spreads. It is the dominant risk of the trading book and is split into general (broad market) and specific (issuer-particular) components. It is the original target of the Basel internal-models regime, measured with [[VaR]]/[[ES]] and the Greeks.",
       "last_updated": "2026-06-29",
-      "stale": true
+      "crosschecked": false
     },
     {
       "term": "Credit risk",
       "definition": "The risk that a borrower or counterparty fails to meet its obligations, causing loss of principal and interest. It decomposes into default risk, migration risk (downgrade) and recovery risk, and is quantified through the expected-loss triplet $\\\\mathrm{PD}\\\\times\\\\mathrm{LGD}\\\\times\\\\mathrm{EAD}$. Counterparty credit risk — the credit risk embedded in derivatives whose exposure varies with the market — is its most complex sub-form.",
       "note": "Concentration in correlated names turns idiosyncratic default risk into a systemic exposure.",
       "last_updated": "2026-06-29",
-      "stale": true
+      "crosschecked": false
     },
     {
       "term": "Operational risk",
       "definition": "The risk of loss from inadequate or failed internal processes, people and systems, or from external events — explicitly including legal risk but excluding strategic and reputational risk in the Basel definition. It spans fraud, system outages, mis-selling, model error and natural disasters. Unlike market and credit risk it is not taken deliberately for return, so it is a risk to be minimised, not optimised.",
       "note": "Hard to model because losses are heavy-tailed and data is sparse for the rare, catastrophic events that dominate.",
       "last_updated": "2026-06-29",
-      "stale": true
+      "crosschecked": false
     },
     {
       "term": "Liquidity risk",
       "definition": "The risk of being unable to meet obligations as they fall due, or to unwind a position, without incurring unacceptable loss. It splits into funding liquidity risk (cannot raise cash to meet cash-flow needs) and market liquidity risk (cannot sell an asset near fair value because the market is thin). The two interact viciously: forced selling depresses prices, which worsens funding.",
       "note": "A solvent firm can still fail on liquidity alone — the classic bank-run failure mode.",
       "last_updated": "2026-06-29",
-      "stale": true
+      "crosschecked": false
     },
     {
       "term": "Risk appetite vs risk capacity",
       "definition": "Risk capacity is the maximum risk a firm can absorb given its capital, liquidity and regulatory constraints before threatening solvency — a hard ceiling. Risk appetite is the aggregate amount and type of risk the firm chooses to take in pursuit of return, set by the board in a Risk Appetite Statement and always strictly inside capacity. Risk tolerance then operationalises appetite as acceptable variation around specific limits.",
       "note": "Appetite is a choice; capacity is the ceiling. Appetite running up against capacity is a red flag.",
       "last_updated": "2026-06-29",
-      "stale": true
+      "crosschecked": false
     },
     {
       "term": "Inherent vs residual risk",
       "definition": "Inherent risk is the gross exposure to a risk before any controls or mitigants are applied; residual risk is what remains after hedging, collateral, insurance, netting and process controls. The gap between them measures how much the control environment actually reduces risk. Crucially, capital is held against residual risk, not inherent risk.",
       "note": "A large inherent-to-residual gap is only real if the controls genuinely work — control failure brings inherent risk back.",
       "last_updated": "2026-06-29",
-      "stale": true
+      "crosschecked": false
     },
     {
       "term": "Three lines of defence",
@@ -81,14 +81,14 @@
       "definition": "The standard governance model assigning risk responsibilities to three independent layers: (1) the business owns and manages its risks day-to-day; (2) independent risk management and compliance set policy, set limits and challenge the first line; (3) internal audit provides objective assurance over the whole framework. The independence of the second and third lines from revenue is the entire point.",
       "note": "Updated guidance (IIA 2020) reframes it as 'three lines' to stress collaboration over rigid silos.",
       "last_updated": "2026-06-29",
-      "stale": true
+      "crosschecked": false
     },
     {
       "term": "Risk culture",
       "definition": "The shared values, attitudes and behaviours that shape how risk is identified, discussed and acted on across an organisation — the informal counterpart to the formal risk framework. A strong culture means staff escalate bad news, respect limits and challenge excessive risk-taking even when it is profitable. It is widely seen as the root cause behind most major risk failures, where formal controls existed but were ignored.",
       "note": "Tone from the top, incentives and the freedom to challenge are its observable proxies.",
       "last_updated": "2026-06-29",
-      "stale": true
+      "crosschecked": false
     },
     {
       "term": "Economic capital",
@@ -96,14 +96,14 @@
       "definition": "A firm's own internal estimate of the capital it needs to remain solvent over a horizon at a chosen confidence level, given its actual risk profile across all risk types. It is typically calibrated to a high loss quantile (often 99.9%, matching a target credit rating) and is the denominator in [[RAROC]]. Because it reflects real diversification and concentration, it is the firm's true measure of risk-adjusted resource use.",
       "note": "Contrast with regulatory capital, the externally imposed minimum — economic capital can be higher or lower.",
       "last_updated": "2026-06-29",
-      "stale": true
+      "crosschecked": false
     },
     {
       "term": "Regulatory capital",
       "definition": "The minimum capital a firm must hold by supervisory rule, computed under standardised or approved internal models (Basel framework). It is organised into tiers by loss-absorbing quality — Common Equity Tier 1 ([[CET1]]) being the highest — and expressed as ratios of capital to risk-weighted assets, topped by conservation, countercyclical and systemic buffers. It is a floor imposed externally, distinct from the firm's own economic-capital estimate.",
       "note": "Pillar 1 sets the formulaic minimum; Pillar 2 adds firm-specific add-ons from supervisory review.",
       "last_updated": "2026-06-29",
-      "stale": true
+      "crosschecked": false
     },
     {
       "term": "Expected loss (EL)",
@@ -111,14 +111,14 @@
       "note": "EL is what you provision for; [[UL]] is what you hold capital for.",
       "formula": "$\\\\mathrm{EL} = \\\\mathrm{PD}\\\\times\\\\mathrm{LGD}\\\\times\\\\mathrm{EAD}$",
       "last_updated": "2026-06-29",
-      "stale": true
+      "crosschecked": false
     },
     {
       "term": "Unexpected loss (UL)",
       "definition": "The volatility of loss around its expected value — the deviation that capital, not provisions, must absorb. It is typically measured as a high quantile of the loss distribution minus the mean ([[EL]]), i.e. the surprise component of loss. The whole purpose of economic capital is to stand behind unexpected loss up to a chosen confidence level.",
       "note": "$\\\\mathrm{UL}\\\\approx\\\\mathrm{VaR}_\\\\alpha(L)-\\\\mathrm{EL}$ — the buffer beyond the average.",
       "last_updated": "2026-06-29",
-      "stale": true
+      "crosschecked": false
     },
     {
       "term": "Value at Risk (VaR)",
@@ -126,7 +126,7 @@
       "note": "A '€1M VaR' is meaningless without both its confidence level and holding horizon.",
       "formula": "$\\\\mathrm{VaR}_\\\\alpha(L) = \\\\inf\\\\{\\\\,l : P(L > l) \\\\le 1-\\\\alpha\\\\,\\\\}$",
       "last_updated": "2026-06-29",
-      "stale": true
+      "crosschecked": false
     },
     {
       "term": "Expected Shortfall (ES)",
@@ -135,7 +135,7 @@
       "note": "Always $\\\\mathrm{ES}_\\\\alpha \\\\ge \\\\mathrm{VaR}_\\\\alpha$; harder to backtest than [[VaR]] because it is not elicitable on its own.",
       "formula": "$\\\\mathrm{ES}_\\\\alpha(L) = \\\\dfrac{1}{1-\\\\alpha}\\\\displaystyle\\\\int_\\\\alpha^1 \\\\mathrm{VaR}_u(L)\\\\,du$",
       "last_updated": "2026-06-29",
-      "stale": true
+      "crosschecked": false
     },
     {
       "term": "Stressed VaR (sVaR)",
@@ -143,14 +143,14 @@
       "note": "[[FRTB]] carries the same idea forward by calibrating its [[ES]] to a stress period.",
       "formula": "capital $\\\\propto \\\\mathrm{VaR} + \\\\mathrm{sVaR}$ (with multipliers)",
       "last_updated": "2026-06-29",
-      "stale": true
+      "crosschecked": false
     },
     {
       "term": "Confidence level & holding horizon",
       "definition": "The two parameters that fully define any [[VaR]] or [[ES]] figure: the confidence level $\\\\alpha$ (e.g. 99%) fixes how deep into the tail the quantile sits, and the holding horizon $h$ (e.g. 1 or 10 days) fixes the period over which the loss could occur. Both raise the figure as they grow — higher confidence and longer horizon both mean a larger reported risk. Regulatory market-risk [[VaR]] traditionally used 99% over 10 days.",
       "note": "Quoting one without the other makes the number uninterpretable and uncomparable.",
       "last_updated": "2026-06-29",
-      "stale": true
+      "crosschecked": false
     },
     {
       "term": "Square-root-of-time scaling",
@@ -158,14 +158,14 @@
       "note": "Used to scale 1-day [[VaR]] to the regulatory 10-day horizon, but it can materially mis-state risk under autocorrelation.",
       "formula": "$\\\\mathrm{VaR}(h) = \\\\mathrm{VaR}(1)\\\\,\\\\sqrt{h}$",
       "last_updated": "2026-06-29",
-      "stale": true
+      "crosschecked": false
     },
     {
       "term": "Coherent risk measure",
       "definition": "A risk measure $\\\\rho$ satisfying four axioms (Artzner et al., 1999): monotonicity, translation invariance, positive homogeneity and subadditivity. Together they formalise the intuition that a sensible risk measure rewards diversification, scales linearly with size, and recognises a guaranteed cash buffer. [[ES]] is coherent; [[VaR]] fails subadditivity except under elliptical (e.g. normal) distributions, so [[VaR]] is not coherent.",
       "note": "Coherence is necessary, not sufficient — a coherent measure can still be a poor risk estimate if mis-calibrated.",
       "last_updated": "2026-06-29",
-      "stale": true
+      "crosschecked": false
     },
     {
       "term": "Subadditivity",
@@ -173,7 +173,7 @@
       "note": "[[ES]] is always subadditive; this is the central reason regulators moved from [[VaR]] to [[ES]].",
       "formula": "$\\\\rho(X+Y) \\\\le \\\\rho(X) + \\\\rho(Y)$",
       "last_updated": "2026-06-29",
-      "stale": true
+      "crosschecked": false
     },
     {
       "term": "Backtesting",
@@ -181,7 +181,7 @@
       "note": "Basel's traffic-light test maps the 250-day exception count to green/amber/red capital-multiplier zones.",
       "formula": "expected exceptions $= (1-\\\\alpha)\\\\times$ number of days",
       "last_updated": "2026-06-29",
-      "stale": true
+      "crosschecked": false
     },
     {
       "term": "Kupiec POF test",
@@ -190,14 +190,14 @@
       "note": "Tests 'are there the right number of breaches?' but not 'are they clustered?'.",
       "formula": "$\\\\mathrm{LR}_{uc} = -2\\\\ln\\\\dfrac{(1-p)^{T-x}p^{x}}{(1-\\\\hat{p})^{T-x}\\\\hat{p}^{x}}\\\\sim\\\\chi^2_1$",
       "last_updated": "2026-06-29",
-      "stale": true
+      "crosschecked": false
     },
     {
       "term": "Christoffersen independence test",
       "definition": "An extension of the Kupiec test that jointly assesses correct coverage and the independence of exceptions, catching models whose breaches cluster in time. Independence matters because clustered losses — several breaches in a row during a stress episode — are exactly what threaten solvency, even if the total count looks fine. It adds a test that today's exception does not predict tomorrow's.",
       "note": "Conditional coverage = unconditional coverage (Kupiec) + independence (Christoffersen).",
       "last_updated": "2026-06-29",
-      "stale": true
+      "crosschecked": false
     },
     {
       "term": "RAROC",
@@ -206,7 +206,7 @@
       "note": "Variants differ by where the risk adjustment sits: RORAC adjusts the denominator (capital), RARORAC adjusts both.",
       "formula": "$\\\\mathrm{RAROC} = \\\\dfrac{\\\\text{expected return} - \\\\mathrm{EL}}{\\\\text{economic capital}}$",
       "last_updated": "2026-06-29",
-      "stale": true
+      "crosschecked": false
     },
     {
       "term": "RORAC",
@@ -214,21 +214,21 @@
       "definition": "A capital-efficiency ratio dividing an activity's return by the risk-adjusted (economic) capital it ties up, rather than its nominal accounting capital. It differs from [[RAROC]] in where the risk adjustment is applied: RORAC adjusts the denominator (capital is risk-based), while [[RAROC]] also adjusts the numerator for expected loss. Both push the same goal — pricing capital by the risk it backs.",
       "note": "Terminology varies by firm; always check which quantity carries the risk adjustment.",
       "last_updated": "2026-06-29",
-      "stale": true
+      "crosschecked": false
     },
     {
       "term": "Diversification benefit",
       "definition": "The reduction in total risk achieved by combining exposures that are less than perfectly correlated, so the aggregate [[VaR]] or economic capital is less than the sum of standalone figures. It arises because losses partly cancel when $\\\\rho_{ij}<1$, and it is the quantitative payoff that subadditive risk measures are designed to recognise. Its great danger is that correlations tend to rise toward 1 in a crisis, so the benefit evaporates exactly when it is needed most.",
       "note": "Measured as $\\\\sum_i\\\\mathrm{VaR}_i - \\\\mathrm{VaR}_{\\\\text{portfolio}}$; it lowers unexpected loss but never expected loss.",
       "last_updated": "2026-06-29",
-      "stale": true
+      "crosschecked": false
     },
     {
       "term": "Risk-weighted assets (RWA)",
       "definition": "A firm's assets and exposures scaled by risk weights reflecting their riskiness, forming the denominator of the regulatory capital ratios. A government bond may carry a near-zero weight while an unsecured loan carries a full or higher weight, so RWA captures risk that raw balance-sheet size misses. Capital adequacy is then expressed as capital divided by RWA against a required minimum.",
       "note": "Weights come from standardised tables or approved internal models; an output floor caps how low model-based RWA can go.",
       "last_updated": "2026-06-29",
-      "stale": true
+      "crosschecked": false
     }
   ]
 }

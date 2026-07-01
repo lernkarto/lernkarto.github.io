@@ -48,7 +48,7 @@
       "note": "The 'who supervises whom' backbone of everything else here.",
       "category": "ssm",
       "last_updated": "2026-06-29",
-      "stale": true
+      "crosschecked": false
     },
     {
       "term": "Significant vs less-significant",
@@ -57,7 +57,7 @@
       "note": "~110 significant groups hold the bulk of euro-area banking assets.",
       "category": "ssm",
       "last_updated": "2026-06-29",
-      "stale": true
+      "crosschecked": false
     },
     {
       "term": "Joint Supervisory Team",
@@ -66,7 +66,7 @@
       "note": "The 'client team' an external specialist effectively supports.",
       "category": "ssm",
       "last_updated": "2026-06-29",
-      "stale": true
+      "crosschecked": false
     },
     {
       "term": "SREP",
@@ -75,7 +75,7 @@
       "note": "Output drives Pillar 2 add-ons (see [[P2R]] / [[P2G]]).",
       "category": "ssm",
       "last_updated": "2026-06-29",
-      "stale": true
+      "crosschecked": false
     },
     {
       "term": "P2R and P2G",
@@ -84,7 +84,7 @@
       "note": "Binding vs non-binding is the distinction interviewers probe.",
       "category": "ssm",
       "last_updated": "2026-06-29",
-      "stale": true
+      "crosschecked": false
     },
     {
       "term": "Supervisory priorities",
@@ -92,7 +92,7 @@
       "note": "Knowing the current priorities shows you track the supervisor's agenda.",
       "category": "ssm",
       "last_updated": "2026-06-29",
-      "stale": true
+      "crosschecked": false
     },
     {
       "term": "On-site inspection",
@@ -101,7 +101,7 @@
       "note": "The 'visiting other banks for the [[ECB]]' part of the role.",
       "category": "onsite",
       "last_updated": "2026-06-29",
-      "stale": true
+      "crosschecked": false
     },
     {
       "term": "Internal-model investigation",
@@ -110,7 +110,7 @@
       "note": "Where a quant who can re-run models is most useful.",
       "category": "onsite",
       "last_updated": "2026-06-29",
-      "stale": true
+      "crosschecked": false
     },
     {
       "term": "TRIM",
@@ -119,7 +119,7 @@
       "note": "The landmark exercise that professionalised internal-model review.",
       "category": "onsite",
       "last_updated": "2026-06-29",
-      "stale": true
+      "crosschecked": false
     },
     {
       "term": "Findings & severity grading",
@@ -127,7 +127,7 @@
       "note": "Severity grading + remediation tracking = the output of a mission.",
       "category": "onsite",
       "last_updated": "2026-06-29",
-      "stale": true
+      "crosschecked": false
     },
     {
       "term": "IMAS / IMAS portal",
@@ -135,7 +135,7 @@
       "note": "The plumbing through which investigations and follow-ups flow.",
       "category": "onsite",
       "last_updated": "2026-06-29",
-      "stale": true
+      "crosschecked": false
     },
     {
       "term": "What the external specialist does",
@@ -143,7 +143,7 @@
       "note": "This is the day job — and it is your QA/validation skillset retargeted.",
       "category": "onsite",
       "last_updated": "2026-06-29",
-      "stale": true
+      "crosschecked": false
     },
     {
       "term": "Internal models (regulatory)",
@@ -151,7 +151,7 @@
       "note": "Permission, ongoing compliance and change control are all supervised.",
       "category": "models",
       "last_updated": "2026-06-29",
-      "stale": true
+      "crosschecked": false
     },
     {
       "term": "Risk-parameter review",
@@ -161,7 +161,7 @@
       "note": "Inspectors challenge the estimation, not just the formula.",
       "category": "models",
       "last_updated": "2026-06-29",
-      "stale": true
+      "crosschecked": false
     },
     {
       "term": "Internal validation function",
@@ -169,7 +169,7 @@
       "note": "Independence of validation from development is a recurring finding.",
       "category": "models",
       "last_updated": "2026-06-29",
-      "stale": true
+      "crosschecked": false
     },
     {
       "term": "Use test",
@@ -177,7 +177,7 @@
       "note": "Regulators distrust 'capital-only' models.",
       "category": "models",
       "last_updated": "2026-06-29",
-      "stale": true
+      "crosschecked": false
     },
     {
       "term": "Margin of conservatism",
@@ -186,7 +186,7 @@
       "note": "A direct analogue to systematic-uncertainty budgeting in physics.",
       "category": "models",
       "last_updated": "2026-06-29",
-      "stale": true
+      "crosschecked": false
     },
     {
       "term": "Rating philosophy: PIT vs TTC",
@@ -194,7 +194,7 @@
       "note": "Mixing philosophies between estimation and use is a classic flaw.",
       "category": "models",
       "last_updated": "2026-06-29",
-      "stale": true
+      "crosschecked": false
     },
     {
       "term": "Downturn LGD",
@@ -202,7 +202,7 @@
       "note": "Where 'use the long-run average' is not conservative enough.",
       "category": "models",
       "last_updated": "2026-06-29",
-      "stale": true
+      "crosschecked": false
     },
     {
       "term": "Ongoing model monitoring",
@@ -211,7 +211,7 @@
       "note": "Monitoring + validation reporting = the model's health check.",
       "category": "models",
       "last_updated": "2026-06-29",
-      "stale": true
+      "crosschecked": false
     },
     {
       "term": "Model risk management",
@@ -220,7 +220,7 @@
       "note": "The umbrella the validation and review work sits under.",
       "category": "models",
       "last_updated": "2026-06-29",
-      "stale": true
+      "crosschecked": false
     },
     {
       "term": "ECB Guide to Internal Models",
@@ -229,7 +229,7 @@
       "note": "The reference an inspector measures a model against.",
       "category": "regulation",
       "last_updated": "2026-06-29",
-      "stale": true
+      "crosschecked": false
     },
     {
       "term": "CRR / CRD",
@@ -237,7 +237,7 @@
       "note": "Basel is the standard; CRR/CRD is the binding EU law.",
       "category": "regulation",
       "last_updated": "2026-06-29",
-      "stale": true
+      "crosschecked": false
     },
     {
       "term": "Supervisory benchmarking",
@@ -246,7 +246,7 @@
       "note": "The data-driven complement to on-site investigation.",
       "category": "regulation",
       "last_updated": "2026-06-29",
-      "stale": true
+      "crosschecked": false
     },
     {
       "term": "Definition of default",
@@ -254,7 +254,7 @@
       "note": "Get the default flag wrong and every downstream [[PD]]/[[LGD]] is off.",
       "category": "regulation",
       "last_updated": "2026-06-29",
-      "stale": true
+      "crosschecked": false
     },
     {
       "term": "EBA IRB repair programme",
@@ -262,7 +262,7 @@
       "note": "Why post-2021 [[IRB]] models look more alike than they used to.",
       "category": "regulation",
       "last_updated": "2026-06-29",
-      "stale": true
+      "crosschecked": false
     },
     {
       "term": "Output floor",
@@ -271,7 +271,7 @@
       "note": "The ceiling on internal-model benefit — a live supervisory theme.",
       "category": "regulation",
       "last_updated": "2026-06-29",
-      "stale": true
+      "crosschecked": false
     },
     {
       "term": "Climate & environmental risk",
@@ -280,7 +280,7 @@
       "note": "A growth area where a fast learner can add value early.",
       "category": "regulation",
       "last_updated": "2026-06-29",
-      "stale": true
+      "crosschecked": false
     }
   ]
 }

@@ -33,7 +33,7 @@
       "type": "mcq",
       "definition": "[[VaR]] at 99% over one day is a loss threshold not expected to be exceeded on 99% of days; equivalently, the 99th-percentile quantile of the one-day loss distribution. It answers 'how bad on a normal day?', not 'how bad could it ever get'. The largest loss that could ever occur is wrong because [[VaR]] explicitly tolerates a 1% tail of worse outcomes and says nothing about how large those breaches are. It is not the standard deviation of returns (a dispersion measure, though parametric [[VaR]] is built from it as z times sigma), nor the expected loss or expected profit, which are central-tendency measures rather than a tail quantile. [[ES]] addresses the question [[VaR]] leaves unanswered: how large are losses once the threshold is breached.",
       "last_updated": "2026-06-29",
-      "stale": true
+      "crosschecked": false
     },
     {
       "term": "A key criticism of [[VaR]] is that it:",
@@ -48,7 +48,7 @@
       "type": "mcq",
       "definition": "[[VaR]]'s key weakness is that it pins down a quantile but says nothing about the size of losses once that quantile is breached; two portfolios with identical [[VaR]] can have wildly different tail magnitudes. This is exactly what [[ES]] (mean loss beyond [[VaR]]) fixes. Claiming it is coherent under every loss distribution is false: [[VaR]] can violate subadditivity, so it is not coherent in general. It is not too easy to backtest to be useful (counting exceptions is straightforward, which is actually a practical advantage over [[ES]]), it does not systematically overstate the true risk (it can understate fat tails), and it can be computed for multi-asset portfolios.",
       "last_updated": "2026-06-29",
-      "stale": true
+      "crosschecked": false
     },
     {
       "term": "Expected Shortfall (ES), also called CVaR, is:",
@@ -63,7 +63,7 @@
       "type": "mcq",
       "definition": "[[ES]], or [[CVaR]], is the average loss conditional on the loss exceeding the [[VaR]] level; it integrates the tail rather than reading a single point off it. This captures tail magnitude, which [[VaR]] ignores. It is not the probability of incurring any loss (that is a frequency, not a loss size) and not numerically identical to the [[VaR]] level ([[VaR]] is the threshold, [[ES]] is the mean beyond it, so [[ES]] is at least as large as [[VaR]]). It is not the median or the single worst loss: the median is a central quantile and the worst loss is one extreme point, whereas [[ES]] averages over the whole tail beyond [[VaR]].",
       "last_updated": "2026-06-29",
-      "stale": true
+      "crosschecked": false
     },
     {
       "term": "Unlike VaR, Expected Shortfall is a coherent risk measure because it:",
@@ -78,7 +78,7 @@
       "type": "mcq",
       "definition": "[[ES]] is coherent because it satisfies subadditivity along with the other coherence axioms, so a diversified portfolio's [[ES]] never exceeds the sum of its parts' [[ES]]. [[VaR]] can violate subadditivity, making diversification spuriously appear to add risk. This is precisely why [[FRTB]] shifted the regulatory standard from [[VaR]] to [[ES]]. Being evaluated at a lower confidence level does not confer coherence; always exceeding the corresponding [[VaR]] figure is a consequence, not the defining reason. [[ES]] does not require returns to be normally distributed (it is defined for any loss distribution), and it does not disregard the shape of the loss tail; on the contrary it averages over the tail, which is precisely the property that makes it coherent.",
       "last_updated": "2026-06-29",
-      "stale": true
+      "crosschecked": false
     },
     {
       "term": "The four properties defining a coherent risk measure are monotonicity, translation invariance, positive homogeneity, and:",
@@ -93,7 +93,7 @@
       "type": "mcq",
       "definition": "The four coherence axioms (Artzner et al.) are monotonicity, translation invariance, positive homogeneity, and subadditivity; subadditivity is the one [[VaR]] can fail and [[ES]] satisfies. Stationarity and independence are properties of a return process, not of a risk measure, so they are out of scope. Normality is a distributional assumption, not a coherence axiom. Linearity is too strong and is not required: positive homogeneity plus subadditivity gives convexity, not full linearity, since merging portfolios may reduce risk.",
       "last_updated": "2026-06-29",
-      "stale": true
+      "crosschecked": false
     },
     {
       "term": "Subadditivity of a risk measure means:",
@@ -108,7 +108,7 @@
       "type": "mcq",
       "definition": "Subadditivity means the risk of a combined portfolio never exceeds the sum of the parts' risks, formalising the idea that diversification should never increase total risk. The opposite, that combining positions always increases total risk, is the violation a non-coherent measure like [[VaR]] can exhibit. The claim that combined risk always equals the sum of the parts is wrong because combination should weakly reduce, not exactly preserve, risk. Depending only on correlations misstates the inequality, and risk always being exactly zero is simply false.",
       "last_updated": "2026-06-29",
-      "stale": true
+      "crosschecked": false
     },
     {
       "term": "Historical-simulation VaR is computed by:",
@@ -123,7 +123,7 @@
       "type": "mcq",
       "definition": "Historical-simulation [[VaR]] applies the empirical distribution of past returns to today's positions: revalue current holdings under each historical move and read the quantile off the resulting loss distribution. It is non-parametric, making no distributional assumption, which is its main appeal and contrast to other methods. Assuming a normal distribution describes parametric [[VaR]], and drawing returns from a fitted statistical model describes Monte Carlo [[VaR]]. Taking the sample average of past returns gives a central estimate, not a tail quantile, and pricing with Black-Scholes values options rather than estimating portfolio [[VaR]].",
       "last_updated": "2026-06-29",
-      "stale": true
+      "crosschecked": false
     },
     {
       "term": "Parametric (variance-covariance) VaR typically assumes:",
@@ -138,7 +138,7 @@
       "type": "mcq",
       "definition": "Parametric (variance-covariance) [[VaR]] assumes returns are normal, so [[VaR]] collapses to a multiple of the portfolio standard deviation: [[VaR]] = z times sigma times value. Its speed comes from this closed form, but it can understate risk when returns are fat-tailed. Assuming no distributional form at all describes historical simulation, not the parametric method. A uniform distribution is not the assumption used, non-stationary returns would break the single-sigma estimate, and bounded losses are not assumed: the normal tail is unbounded.",
       "last_updated": "2026-06-29",
-      "stale": true
+      "crosschecked": false
     },
     {
       "term": "Monte Carlo VaR works by:",
@@ -153,7 +153,7 @@
       "type": "mcq",
       "definition": "Monte Carlo [[VaR]] simulates many return scenarios from an assumed model and reads the loss quantile off the simulated distribution. Its strength is flexibility: it handles nonlinear payoffs and complex instruments that closed forms cannot, at the cost of being computationally heavy and model-dependent. Replaying only observed historical returns describes historical simulation, and solving a closed-form normal formula describes parametric [[VaR]]. It does not set correlations to zero (they are built into the simulating model) and it does not merely count past exceptions, which is backtesting.",
       "last_updated": "2026-06-29",
-      "stale": true
+      "crosschecked": false
     },
     {
       "term": "Under the assumption of i.i.d. returns, 10-day VaR is obtained from 1-day VaR by multiplying by:",
@@ -168,7 +168,7 @@
       "type": "mcq",
       "definition": "For i.i.d. returns, volatility scales with the square root of time, so 10-day [[VaR]] equals 1-day [[VaR]] times the square root of 10. Variance grows linearly in the horizon, hence standard deviation grows as the square root. Multiplying by 10 would wrongly assume risk scales with variance rather than its square root; multiplying by 1 ignores horizon entirely; the square root of 252 is the annualisation factor for daily-to-yearly, not 10-day; and 100 confuses the variance scaling (10 squared) with the volatility scaling.",
       "last_updated": "2026-06-29",
-      "stale": true
+      "crosschecked": false
     },
     {
       "term": "Backtesting a VaR model involves:",
@@ -183,7 +183,7 @@
       "type": "mcq",
       "definition": "Backtesting counts how often actual losses exceeded the [[VaR]] and compares that exception rate to the expected rate (1% of days for a 99% [[VaR]]). A large discrepancy in either direction flags a miscalibrated model, formalised by tests like Kupiec's. Note that [[VaR]] is easier to backtest than [[ES]], because [[ES]] requires estimating the magnitude of tail losses, not just their frequency. Re-estimating the mean return and testing for a unit root are time-series estimation tasks, not validation of tail coverage. Running extreme scenarios and nothing else is a different, scenario-based exercise, and the Sharpe ratio measures risk-adjusted return, not [[VaR]] accuracy.",
       "last_updated": "2026-06-29",
-      "stale": true
+      "crosschecked": false
     },
     {
       "term": "Stress testing complements VaR by:",
@@ -198,7 +198,7 @@
       "type": "mcq",
       "definition": "Stress testing evaluates losses under specific extreme but plausible scenarios, probing the rare, severe, or unprecedented moves that statistical [[VaR]] can miss. It complements rather than replaces [[VaR]], so removing the need to compute [[VaR]] is wrong. Leaving tail events out is the opposite of its purpose, reporting average daily risk is what routine [[VaR]] does, and assuming markets always behave normally contradicts the very premise of stressing for abnormal conditions.",
       "last_updated": "2026-06-29",
-      "stale": true
+      "crosschecked": false
     },
     {
       "term": "The option Greek 'delta' measures the sensitivity of the option price to:",
@@ -213,7 +213,7 @@
       "type": "mcq",
       "definition": "Delta measures the sensitivity of the option price to a change in the underlying asset's price; it is the first derivative of value with respect to spot and the core quantity in delta-hedging. Delta is central to computing a position's [[VaR]] when options are involved. Sensitivity to volatility is vega, sensitivity to the risk-free rate is rho, and the passage of time is theta. Sensitivity to the strike is not a standard traded Greek, since the strike is fixed by contract; delta is specifically about moves in the underlying.",
       "last_updated": "2026-06-29",
-      "stale": true
+      "crosschecked": false
     },
     {
       "term": "'Gamma' measures:",
@@ -228,7 +228,7 @@
       "type": "mcq",
       "definition": "Gamma is the rate of change of delta as the underlying moves, the option's convexity and the second derivative of value with respect to spot. High gamma means delta shifts rapidly, forcing frequent rebalancing of a delta hedge, and gamma peaks near the money. The decay of value as time passes is theta, sensitivity to volatility is vega, and sensitivity to interest rates is rho. Intrinsic value is a price level, not a sensitivity, so it is not a Greek.",
       "last_updated": "2026-06-29",
-      "stale": true
+      "crosschecked": false
     },
     {
       "term": "'Vega' measures an option's sensitivity to:",
@@ -243,7 +243,7 @@
       "type": "mcq",
       "definition": "Vega measures an option's sensitivity to a change in the volatility of the underlying; long option positions are long vega and gain when implied volatility rises. Sensitivity to the underlying's price is delta, the passage of time is theta, and sensitivity to the risk-free rate is rho. Sensitivity to the expected dividend (sometimes called epsilon) is a separate, minor Greek and is not vega, which is specifically the volatility sensitivity.",
       "last_updated": "2026-06-29",
-      "stale": true
+      "crosschecked": false
     },
     {
       "term": "'Theta' measures:",
@@ -258,7 +258,7 @@
       "type": "mcq",
       "definition": "Theta measures the change in option value as time passes, i.e. time decay; for long options it is typically negative because, all else equal, options lose value as expiry approaches. Sensitivity to the underlying is delta, sensitivity to volatility is vega, and sensitivity to interest rates is rho. The rate of change of delta is gamma, a different second-order Greek, not the effect of time.",
       "last_updated": "2026-06-29",
-      "stale": true
+      "crosschecked": false
     },
     {
       "term": "Modified duration of a bond approximates:",
@@ -273,7 +273,7 @@
       "type": "mcq",
       "definition": "Modified duration approximates the percentage price change for a small change in yield: price change is roughly minus modified duration times the yield change. It is a first-order (linear) interest-rate sensitivity. It is not the yield to maturity or the coupon rate, which are contractual rate quantities, and not the probability of default, which is a credit measure. It is not the bond's maturity in years exactly: Macaulay duration is a time measure, and modified duration adjusts it by dividing by (1 plus yield), so they coincide only as an approximation.",
       "last_updated": "2026-06-29",
-      "stale": true
+      "crosschecked": false
     },
     {
       "term": "Convexity of a bond captures:",
@@ -288,7 +288,7 @@
       "type": "mcq",
       "definition": "Convexity captures the curvature of the price-yield relationship, the second-order effect that refines the linear duration estimate. Positive convexity benefits the holder: prices rise more when yields fall than they fall when yields rise by the same amount. The first-order price sensitivity to yield is duration, not convexity. The recovery rate, credit spread, and coupon schedule are credit or cash-flow attributes, not the second-order shape of the price-yield curve.",
       "last_updated": "2026-06-29",
-      "stale": true
+      "crosschecked": false
     },
     {
       "term": "A bond with modified duration 5 will, for a 100 basis point (1%) rise in yield, change in price by approximately:",
@@ -303,7 +303,7 @@
       "type": "mcq",
       "definition": "Using price change is approximately minus duration times yield change, the answer is -5 times 0.01 = -5%; rising yields lower bond prices, so the move is negative. +5% has the wrong sign. -1% and -0.5% ignore the duration multiplier and effectively use a duration near 1 or smaller. -10% doubles the correct figure, as if duration were 10 rather than 5. Convexity would add a small positive correction, slightly softening the -5%.",
       "last_updated": "2026-06-29",
-      "stale": true
+      "crosschecked": false
     },
     {
       "term": "A 1-day 99% parametric VaR for a 1,000,000 EUR portfolio with daily volatility 2% (using z = 2.33, zero mean) is approximately:",
@@ -318,7 +318,7 @@
       "type": "mcq",
       "definition": "Parametric [[VaR]] = z times sigma times value = 2.33 times 0.02 times 1,000,000 = 46,600 EUR. The 20,000 figure drops the z-multiplier (just sigma times value). The 23,300 figure uses 2.33 times 0.01, halving the volatility. The 2,000 figure is off by an order of magnitude, and 100,000 corresponds to a 10% move, far above the 2.33-sigma daily loss implied here.",
       "last_updated": "2026-06-29",
-      "stale": true
+      "crosschecked": false
     },
     {
       "term": "Marginal (or incremental) VaR measures:",
@@ -333,7 +333,7 @@
       "type": "mcq",
       "definition": "Marginal (incremental) [[VaR]] measures the change in total portfolio [[VaR]] from a small change in a given position, capturing that position's contribution to overall risk including diversification effects. This guides hedging and limit-setting by flagging the biggest risk contributors. The [[VaR]] of a single asset valued in isolation ignores those portfolio interactions. The total aggregate [[VaR]] is the whole, not the marginal contribution; the expected loss and the [[ES]] are entirely different measures.",
       "last_updated": "2026-06-29",
-      "stale": true
+      "crosschecked": false
     },
     {
       "term": "Liquidity risk refers to the risk that:",
@@ -348,7 +348,7 @@
       "type": "mcq",
       "definition": "Liquidity risk is the risk that an asset cannot be traded quickly without a significant price concession, i.e. you cannot exit at fair value. A counterparty failing to pay is credit risk, interest rates moving is market risk, and a misspecified pricing model is model risk. Volatility clustering is a statistical property of returns, not a risk category. Note this asset/market-liquidity dimension is distinct from funding liquidity, the risk that financing itself dries up.",
       "last_updated": "2026-06-29",
-      "stale": true
+      "crosschecked": false
     },
     {
       "term": "The EWMA and GARCH approaches improve on a simple equally weighted volatility estimate by:",
@@ -363,7 +363,7 @@
       "type": "mcq",
       "definition": "[[EWMA]] and [[GARCH]] weight recent observations more, letting the volatility estimate track changing market conditions instead of treating all sample days equally. Recent returns are more informative about today's volatility, so weighting them up improves risk estimates and captures volatility clustering. Holding volatility constant is exactly the equally weighted estimate they improve upon. Discarding recent observations and relying only on annual data throw away the most relevant information, and stripping all autocorrelation out of returns is not what these volatility models do.",
       "last_updated": "2026-06-29",
-      "stale": true
+      "crosschecked": false
     },
     {
       "term": "If a 99% one-day VaR is exceeded on about 5% of days in backtesting, the model is most likely:",
@@ -378,7 +378,7 @@
       "type": "mcq",
       "definition": "A correctly calibrated 99% one-day [[VaR]] should be breached on roughly 1% of days; seeing about 5% exceptions means losses pierce the threshold far too often, so the model is understating risk with too many exceptions. Overstating the true level of risk would show too few exceptions, not too many. Essentially perfectly calibrated would be about 1%, not 5%. The exception count has nothing to do with measuring [[ES]], and multicollinearity is a regression diagnostic, not a [[VaR]] backtesting outcome.",
       "last_updated": "2026-06-29",
-      "stale": true
+      "crosschecked": false
     }
   ]
 }

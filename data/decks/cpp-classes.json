@@ -26,7 +26,7 @@
       "definition": "Correct: A) only the default access: class members are private by default, struct members public. Otherwise they are identical — both can have methods, constructors, inheritance and access specifiers. Convention: `struct` for plain data aggregates, `class` for types with invariants.",
       "category": "core",
       "last_updated": "2026-06-29",
-      "stale": true
+      "crosschecked": false
     },
     {
       "term": "What do `public`, `private` and `protected` mean?",
@@ -34,7 +34,7 @@
       "summary": "public = anyone, private = the class only, protected = class + derived.",
       "category": "core",
       "last_updated": "2026-06-29",
-      "stale": true
+      "crosschecked": false
     },
     {
       "term": "What is a constructor?",
@@ -42,7 +42,7 @@
       "summary": "Special function that initialises a new object.",
       "category": "lifetime",
       "last_updated": "2026-06-29",
-      "stale": true
+      "crosschecked": false
     },
     {
       "term": "What is a destructor and when does it run?",
@@ -50,7 +50,7 @@
       "summary": "`~T()` runs at end of lifetime to release resources.",
       "category": "lifetime",
       "last_updated": "2026-06-29",
-      "stale": true
+      "crosschecked": false
     },
     {
       "term": "What is the member-initialiser list, and why prefer it?",
@@ -58,7 +58,7 @@
       "summary": "`Ctor(...) : a(x), b(y) {}` — initialise members directly.",
       "category": "lifetime",
       "last_updated": "2026-06-29",
-      "stale": true
+      "crosschecked": false
     },
     {
       "type": "cloze",
@@ -67,7 +67,7 @@
       "summary": "A const member function cannot mutate the object.",
       "definition": "The trailing `const` in `int get() const;` makes `this` a pointer-to-const, so the body cannot modify members. Const-correctness lets you call such accessors on `const` objects and references.",
       "last_updated": "2026-06-29",
-      "stale": true
+      "crosschecked": false
     },
     {
       "term": "What is the `this` pointer?",
@@ -75,7 +75,7 @@
       "summary": "A pointer to the current object inside member functions.",
       "category": "core",
       "last_updated": "2026-06-29",
-      "stale": true
+      "crosschecked": false
     },
     {
       "term": "What is the rule of three?",
@@ -83,7 +83,7 @@
       "summary": "Need one of dtor / copy-ctor / copy-assign → define all three.",
       "category": "lifetime",
       "last_updated": "2026-06-29",
-      "stale": true
+      "crosschecked": false
     },
     {
       "term": "What is the rule of five?",
@@ -91,7 +91,7 @@
       "summary": "Dtor + copy-ctor + copy-assign + move-ctor + move-assign.",
       "category": "lifetime",
       "last_updated": "2026-06-29",
-      "stale": true
+      "crosschecked": false
     },
     {
       "term": "What is the rule of zero?",
@@ -99,7 +99,7 @@
       "definition": "Correct: A) design classes so members manage their own resources, so you write none of the five. If every member is itself RAII (e.g. `std::vector`, `std::string`, `unique_ptr`), the compiler-generated special members already do the right thing, and you write no destructor or copy/move operations at all.",
       "category": "lifetime",
       "last_updated": "2026-06-29",
-      "stale": true
+      "crosschecked": false
     },
     {
       "term": "What is operator overloading?",
@@ -107,7 +107,7 @@
       "summary": "Define `operator@` so built-in operators work on your types.",
       "category": "core",
       "last_updated": "2026-06-29",
-      "stale": true
+      "crosschecked": false
     },
     {
       "type": "truefalse",
@@ -117,7 +117,7 @@
       "summary": "True — explicit blocks silent single-argument conversions.",
       "definition": "True. A single-argument constructor can otherwise be used for implicit conversions (e.g. passing an `int` where your type is expected). Marking it `explicit` requires the conversion to be written out, preventing surprising silent conversions.",
       "last_updated": "2026-06-29",
-      "stale": true
+      "crosschecked": false
     },
     {
       "type": "truefalse",
@@ -127,7 +127,7 @@
       "summary": "False — they initialise in declaration order, not list order.",
       "definition": "False. Members are always initialised in the order they are declared in the class, regardless of the order in the initialiser list. Listing them out of declaration order is a classic bug source (a member used to initialise another may not be ready yet).",
       "last_updated": "2026-06-29",
-      "stale": true
+      "crosschecked": false
     },
     {
       "term": "What is a `static` data member?",
@@ -135,7 +135,7 @@
       "summary": "One copy shared across all objects of the class.",
       "category": "core",
       "last_updated": "2026-06-29",
-      "stale": true
+      "crosschecked": false
     },
     {
       "term": "Exercise: this class double-frees — diagnose it.\n`class Buf { int* p; public: Buf(int n){p=new int[n];} ~Buf(){delete[] p;} };` then `Buf a(10); Buf b = a;`",
@@ -144,7 +144,7 @@
       "summary": "Default shallow copy shares the pointer → double delete; rule of three.",
       "category": "use",
       "last_updated": "2026-06-29",
-      "stale": true
+      "crosschecked": false
     },
     {
       "term": "Exercise: write a chainable setter. How does `obj.setX(1).setY(2);` work?",
@@ -153,7 +153,7 @@
       "summary": "Return `*this` by reference so calls can chain.",
       "category": "use",
       "last_updated": "2026-06-29",
-      "stale": true
+      "crosschecked": false
     }
   ]
 }
